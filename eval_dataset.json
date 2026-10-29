@@ -1,0 +1,1922 @@
+[
+  {
+    "question_id": 1,
+    "type": "question",
+    "query": "เบอร์ฉุกเฉินภายในอาคารของ รปภ. คือเบอร์ต่อเท่าไร",
+    "expected_answer": "ต่อ 2999",
+    "expected_citation": "เบอร์ฉุกเฉินภายในอาคาร  (รปภ.)  โทรต่อ  2999",
+    "document_source": 8
+  },
+  {
+    "question_id": 2,
+    "type": "unanswerable",
+    "query": "บริษัทมีสวัสดิการค่าแว่นตาให้พนักงานไหม เบิกได้เท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 3,
+    "type": "chitchat",
+    "query": "กาแฟกับชา ชอบอะไรมากกว่า",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 4,
+    "type": "question",
+    "query": "ความเร็วอินเทอร์เน็ตออฟฟิศจะเพิ่มเป็นเท่าไร ภายในเดือนใด",
+    "expected_answer": "1 Gbps ภายในเดือน พ.ค.",
+    "expected_citation": "เพิ่มความเร็วอินเทอร์เน็ตออฟฟิศเป็น 1 Gbps ภายในเดือน พ.ค.",
+    "document_source": 9
+  },
+  {
+    "question_id": 5,
+    "type": "chitchat",
+    "query": "วันนี้เหนื่อยจังเลย",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 6,
+    "type": "question",
+    "query": "การลงทะเบียนอบรมจะปิดรับก่อนวันอบรมกี่วัน",
+    "expected_answer": "ปิดรับก่อนวันอบรม 7 วัน (ลงทะเบียนผ่าน Learning Portal)",
+    "expected_citation": "ลงทะเบียนผ่าน  Learning Portal  และระบบจะปิดรับก่อนวันอบรม  7  วัน",
+    "document_source": 7
+  },
+  {
+    "question_id": 7,
+    "type": "question",
+    "query": "หลักสูตร Excel ขั้นสูงจัดวันไหน ที่ไหน และมีกี่ที่นั่ง",
+    "expected_answer": "วันที่ 12 ก.พ. 2569 ห้องอบรม A จำนวน 30 ที่นั่ง",
+    "expected_citation": "| Excel ขั้นสูง                  | 12 ก.พ. 2569   | ห้องอบรม A      | 30 ที่นั่ง    |",
+    "document_source": 7
+  },
+  {
+    "question_id": 8,
+    "type": "question",
+    "query": "พนักงานประจำที่ผ่านทดลองงานแล้วทำงานจากที่บ้านได้สูงสุดกี่วันต่อเดือน",
+    "expected_answer": "ไม่เกิน 8 วันต่อเดือน",
+    "expected_citation": "พนักงานประจำที่ผ่านการทดลองงานแล้ว  มีสิทธิ์ทำงานจากที่บ้านได้ไม่เกิน  8  วันต่อเดือน",
+    "document_source": 1
+  },
+  {
+    "question_id": 9,
+    "type": "question",
+    "query": "ระบบสำรองข้อมูลอัตโนมัติทำงานทุกวันกี่โมง",
+    "expected_answer": "02.00 น.",
+    "expected_citation": "ระบบสำรองข้อมูลอัตโนมัติทำงานทุกวันเวลา  02.00  น.",
+    "document_source": 5
+  },
+  {
+    "question_id": 10,
+    "type": "question",
+    "query": "หลักสูตร Leadership สำหรับหัวหน้าทีมจัดวันไหน ที่ไหน และมีกี่ที่นั่ง",
+    "expected_answer": "วันที่ 18 เม.ย. 2569 ห้องอบรม A จำนวน 20 ที่นั่ง",
+    "expected_citation": "| Leadership สำหรับหัวหน้าทีม   | 18 เม.ย. 2569  | ห้องอบรม A      | 20 ที่นั่ง    |",
+    "document_source": 7
+  },
+  {
+    "question_id": 11,
+    "type": "question",
+    "query": "ผู้ขายรายใหม่ต้องส่งหนังสือรับรองบริษัทที่มีอายุไม่เกินกี่เดือน",
+    "expected_answer": "ไม่เกิน 6 เดือน",
+    "expected_citation": "ผู้ขายรายใหม่ต้องลงทะเบียนเป็น  Vendor  กับฝ่ายจัดซื้อ  พร้อมหนังสือรับรองบริษัทอายุไม่เกิน  6  เดือน",
+    "document_source": 4
+  },
+  {
+    "question_id": 12,
+    "type": "chitchat",
+    "query": "สวัสดีครับ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 13,
+    "type": "unanswerable",
+    "query": "อบรมนอกสถานที่เบิกค่าที่พักได้คืนละเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 14,
+    "type": "chitchat",
+    "query": "คุณพูดภาษาอื่นได้ไหม",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 15,
+    "type": "chitchat",
+    "query": "บ๊ายบาย แล้วเจอกันนะ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 16,
+    "type": "question",
+    "query": "วันศุกร์ต้องแต่งกายอย่างไร",
+    "expected_answer": "ให้ใส่เสื้อโปโลของบริษัท",
+    "expected_citation": "ทุกวันศุกร์ให้ใส่เสื้อโปโลของบริษัท ส่วนวันอื่นแต่งกายสุภาพได้ตามสบาย",
+    "document_source": 6
+  },
+  {
+    "question_id": 17,
+    "type": "unanswerable",
+    "query": "จุดชาร์จรถยนต์ไฟฟ้าคิดค่าบริการหน่วยละกี่บาท",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 18,
+    "type": "unanswerable",
+    "query": "ค่าชุดทำงานสำหรับฝ่ายขายเบิกได้เท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 19,
+    "type": "question",
+    "query": "พนักงานฝ่ายปฏิบัติการได้ยูนิฟอร์มปีละกี่ชุด",
+    "expected_answer": "ปีละ 2 ชุด",
+    "expected_citation": "ยูนิฟอร์มของฝ่ายปฏิบัติการ ได้ปีละ 2 ชุด ถ้าขาดต้องซื้อเอง",
+    "document_source": 6
+  },
+  {
+    "question_id": 20,
+    "type": "unanswerable",
+    "query": "ระยะเวลาทดลองงานของพนักงานใหม่คือกี่วัน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 21,
+    "type": "question",
+    "query": "เงินช่วยเหลืองานสมรสของพนักงานเท่าไร",
+    "expected_answer": "3,000 บาท",
+    "expected_citation": "เงินช่วยเหลืองานสมรสของพนักงาน  3,000  บาท",
+    "document_source": 10
+  },
+  {
+    "question_id": 22,
+    "type": "unanswerable",
+    "query": "ผลโหวตสถานที่ Outing อันดับ 3 คือที่ไหน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 23,
+    "type": "unanswerable",
+    "query": "ค่ารักษาพยาบาลกรณีผ่าตัดเบิกได้เท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 24,
+    "type": "chitchat",
+    "query": "ฟังเพลงอะไรอยู่เหรอ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 25,
+    "type": "question",
+    "query": "เงินรางวัลอายุงานครบ 5 ปี และ 10 ปี ได้เท่าไร",
+    "expected_answer": "ครบ 5 ปี ได้ 5,000 บาท ครบ 10 ปี ได้ 15,000 บาท",
+    "expected_citation": "เงินรางวัลอายุงานครบ  5  ปี  ได้  5,000  บาท  และครบ  10  ปี  ได้  15,000  บาท",
+    "document_source": 10
+  },
+  {
+    "question_id": 26,
+    "type": "question",
+    "query": "คอร์สโยคะฟรีมีวันไหน เวลาใด และที่ไหน",
+    "expected_answer": "ทุกวันอังคาร เวลา 12.15 น. ที่ห้องกิจกรรมชั้น 4",
+    "expected_citation": "คอร์สโยคะฟรีมีทุกวันอังคาร เวลา 12.15 น. ที่ห้องกิจกรรมชั้น 4",
+    "document_source": 6
+  },
+  {
+    "question_id": 27,
+    "type": "question",
+    "query": "การแบ่งซื้อเป็นหลายใบสั่งซื้อเพื่อเลี่ยงวงเงินอนุมัติทำได้ไหม",
+    "expected_answer": "ทำไม่ได้ ห้ามโดยเด็ดขาด",
+    "expected_citation": "ห้ามแบ่งซื้อเป็นหลายใบสั่งซื้อเพื่อหลีกเลี่ยงวงเงินอนุมัติโดยเด็ดขาด",
+    "document_source": 4
+  },
+  {
+    "question_id": 28,
+    "type": "question",
+    "query": "เงินเดือนออกวันที่เท่าไรของเดือน และถ้าตรงวันหยุดจะเป็นอย่างไร",
+    "expected_answer": "ออกวันที่ 25 ถ้าตรงวันหยุดจะออกก่อนหน้า 1 วันทำการ",
+    "expected_citation": "เงินเดือนออกทุกวันที่ 25 ของเดือน ถ้าตรงวันหยุดจะออกก่อนหน้า 1 วันทำการ",
+    "document_source": 6
+  },
+  {
+    "question_id": 29,
+    "type": "unanswerable",
+    "query": "ใครเป็นเจ้าหน้าที่ความปลอดภัยวิชาชีพ (จป.) ของบริษัท",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 30,
+    "type": "unanswerable",
+    "query": "ถ้า WFH จากต่างประเทศ เช่น ที่ญี่ปุ่น ทำได้กี่วันต่อเดือน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 31,
+    "type": "unanswerable",
+    "query": "บริษัทออกค่าสอบใบรับรอง AWS ให้ไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 32,
+    "type": "question",
+    "query": "ผู้มาติดต่อภายนอกต้องทำอย่างไรเมื่อเข้าอาคาร",
+    "expected_answer": "ต้องแลกบัตรผู้มาติดต่อที่ประชาสัมพันธ์ และคืนบัตรก่อนออก",
+    "expected_citation": "ผู้มาติดต่อภายนอกต้องแลกบัตรผู้มาติดต่อที่ประชาสัมพันธ์  และคืนบัตรก่อนออกจากอาคาร",
+    "document_source": 8
+  },
+  {
+    "question_id": 33,
+    "type": "unanswerable",
+    "query": "ห้องละหมาดอยู่ที่ไหน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 34,
+    "type": "question",
+    "query": "ตรวจสุขภาพประจำปีได้ปีละกี่ครั้ง และต้องสำรองจ่ายไหม",
+    "expected_answer": "ปีละ 1 ครั้ง ที่โรงพยาบาลพันธมิตร ไม่ต้องสำรองจ่าย",
+    "expected_citation": "ตรวจสุขภาพประจำปีปีละ  1  ครั้ง  ที่โรงพยาบาลพันธมิตร  โดยไม่ต้องสำรองจ่าย",
+    "document_source": 10
+  },
+  {
+    "question_id": 35,
+    "type": "question",
+    "query": "พนักงานชายลาไปช่วยภรรยาคลอดบุตรได้กี่วันทำงาน",
+    "expected_answer": "7 วันทำงาน",
+    "expected_citation": "พนักงานชายลาไปช่วยภรรยาคลอดบุตรได้  7  วันทำงาน",
+    "document_source": 10
+  },
+  {
+    "question_id": 36,
+    "type": "question",
+    "query": "พนักงานเปลี่ยนอัตราสมทบกองทุนได้ปีละกี่ครั้ง และในเดือนไหน",
+    "expected_answer": "ปีละ 1 ครั้ง ในเดือนธันวาคม",
+    "expected_citation": "พนักงานเปลี่ยนอัตราสมทบกองทุนได้ปีละ  1  ครั้ง  ในเดือนธันวาคม",
+    "document_source": 10
+  },
+  {
+    "question_id": 37,
+    "type": "question",
+    "query": "ที่จอดรถพนักงานมีกี่ช่อง และจัดสรรอย่างไร",
+    "expected_answer": "มี 120 ช่อง จัดสรรตามลำดับใครมาก่อนได้ก่อน",
+    "expected_citation": "ที่จอดรถพนักงานมีทั้งหมด 120 ช่อง จัดสรรตามลำดับใครมาก่อนได้ก่อนค่ะ",
+    "document_source": 6
+  },
+  {
+    "question_id": 38,
+    "type": "chitchat",
+    "query": "ยินดีที่ได้รู้จักนะ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 39,
+    "type": "unanswerable",
+    "query": "ลาศึกษาต่อโดยไม่รับเงินเดือนได้นานสุดกี่ปี",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 40,
+    "type": "question",
+    "query": "จะติดตั้งจุดชาร์จรถยนต์ไฟฟ้ากี่จุด และที่ไหน",
+    "expected_answer": "4 จุด ที่ลานจอดรถด้านหลังอาคาร",
+    "expected_citation": "ติดตั้งจุดชาร์จรถยนต์ไฟฟ้า 4 จุด ที่ลานจอดรถด้านหลังอาคาร",
+    "document_source": 9
+  },
+  {
+    "question_id": 41,
+    "type": "question",
+    "query": "ลาป่วยติดต่อกันกี่วันถึงต้องแนบใบรับรองแพทย์",
+    "expected_answer": "ตั้งแต่ 3 วันทำการติดต่อกันขึ้นไป",
+    "expected_citation": "ลาป่วยตั้งแต่  3  วันทำการติดต่อกันขึ้นไป  ต้องแนบใบรับรองแพทย์",
+    "document_source": 1
+  },
+  {
+    "question_id": 42,
+    "type": "question",
+    "query": "กล้องวงจรปิดเก็บภาพบันทึกไว้นานกี่วัน",
+    "expected_answer": "60 วัน",
+    "expected_citation": "กล้องวงจรปิดบันทึกภาพเก็บไว้เป็นเวลา  60  วัน",
+    "document_source": 8
+  },
+  {
+    "question_id": 43,
+    "type": "unanswerable",
+    "query": "ใช้ Wi-Fi สาธารณะที่ร้านกาแฟเชื่อมต่อระบบงานได้ไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 44,
+    "type": "question",
+    "query": "ประตูหลักอาคารเปิดและปิดกี่โมง",
+    "expected_answer": "เปิด 07.00 น. ปิด 21.00 น.",
+    "expected_citation": "ประตูหลักอาคารเปิดเวลา  07.00  น.  และปิดเวลา  21.00  น.",
+    "document_source": 8
+  },
+  {
+    "question_id": 45,
+    "type": "question",
+    "query": "งานเลี้ยงสิ้นปี 2569 กำหนดจัดวันที่เท่าไร",
+    "expected_answer": "วันที่ 19 ธ.ค. 2569",
+    "expected_citation": "จัดงานเลี้ยงสิ้นปีวันที่ 19 ธ.ค. 2569  (ยังไม่เคาะสถานที่  ให้ Admin ไปหา 3 ตัวเลือก)",
+    "document_source": 9
+  },
+  {
+    "question_id": 46,
+    "type": "chitchat",
+    "query": "ตอนนี้ง่วงจังเลย",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 47,
+    "type": "question",
+    "query": "การเบิกโน้ตบุ๊กใช้เวลาอนุมัติกี่วัน ใครเป็นผู้อนุมัติ และต้องใช้งานอย่างน้อยกี่ปีก่อนเปลี่ยน",
+    "expected_answer": "ใช้เวลาอนุมัติ 7 วันทำการ ผู้อนุมัติคือ ผอ.ฝ่ายและ IT และต้องใช้งานอย่างน้อย 3 ปีก่อนเปลี่ยน",
+    "expected_citation": "| โน้ตบุ๊ก          | 7 วันทำการ    | 3 ปี             | ผอ.ฝ่าย + IT     |",
+    "document_source": 3
+  },
+  {
+    "question_id": 48,
+    "type": "unanswerable",
+    "query": "บริษัทมีคอร์สเรียนภาษาจีนให้พนักงานไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 49,
+    "type": "unanswerable",
+    "query": "หลักสูตร PDPA ต้องใช้เวลาเรียนกี่ชั่วโมงอบรม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 50,
+    "type": "question",
+    "query": "เครื่องล็อกหน้าจออัตโนมัติเมื่อไม่ได้ใช้งานเกินกี่นาที",
+    "expected_answer": "เกิน 10 นาที",
+    "expected_citation": "ล็อกหน้าจออัตโนมัติเมื่อไม่ได้ใช้งานเกิน  10  นาที",
+    "document_source": 5
+  },
+  {
+    "question_id": 51,
+    "type": "question",
+    "query": "ประกันชีวิตกลุ่มให้ทุนประกันคนละเท่าไร",
+    "expected_answer": "คนละ 500,000 บาท",
+    "expected_citation": "ประกันชีวิตกลุ่มให้ทุนประกันคนละ  500,000  บาท",
+    "document_source": 10
+  },
+  {
+    "question_id": 52,
+    "type": "question",
+    "query": "ชมรมแบดมินตันเล่นวันไหน เวลาใด",
+    "expected_answer": "ทุกวันพุธ เวลา 18.30 น. ที่สนามด้านหลังอาคาร",
+    "expected_citation": "ชมรมแบดมินตันเล่นทุกวันพุธ เวลา 18.30 น. ที่สนามด้านหลังอาคาร ใครสนใจทักมาได้ค่ะ",
+    "document_source": 6
+  },
+  {
+    "question_id": 53,
+    "type": "chitchat",
+    "query": "คุณชื่ออะไรเหรอ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 54,
+    "type": "unanswerable",
+    "query": "พนักงานเบิกค่าสมัครสมาชิกสระว่ายน้ำได้ไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 55,
+    "type": "chitchat",
+    "query": "อยากไปเที่ยวทะเลจัง",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 56,
+    "type": "unanswerable",
+    "query": "การประชุม Q3/2569 จัดวันที่เท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 57,
+    "type": "unanswerable",
+    "query": "ห้องให้นมบุตรอยู่ชั้นไหน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 58,
+    "type": "question",
+    "query": "ถ้าที่จอดรถเต็มให้ไปจอดที่ไหน และประตูลานปิดกี่โมง",
+    "expected_answer": "ให้จอดที่ลานด้านหลังอาคาร ประตูลานปิดเวลา 20.00 น.",
+    "expected_citation": "ถ้าที่จอดเต็มให้ไปจอดลานด้านหลังอาคาร ซึ่งประตูลานจะปิดเวลา 20.00 น.",
+    "document_source": 6
+  },
+  {
+    "question_id": 59,
+    "type": "question",
+    "query": "ป้อนข้อมูลลูกค้าหรือซอร์สโค้ดลงในแชตบอต AI สาธารณะได้ไหม",
+    "expected_answer": "ห้ามทุกชนิด",
+    "expected_citation": "ห้ามนำข้อมูลลูกค้าหรือซอร์สโค้ดไปป้อนในแชตบอต  AI  สาธารณะทุกชนิด",
+    "document_source": 5
+  },
+  {
+    "question_id": 60,
+    "type": "question",
+    "query": "เพดานชั่วโมง OT รวมต่อพนักงานคือเท่าไร",
+    "expected_answer": "ไม่เกิน 36 ชั่วโมงต่อเดือน",
+    "expected_citation": "เพดาน OT รวมต่อพนักงาน ไม่เกิน 36 ชั่วโมงต่อเดือน",
+    "document_source": 2
+  },
+  {
+    "question_id": 61,
+    "type": "question",
+    "query": "ถ้าจะซื้อของวงเงิน 20,000 บาท ต้องมีใบเสนอราคาเปรียบเทียบอย่างน้อยกี่ราย",
+    "expected_answer": "อย่างน้อย 3 ราย (วงเงิน 5,001 ถึง 50,000 บาท)",
+    "expected_citation": "การจัดซื้อวงเงิน  5,001  ถึง  50,000  บาท  ต้องมีใบเสนอราคาเปรียบเทียบอย่างน้อย  3  ราย",
+    "document_source": 4
+  },
+  {
+    "question_id": 62,
+    "type": "unanswerable",
+    "query": "บริษัทมีประกันสุขภาพผู้ป่วยในให้พนักงานไหม วงเงินเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 63,
+    "type": "question",
+    "query": "ถ้าต้องการใช้ซอฟต์แวร์ที่ไม่อยู่ในรายการมาตรฐานของบริษัท ต้องทำอย่างไร",
+    "expected_answer": "ต้องส่งคำขอผ่าน IT Service Desk พร้อมเหตุผลทางธุรกิจ",
+    "expected_citation": "ซอฟต์แวร์นอกรายการ  ต้องส่งคำขอผ่าน  IT Service Desk  พร้อมเหตุผลทางธุรกิจ",
+    "document_source": 3
+  },
+  {
+    "question_id": 64,
+    "type": "unanswerable",
+    "query": "เบิกค่าทำฟันของคู่สมรสและบุตรได้ไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 65,
+    "type": "chitchat",
+    "query": "หวัดดีครับ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 66,
+    "type": "question",
+    "query": "การประชุมครั้งถัดไปหลังประชุม Q2/2569 กำหนดไว้วันที่เท่าไร",
+    "expected_answer": "วันที่ 9 ก.ค. 2569",
+    "expected_citation": "ประชุมครั้งถัดไปวันที่ 9 ก.ค. 2569",
+    "document_source": 9
+  },
+  {
+    "question_id": 67,
+    "type": "chitchat",
+    "query": "คุณเป็นใครเหรอ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 68,
+    "type": "unanswerable",
+    "query": "เงินช่วยเหลือกรณีบ้านพนักงานประสบน้ำท่วมเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 69,
+    "type": "question",
+    "query": "อาหารกลิ่นแรงเข้าห้องทำงานได้ไหม",
+    "expected_answer": "ห้ามนำเข้าห้องทำงาน เช่น ทุเรียน ปลาร้า",
+    "expected_citation": "ห้ามนำอาหารกลิ่นแรง  เช่น  ทุเรียน  ปลาร้า  เข้าห้องทำงาน",
+    "document_source": 8
+  },
+  {
+    "question_id": 70,
+    "type": "question",
+    "query": "ใบรับรองการทำงานใช้เวลาออกกี่วันทำการ",
+    "expected_answer": "ประมาณ 5 วันทำการ",
+    "expected_citation": "ส่วนใบรับรองการทำงาน ใช้เวลาออกประมาณ 5 วันทำการ",
+    "document_source": 6
+  },
+  {
+    "question_id": 71,
+    "type": "unanswerable",
+    "query": "ค่าปรับส่งมอบล่าช้ามีเพดานสูงสุดกี่เปอร์เซ็นต์ของมูลค่าสัญญา",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 72,
+    "type": "unanswerable",
+    "query": "ถ้าเกิดแผ่นดินไหวต้องปฏิบัติอย่างไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 73,
+    "type": "unanswerable",
+    "query": "รหัสผ่านต้องมีอักขระพิเศษอย่างน้อยกี่ตัว",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 74,
+    "type": "question",
+    "query": "ต้องเปลี่ยนรหัสผ่านทุกกี่วัน และห้ามใช้ซ้ำกับกี่ครั้งล่าสุด",
+    "expected_answer": "เปลี่ยนทุก 90 วัน และห้ามใช้ซ้ำกับ 5 ครั้งล่าสุด",
+    "expected_citation": "ต้องเปลี่ยนรหัสผ่านทุก  90  วัน  และห้ามใช้ซ้ำกับ  5  ครั้งล่าสุด",
+    "document_source": 5
+  },
+  {
+    "question_id": 75,
+    "type": "question",
+    "query": "OT ในวันหยุดนักขัตฤกษ์ปรับอัตราเป็นกี่เท่า และเริ่มมีผลเมื่อไร",
+    "expected_answer": "ปรับเป็น 3 เท่า จากเดิม 2 เท่า เริ่มมีผลตั้งแต่ 1 ก.พ. 2569",
+    "expected_citation": "OT วันหยุดประจำสัปดาห์และวันหยุดนักขัตฤกษ์ ให้ปรับเป็น 3 เท่า จากเดิม 2 เท่า  เริ่มมีผลตั้งแต่ 1 ก.พ. 2569",
+    "document_source": 2
+  },
+  {
+    "question_id": 76,
+    "type": "chitchat",
+    "query": "ฝันดีนะ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 77,
+    "type": "unanswerable",
+    "query": "บริษัทใช้โปรแกรม Antivirus ยี่ห้ออะไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 78,
+    "type": "question",
+    "query": "พนักงานเลือกสมทบเข้ากองทุนสำรองเลี้ยงชีพเองได้ในช่วงกี่เปอร์เซ็นต์",
+    "expected_answer": "ตั้งแต่ร้อยละ 3 ถึงร้อยละ 15 ของเงินเดือน",
+    "expected_citation": "พนักงานเลือกสมทบเองได้ตั้งแต่ร้อยละ  3  ถึงร้อยละ  15  ของเงินเดือน",
+    "document_source": 10
+  },
+  {
+    "question_id": 79,
+    "type": "question",
+    "query": "จุดรวมพลเมื่อเกิดเหตุเพลิงไหม้อยู่ที่ไหน",
+    "expected_answer": "ที่ลานจอดรถด้านหลังอาคาร",
+    "expected_citation": "จุดรวมพลอยู่ที่ลานจอดรถด้านหลังอาคาร",
+    "document_source": 8
+  },
+  {
+    "question_id": 80,
+    "type": "question",
+    "query": "ใช้ USB แฟลชไดรฟ์ส่วนตัวกับเครื่องของบริษัทได้ไหม",
+    "expected_answer": "ห้ามใช้ ยกเว้นได้รับอนุมัติจาก IT",
+    "expected_citation": "ห้ามใช้  USB  แฟลชไดรฟ์ส่วนตัวกับเครื่องของบริษัท  ยกเว้นได้รับอนุมัติจาก  IT",
+    "document_source": 5
+  },
+  {
+    "question_id": 81,
+    "type": "unanswerable",
+    "query": "เงินกู้ยืมสวัสดิการพนักงานคิดดอกเบี้ยร้อยละเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 82,
+    "type": "question",
+    "query": "บริษัทซ้อมหนีไฟประจำปีปีละกี่ครั้ง และจัดเดือนไหน",
+    "expected_answer": "ปีละ 2 ครั้ง ครั้งแรกเดือนพฤษภาคม ครั้งที่สองเดือนพฤศจิกายน",
+    "expected_citation": "ซ้อมหนีไฟประจำปีปีละ  2  ครั้ง  ครั้งแรกเดือนพฤษภาคม  ครั้งที่สองเดือนพฤศจิกายน",
+    "document_source": 8
+  },
+  {
+    "question_id": 83,
+    "type": "question",
+    "query": "ใบสั่งซื้อ (PO) มีอายุกี่วันนับจากวันที่ออก",
+    "expected_answer": "90 วัน หากเกินต้องขอต่ออายุ",
+    "expected_citation": "ใบสั่งซื้อ  (PO)  มีอายุ  90  วันนับจากวันที่ออก  หากเกินกำหนดต้องขอต่ออายุ",
+    "document_source": 4
+  },
+  {
+    "question_id": 84,
+    "type": "unanswerable",
+    "query": "ลาเพื่อรับราชการทหารได้กี่วัน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 85,
+    "type": "chitchat",
+    "query": "วันนี้ฝนตกไหมนะ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 86,
+    "type": "question",
+    "query": "อุบัติเหตุจากการทำงานต้องรายงานหัวหน้างานและ HR ภายในกี่ชั่วโมง",
+    "expected_answer": "ภายใน 24 ชั่วโมง",
+    "expected_citation": "อุบัติเหตุจากการทำงานต้องรายงานหัวหน้างานและ  HR  ภายใน  24  ชั่วโมง",
+    "document_source": 8
+  },
+  {
+    "question_id": 87,
+    "type": "unanswerable",
+    "query": "ทริป Outing ประจำปี 2570 จะจัดที่ไหน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 88,
+    "type": "question",
+    "query": "ผลสำรวจความพึงพอใจพนักงานรอบ Q1 ได้กี่เปอร์เซ็นต์ และเป้าหมายรอบ Q3 คือเท่าไร",
+    "expected_answer": "รอบ Q1 ได้ 78 เปอร์เซ็นต์ เป้าหมาย Q3 ไม่ต่ำกว่า 82 เปอร์เซ็นต์",
+    "expected_citation": "ผลสำรวจความพึงพอใจพนักงานรอบ Q1 ได้ 78 เปอร์เซ็นต์  เป้าหมายรอบ Q3 ไม่ต่ำกว่า 82 เปอร์เซ็นต์",
+    "document_source": 9
+  },
+  {
+    "question_id": 89,
+    "type": "question",
+    "query": "จองห้องประชุมผ่านระบบ Room Booking ได้ล่วงหน้าไม่เกินกี่วัน",
+    "expected_answer": "ไม่เกิน 14 วัน",
+    "expected_citation": "ห้องประชุมต้องจองผ่านระบบ  Room Booking  ล่วงหน้าไม่เกิน  14  วัน",
+    "document_source": 8
+  },
+  {
+    "question_id": 90,
+    "type": "question",
+    "query": "ตามมติที่ประชุม Q2/2569 ค่าที่จอดรถเบิกได้ไม่เกินวันละเท่าไร และมีผลเมื่อไร",
+    "expected_answer": "ไม่เกิน 250 บาทต่อวัน (จากเดิม 200 บาท) มีผลตั้งแต่ 1 ก.ค. 2569",
+    "expected_citation": "ค่าที่จอดรถเบิกได้ไม่เกิน 250 บาทต่อวัน จากเดิม 200 บาท  มีผลตั้งแต่ 1 ก.ค. 2569",
+    "document_source": 9
+  },
+  {
+    "question_id": 91,
+    "type": "chitchat",
+    "query": "คุณชอบสีอะไร",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 92,
+    "type": "question",
+    "query": "ต้องเข้าอบรมไม่น้อยกว่ากี่เปอร์เซ็นต์ของเวลาจึงจะได้รับใบประกาศนียบัตร",
+    "expected_answer": "ไม่น้อยกว่า 80 เปอร์เซ็นต์",
+    "expected_citation": "ผู้เข้าอบรมต้องเข้าร่วมไม่น้อยกว่า  80  เปอร์เซ็นต์ของเวลา  จึงจะได้รับใบประกาศนียบัตร",
+    "document_source": 7
+  },
+  {
+    "question_id": 93,
+    "type": "question",
+    "query": "รหัสผ่านต้องมีความยาวอย่างน้อยกี่ตัวอักษร",
+    "expected_answer": "อย่างน้อย 12 ตัวอักษร",
+    "expected_citation": "รหัสผ่านต้องมีความยาวอย่างน้อย  12  ตัวอักษร",
+    "document_source": 5
+  },
+  {
+    "question_id": 94,
+    "type": "unanswerable",
+    "query": "เบิกเครื่องพิมพ์ส่วนตัวสำหรับใช้ที่โต๊ะได้ไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 95,
+    "type": "chitchat",
+    "query": "วันหยุดนี้มีแผนอะไรไหม",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 96,
+    "type": "chitchat",
+    "query": "โอเคเลย",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 97,
+    "type": "unanswerable",
+    "query": "เวลาเข้างานปกติของบริษัทคือกี่โมง",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 98,
+    "type": "question",
+    "query": "การขออนุมัติอบรมภายนอกต้องยื่นล่วงหน้าอย่างน้อยกี่วัน",
+    "expected_answer": "อย่างน้อย 14 วัน",
+    "expected_citation": "การขออนุมัติอบรมภายนอกต้องยื่นล่วงหน้าอย่างน้อย  14  วัน",
+    "document_source": 7
+  },
+  {
+    "question_id": 99,
+    "type": "unanswerable",
+    "query": "ทริป Outing มีกิจกรรมล่องแก่งหรือไม่",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 100,
+    "type": "unanswerable",
+    "query": "ผู้ขายจากต่างประเทศชำระเงินเป็นสกุลเงินอะไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 101,
+    "type": "question",
+    "query": "ในวันจันทร์ถึงศุกร์ แอร์ในออฟฟิศเปิดและปิดกี่โมง และตั้งอุณหภูมิเท่าไร",
+    "expected_answer": "เปิด 08.30 น. ปิด 18.30 น. อุณหภูมิ 25 องศา",
+    "expected_citation": "| จันทร์-ศุกร์    | 08.30 น.   | 18.30 น.   | 25 องศา     |",
+    "document_source": 3
+  },
+  {
+    "question_id": 102,
+    "type": "question",
+    "query": "ถ้าจะนำเครื่องส่วนตัว (BYOD) มาเชื่อมต่อระบบ ต้องทำอะไรก่อน",
+    "expected_answer": "ต้องลงทะเบียนกับ IT และติดตั้งโปรแกรม MDM",
+    "expected_citation": "เครื่องส่วนตัว  (BYOD)  ต้องลงทะเบียนกับ  IT  และติดตั้งโปรแกรม  MDM  ก่อนเชื่อมต่อระบบ",
+    "document_source": 5
+  },
+  {
+    "question_id": 103,
+    "type": "chitchat",
+    "query": "ชอบกินส้มตำไหม",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 104,
+    "type": "question",
+    "query": "ของในตู้เย็นที่ไม่มีชื่อติดไว้จะถูกทิ้งเมื่อไร",
+    "expected_answer": "ทุกวันศุกร์เวลา 16.00 น.",
+    "expected_citation": "ของในตู้เย็นที่ไม่มีชื่อติดไว้ จะถูกทิ้งทุกวันศุกร์เวลา 16.00 น. เด้อ",
+    "document_source": 6
+  },
+  {
+    "question_id": 105,
+    "type": "question",
+    "query": "ผู้ที่ไม่ผ่านหลักสูตรภาคบังคับจะถูกหักคะแนนประเมินผลงานกี่คะแนน",
+    "expected_answer": "2 คะแนน",
+    "expected_citation": "ผู้ที่ไม่ผ่านหลักสูตรภาคบังคับจะถูกหักคะแนนประเมินผลงานประจำปี  2  คะแนน",
+    "document_source": 7
+  },
+  {
+    "question_id": 106,
+    "type": "question",
+    "query": "ห้องพยาบาลอยู่ชั้นไหน และเปิดให้บริการเวลาใด",
+    "expected_answer": "ชั้น 1 เปิดทุกวันทำการ เวลา 09.00 - 17.00 น.",
+    "expected_citation": "ห้องพยาบาลอยู่ชั้น 1 เปิดทุกวันทำการ เวลา 09.00 - 17.00 น. ค่ะ",
+    "document_source": 6
+  },
+  {
+    "question_id": 107,
+    "type": "question",
+    "query": "หลักสูตร PDPA ต้องเรียนจบภายในวันที่เท่าไร",
+    "expected_answer": "ภายในวันที่ 31 มีนาคม 2569",
+    "expected_citation": "หลักสูตร  PDPA  ทุกคนต้องเรียนจบภายในวันที่  31  มีนาคม  2569",
+    "document_source": 7
+  },
+  {
+    "question_id": 108,
+    "type": "unanswerable",
+    "query": "มีหลักสูตร Executive สำหรับผู้บริหารระดับสูงไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 109,
+    "type": "question",
+    "query": "พนักงานที่เรียนต่อปริญญาโทขอทุนสนับสนุนได้สูงสุดเท่าไรต่อปี",
+    "expected_answer": "ไม่เกิน 50,000 บาทต่อปี",
+    "expected_citation": "พนักงานที่เรียนต่อระดับปริญญาโทขอทุนสนับสนุนได้ไม่เกิน  50,000  บาทต่อปี",
+    "document_source": 7
+  },
+  {
+    "question_id": 110,
+    "type": "question",
+    "query": "การอบรมที่จัดในเวลางานนับเป็น OT ได้ไหม",
+    "expected_answer": "ไม่นับเป็น OT ถือเป็นเวลาทำงานปกติ",
+    "expected_citation": "การอบรมที่จัดในเวลางานถือเป็นเวลาทำงานปกติ  ไม่นับเป็น  OT",
+    "document_source": 7
+  },
+  {
+    "question_id": 111,
+    "type": "question",
+    "query": "แต่ละชั้นมีผู้ช่วยหัวหน้าชั้น (Floor Warden) กี่คน",
+    "expected_answer": "ชั้นละ 2 คน",
+    "expected_citation": "ผู้ช่วยหัวหน้าชั้น  (Floor Warden)  มีชั้นละ  2  คน",
+    "document_source": 8
+  },
+  {
+    "question_id": 112,
+    "type": "unanswerable",
+    "query": "บริษัทมีสาขาต่างจังหวัดกี่แห่ง",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 113,
+    "type": "unanswerable",
+    "query": "ราคา license Adobe Creative Cloud ต่อคนต่อปีเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 114,
+    "type": "unanswerable",
+    "query": "ถ้าเครื่องติด Ransomware ต้องโทรแจ้งเบอร์อะไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 115,
+    "type": "question",
+    "query": "ถ้าใช้รถยนต์ส่วนตัวไปทำงานให้บริษัท เบิกค่าน้ำมันได้อัตราเท่าไร",
+    "expected_answer": "เบิกได้ในอัตรากิโลเมตรละ 5 บาท",
+    "expected_citation": "การใช้รถยนต์ส่วนตัวเพื่องานบริษัท  เบิกค่าน้ำมันในอัตรากิโลเมตรละ  5  บาท",
+    "document_source": 1
+  },
+  {
+    "question_id": 116,
+    "type": "unanswerable",
+    "query": "เบิกเก้าอี้ Ergonomic ได้ไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 117,
+    "type": "question",
+    "query": "IT จะเปลี่ยนโน้ตบุ๊กพนักงานรุ่นเก่ากี่เครื่อง ภายในเดือนใด",
+    "expected_answer": "40 เครื่อง ภายในเดือน มิ.ย. 2569",
+    "expected_citation": "คุณภัทรแจ้งว่าจะเปลี่ยนโน้ตบุ๊กพนักงานรุ่นเก่า 40 เครื่อง ภายในเดือน มิ.ย. 2569",
+    "document_source": 9
+  },
+  {
+    "question_id": 118,
+    "type": "question",
+    "query": "ทุนการศึกษาบุตรพนักงานระดับประถมศึกษาได้คนละเท่าไรต่อปี",
+    "expected_answer": "คนละ 2,000 บาทต่อปี",
+    "expected_citation": "ทุนการศึกษาบุตรพนักงานระดับประถมศึกษา  คนละ  2,000  บาทต่อปี",
+    "document_source": 10
+  },
+  {
+    "question_id": 119,
+    "type": "question",
+    "query": "ถังดับเพลิงตรวจสอบสภาพทุกวันที่เท่าไรของเดือน",
+    "expected_answer": "ทุกวันที่ 5 ของเดือน",
+    "expected_citation": "ถังดับเพลิงทุกจุดตรวจสอบสภาพทุกวันที่  5  ของเดือน",
+    "document_source": 8
+  },
+  {
+    "question_id": 120,
+    "type": "question",
+    "query": "เงินช่วยเหลือกรณีบิดา มารดา คู่สมรส หรือบุตรของพนักงานเสียชีวิตเท่าไร",
+    "expected_answer": "5,000 บาท",
+    "expected_citation": "เงินช่วยเหลือกรณีบิดา  มารดา  คู่สมรส  หรือบุตรของพนักงานเสียชีวิต  5,000  บาท",
+    "document_source": 10
+  },
+  {
+    "question_id": 121,
+    "type": "question",
+    "query": "สลิปเงินเดือนดูได้ทางช่องทางใด",
+    "expected_answer": "ดูได้ทาง HR Portal เท่านั้น ไม่ส่งทางอีเมล",
+    "expected_citation": "สลิปเงินเดือนดูได้ทาง HR Portal เท่านั้น ไม่ส่งทางอีเมลแล้วนะ",
+    "document_source": 6
+  },
+  {
+    "question_id": 122,
+    "type": "unanswerable",
+    "query": "รถทัวร์ที่ใช้ในทริป Outing จองกับบริษัทอะไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 123,
+    "type": "question",
+    "query": "สินค้าที่ไม่ตรงตามสเปกส่งคืนผู้ขายได้ภายในกี่วัน",
+    "expected_answer": "ภายใน 14 วันนับจากวันตรวจรับ",
+    "expected_citation": "สินค้าที่ไม่ตรงตามสเปกให้ส่งคืนผู้ขายได้ภายใน  14  วันนับจากวันตรวจรับ",
+    "document_source": 4
+  },
+  {
+    "question_id": 124,
+    "type": "question",
+    "query": "ข้อมูลสำรองถูกเก็บไว้นานกี่วันก่อนถูกลบอัตโนมัติ",
+    "expected_answer": "90 วัน",
+    "expected_citation": "ข้อมูลสำรองจะถูกเก็บไว้เป็นเวลา  90  วัน  ก่อนถูกลบทิ้งอัตโนมัติ",
+    "document_source": 5
+  },
+  {
+    "question_id": 125,
+    "type": "question",
+    "query": "ข้อมูลลับระดับ Confidential ต้องทำอย่างไรก่อนส่งออกนอกบริษัททางอีเมล",
+    "expected_answer": "ต้องเข้ารหัสก่อนส่งทุกครั้ง",
+    "expected_citation": "ข้อมูลลับระดับ  Confidential  ต้องเข้ารหัสก่อนส่งออกนอกบริษัททางอีเมลทุกครั้ง",
+    "document_source": 5
+  },
+  {
+    "question_id": 126,
+    "type": "question",
+    "query": "เมื่อได้ยินสัญญาณเตือนภัยใช้ลิฟต์ได้ไหม",
+    "expected_answer": "ห้ามใช้ลิฟต์ ให้ใช้บันไดหนีไฟเท่านั้น",
+    "expected_citation": "เมื่อได้ยินสัญญาณเตือนภัย  ห้ามใช้ลิฟต์  ให้ใช้บันไดหนีไฟเท่านั้น",
+    "document_source": 8
+  },
+  {
+    "question_id": 127,
+    "type": "unanswerable",
+    "query": "พนักงานเรียน e-Learning ฟรีผ่านแพลตฟอร์ม Coursera ได้ไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 128,
+    "type": "question",
+    "query": "ค่าปรับกรณีผู้ขายส่งมอบล่าช้าคิดอัตราเท่าไร",
+    "expected_answer": "ร้อยละ 0.1 ของมูลค่าสัญญาต่อวัน",
+    "expected_citation": "ค่าปรับกรณีส่งมอบล่าช้าคิดร้อยละ  0.1  ของมูลค่าสัญญาต่อวัน",
+    "document_source": 4
+  },
+  {
+    "question_id": 129,
+    "type": "question",
+    "query": "หลัง 21.00 น. ถ้าจะเข้าอาคารต้องทำอย่างไร",
+    "expected_answer": "ต้องสแกนบัตรเข้าทางประตูด้านข้างและลงชื่อในสมุดของ รปภ.",
+    "expected_citation": "หลัง  21.00  น.  ต้องสแกนบัตรเข้าทางประตูด้านข้าง  และลงชื่อในสมุดของ  รปภ.",
+    "document_source": 8
+  },
+  {
+    "question_id": 130,
+    "type": "question",
+    "query": "อนุมัติงบพัฒนาระบบสแกนใบเสร็จเท่าไร",
+    "expected_answer": "850,000 บาท",
+    "expected_citation": "อนุมัติงบพัฒนาระบบสแกนใบเสร็จ 850,000 บาท  (คุณภัทรบอกว่าพอดีเป๊ะ)",
+    "document_source": 9
+  },
+  {
+    "question_id": 131,
+    "type": "question",
+    "query": "ฝ่ายบัญชีจ่ายเงินให้ผู้ขายวันไหนของสัปดาห์",
+    "expected_answer": "ทุกวันพฤหัสบดี",
+    "expected_citation": "ฝ่ายบัญชีจ่ายเงินผู้ขายทุกวันพฤหัสบดีของสัปดาห์",
+    "document_source": 4
+  },
+  {
+    "question_id": 132,
+    "type": "unanswerable",
+    "query": "การแจ้งลาออกต้องแจ้งล่วงหน้ากี่วัน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 133,
+    "type": "question",
+    "query": "เงินช่วยเหลือกรณีพนักงานเสียชีวิตเท่าไร",
+    "expected_answer": "50,000 บาท",
+    "expected_citation": "เงินช่วยเหลือกรณีพนักงานเสียชีวิต  50,000  บาท",
+    "document_source": 10
+  },
+  {
+    "question_id": 134,
+    "type": "unanswerable",
+    "query": "พนักงานฝึกงานได้ค่าตอบแทนเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 135,
+    "type": "unanswerable",
+    "query": "บริษัทมีนโยบาย Hybrid Office แบบสลับทีมมาออฟฟิศไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 136,
+    "type": "unanswerable",
+    "query": "บริษัทมีรถรับส่งพนักงานไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 137,
+    "type": "question",
+    "query": "ถ้าต้องเชื่อมต่อระบบภายในจากนอกออฟฟิศ ต้องทำอย่างไร",
+    "expected_answer": "ต้องเชื่อมต่อผ่าน VPN ของบริษัทเท่านั้น",
+    "expected_citation": "การเชื่อมต่อระบบภายในจากนอกออฟฟิศต้องผ่าน  VPN  ของบริษัทเท่านั้น",
+    "document_source": 5
+  },
+  {
+    "question_id": 138,
+    "type": "question",
+    "query": "ต้องส่งแบบประเมินหลังอบรมภายในกี่วันทำการ",
+    "expected_answer": "ภายใน 3 วันทำการ",
+    "expected_citation": "ต้องส่งแบบประเมินหลังอบรมภายใน  3  วันทำการ",
+    "document_source": 7
+  },
+  {
+    "question_id": 139,
+    "type": "chitchat",
+    "query": "ใครสร้างคุณขึ้นมา",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 140,
+    "type": "unanswerable",
+    "query": "คนที่ WFH เบิกค่าอินเทอร์เน็ตที่บ้านได้เดือนละกี่บาท",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 141,
+    "type": "chitchat",
+    "query": "ทายปริศนาให้หน่อยสิ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 142,
+    "type": "unanswerable",
+    "query": "ถ้าลาป่วยจากอุบัติเหตุในงาน นับรวมกับโควต้าลาป่วย 30 วันไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 143,
+    "type": "question",
+    "query": "ตามมติที่ประชุมล่าสุด ต้องส่งใบเสร็จเบิกจ่ายภายในกี่วันนับจากวันที่ออกใบเสร็จ",
+    "expected_answer": "ภายใน 30 วัน ตั้งแต่ 1 เม.ย. 2569 (จากเดิม 60 วัน)",
+    "expected_citation": "ตั้งแต่ 1 เม.ย. 2569  ต้องส่งใบเสร็จเบิกจ่ายภายใน 30 วันนับจากวันที่ออกใบเสร็จ  จากเดิม 60 วัน",
+    "document_source": 2
+  },
+  {
+    "question_id": 144,
+    "type": "question",
+    "query": "ผู้ใช้ห้องครัวชั้น 2 ต้องล้างภาชนะและเก็บให้เรียบร้อยก่อนกี่โมง",
+    "expected_answer": "ก่อน 17.30 น.",
+    "expected_citation": "ใครใช้ห้องครัวชั้น 2 ช่วยล้างภาชนะของตัวเองและเก็บให้เรียบร้อยก่อน 17.30 น. นะคะ",
+    "document_source": 6
+  },
+  {
+    "question_id": 145,
+    "type": "question",
+    "query": "การขอหนังสือรับรองเงินเดือนต้องแจ้ง HR ล่วงหน้ากี่วันทำการ",
+    "expected_answer": "ล่วงหน้า 3 วันทำการ",
+    "expected_citation": "ขอหนังสือรับรองเงินเดือน ต้องแจ้ง HR ล่วงหน้า 3 วันทำการ",
+    "document_source": 6
+  },
+  {
+    "question_id": 146,
+    "type": "question",
+    "query": "บริษัทสมทบเข้ากองทุนสำรองเลี้ยงชีพในอัตราเท่าไรของเงินเดือน",
+    "expected_answer": "ร้อยละ 5 ของเงินเดือน",
+    "expected_citation": "บริษัทสมทบเข้ากองทุนสำรองเลี้ยงชีพในอัตราร้อยละ  5  ของเงินเดือน",
+    "document_source": 10
+  },
+  {
+    "question_id": 147,
+    "type": "unanswerable",
+    "query": "ค่าชดเชยกรณีเลิกจ้างคิดอย่างไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 148,
+    "type": "unanswerable",
+    "query": "พนักงานลาไปประกอบพิธีฮัจย์ได้กี่วัน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 149,
+    "type": "question",
+    "query": "ถ้าอุปกรณ์ IT สูญหาย พนักงานต้องทำอย่างไรและรับผิดชอบอย่างไร",
+    "expected_answer": "ต้องรับผิดชอบค่าใช้จ่ายตามราคาที่ลดค่าเสื่อมแล้ว และแจ้ง IT ภายใน 24 ชั่วโมง",
+    "expected_citation": "กรณีอุปกรณ์สูญหาย  พนักงานต้องรับผิดชอบค่าใช้จ่ายตามราคาที่ลดค่าเสื่อมแล้ว  และแจ้ง IT ภายใน  24  ชั่วโมง",
+    "document_source": 3
+  },
+  {
+    "question_id": 150,
+    "type": "unanswerable",
+    "query": "ถ้าพบผู้ติดเชื้อโควิดในออฟฟิศต้องทำอย่างไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 151,
+    "type": "question",
+    "query": "ลิฟต์จะใช้งานไม่ได้ทั้งวันเมื่อไร เพราะอะไร",
+    "expected_answer": "วันเสาร์ที่ 18 เม.ย. 2569 เพราะซ่อมบำรุงลิฟต์ทั้ง 2 ตัว",
+    "expected_citation": "ซ่อมบำรุงลิฟต์ทั้ง 2 ตัวในวันเสาร์ที่ 18 เม.ย. 2569 ลิฟต์จะใช้งานไม่ได้ทั้งวัน",
+    "document_source": 9
+  },
+  {
+    "question_id": 152,
+    "type": "chitchat",
+    "query": "สบายดีไหม",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 153,
+    "type": "unanswerable",
+    "query": "การจัดซื้อแบบประมูลออนไลน์ e-Auction ทำอย่างไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 154,
+    "type": "question",
+    "query": "ค่าอาหารกลางวันวันละเท่าไร และจ่ายอย่างไร",
+    "expected_answer": "วันละ 60 บาท จ่ายรวมกับเงินเดือนทุกเดือน",
+    "expected_citation": "ค่าอาหารกลางวันวันละ  60  บาท  จ่ายรวมกับเงินเดือนทุกเดือน",
+    "document_source": 10
+  },
+  {
+    "question_id": 155,
+    "type": "unanswerable",
+    "query": "ต้องเก็บเอกสารจัดซื้อไว้กี่ปี",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 156,
+    "type": "question",
+    "query": "พบอีเมลฟิชชิงต้องแจ้งใคร และภายในกี่ชั่วโมง",
+    "expected_answer": "แจ้ง security@siamtech.example ภายใน 1 ชั่วโมงนับจากที่พบ",
+    "expected_citation": "พบอีเมลฟิชชิงให้แจ้ง  security@siamtech.example  ภายใน  1  ชั่วโมงนับจากที่พบ",
+    "document_source": 5
+  },
+  {
+    "question_id": 157,
+    "type": "question",
+    "query": "หลักสูตร Project Management พื้นฐานจัดแบบไหน วันไหน และรับกี่ที่นั่ง",
+    "expected_answer": "จัดออนไลน์ (Zoom) วันที่ 14 พ.ค. 2569 รับ 100 ที่นั่ง",
+    "expected_citation": "| Project Management พื้นฐาน   | 14 พ.ค. 2569   | ออนไลน์ (Zoom)  | 100 ที่นั่ง   |",
+    "document_source": 7
+  },
+  {
+    "question_id": 158,
+    "type": "unanswerable",
+    "query": "บริษัทจ่ายค่าโทรศัพท์ส่วนตัวให้พนักงานเดือนละเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 159,
+    "type": "unanswerable",
+    "query": "หัวหน้าทีมได้ค่าตำแหน่งเดือนละเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 160,
+    "type": "unanswerable",
+    "query": "บริษัทมีสวัสดิการศูนย์รับเลี้ยงเด็กไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 161,
+    "type": "question",
+    "query": "บริษัทสนับสนุนค่าสมาชิกฟิตเนสพันธมิตรเดือนละเท่าไร",
+    "expected_answer": "เดือนละ 400 บาท เริ่ม 1 ก.ค. 2569",
+    "expected_citation": "บริษัทสนับสนุนค่าสมาชิกฟิตเนสพันธมิตรให้พนักงานเดือนละ 400 บาท  เริ่ม 1 ก.ค. 2569",
+    "document_source": 9
+  },
+  {
+    "question_id": 162,
+    "type": "chitchat",
+    "query": "สวัสดีตอนเช้า",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 163,
+    "type": "question",
+    "query": "ระบบใดบ้างที่ต้องเปิดใช้งาน MFA",
+    "expected_answer": "ระบบอีเมลและ VPN ของทุกบัญชี",
+    "expected_citation": "ต้องเปิดใช้งาน  MFA  สำหรับระบบอีเมลและ  VPN  ของทุกบัญชี",
+    "document_source": 5
+  },
+  {
+    "question_id": 164,
+    "type": "unanswerable",
+    "query": "ห้อง Meeting Room A อยู่ชั้นไหน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 165,
+    "type": "question",
+    "query": "ระบบสแกนใบเสร็จผ่านแอปมือถือเริ่มใช้งานเมื่อไร",
+    "expected_answer": "ตั้งแต่ 1 ส.ค. 2569",
+    "expected_citation": "เริ่มใช้ระบบสแกนใบเสร็จผ่านแอปมือถือตั้งแต่ 1 ส.ค. 2569",
+    "document_source": 9
+  },
+  {
+    "question_id": 166,
+    "type": "question",
+    "query": "ของขวัญจากผู้ขายมูลค่าเกินเท่าไรจึงต้องปฏิเสธหรือส่งมอบให้ฝ่ายบุคคล",
+    "expected_answer": "เกิน 1,000 บาท ต้องปฏิเสธหรือส่งมอบฝ่ายบุคคลภายใน 7 วัน",
+    "expected_citation": "ของขวัญจากผู้ขายที่มีมูลค่าเกิน  1,000  บาท  ต้องปฏิเสธ  หรือส่งมอบให้ฝ่ายบุคคลภายใน  7  วัน",
+    "document_source": 4
+  },
+  {
+    "question_id": 167,
+    "type": "question",
+    "query": "IT จะส่งอีเมลแจ้งขั้นตอนใช้งานแอปสแกนใบเสร็จภายในวันที่เท่าไร",
+    "expected_answer": "ภายในวันที่ 15 ก.ค.",
+    "expected_citation": "คุณภัทรจะส่งอีเมลแจ้งขั้นตอนใช้งานแอปสแกนใบเสร็จภายในวันที่ 15 ก.ค.",
+    "document_source": 9
+  },
+  {
+    "question_id": 168,
+    "type": "unanswerable",
+    "query": "ผลสำรวจความพึงพอใจแยกรายฝ่ายของฝ่ายขายได้กี่เปอร์เซ็นต์",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 169,
+    "type": "chitchat",
+    "query": "เล่นเกมอะไรสนุกๆ กันไหม",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 170,
+    "type": "unanswerable",
+    "query": "ค่าปรับกรณีทำบัตรผู้มาติดต่อหายเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 171,
+    "type": "chitchat",
+    "query": "เบื่อจังเลย ไม่รู้จะทำอะไรดี",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 172,
+    "type": "chitchat",
+    "query": "แนะนำเพลงฟังหน่อย",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 173,
+    "type": "unanswerable",
+    "query": "บริษัทมีโปรแกรมแลกเปลี่ยนพนักงานไปทำงานที่สาขาอื่นไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 174,
+    "type": "chitchat",
+    "query": "ช่วยแต่งกลอนสั้นๆ ให้หน่อย",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 175,
+    "type": "chitchat",
+    "query": "วันนี้อากาศร้อนมากเลย",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 176,
+    "type": "question",
+    "query": "วัคซีนไข้หวัดใหญ่ฟรีปีละกี่เข็ม และฉีดที่ไหน ช่วงเดือนไหน",
+    "expected_answer": "ปีละ 1 เข็ม ฉีดที่ห้องพยาบาลช่วงเดือนมิถุนายน",
+    "expected_citation": "วัคซีนไข้หวัดใหญ่ฟรีปีละ  1  เข็ม  ฉีดที่ห้องพยาบาลในช่วงเดือนมิถุนายน",
+    "document_source": 10
+  },
+  {
+    "question_id": 177,
+    "type": "unanswerable",
+    "query": "บริษัทมีวันหยุดประจำปีกี่วัน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 178,
+    "type": "question",
+    "query": "งานจ้างบริการต่อเนื่องเกิน 1 ปี ต้องทำอะไรบ้าง",
+    "expected_answer": "ต้องทำสัญญาเป็นลายลักษณ์อักษรและผ่านการตรวจจากฝ่ายกฎหมาย",
+    "expected_citation": "งานจ้างบริการต่อเนื่องเกิน  1  ปี  ต้องทำสัญญาเป็นลายลักษณ์อักษร  และผ่านการตรวจจากฝ่ายกฎหมาย",
+    "document_source": 4
+  },
+  {
+    "question_id": 179,
+    "type": "question",
+    "query": "ตามมติที่ประชุม Q1/2569 ใบเบิก OT ต้องส่งฝ่ายบัญชีภายในวันที่เท่าไรของเดือนถัดไป",
+    "expected_answer": "ภายในวันที่ 3 ของเดือนถัดไป (เร็วขึ้นจากเดิมที่เป็นวันที่ 5)",
+    "expected_citation": "ใบเบิก OT ต้องส่งฝ่ายบัญชีภายในวันที่ 3 ของเดือนถัดไป  จากเดิมวันที่ 5",
+    "document_source": 2
+  },
+  {
+    "question_id": 180,
+    "type": "unanswerable",
+    "query": "พนักงานมีสิทธิ์ลาบวชได้กี่วัน และยังได้รับเงินเดือนไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 181,
+    "type": "unanswerable",
+    "query": "โบนัสประจำปี 2569 บริษัทจะจ่ายกี่เดือน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 182,
+    "type": "question",
+    "query": "บริษัทมอบบัตรของขวัญเดือนเกิดมูลค่าเท่าไร",
+    "expected_answer": "มูลค่า 500 บาท",
+    "expected_citation": "เดือนเกิดของใคร บริษัทมอบบัตรของขวัญมูลค่า 500 บาท ให้ทุกคนเลยนะคะ",
+    "document_source": 6
+  },
+  {
+    "question_id": 183,
+    "type": "chitchat",
+    "query": "กินข้าวหรือยัง",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 184,
+    "type": "question",
+    "query": "งบประมาณทริป Outing ปี 2569 รวมเท่าไร และตกคนละประมาณกี่บาท",
+    "expected_answer": "งบรวมไม่เกิน 450,000 บาท คิดเป็นประมาณ 1,500 บาทต่อคน",
+    "expected_citation": "งบประมาณรวมไม่เกิน 450,000 บาท  คิดเป็นประมาณ 1,500 บาทต่อคน",
+    "document_source": 2
+  },
+  {
+    "question_id": 185,
+    "type": "unanswerable",
+    "query": "ขึ้นเงินเดือนประจำปีสูงสุดกี่เปอร์เซ็นต์",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 186,
+    "type": "question",
+    "query": "เหตุข้อมูลรั่วไหลต้องรายงานเจ้าหน้าที่คุ้มครองข้อมูล (DPO) ภายในกี่ชั่วโมง",
+    "expected_answer": "ภายใน 24 ชั่วโมง",
+    "expected_citation": "เหตุข้อมูลรั่วไหลต้องรายงานเจ้าหน้าที่คุ้มครองข้อมูล  (DPO)  ภายใน  24  ชั่วโมง",
+    "document_source": 5
+  },
+  {
+    "question_id": 187,
+    "type": "question",
+    "query": "ถ้าลาออกภายใน 1 ปีหลังอบรมภายนอกที่บริษัทออกค่าใช้จ่ายสูง ต้องทำอย่างไร",
+    "expected_answer": "ถ้าบริษัทออกค่าใช้จ่ายเกิน 20,000 บาท ต้องคืนเงินตามสัดส่วน",
+    "expected_citation": "หากลาออกภายใน  1  ปีหลังอบรมภายนอกที่บริษัทออกค่าใช้จ่ายเกิน  20,000  บาท  ต้องคืนเงินตามสัดส่วน",
+    "document_source": 7
+  },
+  {
+    "question_id": 188,
+    "type": "unanswerable",
+    "query": "ฝ่ายขายได้ค่าคอมมิชชันกี่เปอร์เซ็นต์",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 189,
+    "type": "chitchat",
+    "query": "ขอโทษที่รบกวนนะ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 190,
+    "type": "chitchat",
+    "query": "เก่งมากเลยนะ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 191,
+    "type": "chitchat",
+    "query": "55555 ขำมาก",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 192,
+    "type": "question",
+    "query": "พนักงานที่มีส่วนได้เสียกับผู้ขายต้องทำอย่างไรก่อนเริ่มพิจารณา",
+    "expected_answer": "ต้องแจ้งความขัดแย้งทางผลประโยชน์ต่อฝ่ายจัดซื้อก่อนเริ่มพิจารณา",
+    "expected_citation": "พนักงานที่มีส่วนได้เสียกับผู้ขาย  ต้องแจ้งความขัดแย้งทางผลประโยชน์ต่อฝ่ายจัดซื้อก่อนเริ่มพิจารณา",
+    "document_source": 4
+  },
+  {
+    "question_id": 193,
+    "type": "unanswerable",
+    "query": "งบฟิตเนสพันธมิตรทั้งปีรวมเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 194,
+    "type": "question",
+    "query": "ต้องตรวจรับสินค้าภายในกี่วันทำการนับจากวันส่งมอบ",
+    "expected_answer": "ภายใน 3 วันทำการ",
+    "expected_citation": "การตรวจรับสินค้าต้องทำภายใน  3  วันทำการนับจากวันที่ส่งมอบ",
+    "document_source": 4
+  },
+  {
+    "question_id": 195,
+    "type": "chitchat",
+    "query": "ช่วยเล่ามุกตลกให้ฟังหน่อยได้ไหม",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 196,
+    "type": "question",
+    "query": "ลาสมรสได้กี่วันทำงาน",
+    "expected_answer": "3 วันทำงาน โดยได้รับค่าจ้างตามปกติ",
+    "expected_citation": "ลาสมรสได้  3  วันทำงาน  โดยได้รับค่าจ้างตามปกติ",
+    "document_source": 10
+  },
+  {
+    "question_id": 197,
+    "type": "unanswerable",
+    "query": "บริษัทปรับเงินเดือนประจำปีในเดือนไหน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 198,
+    "type": "question",
+    "query": "ประชุมใหญ่ประจำปี (Town Hall) จัดวันที่เท่าไร เวลาใด",
+    "expected_answer": "วันที่ 28 ส.ค. 2569 เวลา 15.00 น.",
+    "expected_citation": "ประชุมใหญ่ประจำปี (Town Hall) จัดวันที่ 28 ส.ค. 2569 เวลา 15.00 น.",
+    "document_source": 9
+  },
+  {
+    "question_id": 199,
+    "type": "unanswerable",
+    "query": "บริษัทให้ค่าน้ำมันรถจักรยานยนต์กิโลเมตรละเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 200,
+    "type": "question",
+    "query": "การจัดซื้อวงเงินเกิน 50,000 บาท ต้องได้รับอนุมัติจากใคร",
+    "expected_answer": "ผู้อำนวยการฝ่ายการเงิน",
+    "expected_citation": "การจัดซื้อวงเงินเกิน  50,000  บาท  ต้องได้รับอนุมัติจากผู้อำนวยการฝ่ายการเงิน",
+    "document_source": 4
+  },
+  {
+    "question_id": 201,
+    "type": "chitchat",
+    "query": "แมวกับหมา ชอบตัวไหนมากกว่ากัน",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 202,
+    "type": "unanswerable",
+    "query": "ถ้าเข้างานสายเกิน 15 นาที จะถูกหักเงินเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 203,
+    "type": "chitchat",
+    "query": "ขอบคุณมากนะ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 204,
+    "type": "question",
+    "query": "หลักสูตรการสื่อสารกับลูกค้าจัดวันไหน ที่ไหน และมีกี่ที่นั่ง",
+    "expected_answer": "วันที่ 5 มี.ค. 2569 ห้องอบรม B จำนวน 40 ที่นั่ง",
+    "expected_citation": "| การสื่อสารกับลูกค้า            | 5 มี.ค. 2569    | ห้องอบรม B      | 40 ที่นั่ง    |",
+    "document_source": 7
+  },
+  {
+    "question_id": 205,
+    "type": "question",
+    "query": "แผนรับพนักงานใหม่ครึ่งปีหลังรวมกี่อัตรา และฝ่าย IT ได้กี่อัตรา",
+    "expected_answer": "รวม 24 อัตรา ฝ่าย IT ได้ 10 อัตรา",
+    "expected_citation": "แผนรับพนักงานใหม่ครึ่งปีหลังรวม 24 อัตรา  ในนี้ฝ่าย IT ได้ 10 อัตรา",
+    "document_source": 9
+  },
+  {
+    "question_id": 206,
+    "type": "unanswerable",
+    "query": "วงเงินจัดซื้อเกิน 1,000,000 บาท ต้องวางหลักประกันสัญญากี่เปอร์เซ็นต์",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 207,
+    "type": "unanswerable",
+    "query": "บัญชีผู้ดูแลระบบต้องเปลี่ยนรหัสผ่านทุกกี่วัน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 208,
+    "type": "question",
+    "query": "หลักสูตร Cyber Security Awareness ต้องเรียนจบภายในเมื่อไร",
+    "expected_answer": "ภายในวันที่ 30 มิถุนายน 2569",
+    "expected_citation": "หลักสูตร  Cyber Security Awareness  ต้องเรียนจบภายในวันที่  30  มิถุนายน  2569",
+    "document_source": 7
+  },
+  {
+    "question_id": 209,
+    "type": "chitchat",
+    "query": "อรุณสวัสดิ์ครับ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 210,
+    "type": "unanswerable",
+    "query": "เดินทางไปต่างประเทศเบิกค่าตั๋วเครื่องบินชั้นโดยสารอะไรได้",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 211,
+    "type": "question",
+    "query": "พนักงานที่ทำงานครบ 1 ปีมีสิทธิ์ลาพักร้อนกี่วัน",
+    "expected_answer": "ลาพักร้อนได้ 10 วันทำงานต่อปี",
+    "expected_citation": "พนักงานที่ทำงานครบ  1  ปี  มีสิทธิ์ลาพักร้อน  10  วันทำงานต่อปี",
+    "document_source": 1
+  },
+  {
+    "question_id": 212,
+    "type": "unanswerable",
+    "query": "เวลาไปประชุมต่างจังหวัด เบิกค่าที่พักโรงแรมได้คืนละเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 213,
+    "type": "question",
+    "query": "พนักงานแต่ละคนมีงบอบรมปีละเท่าไร",
+    "expected_answer": "ปีละ 12,000 บาท",
+    "expected_citation": "งบอบรมสำหรับพนักงานแต่ละคนปีละ  12,000  บาท",
+    "document_source": 7
+  },
+  {
+    "question_id": 214,
+    "type": "unanswerable",
+    "query": "พนักงานเบิกแท็บเล็ตได้ไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 215,
+    "type": "unanswerable",
+    "query": "ค่าตอบแทนการเป็นวิทยากรภายในชั่วโมงละเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 216,
+    "type": "question",
+    "query": "ถ้าบัตรพนักงานหาย ต้องแจ้งเมื่อไร และค่าทำบัตรใหม่เท่าไร",
+    "expected_answer": "แจ้ง HR ภายในวันเดียวกัน ค่าทำบัตรใหม่ 100 บาท",
+    "expected_citation": "บัตรพนักงานหาย ให้แจ้ง HR ภายในวันเดียวกัน ค่าทำบัตรใหม่ 100 บาทนะคะ",
+    "document_source": 6
+  },
+  {
+    "question_id": 217,
+    "type": "question",
+    "query": "การจัดซื้อวงเงินไม่เกินเท่าไรที่หัวหน้าแผนกอนุมัติได้เองโดยไม่ต้องเทียบราคา",
+    "expected_answer": "ไม่เกิน 5,000 บาท",
+    "expected_citation": "การจัดซื้อวงเงินไม่เกิน  5,000  บาท  หัวหน้าแผนกอนุมัติได้เองโดยไม่ต้องเทียบราคา",
+    "document_source": 4
+  },
+  {
+    "question_id": 218,
+    "type": "unanswerable",
+    "query": "เบี้ยเลี้ยงเดินทางไปต่างจังหวัดวันละเท่าไร",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 219,
+    "type": "question",
+    "query": "ใครมีสิทธิ์ใช้ Adobe Creative Cloud ได้บ้าง",
+    "expected_answer": "เฉพาะฝ่ายการตลาดและฝ่ายออกแบบ คนละ 1 license",
+    "expected_citation": "Adobe Creative Cloud  ให้สิทธิ์เฉพาะฝ่ายการตลาดและฝ่ายออกแบบ  คนละ 1 license",
+    "document_source": 3
+  },
+  {
+    "question_id": 220,
+    "type": "unanswerable",
+    "query": "บริษัทมีระบบ Flexible Time ให้เข้างานยืดหยุ่นไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 221,
+    "type": "unanswerable",
+    "query": "ข้อมูลสำรองเก็บไว้ที่ศูนย์ข้อมูลจังหวัดไหน",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 222,
+    "type": "chitchat",
+    "query": "คุณอายุเท่าไรแล้ว",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 223,
+    "type": "question",
+    "query": "ใส่รหัสผ่านผิดติดต่อกันกี่ครั้งบัญชีจึงถูกล็อก และล็อกนานเท่าไร",
+    "expected_answer": "ผิดติดต่อกัน 5 ครั้ง ถูกล็อกชั่วคราว 15 นาที",
+    "expected_citation": "บัญชีจะถูกล็อกชั่วคราว  15  นาที  เมื่อใส่รหัสผ่านผิดติดต่อกัน  5  ครั้ง",
+    "document_source": 5
+  },
+  {
+    "question_id": 224,
+    "type": "unanswerable",
+    "query": "บริษัทอนุญาตให้ทำงาน Freelance เสริมนอกเวลาไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 225,
+    "type": "question",
+    "query": "เปิดจองคิวตรวจสุขภาพประจำปีในเดือนไหน",
+    "expected_answer": "เดือนสิงหาคมของทุกปี",
+    "expected_citation": "เปิดจองคิวตรวจสุขภาพในเดือนสิงหาคมของทุกปี",
+    "document_source": 10
+  },
+  {
+    "question_id": 226,
+    "type": "unanswerable",
+    "query": "ใครรับผิดชอบเปลี่ยนไส้กรองแอร์ในออฟฟิศ",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 227,
+    "type": "chitchat",
+    "query": "ขอให้โชคดีนะ",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 228,
+    "type": "question",
+    "query": "ชุดปฐมพยาบาลตรวจเติมของทุกกี่เดือน",
+    "expected_answer": "ทุก 6 เดือน",
+    "expected_citation": "ชุดปฐมพยาบาลมีวางไว้ทุกชั้น  และมีการตรวจเติมของทุก  6  เดือน",
+    "document_source": 8
+  },
+  {
+    "question_id": 229,
+    "type": "question",
+    "query": "บันทึกการเข้าใช้งานระบบ (Log) ต้องเก็บไว้อย่างน้อยนานเท่าไร",
+    "expected_answer": "ไม่น้อยกว่า 1 ปี",
+    "expected_citation": "บันทึกการเข้าใช้งานระบบ  (Log)  ต้องเก็บไว้ไม่น้อยกว่า  1  ปี",
+    "document_source": 5
+  },
+  {
+    "question_id": 230,
+    "type": "question",
+    "query": "เบิกค่าทำฟันได้สูงสุดกี่บาทต่อปี",
+    "expected_answer": "เบิกได้ไม่เกิน 3,000 บาทต่อปีปฏิทิน",
+    "expected_citation": "พนักงานมีสิทธิ์เบิกค่าทำฟันได้ไม่เกิน  3,000  บาทต่อปีปฏิทิน",
+    "document_source": 1
+  },
+  {
+    "question_id": 231,
+    "type": "chitchat",
+    "query": "คุณมีความรู้สึกไหม",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 232,
+    "type": "question",
+    "query": "วงเงินจัดซื้อเกินเท่าไรจึงต้องผ่านคณะกรรมการจัดซื้อจัดจ้าง",
+    "expected_answer": "เกิน 500,000 บาท และต้องเสนอกรรมการผู้จัดการด้วย",
+    "expected_citation": "การจัดซื้อวงเงินเกิน  500,000  บาท  ต้องผ่านคณะกรรมการจัดซื้อจัดจ้าง  และเสนอกรรมการผู้จัดการ",
+    "document_source": 4
+  },
+  {
+    "question_id": 233,
+    "type": "question",
+    "query": "พื้นที่สูบบุหรี่ของบริษัทอยู่ที่ไหน",
+    "expected_answer": "ที่ลานด้านข้างอาคารเท่านั้น ห้ามสูบภายในอาคาร",
+    "expected_citation": "ห้ามสูบบุหรี่ภายในอาคาร  พื้นที่สูบบุหรี่อยู่ที่ลานด้านข้างอาคารเท่านั้น",
+    "document_source": 8
+  },
+  {
+    "question_id": 234,
+    "type": "unanswerable",
+    "query": "VPN ของบริษัทเชื่อมต่อได้พร้อมกันกี่อุปกรณ์ต่อบัญชี",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 235,
+    "type": "question",
+    "query": "เครดิตการชำระเงินผู้ขายมาตรฐานกี่วัน",
+    "expected_answer": "45 วันนับจากวันที่ได้รับใบแจ้งหนี้ที่ถูกต้อง",
+    "expected_citation": "เครดิตชำระเงินผู้ขายมาตรฐานคือ  45  วันนับจากวันที่ได้รับใบแจ้งหนี้ที่ถูกต้อง",
+    "document_source": 4
+  },
+  {
+    "question_id": 236,
+    "type": "unanswerable",
+    "query": "ผู้เข้าร่วมประชุม Q1 มี CEO ด้วยไหม",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 237,
+    "type": "chitchat",
+    "query": "เล่านิทานให้ฟังหน่อยได้ไหม",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 238,
+    "type": "chitchat",
+    "query": "เมื่อวานดูหนังสนุกมากเลย",
+    "expected_answer": "ตอบคุยเล่น",
+    "expected_citation": null,
+    "document_source": null
+  },
+  {
+    "question_id": 239,
+    "type": "question",
+    "query": "โครงการ Referral ผู้แนะนำเพื่อนมาสมัครงานได้ค่าแนะนำเท่าไร และได้เมื่อไร",
+    "expected_answer": "10,000 บาท เมื่อเพื่อนผ่านทดลองงาน",
+    "expected_citation": "โครงการ Referral  ผู้แนะนำเพื่อนมาสมัครงานได้ค่าแนะนำ 10,000 บาท  เมื่อเพื่อนผ่านทดลองงาน",
+    "document_source": 9
+  },
+  {
+    "question_id": 240,
+    "type": "unanswerable",
+    "query": "พนักงานที่ทำงานกะดึกได้ค่า OT อัตรากี่เท่า",
+    "expected_answer": "ไม่พบข้อมูลในเอกสาร",
+    "expected_citation": null,
+    "document_source": null
+  }
+]
