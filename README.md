@@ -1,3 +1,20 @@
-# RAG project
+# RAG API Service
 
-Build order: see milestones M1-M9 in setup_structure.py.
+RAG API Service สำหรับต่อกับ Enterprise AI Gateway (ingest, retrieve, list sources, job status, health)
+ดูกฎและโครง repo ใน [CLAUDE.md](CLAUDE.md)
+
+## Setup
+
+ต้องใช้ Python >= 3.10
+
+```bash
+python -m venv .venv
+source .venv/bin/activate        # Windows (PowerShell): .venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+pytest
+```
+
+ถ้า `pytest` ผ่านทั้งหมด แปลว่า dev env พร้อมใช้งาน
+
+หมายเหตุสำหรับ Windows + OneDrive: repo มี `.gitattributes` บังคับ line ending เป็น LF
+สำหรับไฟล์ข้อความ ไฟล์ binary (pdf, docx, pptx, xlsx, doc, ppt, xls) จะไม่ถูกแก้

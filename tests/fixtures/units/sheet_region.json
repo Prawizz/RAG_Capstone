@@ -1,0 +1,42 @@
+{
+  "index": 0,
+  "type": "sheet_region",
+  "position": {
+    "sheet": "เบอร์ต่อ",
+    "range": "A1:B2"
+  },
+  "label": "ชีต เบอร์ต่อ A1:B2",
+  "status": "ok",
+  "reason": null,
+  "method": "office_xml",
+  "blocks": [
+    {
+      "type": "table",
+      "text": "ชื่อ\tต่อ\nสมชาย ใจดี\t1234",
+      "order": 0,
+      "table": {
+        "rows": [
+          [
+            "ชื่อ",
+            "ต่อ"
+          ],
+          [
+            "สมชาย ใจดี",
+            "1234"
+          ]
+        ],
+        "header_rows": 1,
+        "merged_cells": []
+      }
+    }
+  ],
+  "text": "ชื่อ\tต่อ\nสมชาย ใจดี\t1234",
+  "text_hash": "34ea86e9ebf600dd3f66e9053c371b0c96a659adf4737de7da8a031b7fae3dce",
+  "quality": {
+    "score": 1.0,
+    "flags": [],
+    "dictionary_ratio": 0.95,
+    "normalization_changes": 0
+  },
+  "elapsed_ms": 12.5
+}

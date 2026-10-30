@@ -1,0 +1,33 @@
+{
+  "index": 11,
+  "type": "slide",
+  "position": {
+    "slide": 12
+  },
+  "label": "สไลด์ 12",
+  "status": "ok",
+  "reason": null,
+  "method": "office_xml",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "แผนงานปี 2569",
+      "order": 0,
+      "level": 1
+    },
+    {
+      "type": "list",
+      "text": "ขยายสาขาใหม่ 50 แห่ง",
+      "order": 1
+    }
+  ],
+  "text": "แผนงานปี 2569\nขยายสาขาใหม่ 50 แห่ง",
+  "text_hash": "8f7d5935d6f03c939bacc619a5df1804ffbbf3479a9684c70b8c29b8927a802c",
+  "quality": {
+    "score": 1.0,
+    "flags": [],
+    "dictionary_ratio": 0.95,
+    "normalization_changes": 0
+  },
+  "elapsed_ms": 12.5
+}

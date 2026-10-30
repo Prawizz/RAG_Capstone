@@ -1,1 +1,8 @@
 pymupdf
+pythainlp
+python-docx
+python-pptx
+openpyxl
+pydantic>=2,<3
+regex
+pytest
