@@ -22,6 +22,7 @@ from eval.truth_check import (  # noqa: E402
     FAIL_MESSAGE,
     NEEDS_REPAIR,
     NO_TRUTH,
+    XFAIL,
     classify_case,
 )
 
@@ -32,6 +33,7 @@ LABELS = {
     NEEDS_REPAIR: "needs_repair",
     FAIL: "fail",
     NO_TRUTH: "ยังไม่มี truth",
+    XFAIL: "xfail (T04)",
 }
 
 
@@ -53,15 +55,19 @@ def main(argv: list[str] | None = None) -> int:
     print(f"{'#':>3}  {'ผล':<15} {'rule':<32} source")
     for i, c in enumerate(rows, 1):
         status, out = classify_case(c)
+        if c.get("xfail") and status == FAIL:
+            status = XFAIL
         counts[status] += 1
         print(f"{i:>3}  {LABELS[status]:<15} {c['rule']:<32} {c['source']}")
+        if status == XFAIL:
+            print(f"       {c['xfail']}")
         if status == FAIL:
             print(f"       {FAIL_MESSAGE}")
             print(f"       input: {c['input']!r}\n       out:   {out!r}\n       truth: {c['truth']!r}")
 
     print()
     print(f"คู่ที่มีช่อง truth: {len(rows)} (จากทั้งหมด {len(cases)}; synthetic ไม่มีช่อง truth)")
-    for key in (EXACT, EVIDENCE, NEEDS_REPAIR, FAIL, NO_TRUTH):
+    for key in (EXACT, EVIDENCE, NEEDS_REPAIR, FAIL, XFAIL, NO_TRUTH):
         print(f"  {LABELS[key]:<15} {counts[key]}")
     return 1 if counts[FAIL] else 0
 

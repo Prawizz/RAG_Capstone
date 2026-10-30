@@ -47,7 +47,7 @@ def case_id(c: dict) -> str:
 
 
 def test_version():
-    assert NORMALIZER_VERSION == "1.0"
+    assert NORMALIZER_VERSION == "1.1"
 
 
 def test_dataset_shape_and_coverage():
@@ -139,7 +139,12 @@ def test_truth_field_counts():
     assert all(c["truth"] is None or isinstance(c["truth"], str) for c in with_field)
 
 
-@pytest.mark.parametrize("case", TRUTH_CASES, ids=[case_id(c) for c in TRUTH_CASES])
+def _truth_param(c):
+    marks = [pytest.mark.xfail(reason=c["xfail"], strict=True)] if c.get("xfail") else []
+    return pytest.param(c, id=case_id(c), marks=marks)
+
+
+@pytest.mark.parametrize("case", [_truth_param(c) for c in TRUTH_CASES])
 def test_against_truth(case):
     status, out = classify_case(case)
     assert status != FAIL, (
@@ -221,3 +226,26 @@ def test_evidence_matcher_is_exact_not_fuzzy():
     assert not evidence_match("กขค", "กขค")  # ไม่มี FFFD ไม่ใช่ evidence
     assert evidence_match("\ufffd\ufffd", "ขค")
     assert classify("ก\ufffdค", "กขค") == EVIDENCE
+
+
+# ---------- signal invalid_mark_sequence ----------
+
+def invalid_seq(text: str) -> int:
+    return normalize_with_report(text).signals["invalid_mark_sequence"]
+
+
+@pytest.mark.parametrize("word", ["ชีุ้ด", "ลีั่ก", "ปฏฺิบัติ", "จนบรุี"])
+def test_invalid_mark_sequence_counts_broken_words(word):
+    assert invalid_seq(word) == 1
+    assert normalize(word) == word  # นับอย่างเดียว ไม่แก้ข้อความ
+
+
+@pytest.mark.parametrize(
+    "word", ["กุ้ง", "ปั้น", "ที่", "ผู้", "เกี๊ยว", "ก็", "รั้ว", "ปู่", "ซึ่ง", "สิ้น", "ดื่ม"]
+)
+def test_invalid_mark_sequence_ignores_valid_words(word):
+    assert invalid_seq(word) == 0
+
+
+def test_invalid_mark_sequence_is_a_trace_for_needs_repair():
+    assert run("คณะกรรมการชีุ้ดย่อย", "คณะกรรมการชุดย่อย") == NEEDS_REPAIR

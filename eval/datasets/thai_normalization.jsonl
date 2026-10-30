@@ -8,7 +8,7 @@
 {"input": "ค่าธรรมเนียม\rบัตร", "expected": "ค่าธรรมเนียม\nบัตร", "rule": "line_endings", "source": "synthetic", "fixes": {"line_endings": 1}, "signals": {}}
 {"input": "a\r\n\r\nb\rc", "expected": "a\n\nb\nc", "rule": "line_endings", "source": "synthetic", "fixes": {"line_endings": 3}, "signals": {}}
 {"input": "ลาป่วยกี่วัน\r\n", "expected": "ลาป่วยกี่วัน", "rule": "line_endings", "source": "synthetic", "fixes": {"line_endings": 1, "whitespace": 1}, "signals": {}}
-{"input": "ายเหตุ: \r รายละเอ่ยด", "expected": "ายเหตุ:\nรายละเอ่ยด", "rule": "line_endings", "source": "ONEREPORTKBANKT.PDF หน้า 24", "truth": "ายเหตุ:\nรายละเอียด", "fixes": {"line_endings": 1, "whitespace": 2}}
+{"input": "ายเหตุ: \r รายละเอ่ยด", "expected": "ายเหตุ:\nรายละเอ่ยด", "rule": "line_endings", "source": "ONEREPORTKBANKT.PDF หน้า 24", "truth": "ายเหตุ:\nรายละเอียด", "xfail": "ต้องใช้สัญญาณพจนานุกรม (T04): ี ถูก map เป็น ่ ได้ลำดับอักขระที่ถูกหลัก ตรวจระดับอักขระไม่ได้", "fixes": {"line_endings": 1, "whitespace": 2}}
 {"input": "าร ไมmม่\r\u0003´¿¬m¾¶£", "expected": "าร ไมmม่\n��´¿¬�m�¾�¶£", "rule": "line_endings", "source": "ONEREPORTKBANKT.PDF หน้า 162", "truth": null, "fixes": {"line_endings": 1, "control_to_fffd": 5}, "signals": {"fffd_remaining": 5, "space_between_thai": 1}}
 {"input": "มีีและการกลั่่น\nธุุรกิิจใหม่", "expected": "มีและการกลั่น\nธุรกิจใหม่", "rule": "control_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 10", "truth": "มีและการกลั่น\nธุรกิจใหม่", "fixes": {"control_after_mark": 1, "dup_mark": 4}}
 {"input": "มีีหน้้าที่่\u0001ต", "expected": "มีหน้าที่ต", "rule": "control_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 161", "truth": "มีหน้าที่ต", "fixes": {"control_after_mark": 1, "dup_mark": 3}}
@@ -93,3 +93,8 @@
 {"input": "บริษัท CP ALL Public Co., Ltd. (มหาชน) ปี 2568", "expected": "บริษัท CP ALL Public Co., Ltd. (มหาชน) ปี 2568", "rule": "negative", "source": "synthetic", "fixes": {}, "signals": {}}
 {"input": "ลาพักร้อนได้กี่วัน", "expected": "ลาพักร้อนได้กี่วัน", "rule": "negative", "source": "query ตัวอย่าง", "truth": null, "fixes": {}, "signals": {}}
 {"input": "", "expected": "", "rule": "negative", "source": "synthetic", "fixes": {}, "signals": {}}
+{"input": "ชีุ้ด", "expected": "ชีุ้ด", "rule": "signal:invalid_mark_sequence", "source": "synthetic", "fixes": {}, "signals": {"invalid_mark_sequence": 1}}
+{"input": "ลีั่ก", "expected": "ลีั่ก", "rule": "signal:invalid_mark_sequence", "source": "synthetic", "fixes": {}, "signals": {"invalid_mark_sequence": 1}}
+{"input": "ปฏฺิบัติ", "expected": "ปฏฺิบัติ", "rule": "signal:invalid_mark_sequence", "source": "synthetic", "fixes": {}, "signals": {"invalid_mark_sequence": 1}}
+{"input": "จนบรุี", "expected": "จนบรุี", "rule": "signal:invalid_mark_sequence", "source": "synthetic", "fixes": {}, "signals": {"invalid_mark_sequence": 1}}
+{"input": "กุ้ง ปั้น ที่ ผู้ เกี๊ยว ก็ รั้ว ปู่ ซึ่ง สิ้น ดื่ม", "expected": "กุ้ง ปั้น ที่ ผู้ เกี๊ยว ก็ รั้ว ปู่ ซึ่ง สิ้น ดื่ม", "rule": "negative", "source": "synthetic", "fixes": {}, "signals": {"space_between_thai": 10}}

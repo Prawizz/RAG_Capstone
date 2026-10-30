@@ -46,9 +46,11 @@ signals (นับอย่างเดียว ห้ามแก้ — ก�
 - nbsp_between_thai        NBSP ระหว่างอักษรไทยสองตัว (นับก่อนกฎ whitespace) อาจเป็น ฟ ที่ map ผิด
 - conflicting_tone_marks   วรรณยุกต์ต่างชนิดซ้อนกัน ("ก่้")
 - dangling_mark            สระบน/ล่าง/วรรณยุกต์ที่ไม่มีอักษรไทยนำหน้า (ต้นข้อความ หลังช่องว่าง/ตัวที่ไม่ใช่ไทย)
+- invalid_mark_sequence    สระบน/ล่าง (ั ิ ี ึ ื ็ ุ ู ฺ) ตามด้วยสระบน/ล่างอีกตัวบนพยัญชนะเดียวกัน โดยมีวรรณยุกต์/์ คั่นได้
+                           ("ชีุ้", "ลีั่", "ปฏฺิ") ภาษาไทยไม่มีลำดับนี้ = ฟอนต์พัง ไม่แก้เพราะไม่รู้ว่าตัวไหนผิด (T04)
 - fffd_remaining           U+FFFD ที่ยังเหลือ
 - space_between_thai       ช่องว่างระหว่างอักษรไทยสองตัว (เก็บไว้ตัดสินทีหลัง)
-(สี่ตัวหลังนับจากข้อความผลลัพธ์; fffd_remaining รวม U+FFFD ที่กฎ 5 แปลงมาด้วย)
+(ห้าตัวหลังนับจากข้อความผลลัพธ์; fffd_remaining รวม U+FFFD ที่กฎ 5 แปลงมาด้วย)
 
 ที่ตั้งใจไม่ทำ: ไม่เรียก ``pythainlp.util.normalize()`` ทั้งก้อน (ลบเนื้อหาเงียบๆ), ไม่แปลง ๅ -> า,
 ไม่ลบช่องว่างระหว่างคำไทย, ไม่แก้อักษรละตินกลางคำไทย (repair/T04)
@@ -59,7 +61,7 @@ import unicodedata
 from dataclasses import dataclass, field
 from typing import Callable
 
-NORMALIZER_VERSION = "1.0"
+NORMALIZER_VERSION = "1.1"
 MAX_PASSES = 5
 
 # ---------- ชุดอักขระ ----------
@@ -109,6 +111,8 @@ _MANY_NEWLINES = re.compile("\n{3,}")
 _NBSP_BETWEEN_THAI = re.compile(f"(?<=[{_THAI_LETTER}])\u00a0(?=[{_THAI_LETTER}])")
 _CONFLICTING_TONES = re.compile(f"([{_TONES}])(?!\\1)[{_TONES}]")
 _DANGLING_MARK = re.compile(f"(?<![{_THAI_LETTER}])[{_ABOVE_V}{_BELOW_V}{_TONES}]")
+_STACKED_V = _ABOVE_V + _BELOW_V + "ฺ็"  # สระบน/ล่าง รวม ฺ ็
+_INVALID_MARK_SEQ = re.compile(f"[{_STACKED_V}][{_TONES}{_THANTHAKHAT}]*[{_STACKED_V}]")
 _SPACE_BETWEEN_THAI = re.compile(f"(?<=[{_THAI_LETTER}]) (?=[{_THAI_LETTER}])")
 
 RULE_NAMES = (
@@ -116,7 +120,7 @@ RULE_NAMES = (
     "sara_am", "mark_order", "fffd_after_mark", "dup_mark", "space_before_mark", "whitespace",
 )
 SIGNAL_NAMES = (
-    "nbsp_between_thai", "conflicting_tone_marks", "dangling_mark",
+    "nbsp_between_thai", "conflicting_tone_marks", "dangling_mark", "invalid_mark_sequence",
     "fffd_remaining", "space_between_thai",
 )
 
@@ -256,6 +260,7 @@ assert tuple(n for n, _ in RULES) == RULE_NAMES
 def _count_final_signals(text: str, signals: dict[str, int]) -> None:
     signals["conflicting_tone_marks"] += len(_CONFLICTING_TONES.findall(text))
     signals["dangling_mark"] += len(_DANGLING_MARK.findall(text))
+    signals["invalid_mark_sequence"] += len(_INVALID_MARK_SEQ.findall(text))
     signals["fffd_remaining"] += text.count("\ufffd")
     signals["space_between_thai"] += len(_SPACE_BETWEEN_THAI.findall(text))
 

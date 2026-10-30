@@ -7,7 +7,7 @@ truth = ข้อความที่ถูกตามที่ตาเห็
 - evidence     out เท่ากับ normalize(truth) เมื่อให้ U+FFFD แต่ละตัวแทนอักขระได้หนึ่งตัวพอดี
                (ข้อความยังพังอยู่ แต่ไม่ได้ทำให้ดูเหมือนถูก และเหลือหลักฐานให้ T04 ซ่อม)
 - needs_repair ไม่ตรง แต่ out มีร่องรอย (U+FFFD, อักษรละตินติดอักษรไทย, conflicting_tone_marks,
-               dangling_mark) = งาน repair/T04 ไม่ใช่ความผิดของ normalizer
+               dangling_mark, invalid_mark_sequence) = งาน repair/T04 ไม่ใช่ความผิดของ normalizer
 - fail         ไม่ตรงและไม่มีร่องรอยเลย = ข้อความผิดแต่ดูสะอาด (CLAUDE.md ข้อ 5)
 
 ก่อนเทียบจะตัดช่องว่างและ \\n ทั้งหมดออกจากทั้งสองข้าง (คนพิมพ์ truth จากภาพ เว้นวรรค/ขึ้นบรรทัดไม่ตรง input)
@@ -24,6 +24,7 @@ EVIDENCE = "evidence"
 NEEDS_REPAIR = "needs_repair"
 FAIL = "fail"
 NO_TRUTH = "no_truth"
+XFAIL = "xfail"  # คู่ที่ติด field "xfail" และยัง fail อยู่ (รู้ขีดจำกัดแล้ว รอ T04)
 
 FAIL_MESSAGE = "ข้อความผิดแต่ดูสะอาด (CLAUDE.md ข้อ 5)"
 
@@ -57,6 +58,8 @@ def traces(out: str) -> list[str]:
         found.append("conflicting_tone_marks")
     if signals["dangling_mark"] > 0:
         found.append("dangling_mark")
+    if signals["invalid_mark_sequence"] > 0:
+        found.append("invalid_mark_sequence")
     return found
 
 
