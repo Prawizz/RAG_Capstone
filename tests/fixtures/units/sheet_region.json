@@ -33,10 +33,11 @@
   "text": "ชื่อ\tต่อ\nสมชาย ใจดี\t1234",
   "text_hash": "34ea86e9ebf600dd3f66e9053c371b0c96a659adf4737de7da8a031b7fae3dce",
   "quality": {
-    "score": 1.0,
+    "score": null,
     "flags": [],
     "dictionary_ratio": 0.95,
     "normalization_changes": 0
   },
-  "elapsed_ms": 12.5
+  "elapsed_ms": 12.5,
+  "signals": {}
 }

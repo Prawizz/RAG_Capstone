@@ -32,10 +32,11 @@
   "text": "การลาป่วย\nลาป่วยได้ตามจริง หากเกิน 3 วันต้องแนบใบรับรองแพทย์",
   "text_hash": "b16360a463796e240231bc2aeece7a5f0220871d9caf072a4a83336232c6c445",
   "quality": {
-    "score": 1.0,
+    "score": null,
     "flags": [],
     "dictionary_ratio": 0.95,
     "normalization_changes": 0
   },
-  "elapsed_ms": 12.5
+  "elapsed_ms": 12.5,
+  "signals": {}
 }

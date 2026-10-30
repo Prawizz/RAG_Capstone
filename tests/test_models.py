@@ -13,6 +13,7 @@ from app.models import (
     DocumentStatus,
     ErrorCode,
     QualityFlag,
+    QualityReport,
     Unit,
     UnitStatus,
     UnitType,
@@ -153,3 +154,33 @@ def test_error_retriable_derived_from_code(code):
     assert err.retriable is expected
     assert DocumentError.model_validate_json(err.model_dump_json()) == err
     assert json.loads(err.model_dump_json())["retriable"] is expected
+
+
+def test_score_is_optional_and_signals_default_empty():
+    unit = load_unit("slide")
+    assert unit.quality.score is None
+    assert unit.signals == {}
+    assert load_unit("page").signals.keys() >= {"char_count", "block_count", "image_coverage"}
+
+
+def test_score_range_still_enforced():
+    with pytest.raises(ValidationError):
+        QualityReport(score=1.5)
+
+
+def test_detected_type_none_requires_error():
+    with pytest.raises(ValidationError):
+        Document(
+            file_id="f", content_hash="0" * 64, filename="x", size_bytes=1,
+            pipeline_version="0", normalizer_version="0",
+        )
+
+
+def test_document_without_detected_type_with_error_ok():
+    doc = Document(
+        file_id="f", content_hash="0" * 64, filename="x.txt", size_bytes=1,
+        pipeline_version="0", normalizer_version="0",
+        error=DocumentError(code=ErrorCode.UNSUPPORTED_TYPE, message="x"),
+    )
+    assert doc.detected_type is None and doc.status == DocumentStatus.FAILED
+    assert Document.model_validate_json(doc.model_dump_json()) == doc

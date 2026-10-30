@@ -6,3 +6,4 @@ openpyxl==3.1.5
 pydantic==2.14.2
 regex==2026.9.29
 pytest==9.2.0
+olefile==0.47

@@ -13,7 +13,11 @@ chunking / citation / eval อ่านต่อจาก contract นี้
   - ``heading_path`` = หัวข้อจากบนลงล่าง **รวมหัวข้อของ section นั้นเองเป็นตัวสุดท้าย**
     ``paragraphs`` = [ย่อหน้าเริ่ม, ย่อหน้าจบ]
 - ``text_hash`` = SHA-256 (hex) ของ ``text`` หลัง normalize เข้ารหัส UTF-8
+- ``QualityReport.score`` = None แปลว่ายังไม่ได้ประเมิน (ด่านตรวจคุณภาพมาใน T04)
+- ``Unit.signals`` = ข้อมูลดิบสำหรับด่านตรวจ; PDF ต้องใส่ ``char_count`` (ความยาว text หลัง strip),
+  ``block_count``, ``image_coverage`` (พื้นที่ภาพที่ใหญ่ที่สุดในหน้า ÷ พื้นที่หน้า, 0–1)
 - Unit ที่ status = ok แต่ text ว่าง (หลัง strip) ต้องมี flag ``empty`` ใน quality
+- ``Document.detected_type`` เป็น None ได้ก็ต่อเมื่อมี ``error`` (validator บังคับ)
 - ``Document.error`` ถ้าไม่ใช่ None ``status`` จะเป็น failed เสมอ
 - ``Document`` ไม่มีฟิลด์สิทธิ์ (box / security level / แผนก / ACL) โดยตั้งใจ
   จะแยกเป็น model ของตัวเองในเฟส ACL และเชื่อมกันด้วย ``file_id``
@@ -143,7 +147,7 @@ class Block(BaseModel):
 
 
 class QualityReport(BaseModel):
-    score: float = Field(ge=0, le=1)
+    score: Optional[float] = Field(default=None, ge=0, le=1)  # None = ยังไม่ได้ประเมิน (ด่านตรวจมาใน T04)
     flags: list[QualityFlag] = Field(default_factory=list)
     dictionary_ratio: Optional[float] = Field(default=None, ge=0, le=1)
     normalization_changes: int = Field(default=0, ge=0)
@@ -162,6 +166,8 @@ class Unit(BaseModel):
     text_hash: str
     quality: QualityReport
     elapsed_ms: float = Field(default=0, ge=0)
+    # ข้อมูลดิบให้ด่านตรวจคุณภาพใช้ทีหลัง; PDF ต้องมี char_count, block_count, image_coverage
+    signals: dict[str, float] = Field(default_factory=dict)
 
     @model_validator(mode="after")
     def _check_contract(self) -> "Unit":
@@ -189,7 +195,8 @@ class Document(BaseModel):
     file_id: str
     content_hash: str  # SHA-256
     filename: str
-    detected_type: DetectedType  # จาก magic bytes ไม่ใช่นามสกุล
+    # จาก magic bytes ไม่ใช่นามสกุล; None = ระบุชนิดไม่ได้ (unsupported_type, encrypted OLE, ไฟล์เสียก่อนรู้ชนิด)
+    detected_type: Optional[DetectedType] = None
     size_bytes: int = Field(ge=0)
     converted_from: Optional[str] = None  # ถ้าแปลงผ่าน LibreOffice
     # TODO(T01 คำถามค้างข้อ 1): ยังไม่ตกลงกับบริษัทว่า DOCX/XLSX นับอย่างไร
@@ -201,6 +208,12 @@ class Document(BaseModel):
     error: Optional[DocumentError] = None  # ถ้ามี status ต้องเป็น failed
     pipeline_version: str
     normalizer_version: str
+
+    @model_validator(mode="after")
+    def _check_detected_type(self) -> "Document":
+        if self.detected_type is None and self.error is None:
+            raise ValueError("detected_type เป็น None ได้ก็ต่อเมื่อมี error")
+        return self
 
     @computed_field  # type: ignore[prop-decorator]
     @property

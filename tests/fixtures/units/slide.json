@@ -24,10 +24,11 @@
   "text": "แผนงานปี 2569\nขยายสาขาใหม่ 50 แห่ง",
   "text_hash": "8f7d5935d6f03c939bacc619a5df1804ffbbf3479a9684c70b8c29b8927a802c",
   "quality": {
-    "score": 1.0,
+    "score": null,
     "flags": [],
     "dictionary_ratio": 0.95,
     "normalization_changes": 0
   },
-  "elapsed_ms": 12.5
+  "elapsed_ms": 12.5,
+  "signals": {}
 }
