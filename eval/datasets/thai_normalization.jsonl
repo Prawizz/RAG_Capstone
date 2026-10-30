@@ -1,0 +1,95 @@
+{"input": "คณะกรรมการชีุ้ดย่อย", "expected": "คณะกรรมการชีุ้ดย่อย", "rule": "nfc", "source": "ONEREPORTKBANKT.PDF หน้า 5", "verified": false, "fixes": {"nfc": 1}}
+{"input": "กุ้", "expected": "กุ้", "rule": "nfc", "source": "synthetic", "verified": false, "fixes": {"nfc": 1}}
+{"input": "เดียวกัน​/ ได้รับ", "expected": "เดียวกัน/ ได้รับ", "rule": "zero_width", "source": "ONEREPORTPTTT.PDF หน้า 143", "verified": false, "fixes": {"zero_width": 1}}
+{"input": "เพิ่่มขึ้้­น", "expected": "เพิ่มขึ้น", "rule": "zero_width", "source": "ONEREPORTPTTT.PDF หน้า 198", "verified": false, "fixes": {"control_after_mark": 1, "zero_width": 1, "dup_mark": 2}}
+{"input": "รวม 112,000\n﻿\n1. โครงสร้าง", "expected": "รวม 112,000\n\n1. โครงสร้าง", "rule": "zero_width", "source": "ONEREPORTPTTT.PDF หน้า 109", "verified": false, "fixes": {"zero_width": 1}}
+{"input": "ก‌ข‍ค", "expected": "กขค", "rule": "zero_width", "source": "synthetic", "verified": false, "fixes": {"zero_width": 2}}
+{"input": "ค่าธรรมเนียม\r\nบัตร", "expected": "ค่าธรรมเนียม\nบัตร", "rule": "line_endings", "source": "synthetic", "verified": false, "fixes": {"line_endings": 1}, "signals": {}}
+{"input": "ค่าธรรมเนียม\rบัตร", "expected": "ค่าธรรมเนียม\nบัตร", "rule": "line_endings", "source": "synthetic", "verified": false, "fixes": {"line_endings": 1}, "signals": {}}
+{"input": "a\r\n\r\nb\rc", "expected": "a\n\nb\nc", "rule": "line_endings", "source": "synthetic", "verified": false, "fixes": {"line_endings": 3}, "signals": {}}
+{"input": "ลาป่วยกี่วัน\r\n", "expected": "ลาป่วยกี่วัน", "rule": "line_endings", "source": "synthetic", "verified": false, "fixes": {"line_endings": 1, "whitespace": 1}, "signals": {}}
+{"input": "ายเหตุ: \r รายละเอ่ยด", "expected": "ายเหตุ:\nรายละเอ่ยด", "rule": "line_endings", "source": "ONEREPORTKBANKT.PDF หน้า 24", "verified": false, "fixes": {"line_endings": 1, "whitespace": 2}}
+{"input": "าร ไมmม่\r\u0003´¿¬m¾¶£", "expected": "าร ไมmม่\n��´¿¬�m�¾�¶£", "rule": "line_endings", "source": "ONEREPORTKBANKT.PDF หน้า 162", "verified": false, "fixes": {"line_endings": 1, "control_to_fffd": 5}, "signals": {"fffd_remaining": 5, "space_between_thai": 1}}
+{"input": "มีีและการกลั่่น\nธุุรกิิจใหม่", "expected": "มีและการกลั่น\nธุรกิจใหม่", "rule": "control_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 10", "verified": false, "fixes": {"control_after_mark": 1, "dup_mark": 4}}
+{"input": "มีีหน้้าที่่\u0001ต", "expected": "มีหน้าที่ต", "rule": "control_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 161", "verified": false, "fixes": {"control_after_mark": 1, "dup_mark": 3}}
+{"input": "คู่่\u001cค้้าเเละคู่่\u001cความ", "expected": "คู่ค้าและคู่ความ", "rule": "control_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 193", "verified": false, "fixes": {"control_after_mark": 2, "dup_mark": 4}}
+{"input": "สุดผmานผลิตภัณ์และบริการทางก", "expected": "สุดผmานผลิตภัณ�์และบริการทางก", "rule": "control_to_fffd", "source": "ONEREPORTKBANKT.PDF หน้า 7", "verified": false, "fixes": {"control_to_fffd": 1}, "signals": {"fffd_remaining": 1}}
+{"input": "ก\u000b\fข\r\nค", "expected": "ก��ข\nค", "rule": "control_to_fffd", "source": "synthetic", "verified": false, "fixes": {"control_to_fffd": 2, "line_endings": 1}, "signals": {"fffd_remaining": 2}}
+{"input": "ก\tข\nค", "expected": "ก ข\nค", "rule": "control_to_fffd", "source": "synthetic", "verified": false, "fixes": {"whitespace": 1}}
+{"input": "สร้\u001cงคว\u001cมมั่น", "expected": "สร้�งคว�มมั่น", "rule": "control_to_fffd", "source": "ONEREPORTPTTT.PDF หน้า 43", "verified": false, "fixes": {"control_to_fffd": 2}, "signals": {"fffd_remaining": 2}}
+{"input": "หลักเกณ์การกำหนด", "expected": "หลักเกณ�์การกำหนด", "rule": "control_to_fffd", "source": "ONEREPORTKBANKT.PDF หน้า 9", "verified": false, "fixes": {"control_to_fffd": 1}, "signals": {"fffd_remaining": 1}}
+{"input": "รำ�\u0018ลึึกในพระ", "expected": "รำลึกในพระ", "rule": "control_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 184", "verified": false, "fixes": {"control_after_mark": 1, "fffd_after_mark": 1, "dup_mark": 1}, "signals": {}}
+{"input": "กรรมสำ\u0018คััญ", "expected": "กรรมสำคัญ", "rule": "control_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 184", "verified": false, "fixes": {"control_after_mark": 1, "dup_mark": 1}, "signals": {}}
+{"input": "ยี่่\u0001 จำ\u0018กััด", "expected": "ยี่ จำกัด", "rule": "control_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 156", "verified": false, "fixes": {"control_after_mark": 2, "dup_mark": 2}, "signals": {"space_between_thai": 1}}
+{"input": "สร้�ง", "expected": "สร้�ง", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}, "signals": {"fffd_remaining": 1}}
+{"input": "#MARKER:PART_1\nส่วนที่ 1 การประกอบธุรกิจ", "expected": "ส่วนที่ 1 การประกอบธุรกิจ", "rule": "marker", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 5", "verified": false, "fixes": {"marker": 1, "whitespace": 1}}
+{"input": "#MARKER:TOC", "expected": "", "rule": "marker", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 2", "verified": false, "fixes": {"marker": 1}}
+{"input": "#MARKER:PAGE_PART_1", "expected": "", "rule": "marker", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 4", "verified": false, "fixes": {"marker": 1}}
+{"input": "#MARKER:ATTACHMENT", "expected": "", "rule": "marker", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 545", "verified": false, "fixes": {"marker": 1}}
+{"input": "#MARKER:PAGE_ATTACHMENTS", "expected": "", "rule": "marker", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 544", "verified": false, "fixes": {"marker": 1}}
+{"input": "ข้อความ #MARKER:PART_12 ต่อ", "expected": "ข้อความ ต่อ", "rule": "marker", "source": "synthetic", "verified": false, "fixes": {"marker": 1, "whitespace": 1}}
+{"input": "#MARKET: ราคา #marker:x", "expected": "#MARKET: ราคา #marker:x", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}}
+{"input": "ราคา ๑,๒๐๐ บาท", "expected": "ราคา 1,200 บาท", "rule": "thai_digits", "source": "synthetic", "verified": false, "fixes": {"thai_digits": 4}}
+{"input": "๐๑๒๓๔๕๖๗๘๙", "expected": "0123456789", "rule": "thai_digits", "source": "synthetic", "verified": false, "fixes": {"thai_digits": 10}}
+{"input": "ดําเนินงาน", "expected": "ดำเนินงาน", "rule": "sara_am", "source": "ONEREPORTKBANKT.PDF หน้า 1", "verified": false, "fixes": {"sara_am": 1}}
+{"input": "ธุรกิจนํ้ามันและ", "expected": "ธุรกิจน้ำมันและ", "rule": "sara_am", "source": "ONEREPORTPTTT.PDF หน้า 9", "verified": false, "fixes": {"sara_am": 1}}
+{"input": "การสํารวจความผูกพัน", "expected": "การสำรวจความผูกพัน", "rule": "sara_am", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 100", "verified": false, "fixes": {"sara_am": 1}}
+{"input": "ร้อยละ 25 ของจํานวนหุ้นที่ออกจ", "expected": "ร้อยละ 25 ของจำนวนหุ้นที่ออกจ", "rule": "sara_am", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 94", "verified": false, "fixes": {"sara_am": 1, "whitespace": 2}, "signals": {}}
+{"input": "กาํ", "expected": "กำ", "rule": "sara_am", "source": "synthetic", "verified": false, "fixes": {"sara_am": 1}}
+{"input": "นา้ํ", "expected": "น้ำ", "rule": "sara_am", "source": "synthetic", "verified": false, "fixes": {"sara_am": 1}}
+{"input": "จำนวนน้ำค่ำ", "expected": "จำนวนน้ำค่ำ", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}}
+{"input": "ก่ิ", "expected": "กิ่", "rule": "mark_order", "source": "T03 spec", "verified": false, "fixes": {"mark_order": 1}}
+{"input": "ห้ลี่ักในการ", "expected": "ห้ลีั่กในการ", "rule": "mark_order", "source": "ONEREPORTKBANKT.PDF หน้า 13", "verified": false, "fixes": {"mark_order": 1}}
+{"input": "ปฏิบัติเก่ี่ยวกับ", "expected": "ปฏิบัติเกี่ยวกับ", "rule": "mark_order", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 194", "verified": false, "fixes": {"mark_order": 1, "dup_mark": 1}}
+{"input": "ก่่ิ", "expected": "กิ่", "rule": "mark_order", "source": "synthetic", "verified": false, "fixes": {"mark_order": 1, "dup_mark": 1}}
+{"input": "ก์ุ", "expected": "กุ์", "rule": "mark_order", "source": "synthetic", "verified": false, "fixes": {"mark_order": 1}}
+{"input": "เก็บ ก็ การ์ตูน เกี่ยว", "expected": "เก็บ ก็ การ์ตูน เกี่ยว", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}}
+{"input": "ธุุรกิิจก๊๊าซ", "expected": "ธุรกิจก๊าซ", "rule": "dup_mark", "source": "ONEREPORTPTTT.PDF หน้า 10", "verified": false, "fixes": {"dup_mark": 3}}
+{"input": "ไม่่มีีคุุณสมบััติ", "expected": "ไม่มีคุณสมบัติ", "rule": "dup_mark", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 218", "verified": false, "fixes": {"dup_mark": 4}}
+{"input": "ที่่สำคัญ", "expected": "ที่สำคัญ", "rule": "dup_mark", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 131", "verified": false, "fixes": {"dup_mark": 1}}
+{"input": "ปตท. เเละบริษัท", "expected": "ปตท. และบริษัท", "rule": "dup_mark", "source": "ONEREPORTPTTT.PDF หน้า 103", "verified": false, "fixes": {"dup_mark": 1}}
+{"input": "ส่วนที่่่", "expected": "ส่วนที่", "rule": "dup_mark", "source": "synthetic", "verified": false, "fixes": {"dup_mark": 1}}
+{"input": "จำำ", "expected": "จำ", "rule": "dup_mark", "source": "T03 spec", "verified": false, "fixes": {"dup_mark": 1}}
+{"input": "มีีนาคม วัันที่่", "expected": "มีนาคม วันที่", "rule": "dup_mark", "source": "T03 spec", "verified": false, "fixes": {"dup_mark": 3}}
+{"input": "ธรรมนูญ กรรมการ นนทบุรี ฯลฯ ดีๆๆ ฤๅษี", "expected": "ธรรมนูญ กรรมการ นนทบุรี ฯลฯ ดีๆๆ ฤๅษี", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}}
+{"input": "เรื่่�อง", "expected": "เรื่อง", "rule": "fffd_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 7", "verified": false, "fixes": {"dup_mark": 1, "fffd_after_mark": 1}}
+{"input": "การเป็็นผู้้�นำำ�ด้้านการ", "expected": "การเป็นผู้นำด้านการ", "rule": "fffd_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 20", "verified": false, "fixes": {"dup_mark": 4, "fffd_after_mark": 2}}
+{"input": "ส่่วนที่่� 1", "expected": "ส่วนที่ 1", "rule": "fffd_after_mark", "source": "ONEREPORTKBANKT.PDF หน้า 1", "verified": false, "fixes": {"dup_mark": 2, "fffd_after_mark": 1}}
+{"input": "นํ้ามันสำ�เร็จรูป", "expected": "น้ำมันสำเร็จรูป", "rule": "fffd_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 36", "verified": false, "fixes": {"sara_am": 1, "fffd_after_mark": 1}}
+{"input": "บริิษััทชั้้นนำ�", "expected": "บริษัทชั้นนำ", "rule": "fffd_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 22", "verified": false, "fixes": {"control_after_mark": 1, "dup_mark": 3, "fffd_after_mark": 1}}
+{"input": "เป็็นวัันที่่่� 1 สิิง", "expected": "เป็นวันที่ 1 สิง", "rule": "fffd_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 30", "verified": false, "fixes": {"control_after_mark": 1, "dup_mark": 4, "fffd_after_mark": 1}}
+{"input": "กข�ค", "expected": "กข�ค", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}, "signals": {"fffd_remaining": 1}}
+{"input": "abc� 123", "expected": "abc� 123", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}, "signals": {"fffd_remaining": 1}}
+{"input": "พ ุ่มดอกไม้", "expected": "พุ่มดอกไม้", "rule": "space_before_mark", "source": "T03 spec", "verified": false, "fixes": {"space_before_mark": 1}, "signals": {}}
+{"input": "ท ี่", "expected": "ที่", "rule": "space_before_mark", "source": "synthetic", "verified": false, "fixes": {"space_before_mark": 1}, "signals": {}}
+{"input": "พ  ุ่ม", "expected": "พุ่ม", "rule": "space_before_mark", "source": "synthetic", "verified": false, "fixes": {"whitespace": 1, "space_before_mark": 1}, "signals": {}}
+{"input": "พ ุ่ม", "expected": "พุ่ม", "rule": "space_before_mark", "source": "synthetic", "verified": false, "fixes": {"whitespace": 1, "space_before_mark": 1}, "signals": {"nbsp_between_thai": 1}}
+{"input": "ภาพ ุ่ม", "expected": "ภาพ ุ่ม", "rule": "negative", "source": "T03 spec", "verified": false, "fixes": {}, "signals": {"dangling_mark": 1, "space_between_thai": 1}}
+{"input": "เพ ื่อน", "expected": "เพ ื่อน", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}, "signals": {"dangling_mark": 1, "space_between_thai": 1}}
+{"input": "ผม ไป", "expected": "ผม ไป", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}, "signals": {"space_between_thai": 1}}
+{"input": "  ก   ข  \n  ค  ", "expected": "ก ข\nค", "rule": "whitespace", "source": "synthetic", "verified": false}
+{"input": "ก\n\n\n\nข", "expected": "ก\n\nข", "rule": "whitespace", "source": "synthetic", "verified": false, "fixes": {"whitespace": 1}}
+{"input": "ก　ข ค", "expected": "ก ข ค", "rule": "whitespace", "source": "synthetic", "verified": false, "fixes": {"whitespace": 2}}
+{"input": "ผลการดำเนินงาน     1\n1. โครงสร้าง", "expected": "ผลการดำเนินงาน 1\n1. โครงสร้าง", "rule": "whitespace", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 5", "verified": false, "fixes": {"whitespace": 5}, "signals": {}}
+{"input": "งบการเงิน \t3 7 0", "expected": "งบการเงิน 3 7 0", "rule": "whitespace", "source": "ONEREPORTPTTT.PDF หน้า 4", "verified": false, "fixes": {"whitespace": 2}, "signals": {}}
+{"input": "\n\n ก ข \n", "expected": "ก ข", "rule": "whitespace", "source": "synthetic", "verified": false, "fixes": {"whitespace": 3}}
+{"input": "ก\n\nข", "expected": "ก\n\nข", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}}
+{"input": "บริษัท ซีพี ออลล์ จำกั", "expected": "บริษัท ซีพี ออลล์ จำกั", "rule": "signal:nbsp_between_thai", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 28", "verified": false, "fixes": {"whitespace": 3}, "signals": {"nbsp_between_thai": 3, "space_between_thai": 3}}
+{"input": "ก่้า", "expected": "ก่้า", "rule": "signal:conflicting_tone_marks", "source": "T03 spec", "verified": false, "fixes": {}, "signals": {"conflicting_tone_marks": 1}}
+{"input": "แกmผ่้ถ่อหุ้น", "expected": "แกmผ่้ถ่อหุ้น", "rule": "signal:conflicting_tone_marks", "source": "ONEREPORTKBANKT.PDF หน้า 6", "verified": false, "fixes": {}, "signals": {"conflicting_tone_marks": 1}}
+{"input": "จ้่านวน 2.00", "expected": "จ้่านวน 2.00", "rule": "signal:conflicting_tone_marks", "source": "ONEREPORTKBANKT.PDF หน้า 5", "verified": false, "fixes": {}, "signals": {"conflicting_tone_marks": 1}}
+{"input": "เข้่าใจ", "expected": "เข้่าใจ", "rule": "signal:conflicting_tone_marks", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 268", "verified": false, "fixes": {}, "signals": {"conflicting_tone_marks": 1}}
+{"input": "ั้งแต่", "expected": "ั้งแต่", "rule": "signal:dangling_mark", "source": "T03 spec", "verified": false, "fixes": {}, "signals": {"dangling_mark": 1}}
+{"input": "ABC ิ", "expected": "ABC ิ", "rule": "signal:dangling_mark", "source": "synthetic", "verified": false, "fixes": {}, "signals": {"dangling_mark": 1}}
+{"input": "abc้", "expected": "abc้", "rule": "signal:dangling_mark", "source": "synthetic", "verified": false, "fixes": {}, "signals": {"dangling_mark": 1}}
+{"input": "ข้อ\n่า", "expected": "ข้อ\n่า", "rule": "signal:dangling_mark", "source": "synthetic", "verified": false, "fixes": {}, "signals": {"dangling_mark": 1}}
+{"input": "ผลกำไร�", "expected": "ผลกำไร�", "rule": "signal:fffd_remaining", "source": "synthetic", "verified": false, "fixes": {}, "signals": {"fffd_remaining": 1}}
+{"input": "บริษัท ซีพี ออลล์", "expected": "บริษัท ซีพี ออลล์", "rule": "signal:space_between_thai", "source": "E_ONE_REPORT_CPALLT.PDF หน้า 1", "verified": false, "fixes": {}, "signals": {"space_between_thai": 2}}
+{"input": "ราคา า", "expected": "ราคา า", "rule": "signal:space_between_thai", "source": "T03 spec", "verified": false, "fixes": {}, "signals": {"space_between_thai": 1}}
+{"input": "เน่Çอหาประกาศ", "expected": "เน่Çอหาประกาศ", "rule": "negative", "source": "ONEREPORTKBANKT.PDF DATA_FINDINGS 2.2 (repair/T04 ไม่แก้)", "verified": false, "fixes": {}, "signals": {}}
+{"input": "การให้เชmาซ่Çอ ล่สซิÆง", "expected": "การให้เชmาซ่Çอ ล่สซิÆง", "rule": "negative", "source": "DATA_FINDINGS 2.2 (repair/T04 ไม่แก้)", "verified": false, "fixes": {}, "signals": {"space_between_thai": 1}}
+{"input": "ผู้บริหารกำลังดำเนินการตามนโยบายน้ำมันเชื้อเพลิง", "expected": "ผู้บริหารกำลังดำเนินการตามนโยบายน้ำมันเชื้อเพลิง", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}, "signals": {}}
+{"input": "Visit https://www.example.co.th/a_b?x=1&y=2 or info@example.com, tel 02-123-4567, 12,345.67%", "expected": "Visit https://www.example.co.th/a_b?x=1&y=2 or info@example.com, tel 02-123-4567, 12,345.67%", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}, "signals": {}}
+{"input": "บริษัท CP ALL Public Co., Ltd. (มหาชน) ปี 2568", "expected": "บริษัท CP ALL Public Co., Ltd. (มหาชน) ปี 2568", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}, "signals": {}}
+{"input": "ลาพักร้อนได้กี่วัน", "expected": "ลาพักร้อนได้กี่วัน", "rule": "negative", "source": "query ตัวอย่าง", "verified": false, "fixes": {}, "signals": {}}
+{"input": "", "expected": "", "rule": "negative", "source": "synthetic", "verified": false, "fixes": {}, "signals": {}}

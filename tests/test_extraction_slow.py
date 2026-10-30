@@ -21,10 +21,6 @@ def _squash(s: str) -> str:
     return re.sub(r"\s+", "", s)
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason="รอ T03: mock_corpus.pdf มีเครื่องหมายซ้ำ 386 จุด ต้อง normalize ก่อนเทียบ",
-)
 def test_mock_corpus_matches_corpus_txt():
     # ground truth = corpus.txt (ไฟล์ต้นทางที่คนสร้าง PDF) ไม่ได้มาจาก extractor/normalizer ของเรา
     doc = extract_file(ROOT / "mock_corpus.pdf")

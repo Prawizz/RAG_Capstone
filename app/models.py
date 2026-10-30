@@ -16,6 +16,9 @@ chunking / citation / eval อ่านต่อจาก contract นี้
 - ``QualityReport.score`` = None แปลว่ายังไม่ได้ประเมิน (ด่านตรวจคุณภาพมาใน T04)
 - ``Unit.signals`` = ข้อมูลดิบสำหรับด่านตรวจ; PDF ต้องใส่ ``char_count`` (ความยาว text หลัง strip),
   ``block_count``, ``image_coverage`` (พื้นที่ภาพที่ใหญ่ที่สุดในหน้า ÷ พื้นที่หน้า, 0–1)
+  และผลนับของ normalizer แบบแบน (ไม่ซ้อน dict) เฉพาะที่ค่าไม่ใช่ 0:
+  ``norm_fix:<rule>`` = จำนวนที่แก้รายกฎ, ``norm_sig:<signal>`` = สิ่งที่เห็นแต่ไม่แก้
+  (ชื่อ rule/signal ดู ``app/thai/normalizer.py``); ``QualityReport.normalization_changes`` = ผลรวมของ norm_fix ทั้งหมด
 - Unit ที่ status = ok แต่ text ว่าง (หลัง strip) ต้องมี flag ``empty`` ใน quality
 - ``Document.detected_type`` เป็น None ได้ก็ต่อเมื่อมี ``error`` (validator บังคับ)
 - ``Document.error`` ถ้าไม่ใช่ None ``status`` จะเป็น failed เสมอ

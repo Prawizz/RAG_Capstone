@@ -38,3 +38,13 @@ exit code เป็น 1 เมื่อทั้งไฟล์ล้มเห�
 pytest            # test ปกติ (เร็ว)
 pytest -m slow    # test ช้า: ใช้ PDF จริงใน eval/datasets/ และ mock_corpus.pdf
 ```
+
+## วัดผล Thai normalizer
+
+```bash
+python scripts/normalize_report.py                       # 3 PDF ใน eval/datasets/ + mock_corpus.pdf พิมพ์ออกจอ
+python scripts/normalize_report.py --samples 20 --out report.txt
+```
+
+แสดงจำนวนที่แก้รายกฎ, signals, 10 หน้าที่โดนแก้มากที่สุด และตัวอย่างก่อน/หลังรายกฎ (พร้อมไฟล์+หน้า)
+เพื่อให้คนตรวจ คู่ทดสอบอยู่ที่ `eval/datasets/thai_normalization.jsonl` (`verified:false` จนกว่าทีมจะตรวจ)

@@ -207,3 +207,35 @@ def test_recognised_but_not_implemented_type(tmp_path):
     assert doc.detected_type == DetectedType.DOCX
     assert doc.error.code == ErrorCode.UNSUPPORTED_TYPE
     assert doc.error.message == "ยังไม่รองรับใน v1"
+
+
+# ---------- ต่อ normalizer เข้า pipeline ----------
+
+def test_normalizer_results_flow_into_unit(tmp_path, monkeypatch):
+    f = make_pdf(tmp_path / "n.pdf", ["x"])
+    messy = [
+        pdf_mod.RawBlock("ธุุรกิิจ ดําเนินงาน", (0, 0, 1, 1), 12.0, False),
+        pdf_mod.RawBlock("#MARKER:PART_1", (0, 0, 1, 1), 12.0, False),  # block ว่างหลัง normalize -> ไม่สร้าง block
+        pdf_mod.RawBlock("เรื่่�อง", (0, 0, 1, 1), 12.0, False),
+    ]
+    monkeypatch.setattr(pdf_mod, "raw_blocks", lambda page: messy)
+    u = extract_file(f).units[0]
+    assert [b.text for b in u.blocks] == ["ธุรกิจ ดำเนินงาน", "เรื่อง"]
+    assert [b.order for b in u.blocks] == [0, 1]
+    assert u.text == "ธุรกิจ ดำเนินงาน\nเรื่อง"
+    assert u.text_hash == hashlib.sha256(u.text.encode("utf-8")).hexdigest()
+    # ผลนับรวมจากทุก block รวม block ที่ถูกลบจนว่าง
+    expect = {
+        "norm_fix:dup_mark": 3, "norm_fix:sara_am": 1, "norm_fix:whitespace": 1,
+        "norm_fix:marker": 1, "norm_fix:fffd_after_mark": 1,
+    }
+    assert {k: v for k, v in u.signals.items() if k.startswith("norm_fix:")} == {k: float(v) for k, v in expect.items()}
+    assert u.quality.normalization_changes == sum(expect.values())
+    assert all(isinstance(v, float) for v in u.signals.values())
+    assert u.signals["char_count"] == len(u.text.strip())
+
+
+def test_clean_text_has_no_norm_keys(tmp_path):
+    u = extract_file(make_pdf(tmp_path / "c.pdf", ["Hello world"])).units[0]
+    assert not [k for k in u.signals if k.startswith("norm_")]
+    assert u.quality.normalization_changes == 0

@@ -2,7 +2,9 @@
 
 - ข้อความดึงด้วย ``get_text("dict")``; text block แต่ละก้อนเป็น ``Block`` ประเภท paragraph
   (อนุมานหัวข้อทีหลัง) ลำดับ block ตามที่ PyMuPDF ให้มา
-- ข้อความทุกส่วนผ่าน ``normalize()`` ก่อนใส่ Unit.text / Block.text
+- ข้อความทุกส่วนผ่าน ``normalize_with_report()`` ทีละ block ก่อนใส่ Unit.text / Block.text
+  ผลนับของ normalizer รวมราย unit: ``QualityReport.normalization_changes`` = ผลรวม fixes,
+  ``Unit.signals`` ใช้ key แบบแบน ``norm_fix:<rule>`` / ``norm_sig:<signal>`` (ใส่เฉพาะค่าที่ไม่ใช่ 0)
 - หน้าที่พังได้ status failed พร้อม reason หน้าอื่นทำต่อ
 - ยังไม่ทำ: ตัดสิน needs_ocr / คะแนนคุณภาพ (quality.score = None, มาใน T04)
 """
@@ -28,7 +30,7 @@ from app.models import (
     UnitStatus,
     UnitType,
 )
-from app.thai.normalizer import normalize
+from app.thai.normalizer import NormalizeResult, normalize_with_report
 
 _TEXT_FLAGS = pymupdf.TEXTFLAGS_DICT & ~pymupdf.TEXT_PRESERVE_IMAGES  # ไม่ดึงไบต์ภาพมาเก็บ
 _BOLD_SPAN_FLAG = 16
@@ -86,25 +88,51 @@ def _span_bold(span: dict) -> bool:
     return bool(span.get("flags", 0) & _BOLD_SPAN_FLAG) or "bold" in span.get("font", "").lower()
 
 
-def _block_from_dict(raw: dict, order: int) -> Optional[Block]:
+@dataclass
+class RawBlock:
+    """text block ก่อน normalize (ดึงจาก PyMuPDF dict; ใช้ร่วมกับสคริปต์วัดผล)"""
+
+    text: str
+    bbox: tuple[float, float, float, float]
+    font_size: float
+    bold: bool
+
+
+def _raw_block(raw: dict) -> Optional[RawBlock]:
     lines: list[str] = []
     spans_all: list[dict] = []
     for line in raw.get("lines", []):
         spans = line.get("spans", [])
         spans_all.extend(spans)
         lines.append("".join(s.get("text", "") for s in spans))
-    text = normalize(join_lines(lines).strip())
-    if not text:
+    text = join_lines(lines)
+    if not text.strip() or not spans_all:
         return None
     main = max(spans_all, key=lambda s: len(s.get("text", "")))
-    return Block(
-        type=BlockType.PARAGRAPH,
+    return RawBlock(
         text=text,
-        order=order,
         bbox=tuple(raw["bbox"]),
         font_size=round(main.get("size", 0.0), 2),
         bold=_span_bold(main),
     )
+
+
+def raw_blocks(page: "pymupdf.Page") -> list[RawBlock]:
+    """text block ของหน้า (ก่อน normalize) ตามลำดับที่ PyMuPDF ให้มา — จุดดึงข้อความจุดเดียว"""
+    raw = page.get_text("dict", flags=_TEXT_FLAGS)
+    blocks = (_raw_block(rb) for rb in raw.get("blocks", []) if rb.get("type") == 0)
+    return [b for b in blocks if b]
+
+
+def _norm_signals(total_fixes: dict[str, int], total_signals: dict[str, int]) -> dict[str, float]:
+    out: dict[str, float] = {}
+    for name, n in total_fixes.items():
+        if n:
+            out[f"norm_fix:{name}"] = float(n)
+    for name, n in total_signals.items():
+        if n:
+            out[f"norm_sig:{name}"] = float(n)
+    return out
 
 
 def _image_coverage(page: "pymupdf.Page") -> float:
@@ -120,7 +148,8 @@ def _image_coverage(page: "pymupdf.Page") -> float:
 
 
 def _unit_from_blocks(index: int, page_no: int, label: Optional[str], blocks: list[Block],
-                      image_coverage: float, elapsed_ms: float) -> Unit:
+                      image_coverage: float, elapsed_ms: float,
+                      norm_fixes: dict[str, int], norm_signals: dict[str, int]) -> Unit:
     text = "\n".join(b.text for b in blocks)
     position: dict = {"page": page_no}
     if label:
@@ -135,26 +164,45 @@ def _unit_from_blocks(index: int, page_no: int, label: Optional[str], blocks: li
         blocks=blocks,
         text=text,
         text_hash=hashlib.sha256(text.encode("utf-8")).hexdigest(),
-        quality=QualityReport(score=None, flags=[] if text.strip() else [QualityFlag.EMPTY]),
+        quality=QualityReport(
+            score=None,
+            flags=[] if text.strip() else [QualityFlag.EMPTY],
+            normalization_changes=sum(norm_fixes.values()),
+        ),
         elapsed_ms=elapsed_ms,
         signals={
             "char_count": float(len(text.strip())),
             "block_count": float(len(blocks)),
             "image_coverage": image_coverage,
+            **_norm_signals(norm_fixes, norm_signals),
         },
     )
 
 
 def _extract_page(page: "pymupdf.Page", index: int) -> Unit:
     t0 = time.perf_counter()
-    raw = page.get_text("dict", flags=_TEXT_FLAGS)
     blocks: list[Block] = []
-    for rb in raw.get("blocks", []):
-        if rb.get("type") != 0:
+    fixes: dict[str, int] = {}
+    signals: dict[str, int] = {}
+    for rb in raw_blocks(page):
+        res: NormalizeResult = normalize_with_report(rb.text)
+        for k, v in res.fixes.items():
+            fixes[k] = fixes.get(k, 0) + v
+        for k, v in res.signals.items():
+            signals[k] = signals.get(k, 0) + v
+        text = res.text.strip()
+        if not text:  # เช่น block ที่มีแต่ #MARKER: — นับผล normalize ไว้แล้ว แต่ไม่สร้าง block
             continue
-        b = _block_from_dict(rb, order=len(blocks))
-        if b:
-            blocks.append(b)
+        blocks.append(
+            Block(
+                type=BlockType.PARAGRAPH,
+                text=text,
+                order=len(blocks),
+                bbox=rb.bbox,
+                font_size=rb.font_size,
+                bold=rb.bold,
+            )
+        )
     return _unit_from_blocks(
         index,
         page.number + 1,
@@ -162,6 +210,8 @@ def _extract_page(page: "pymupdf.Page", index: int) -> Unit:
         blocks,
         _image_coverage(page),
         (time.perf_counter() - t0) * 1000,
+        fixes,
+        signals,
     )
 
 
