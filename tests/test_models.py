@@ -1,3 +1,4 @@
+import hashlib
 import json
 from pathlib import Path
 
@@ -6,8 +7,12 @@ from pydantic import ValidationError
 
 from app.models import (
     POSITION_REQUIRED_KEYS,
+    DetectedType,
     Document,
+    DocumentError,
     DocumentStatus,
+    ErrorCode,
+    QualityFlag,
     Unit,
     UnitStatus,
     UnitType,
@@ -25,7 +30,7 @@ def make_doc(units: list[Unit]) -> Document:
         file_id="f1",
         content_hash="0" * 64,
         filename="ตัวอย่าง.pdf",
-        detected_type="pdf",
+        detected_type=DetectedType.PDF,
         size_bytes=1,
         units=units,
         pipeline_version="0",
@@ -93,3 +98,58 @@ def test_json_roundtrip_keeps_thai_unescaped():
     assert "สมชาย ใจดี" in raw
     assert Document.model_validate_json(raw) == doc
     assert json.loads(raw)["status"] == "done"
+
+
+def test_error_forces_failed_status():
+    doc = make_doc([load_unit("page")])
+    assert doc.status == DocumentStatus.DONE
+    doc.error = DocumentError(code=ErrorCode.ENCRYPTED, message="ไฟล์มีรหัสผ่าน")
+    assert doc.status == DocumentStatus.FAILED
+    raw = doc.model_dump_json()
+    assert Document.model_validate_json(raw).error.code == ErrorCode.ENCRYPTED
+
+
+def test_page_is_one_based_and_page_label_optional():
+    data = load_unit("page").model_dump()
+    assert data["position"]["page"] == 47 and data["position"]["page_label"] == "45"
+    data["position"] = {"page": 0}
+    with pytest.raises(ValidationError):
+        Unit.model_validate(data)
+    data["position"] = {"page": 3}  # ไม่มี page_label ก็ผ่าน
+    Unit.model_validate(data)
+
+
+def test_ok_unit_with_blank_text_requires_empty_flag():
+    data = load_unit("page").model_dump()
+    data.update(text="   ", blocks=[])
+    with pytest.raises(ValidationError):
+        Unit.model_validate(data)
+    data["quality"]["flags"] = [QualityFlag.EMPTY]
+    Unit.model_validate(data)
+
+
+def test_section_heading_path_includes_own_heading():
+    unit = load_unit("section")
+    own = next(b for b in unit.blocks if b.type == "heading")
+    assert unit.position["heading_path"][-1] == own.text
+
+
+def test_detected_type_is_enum():
+    assert {t.value for t in DetectedType} == {"pdf", "docx", "pptx", "xlsx", "doc", "ppt", "xls"}
+    with pytest.raises(ValidationError):
+        Document.model_validate({**make_doc([]).model_dump(), "detected_type": "txt"})
+
+
+@pytest.mark.parametrize("unit_type", list(UnitType))
+def test_text_hash_is_sha256_of_text(unit_type):
+    unit = load_unit(unit_type.value)
+    assert unit.text_hash == hashlib.sha256(unit.text.encode("utf-8")).hexdigest()
+
+
+@pytest.mark.parametrize("code", list(ErrorCode))
+def test_error_retriable_derived_from_code(code):
+    expected = code in {ErrorCode.CONVERSION_TIMEOUT, ErrorCode.INTERNAL}
+    err = DocumentError(code=code, message="x")
+    assert err.retriable is expected
+    assert DocumentError.model_validate_json(err.model_dump_json()) == err
+    assert json.loads(err.model_dump_json())["retriable"] is expected

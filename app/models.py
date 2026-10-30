@@ -7,6 +7,14 @@ chunking / citation / eval อ่านต่อจาก contract นี้
 - ทุก Unit มี ``position`` (เครื่องอ่าน) และ ``label`` (คนอ่าน เช่น "หน้า 47")
 - สถานะราย unit: unit ที่พังไม่ทำให้ทั้งไฟล์พัง ``Document.status`` คำนวณจากสถานะของ unit
   (ทุก unit ok -> done, บางส่วนไม่ ok -> done_with_gaps, ไม่มี unit ok เลย -> failed)
+- นิยาม ``position``:
+  - ``page`` = ลำดับหน้าจริงในไฟล์ เริ่มที่ 1 (ไม่ใช่เลขที่พิมพ์บนหน้า)
+    ``page_label`` (ไม่บังคับ, str) = เลขหน้าที่พิมพ์บนหน้า เช่น "iv" หรือ "45"
+  - ``heading_path`` = หัวข้อจากบนลงล่าง **รวมหัวข้อของ section นั้นเองเป็นตัวสุดท้าย**
+    ``paragraphs`` = [ย่อหน้าเริ่ม, ย่อหน้าจบ]
+- ``text_hash`` = SHA-256 (hex) ของ ``text`` หลัง normalize เข้ารหัส UTF-8
+- Unit ที่ status = ok แต่ text ว่าง (หลัง strip) ต้องมี flag ``empty`` ใน quality
+- ``Document.error`` ถ้าไม่ใช่ None ``status`` จะเป็น failed เสมอ
 - ``Document`` ไม่มีฟิลด์สิทธิ์ (box / security level / แผนก / ACL) โดยตั้งใจ
   จะแยกเป็น model ของตัวเองในเฟส ACL และเชื่อมกันด้วย ``file_id``
 
@@ -60,6 +68,39 @@ class QualityFlag(str, Enum):
     LOW_DICTIONARY_RATIO = "low_dictionary_ratio"
     SCAN_LIKE = "scan_like"
     EMPTY = "empty"
+
+
+class DetectedType(str, Enum):
+    PDF = "pdf"
+    DOCX = "docx"
+    PPTX = "pptx"
+    XLSX = "xlsx"
+    DOC = "doc"
+    PPT = "ppt"
+    XLS = "xls"
+
+
+class ErrorCode(str, Enum):
+    ENCRYPTED = "encrypted"
+    CORRUPT = "corrupt"
+    UNSUPPORTED_TYPE = "unsupported_type"
+    TOO_LARGE = "too_large"
+    CONVERSION_TIMEOUT = "conversion_timeout"
+    INTERNAL = "internal"
+
+
+# ลองใหม่ได้เฉพาะ error ชั่วคราว (retriable คำนวณจาก code ไม่ให้กรอกเอง)
+RETRIABLE_CODES = frozenset({ErrorCode.CONVERSION_TIMEOUT, ErrorCode.INTERNAL})
+
+
+class DocumentError(BaseModel):
+    code: ErrorCode
+    message: str
+
+    @computed_field  # type: ignore[prop-decorator]
+    @property
+    def retriable(self) -> bool:
+        return self.code in RETRIABLE_CODES
 
 
 class DocumentStatus(str, Enum):
@@ -131,6 +172,16 @@ class Unit(BaseModel):
             )
         if self.status != UnitStatus.OK and not self.reason:
             raise ValueError("unit ที่ status != ok ต้องมี reason")
+        if (
+            self.status == UnitStatus.OK
+            and not self.text.strip()
+            and QualityFlag.EMPTY not in self.quality.flags
+        ):
+            raise ValueError("unit ที่ ok แต่ text ว่าง ต้องมี flag empty")
+        if self.type == UnitType.PAGE:
+            page = self.position["page"]
+            if isinstance(page, bool) or not isinstance(page, int) or page < 1:
+                raise ValueError("position.page ต้องเป็นจำนวนเต็มเริ่มที่ 1")
         return self
 
 
@@ -138,7 +189,7 @@ class Document(BaseModel):
     file_id: str
     content_hash: str  # SHA-256
     filename: str
-    detected_type: str  # จาก magic bytes ไม่ใช่นามสกุล
+    detected_type: DetectedType  # จาก magic bytes ไม่ใช่นามสกุล
     size_bytes: int = Field(ge=0)
     converted_from: Optional[str] = None  # ถ้าแปลงผ่าน LibreOffice
     # TODO(T01 คำถามค้างข้อ 1): ยังไม่ตกลงกับบริษัทว่า DOCX/XLSX นับอย่างไร
@@ -147,6 +198,7 @@ class Document(BaseModel):
     has_outline: bool = False
     producer: Optional[str] = None
     units: list[Unit] = Field(default_factory=list)
+    error: Optional[DocumentError] = None  # ถ้ามี status ต้องเป็น failed
     pipeline_version: str
     normalizer_version: str
 
@@ -166,6 +218,8 @@ class Document(BaseModel):
     @computed_field  # type: ignore[prop-decorator]
     @property
     def status(self) -> DocumentStatus:
+        if self.error is not None:
+            return DocumentStatus.FAILED
         ok = sum(1 for u in self.units if u.status == UnitStatus.OK)
         if ok == 0:
             return DocumentStatus.FAILED

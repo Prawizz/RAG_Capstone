@@ -7,6 +7,8 @@ RAG API Service สำหรับต่อกับ Enterprise AI Gateway (inge
 
 ต้องใช้ Python >= 3.10
 
+ทีมใช้ Python 3.10.x (`requirements.txt` pin เวอร์ชันบน 3.10.11) ถ้าใช้เวอร์ชันอื่นอาจติดตั้งบางแพ็กเกจไม่ผ่าน
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate        # Windows (PowerShell): .venv\Scripts\Activate.ps1

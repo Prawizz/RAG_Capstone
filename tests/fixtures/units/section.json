@@ -4,14 +4,15 @@
   "position": {
     "heading_path": [
       "หมวด 3",
-      "การลา"
+      "การลา",
+      "การลาป่วย"
     ],
     "paragraphs": [
       12,
       30
     ]
   },
-  "label": "หมวด 3 › การลา (ย่อหน้า 12–30)",
+  "label": "หมวด 3 › การลา › การลาป่วย (ย่อหน้า 12–30)",
   "status": "ok",
   "reason": null,
   "method": "office_xml",
