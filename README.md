@@ -47,4 +47,11 @@ python scripts/normalize_report.py --samples 20 --out report.txt
 ```
 
 แสดงจำนวนที่แก้รายกฎ, signals, 10 หน้าที่โดนแก้มากที่สุด และตัวอย่างก่อน/หลังรายกฎ (พร้อมไฟล์+หน้า)
-เพื่อให้คนตรวจ คู่ทดสอบอยู่ที่ `eval/datasets/thai_normalization.jsonl` (`verified:false` จนกว่าทีมจะตรวจ)
+เพื่อให้คนตรวจ คู่ทดสอบอยู่ที่ `eval/datasets/thai_normalization.jsonl`
+
+### เติม truth (ให้คนตรวจแทนการไล่กฎ)
+
+1. คู่ที่ไม่ใช่ synthetic มีช่อง `"truth": null` เปิด PDF ตาม `source` (ไฟล์ + หน้า) หาข้อความช่วงเดียวกับ `input`
+2. พิมพ์ข้อความช่วงนั้นตามที่ตาเห็นลงใน `truth` ไม่ต้องสนใจกฎของ normalizer เว้นวรรคหรือขึ้นบรรทัดไม่ตรงกับ `input` ได้
+3. ถ้าในภาพก็อ่านไม่ออก ให้ปล่อย `truth` เป็น `null` แล้วรัน `python scripts/check_truth.py` ดูผลรายคู่
+   (exact / evidence / needs_repair / fail) และ `pytest` จะเทียบให้เอง

@@ -1,7 +1,8 @@
 """Thai normalizer v1
 
-คู่ทดสอบอยู่ที่ eval/datasets/thai_normalization.jsonl — expected ทุกคู่เขียนด้วยมือจากการไล่กฎ
-ไม่ได้มาจากการรัน normalizer (CLAUDE.md ข้อ 6) และ verified=false จนกว่าทีมจะตรวจ
+คู่ทดสอบอยู่ที่ eval/datasets/thai_normalization.jsonl
+- expected เป็น regression test ของกฎ เขียนด้วยมือจากการไล่กฎ ไม่ได้มาจากการรัน normalizer (CLAUDE.md ข้อ 6)
+- truth (คู่ที่ source ไม่ใช่ synthetic) คือข้อความที่ถูกตามที่ตาเห็นใน PDF คนเติมเอง ยังว่าง (null) = ข้ามการเทียบ
 """
 
 import json
@@ -11,6 +12,17 @@ import pymupdf
 import pytest
 
 from app.extraction.pdf import raw_blocks
+from eval.truth_check import (
+    EVIDENCE,
+    EXACT,
+    FAIL,
+    FAIL_MESSAGE,
+    NEEDS_REPAIR,
+    NO_TRUTH,
+    classify,
+    classify_case,
+    evidence_match,
+)
 from app.thai.normalizer import (
     NORMALIZER_VERSION,
     RULE_NAMES,
@@ -21,7 +33,7 @@ from app.thai.normalizer import (
 
 ROOT = Path(__file__).parent.parent
 CASES_PATH = ROOT / "eval" / "datasets" / "thai_normalization.jsonl"
-# แยกบรรทัดด้วย "\n" เท่านั้น (splitlines จะตัดที่ \x85 /   ที่อยู่ในข้อมูลด้วย)
+# แยกบรรทัดด้วย "\n" เท่านั้น (splitlines จะตัดที่ \x85 / \u2028 ที่อยู่ในข้อมูลด้วย)
 CASES = [json.loads(line) for line in CASES_PATH.read_text(encoding="utf-8").split("\n") if line.strip()]
 ONE_REPORTS = ["E_ONE_REPORT_CPALLT.PDF", "ONEREPORTKBANKT.PDF", "ONEREPORTPTTT.PDF"]
 
@@ -41,8 +53,12 @@ def test_version():
 def test_dataset_shape_and_coverage():
     assert len(CASES) >= 60
     for c in CASES:
-        assert {"input", "expected", "rule", "source", "verified"} <= c.keys()
-        assert c["verified"] is False
+        assert {"input", "expected", "rule", "source"} <= c.keys()
+        assert "verified" not in c
+        if c["source"] == "synthetic":
+            assert "truth" not in c
+        else:
+            assert "truth" in c  # null จนกว่าคนจะเติม
     rules = {c["rule"] for c in CASES}
     assert set(RULE_NAMES) <= rules
     assert {f"signal:{s}" for s in SIGNAL_NAMES} <= rules
@@ -109,3 +125,99 @@ def test_windows_line_endings_equal_unix(sep):
     assert normalize(other) == normalize(unix) == "ค่าธรรมเนียม\nบัตรเครดิต\nปี 2568"
     assert "\ufffd" not in normalize(other)
     assert normalize_with_report(other).signals["fffd_remaining"] == 0
+
+
+# ---------- เทียบกับ truth ที่คนพิมพ์จากภาพ (ข้ามคู่ที่ truth เป็น null) ----------
+
+TRUTH_CASES = [c for c in CASES if c.get("truth")]
+
+
+def test_truth_field_counts():
+    with_field = [c for c in CASES if "truth" in c]
+    assert len(with_field) == len([c for c in CASES if c["source"] != "synthetic"])
+    # ตอนนี้ truth ยังว่างทุกคู่ (คนจะเติมเอง); เติมแล้ว test ด้านล่างจะเริ่มทำงาน
+    assert all(c["truth"] is None or isinstance(c["truth"], str) for c in with_field)
+
+
+@pytest.mark.parametrize("case", TRUTH_CASES, ids=[case_id(c) for c in TRUTH_CASES])
+def test_against_truth(case):
+    status, out = classify_case(case)
+    assert status != FAIL, (
+        f"{FAIL_MESSAGE}\n  source: {case['source']}\n  input: {case['input']!r}\n"
+        f"  out:   {out!r}\n  truth: {case['truth']!r}"
+    )
+    assert status in (EXACT, EVIDENCE, NEEDS_REPAIR)  # needs_repair = งาน T04 ไม่ fail
+
+
+def test_no_truth_is_reported_as_such():
+    assert classify_case({"input": "ก", "truth": None})[0] == NO_TRUTH
+    assert classify_case({"input": "ก", "truth": ""})[0] == NO_TRUTH
+    assert classify_case({"input": "ก"})[0] == NO_TRUTH
+
+
+# ---------- ทดสอบ matcher ด้วยคู่สังเคราะห์ ----------
+
+def run(inp: str, truth: str) -> str:
+    return classify_case({"input": inp, "truth": truth})[0]
+
+
+@pytest.mark.parametrize(
+    "inp,truth",
+    [
+        ("ธุุรกิิจ", "ธุรกิจ"),  # แก้ด้วยกฎ ได้ตรงกับที่ตาเห็น
+        ("ปีี ๒๕๖๘", "ปี 2568"),  # truth ถูก normalize ก่อนเทียบ (เลขไทย)
+    ],
+)
+def test_matcher_exact(inp, truth):
+    assert run(inp, truth) == EXACT
+
+
+@pytest.mark.parametrize(
+    "inp,truth",
+    [
+        ("สร้\x1cงคว\x1cม", "สร้างความ"),  # \x1c = า (PTT หน้า 43)
+        ("หลักเกณ\x92์", "หลักเกณฑ์"),  # \x92 = ฑ (KBANK หน้า 9)
+    ],
+)
+def test_matcher_evidence(inp, truth):
+    assert run(inp, truth) == EVIDENCE
+
+
+@pytest.mark.parametrize(
+    "inp,truth",
+    [
+        ("เน่Çอหาประกาศ", "เนื้อหาประกาศ"),  # ละตินติดไทย (KBANK)
+        ("แกmผ่้ถ่อหุ้น", "แก่ผู้ถือหุ้น"),  # ละติน + วรรณยุกต์ซ้อน
+        ("ก\x01ข", "กข"),  # FFFD แต่ truth ไม่มีตัวให้แทน -> ไม่ใช่ evidence แต่ยังมีร่องรอย
+    ],
+)
+def test_matcher_needs_repair(inp, truth):
+    assert run(inp, truth) == NEEDS_REPAIR
+
+
+@pytest.mark.parametrize(
+    "inp,truth",
+    [
+        ("บริษัทปตท", "บริษัท ปตท.ไทย"),  # ผิดแต่ดูสะอาด
+        ("ประธานกรรมการ", "ประธานกรรมกร"),
+    ],
+)
+def test_matcher_fail(inp, truth):
+    assert run(inp, truth) == FAIL
+
+
+def test_matcher_ignores_whitespace_and_newlines_on_both_sides():
+    assert run("ค่าธรรมเนียม\nบัตรเครดิต", "ค่าธรรมเนียม บัตรเครดิต") == EXACT
+    assert run("ค่าธรรมเนียมบัตรเครดิต", " ค่าธรรม เนียม\n\nบัตร เครดิต ") == EXACT
+    assert run("สร้\x1cง ความ", "สร้า ง\nความ") == EVIDENCE  # evidence ก็ไม่สนช่องว่าง
+    assert run("บริษัทปตท", "บริษัท\nปตท.ไทย") == FAIL  # ต่างที่ตัวอักษรจริง ยัง fail
+
+
+def test_evidence_matcher_is_exact_not_fuzzy():
+    assert evidence_match("ก\ufffdค", "กขค")
+    assert not evidence_match("ก\ufffdค", "กขขค")  # FFFD แทนได้ตัวเดียวพอดี
+    assert not evidence_match("ก\ufffdค", "กค")
+    assert not evidence_match("ก\ufffdค", "กขง")  # ตัวอื่นต้องตรงทุกตัว
+    assert not evidence_match("กขค", "กขค")  # ไม่มี FFFD ไม่ใช่ evidence
+    assert evidence_match("\ufffd\ufffd", "ขค")
+    assert classify("ก\ufffdค", "กขค") == EVIDENCE
