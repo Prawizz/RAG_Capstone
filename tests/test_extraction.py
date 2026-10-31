@@ -197,14 +197,12 @@ def test_unsupported_type_documents(tmp_path):
     assert doc.detected_type is None
 
 
-def test_recognised_but_not_implemented_type(tmp_path):
-    import zipfile
+def test_recognised_but_not_implemented_type(tmp_path, monkeypatch):
+    from tests.test_detect import ole_file
 
-    f = tmp_path / "a.xlsx"
-    with zipfile.ZipFile(f, "w") as z:
-        z.writestr("xl/workbook.xml", "x")
+    f = ole_file(tmp_path, monkeypatch, [["Workbook"]])
     doc = extract_file(f)
-    assert doc.detected_type == DetectedType.XLSX
+    assert doc.detected_type == DetectedType.XLS
     assert doc.error.code == ErrorCode.UNSUPPORTED_TYPE
     assert doc.error.message == "ยังไม่รองรับใน v1"
 

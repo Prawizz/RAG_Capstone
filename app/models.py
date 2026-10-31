@@ -23,10 +23,13 @@ chunking / citation / eval อ่านต่อจาก contract นี้
   ``norm_fix:<rule>`` = จำนวนที่แก้รายกฎ, ``norm_sig:<signal>`` = สิ่งที่เห็นแต่ไม่แก้
   (ชื่อ rule/signal ดู ``app/thai/normalizer.py``); ``QualityReport.normalization_changes`` = ผลรวมของ norm_fix ทั้งหมด
   PPTX (หนึ่งสไลด์ต่อ unit) ใส่ ``image_coverage`` (รูปใหญ่สุด ÷ สไลด์), ``pptx:picture_count``, ``pptx:hidden``
-  (สไลด์ซ่อน), ``pptx:chart_unreadable``; ด่านตรวจเพิ่ม ``gate:letters`` (อักษรไทย+ละติน), ``gate:thai_chars``, ``gate:latin_in_thai``, ``gate:mojibake``, ``gate:broken_events`` ให้ unit ที่ status = ok ตอนเข้าด่าน
+  (สไลด์ซ่อน), ``pptx:chart_unreadable``;
+  XLSX (หนึ่งตารางในชีตต่อ unit) ใส่ ``xlsx:data_rows``, ``xlsx:merged_cells`` และเมื่อมี ``xlsx:hidden_sheets`` (unit แรกของไฟล์),
+  ``xlsx:repeated_header_rows``, ``xlsx:group_label_max_repeat`` (ดูอย่างเดียว ห้ามใช้ตัดสิน), ``xlsx:formula_no_cache``; ด่านตรวจเพิ่ม ``gate:letters`` (อักษรไทย+ละติน), ``gate:thai_chars``, ``gate:latin_in_thai``, ``gate:mojibake``, ``gate:broken_events`` ให้ unit ที่ status = ok ตอนเข้าด่าน
 - Unit ที่ status = ok แต่ text ว่าง (หลัง strip) ต้องมี flag ``empty`` ใน quality
 - ``Document.detected_type`` เป็น None ได้ก็ต่อเมื่อมี ``error`` (validator บังคับ)
 - ``Document.error`` ถ้าไม่ใช่ None ``status`` จะเป็น failed เสมอ
+- extractor ชนิดใดได้ 0 unit -> pipeline ใส่ error ``empty`` ("ไฟล์ไม่มีเนื้อหาที่อ่านได้") ไม่ปล่อยให้เป็น failed เงียบ ๆ
 - ``Document`` ไม่มีฟิลด์สิทธิ์ (box / security level / แผนก / ACL) โดยตั้งใจ
   จะแยกเป็น model ของตัวเองในเฟส ACL และเชื่อมกันด้วย ``file_id``
 
@@ -100,6 +103,7 @@ class ErrorCode(str, Enum):
     CORRUPT = "corrupt"
     UNSUPPORTED_TYPE = "unsupported_type"
     TOO_LARGE = "too_large"
+    EMPTY = "empty"  # extractor ได้ 0 unit (ไฟล์ไม่มีเนื้อหาที่อ่านได้); ไม่ retriable; PDF ที่หน้าว่างยังมี unit (flag empty)
     CONVERSION_TIMEOUT = "conversion_timeout"
     INTERNAL = "internal"
 

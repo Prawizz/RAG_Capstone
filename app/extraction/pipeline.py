@@ -15,6 +15,7 @@ from app.extraction.docx import extract_docx
 from app.extraction.pdf import extract_pdf
 from app.extraction.pptx import extract_pptx
 from app.extraction.quality import apply_gate
+from app.extraction.xlsx import extract_xlsx
 from app.models import DetectedType, Document, DocumentError, ErrorCode
 from app.thai.normalizer import NORMALIZER_VERSION
 
@@ -60,8 +61,13 @@ def extract_file(
         elif detected == DetectedType.PPTX:
             result = extract_pptx(path)
             page_equivalent = result.slide_count
+        elif detected == DetectedType.XLSX:
+            result = extract_xlsx(path)
+            page_equivalent = result.page_equivalent  # ชั่วคราวตาม T01: 1 ต่อ sheet_region
         else:
             raise ExtractionError(ErrorCode.UNSUPPORTED_TYPE, "ยังไม่รองรับใน v1")
+        if not result.units:
+            raise ExtractionError(ErrorCode.EMPTY, "ไฟล์ไม่มีเนื้อหาที่อ่านได้")
     except ExtractionError as e:
         error = DocumentError(code=e.code, message=e.message)
         return Document(**fields, detected_type=detected, error=error)

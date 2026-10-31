@@ -466,10 +466,10 @@ def test_normalizer_applies_to_docx_text(tmp_path):
     assert d.units[0].signals["norm_fix:dup_mark"] >= 1 and d.units[0].quality.normalization_changes >= 3
 
 
-def test_empty_docx_gives_one_empty_unit(tmp_path):
-    d = extract(save(WordDocument(), tmp_path))
-    assert d.unit_count == 1 and d.units[0].text == "" and d.status == DocumentStatus.DONE
-    assert [f.value for f in d.units[0].quality.flags] == ["empty"]
+def test_docx_without_text_is_empty_error(tmp_path):
+    d = extract_file(save(WordDocument(), tmp_path))
+    assert d.unit_count == 0 and d.status == DocumentStatus.FAILED
+    assert d.error.code == ErrorCode.EMPTY and d.error.message == "ไฟล์ไม่มีเนื้อหาที่อ่านได้" and not d.error.retriable
 
 
 def test_corrupt_docx_reports_error(tmp_path):

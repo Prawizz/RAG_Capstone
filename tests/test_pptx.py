@@ -311,3 +311,18 @@ def test_corrupt_pptx(tmp_path):
         z.writestr("ppt/presentation.xml", "not xml")
     d = extract_file(f)
     assert d.detected_type == DetectedType.PPTX and d.error.code == ErrorCode.CORRUPT
+
+
+def test_presentation_without_slides_is_empty_error(tmp_path):
+    d = extract_file(save(new_prs(), tmp_path))
+    assert d.unit_count == 0 and d.status == DocumentStatus.FAILED
+    assert d.error.code == ErrorCode.EMPTY and d.error.message == "ไฟล์ไม่มีเนื้อหาที่อ่านได้" and not d.error.retriable
+
+
+def test_pdf_with_blank_pages_keeps_units_not_empty_error(tmp_path):
+    f = tmp_path / "b.pdf"
+    doc = pymupdf.open()
+    doc.new_page()
+    doc.save(str(f))
+    d = extract_file(f)
+    assert d.error is None and d.unit_count == 1

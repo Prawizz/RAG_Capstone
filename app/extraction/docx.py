@@ -705,12 +705,10 @@ def extract_docx(path: str | Path) -> DocxResult:
 
     headings = _mark_headings(items, body_half)
     units = _build_units(items, headings)
-    if not units:
-        units = [_empty_unit()]
     for i, u in enumerate(units):
         u.index = i
     elapsed = (time.perf_counter() - t_start) * 1000
-    per = elapsed / len(units)
+    per = elapsed / max(len(units), 1)
     for u in units:
         u.elapsed_ms = per
     producer, pages = _app_props(app)
@@ -919,19 +917,4 @@ def _make_unit(heading: Optional[_Item], path: list[str], part: list[_Item], par
         text_hash=_hash(text),
         quality=QualityReport(score=None, flags=[], normalization_changes=sum(tally.fixes.values())),
         signals=signals,
-    )
-
-
-def _empty_unit() -> Unit:
-    return Unit(
-        index=0,
-        type=UnitType.SECTION,
-        position={"heading_path": [], "paragraphs": [0, 0]},
-        label=PREFACE_LABEL,
-        status=UnitStatus.OK,
-        method=ExtractionMethod.OFFICE_XML,
-        text="",
-        text_hash=_hash(""),
-        quality=QualityReport(flags=[QualityFlag.EMPTY]),
-        signals={"char_count": 0.0, "block_count": 0.0, "docx:image_count": 0.0},
     )
