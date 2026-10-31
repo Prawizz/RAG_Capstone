@@ -12,7 +12,7 @@ API ของเรา: ingest, retrieve, list sources, job status, health
 | `docs/FORMATS.md` | แนวทางรับมือไฟล์แต่ละประเภท |
 | `docs/DATA_FINDINGS.md` | ปัญหาภาษาไทยที่เจอจริงในไฟล์ทดสอบ พร้อมตัวอย่าง |
 
-`docs/` ถูก gitignore ไว้ — มีบนเครื่องผู้ที่ทำงานหลัก แต่ไม่อยู่ใน repo ถ้าไม่มีโฟลเดอร์นี้ ให้ยึดกฎใน CLAUDE.md เป็นหลัก task spec จะส่งมาทาง prompt
+`docs/` อยู่ใน repo (ยกเว้น `docs/tasks/`) — `docs/PLAN.md` มี tracker เรื่องค้าง อ่านก่อนเริ่มงาน · task spec ส่งมาทาง prompt
 
 **ช่วงนี้คือ ingestion-first** — ทำ ingestion ให้เกือบสมบูรณ์ก่อน แล้วค่อยไป retrieval / ACL / integration
 

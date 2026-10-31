@@ -2,6 +2,6 @@
 __pycache__/
 .env
 data/
-docs/
+docs/tasks/
 eval/datasets/files/*
 !eval/datasets/files/.gitkeep
