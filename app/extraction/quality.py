@@ -6,13 +6,18 @@
 (ระบบตอบจากข้อความพัง) ส่งหน้าดีไป OCR เกินแค่เสียค่าใช้จ่าย
 
 ราย unit (``evaluate_unit``) เรียงตามลำดับ
-  b. ตัวอักษรไทย < MIN_THAI_CHARS (รวมข้อความว่าง) และ image_coverage >= SCAN_IMAGE_COVERAGE
+  b. ตัวอักษร (ไทย+ละติน = gate:letters) < MIN_LETTERS (รวมข้อความว่าง) และ image_coverage >= SCAN_IMAGE_COVERAGE
                                                   -> needs_ocr + scan_like (ไม่มี image_coverage = ข้าม)
      (อยู่ก่อนกฎ a: PDF สแกนไม่มีชั้นข้อความจะได้ข้อความว่างทุกหน้า ต้องไม่หลุดเป็น ok+empty)
   a. text ว่าง (ไม่มีภาพใหญ่)                     -> ok + empty ตามกติกาเดิม
   c. broken_events >= BROKEN_EVENTS_THRESHOLD     -> needs_ocr + flag ตามชนิดที่พบ
-  d. ตัวอักษรไทย < MIN_THAI_CHARS                 -> ok + low_text
+  d. letters < MIN_LETTERS                        -> ok + low_text
   e. นอกนั้น                                      -> ok
+สไลด์ (type=slide) ใช้เกณฑ์ของตัวเองแทนกฎ b: image_coverage >= SLIDE_IMAGE_COVERAGE (0.25 เพราะแผนภาพกินพื้นที่
+25–45% ได้ตามปกติ) และ letters < SLIDE_MIN_LETTERS -> needs_ocr + scan_like; letters >= SLIDE_MIN_LETTERS -> ok +
+image_content (ข้อความถูกแต่ไม่ครบ เนื้อหาหลักอยู่ในรูป ค้นด้วยหัวเรื่องได้ทันที OCR รูปทีหลัง) ถัดจากนั้นใช้กฎ a, c, d, e
+นับ letters ไม่ใช่นับอักษรไทยอย่างเดียว เพราะหน้า/สไลด์ภาษาอังกฤษไม่ควรถูกตัดสินว่าข้อความน้อย; กฎนับจุดพัง
+และกฎระดับไฟล์ยังใช้อักษรไทยเหมือนเดิม
 
 ``broken_events`` = norm_sig:fffd_remaining + invalid_mark_sequence + conflicting_tone_marks
 + dangling_mark + จำนวนกลุ่มอักษรละตินที่ติดกับอักษรไทยโดยตรง + จำนวนอักขระในท่อน mojibake (นับจาก ``Unit.text``)
@@ -33,11 +38,15 @@ import re
 from functools import lru_cache
 from typing import Optional
 
-from app.models import QualityFlag, Unit, UnitStatus
+from app.models import QualityFlag, Unit, UnitStatus, UnitType
 
 # ค่าที่ปรับได้ที่เดียว
-MIN_THAI_CHARS = 100
+MIN_THAI_CHARS = 100  # ใช้กับกฎระดับไฟล์ (unit ที่มีอักษรไทยพอ) และ dictionary_ratio
+MIN_LETTERS = 100  # "ข้อความน้อย" (low_text) / หน้าภาพ: นับอักษรไทย + ละติน (gate:letters)
 SCAN_IMAGE_COVERAGE = 0.5
+# สไลด์: แผนภาพกินพื้นที่ 25–45% ได้ตามปกติ จึงใช้เกณฑ์ต่ำกว่า PDF
+SLIDE_IMAGE_COVERAGE = 0.25
+SLIDE_MIN_LETTERS = 20  # ต่ำกว่านี้ + ภาพใหญ่ = ไม่มีข้อความจริง -> OCR; เท่ากับหรือมากกว่า = image_content
 BROKEN_EVENTS_THRESHOLD = 3
 DOCUMENT_BROKEN_SHARE = 0.5  # เกินสัดส่วนนี้ (มากกว่า ไม่รวมพอดี) ถือว่าฟอนต์ทั้งไฟล์พัง
 MIN_DICT_WORD_LEN = 2
@@ -45,6 +54,7 @@ MIN_DICT_WORD_LEN = 2
 _THAI = "ก-๛"
 _LATIN = "A-Za-zÀ-ÖØ-öø-ɏ"  # ไม่รวม × (D7) และ ÷ (F7)
 _THAI_CHAR = re.compile(f"[{_THAI}]")
+_LETTER = re.compile(f"[{_THAI}A-Za-zÀ-ÖØ-öø-ɏ]")
 # กลุ่มอักษรละตินที่ติดอักษรไทยทางใดทางหนึ่งโดยตรง
 _LATIN_IN_THAI = re.compile(f"(?<=[{_THAI}])[{_LATIN}]+|[{_LATIN}]+(?=[{_THAI}])")
 _MOJIBAKE_CHARS = "\u00a1-\u00ff\u0152\u0153\u0160\u0161\u0178\u0192\u02c6\u02dc\u2020\u2021\u2030\u2039\u203a\u20ac\u2122"
@@ -53,12 +63,18 @@ MOJIBAKE_REASON = "ข้อความเข้ารหัสเพี้ย�
 
 K_BROKEN = "gate:broken_events"
 K_THAI = "gate:thai_chars"
+K_LETTERS = "gate:letters"
 K_LATIN = "gate:latin_in_thai"
 K_MOJIBAKE = "gate:mojibake"
 
 
 def thai_char_count(text: str) -> int:
     return len(_THAI_CHAR.findall(text))
+
+
+def letters_count(text: str) -> int:
+    """อักษรไทย + ละติน (รวมเครื่องหมายวรรณยุกต์/สระของไทย ไม่รวมตัวเลข เครื่องหมาย ช่องว่าง)"""
+    return len(_LETTER.findall(text))
 
 
 def mojibake_count(text: str) -> int:
@@ -112,9 +128,11 @@ def evaluate_unit(unit: Unit) -> Unit:
     if unit.status != UnitStatus.OK:
         return unit
     thai = thai_char_count(unit.text)
+    letters = letters_count(unit.text)
     latin = latin_in_thai_count(unit.text)
     signals = dict(unit.signals)
     signals[K_THAI] = float(thai)
+    signals[K_LETTERS] = float(letters)
     signals[K_LATIN] = float(latin)
     signals[K_MOJIBAKE] = float(mojibake_count(unit.text))
     b = _breakdown(signals)
@@ -126,10 +144,18 @@ def evaluate_unit(unit: Unit) -> Unit:
                         dictionary_ratio=unit.quality.dictionary_ratio)
 
     coverage = unit.signals.get("image_coverage")
-    if thai < MIN_THAI_CHARS and coverage is not None and coverage >= SCAN_IMAGE_COVERAGE:  # b
+    is_slide = unit.type == UnitType.SLIDE
+    if is_slide:
+        big_image = coverage is not None and coverage >= SLIDE_IMAGE_COVERAGE
+        scan_like = big_image and letters < SLIDE_MIN_LETTERS
+    else:
+        big_image = coverage is not None and coverage >= SCAN_IMAGE_COVERAGE
+        scan_like = big_image and letters < MIN_LETTERS
+    if scan_like:  # b
         return done(
             UnitStatus.NEEDS_OCR,
-            f"หน้าเป็นภาพ (ภาพใหญ่สุดครอบ {coverage:.0%} ของหน้า) มีอักษรไทยเพียง {thai} ตัว — ต้อง OCR",
+            f"{'สไลด์' if is_slide else 'หน้า'}เป็นภาพ (ภาพใหญ่สุดครอบ {coverage:.0%} ของ{'สไลด์' if is_slide else 'หน้า'}) "
+            f"มีตัวอักษรเพียง {letters} ตัว — ต้อง OCR",
             [QualityFlag.SCAN_LIKE],
         )
     if not unit.text.strip():  # a: กติกา empty เดิม
@@ -143,7 +169,9 @@ def evaluate_unit(unit: Unit) -> Unit:
         if b["latin"] or b["mojibake"]:
             flags.append(QualityFlag.LATIN_IN_THAI)
         return done(UnitStatus.NEEDS_OCR, _broken_reason(broken, b), flags)
-    if thai < MIN_THAI_CHARS:  # d
+    if is_slide and big_image:  # สไลด์: มีข้อความ (หัวเรื่อง ฯลฯ) แต่เนื้อหาหลักอยู่ในรูป ค้นด้วยข้อความได้ OCR รูปเพิ่มทีหลัง
+        return done(UnitStatus.OK, None, [QualityFlag.IMAGE_CONTENT])
+    if letters < MIN_LETTERS:  # d
         return done(UnitStatus.OK, None, [QualityFlag.LOW_TEXT])
     return done(UnitStatus.OK, None, [])  # e
 
@@ -214,6 +242,7 @@ def dictionary_ratio(text: str) -> Optional[float]:
 GATE_KEYS = (
     "ok",
     "ok:low_text",
+    "ok:image_content",
     "ok:empty",
     "needs_ocr:scan_like",
     "needs_ocr:broken",
@@ -227,6 +256,8 @@ def gate_key(unit: Unit) -> str:
     if unit.status == UnitStatus.OK:
         if QualityFlag.EMPTY in flags:
             return "ok:empty"
+        if QualityFlag.IMAGE_CONTENT in flags:
+            return "ok:image_content"
         return "ok:low_text" if QualityFlag.LOW_TEXT in flags else "ok"
     if unit.status == UnitStatus.NEEDS_OCR:
         if QualityFlag.DOCUMENT_FONT_BROKEN in flags:

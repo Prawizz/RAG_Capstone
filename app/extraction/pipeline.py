@@ -13,6 +13,7 @@ from app.extraction.detect import detect
 from app.extraction.errors import ExtractionError
 from app.extraction.docx import extract_docx
 from app.extraction.pdf import extract_pdf
+from app.extraction.pptx import extract_pptx
 from app.extraction.quality import apply_gate
 from app.models import DetectedType, Document, DocumentError, ErrorCode
 from app.thai.normalizer import NORMALIZER_VERSION
@@ -56,6 +57,9 @@ def extract_file(
         elif detected == DetectedType.DOCX:
             result = extract_docx(path)  # pages ใช้กับ PDF เท่านั้น
             page_equivalent = result.page_equivalent
+        elif detected == DetectedType.PPTX:
+            result = extract_pptx(path)
+            page_equivalent = result.slide_count
         else:
             raise ExtractionError(ErrorCode.UNSUPPORTED_TYPE, "ยังไม่รองรับใน v1")
     except ExtractionError as e:

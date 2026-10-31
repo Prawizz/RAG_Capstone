@@ -77,3 +77,33 @@ def test_gate_kbank_almost_all_needs_ocr(gated):
     units = gated["ONEREPORTKBANKT.PDF"].units
     share = sum(u.status.value == "needs_ocr" for u in units) / len(units)
     assert share >= 0.9
+
+
+# ---------- ล็อกผลด่านตรวจ PDF (หลังเปลี่ยนเป็นนับ letters: CPALL 241 / PTT 1, 460, 461 ไม่ใช่ low_text, PTT 462 ไม่ใช่ scan_like) ----------
+
+LOCKED_GATE = {
+    "E_ONE_REPORT_CPALLT.PDF": {"ok": 368, "ok:low_text": 22, "needs_ocr:scan_like": 156},
+    "ONEREPORTKBANKT.PDF": {"needs_ocr:broken": 171, "needs_ocr:document_font_broken": 9},
+    "ONEREPORTPTTT.PDF": {"ok": 458, "ok:low_text": 2, "needs_ocr:scan_like": 2, "needs_ocr:broken": 2},
+}
+
+
+@pytest.mark.parametrize("name", ONE_REPORTS)
+def test_pdf_gate_results_are_locked(gated, name):
+    from collections import Counter
+
+    from app.extraction.quality import gate_key
+
+    assert dict(Counter(gate_key(u) for u in gated[name].units)) == LOCKED_GATE[name]
+
+
+def test_pdf_gate_matches_human_labels(gated):
+    import json
+
+    path = DATASETS / "ocr_pages.jsonl"
+    rows = [json.loads(line) for line in path.read_text(encoding="utf-8").split("\n") if line.strip()]
+    rows = [r for r in rows if r.get("label") in ("ok", "broken")]
+    assert len(rows) == 36
+    for r in rows:
+        status = gated[r["file"]].units[r["page"] - 1].status.value
+        assert (status == "needs_ocr") == (r["label"] == "broken"), (r["file"], r["page"], r["label"], status)

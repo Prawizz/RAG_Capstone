@@ -22,7 +22,8 @@ chunking / citation / eval อ่านต่อจาก contract นี้
   และผลนับของ normalizer แบบแบน (ไม่ซ้อน dict) เฉพาะที่ค่าไม่ใช่ 0:
   ``norm_fix:<rule>`` = จำนวนที่แก้รายกฎ, ``norm_sig:<signal>`` = สิ่งที่เห็นแต่ไม่แก้
   (ชื่อ rule/signal ดู ``app/thai/normalizer.py``); ``QualityReport.normalization_changes`` = ผลรวมของ norm_fix ทั้งหมด
-  ด่านตรวจเพิ่ม ``gate:thai_chars``, ``gate:latin_in_thai``, ``gate:mojibake``, ``gate:broken_events`` ให้ unit ที่ status = ok ตอนเข้าด่าน
+  PPTX (หนึ่งสไลด์ต่อ unit) ใส่ ``image_coverage`` (รูปใหญ่สุด ÷ สไลด์), ``pptx:picture_count``, ``pptx:hidden``
+  (สไลด์ซ่อน), ``pptx:chart_unreadable``; ด่านตรวจเพิ่ม ``gate:letters`` (อักษรไทย+ละติน), ``gate:thai_chars``, ``gate:latin_in_thai``, ``gate:mojibake``, ``gate:broken_events`` ให้ unit ที่ status = ok ตอนเข้าด่าน
 - Unit ที่ status = ok แต่ text ว่าง (หลัง strip) ต้องมี flag ``empty`` ใน quality
 - ``Document.detected_type`` เป็น None ได้ก็ต่อเมื่อมี ``error`` (validator บังคับ)
 - ``Document.error`` ถ้าไม่ใช่ None ``status`` จะเป็น failed เสมอ
@@ -80,6 +81,7 @@ class QualityFlag(str, Enum):
     SCAN_LIKE = "scan_like"
     EMPTY = "empty"
     LOW_TEXT = "low_text"  # อักษรไทยน้อยกว่าเกณฑ์แต่ไม่มีภาพใหญ่ (หน้าคั่นบท ตารางตัวเลข) ยังใช้ได้
+    IMAGE_CONTENT = "image_content"  # สไลด์ที่เนื้อหาหลักอยู่ในรูป (มีข้อความบางส่วน ค้นได้ แต่ไม่ครบ)
     DOCUMENT_FONT_BROKEN = "document_font_broken"  # ฟอนต์พังทั้งไฟล์ หน้าที่ดูสะอาดก็ไม่ไว้ใจ
 
 

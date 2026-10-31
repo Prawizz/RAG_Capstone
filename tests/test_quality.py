@@ -44,7 +44,7 @@ def thai_text(n: int) -> str:
 
 
 def make_unit(text="", *, coverage=None, fffd=0, marks=0, tone=0, dangling=0, status=UnitStatus.OK,
-              flags=None, page=1) -> Unit:
+              flags=None, page=1, slide=False) -> Unit:
     signals = {"char_count": float(len(text.strip())), "block_count": 1.0}
     if coverage is not None:
         signals["image_coverage"] = coverage
@@ -54,8 +54,8 @@ def make_unit(text="", *, coverage=None, fffd=0, marks=0, tone=0, dangling=0, st
             signals[f"norm_sig:{name}"] = float(n)
     return Unit(
         index=page - 1,
-        type=UnitType.PAGE,
-        position={"page": page},
+        type=UnitType.SLIDE if slide else UnitType.PAGE,
+        position={"slide": page} if slide else {"page": page},
         label=f"หน้า {page}",
         status=status,
         reason=None if status == UnitStatus.OK else "x",
@@ -282,3 +282,89 @@ def test_mojibake_counts_into_broken_events_flag_and_reason():
 def test_mojibake_touching_thai_is_not_double_counted_as_latin_in_thai():
     u = evaluate_unit(make_unit(thai_text(150) + "กข¢ŒÒ¾ค"))
     assert u.signals["gate:mojibake"] == 4 and u.signals["gate:latin_in_thai"] == 0
+
+
+# ---------- นับ letters (ไทย + ละติน) ----------
+
+from app.extraction.quality import letters_count  # noqa: E402
+
+
+def en_text(n: int) -> str:
+    """ข้อความอังกฤษที่มีตัวอักษรละตินพอดี n ตัว"""
+    cut, count = [], 0
+    while count < n:
+        for ch in "multithreaded programs share memory ":
+            if ch.isalpha():
+                if count == n:
+                    break
+                count += 1
+            cut.append(ch)
+    return "".join(cut).rstrip()
+
+
+def test_letters_count_thai_plus_latin_not_digits_or_punctuation():
+    assert letters_count("ก ข abc 123 !?") == 5
+    assert letters_count(en_text(37)) == 37
+
+
+def test_signals_include_letters():
+    u = evaluate_unit(make_unit(thai_text(60) + " " + en_text(50)))
+    assert u.signals["gate:letters"] == 110 and u.signals["gate:thai_chars"] == 60
+
+
+def test_english_page_with_enough_letters_is_not_low_text():
+    u = evaluate_unit(make_unit(en_text(100)))
+    assert u.status == UnitStatus.OK and not u.quality.flags
+    u = evaluate_unit(make_unit(en_text(99)))
+    assert [f.value for f in u.quality.flags] == ["low_text"]
+
+
+def test_mixed_page_counts_both_scripts_for_low_text():
+    assert not evaluate_unit(make_unit(thai_text(46) + " " + en_text(57))).quality.flags  # 103 letters (CPALL หน้า 241)
+
+
+def test_pdf_english_text_page_with_background_image_is_not_scan_like():
+    u = evaluate_unit(make_unit(en_text(2000), coverage=1.0))  # PTT หน้า 462
+    assert u.status == UnitStatus.OK and not u.quality.flags
+    u = evaluate_unit(make_unit(en_text(99), coverage=0.5))
+    assert u.status == UnitStatus.NEEDS_OCR and "scan_like" in {f.value for f in u.quality.flags}
+    assert "มีตัวอักษรเพียง 99 ตัว" in u.reason
+
+
+def test_document_rule_still_counts_thai_only():
+    # หน้าอังกฤษล้วนไม่นับเป็น "unit ที่มีอักษรไทยพอ" ของกฎระดับไฟล์ แม้ letters เกิน 100
+    units = [make_unit(en_text(300), page=i + 1) for i in range(3)] + [make_unit(thai_text(150), fffd=5, page=9)]
+    out = apply_gate(units)
+    assert [u.status for u in out[:3]] == [UnitStatus.OK] * 3  # ไม่ถูกลากไปกับกฎระดับไฟล์
+
+
+# ---------- เกณฑ์สไลด์ ----------
+
+@pytest.mark.parametrize("letters,coverage,expected_status,expected_flags", [
+    (19, 0.25, "needs_ocr", {"scan_like"}),
+    (0, 0.77, "needs_ocr", {"scan_like", "empty"}),
+    (20, 0.25, "ok", {"image_content"}),
+    (500, 0.25, "ok", {"image_content"}),
+    (19, 0.24, "ok", {"low_text"}),
+    (20, 0.0, "ok", {"low_text"}),
+    (100, 0.24, "ok", set()),
+])
+def test_slide_thresholds(letters, coverage, expected_status, expected_flags):
+    text = en_text(letters) if letters else ""
+    u = evaluate_unit(make_unit(text, coverage=coverage, slide=True))
+    assert u.status.value == expected_status and {f.value for f in u.quality.flags} == expected_flags
+
+
+def test_slide_image_threshold_is_lower_than_pdf():
+    text = en_text(50)
+    assert evaluate_unit(make_unit(text, coverage=0.3, slide=True)).quality.flags == [QualityFlag.IMAGE_CONTENT]
+    assert [f.value for f in evaluate_unit(make_unit(text, coverage=0.3)).quality.flags] == ["low_text"]  # PDF 0.5
+
+
+def test_slide_broken_text_still_goes_to_ocr_before_image_content():
+    u = evaluate_unit(make_unit(thai_text(150), coverage=0.3, fffd=4, slide=True))
+    assert u.status == UnitStatus.NEEDS_OCR and "replacement_char" in {f.value for f in u.quality.flags}
+
+
+def test_gate_key_image_content():
+    assert gate_key(evaluate_unit(make_unit(en_text(30), coverage=0.5, slide=True))) == "ok:image_content"

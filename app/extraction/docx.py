@@ -59,7 +59,7 @@ from app.models import (
     UnitStatus,
     UnitType,
 )
-from app.thai.normalizer import normalize_with_report
+from app.extraction.tally import Tally as _Tally
 
 MAX_UNIT_CHARS = 4000
 MAX_HEADING_CHARS = 80
@@ -329,24 +329,6 @@ class _Para:
     style_id: Optional[str] = None
     num: Optional[tuple[int, int]] = None  # (numId, ilvl) ที่ใช้จริง
     has_numpr: bool = False
-
-
-class _Tally:
-    """ผลนับของ normalizer ที่สะสมราย element -> รวมเป็นราย unit"""
-
-    def __init__(self):
-        self.fixes: Counter = Counter()
-        self.signals: Counter = Counter()
-
-    def add(self, other: "_Tally") -> None:
-        self.fixes.update(other.fixes)
-        self.signals.update(other.signals)
-
-    def norm(self, text: str) -> str:
-        res = normalize_with_report(text)
-        self.fixes.update({k: v for k, v in res.fixes.items() if v})
-        self.signals.update({k: v for k, v in res.signals.items() if v})
-        return res.text
 
 
 class _Reader:
