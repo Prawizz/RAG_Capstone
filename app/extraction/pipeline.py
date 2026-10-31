@@ -9,6 +9,7 @@ import uuid
 from pathlib import Path
 from typing import Optional
 
+from app.extraction.convert import TARGETS, converted, legacy_page_count
 from app.extraction.detect import detect
 from app.extraction.errors import ExtractionError
 from app.extraction.docx import extract_docx
@@ -16,7 +17,7 @@ from app.extraction.pdf import extract_pdf
 from app.extraction.pptx import extract_pptx
 from app.extraction.quality import apply_gate
 from app.extraction.xlsx import extract_xlsx
-from app.models import DetectedType, Document, DocumentError, ErrorCode
+from app.models import DetectedType, Document, DocumentError, ErrorCode, ExtractionMethod
 from app.thai.normalizer import NORMALIZER_VERSION
 
 PIPELINE_VERSION = "t02-0.1"
@@ -31,6 +32,23 @@ def _hash_file(path: Path) -> tuple[str, int]:
             h.update(chunk)
             size += len(chunk)
     return h.hexdigest(), size
+
+
+def _extract(path: Path, detected: DetectedType, pages):
+    """คืน (ผลของ extractor, page_equivalent); ``pages`` ใช้กับ PDF เท่านั้น"""
+    if detected == DetectedType.PDF:
+        result = extract_pdf(path, pages=pages)
+        return result, result.page_count
+    if detected == DetectedType.DOCX:
+        result = extract_docx(path)
+        return result, result.page_equivalent
+    if detected == DetectedType.PPTX:
+        result = extract_pptx(path)
+        return result, result.slide_count
+    if detected == DetectedType.XLSX:
+        result = extract_xlsx(path)
+        return result, result.page_equivalent  # ชั่วคราวตาม T01: 1 ต่อ sheet_region
+    raise ExtractionError(ErrorCode.UNSUPPORTED_TYPE, "ยังไม่รองรับใน v1")
 
 
 def extract_file(
@@ -50,34 +68,31 @@ def extract_file(
         normalizer_version=NORMALIZER_VERSION,
     )
     detected: Optional[DetectedType] = None
+    converted_from: Optional[str] = None
     try:
         detected = detect(path)
-        if detected == DetectedType.PDF:
-            result = extract_pdf(path, pages=pages)
-            page_equivalent = result.page_count
-        elif detected == DetectedType.DOCX:
-            result = extract_docx(path)  # pages ใช้กับ PDF เท่านั้น
-            page_equivalent = result.page_equivalent
-        elif detected == DetectedType.PPTX:
-            result = extract_pptx(path)
-            page_equivalent = result.slide_count
-        elif detected == DetectedType.XLSX:
-            result = extract_xlsx(path)
-            page_equivalent = result.page_equivalent  # ชั่วคราวตาม T01: 1 ต่อ sheet_region
+        if detected in TARGETS:  # doc / xls / ppt: แปลงด้วย LibreOffice แล้วใช้ extractor ของชนิดสมัยใหม่
+            converted_from = detected.value
+            with converted(path, detected) as new_path:
+                result, page_equivalent = _extract(new_path, TARGETS[detected][2], pages)
+            for u in result.units:
+                u.method = ExtractionMethod.CONVERTED
+            page_equivalent = legacy_page_count(path, detected) or page_equivalent  # .doc: หน้าที่ Word บันทึกไว้
         else:
-            raise ExtractionError(ErrorCode.UNSUPPORTED_TYPE, "ยังไม่รองรับใน v1")
+            result, page_equivalent = _extract(path, detected, pages)
         if not result.units:
             raise ExtractionError(ErrorCode.EMPTY, "ไฟล์ไม่มีเนื้อหาที่อ่านได้")
     except ExtractionError as e:
         error = DocumentError(code=e.code, message=e.message)
-        return Document(**fields, detected_type=detected, error=error)
+        return Document(**fields, detected_type=detected, converted_from=converted_from, error=error)
     except Exception as e:  # ไม่ให้ bug ใน extractor ทำให้ทั้ง batch ล้ม
         error = DocumentError(code=ErrorCode.INTERNAL, message=f"{type(e).__name__}: {e}")
-        return Document(**fields, detected_type=detected, error=error)
+        return Document(**fields, detected_type=detected, converted_from=converted_from, error=error)
 
     return Document(
         **fields,
         detected_type=detected,
+        converted_from=converted_from,
         units=apply_gate(result.units),
         has_outline=result.has_outline,
         producer=result.producer,

@@ -26,7 +26,8 @@ lowerLetter/upperLetter/lowerRoman/upperRoman (bullet = ไม่ใส่เล
 หัวข้อหลังจากนั้นเลื่อนลงอีก 1 ระดับ; ``docx:heading_by_numbering`` = ตัดสินจากเลข/บทที่, ``docx:heading_by_format`` = จากขนาดล้วน
 
 การแบ่ง unit: หัวข้อหนึ่ง + เนื้อหาจนถึงหัวข้อถัดไป (ระดับใดก็ได้); หัวข้อที่ไม่มีเนื้อหาไม่สร้าง unit แต่อยู่ใน heading_path
-ของลูก; เนื้อหาก่อนหัวข้อแรก = "ส่วนต้นเอกสาร"; เกิน ``MAX_UNIT_CHARS`` แบ่งที่ขอบย่อหน้า/ตาราง (ย่อหน้าเดียวยาวเกินไม่ตัดกลาง)
+ของลูก; เนื้อหาก่อนหัวข้อแรก = "ส่วนต้นเอกสาร"; เกิน ``MAX_UNIT_CHARS`` แบ่งที่ขอบย่อหน้า/ตาราง (ย่อหน้าเดียวยาวเกินไม่ตัดกลาง; ตารางที่ยาวเกินแบ่งตามขอบแถว
+ส่วนที่ 2 เป็นต้นไปใส่แถวหัวตารางซ้ำ)
 ทุกส่วนขึ้นต้นด้วยบรรทัดหัวข้อ; label = heading_path ต่อด้วย " › " + " (ส่วน k/n)" ถ้าแบ่ง, label ซ้ำต่อท้าย " (ช่วงที่ k)"
 
 Block: heading(level) / paragraph / list (ย่อหน้ามี numPr ที่ไม่ใช่หัวข้อ) / table (``Block.table``; ข้อความ = แถวละบรรทัด
@@ -460,6 +461,7 @@ class _Item:
     kind: str  # empty | heading | para | list | table
     text: str = ""  # ข้อความหลัง normalize รวมเลขอัตโนมัติ (ตาราง = text ของตาราง)
     blocks: list[Block] = field(default_factory=list)  # block ของเนื้อหา (ไม่รวมหัวข้อ); order ใส่ตอนประกอบ unit
+    before: list[Block] = field(default_factory=list)  # block ที่ต้องอยู่หน้า item นี้เสมอ (บรรทัดบริบทของตารางที่ถูกแบ่ง)
     blocks_extra: list[Block] = field(default_factory=list)  # ย่อหน้าจากกล่องข้อความ ต่อหลังย่อหน้านี้
     footnotes: list[str] = field(default_factory=list)
     images: int = 0
@@ -833,8 +835,78 @@ def _orphan_item(h: _Item) -> _Item:
                  font_size=h.font_size, bold=h.bold)
 
 
+def _row_line(row: list[str]) -> str:
+    return " | ".join(c for c in row if c)
+
+
+def _first_row_context(table: Table) -> str:
+    """"[แถวแรกของตาราง: ก | ข | ...]" แถวแรกที่ผสานแนวตั้งลงไปแถวถัดไป -> รวมแถวที่ผสานถึง (ข้อความของแต่ละคอลัมน์ต่อกัน)"""
+    rows = table.rows
+    end = max([m.row + m.rowspan - 1 for m in table.merged_cells if m.row == 0] + [0])
+    end = min(end, len(rows) - 1)
+    cells = [" ".join(p for p in (rows[r][c] for r in range(end + 1) if c < len(rows[r])) if p) for c in range(len(rows[0]))]
+    text = " | ".join(c for c in cells if c)
+    return f"[แถวแรกของตาราง: {text}]" if text else ""
+
+
+def _split_table_item(it: _Item, limit: int) -> list[_Item]:
+    """ตารางที่ยาวเกิน ``limit`` -> แบ่งตามขอบแถว ส่วนที่ 2 เป็นต้นไปใส่แถวหัวตาราง (``header_rows``) ซ้ำ
+    แถวเดียวที่ยาวเกินยังไม่ตัดกลาง; ผลนับ normalizer / รูป / เชิงอรรถอยู่ที่ส่วนแรกส่วนเดียว"""
+    table: Table = it.blocks[0].table
+    rows = table.rows
+    hr = table.header_rows
+    header = rows[:hr]
+    if hr >= len(rows) or sum(len(_row_line(r)) + 1 for r in header) > limit // 2:
+        hr, header = 0, []
+    header_len = sum(len(_row_line(r)) + 1 for r in header if _row_line(r))
+    first_row_ctx = ""
+    if not header:  # ไม่มีธง tblHeader: ไม่เดาว่าแถวแรกเป็นหัว แต่ส่วนหลังขึ้นต้นด้วยแถวแรกเป็นบริบท
+        first_row_ctx = _first_row_context(table)
+        header_len = len(first_row_ctx) + 1 if first_row_ctx else 0
+    groups: list[tuple[int, int]] = []  # [เริ่ม, จบ) ของแถวในตารางเดิม
+    start, size = 0, 0
+    for i, row in enumerate(rows):
+        line = _row_line(row)
+        n = len(line) + 1 if line else 0
+        base = 0 if not groups and start == 0 else header_len
+        if i > start and base + size + n > limit:
+            groups.append((start, i))
+            start, size = i, 0
+        size += n
+    groups.append((start, len(rows)))
+    out: list[_Item] = []
+    for k, (a, b) in enumerate(groups):
+        pre = list(range(hr)) if (k > 0 and hr) else []
+        take = pre + list(range(a, b))
+        new_rows = [rows[i] for i in take]
+        pos = {orig: new for new, orig in enumerate(take)}
+        merged = []
+        for m in table.merged_cells:
+            if m.row in pos:
+                last = max((pos[r] for r in range(m.row, m.row + m.rowspan) if r in pos), default=pos[m.row])
+                merged.append(m.model_copy(update={"row": pos[m.row], "rowspan": last - pos[m.row] + 1}))
+        text = chr(10).join(line for line in (_row_line(r) for r in new_rows) if line)
+        block = it.blocks[0].model_copy(update={
+            "text": text, "table": Table(rows=new_rows, header_rows=hr, merged_cells=merged)})
+        before = []
+        if k > 0 and first_row_ctx:
+            before = [Block(type=BlockType.PARAGRAPH, text=first_row_ctx, order=0)]
+        out.append(_Item(
+            index=it.index, kind="table", text=text, blocks=[block], before=before,
+            footnotes=it.footnotes if k == 0 else [], images=it.images if k == 0 else 0,
+            tally=it.tally if k == 0 else _Tally(),
+        ))
+    return out
+
+
 def _split(heading: Optional[_Item], content: list[_Item]):
     head_len = len(heading.text) + 1 if heading else 0
+    limit = MAX_UNIT_CHARS - head_len
+    content = [
+        part
+        for it in content
+        for part in (_split_table_item(it, limit) if it.kind == "table" and _item_len(it) > limit else [it])
+    ]
     parts: list[list[_Item]] = []
     cur: list[_Item] = []
     cur_len = head_len
@@ -851,7 +923,7 @@ def _split(heading: Optional[_Item], content: list[_Item]):
 
 
 def _item_len(it: _Item) -> int:
-    return len(it.text) + 1 + sum(len(b.text) + 1 for b in it.blocks_extra) + sum(len(f) + 1 for f in it.footnotes)
+    return len(it.text) + 1 + sum(len(b.text) + 1 for b in it.before) + sum(len(b.text) + 1 for b in it.blocks_extra) + sum(len(f) + 1 for f in it.footnotes)
 
 
 def _make_unit(heading: Optional[_Item], path: list[str], part: list[_Item], part_no: int, total: int,
@@ -871,6 +943,8 @@ def _make_unit(heading: Optional[_Item], path: list[str], part: list[_Item], par
             images += heading.images
     footnote_blocks: list[Block] = []
     for it in part:
+        for b in it.before:
+            add(b)
         if it.kind == "table":
             add(it.blocks[0])
         else:

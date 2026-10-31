@@ -503,3 +503,110 @@ def test_childless_sibling_heading_text_is_not_lost(tmp_path):
     body(doc, 1)
     d = extract(save(doc, tmp_path, "b.docx"))
     assert "บทที่ 1 บทนำ" not in d.units[0].text
+
+
+# ---------- ตารางยาวเกิน MAX_UNIT_CHARS ----------
+
+def long_table_doc(tmp_path, rows=60, header=True, cell_len=60, name="t.docx"):
+    from docx.oxml import OxmlElement
+    from docx.oxml.ns import qn
+
+    d = WordDocument()
+    d.add_heading("บัญชีโครงการ", level=1)
+    t = d.add_table(rows=rows, cols=3)
+    for i, row in enumerate(t.rows):
+        row.cells[0].text = "ลำดับ" if i == 0 else str(i)
+        row.cells[1].text = "รายการ" if i == 0 else f"โครงการที่ {i} " + "ก" * cell_len
+        row.cells[2].text = "งบ" if i == 0 else str(i * 1000)
+    if header:
+        pr = t.rows[0]._tr.get_or_add_trPr()
+        pr.append(OxmlElement("w:tblHeader"))
+    f = tmp_path / name
+    d.save(str(f))
+    return f
+
+
+def table_blocks(doc):
+    return [b for u in doc.units for b in u.blocks if b.type == BlockType.TABLE]
+
+
+def test_long_table_split_at_row_boundaries_with_repeated_header(tmp_path):
+    d = extract_file(long_table_doc(tmp_path))
+    assert d.error is None
+    assert len(d.units) > 1 and all(len(u.text) <= MAX_UNIT_CHARS for u in d.units)
+    parts = table_blocks(d)
+    assert len(parts) == len(d.units) > 1
+    for p in parts:
+        assert p.table.header_rows == 1 and p.table.rows[0] == ["ลำดับ", "รายการ", "งบ"]
+        assert p.text.split("\n")[0] == "ลำดับ | รายการ | งบ"
+    body = [r[0] for p in parts for r in p.table.rows[1:]]
+    assert body == [str(i) for i in range(1, 60)]  # ทุกแถวข้อมูลปรากฏครั้งเดียว ตามลำดับ
+    assert [u.label for u in d.units][1].endswith("(ส่วน 2/%d)" % len(d.units))
+
+
+def test_long_table_without_header_flag_is_split_without_repeat(tmp_path):
+    d = extract_file(long_table_doc(tmp_path, header=False))
+    parts = table_blocks(d)
+    assert len(parts) > 1 and all(p.table.header_rows == 0 for p in parts)
+    assert [r[0] for p in parts for r in p.table.rows] == ["ลำดับ"] + [str(i) for i in range(1, 60)]
+
+
+def test_one_overlong_row_is_not_cut(tmp_path):
+    d = extract_file(long_table_doc(tmp_path, rows=3, cell_len=MAX_UNIT_CHARS + 500))
+    assert max(len(u.text) for u in d.units) > MAX_UNIT_CHARS
+    texts = [r[1] for p in table_blocks(d) for r in p.table.rows[1:]]
+    assert texts == ["โครงการที่ 1 " + "ก" * (MAX_UNIT_CHARS + 500), "โครงการที่ 2 " + "ก" * (MAX_UNIT_CHARS + 500)]
+
+
+def test_short_table_is_untouched(tmp_path):
+    d = extract_file(long_table_doc(tmp_path, rows=5))
+    assert len(d.units) == 1 and len(table_blocks(d)) == 1
+
+
+def ctx_lines(doc):
+    return [b.text for u in doc.units for b in u.blocks if b.text.startswith("[แถวแรกของตาราง")]
+
+
+def test_split_table_without_flag_gets_first_row_context_in_later_parts(tmp_path):
+    d = extract_file(long_table_doc(tmp_path, header=False))
+    n = len(d.units)
+    assert n > 1
+    assert ctx_lines(d) == ["[แถวแรกของตาราง: ลำดับ | รายการ | งบ]"] * (n - 1)
+    assert not any(b.text.startswith("[แถวแรก") for b in d.units[0].blocks)  # ส่วนแรกไม่ต้องมี
+    for u in d.units[1:]:
+        kinds = [b.type for b in u.blocks]
+        assert kinds.index(BlockType.PARAGRAPH) < kinds.index(BlockType.TABLE)  # บริบทอยู่หน้าตาราง
+        assert all(p.table.header_rows == 0 for p in table_blocks(d))  # ไม่เดาหัว: header_rows คงตามธง
+    assert all(len(u.text) <= MAX_UNIT_CHARS for u in d.units)
+
+
+def test_split_table_with_flag_repeats_flagged_rows_not_context(tmp_path):
+    d = extract_file(long_table_doc(tmp_path, header=True))
+    assert ctx_lines(d) == []
+    assert all(p.table.rows[0] == ["ลำดับ", "รายการ", "งบ"] and p.table.header_rows == 1 for p in table_blocks(d))
+
+
+def test_first_row_context_includes_rows_merged_down(tmp_path):
+    d = WordDocument()
+    t = d.add_table(rows=80, cols=3)
+    for i, row in enumerate(t.rows):
+        for j, c in enumerate(row.cells):
+            c.text = f"แถว{i}-{j} " + "ก" * 50
+    t.rows[0].cells[0].text = "ยุทธศาสตร์"
+    t.rows[1].cells[0].text = ""
+    t.cell(0, 0).merge(t.cell(1, 0))  # แถวแรกผสานแนวตั้งลงแถวที่สอง
+    t.rows[0].cells[1].text = "งบประมาณ"
+    t.rows[1].cells[1].text = "ปี 2567"
+    t.rows[0].cells[2].text = "หมายเหตุ"
+    t.rows[1].cells[2].text = ""
+    f = tmp_path / "m.docx"
+    d.save(str(f))
+    doc = extract_file(f)
+    assert len(doc.units) > 1
+    first = ctx_lines(doc)[0]
+    assert first.startswith("[แถวแรกของตาราง: ยุทธศาสตร์ | งบประมาณ ปี 2567 | หมายเหตุ")
+    assert "แถว2-" not in first  # ไม่รวมแถวที่ 3 ที่ไม่ได้ผสานถึง
+
+
+def test_unsplit_table_has_no_context(tmp_path):
+    assert ctx_lines(extract_file(long_table_doc(tmp_path, rows=5, header=False))) == []

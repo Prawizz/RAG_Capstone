@@ -556,3 +556,119 @@ def test_corrupt_workbook_is_corrupt_error(tmp_path):
         z.writestr("xl/workbook.xml", "not xml")
     d = extract_file(f)
     assert d.detected_type == DetectedType.XLSX and d.error.code == ErrorCode.CORRUPT
+
+
+# ---------- ชีตที่ใช้ Excel พิมพ์เอกสาร (เลขข้อ | ชื่อช่อง | คำอธิบาย ไม่มีหัวตาราง) ----------
+
+def instruction_sheet(ws):
+    ws["A2"] = "คำชี้แจงการกรอก"
+    ws.merge_cells("A2:C2")
+    put_row(ws, 3, [1, "ลำดับที่", "ลำดับที่ของรายชื่อ"])
+    put_row(ws, 4, [2, "ชื่อหน่วยงาน", "ให้พิมพ์ต้นสังกัด เช่น อบต.พระราม"])
+    put_row(ws, 5, [3, "วันเกิด", "เช่นเกิดวันที่ 30 พฤษภาคม 2510"])
+    ws["C6"] = "ให้พิมพ์ 30/05/2510 เท่านั้น"  # ล้นลงแถวถัดไป
+    ws["C7"] = "ห้ามใช้ปี ค.ศ."  # ล้นต่อ
+    ws["A8"] = "-2-"  # เลขหน้า
+    put_row(ws, 9, [4, "เพศ", "ชาย หญิง"])
+
+
+def test_numbered_first_column_means_no_header(tmp_path):
+    wb = Workbook()
+    instruction_sheet(wb.active)
+    (u,) = extract(save(wb, tmp_path)).units
+    assert lines(u)[0] == "คำชี้แจงการกรอก"
+    assert u.blocks[0].type == BlockType.HEADING
+    assert lines(u)[1] == "A: 1 | B: ลำดับที่ | C: ลำดับที่ของรายชื่อ"
+    assert u.blocks[1].table.rows[0] == ["A", "B", "C"] and u.blocks[1].table.header_rows == 1
+    assert u.signals["xlsx:data_rows"] == 4
+
+
+def test_overflow_text_is_appended_to_previous_cell(tmp_path):
+    wb = Workbook()
+    instruction_sheet(wb.active)
+    (u,) = extract(save(wb, tmp_path)).units
+    assert lines(u)[3] == (
+        "A: 3 | B: วันเกิด | C: เช่นเกิดวันที่ 30 พฤษภาคม 2510 ให้พิมพ์ 30/05/2510 เท่านั้น ห้ามใช้ปี ค.ศ."
+    )
+    assert not any(ln.startswith("หมายเหตุ") for ln in lines(u))
+    assert u.blocks[1].table.rows[3][2].endswith("ห้ามใช้ปี ค.ศ.")  # ค่าใน Block.table ตรงกับข้อความ
+
+
+def test_page_number_is_skipped_and_does_not_break_overflow(tmp_path):
+    wb = Workbook()
+    ws = wb.active
+    put_row(ws, 1, [1, "ก", "ข้อความยาว"])
+    put_row(ws, 2, [2, "ข", "ข้อความสอง"])
+    put_row(ws, 3, [3, "ค", "ข้อความสาม"])
+    ws["A4"] = " - 2 - "
+    ws["C5"] = "ต่อจากหน้าก่อน"  # ล้นข้ามเลขหน้า
+    (u,) = extract(save(wb, tmp_path)).units
+    assert "## -" not in u.text and "- 2 -" not in u.text
+    assert lines(u)[-1] == "A: 3 | B: ค | C: ข้อความสาม ต่อจากหน้าก่อน"
+
+
+def test_page_number_in_headed_table_is_not_a_group_label(tmp_path):
+    wb = Workbook()
+    ws = wb.active
+    simple_sheet(ws, rows=[(1, "ก", 1)])
+    ws["B3"] = "-2-"
+    put_row(ws, 4, [2, "ข", 2])
+    (u,) = extract(save(wb, tmp_path)).units
+    assert not any(ln.startswith("##") for ln in lines(u))
+    assert u.signals["xlsx:data_rows"] == 2
+
+
+def test_year_number_header_is_still_header(tmp_path):
+    wb = Workbook()
+    ws = wb.active
+    put_row(ws, 1, ["ภาค", 2567, 2568, 2569])
+    put_row(ws, 2, ["เหนือ", 1, 2, 3])
+    (u,) = extract(save(wb, tmp_path)).units
+    assert u.blocks[0].table.rows[0] == ["ภาค", "2567", "2568", "2569"]
+    assert lines(u) == ["ภาค: เหนือ | 2567: 1 | 2568: 2 | 2569: 3"]
+
+
+def test_header_with_year_in_first_column_not_consecutive_is_still_header(tmp_path):
+    wb = Workbook()
+    ws = wb.active
+    put_row(ws, 1, [2567, "ยอด", "หมายเหตุ"])
+    put_row(ws, 2, [1, "ก", "x"])
+    put_row(ws, 3, [2, "ข", "y"])
+    (u,) = extract(save(wb, tmp_path)).units
+    assert u.blocks[0].table.rows[0] == ["2567", "ยอด", "หมายเหตุ"]
+    assert u.signals["xlsx:data_rows"] == 2
+
+
+def test_note_under_numeric_cell_stays_a_note(tmp_path):
+    wb = Workbook()
+    ws = wb.active
+    put_row(ws, 1, ["ชื่อสายงาน", "ทั้งหมด", "ปัจจุบัน"])
+    put_row(ws, 2, ["ก", 1, 1])
+    put_row(ws, 3, ["รวม", 157, 136])
+    ws["C4"] = "ข้อมูล ณ วันที่ 14 พ.ค.68"  # ใต้ 136 ซึ่งเป็นตัวเลข
+    (u,) = extract(save(wb, tmp_path)).units
+    assert lines(u)[-1] == "หมายเหตุ: ข้อมูล ณ วันที่ 14 พ.ค.68"
+    assert lines(u)[-2] == "ชื่อสายงาน: รวม | ทั้งหมด: 157 | ปัจจุบัน: 136"
+
+
+def test_group_label_in_text_column_is_not_treated_as_overflow(tmp_path):
+    wb = Workbook()
+    ws = wb.active
+    simple_sheet(ws, rows=[(1, "นักบริหาร", 1)])
+    ws["B3"] = "ลูกจ้างประจำ"  # คอลัมน์ 2 ใต้ข้อความ -> ยังเป็นป้ายกลุ่มเหมือนเดิม
+    put_row(ws, 4, [2, "พนักงานวิทยุ", 1])
+    (u,) = extract(save(wb, tmp_path)).units
+    assert "## ลูกจ้างประจำ" in lines(u)
+    assert lines(u)[0] == "รหัส: 1 | ชื่อ: นักบริหาร | เบอร์ต่อ: 1"
+
+
+def test_note_in_column_3_under_text_cell_is_overflow_but_under_number_is_note(tmp_path):
+    wb = Workbook()
+    ws = wb.active
+    put_row(ws, 1, ["ก", "ข", "ค"])
+    put_row(ws, 2, ["x", "y", "ข้อความ"])
+    ws["C3"] = "ต่อ"
+    put_row(ws, 4, ["x", "y", 100])
+    ws["C5"] = "หมายเหตุจริง"
+    (u,) = extract(save(wb, tmp_path)).units
+    assert lines(u) == ["ก: x | ข: y | ค: ข้อความ ต่อ", "ก: x | ข: y | ค: 100", "หมายเหตุ: หมายเหตุจริง"]

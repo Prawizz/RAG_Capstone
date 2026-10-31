@@ -97,6 +97,7 @@ class _Item:
     text: str = ""
     cells: list = field(default_factory=list)  # kind=data: ค่าต่อคอลัมน์
     ctx: tuple = ()  # ป้าย CONTEXT_LABELS อันล่าสุดก่อน item นี้
+    vals: dict = field(default_factory=dict)  # kind=data: คอลัมน์ -> ค่า (ไว้ต่อข้อความที่ล้นลงแถวถัดไป)
 
 
 def _hash(text: str) -> str:
@@ -260,6 +261,24 @@ def _flat(text: str) -> str:
     return re.sub(r"\s*[\r\n]+\s*", " ", text)
 
 
+_PAGE_NUMBER = re.compile(r"^\s*-\s*\d+\s*-\s*$")
+_NUMERIC = re.compile(r"^[-+]?[\d,]*\.?\d+\s*%?$")
+
+
+def _numbered_from_here(row_vals: dict, rs: list[int], r0: int, col: int) -> bool:
+    """แถว r0 และ 2 แถวถัดไปที่มีค่าในคอลัมน์แรก เป็นจำนวนเต็มเรียงต่อกัน (n, n+1, n+2)"""
+    seq = []
+    for r in rs:
+        if r >= r0 and col in row_vals[r]:
+            v = row_vals[r][col].strip()
+            if not v.isdigit():
+                return False
+            seq.append(int(v))
+            if len(seq) == 3:
+                break
+    return len(seq) == 3 and seq[1] == seq[0] + 1 and seq[2] == seq[0] + 2 and col in row_vals[r0]
+
+
 def _build_items(sheet: _Sheet, filled: dict, rs: list[int], cols: list[int]):
     """คืน (title_rows, items, header_rows, names, header_end_row, repeated)"""
     mincol = cols[0]
@@ -285,6 +304,11 @@ def _build_items(sheet: _Sheet, filled: dict, rs: list[int], cols: list[int]):
     names = {c: get_column_letter(c) for c in cols}
     title: list[str] = []
     header = end = None
+    if h0 is not None and _numbered_from_here(row_vals, rs, h0, cols[0]):
+        # คอลัมน์แรกของแถวนี้กับแถวถัดไปเป็นเลขข้อเรียง 1, 2, 3 -> แถวนี้เป็นข้อมูล ไม่มีหัวตาราง (แถวก่อนหน้าเป็นชื่อเรื่อง)
+        title = [_flat(" ".join(row_vals[r][c] for c in cols if c in row_vals[r])) for r in rs if r < h0]
+        rs = [r for r in rs if r >= h0]
+        h0 = None
     if h0 is not None:
         header = h0
         i = rs.index(h0)
@@ -328,9 +352,21 @@ def _build_items(sheet: _Sheet, filled: dict, rs: list[int], cols: list[int]):
         elif len(vals) == 1:
             (c, v), = vals.items()
             v = _flat(v)
-            if header is None:
+            if _PAGE_NUMBER.match(v):  # เลขหน้า "-2-" ไม่ใช่ป้ายกลุ่ม ข้ามโดยไม่ตัดตอนข้อความที่ล้น
+                continue
+            col_no = c - mincol + 1
+            prev = items[-1] if items else None
+            if (
+                prev is not None and prev.kind == "data" and col_no > GROUP_LABEL_MAX_COL
+                and prev.vals.get(c) and not _NUMERIC.match(prev.vals[c])
+            ):
+                # ข้อความล้นลงแถวถัดไป (ช่องเดียวในคอลัมน์ที่แถวข้อมูลก่อนหน้ามีข้อความ) -> ต่อท้ายช่องเดิม
+                prev.vals[c] += " " + v
+                prev.cells[cols.index(c)] = prev.vals[c]
+                prev.text = " | ".join(f"{names[k]}: {prev.vals[k]}" for k in cols if k in prev.vals)
+            elif header is None:
                 items.append(_Item("text", r, v, ctx=ctx))
-            elif c - mincol + 1 <= GROUP_LABEL_MAX_COL:
+            elif col_no <= GROUP_LABEL_MAX_COL:
                 items.append(_Item("label", r, f"## {v}", ctx=ctx))
                 if not history or history[-1] != v:  # ยุบป้ายที่ซ้ำติดกัน
                     history.append(v)
@@ -338,7 +374,7 @@ def _build_items(sheet: _Sheet, filled: dict, rs: list[int], cols: list[int]):
                 items.append(_Item("note", r, f"หมายเหตุ: {v}", ctx=ctx))
         else:
             line = " | ".join(f"{names[c]}: {_flat(vals[c])}" for c in cols if c in vals)
-            items.append(_Item("data", r, line, [vals.get(c, "") for c in cols], ctx))
+            items.append(_Item("data", r, line, [vals.get(c, "") for c in cols], ctx, {c: _flat(v) for c, v in vals.items()}))
     return title, items, header, names, end, repeated
 
 

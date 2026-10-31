@@ -197,16 +197,6 @@ def test_unsupported_type_documents(tmp_path):
     assert doc.detected_type is None
 
 
-def test_recognised_but_not_implemented_type(tmp_path, monkeypatch):
-    from tests.test_detect import ole_file
-
-    f = ole_file(tmp_path, monkeypatch, [["Workbook"]])
-    doc = extract_file(f)
-    assert doc.detected_type == DetectedType.XLS
-    assert doc.error.code == ErrorCode.UNSUPPORTED_TYPE
-    assert doc.error.message == "ยังไม่รองรับใน v1"
-
-
 # ---------- ต่อ normalizer เข้า pipeline ----------
 
 def test_normalizer_results_flow_into_unit(tmp_path, monkeypatch):
