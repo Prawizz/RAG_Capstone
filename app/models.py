@@ -12,7 +12,8 @@ chunking / citation / eval อ่านต่อจาก contract นี้
   - ``page`` = ลำดับหน้าจริงในไฟล์ เริ่มที่ 1 (ไม่ใช่เลขที่พิมพ์บนหน้า)
     ``page_label`` (ไม่บังคับ, str) = เลขหน้าที่พิมพ์บนหน้า เช่น "iv" หรือ "45"
   - ``heading_path`` = หัวข้อจากบนลงล่าง **รวมหัวข้อของ section นั้นเองเป็นตัวสุดท้าย**
-    ``paragraphs`` = [ย่อหน้าเริ่ม, ย่อหน้าจบ]
+    ``paragraphs`` = [index แรก, index สุดท้าย] ของ element ระดับ body (ย่อหน้า/ตาราง นับย่อหน้าว่างด้วย เริ่มที่ 0)
+    ที่อยู่ใน unit นั้น ดู app/extraction/docx.py; label ของ section = heading_path ต่อด้วย " › " (+ " (ส่วน k/n)" ถ้าแบ่ง)
 - ``text_hash`` = SHA-256 (hex) ของ ``text`` หลัง normalize เข้ารหัส UTF-8
 - ``QualityReport.score`` เป็น None เสมอ (ยังไม่มีผู้ใช้) การตัดสินคุณภาพใช้ ``Unit.status`` + ``quality.flags``
   โดย ``app/extraction/quality.py``; ``dictionary_ratio`` วัดอย่างเดียว ไม่ใช้ตัดสิน (None ถ้าอักษรไทย < 100 ตัว)

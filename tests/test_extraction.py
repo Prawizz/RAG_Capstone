@@ -200,11 +200,11 @@ def test_unsupported_type_documents(tmp_path):
 def test_recognised_but_not_implemented_type(tmp_path):
     import zipfile
 
-    f = tmp_path / "a.docx"
+    f = tmp_path / "a.pptx"
     with zipfile.ZipFile(f, "w") as z:
-        z.writestr("word/document.xml", "x")
+        z.writestr("ppt/presentation.xml", "x")
     doc = extract_file(f)
-    assert doc.detected_type == DetectedType.DOCX
+    assert doc.detected_type == DetectedType.PPTX
     assert doc.error.code == ErrorCode.UNSUPPORTED_TYPE
     assert doc.error.message == "ยังไม่รองรับใน v1"
 

@@ -27,6 +27,7 @@ pytest
 python scripts/extract_cli.py path/to/file.pdf                    # พิมพ์สรุปอย่างเดียว
 python scripts/extract_cli.py path/to/file.pdf --out result.json  # เขียน Document เป็น JSON (ไทยไม่ถูก escape)
 python scripts/extract_cli.py path/to/file.pdf --pages 1-20       # ลองเฉพาะบางหน้า (PDF)
+python scripts/extract_cli.py path/to/file.docx                   # DOCX: 1 unit ต่อหัวข้อ (ดู app/extraction/docx.py)
 ```
 
 สรุปที่พิมพ์: ชื่อไฟล์, ชนิด, จำนวนหน้า, จำนวน unit ต่อสถานะ, เวลารวม, เวลาเฉลี่ยและสูงสุดต่อหน้า, error (ถ้ามี)

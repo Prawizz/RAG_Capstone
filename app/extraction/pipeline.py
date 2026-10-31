@@ -11,6 +11,7 @@ from typing import Optional
 
 from app.extraction.detect import detect
 from app.extraction.errors import ExtractionError
+from app.extraction.docx import extract_docx
 from app.extraction.pdf import extract_pdf
 from app.extraction.quality import apply_gate
 from app.models import DetectedType, Document, DocumentError, ErrorCode
@@ -49,9 +50,14 @@ def extract_file(
     detected: Optional[DetectedType] = None
     try:
         detected = detect(path)
-        if detected != DetectedType.PDF:
+        if detected == DetectedType.PDF:
+            result = extract_pdf(path, pages=pages)
+            page_equivalent = result.page_count
+        elif detected == DetectedType.DOCX:
+            result = extract_docx(path)  # pages ใช้กับ PDF เท่านั้น
+            page_equivalent = result.page_equivalent
+        else:
             raise ExtractionError(ErrorCode.UNSUPPORTED_TYPE, "ยังไม่รองรับใน v1")
-        result = extract_pdf(path, pages=pages)
     except ExtractionError as e:
         error = DocumentError(code=e.code, message=e.message)
         return Document(**fields, detected_type=detected, error=error)
@@ -65,5 +71,5 @@ def extract_file(
         units=apply_gate(result.units),
         has_outline=result.has_outline,
         producer=result.producer,
-        page_equivalent=result.page_count,
+        page_equivalent=page_equivalent,
     )

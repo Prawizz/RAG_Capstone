@@ -14,7 +14,8 @@ API
  1. nfc               unicodedata NFC (นับเป็นจำนวน "ก้อน" ที่คั่นด้วยช่องว่างซึ่งเปลี่ยน)
  2. zero_width        ลบ U+200B U+200C U+200D U+FEFF U+00AD
  3. line_endings      "\\r\\n" -> "\\n" แล้ว "\\r" ที่เหลือ -> "\\n" (ต้องมาก่อนกฎ 4-5 ไม่งั้น \\r กลายเป็น U+FFFD
-                      ในคำถามที่มาจาก Windows/Excel)
+                      ในคำถามที่มาจาก Windows/Excel) และ \\x0b \\x0c U+2028 U+2029 -> "\\n" ด้วย
+                      (python-docx/python-pptx ใช้ \\x0b แทนการขึ้นบรรทัดในย่อหน้า ไม่งั้นด่านตรวจนับ � เป็นจุดพังปลอม)
  4. control_after_mark ลบอักขระควบคุม (Cc ยกเว้น \\n \\t) ที่ตามหลัง "ำ"/"ํ" หรือเครื่องหมายตัวเดียวกันสองตัวติดกัน
                       (รวมกรณีตามหลังผ่านอักขระควบคุม/U+FFFD ที่อยู่ติดกัน) = ขยะของฟอนต์ (PTT ~10k จุด)
  5. control_to_fffd   อักขระควบคุมที่เหลือทั้งหมด (ยกเว้น \\n \\t) -> U+FFFD ตัวละหนึ่งตัว ห้ามลบ
@@ -62,7 +63,7 @@ import unicodedata
 from dataclasses import dataclass, field
 from typing import Callable
 
-NORMALIZER_VERSION = "1.2"
+NORMALIZER_VERSION = "1.3"
 MAX_PASSES = 5
 
 # ---------- ชุดอักขระ ----------
@@ -85,6 +86,7 @@ _CTRL = "\x00-\x08\x0b-\x1f\x7f-\x9f"  # Cc ยกเว้น \t(\x09) \n(\x0a)
 _CONTROL = re.compile(f"[{_CTRL}]")
 _CRLF = re.compile("\r\n")
 _CR = re.compile("\r")
+_LINE_SEP = re.compile("[\x0b\x0c  ]")
 # ตัวทริกเกอร์ของขยะฟอนต์: เครื่องหมายตัวเดียวกันสองตัวติดกัน หรือ ำ/ํ  (group 1 = ทริกเกอร์, 2 = เครื่องหมายที่ซ้ำ)
 _JUNK_TRIGGER = f"((?:([{_BEFORE_FFFD}])\\2|[\u0e33\u0e4d]))"
 _CONTROL_AFTER_MARK = re.compile(f"{_JUNK_TRIGGER}([{_CTRL}\ufffd]+)")
@@ -167,7 +169,8 @@ def _zero_width(text: str) -> tuple[str, int]:
 def _line_endings(text: str) -> tuple[str, int]:
     text, n1 = _subn(_CRLF, "\n", text)
     text, n2 = _subn(_CR, "\n", text)
-    return text, n1 + n2
+    text, n3 = _subn(_LINE_SEP, "\n", text)
+    return text, n1 + n2 + n3
 
 
 def _control_after_mark(text: str) -> tuple[str, int]:

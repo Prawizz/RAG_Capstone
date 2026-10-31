@@ -14,7 +14,7 @@
 {"input": "มีีหน้้าที่่\u0001ต", "expected": "มีหน้าที่ต", "rule": "control_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 161", "truth": "มีหน้าที่ต", "fixes": {"control_after_mark": 1, "dup_mark": 3}}
 {"input": "คู่่\u001cค้้าเเละคู่่\u001cความ", "expected": "คู่ค้าและคู่ความ", "rule": "control_after_mark", "source": "ONEREPORTPTTT.PDF หน้า 193", "truth": "คู่ค้าและคู่ความ", "fixes": {"control_after_mark": 2, "dup_mark": 4}}
 {"input": "สุดผmานผลิตภัณ์และบริการทางก", "expected": "สุดผmานผลิตภัณ�์และบริการทางก", "rule": "control_to_fffd", "source": "ONEREPORTKBANKT.PDF หน้า 7", "truth": "สุดผ่านผลิตภัณฑ์และบริการท", "fixes": {"control_to_fffd": 1}, "signals": {"fffd_remaining": 1}}
-{"input": "ก\u000b\fข\r\nค", "expected": "ก��ข\nค", "rule": "control_to_fffd", "source": "synthetic", "fixes": {"control_to_fffd": 2, "line_endings": 1}, "signals": {"fffd_remaining": 2}}
+{"input": "ก\u0001\u0002ข\r\nค", "expected": "ก��ข\nค", "rule": "control_to_fffd", "source": "synthetic", "fixes": {"control_to_fffd": 2, "line_endings": 1}, "signals": {"fffd_remaining": 2}}
 {"input": "ก\tข\nค", "expected": "ก ข\nค", "rule": "control_to_fffd", "source": "synthetic", "fixes": {"whitespace": 1}}
 {"input": "สร้\u001cงคว\u001cมมั่น", "expected": "สร้�งคว�มมั่น", "rule": "control_to_fffd", "source": "ONEREPORTPTTT.PDF หน้า 43", "truth": "สร้างความมั่น", "fixes": {"control_to_fffd": 2}, "signals": {"fffd_remaining": 2}}
 {"input": "หลักเกณ์การกำหนด", "expected": "หลักเกณ�์การกำหนด", "rule": "control_to_fffd", "source": "ONEREPORTKBANKT.PDF หน้า 9", "truth": "หลักเกณฑ์การกำหนด", "fixes": {"control_to_fffd": 1}, "signals": {"fffd_remaining": 1}}
@@ -107,3 +107,10 @@
 {"input": "นำ่า", "expected": "น่ำ", "rule": "sara_am", "source": "synthetic", "fixes": {"sara_am": 1}}
 {"input": "กํำ", "expected": "กำ", "rule": "sara_am", "source": "synthetic", "fixes": {"sara_am": 1}}
 {"input": "ทำงาน ดำเนินการ น้ำมัน กำไร ตำรา", "expected": "ทำงาน ดำเนินการ น้ำมัน กำไร ตำรา", "rule": "negative", "source": "synthetic", "fixes": {}, "signals": {"space_between_thai": 4}}
+{"input": "บรรทัดแรก\u000bบรรทัดสอง", "expected": "บรรทัดแรก\nบรรทัดสอง", "rule": "line_endings", "source": "synthetic", "fixes": {"line_endings": 1}}
+{"input": "หน้าหนึ่ง\fหน้าสอง", "expected": "หน้าหนึ่ง\nหน้าสอง", "rule": "line_endings", "source": "synthetic", "fixes": {"line_endings": 1}}
+{"input": "ก ข", "expected": "ก\nข", "rule": "line_endings", "source": "synthetic", "fixes": {"line_endings": 1}}
+{"input": "ก ข", "expected": "ก\nข", "rule": "line_endings", "source": "synthetic", "fixes": {"line_endings": 1}}
+{"input": "หนึ่ง\u000bสอง\fสาม สี่ ห้า\r\nหก", "expected": "หนึ่ง\nสอง\nสาม\nสี่\nห้า\nหก", "rule": "line_endings", "source": "synthetic", "fixes": {"line_endings": 5}}
+{"input": "ก\u000b\u000b\u000bข", "expected": "ก\n\nข", "rule": "line_endings", "source": "synthetic", "fixes": {"line_endings": 3, "whitespace": 1}}
+{"input": "ก \u000b ข", "expected": "ก\nข", "rule": "line_endings", "source": "synthetic", "fixes": {"line_endings": 1, "whitespace": 2}}
