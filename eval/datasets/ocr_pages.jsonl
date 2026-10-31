@@ -1,36 +1,36 @@
-{"file": "ONEREPORTKBANKT.PDF", "page": 82, "label": null, "note": ""}
-{"file": "ONEREPORTPTTT.PDF", "page": 117, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 83, "label": null, "note": ""}
-{"file": "ONEREPORTPTTT.PDF", "page": 260, "label": null, "note": ""}
-{"file": "ONEREPORTPTTT.PDF", "page": 293, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 180, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 49, "label": null, "note": ""}
-{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 298, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 81, "label": null, "note": ""}
-{"file": "ONEREPORTPTTT.PDF", "page": 152, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 175, "label": null, "note": ""}
-{"file": "ONEREPORTPTTT.PDF", "page": 125, "label": null, "note": ""}
-{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 384, "label": null, "note": ""}
-{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 462, "label": null, "note": ""}
-{"file": "ONEREPORTPTTT.PDF", "page": 349, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 153, "label": null, "note": ""}
-{"file": "ONEREPORTPTTT.PDF", "page": 43, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 80, "label": null, "note": ""}
-{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 283, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 1, "label": null, "note": ""}
-{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 111, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 152, "label": null, "note": ""}
-{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 302, "label": null, "note": ""}
-{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 224, "label": null, "note": ""}
-{"file": "ONEREPORTPTTT.PDF", "page": 162, "label": null, "note": ""}
-{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 442, "label": null, "note": ""}
-{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 20, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 2, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 131, "label": null, "note": ""}
-{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 33, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 120, "label": null, "note": ""}
-{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 207, "label": null, "note": ""}
-{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 6, "label": null, "note": ""}
-{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 168, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 33, "label": null, "note": ""}
-{"file": "ONEREPORTKBANKT.PDF", "page": 87, "label": null, "note": ""}
+{"file": "ONEREPORTKBANKT.PDF", "page": 82, "label": "broken", "note": "[claude] เนื้อหาหลักเป็นภาพ ข้อความมีแค่เลขหน้า+สารบัญข้าง · ประจำาปี"}
+{"file": "ONEREPORTPTTT.PDF", "page": 117, "label": "ok", "note": "[claude]"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 83, "label": "broken", "note": "[claude] เนื้อหาหลักเป็นภาพ ข้อความมีแค่เลขหน้า+สารบัญข้าง · ประจำาปี"}
+{"file": "ONEREPORTPTTT.PDF", "page": 260, "label": "ok", "note": "[claude]"}
+{"file": "ONEREPORTPTTT.PDF", "page": 293, "label": "broken", "note": "[claude] สร้�งคว�ม, ผส�น (� แทน า)"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 180, "label": "broken", "note": "[claude] ดํำเนินงาน, กํำกับ · ภาพ 0.83 ยังไม่ได้เปิดดู"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 49, "label": "broken", "note": "[claude] กิตติมศักดิÊ · ประจำาปี"}
+{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 298, "label": "ok", "note": "[claude]"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 81, "label": "broken", "note": "[claude] เนื้อหาหลัก (รายงานผู้สอบบัญชี) เป็นภาพ 2 ก้อน ข้อความมีแค่เลขหน้า+สารบัญข้าง"}
+{"file": "ONEREPORTPTTT.PDF", "page": 152, "label": "ok", "note": "[claude] น้ำ �/ น้ำ �แล้ง — เปิดดูภาพแล้ว � เป็นขยะ คำครบ (ความเครียดน้ำ/ น้ำแล้ง)"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 175, "label": "broken", "note": "[claude] คmาตอบแทน, เล่Æอน"}
+{"file": "ONEREPORTPTTT.PDF", "page": 125, "label": "ok", "note": "[claude]"}
+{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 384, "label": "ok", "note": "[claude] หน้าคั่นบท"}
+{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 462, "label": "broken", "note": "[claude] งบการเงินเป็นภาพ ข้อความมีแค่หัวกระดาษ"}
+{"file": "ONEREPORTPTTT.PDF", "page": 349, "label": "ok", "note": "[claude]"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 153, "label": "broken", "note": "[claude] อำานาจ, ดำารงตำาแหน่ง · ภาพ 0.83 ยังไม่ได้เปิดดู"}
+{"file": "ONEREPORTPTTT.PDF", "page": 43, "label": "broken", "note": "[claude] สร้�งคว�มมั่นคงท�งพลังง�น (� แทน า) · ดำาเนิน"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 80, "label": "broken", "note": "[claude] เนื้อหาหลักเป็นภาพ ข้อความมีแค่หัวกระดาษ+สารบัญข้าง · ดํำเนินงาน"}
+{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 283, "label": "ok", "note": "[claude] เปิดดูภาพแล้ว ต้นฉบับมีแค่หัวข้อ หน้าที่เหลือว่าง"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 1, "label": "broken", "note": "[claude] ประจำาปี, ดํำเนินงาน, กํำกับ"}
+{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 111, "label": "ok", "note": "[claude]"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 152, "label": "broken", "note": "[claude] เพืÉอ, ทีÉ, ถัวเฉลีÉย"}
+{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 302, "label": "ok", "note": "[claude]"}
+{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 224, "label": "ok", "note": "[claude] รูปกรรมการ+ชื่อ"}
+{"file": "ONEREPORTPTTT.PDF", "page": 162, "label": "ok", "note": "[claude]"}
+{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 442, "label": "broken", "note": "[claude] งบการเงินเป็นภาพ ข้อความมีแค่หัวกระดาษ"}
+{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 20, "label": "ok", "note": "[claude]"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 2, "label": "broken", "note": "[claude] ข้อความถวายอาลัยเป็น mojibake ¢ŒÒ¾ÃÐ¾Ø·¸à¨ŒÒ (= ข้าพระพุทธเจ้า) · วรรณยุกต์หาย: อยูในใจ, เปนลนพน"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 131, "label": "broken", "note": "[claude] เปลีÉยน, เสืÉอม, เพิÉม"}
+{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 33, "label": "ok", "note": "[claude]"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 120, "label": "broken", "note": "[claude] ทัÊง, อืÉน, โฮลดิÊง"}
+{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 207, "label": "broken", "note": "[claude] แผนภาพโครงสร้างเป็นภาพ (0.56) ข้อความมีแค่หัวข้อ · ไม่ได้เปิดดูภาพ คาดว่ามีตัวหนังสือในแผนภาพ"}
+{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 6, "label": "ok", "note": "[claude]"}
+{"file": "E_ONE_REPORT_CPALLT.PDF", "page": 168, "label": "ok", "note": "[claude] REEMENTรูปแบบ = ข้อความช่องตารางต่อกัน ไม่ใช่ตัวเพี้ยน"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 33, "label": "broken", "note": "[claude] เนื้อหาอังกฤษใช้ได้ แต่ส่วนไทย: ประจำาปี, ดํำเนินงาน · ภาพ 0.69 ยังไม่ได้เปิดดู"}
+{"file": "ONEREPORTKBANKT.PDF", "page": 87, "label": "broken", "note": "[claude] สิÊนสุด, วันทีÉ, ค่าเสืÉอม"}
