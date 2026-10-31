@@ -47,7 +47,7 @@ def case_id(c: dict) -> str:
 
 
 def test_version():
-    assert NORMALIZER_VERSION == "1.1"
+    assert NORMALIZER_VERSION == "1.2"
 
 
 def test_dataset_shape_and_coverage():

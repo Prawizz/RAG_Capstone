@@ -98,3 +98,12 @@
 {"input": "ปฏฺิบัติ", "expected": "ปฏฺิบัติ", "rule": "signal:invalid_mark_sequence", "source": "synthetic", "fixes": {}, "signals": {"invalid_mark_sequence": 1}}
 {"input": "จนบรุี", "expected": "จนบรุี", "rule": "signal:invalid_mark_sequence", "source": "synthetic", "fixes": {}, "signals": {"invalid_mark_sequence": 1}}
 {"input": "กุ้ง ปั้น ที่ ผู้ เกี๊ยว ก็ รั้ว ปู่ ซึ่ง สิ้น ดื่ม", "expected": "กุ้ง ปั้น ที่ ผู้ เกี๊ยว ก็ รั้ว ปู่ ซึ่ง สิ้น ดื่ม", "rule": "negative", "source": "synthetic", "fixes": {}, "signals": {"space_between_thai": 10}}
+{"input": "ลการดํําเนิินงาน 1", "expected": "ลการดำเนินงาน 1", "rule": "sara_am", "source": "ONEREPORTKBANKT.PDF หน้า 1", "truth": null, "fixes": {"sara_am": 2, "dup_mark": 1}}
+{"input": "อมูลประจำาปี ", "expected": "อมูลประจำปี", "rule": "sara_am", "source": "ONEREPORTKBANKT.PDF หน้า 1", "truth": null, "fixes": {"sara_am": 1, "whitespace": 1}}
+{"input": "ประจํําปีี 2568", "expected": "ประจำปี 2568", "rule": "sara_am", "source": "ONEREPORTPTTT.PDF หน้า 21", "truth": null, "fixes": {"sara_am": 2, "dup_mark": 1}}
+{"input": "เฉพาะ จํํานวนไม่่เกิ", "expected": "เฉพาะ จำนวนไม่เกิ", "rule": "sara_am", "source": "ONEREPORTPTTT.PDF หน้า 51", "truth": null, "fixes": {"sara_am": 2, "dup_mark": 1}}
+{"input": "ากับการดำาเนินธุุร", "expected": "ากับการดำเนินธุร", "rule": "sara_am", "source": "ONEREPORTPTTT.PDF หน้า 43", "truth": null, "fixes": {"sara_am": 1, "dup_mark": 1}}
+{"input": "นํ้ำ", "expected": "น้ำ", "rule": "sara_am", "source": "synthetic", "fixes": {"sara_am": 1}}
+{"input": "นำ่า", "expected": "น่ำ", "rule": "sara_am", "source": "synthetic", "fixes": {"sara_am": 1}}
+{"input": "กํำ", "expected": "กำ", "rule": "sara_am", "source": "synthetic", "fixes": {"sara_am": 1}}
+{"input": "ทำงาน ดำเนินการ น้ำมัน กำไร ตำรา", "expected": "ทำงาน ดำเนินการ น้ำมัน กำไร ตำรา", "rule": "negative", "source": "synthetic", "fixes": {}, "signals": {"space_between_thai": 4}}

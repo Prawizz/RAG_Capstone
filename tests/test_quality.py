@@ -241,3 +241,44 @@ def test_dictionary_ratio_does_not_decide_status():
     text = "กขคงจฉชซฌญ" * 15
     u = evaluate_unit(make_unit(text))
     assert u.status == UnitStatus.OK and dictionary_ratio(text) < 0.5
+
+
+# ---------- mojibake ----------
+
+from app.extraction.quality import mojibake_count  # noqa: E402
+
+
+@pytest.mark.parametrize("text,n", [
+    ("¢ŒÒ¾ÃÐ¾Ø·¸à¨ŒÒ", 14),  # KBANK หน้า 2
+    ("abc ¡¢£ def", 3),
+    ("ก™€‰ข", 3),  # อักขระพิเศษ cp1252
+    ("¡¢ x £¤¥", 3),  # ท่อนสั้นกว่า 3 ไม่นับ
+])
+def test_mojibake_run_counts_characters(text, n):
+    assert mojibake_count(text) == n
+
+
+@pytest.mark.parametrize("text", [
+    "ลิขสิทธิ์ © 2568 บริษัท",
+    "สินค้าจดทะเบียน ® และ ™",
+    "อุณหภูมิ 25° ราคา 3×4",
+    "Société Générale",
+    "ร้าน café ในกรุงเทพ",
+    "© ® °",
+    "ก×ข°ค©ง",
+])
+def test_correct_text_with_symbols_or_accents_is_not_mojibake(text):
+    assert mojibake_count(text) == 0
+    assert evaluate_unit(make_unit(thai_text(150) + " " + text)).signals["gate:broken_events"] == 0
+
+
+def test_mojibake_counts_into_broken_events_flag_and_reason():
+    u = evaluate_unit(make_unit(thai_text(150) + " ¢ŒÒ¾ÃÐ¾Ø·¸à¨ŒÒ"))
+    assert u.status == UnitStatus.NEEDS_OCR and flags_of(u) == {"latin_in_thai"}
+    assert u.signals["gate:mojibake"] == 14 and u.signals["gate:broken_events"] == 14
+    assert "ข้อความเข้ารหัสเพี้ยน: 14" in u.reason
+
+
+def test_mojibake_touching_thai_is_not_double_counted_as_latin_in_thai():
+    u = evaluate_unit(make_unit(thai_text(150) + "กข¢ŒÒ¾ค"))
+    assert u.signals["gate:mojibake"] == 4 and u.signals["gate:latin_in_thai"] == 0

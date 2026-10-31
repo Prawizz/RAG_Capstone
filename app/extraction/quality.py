@@ -15,8 +15,10 @@
   e. นอกนั้น                                      -> ok
 
 ``broken_events`` = norm_sig:fffd_remaining + invalid_mark_sequence + conflicting_tone_marks
-+ dangling_mark + จำนวนกลุ่มอักษรละตินที่ติดกับอักษรไทยโดยตรง (นับจาก ``Unit.text``)
++ dangling_mark + จำนวนกลุ่มอักษรละตินที่ติดกับอักษรไทยโดยตรง + จำนวนอักขระในท่อน mojibake (นับจาก ``Unit.text``)
 "ปตท. (PTT)" / "รุ่น iPhone 15" ไม่นับ เพราะมีช่องว่างหรือเครื่องหมายคั่น
+mojibake = อักขระชุด U+00A1–U+00FF + อักขระพิเศษของ cp1252 ต่อกันตั้งแต่ 3 ตัว (ข้อความไทยที่ถูกถอดผิดเป็น Latin-1
+เช่น "¢ŒÒ¾ÃÐ¾Ø·¸à¨ŒÒ") ตัวเดี่ยวๆ ที่ถูกอย่าง © ® ° × é ไม่นับ ท่อนนี้ถูกตัดออกก่อนนับ latin_in_thai (ไม่นับซ้ำ)
 
 ระดับไฟล์ (``apply_document_rule``): ถ้า unit ที่มีอักษรไทย >= MIN_THAI_CHARS ถูกตัดสินด้วยกฎ c เกินครึ่ง
 ฟอนต์พังเป็นเรื่องทั้งไฟล์ unit ที่มีอักษรไทยพอและยัง ok จะถูกเปลี่ยนเป็น needs_ocr + document_font_broken
@@ -41,22 +43,32 @@ DOCUMENT_BROKEN_SHARE = 0.5  # เกินสัดส่วนนี้ (ม�
 MIN_DICT_WORD_LEN = 2
 
 _THAI = "ก-๛"
-_LATIN = "A-Za-zÀ-ɏ"
+_LATIN = "A-Za-zÀ-ÖØ-öø-ɏ"  # ไม่รวม × (D7) และ ÷ (F7)
 _THAI_CHAR = re.compile(f"[{_THAI}]")
 # กลุ่มอักษรละตินที่ติดอักษรไทยทางใดทางหนึ่งโดยตรง
 _LATIN_IN_THAI = re.compile(f"(?<=[{_THAI}])[{_LATIN}]+|[{_LATIN}]+(?=[{_THAI}])")
+_MOJIBAKE_CHARS = "\u00a1-\u00ff\u0152\u0153\u0160\u0161\u0178\u0192\u02c6\u02dc\u2020\u2021\u2030\u2039\u203a\u20ac\u2122"
+_MOJIBAKE = re.compile(f"[{_MOJIBAKE_CHARS}]{{3,}}")
+MOJIBAKE_REASON = "ข้อความเข้ารหัสเพี้ยน"
 
 K_BROKEN = "gate:broken_events"
 K_THAI = "gate:thai_chars"
 K_LATIN = "gate:latin_in_thai"
+K_MOJIBAKE = "gate:mojibake"
 
 
 def thai_char_count(text: str) -> int:
     return len(_THAI_CHAR.findall(text))
 
 
+def mojibake_count(text: str) -> int:
+    """จำนวนอักขระในท่อน mojibake (อักขระ Latin-1/cp1252 ต่อกัน >= 3 ตัว)"""
+    return sum(len(m) for m in _MOJIBAKE.findall(text))
+
+
 def latin_in_thai_count(text: str) -> int:
-    return len(_LATIN_IN_THAI.findall(text))
+    """จำนวนกลุ่มอักษรละตินที่ติดอักษรไทย (ท่อน mojibake ไม่นับที่นี่ เพราะนับแยกเป็นรายอักขระ)"""
+    return len(_LATIN_IN_THAI.findall(_MOJIBAKE.sub(" ", text)))
 
 
 def _sig(signals: dict[str, float], name: str) -> int:
@@ -70,6 +82,7 @@ def _breakdown(signals: dict[str, float]) -> dict[str, int]:
         "tone": _sig(signals, "conflicting_tone_marks"),
         "dangling": _sig(signals, "dangling_mark"),
         "latin": int(signals.get(K_LATIN, 0)),
+        "mojibake": int(signals.get(K_MOJIBAKE, 0)),
     }
 
 
@@ -77,6 +90,7 @@ def _broken_reason(n: int, b: dict[str, int]) -> str:
     labels = [
         ("fffd", "�"), ("mark_seq", "สระซ้อน"), ("tone", "วรรณยุกต์ซ้อน"),
         ("dangling", "เครื่องหมายลอย"), ("latin", "ละตินกลางคำไทย"),
+        ("mojibake", MOJIBAKE_REASON),
     ]
     parts = ", ".join(f"{label}: {b[k]}" for k, label in labels if b[k])
     return f"พบจุดพัง {n} จุด ({parts})"
@@ -102,6 +116,7 @@ def evaluate_unit(unit: Unit) -> Unit:
     signals = dict(unit.signals)
     signals[K_THAI] = float(thai)
     signals[K_LATIN] = float(latin)
+    signals[K_MOJIBAKE] = float(mojibake_count(unit.text))
     b = _breakdown(signals)
     broken = sum(b.values())
     signals[K_BROKEN] = float(broken)
@@ -125,7 +140,7 @@ def evaluate_unit(unit: Unit) -> Unit:
             flags.append(QualityFlag.REPLACEMENT_CHAR)
         if b["mark_seq"] or b["tone"] or b["dangling"]:  # สระ/วรรณยุกต์ผิดที่ทั้งสามแบบใช้ flag เดียวกัน
             flags.append(QualityFlag.INVALID_MARK_SEQUENCE)
-        if b["latin"]:
+        if b["latin"] or b["mojibake"]:
             flags.append(QualityFlag.LATIN_IN_THAI)
         return done(UnitStatus.NEEDS_OCR, _broken_reason(broken, b), flags)
     if thai < MIN_THAI_CHARS:  # d

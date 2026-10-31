@@ -22,7 +22,8 @@ API
                       ต้องเหลือหลักฐานในข้อความ นับต่อใน signal fffd_remaining
  6. marker            ลบ "#MARKER:XXX" (CPALL: TOC, PART_n, PAGE_PART_n, ATTACHMENT, PAGE_ATTACHMENTS)
  7. thai_digits       ๐–๙ -> 0–9
- 8. sara_am           "ํา" / "าํ" (มีวรรณยุกต์คั่นได้) -> ำ
+ 8. sara_am           "ํา" / "าํ" / "ํำ" / "ำา" (มีวรรณยุกต์คั่นได้) -> ำ  ("ํำ" เกิดเมื่อฟอนต์พ่น ํ ซ้ำก่อน า
+                      เช่น "ดํําเนิน"; "ำา" เช่น "ประจำาปี" ภาษาไทยที่ถูกไม่มีรูปแบบทั้งสองนี้ จึงเป็น normalize ไม่ใช่ repair)
  9. mark_order        วรรณยุกต์/ทัณฑฆาตที่มาก่อนสระบน/ล่าง -> สลับเป็นลำดับมาตรฐาน
 10. fffd_after_mark   ลบ U+FFFD ที่ตามหลัง "ำ"/"ํ" หรือเครื่องหมายตัวเดียวกันสองตัวติดกัน (เงื่อนไขเดียวกับกฎ 4)
 11. dup_mark          ยุบเครื่องหมาย/สระตัวเดียวกันที่ติดกัน และ "เเ" -> "แ" (ไม่ยุบพยัญชนะ ตัวเลข ๆ ฯ)
@@ -61,7 +62,7 @@ import unicodedata
 from dataclasses import dataclass, field
 from typing import Callable
 
-NORMALIZER_VERSION = "1.1"
+NORMALIZER_VERSION = "1.2"
 MAX_PASSES = 5
 
 # ---------- ชุดอักขระ ----------
@@ -95,6 +96,8 @@ _TONE_CLASS = f"[{_TONES}]"
 # ํา / าํ โดยมีวรรณยุกต์คั่นได้ (วรรณยุกต์ย้ายไปอยู่หน้า ำ ตามลำดับมาตรฐาน)
 _SARA_AM_1 = re.compile(f"\u0e4d({_TONE_CLASS}*)\u0e32")
 _SARA_AM_2 = re.compile(f"\u0e32({_TONE_CLASS}*)\u0e4d")
+_SARA_AM_3 = re.compile(f"\u0e4d({_TONE_CLASS}*)\u0e33")  # ํำ
+_SARA_AM_4 = re.compile(f"\u0e33({_TONE_CLASS}*)\u0e32")  # ำา
 _MARK_ORDER = re.compile(f"([{_TONES}{_THANTHAKHAT}]+)([{_ABOVE_V}{_BELOW_V}]+)")
 _DUP_MARK = re.compile(f"([{_REPEATABLE}])\\1+")
 _DUP_SARA_E = re.compile("\u0e40\u0e40")
@@ -196,7 +199,9 @@ def _thai_digits(text: str) -> tuple[str, int]:
 def _sara_am(text: str) -> tuple[str, int]:
     text, n1 = _subn(_SARA_AM_1, "\\1\u0e33", text)
     text, n2 = _subn(_SARA_AM_2, "\\1\u0e33", text)
-    return text, n1 + n2
+    text, n3 = _subn(_SARA_AM_3, "\\1\u0e33", text)
+    text, n4 = _subn(_SARA_AM_4, "\\1\u0e33", text)
+    return text, n1 + n2 + n3 + n4
 
 
 def _mark_order(text: str) -> tuple[str, int]:
