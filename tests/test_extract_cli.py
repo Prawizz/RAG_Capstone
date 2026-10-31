@@ -49,8 +49,8 @@ def test_cli_end_to_end_on_real_pdf(cli, tmp_path, capsys):
     assert cli.main([str(pdf), "--out", str(out), "--pages", "1-2"]) == 0
     text = capsys.readouterr().out
     assert "unit ต่อสถานะ" in text and "ok=2" in text and "เฉลี่ยต่อหน้า" in text
-    assert "ยังไม่ได้ประเมิน (รอ T04)" in text and "2/2" in text
-    assert "ไม่ได้แปลว่าข้อความถูกต้อง" in text
+    assert "ด่านตรวจคุณภาพ:" in text and "ok:low_text=1" in text and "ok:empty=1" in text
+    assert "ยังไม่ได้ประเมิน" not in text
     assert json.loads(out.read_text(encoding="utf-8"))["unit_count"] == 2
 
 

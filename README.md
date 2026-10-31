@@ -55,3 +55,14 @@ python scripts/normalize_report.py --samples 20 --out report.txt
 2. พิมพ์ข้อความช่วงนั้นตามที่ตาเห็นลงใน `truth` ไม่ต้องสนใจกฎของ normalizer เว้นวรรคหรือขึ้นบรรทัดไม่ตรงกับ `input` ได้
 3. ถ้าในภาพก็อ่านไม่ออก ให้ปล่อย `truth` เป็น `null` แล้วรัน `python scripts/check_truth.py` ดูผลรายคู่
    (exact / evidence / needs_repair / fail) และ `pytest` จะเทียบให้เอง
+
+## ด่านตรวจคุณภาพ (needs_ocr) และการติดป้าย
+
+ผลตัดสินอยู่ที่ `Unit.status` + `quality.flags` (กฎอยู่ใน `app/extraction/quality.py`) ดูสรุปรายไฟล์ด้วย
+`python scripts/gate_report.py` (เหตุผลที่ส่ง OCR, หน้าที่โดนกฎระดับไฟล์, การกระจาย dictionary_ratio)
+
+ติดป้ายหน้าเพื่อตรวจเกณฑ์ (ไม่ให้เกณฑ์วัดตัวเอง):
+1. `python scripts/make_label_set.py` สร้าง `eval/datasets/ocr_pages.jsonl` (36 หน้า label เป็น null) และ `eval/datasets/files/label_pages.html`
+2. เปิด HTML ดูภาพหน้า PDF เทียบข้อความที่ดึงได้ (ผลของด่านตรวจซ่อนอยู่ อย่าเปิดดูก่อนติดป้าย) แล้วแก้ `label` ใน jsonl:
+   `"ok"` = ข้อความตรงกับ PDF พอใช้ค้นและอ้างอิงได้ (ช่องว่าง/ลำดับไม่ต้องสน) · `"broken"` = เจอคำที่ผิดจาก PDF ทั้งที่ต้นฉบับไม่ได้ผิด · `"skip"` = ไม่แน่ใจ
+3. รัน `python scripts/gate_report.py` จะได้ตาราง ป้าย x ผลด่านตรวจ และรายการหน้าที่ไม่ตรงกัน (สคริปต์จะไม่เขียนทับ jsonl ที่มีข้อมูลแล้ว)

@@ -11,6 +11,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app.extraction.pipeline import extract_file  # noqa: E402
+from app.extraction.quality import gate_summary  # noqa: E402
 
 
 def parse_pages(value: str) -> tuple[int, int]:
@@ -51,13 +52,8 @@ def main(argv: list[str] | None = None) -> int:
             f"เวลารวม: {total:.2f} s  เฉลี่ยต่อหน้า: {sum(times) / len(times):.1f} ms"
             f"  สูงสุดต่อหน้า: {max(times):.1f} ms"
         )
-        unscored = sum(1 for u in doc.units if u.quality.score is None)
-        print(f"unit ที่ยังไม่ได้ประเมินคุณภาพ (score เป็น None): {unscored}/{doc.unit_count}")
-        if unscored:
-            print(
-                "คุณภาพ: ยังไม่ได้ประเมิน (รอ T04) — สถานะ ok แปลว่าดึงข้อความได้โดยไม่ error เท่านั้น "
-                "ไม่ได้แปลว่าข้อความถูกต้อง"
-            )
+        print("ด่านตรวจคุณภาพ: " + "  ".join(f"{k}={v}" for k, v in gate_summary(doc.units).items()))
+        print("  (ok = ใช้ข้อความที่ดึงได้ต่อ · needs_ocr = ต้องส่ง OCR · ดูเหตุผลรายหน้าด้านล่าง)")
         for u in doc.units:
             if u.status.value != "ok":
                 print(f"  {u.label}: {u.status.value} — {u.reason}")

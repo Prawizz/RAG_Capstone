@@ -6,19 +6,22 @@ chunking / citation / eval อ่านต่อจาก contract นี้
 - Unit ต่อประเภท: PDF=page, PPTX=slide, DOCX=section, XLSX=sheet_region
 - ทุก Unit มี ``position`` (เครื่องอ่าน) และ ``label`` (คนอ่าน เช่น "หน้า 47")
 - สถานะราย unit: unit ที่พังไม่ทำให้ทั้งไฟล์พัง ``Document.status`` คำนวณจากสถานะของ unit
-  (ทุก unit ok -> done, บางส่วนไม่ ok -> done_with_gaps, ไม่มี unit ok เลย -> failed)
+  (ทุก unit ok -> done, บางส่วนไม่ ok -> done_with_gaps, ไม่มี unit ok เลยแต่มี needs_ocr -> needs_ocr,
+  ไม่มี unit ok และไม่มี needs_ocr เลย -> failed)
 - นิยาม ``position``:
   - ``page`` = ลำดับหน้าจริงในไฟล์ เริ่มที่ 1 (ไม่ใช่เลขที่พิมพ์บนหน้า)
     ``page_label`` (ไม่บังคับ, str) = เลขหน้าที่พิมพ์บนหน้า เช่น "iv" หรือ "45"
   - ``heading_path`` = หัวข้อจากบนลงล่าง **รวมหัวข้อของ section นั้นเองเป็นตัวสุดท้าย**
     ``paragraphs`` = [ย่อหน้าเริ่ม, ย่อหน้าจบ]
 - ``text_hash`` = SHA-256 (hex) ของ ``text`` หลัง normalize เข้ารหัส UTF-8
-- ``QualityReport.score`` = None แปลว่ายังไม่ได้ประเมิน (ด่านตรวจคุณภาพมาใน T04)
+- ``QualityReport.score`` เป็น None เสมอ (ยังไม่มีผู้ใช้) การตัดสินคุณภาพใช้ ``Unit.status`` + ``quality.flags``
+  โดย ``app/extraction/quality.py``; ``dictionary_ratio`` วัดอย่างเดียว ไม่ใช้ตัดสิน (None ถ้าอักษรไทย < 100 ตัว)
 - ``Unit.signals`` = ข้อมูลดิบสำหรับด่านตรวจ; PDF ต้องใส่ ``char_count`` (ความยาว text หลัง strip),
   ``block_count``, ``image_coverage`` (พื้นที่ภาพที่ใหญ่ที่สุดในหน้า ÷ พื้นที่หน้า, 0–1)
   และผลนับของ normalizer แบบแบน (ไม่ซ้อน dict) เฉพาะที่ค่าไม่ใช่ 0:
   ``norm_fix:<rule>`` = จำนวนที่แก้รายกฎ, ``norm_sig:<signal>`` = สิ่งที่เห็นแต่ไม่แก้
   (ชื่อ rule/signal ดู ``app/thai/normalizer.py``); ``QualityReport.normalization_changes`` = ผลรวมของ norm_fix ทั้งหมด
+  ด่านตรวจเพิ่ม ``gate:thai_chars``, ``gate:latin_in_thai``, ``gate:broken_events`` ให้ unit ที่ status = ok ตอนเข้าด่าน
 - Unit ที่ status = ok แต่ text ว่าง (หลัง strip) ต้องมี flag ``empty`` ใน quality
 - ``Document.detected_type`` เป็น None ได้ก็ต่อเมื่อมี ``error`` (validator บังคับ)
 - ``Document.error`` ถ้าไม่ใช่ None ``status`` จะเป็น failed เสมอ
@@ -75,6 +78,8 @@ class QualityFlag(str, Enum):
     LOW_DICTIONARY_RATIO = "low_dictionary_ratio"
     SCAN_LIKE = "scan_like"
     EMPTY = "empty"
+    LOW_TEXT = "low_text"  # อักษรไทยน้อยกว่าเกณฑ์แต่ไม่มีภาพใหญ่ (หน้าคั่นบท ตารางตัวเลข) ยังใช้ได้
+    DOCUMENT_FONT_BROKEN = "document_font_broken"  # ฟอนต์พังทั้งไฟล์ หน้าที่ดูสะอาดก็ไม่ไว้ใจ
 
 
 class DetectedType(str, Enum):
@@ -113,6 +118,7 @@ class DocumentError(BaseModel):
 class DocumentStatus(str, Enum):
     DONE = "done"
     DONE_WITH_GAPS = "done_with_gaps"
+    NEEDS_OCR = "needs_ocr"  # ไม่มี unit ok แต่มี unit รอ OCR: ไม่ได้พัง แค่รอ
     FAILED = "failed"
 
 
@@ -150,7 +156,7 @@ class Block(BaseModel):
 
 
 class QualityReport(BaseModel):
-    score: Optional[float] = Field(default=None, ge=0, le=1)  # None = ยังไม่ได้ประเมิน (ด่านตรวจมาใน T04)
+    score: Optional[float] = Field(default=None, ge=0, le=1)  # None เสมอ: ยังไม่มีผู้ใช้ ดู status + flags
     flags: list[QualityFlag] = Field(default_factory=list)
     dictionary_ratio: Optional[float] = Field(default=None, ge=0, le=1)
     normalization_changes: int = Field(default=0, ge=0)
@@ -238,6 +244,8 @@ class Document(BaseModel):
             return DocumentStatus.FAILED
         ok = sum(1 for u in self.units if u.status == UnitStatus.OK)
         if ok == 0:
+            if any(u.status == UnitStatus.NEEDS_OCR for u in self.units):
+                return DocumentStatus.NEEDS_OCR
             return DocumentStatus.FAILED
         if ok == len(self.units):
             return DocumentStatus.DONE

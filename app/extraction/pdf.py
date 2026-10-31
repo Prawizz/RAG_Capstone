@@ -6,7 +6,7 @@
   ผลนับของ normalizer รวมราย unit: ``QualityReport.normalization_changes`` = ผลรวม fixes,
   ``Unit.signals`` ใช้ key แบบแบน ``norm_fix:<rule>`` / ``norm_sig:<signal>`` (ใส่เฉพาะค่าที่ไม่ใช่ 0)
 - หน้าที่พังได้ status failed พร้อม reason หน้าอื่นทำต่อ
-- ยังไม่ทำ: ตัดสิน needs_ocr / คะแนนคุณภาพ (quality.score = None, มาใน T04)
+- ไม่ตัดสิน needs_ocr ที่นี่ (ทำใน app/extraction/quality.py ที่ pipeline เรียกหลังได้ทุก unit); quality.score เป็น None
 """
 
 import hashlib

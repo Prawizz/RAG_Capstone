@@ -40,5 +40,40 @@ def test_one_report(name):
         pages = d.page_count
     doc = extract_file(path)
     assert doc.error is None
-    assert doc.status != DocumentStatus.FAILED
+    # KBANK ฟอนต์พังทั้งไฟล์ ทุกหน้า needs_ocr: ไฟล์รอ OCR ไม่ใช่พัง
+    expected = DocumentStatus.NEEDS_OCR if name == "ONEREPORTKBANKT.PDF" else None
+    if expected:
+        assert doc.status == expected
+    else:
+        assert doc.status != DocumentStatus.FAILED
     assert doc.unit_count == pages
+
+
+# ---------- ด่านตรวจคุณภาพบน PDF จริง ----------
+
+@pytest.fixture(scope="module")
+def gated():
+    return {n: extract_file(DATASETS / n) for n in ONE_REPORTS}
+
+
+def test_gate_cpall_clean_pages_are_ok(gated):
+    units = gated["E_ONE_REPORT_CPALLT.PDF"].units
+    for page in (298, 302):  # คำพิมพ์ผิดในต้นฉบับ 1 จุด ไม่ใช่ฟอนต์พัง
+        assert units[page - 1].status.value == "ok", units[page - 1].reason
+
+
+def test_gate_cpall_scans_go_to_ocr(gated):
+    from app.extraction.quality import gate_summary
+
+    assert gate_summary(gated["E_ONE_REPORT_CPALLT.PDF"].units)["needs_ocr:scan_like"] >= 150
+
+
+def test_gate_ptt_page_43_needs_ocr(gated):
+    u = gated["ONEREPORTPTTT.PDF"].units[42]
+    assert u.status.value == "needs_ocr" and "พบจุดพัง" in u.reason
+
+
+def test_gate_kbank_almost_all_needs_ocr(gated):
+    units = gated["ONEREPORTKBANKT.PDF"].units
+    share = sum(u.status.value == "needs_ocr" for u in units) / len(units)
+    assert share >= 0.9

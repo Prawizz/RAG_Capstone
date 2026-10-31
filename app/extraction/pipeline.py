@@ -12,6 +12,7 @@ from typing import Optional
 from app.extraction.detect import detect
 from app.extraction.errors import ExtractionError
 from app.extraction.pdf import extract_pdf
+from app.extraction.quality import apply_gate
 from app.models import DetectedType, Document, DocumentError, ErrorCode
 from app.thai.normalizer import NORMALIZER_VERSION
 
@@ -61,7 +62,7 @@ def extract_file(
     return Document(
         **fields,
         detected_type=detected,
-        units=result.units,
+        units=apply_gate(result.units),
         has_outline=result.has_outline,
         producer=result.producer,
         page_equivalent=result.page_count,

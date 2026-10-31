@@ -81,7 +81,9 @@ def test_document_status():
     bad = with_status(ok, UnitStatus.NEEDS_OCR)
     assert make_doc([ok, ok]).status == DocumentStatus.DONE
     assert make_doc([ok, bad]).status == DocumentStatus.DONE_WITH_GAPS
-    assert make_doc([bad, bad]).status == DocumentStatus.FAILED
+    assert make_doc([bad, bad]).status == DocumentStatus.NEEDS_OCR  # ไม่มี ok แต่รอ OCR ไม่ใช่พัง
+    assert make_doc([bad, with_status(ok, UnitStatus.REJECTED)]).status == DocumentStatus.NEEDS_OCR
+    assert make_doc([with_status(ok, UnitStatus.REJECTED)]).status == DocumentStatus.FAILED
     assert make_doc([]).status == DocumentStatus.FAILED
 
 
@@ -106,6 +108,10 @@ def test_error_forces_failed_status():
     assert doc.status == DocumentStatus.DONE
     doc.error = DocumentError(code=ErrorCode.ENCRYPTED, message="ไฟล์มีรหัสผ่าน")
     assert doc.status == DocumentStatus.FAILED
+    waiting = make_doc([with_status(load_unit("page"), UnitStatus.NEEDS_OCR)])
+    assert waiting.status == DocumentStatus.NEEDS_OCR
+    waiting.error = doc.error
+    assert waiting.status == DocumentStatus.FAILED  # error ระดับไฟล์ชนะเสมอ
     raw = doc.model_dump_json()
     assert Document.model_validate_json(raw).error.code == ErrorCode.ENCRYPTED
 
