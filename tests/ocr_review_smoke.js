@@ -56,4 +56,35 @@ out.countAfterReload = s.els.count.textContent;
 s.els.fUndone.checked = true;
 s.els.fUndone.onchange();
 out.posUndone = s.els.pos.textContent;
+s.els.fUndone.checked = false;
+s.els.fUndone.onchange();
+// ภาพครอปกว้างเกินจอ -> เตือน + ไม่ย่อ + ปุ่มเปิดภาพทั้งหน้า
+s.els.card.clientWidth = 1000;
+s.els.cropimg.naturalWidth = 2400;
+s.els.cropimg.onload();
+out.wideWarnDisplay = s.els.wideWarn.style.display;
+out.wideImgWidth = s.els.cropimg.style.width;
+s.els.bPageNear.onclick();
+out.pageNear = s.els.pageNear.innerHTML;
+s.els.cropimg.naturalWidth = 300;  // แคบพอ: ขยาย 2 เท่า ไม่เตือน
+s.els.wideWarn.style.display = 'none';
+s.els.cropimg.onload();
+out.narrowImgWidth = s.els.cropimg.style.width;
+out.narrowWarnDisplay = s.els.wideWarn.style.display;
+// รายการที่ถูกกรองออก: เปิดดูได้ แต่ไม่นับในตัวนับ และไม่มีปุ่มตัดสิน
+const countBefore = s.els.count.textContent;
+s.els.fKind.value = 'fragment';
+s.els.fKind.onchange();
+out.fragPos = s.els.pos.textContent;
+out.fragCard = s.els.card.innerHTML;
+out.fragCountUnchanged = s.els.count.textContent === countBefore;
+s.els.fKind.value = 'duplicate';
+s.els.fKind.onchange();
+out.dupCard = s.els.card.innerHTML;
+s.els.fKind.value = 'maybe_dup';
+s.els.fKind.onchange();
+out.maybeCard = s.els.card.innerHTML;
+s.els.fKind.value = '';
+s.els.fKind.onchange();
+out.defaultHasFiltered = /ถูกกรองออก/.test(s.els.card.innerHTML);
 console.log(JSON.stringify(out));

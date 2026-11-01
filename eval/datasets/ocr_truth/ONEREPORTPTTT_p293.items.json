@@ -12,11 +12,38 @@
   "backend": "tesseract-local",
   "model": "tesseract-5.4.0.20240606",
   "revision": "b02ddf48069f",
-  "seconds": 7.966239999979734
+  "seconds": 5.55051780003123
  },
  "typhoon_page_numbers": [
   291
  ],
+ "column_split": [
+  null
+ ],
+ "invariant": {
+  "hay_chars": 3327,
+  "dropped": 0,
+  "doubled": 0
+ },
+ "span_stats": {
+  "relocated": 3,
+  "trimmed": 2,
+  "demoted_by_overlap": 8,
+  "snapped_items": 1,
+  "snapped_chars": 1,
+  "gap_merged_runs": 1,
+  "gap_merged_chars": 1,
+  "short_gap_typhoon_only": 0,
+  "agree_to_diff": [
+   {
+    "id": "ONEREPORTPTTT_p293_027",
+    "tesseract": ": Responsibility for Society, I: Integrity & Ethics, T: Trust",
+    "typhoon_before": ": Responsibility for Society, I: Integrity & Ethics, T: Trust",
+    "typhoon_after": "R: Responsibility for Society, I: Integrity & Ethics, T: Trust &"
+   }
+  ],
+  "cut_mid": []
+ },
  "figures": [
   "ภาพประกอบแสดงโลโก้ขององค์กร 5 องค์กร ได้แก่ Synergy, Performance Excellence, Innovation, Responsibility for Society, และ Integrity & Ethics โดยแต่ละโลโก้มีตัวอักษรย่อและชื่อเต็มขององค์กรอยู่ด้านบน และมีคำอธิบายสั้นๆ อยู่ด้านล่าง โลโก้ Synergy เป็นรูปตัว S สีฟ้า พร้อมคำว่า \"Synergy\" และคำอธิบาย \"S ผสานพลัง สร้างพันธมิตร\" โลโก้ Performance Excellence เป็นรูปตัว P สีเหลือง พร้อมคำว่า \"Performance Excellence\" และคำอธิบาย \"P สร้าง ความเป็นเลิศ\" โลโก้ Innovation เป็นรูปตัว I สีส้ม พร้อมคำว่า \"Innovation\" และคำอธิบาย \"I สร้างการเติบโต ด้วยนวัตกรรม\" โลโก้ Responsibility for Society เป็นรูปตัว R สีเขียว พร้อมคำว่า \"Responsibility for Society\" และคำอธิบาย \"R สร้างสรรค์สังคม และสิ่งแวดล้อม\" โลโก้ Integrity & Ethics เป็นรูปตัว T สีแดง พร้อมคำว่า \"Integrity & Ethics\" และคำอธิบาย \"T สร้างพลัง ความดี\" โลโก้ Trust & Respect เป็นรูปตัว T สีแดง พร้อมคำว่า \"Trust & Respect\" และคำอธิบาย \"T สร้างความเชื่อมั่น และไว้วางใจ\""
  ],
@@ -34,12 +61,15 @@
   }
  ],
  "counts": {
-  "agree": 59,
-  "agree_audit": 7,
-  "diff": 13,
-  "typhoon_only": 3,
-  "tesseract_only": 16,
-  "to_judge": 39
+  "agree": 51,
+  "agree_audit": 6,
+  "diff": 14,
+  "typhoon_only": 1,
+  "tesseract_only": 21,
+  "fragment": 3,
+  "duplicate": 0,
+  "to_judge": 42,
+  "maybe_duplicate": 1
  },
  "items": [
   {
@@ -53,9 +83,16 @@
    "kind": "typhoon_only",
    "score": 0.0,
    "pos": 0,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p293_001",
    "suggest": "typhoon",
-   "order": 0
+   "order": 0,
+   "pos_end": 26
   },
   {
    "typhoon": {
@@ -70,7 +107,8 @@
      922,
      110
     ],
-    "conf": 94.3
+    "conf": 94.3,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -78,13 +116,20 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 26,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p293_002",
    "suggest": "typhoon",
-   "order": 1
+   "order": 1,
+   "pos_end": 88
   },
   {
    "typhoon": {
-    "text": "สำคัญเกี่ยวกับคณะกรรมการ คณะกรรมการชุดย่อย ผู้บริหาร พนักงาน และอื่น ๆ"
+    "text": "คณะกรรมการชุดย่อย ผู้บริหาร พนักงาน และอื่น ๆ"
    },
    "tesseract": {
     "text": "ส่วนที่ 2 การกํากับดูแลกิจการคณะกรรมการชุดย่อยผู้บริหารพนักงานและอื่นๆ",
@@ -95,17 +140,25 @@
      768,
      130
     ],
-    "conf": 94.1
+    "conf": 94.1,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
    "kind": "diff",
-   "score": 73.1,
-   "pos": 64,
+   "score": 61.2,
+   "pos": 88,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p293_003",
    "suggest": "typhoon",
-   "order": 2
+   "order": 2,
+   "pos_end": 129
   },
   {
    "typhoon": null,
@@ -118,7 +171,8 @@
      800,
      318
     ],
-    "conf": 96.0
+    "conf": 96.0,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -126,9 +180,233 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 128.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p293_004",
    "suggest": "tesseract",
-   "order": 3
+   "order": 3,
+   "pos_end": 128.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Excellence",
+    "image": 0,
+    "bbox": [
+     482,
+     315,
+     585,
+     331
+    ],
+    "conf": 96.5,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 128.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_005",
+   "suggest": "tesseract",
+   "order": 4,
+   "pos_end": 128.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Synchronize Agile for Invent future",
+    "image": 0,
+    "bbox": [
+     274,
+     339,
+     786,
+     370
+    ],
+    "conf": 91.8,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 128.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_006",
+   "suggest": "tesseract",
+   "order": 5,
+   "pos_end": 128.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "through excellence growth through",
+    "image": 0,
+    "bbox": [
+     289,
+     357,
+     795,
+     388
+    ],
+    "conf": 92.4,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 128.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_007",
+   "suggest": "tesseract",
+   "order": 6,
+   "pos_end": 128.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "partnership innovation",
+    "image": 0,
+    "bbox": [
+     276,
+     375,
+     778,
+     406
+    ],
+    "conf": 94.2,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 128.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_008",
+   "suggest": "tesseract",
+   "order": 7,
+   "pos_end": 128.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ผสานพลังสร้างสร้างการเติบโต",
+    "image": 0,
+    "bbox": [
+     283,
+     451,
+     790,
+     478
+    ],
+    "conf": 94.4,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 128.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_009",
+   "suggest": "tesseract",
+   "order": 8,
+   "pos_end": 128.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "สร้างเพ้นธมิตรความเป็นเลิศเด้วยนวัตกรรม",
+    "image": 0,
+    "bbox": [
+     269,
+     473,
+     789,
+     500
+    ],
+    "conf": 92.8,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 128.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_010",
+   "suggest": "tesseract",
+   "order": 9,
+   "pos_end": 128.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "pel",
+    "image": 0,
+    "bbox": [
+     182,
+     618,
+     195,
+     637
+    ],
+    "conf": 64.2,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "fragment",
+   "score": 0.0,
+   "pos": 128.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_011",
+   "suggest": "tesseract",
+   "order": 10,
+   "pos_end": 128.5
   },
   {
    "typhoon": {
@@ -143,17 +421,25 @@
      1510,
      110
     ],
-    "conf": 94.3
+    "conf": 94.3,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": false,
+   "audit": true,
    "kind": "agree",
    "score": 100.0,
    "pos": 129,
-   "id": "ONEREPORTPTTT_p293_005",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_012",
    "suggest": "typhoon",
-   "order": 4
+   "order": 11,
+   "pos_end": 173
   },
   {
    "typhoon": {
@@ -168,7 +454,8 @@
      1509,
      132
     ],
-    "conf": 93.8
+    "conf": 93.8,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -176,34 +463,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 173,
-   "id": "ONEREPORTPTTT_p293_006",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_013",
    "suggest": "typhoon",
-   "order": 5
-  },
-  {
-   "typhoon": {
-    "text": "Re"
-   },
-   "tesseract": {
-    "text": "Re",
-    "image": 0,
-    "bbox": [
-     181,
-     660,
-     196,
-     679
-    ],
-    "conf": 61.2
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": true,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 184,
-   "id": "ONEREPORTPTTT_p293_007",
-   "suggest": "typhoon",
-   "order": 6
+   "order": 12,
+   "pos_end": 213
   },
   {
    "typhoon": null,
@@ -216,7 +485,8 @@
      1418,
      318
     ],
-    "conf": 96.5
+    "conf": 96.5,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -224,9 +494,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 212.5,
-   "id": "ONEREPORTPTTT_p293_008",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_014",
    "suggest": "tesseract",
-   "order": 7
+   "order": 13,
+   "pos_end": 212.5
   },
   {
    "typhoon": null,
@@ -239,7 +516,8 @@
      1442,
      335
     ],
-    "conf": 94.0
+    "conf": 94.0,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -247,9 +525,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 212.5,
-   "id": "ONEREPORTPTTT_p293_009",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_015",
    "suggest": "tesseract",
-   "order": 8
+   "order": 14,
+   "pos_end": 212.5
   },
   {
    "typhoon": null,
@@ -262,7 +547,8 @@
      1422,
      363
     ],
-    "conf": 94.8
+    "conf": 94.8,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -270,9 +556,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 212.5,
-   "id": "ONEREPORTPTTT_p293_010",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_016",
    "suggest": "tesseract",
-   "order": 9
+   "order": 15,
+   "pos_end": 212.5
   },
   {
    "typhoon": null,
@@ -285,7 +578,8 @@
      1440,
      385
     ],
-    "conf": 88.4
+    "conf": 88.4,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -293,9 +587,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 212.5,
-   "id": "ONEREPORTPTTT_p293_011",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_017",
    "suggest": "tesseract",
-   "order": 10
+   "order": 16,
+   "pos_end": 212.5
   },
   {
    "typhoon": null,
@@ -308,7 +609,8 @@
      1445,
      399
     ],
-    "conf": 81.5
+    "conf": 81.5,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -316,9 +618,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 212.5,
-   "id": "ONEREPORTPTTT_p293_012",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_018",
    "suggest": "tesseract",
-   "order": 11
+   "order": 17,
+   "pos_end": 212.5
   },
   {
    "typhoon": null,
@@ -331,7 +640,8 @@
      1436,
      417
     ],
-    "conf": 88.4
+    "conf": 88.4,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -339,9 +649,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 212.5,
-   "id": "ONEREPORTPTTT_p293_013",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_019",
    "suggest": "tesseract",
-   "order": 12
+   "order": 18,
+   "pos_end": 212.5
   },
   {
    "typhoon": null,
@@ -354,7 +671,8 @@
      1222,
      435
     ],
-    "conf": 92.3
+    "conf": 92.3,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -362,13 +680,206 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 212.5,
-   "id": "ONEREPORTPTTT_p293_014",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_020",
    "suggest": "tesseract",
-   "order": 13
+   "order": 19,
+   "pos_end": 212.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "สร้างความเชื่อมั่น",
+    "image": 0,
+    "bbox": [
+     1334,
+     452,
+     1454,
+     482
+    ],
+    "conf": 94.5,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 212.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_021",
+   "suggest": "tesseract",
+   "order": 20,
+   "pos_end": 212.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "และไว้ใจ",
+    "image": 0,
+    "bbox": [
+     1367,
+     476,
+     1418,
+     503
+    ],
+    "conf": 94.0,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 212.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_022",
+   "suggest": "tesseract",
+   "order": 21,
+   "pos_end": 212.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "สร้างสรรค์สังคม",
+    "image": 0,
+    "bbox": [
+     921,
+     454,
+     1033,
+     481
+    ],
+    "conf": 95.1,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 212.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_023",
+   "suggest": "tesseract",
+   "order": 22,
+   "pos_end": 212.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "และสิ่งแวดล้อม",
+    "image": 0,
+    "bbox": [
+     926,
+     474,
+     1029,
+     504
+    ],
+    "conf": 94.5,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 212.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_024",
+   "suggest": "tesseract",
+   "order": 23,
+   "pos_end": 212.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "สร้างพลัง",
+    "image": 0,
+    "bbox": [
+     1151,
+     455,
+     1217,
+     482
+    ],
+    "conf": 94.6,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 212.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_025",
+   "suggest": "tesseract",
+   "order": 24,
+   "pos_end": 212.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ความคี",
+    "image": 0,
+    "bbox": [
+     1161,
+     477,
+     1207,
+     503
+    ],
+    "conf": 88.0,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 212.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_026",
+   "suggest": "tesseract",
+   "order": 25,
+   "pos_end": 212.5
   },
   {
    "typhoon": {
-    "text": ": Responsibility for Society, I: Integrity & Ethics, T: Trust"
+    "text": "R: Responsibility for Society, I: Integrity & Ethics, T: Trust &"
    },
    "tesseract": {
     "text": ": Responsibility for Society, I: Integrity & Ethics, T: Trust",
@@ -379,17 +890,25 @@
      826,
      642
     ],
-    "conf": 92.5
+    "conf": 92.5,
+    "column": null
    },
    "region": null,
-   "auto_accept": true,
+   "auto_accept": false,
    "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 214,
-   "id": "ONEREPORTPTTT_p293_015",
+   "kind": "diff",
+   "score": 96.3,
+   "pos": 213,
+   "snap": 1,
+   "gap_merged": 1,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_027",
    "suggest": "typhoon",
-   "order": 14
+   "order": 26,
+   "pos_end": 267
   },
   {
    "typhoon": {
@@ -404,7 +923,8 @@
      824,
      691
     ],
-    "conf": 93.6
+    "conf": 93.6,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -412,9 +932,16 @@
    "kind": "diff",
    "score": 95.7,
    "pos": 267,
-   "id": "ONEREPORTPTTT_p293_016",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_028",
    "suggest": "typhoon",
-   "order": 15
+   "order": 27,
+   "pos_end": 313
   },
   {
    "typhoon": {
@@ -429,7 +956,8 @@
      823,
      733
     ],
-    "conf": 94.6
+    "conf": 94.6,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -437,34 +965,47 @@
    "kind": "diff",
    "score": 98.1,
    "pos": 313,
-   "id": "ONEREPORTPTTT_p293_017",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_029",
    "suggest": "typhoon",
-   "order": 16
+   "order": 28,
+   "pos_end": 365
   },
   {
-   "typhoon": {
-    "text": "ผู้บริหาร"
-   },
+   "typhoon": null,
    "tesseract": {
-    "text": "ผู้บริหาร",
+    "text": "Re",
     "image": 0,
     "bbox": [
-     863,
-     1371,
-     951,
-     1411
+     181,
+     660,
+     196,
+     679
     ],
-    "conf": 94.1
+    "conf": 61.2,
+    "column": null
    },
    "region": null,
-   "auto_accept": true,
+   "auto_accept": false,
    "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 327,
-   "id": "ONEREPORTPTTT_p293_018",
-   "suggest": "typhoon",
-   "order": 17
+   "kind": "fragment",
+   "score": 0.0,
+   "pos": 364.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_030",
+   "suggest": "tesseract",
+   "order": 29,
+   "pos_end": 364.5
   },
   {
    "typhoon": {
@@ -479,17 +1020,25 @@
      824,
      775
     ],
-    "conf": 94.1
+    "conf": 94.1,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": false,
+   "audit": true,
    "kind": "agree",
    "score": 100.0,
    "pos": 365,
-   "id": "ONEREPORTPTTT_p293_019",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_031",
    "suggest": "typhoon",
-   "order": 18
+   "order": 30,
+   "pos_end": 421
   },
   {
    "typhoon": null,
@@ -502,7 +1051,8 @@
      810,
      794
     ],
-    "conf": 44.9
+    "conf": 44.9,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -510,9 +1060,18 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 420.5,
-   "id": "ONEREPORTPTTT_p293_020",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [
+    "ONEREPORTPTTT_p293_033"
+   ],
+   "id": "ONEREPORTPTTT_p293_032",
    "suggest": "tesseract",
-   "order": 19
+   "order": 31,
+   "pos_end": 420.5
   },
   {
    "typhoon": {
@@ -527,7 +1086,8 @@
      825,
      814
     ],
-    "conf": 94.8
+    "conf": 94.8,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -535,9 +1095,16 @@
    "kind": "diff",
    "score": 98.2,
    "pos": 421,
-   "id": "ONEREPORTPTTT_p293_021",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_033",
    "suggest": "typhoon",
-   "order": 20
+   "order": 32,
+   "pos_end": 477
   },
   {
    "typhoon": {
@@ -552,7 +1119,8 @@
      823,
      855
     ],
-    "conf": 94.6
+    "conf": 94.6,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -560,9 +1128,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 477,
-   "id": "ONEREPORTPTTT_p293_022",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_034",
    "suggest": "typhoon",
-   "order": 21
+   "order": 33,
+   "pos_end": 527
   },
   {
    "typhoon": {
@@ -577,17 +1152,25 @@
      824,
      897
     ],
-    "conf": 95.0
+    "conf": 95.0,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": true,
+   "audit": false,
    "kind": "agree",
    "score": 100.0,
    "pos": 527,
-   "id": "ONEREPORTPTTT_p293_023",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_035",
    "suggest": "typhoon",
-   "order": 22
+   "order": 34,
+   "pos_end": 575
   },
   {
    "typhoon": null,
@@ -600,17 +1183,28 @@
      484,
      912
     ],
-    "conf": 41.1
+    "conf": 41.1,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 574.5,
-   "id": "ONEREPORTPTTT_p293_024",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "ONEREPORTPTTT_p293_037",
+    "ONEREPORTPTTT_p293_035"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_036",
    "suggest": "tesseract",
-   "order": 23
+   "order": 35,
+   "pos_end": 574.5
   },
   {
    "typhoon": {
@@ -625,17 +1219,25 @@
      487,
      939
     ],
-    "conf": 92.7
+    "conf": 92.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": true,
+   "audit": false,
    "kind": "agree",
    "score": 100.0,
    "pos": 575,
-   "id": "ONEREPORTPTTT_p293_025",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_037",
    "suggest": "typhoon",
-   "order": 24
+   "order": 36,
+   "pos_end": 602
   },
   {
    "typhoon": {
@@ -650,7 +1252,8 @@
      825,
      1025
     ],
-    "conf": 93.2
+    "conf": 93.2,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -658,9 +1261,16 @@
    "kind": "diff",
    "score": 96.4,
    "pos": 602,
-   "id": "ONEREPORTPTTT_p293_026",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_038",
    "suggest": "typhoon",
-   "order": 25
+   "order": 37,
+   "pos_end": 656
   },
   {
    "typhoon": {
@@ -675,7 +1285,8 @@
      824,
      1067
     ],
-    "conf": 94.2
+    "conf": 94.2,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -683,9 +1294,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 656,
-   "id": "ONEREPORTPTTT_p293_027",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_039",
    "suggest": "typhoon",
-   "order": 26
+   "order": 38,
+   "pos_end": 701
   },
   {
    "typhoon": {
@@ -700,17 +1318,25 @@
      623,
      1108
     ],
-    "conf": 95.2
+    "conf": 95.2,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": true,
+   "audit": false,
    "kind": "agree",
    "score": 100.0,
    "pos": 701,
-   "id": "ONEREPORTPTTT_p293_028",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_040",
    "suggest": "typhoon",
-   "order": 27
+   "order": 39,
+   "pos_end": 736
   },
   {
    "typhoon": {
@@ -725,7 +1351,8 @@
      825,
      1150
     ],
-    "conf": 90.7
+    "conf": 90.7,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -733,172 +1360,16 @@
    "kind": "diff",
    "score": 98.0,
    "pos": 736,
-   "id": "ONEREPORTPTTT_p293_029",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_041",
    "suggest": "typhoon",
-   "order": 28
-  },
-  {
-   "typhoon": {
-    "text": "Excellence"
-   },
-   "tesseract": {
-    "text": "Excellence",
-    "image": 0,
-    "bbox": [
-     482,
-     315,
-     585,
-     331
-    ],
-    "conf": 96.5
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 747,
-   "id": "ONEREPORTPTTT_p293_030",
-   "suggest": "typhoon",
-   "order": 29
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "Synchronize Agile for Invent future",
-    "image": 0,
-    "bbox": [
-     274,
-     339,
-     786,
-     370
-    ],
-    "conf": 91.8
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 756.5,
-   "id": "ONEREPORTPTTT_p293_031",
-   "suggest": "tesseract",
-   "order": 30
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "through excellence growth through",
-    "image": 0,
-    "bbox": [
-     289,
-     357,
-     795,
-     388
-    ],
-    "conf": 92.4
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 756.5,
-   "id": "ONEREPORTPTTT_p293_032",
-   "suggest": "tesseract",
-   "order": 31
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "partnership innovation",
-    "image": 0,
-    "bbox": [
-     276,
-     375,
-     778,
-     406
-    ],
-    "conf": 94.2
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 756.5,
-   "id": "ONEREPORTPTTT_p293_033",
-   "suggest": "tesseract",
-   "order": 32
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "ผสานพลังสร้างสร้างการเติบโต",
-    "image": 0,
-    "bbox": [
-     283,
-     451,
-     790,
-     478
-    ],
-    "conf": 94.4
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 756.5,
-   "id": "ONEREPORTPTTT_p293_034",
-   "suggest": "tesseract",
-   "order": 33
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "สร้างเพ้นธมิตรความเป็นเลิศเด้วยนวัตกรรม",
-    "image": 0,
-    "bbox": [
-     269,
-     473,
-     789,
-     500
-    ],
-    "conf": 92.8
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 756.5,
-   "id": "ONEREPORTPTTT_p293_035",
-   "suggest": "tesseract",
-   "order": 34
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "pel",
-    "image": 0,
-    "bbox": [
-     182,
-     618,
-     195,
-     637
-    ],
-    "conf": 64.2
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 756.5,
-   "id": "ONEREPORTPTTT_p293_036",
-   "suggest": "tesseract",
-   "order": 35
+   "order": 40,
+   "pos_end": 786
   },
   {
    "typhoon": {
@@ -913,17 +1384,25 @@
      824,
      1192
     ],
-    "conf": 95.1
+    "conf": 95.1,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": false,
+   "audit": true,
    "kind": "agree",
    "score": 100.0,
    "pos": 786,
-   "id": "ONEREPORTPTTT_p293_037",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_042",
    "suggest": "typhoon",
-   "order": 36
+   "order": 41,
+   "pos_end": 840
   },
   {
    "typhoon": {
@@ -938,7 +1417,8 @@
      823,
      1233
     ],
-    "conf": 94.4
+    "conf": 94.4,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -946,34 +1426,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 840,
-   "id": "ONEREPORTPTTT_p293_038",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_043",
    "suggest": "typhoon",
-   "order": 37
-  },
-  {
-   "typhoon": {
-    "text": "ความคา"
-   },
-   "tesseract": {
-    "text": "ความคี",
-    "image": 0,
-    "bbox": [
-     1161,
-     477,
-     1207,
-     503
-    ],
-    "conf": 88.0
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "diff",
-   "score": 83.3,
-   "pos": 871,
-   "id": "ONEREPORTPTTT_p293_039",
-   "suggest": "typhoon",
-   "order": 38
+   "order": 42,
+   "pos_end": 892
   },
   {
    "typhoon": {
@@ -988,7 +1450,8 @@
      735,
      1275
     ],
-    "conf": 94.0
+    "conf": 94.0,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -996,9 +1459,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 892,
-   "id": "ONEREPORTPTTT_p293_040",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_044",
    "suggest": "typhoon",
-   "order": 39
+   "order": 43,
+   "pos_end": 944
   },
   {
    "typhoon": {
@@ -1013,7 +1483,8 @@
      825,
      1317
     ],
-    "conf": 93.8
+    "conf": 93.8,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1021,9 +1492,16 @@
    "kind": "diff",
    "score": 98.0,
    "pos": 944,
-   "id": "ONEREPORTPTTT_p293_041",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_045",
    "suggest": "typhoon",
-   "order": 40
+   "order": 44,
+   "pos_end": 992
   },
   {
    "typhoon": {
@@ -1038,7 +1516,8 @@
      823,
      1356
     ],
-    "conf": 94.8
+    "conf": 94.8,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1046,9 +1525,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 992,
-   "id": "ONEREPORTPTTT_p293_042",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_046",
    "suggest": "typhoon",
-   "order": 41
+   "order": 45,
+   "pos_end": 1037
   },
   {
    "typhoon": {
@@ -1063,7 +1549,8 @@
      824,
      1400
     ],
-    "conf": 94.5
+    "conf": 94.5,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1071,9 +1558,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1037,
-   "id": "ONEREPORTPTTT_p293_043",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_047",
    "suggest": "typhoon",
-   "order": 42
+   "order": 46,
+   "pos_end": 1086
   },
   {
    "typhoon": {
@@ -1088,7 +1582,8 @@
      824,
      1440
     ],
-    "conf": 94.5
+    "conf": 94.5,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1096,9 +1591,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1086,
-   "id": "ONEREPORTPTTT_p293_044",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_048",
    "suggest": "typhoon",
-   "order": 43
+   "order": 47,
+   "pos_end": 1130
   },
   {
    "typhoon": {
@@ -1113,7 +1615,8 @@
      823,
      1483
     ],
-    "conf": 94.5
+    "conf": 94.5,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1121,9 +1624,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1130,
-   "id": "ONEREPORTPTTT_p293_045",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_049",
    "suggest": "typhoon",
-   "order": 44
+   "order": 48,
+   "pos_end": 1186
   },
   {
    "typhoon": {
@@ -1138,7 +1648,8 @@
      828,
      1525
     ],
-    "conf": 94.5
+    "conf": 94.5,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1146,9 +1657,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1186,
-   "id": "ONEREPORTPTTT_p293_046",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_050",
    "suggest": "typhoon",
-   "order": 45
+   "order": 49,
+   "pos_end": 1243
   },
   {
    "typhoon": {
@@ -1163,7 +1681,8 @@
      541,
      1567
     ],
-    "conf": 94.6
+    "conf": 94.6,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1171,9 +1690,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1243,
-   "id": "ONEREPORTPTTT_p293_047",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_051",
    "suggest": "typhoon",
-   "order": 46
+   "order": 50,
+   "pos_end": 1270
   },
   {
    "typhoon": {
@@ -1188,7 +1714,8 @@
      824,
      1604
     ],
-    "conf": 93.6
+    "conf": 93.6,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1196,59 +1723,16 @@
    "kind": "diff",
    "score": 98.2,
    "pos": 1270,
-   "id": "ONEREPORTPTTT_p293_048",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_052",
    "suggest": "typhoon",
-   "order": 47
-  },
-  {
-   "typhoon": {
-    "text": "สร้างสรรค์สังคม"
-   },
-   "tesseract": {
-    "text": "สร้างสรรค์สังคม",
-    "image": 0,
-    "bbox": [
-     921,
-     454,
-     1033,
-     481
-    ],
-    "conf": 95.1
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 1295,
-   "id": "ONEREPORTPTTT_p293_049",
-   "suggest": "typhoon",
-   "order": 48
-  },
-  {
-   "typhoon": {
-    "text": "และสิ่งแวดล้อม"
-   },
-   "tesseract": {
-    "text": "และสิ่งแวดล้อม",
-    "image": 0,
-    "bbox": [
-     926,
-     474,
-     1029,
-     504
-    ],
-    "conf": 94.5
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 1310,
-   "id": "ONEREPORTPTTT_p293_050",
-   "suggest": "typhoon",
-   "order": 49
+   "order": 51,
+   "pos_end": 1324
   },
   {
    "typhoon": {
@@ -1263,7 +1747,8 @@
      824,
      1650
     ],
-    "conf": 94.4
+    "conf": 94.4,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1271,9 +1756,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1324,
-   "id": "ONEREPORTPTTT_p293_051",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_053",
    "suggest": "typhoon",
-   "order": 50
+   "order": 52,
+   "pos_end": 1373
   },
   {
    "typhoon": {
@@ -1288,7 +1780,8 @@
      825,
      1692
     ],
-    "conf": 93.9
+    "conf": 93.9,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1296,9 +1789,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1373,
-   "id": "ONEREPORTPTTT_p293_052",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_054",
    "suggest": "typhoon",
-   "order": 51
+   "order": 53,
+   "pos_end": 1422
   },
   {
    "typhoon": {
@@ -1313,7 +1813,8 @@
      824,
      1733
     ],
-    "conf": 94.2
+    "conf": 94.2,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1321,9 +1822,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1422,
-   "id": "ONEREPORTPTTT_p293_053",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_055",
    "suggest": "typhoon",
-   "order": 52
+   "order": 54,
+   "pos_end": 1479
   },
   {
    "typhoon": {
@@ -1338,7 +1846,8 @@
      801,
      1775
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1346,9 +1855,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1479,
-   "id": "ONEREPORTPTTT_p293_054",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_056",
    "suggest": "typhoon",
-   "order": 53
+   "order": 55,
+   "pos_end": 1524
   },
   {
    "typhoon": {
@@ -1363,7 +1879,8 @@
      825,
      1817
     ],
-    "conf": 93.0
+    "conf": 93.0,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1371,34 +1888,16 @@
    "kind": "diff",
    "score": 98.0,
    "pos": 1524,
-   "id": "ONEREPORTPTTT_p293_055",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_057",
    "suggest": "typhoon",
-   "order": 54
-  },
-  {
-   "typhoon": {
-    "text": "สร้างพลัง"
-   },
-   "tesseract": {
-    "text": "สร้างพลัง",
-    "image": 0,
-    "bbox": [
-     1151,
-     455,
-     1217,
-     482
-    ],
-    "conf": 94.6
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 1541,
-   "id": "ONEREPORTPTTT_p293_056",
-   "suggest": "typhoon",
-   "order": 55
+   "order": 56,
+   "pos_end": 1574
   },
   {
    "typhoon": {
@@ -1413,7 +1912,8 @@
      823,
      1858
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1421,9 +1921,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1574,
-   "id": "ONEREPORTPTTT_p293_057",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_058",
    "suggest": "typhoon",
-   "order": 56
+   "order": 57,
+   "pos_end": 1623
   },
   {
    "typhoon": {
@@ -1438,7 +1945,8 @@
      828,
      1900
     ],
-    "conf": 93.9
+    "conf": 93.9,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1446,13 +1954,20 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1623,
-   "id": "ONEREPORTPTTT_p293_058",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_059",
    "suggest": "typhoon",
-   "order": 57
+   "order": 58,
+   "pos_end": 1674
   },
   {
    "typhoon": {
-    "text": "จริยธรรมอันดีงาม"
+    "text": "จริยธรรมอันดีงา"
    },
    "tesseract": {
     "text": "จริยธรรมอันดีงาม",
@@ -1463,17 +1978,25 @@
      405,
      1942
     ],
-    "conf": 94.9
+    "conf": 94.9,
+    "column": null
    },
    "region": null,
-   "auto_accept": true,
+   "auto_accept": false,
    "audit": false,
-   "kind": "agree",
-   "score": 100.0,
+   "kind": "diff",
+   "score": 93.8,
    "pos": 1674,
-   "id": "ONEREPORTPTTT_p293_059",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_060",
    "suggest": "typhoon",
-   "order": 58
+   "order": 59,
+   "pos_end": 1689
   },
   {
    "typhoon": {
@@ -1488,7 +2011,8 @@
      825,
      1983
     ],
-    "conf": 93.2
+    "conf": 93.2,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1496,34 +2020,16 @@
    "kind": "diff",
    "score": 94.2,
    "pos": 1689,
-   "id": "ONEREPORTPTTT_p293_060",
-   "suggest": "typhoon",
-   "order": 59
-  },
-  {
-   "typhoon": {
-    "text": "และไว้ใจ"
-   },
-   "tesseract": {
-    "text": "และไว้ใจ",
-    "image": 0,
-    "bbox": [
-     1367,
-     476,
-     1418,
-     503
-    ],
-    "conf": 94.0
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 1722,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p293_061",
    "suggest": "typhoon",
-   "order": 60
+   "order": 60,
+   "pos_end": 1741
   },
   {
    "typhoon": {
@@ -1538,7 +2044,8 @@
      825,
      2025
     ],
-    "conf": 94.2
+    "conf": 94.2,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1546,34 +2053,16 @@
    "kind": "diff",
    "score": 98.0,
    "pos": 1741,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p293_062",
    "suggest": "typhoon",
-   "order": 61
-  },
-  {
-   "typhoon": {
-    "text": "สร้างความเชื่อมั่น"
-   },
-   "tesseract": {
-    "text": "สร้างความเชื่อมั่น",
-    "image": 0,
-    "bbox": [
-     1334,
-     452,
-     1454,
-     482
-    ],
-    "conf": 94.5
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 1748,
-   "id": "ONEREPORTPTTT_p293_063",
-   "suggest": "typhoon",
-   "order": 62
+   "order": 61,
+   "pos_end": 1791
   },
   {
    "typhoon": {
@@ -1588,17 +2077,25 @@
      824,
      2067
     ],
-    "conf": 94.5
+    "conf": 94.5,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": true,
+   "audit": false,
    "kind": "agree",
    "score": 100.0,
    "pos": 1791,
-   "id": "ONEREPORTPTTT_p293_064",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_063",
    "suggest": "typhoon",
-   "order": 63
+   "order": 62,
+   "pos_end": 1842
   },
   {
    "typhoon": {
@@ -1613,7 +2110,8 @@
      824,
      2108
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1621,9 +2119,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1842,
-   "id": "ONEREPORTPTTT_p293_065",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_064",
    "suggest": "typhoon",
-   "order": 64
+   "order": 63,
+   "pos_end": 1885
   },
   {
    "typhoon": {
@@ -1638,7 +2143,8 @@
      519,
      2151
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1646,9 +2152,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1885,
-   "id": "ONEREPORTPTTT_p293_066",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_065",
    "suggest": "typhoon",
-   "order": 65
+   "order": 64,
+   "pos_end": 1909
   },
   {
    "typhoon": {
@@ -1663,7 +2176,8 @@
      1354,
      657
     ],
-    "conf": 93.9
+    "conf": 93.9,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1671,530 +2185,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1909,
-   "id": "ONEREPORTPTTT_p293_067",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_066",
    "suggest": "typhoon",
-   "order": 66
-  },
-  {
-   "typhoon": {
-    "text": "เลขานุการบริษัท"
-   },
-   "tesseract": null,
-   "region": {
-    "image": 0,
-    "bbox": [
-     0,
-     554,
-     1000000,
-     856
-    ]
-   },
-   "auto_accept": false,
-   "audit": false,
-   "kind": "typhoon_only",
-   "score": 0.0,
-   "pos": 1928,
-   "id": "ONEREPORTPTTT_p293_068",
-   "suggest": "typhoon",
-   "order": 67
-  },
-  {
-   "typhoon": {
-    "text": "เพื่อให้เป็นไปตามหลักการกำกับดูแลกิจการที่ดีของ"
-   },
-   "tesseract": {
-    "text": "เพื่อให้เป็นไปตามหลักการกํากับดูแลกิจการที่ดีของ",
-    "image": 0,
-    "bbox": [
-     867,
-     780,
-     1508,
-     828
-    ],
-    "conf": 94.3
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 1943,
-   "id": "ONEREPORTPTTT_p293_069",
-   "suggest": "typhoon",
-   "order": 68
-  },
-  {
-   "typhoon": {
-    "text": "บริษัทจดทะเบียนในหมวดความรับผิดชอบของคณะกรรมการ"
-   },
-   "tesseract": {
-    "text": "บริษัทจดทะเบียนในหมวดความรับผิดชอบของคณะกรรมการ",
-    "image": 0,
-    "bbox": [
-     866,
-     828,
-     1510,
-     869
-    ],
-    "conf": 95.7
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 1990,
-   "id": "ONEREPORTPTTT_p293_070",
-   "suggest": "typhoon",
-   "order": 69
-  },
-  {
-   "typhoon": {
-    "text": "และตามข้อกำหนดของพระราชบัญญัติหลักทรัพย์และ"
-   },
-   "tesseract": {
-    "text": "และตามข้อกําหนดของพระราชบัญญัติหลักทรัพย์และ",
-    "image": 0,
-    "bbox": [
-     867,
-     870,
-     1509,
-     908
-    ],
-    "conf": 94.2
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2037,
-   "id": "ONEREPORTPTTT_p293_071",
-   "suggest": "typhoon",
-   "order": 70
-  },
-  {
-   "typhoon": {
-    "text": "ตลาดหลักทรัพย์ คณะกรรมการ ปตท. จึงได้แต่งตั้งเลขานุการ"
-   },
-   "tesseract": {
-    "text": "ตลาดหลักทรัพย์คณะกรรมการปตท . จึงได้แต่งตั้งเลขานุการ",
-    "image": 0,
-    "bbox": [
-     867,
-     904,
-     1510,
-     953
-    ],
-    "conf": 94.8
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2080,
-   "id": "ONEREPORTPTTT_p293_072",
-   "suggest": "typhoon",
-   "order": 71
-  },
-  {
-   "typhoon": {
-    "text": "บริษัทขึ้น โดยมีภาระหน้าที่ในการให้คำแนะนำด้านกฎหมาย"
-   },
-   "tesseract": {
-    "text": "บริษัทขึ้นโดยมีภาระหน้าที่ในการให้คําแนะนําด้านกฎหมาย",
-    "image": 0,
-    "bbox": [
-     866,
-     946,
-     1509,
-     993
-    ],
-    "conf": 94.2
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2131,
-   "id": "ONEREPORTPTTT_p293_073",
-   "suggest": "typhoon",
-   "order": 72
-  },
-  {
-   "typhoon": {
-    "text": "และกฎเกณฑ์ต่าง ๆ ที่คณะกรรมการต้องทราบและปฏิบัติการ"
-   },
-   "tesseract": {
-    "text": "และกฎเกณฑ์ต่างๆที่คณะกรรมการต้องทราบและปฏิบัติการ",
-    "image": 0,
-    "bbox": [
-     867,
-     989,
-     1509,
-     1034
-    ],
-    "conf": 94.5
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2182,
-   "id": "ONEREPORTPTTT_p293_074",
-   "suggest": "typhoon",
-   "order": 73
-  },
-  {
-   "typhoon": {
-    "text": "จัดการประชุม รวมทั้งดูแลกิจกรรมต่าง ๆ ของคณะกรรมการ"
-   },
-   "tesseract": {
-    "text": "จัดการประชุมรวมทั้งดูแลกิจกรรมต่างๆของคณะกรรมการ",
-    "image": 0,
-    "bbox": [
-     865,
-     1029,
-     1510,
-     1078
-    ],
-    "conf": 95.3
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2231,
-   "id": "ONEREPORTPTTT_p293_075",
-   "suggest": "typhoon",
-   "order": 74
-  },
-  {
-   "typhoon": {
-    "text": "เพื่อให้กรรมการสามารถปฏิบัติหน้าที่ได้อย่างมีประสิทธิภาพ"
-   },
-   "tesseract": {
-    "text": "เพื่อให้กรรมการสามารถปฏิบัติหน้าที่ได้อย่างมีประสิทธิภาพ",
-    "image": 0,
-    "bbox": [
-     867,
-     1073,
-     1509,
-     1118
-    ],
-    "conf": 94.2
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2279,
-   "id": "ONEREPORTPTTT_p293_076",
-   "suggest": "typhoon",
-   "order": 75
-  },
-  {
-   "typhoon": {
-    "text": "และประสิทธิผล และก่อให้เกิดประโยชน์สูงสุดต่อ ปตท."
-   },
-   "tesseract": {
-    "text": "และประสิทธิผลและก่อให้เกิดประโยชน์สูงสุดต่อปตท .",
-    "image": 0,
-    "bbox": [
-     867,
-     1119,
-     1508,
-     1161
-    ],
-    "conf": 94.4
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2335,
-   "id": "ONEREPORTPTTT_p293_077",
-   "suggest": "typhoon",
-   "order": 76
-  },
-  {
-   "typhoon": {
-    "text": "รวมทั้งการจัดทำและเก็บรักษาเอกสาร อาทิ ทะเบียนกรรมการ"
-   },
-   "tesseract": {
-    "text": "รวมทั้งการจัดทําและเก็บรักษาเอกสารอาทิทะเบียนกรรมการ",
-    "image": 0,
-    "bbox": [
-     866,
-     1154,
-     1510,
-     1202
-    ],
-    "conf": 94.7
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2382,
-   "id": "ONEREPORTPTTT_p293_078",
-   "suggest": "typhoon",
-   "order": 77
-  },
-  {
-   "typhoon": {
-    "text": "หนังสือนัดประชุมคณะกรรมการ รายงานการประชุม"
-   },
-   "tesseract": {
-    "text": "หนังสือนัดประชุมคณะกรรมการรายงานการประชุม",
-    "image": 0,
-    "bbox": [
-     866,
-     1203,
-     1508,
-     1245
-    ],
-    "conf": 95.0
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2433,
-   "id": "ONEREPORTPTTT_p293_079",
-   "suggest": "typhoon",
-   "order": 78
-  },
-  {
-   "typhoon": {
-    "text": "คณะกรรมการ และรายงานประจำปีของบริษัท หนังสือ"
-   },
-   "tesseract": {
-    "text": "คณะกรรมการและรายงานประจําปีของบริษัทหนังสือ",
-    "image": 0,
-    "bbox": [
-     867,
-     1244,
-     1509,
-     1285
-    ],
-    "conf": 94.8
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": true,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2474,
-   "id": "ONEREPORTPTTT_p293_080",
-   "suggest": "typhoon",
-   "order": 79
-  },
-  {
-   "typhoon": {
-    "text": "นัดประชุมผู้ถือหุ้น รายงานการประชุมผู้ถือหุ้นและเก็บรักษา"
-   },
-   "tesseract": {
-    "text": "นัดประชุมผู้ถือหุ้นรายงานการประชุมผู้ถือหุ้นและเก็บรักษา",
-    "image": 0,
-    "bbox": [
-     866,
-     1286,
-     1509,
-     1328
-    ],
-    "conf": 94.7
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2516,
-   "id": "ONEREPORTPTTT_p293_081",
-   "suggest": "typhoon",
-   "order": 80
-  },
-  {
-   "typhoon": {
-    "text": "รายงานการมีส่วนได้ส่วนเสียที่รายงานโดยกรรมการหรือ"
-   },
-   "tesseract": {
-    "text": "รายงานการมีส่วนได้ส่วนเสียที่รายงานโดยกรรมการหรือ",
-    "image": 0,
-    "bbox": [
-     866,
-     1322,
-     1509,
-     1369
-    ],
-    "conf": 94.7
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2572,
-   "id": "ONEREPORTPTTT_p293_082",
-   "suggest": "typhoon",
-   "order": 81
-  },
-  {
-   "typhoon": {
-    "text": "ผู้บริหาร"
-   },
-   "tesseract": null,
-   "region": {
-    "image": 0,
-    "bbox": [
-     0,
-     1294,
-     1000000,
-     1523
-    ]
-   },
-   "auto_accept": false,
-   "audit": false,
-   "kind": "typhoon_only",
-   "score": 0.0,
-   "pos": 2621,
-   "id": "ONEREPORTPTTT_p293_083",
-   "suggest": "typhoon",
-   "order": 82
-  },
-  {
-   "typhoon": {
-    "text": "โดยคณะกรรมการฯ ได้แต่งตั้งเลขานุการบริษัทตั้งแต่ปี 2551"
-   },
-   "tesseract": {
-    "text": "โดยคณะกรรมการฯได้แต่งตั้งเลขานุการบริษัทตั้งแต่ปี 2551",
-    "image": 0,
-    "bbox": [
-     864,
-     1446,
-     1507,
-     1495
-    ],
-    "conf": 94.6
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2630,
-   "id": "ONEREPORTPTTT_p293_084",
-   "suggest": "typhoon",
-   "order": 83
-  },
-  {
-   "typhoon": {
-    "text": "มาเป็นลำดับ โดยตั้งแต่วันที่ 16 พฤษภาคม 2567 จนถึง"
-   },
-   "tesseract": {
-    "text": "มาเป็นลําดับโดยตั้งแต่วันที่ 16 พฤษภาคม 2567 จนถึง",
-    "image": 0,
-    "bbox": [
-     866,
-     1487,
-     1508,
-     1534
-    ],
-    "conf": 94.3
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2683,
-   "id": "ONEREPORTPTTT_p293_085",
-   "suggest": "typhoon",
-   "order": 84
-  },
-  {
-   "typhoon": {
-    "text": "31 ธันวาคม 2568 ได้แต่งตั้งนางพิลาสพรรณ อุดมจารุมณี ปฏิบัติ"
-   },
-   "tesseract": {
-    "text": "31 ธันวาคม 2568 ได้แต่งตั้งนางพิลาสพรรณอุดมจารุมณีปฏิบัติ",
-    "image": 0,
-    "bbox": [
-     866,
-     1529,
-     1509,
-     1578
-    ],
-    "conf": 94.4
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2728,
-   "id": "ONEREPORTPTTT_p293_086",
-   "suggest": "typhoon",
-   "order": 85
-  },
-  {
-   "typhoon": {
-    "text": "2568"
-   },
-   "tesseract": {
-    "text": "2568",
-    "image": 0,
-    "bbox": [
-     866,
-     2046,
-     921,
-     2065
-    ],
-    "conf": 90.9
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2737,
-   "id": "ONEREPORTPTTT_p293_087",
-   "suggest": "typhoon",
-   "order": 86
-  },
-  {
-   "typhoon": {
-    "text": "หน้าที่เป็นเลขานุการบริษัท ซึ่งเป็นผู้มีความรู้ ความสามารถ"
-   },
-   "tesseract": {
-    "text": "หน้าที่เป็นเลขานุการบริษัทซึ่งเป็นผู้มีความรู้ความสามารถ",
-    "image": 0,
-    "bbox": [
-     866,
-     1573,
-     1509,
-     1620
-    ],
-    "conf": 94.3
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2782,
-   "id": "ONEREPORTPTTT_p293_088",
-   "suggest": "typhoon",
-   "order": 87
+   "order": 65,
+   "pos_end": 1928
   },
   {
    "typhoon": {
@@ -2209,17 +2209,652 @@
      1147,
      746
     ],
-    "conf": 94.8
+    "conf": 94.8,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
    "audit": false,
    "kind": "agree",
    "score": 100.0,
-   "pos": 2793,
-   "id": "ONEREPORTPTTT_p293_089",
+   "pos": 1928,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_067",
    "suggest": "typhoon",
-   "order": 88
+   "order": 66,
+   "pos_end": 1943
+  },
+  {
+   "typhoon": {
+    "text": "เพื่อให้เป็นไปตามหลักการกำกับดูแลกิจการที่ดีของ"
+   },
+   "tesseract": {
+    "text": "เพื่อให้เป็นไปตามหลักการกํากับดูแลกิจการที่ดีของ",
+    "image": 0,
+    "bbox": [
+     867,
+     780,
+     1508,
+     828
+    ],
+    "conf": 94.3,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1943,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_068",
+   "suggest": "typhoon",
+   "order": 67,
+   "pos_end": 1990
+  },
+  {
+   "typhoon": {
+    "text": "บริษัทจดทะเบียนในหมวดความรับผิดชอบของคณะกรรมการ"
+   },
+   "tesseract": {
+    "text": "บริษัทจดทะเบียนในหมวดความรับผิดชอบของคณะกรรมการ",
+    "image": 0,
+    "bbox": [
+     866,
+     828,
+     1510,
+     869
+    ],
+    "conf": 95.7,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1990,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_069",
+   "suggest": "typhoon",
+   "order": 68,
+   "pos_end": 2037
+  },
+  {
+   "typhoon": {
+    "text": "และตามข้อกำหนดของพระราชบัญญัติหลักทรัพย์และ"
+   },
+   "tesseract": {
+    "text": "และตามข้อกําหนดของพระราชบัญญัติหลักทรัพย์และ",
+    "image": 0,
+    "bbox": [
+     867,
+     870,
+     1509,
+     908
+    ],
+    "conf": 94.2,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2037,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_070",
+   "suggest": "typhoon",
+   "order": 69,
+   "pos_end": 2080
+  },
+  {
+   "typhoon": {
+    "text": "ตลาดหลักทรัพย์ คณะกรรมการ ปตท. จึงได้แต่งตั้งเลขานุการ"
+   },
+   "tesseract": {
+    "text": "ตลาดหลักทรัพย์คณะกรรมการปตท . จึงได้แต่งตั้งเลขานุการ",
+    "image": 0,
+    "bbox": [
+     867,
+     904,
+     1510,
+     953
+    ],
+    "conf": 94.8,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2080,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_071",
+   "suggest": "typhoon",
+   "order": 70,
+   "pos_end": 2131
+  },
+  {
+   "typhoon": {
+    "text": "บริษัทขึ้น โดยมีภาระหน้าที่ในการให้คำแนะนำด้านกฎหมาย"
+   },
+   "tesseract": {
+    "text": "บริษัทขึ้นโดยมีภาระหน้าที่ในการให้คําแนะนําด้านกฎหมาย",
+    "image": 0,
+    "bbox": [
+     866,
+     946,
+     1509,
+     993
+    ],
+    "conf": 94.2,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2131,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_072",
+   "suggest": "typhoon",
+   "order": 71,
+   "pos_end": 2182
+  },
+  {
+   "typhoon": {
+    "text": "และกฎเกณฑ์ต่าง ๆ ที่คณะกรรมการต้องทราบและปฏิบัติการ"
+   },
+   "tesseract": {
+    "text": "และกฎเกณฑ์ต่างๆที่คณะกรรมการต้องทราบและปฏิบัติการ",
+    "image": 0,
+    "bbox": [
+     867,
+     989,
+     1509,
+     1034
+    ],
+    "conf": 94.5,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2182,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_073",
+   "suggest": "typhoon",
+   "order": 72,
+   "pos_end": 2231
+  },
+  {
+   "typhoon": {
+    "text": "จัดการประชุม รวมทั้งดูแลกิจกรรมต่าง ๆ ของคณะกรรมการ"
+   },
+   "tesseract": {
+    "text": "จัดการประชุมรวมทั้งดูแลกิจกรรมต่างๆของคณะกรรมการ",
+    "image": 0,
+    "bbox": [
+     865,
+     1029,
+     1510,
+     1078
+    ],
+    "conf": 95.3,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2231,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_074",
+   "suggest": "typhoon",
+   "order": 73,
+   "pos_end": 2279
+  },
+  {
+   "typhoon": {
+    "text": "เพื่อให้กรรมการสามารถปฏิบัติหน้าที่ได้อย่างมีประสิทธิภาพ"
+   },
+   "tesseract": {
+    "text": "เพื่อให้กรรมการสามารถปฏิบัติหน้าที่ได้อย่างมีประสิทธิภาพ",
+    "image": 0,
+    "bbox": [
+     867,
+     1073,
+     1509,
+     1118
+    ],
+    "conf": 94.2,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2279,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_075",
+   "suggest": "typhoon",
+   "order": 74,
+   "pos_end": 2335
+  },
+  {
+   "typhoon": {
+    "text": "และประสิทธิผล และก่อให้เกิดประโยชน์สูงสุดต่อ ปตท."
+   },
+   "tesseract": {
+    "text": "และประสิทธิผลและก่อให้เกิดประโยชน์สูงสุดต่อปตท .",
+    "image": 0,
+    "bbox": [
+     867,
+     1119,
+     1508,
+     1161
+    ],
+    "conf": 94.4,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2335,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_076",
+   "suggest": "typhoon",
+   "order": 75,
+   "pos_end": 2382
+  },
+  {
+   "typhoon": {
+    "text": "รวมทั้งการจัดทำและเก็บรักษาเอกสาร อาทิ ทะเบียนกรรมการ"
+   },
+   "tesseract": {
+    "text": "รวมทั้งการจัดทําและเก็บรักษาเอกสารอาทิทะเบียนกรรมการ",
+    "image": 0,
+    "bbox": [
+     866,
+     1154,
+     1510,
+     1202
+    ],
+    "conf": 94.7,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2382,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_077",
+   "suggest": "typhoon",
+   "order": 76,
+   "pos_end": 2433
+  },
+  {
+   "typhoon": {
+    "text": "หนังสือนัดประชุมคณะกรรมการ รายงานการประชุม"
+   },
+   "tesseract": {
+    "text": "หนังสือนัดประชุมคณะกรรมการรายงานการประชุม",
+    "image": 0,
+    "bbox": [
+     866,
+     1203,
+     1508,
+     1245
+    ],
+    "conf": 95.0,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2433,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_078",
+   "suggest": "typhoon",
+   "order": 77,
+   "pos_end": 2474
+  },
+  {
+   "typhoon": {
+    "text": "คณะกรรมการ และรายงานประจำปีของบริษัท หนังสือ"
+   },
+   "tesseract": {
+    "text": "คณะกรรมการและรายงานประจําปีของบริษัทหนังสือ",
+    "image": 0,
+    "bbox": [
+     867,
+     1244,
+     1509,
+     1285
+    ],
+    "conf": 94.8,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2474,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_079",
+   "suggest": "typhoon",
+   "order": 78,
+   "pos_end": 2516
+  },
+  {
+   "typhoon": {
+    "text": "นัดประชุมผู้ถือหุ้น รายงานการประชุมผู้ถือหุ้นและเก็บรักษา"
+   },
+   "tesseract": {
+    "text": "นัดประชุมผู้ถือหุ้นรายงานการประชุมผู้ถือหุ้นและเก็บรักษา",
+    "image": 0,
+    "bbox": [
+     866,
+     1286,
+     1509,
+     1328
+    ],
+    "conf": 94.7,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2516,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_080",
+   "suggest": "typhoon",
+   "order": 79,
+   "pos_end": 2572
+  },
+  {
+   "typhoon": {
+    "text": "รายงานการมีส่วนได้ส่วนเสียที่รายงานโดยกรรมการหรือ"
+   },
+   "tesseract": {
+    "text": "รายงานการมีส่วนได้ส่วนเสียที่รายงานโดยกรรมการหรือ",
+    "image": 0,
+    "bbox": [
+     866,
+     1322,
+     1509,
+     1369
+    ],
+    "conf": 94.7,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2572,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_081",
+   "suggest": "typhoon",
+   "order": 80,
+   "pos_end": 2621
+  },
+  {
+   "typhoon": {
+    "text": "ผู้บริหาร"
+   },
+   "tesseract": {
+    "text": "ผู้บริหาร",
+    "image": 0,
+    "bbox": [
+     863,
+     1371,
+     951,
+     1411
+    ],
+    "conf": 94.1,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2621,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_082",
+   "suggest": "typhoon",
+   "order": 81,
+   "pos_end": 2630
+  },
+  {
+   "typhoon": {
+    "text": "โดยคณะกรรมการฯ ได้แต่งตั้งเลขานุการบริษัทตั้งแต่ปี 2551"
+   },
+   "tesseract": {
+    "text": "โดยคณะกรรมการฯได้แต่งตั้งเลขานุการบริษัทตั้งแต่ปี 2551",
+    "image": 0,
+    "bbox": [
+     864,
+     1446,
+     1507,
+     1495
+    ],
+    "conf": 94.6,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2630,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_083",
+   "suggest": "typhoon",
+   "order": 82,
+   "pos_end": 2683
+  },
+  {
+   "typhoon": {
+    "text": "มาเป็นลำดับ โดยตั้งแต่วันที่ 16 พฤษภาคม 2567 จนถึง"
+   },
+   "tesseract": {
+    "text": "มาเป็นลําดับโดยตั้งแต่วันที่ 16 พฤษภาคม 2567 จนถึง",
+    "image": 0,
+    "bbox": [
+     866,
+     1487,
+     1508,
+     1534
+    ],
+    "conf": 94.3,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2683,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_084",
+   "suggest": "typhoon",
+   "order": 83,
+   "pos_end": 2728
+  },
+  {
+   "typhoon": {
+    "text": "31 ธันวาคม 2568 ได้แต่งตั้งนางพิลาสพรรณ อุดมจารุมณี ปฏิบัติ"
+   },
+   "tesseract": {
+    "text": "31 ธันวาคม 2568 ได้แต่งตั้งนางพิลาสพรรณอุดมจารุมณีปฏิบัติ",
+    "image": 0,
+    "bbox": [
+     866,
+     1529,
+     1509,
+     1578
+    ],
+    "conf": 94.4,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2728,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_085",
+   "suggest": "typhoon",
+   "order": 84,
+   "pos_end": 2782
+  },
+  {
+   "typhoon": {
+    "text": "หน้าที่เป็นเลขานุการบริษัท ซึ่งเป็นผู้มีความรู้ ความสามารถ"
+   },
+   "tesseract": {
+    "text": "หน้าที่เป็นเลขานุการบริษัทซึ่งเป็นผู้มีความรู้ความสามารถ",
+    "image": 0,
+    "bbox": [
+     866,
+     1573,
+     1509,
+     1620
+    ],
+    "conf": 94.3,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2782,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_086",
+   "suggest": "typhoon",
+   "order": 85,
+   "pos_end": 2838
   },
   {
    "typhoon": {
@@ -2234,7 +2869,8 @@
      1509,
      1661
     ],
-    "conf": 95.1
+    "conf": 95.1,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2242,9 +2878,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2838,
-   "id": "ONEREPORTPTTT_p293_090",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_087",
    "suggest": "tesseract",
-   "order": 89
+   "order": 86,
+   "pos_end": 2889
   },
   {
    "typhoon": {
@@ -2259,7 +2902,8 @@
      1511,
      1703
     ],
-    "conf": 94.4
+    "conf": 94.4,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2267,9 +2911,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2889,
-   "id": "ONEREPORTPTTT_p293_091",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_088",
    "suggest": "typhoon",
-   "order": 90
+   "order": 87,
+   "pos_end": 2944
   },
   {
    "typhoon": {
@@ -2284,7 +2935,8 @@
      1505,
      1743
     ],
-    "conf": 94.6
+    "conf": 94.6,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2292,9 +2944,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2944,
-   "id": "ONEREPORTPTTT_p293_092",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_089",
    "suggest": "typhoon",
-   "order": 91
+   "order": 88,
+   "pos_end": 3009
   },
   {
    "typhoon": {
@@ -2309,7 +2968,8 @@
      1509,
      1828
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2317,9 +2977,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 3009,
-   "id": "ONEREPORTPTTT_p293_093",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_090",
    "suggest": "typhoon",
-   "order": 92
+   "order": 89,
+   "pos_end": 3061
   },
   {
    "typhoon": {
@@ -2334,7 +3001,8 @@
      1509,
      1870
     ],
-    "conf": 94.0
+    "conf": 94.0,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2342,9 +3010,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 3061,
-   "id": "ONEREPORTPTTT_p293_094",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_091",
    "suggest": "typhoon",
-   "order": 93
+   "order": 90,
+   "pos_end": 3116
   },
   {
    "typhoon": {
@@ -2359,7 +3034,8 @@
      1508,
      1911
     ],
-    "conf": 93.8
+    "conf": 93.8,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -2367,9 +3043,16 @@
    "kind": "diff",
    "score": 97.8,
    "pos": 3116,
-   "id": "ONEREPORTPTTT_p293_095",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_092",
    "suggest": "typhoon",
-   "order": 94
+   "order": 91,
+   "pos_end": 3162
   },
   {
    "typhoon": {
@@ -2384,7 +3067,8 @@
      1510,
      1953
     ],
-    "conf": 94.5
+    "conf": 94.5,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2392,9 +3076,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 3162,
-   "id": "ONEREPORTPTTT_p293_096",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_093",
    "suggest": "typhoon",
-   "order": 95
+   "order": 92,
+   "pos_end": 3215
   },
   {
    "typhoon": {
@@ -2409,7 +3100,8 @@
      1508,
      1995
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2417,9 +3109,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 3215,
-   "id": "ONEREPORTPTTT_p293_097",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_094",
    "suggest": "typhoon",
-   "order": 96
+   "order": 93,
+   "pos_end": 3271
   },
   {
    "typhoon": {
@@ -2434,7 +3133,8 @@
      1511,
      2036
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2442,9 +3142,49 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 3271,
-   "id": "ONEREPORTPTTT_p293_098",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_095",
    "suggest": "typhoon",
-   "order": 97
+   "order": 94,
+   "pos_end": 3323
+  },
+  {
+   "typhoon": {
+    "text": "2568"
+   },
+   "tesseract": {
+    "text": "2568",
+    "image": 0,
+    "bbox": [
+     866,
+     2046,
+     921,
+     2065
+    ],
+    "conf": 90.9,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3323,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p293_096",
+   "suggest": "typhoon",
+   "order": 95,
+   "pos_end": 3327
   }
  ],
  "split": {

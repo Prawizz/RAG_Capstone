@@ -270,3 +270,319 @@ def test_best_run_does_not_swallow_unrelated_neighbour_line(prep):
     (it,) = [i for i in d["items"] if i["typhoon"]]
     assert it["tesseract"]["text"] == L2 and it["kind"] == "agree"
     assert {i["tesseract"]["text"] for i in d["items"] if i["kind"] == "tesseract_only"} == {L1, L3}
+
+
+# ---------- กรอง fragment / duplicate (T06b ช่วงที่ 1 แก้) ----------
+
+def te_boxes(rows, size=(1000, 1000)):
+    """rows: (ข้อความ, bbox [x0,y0,x1,y1], conf, ภาพที่) — วาง bbox เองเพื่อทดสอบการทับกัน"""
+    parts = [{"size": list(size), "lines": []}, {"size": list(size), "lines": []}]
+    for text, bbox, conf, *img in rows:
+        parts[img[0] if img else 0]["lines"].append({"text": text, "bbox": bbox, "conf": conf, "block": 1, "par": 1})
+    return OcrResult(text="", backend="tesseract-local", model="t", revision="v", seconds=2.0, extra={"parts": parts})
+
+
+MISSED = "หมายเหตุประกอบงบการเงินรวมข้อสี่จุดสองจุดสอง"
+JUNK = "ขยะจากลายน้ำสแกนบรรทัดนี้"
+
+
+def by_text(d, text):
+    return next(it for it in d["items"] if (it["tesseract"] or {}).get("text") == text)
+
+
+def test_short_tesseract_only_box_is_fragment_and_not_counted(prep):
+    d = prep.build_items("f.PDF", 1, ty(L1), te_boxes([(L1, [50, 100, 900, 130], 90), (JUNK, [60, 85, 200, 96], 60)]))  # สูง 11 px
+    f = by_text(d, JUNK)
+    assert f["kind"] == "fragment" and d["counts"]["fragment"] == 1 and d["counts"]["tesseract_only"] == 0
+    assert d["counts"]["to_judge"] == d["counts"]["agree_audit"] == 1
+    assert f["covered_by"] == [by_text(d, L1)["id"]]  # เป็นเศษของบรรทัดที่อยู่ติดกัน
+
+
+def test_fragment_height_threshold_is_strict(prep):
+    h = prep.FRAGMENT_MAX_HEIGHT
+    d = prep.build_items("f.PDF", 1, ty(L1), te_boxes([(L1, [50, 300, 900, 330], 90), (JUNK, [60, 100, 200, 100 + h - 1], 60),
+                                                        (MISSED, [60, 500, 800, 500 + h], 90)]))
+    assert by_text(d, JUNK)["kind"] == "fragment" and by_text(d, MISSED)["kind"] == "tesseract_only"
+
+
+def test_overlap_both_ways_is_duplicate_with_covered_by(prep):
+    d = prep.build_items("f.PDF", 1, ty(L1), te_boxes([(L1, [50, 100, 900, 140], 94), (JUNK, [60, 105, 880, 135], 44)]))
+    dup = by_text(d, JUNK)
+    assert dup["kind"] == "duplicate" and dup["covered_by"] == [by_text(d, L1)["id"]] and dup["maybe_duplicate_of"] == []
+    assert d["counts"]["duplicate"] == 1 and d["counts"]["to_judge"] == 1 and d["counts"]["maybe_duplicate"] == 0
+
+
+def test_one_way_overlap_stays_to_judge_with_maybe_duplicate_of(prep):
+    """บรรทัดจริงที่อยู่ในบรรทัดกว้างผิดปกติ (Tesseract รวมแถบข้างกับตาราง): ทับ 100% ของตัวเอง แต่เป็นสัดส่วนเล็กของบรรทัดกว้าง"""
+    wide = [0, 100, 2000, 140]
+    d = prep.build_items("f.PDF", 1, ty(L1), te_boxes([(L1, wide, 90), (MISSED, [100, 100, 800, 140], 87)], size=(2200, 1000)))
+    it = by_text(d, MISSED)
+    assert it["kind"] == "tesseract_only" and it["covered_by"] == []
+    assert it["maybe_duplicate_of"] == [by_text(d, L1)["id"]]
+    assert d["counts"]["tesseract_only"] == 1 and d["counts"]["duplicate"] == 0 and d["counts"]["maybe_duplicate"] == 1
+    assert d["counts"]["to_judge"] == d["counts"]["agree_audit"] + 1
+
+
+def test_duplicate_overlap_thresholds_are_inclusive_and_named(prep):
+    assert prep.DUPLICATE_OVERLAP_SELF == 0.5 and prep.DUPLICATE_OVERLAP_OTHER == 0.5
+    cover = [0, 100, 1000, 140]  # พื้นที่ 40,000
+    # ตัวเองกว้าง 500 สูง 40 (20,000) อยู่ใน cover ทั้งหมด -> ทับ 100% ของตัวเอง, 50% ของ cover พอดี = duplicate
+    d = prep.build_items("f.PDF", 1, ty(L1), te_boxes([(L1, cover, 90), (MISSED, [0, 100, 500, 140], 80)], size=(1200, 1000)))
+    assert by_text(d, MISSED)["kind"] == "duplicate"
+    # แคบลงหนึ่งพิกเซล -> ทับ cover < 50% = ทางเดียว (ยังให้คนตัดสิน)
+    d = prep.build_items("f.PDF", 1, ty(L1), te_boxes([(L1, cover, 90), (MISSED, [0, 100, 499, 140], 80)], size=(1200, 1000)))
+    it = by_text(d, MISSED)
+    assert it["kind"] == "tesseract_only" and it["maybe_duplicate_of"]
+    # ตัวเองทับ cover น้อยกว่า 50% ของตัวเอง (100/200 ... ลดอีกหนึ่งพิกเซล) -> ไม่เกี่ยวกัน
+    d = prep.build_items("f.PDF", 1, ty(L1), te_boxes([(L1, cover, 90), (MISSED, [901, 100, 1101, 140], 80)], size=(1200, 1000)))
+    it = by_text(d, MISSED)
+    assert it["kind"] == "tesseract_only" and it["maybe_duplicate_of"] == [] and it["covered_by"] == []
+
+
+def test_overlap_only_counts_within_the_same_image(prep):
+    p = lambda b: {"size": [1000, 1000], "lines": [{"text": b[0], "bbox": b[1], "conf": 90, "block": 1, "par": 1}]}
+    res = OcrResult(text="", backend="tesseract-local", model="t", revision="v", seconds=1.0,
+                    extra={"parts": [p((L1, [50, 100, 900, 140])), p((MISSED, [60, 105, 880, 135]))]})
+    d = prep.build_items("f.PDF", 1, ty(L1), res)
+    assert by_text(d, MISSED)["kind"] == "tesseract_only" and d["counts"]["duplicate"] == 0
+
+
+def test_overlap_with_tesseract_only_neighbour_is_not_a_duplicate(prep):
+    """ผู้ทับต้องเป็น agree/diff เท่านั้น: สองบรรทัดที่ Typhoon อ่านตกทั้งคู่ ทับกัน = ยังให้คนตัดสินทั้งคู่"""
+    d = prep.build_items("f.PDF", 1, ty(L1), te_boxes([(L1, [50, 10, 900, 40], 90), (MISSED, [50, 100, 900, 140], 90), (JUNK, [60, 105, 880, 135], 90)]))
+    assert d["counts"]["tesseract_only"] == 2 and d["counts"]["duplicate"] == 0
+
+
+def test_filtered_items_keep_positions_ids_and_order(prep):
+    d = prep.build_items("f.PDF", 1, ty(NL.join([L1, L3])), te_boxes([
+        (L1, [50, 100, 900, 140], 94), (JUNK, [60, 105, 880, 135], 44), (L3, [50, 300, 900, 340], 94), ("กข", [60, 290, 90, 298], 70)]))
+    assert [it["order"] for it in d["items"]] == list(range(len(d["items"])))
+    assert all(it["pos"] is not None for it in d["items"]) and len({it["id"] for it in d["items"]}) == len(d["items"])
+    assert d["counts"]["duplicate"] == 1 and d["counts"]["fragment"] == 1
+    json.dumps(d, ensure_ascii=False)
+
+
+def test_attach_images_adds_related_texts_and_page_sizes(prep):
+    wide = [0, 100, 2000, 140]
+    d = prep.build_items("f.PDF", 1, ty(NL.join([L1, L3])), te_boxes([
+        (L1, wide, 90), (MISSED, [100, 100, 800, 140], 87),  # ทับทางเดียว
+        (L3, [50, 300, 900, 340], 94), (JUNK, [60, 305, 880, 335], 44), ("กข", [60, 290, 90, 298], 70)], size=(2200, 1000)))
+    page = prep.attach_images(d, [png(2200, 1000)])
+    maybe = next(it for it in page["items"] if it["kind"] == "tesseract_only")
+    assert [r["relation"] for r in maybe["related"]] == ["maybe_duplicate_of"] and maybe["related"][0]["tesseract"] == L1
+    assert maybe["related"][0]["typhoon"]  # แสดงข้อความ Typhoon ของรายการที่ทับด้วย
+    dup = next(it for it in page["items"] if it["kind"] == "duplicate")
+    assert dup["related"][0]["relation"] == "covered_by" and dup["related"][0]["tesseract"] == L3
+    frag = next(it for it in page["items"] if it["kind"] == "fragment")
+    assert frag["crop"] is not None and frag["related"]  # ภาพรวมรายการข้างเคียงไว้ให้เห็นบริบท
+    assert page["page_sizes"][0] == [2200, 1000]
+
+
+def test_total_and_dataset_id_exclude_filtered_items(prep):
+    d = prep.build_items("f.PDF", 1, ty(L1), te_boxes([(L1, [50, 100, 900, 140], 94), (JUNK, [60, 105, 880, 135], 44), ("กข", [60, 90, 90, 98], 70)]))
+    html = prep.build_html([prep.attach_images(d, [png()])])
+    g = lambda h: json.loads(re.search(r'type="application/json">(.*?)</script>', h, re.S).group(1).replace("<\\/", "</"))
+    data = g(html)
+    assert data["total"] == d["counts"]["to_judge"] == 1 and len(data["pages"][0]["items"]) == 3  # กรองออกยังอยู่ในหน้าตรวจ
+    d2 = prep.build_items("f.PDF", 1, ty(L1), te_boxes([(L1, [50, 100, 900, 140], 94)]))
+    assert data["dataset_id"] == g(prep.build_html([prep.attach_images(d2, [png()])]))["dataset_id"]  # ขึ้นกับรายการที่ต้องตัดสินเท่านั้น
+
+
+def test_review_page_filtered_items_and_wide_warning_in_fake_dom(prep, tmp_path):
+    import shutil
+    import subprocess
+
+    node = shutil.which("node")
+    if node is None:
+        pytest.skip("ไม่มี node")
+    d = prep.build_items("f.PDF", 1, ty(NL.join([L1, L3])), te_boxes([
+        (L1, [50, 100, 900, 140], 94), (JUNK, [60, 105, 880, 135], 44), ("กข", [60, 90, 90, 98], 70),
+        (L3, [0, 300, 2000, 340], 94), (MISSED, [100, 300, 800, 340], 87)], size=(2200, 1000)))
+    f = tmp_path / "review.html"
+    f.write_text(prep.build_html([prep.attach_images(d, [png(2200, 1000)])]), encoding="utf-8")
+    r = subprocess.run([node, str(ROOT / "tests" / "ocr_review_smoke.js"), str(f)], capture_output=True, timeout=60)
+    assert r.returncode == 0, r.stderr.decode("utf-8", "replace")
+    out = json.loads(r.stdout.decode("utf-8"))
+    n = d["counts"]["to_judge"]
+    assert d["counts"]["fragment"] == 1 and d["counts"]["duplicate"] == 1 and d["counts"]["maybe_duplicate"] == 1
+    assert out["countInitial"] == f"ทำแล้ว 0 / {n} รายการ"  # fragment/duplicate ไม่นับ
+    assert out["wideWarnDisplay"] == "block" and out["wideImgWidth"] == "2400px"
+    assert out["narrowImgWidth"] == "600px" and out["narrowWarnDisplay"] == "none"
+    assert "pagewrap" in out["pageNear"] and 'class="hl"' in out["pageNear"]
+    assert "ถูกกรองออก" in out["fragCard"] and 'id="bAbsent"' not in out["fragCard"] and out["fragCountUnchanged"]
+    assert "ถูกกรองออก" in out["dupCard"] and "ทับกับรายการ" in out["dupCard"] and L1 in out["dupCard"]
+    assert "อาจซ้ำกับ" in out["maybeCard"] and 'id="bAbsent"' in out["maybeCard"] and L3 in out["maybeCard"]  # ยังตัดสินได้ + ข้อความของรายการที่ทับ
+    assert out["defaultHasFiltered"] is False
+
+
+def test_template_contains_wide_crop_warning_text():
+    t = (ROOT / "scripts" / "ocr_review_template.html").read_text(encoding="utf-8")
+    assert "ภาพอาจขาดด้านข้าง — พิมพ์ให้ครบบรรทัดตามเอกสาร" in t
+
+
+def _frag_kind(prep, text, conf, height=11):
+    d = prep.build_items("f.PDF", 1, ty(L1), te_boxes([(L1, [50, 300, 900, 330], 90), (text, [60, 100, 400, 100 + height], conf)]))
+    return by_text(d, text)["kind"]
+
+
+def test_small_confident_real_text_is_not_a_fragment(prep):
+    """ตัวหนังสือเล็กจริงในอินโฟกราฟิก (สูง < 20 px แต่ conf สูงและยาวพอ) ต้องให้คนตัดสิน ไม่ถูกกรองออก"""
+    assert prep.FRAGMENT_MAX_CONF == 70.0 and prep.FRAGMENT_MIN_TEXT_CHARS == 4
+    assert _frag_kind(prep, "Hydrogen & Carbon Business", 94.9) == "tesseract_only"
+    assert _frag_kind(prep, "& OPPORTUNITY", 94.7) == "tesseract_only"
+    assert _frag_kind(prep, "TION", 70.9) == "tesseract_only"  # 4 ตัว conf >= 70
+
+
+def test_fragment_needs_low_conf_or_very_short_text(prep):
+    assert _frag_kind(prep, "aw ๑ ประกอบรายการ", 47.0) == "fragment"  # conf ต่ำ
+    assert _frag_kind(prep, "ประกอบรายการ", 69.9) == "fragment" and _frag_kind(prep, "ประกอบรายการ", 70.0) == "tesseract_only"  # ขอบ conf
+    assert _frag_kind(prep, "ข่", 95.0) == "fragment"  # สั้นกว่า 4 ตัวแม้ conf สูง
+    assert _frag_kind(prep, "ABC", 95.0) == "fragment" and _frag_kind(prep, "ABCD", 95.0) == "tesseract_only"  # ขอบจำนวนตัว
+    assert _frag_kind(prep, "A - B . C ,", 95.0) == "fragment"  # เครื่องหมาย/ช่องว่างไม่นับเป็นตัว
+    assert _frag_kind(prep, "ประกอบรายการ", 95.0, height=20) == "tesseract_only"  # สูงถึงเกณฑ์ = ไม่ใช่เศษ
+
+
+def test_returned_small_line_overlapping_one_way_gets_maybe_duplicate_label(prep):
+    wide = [0, 100, 2000, 140]
+    d = prep.build_items("f.PDF", 1, ty(L1), te_boxes([(L1, wide, 90), ("Hydrogen & Carbon Business", [100, 110, 400, 124], 94.9)], size=(2200, 1000)))
+    it = by_text(d, "Hydrogen & Carbon Business")
+    assert it["kind"] == "tesseract_only" and it["maybe_duplicate_of"] == [by_text(d, L1)["id"]]
+
+
+# ---------- ขอบช่วง Typhoon: snap / รวมช่องว่างสั้น / invariant (T06b ช่วงที่ 1 แก้ A) ----------
+
+CONTRACT = "คู่สัญญาฝ่ายใดฝ่ายหนึ่งมีความประสงค์ที่จะขอเลิกสัญญา"  # "คู่ส" + "ัญญา…"
+
+
+def ty_items(d, kind):
+    return [it for it in d["items"] if it["kind"] == kind]
+
+
+def test_start_mid_syllable_is_snapped_back_to_word_start_and_becomes_diff(prep):
+    """Tesseract ขึ้นต้นบรรทัดที่ "ัญญา…" (ไม่มี "คู่ส") — ช่วง Typhoon ต้องขยายเป็น "คู่สัญญา…" และเป็น diff ไม่ใช่ agree"""
+    d = prep.build_items("f.PDF", 1, ty("ข้อตกลงนี้ " + CONTRACT), te([CONTRACT[4:]]))
+    (it,) = ty_items(d, "diff")
+    assert it["typhoon"]["text"] == CONTRACT and it["tesseract"]["text"] == CONTRACT[4:]
+    assert it["snap"] == 4 and it["cut_mid"] is False and d["counts"]["agree"] + d["counts"]["agree_audit"] == 0
+    assert d["span_stats"]["agree_to_diff"][0]["typhoon_before"] == CONTRACT[4:] and d["span_stats"]["agree_to_diff"][0]["typhoon_after"] == CONTRACT
+
+
+def test_snap_never_exceeds_snap_max_and_keeps_thai_cluster_together(prep):
+    assert prep.SNAP_MAX == 10
+    base = "ก" * 30 + "ติดต่อสอบถามข้อมูลเพิ่มเติมได้ที่หน่วยงาน"
+    d = prep.build_items("f.PDF", 1, ty(base), te([base[31:]]))  # Tesseract เริ่มที่ "ิดต่อ…" (วรรณยุกต์/สระบนไม่มีพยัญชนะ)
+    (it,) = [i for i in d["items"] if i["tesseract"]]
+    assert it["typhoon"]["text"].startswith("ติดต่อ")  # ดึง "ต" เข้ามา ไม่ขึ้นต้นด้วยสระลอย
+    assert it["cut_mid"] is True and it["cut_mid_sides"] == ["start"] and it["snap"] == 1
+    assert d["span_stats"]["cut_mid"] == [it["id"]]
+
+
+def test_snap_stops_at_the_neighbouring_item(prep):
+    a, b = CONTRACT[:20], CONTRACT[20:]  # แบ่งกลางคำโดยไม่มีช่องว่าง — บรรทัดตามภาพห่อกลางคำ
+    d = prep.build_items("f.PDF", 1, ty(CONTRACT), te([a, b]))
+    assert [it["kind"] for it in d["items"]] == ["agree", "agree"] and d["invariant"]["dropped"] == 0
+    assert [it["snap"] for it in d["items"]] == [0, 0] and not any(it["cut_mid"] for it in d["items"])  # ชนกันตรงๆ ไม่ใช่การตัดกลางคำที่ตกหล่น
+
+
+def test_short_gap_between_items_is_merged_into_the_previous_item_on_same_line(prep):
+    d = prep.build_items("f.PDF", 1, ty(f"{L1} xy {L3}"), te([L1, L3]))
+    assert d["counts"]["typhoon_only"] == 0 and d["invariant"]["dropped"] == 0
+    first, second = d["items"][0], d["items"][1]
+    assert first["kind"] == "diff" and first["typhoon"]["text"] == L1 + " xy" and first["gap_merged"] == 2
+    assert second["kind"] == "agree" and second["typhoon"]["text"] == L3
+    assert d["span_stats"]["gap_merged_runs"] == 1 and d["span_stats"]["gap_merged_chars"] == 2
+
+
+def test_short_whole_line_gap_goes_to_previous_item_else_next(prep):
+    d = prep.build_items("f.PDF", 1, ty(NL.join([L1, "2", L3])), te([L1, L3]))
+    assert d["items"][0]["typhoon"]["text"] == L1 + " 2" and d["items"][0]["kind"] == "diff" and d["items"][1]["kind"] == "agree"
+    d = prep.build_items("f.PDF", 1, ty(NL.join(["2", L1])), te([L1]))  # ไม่มีรายการก่อนหน้า -> ถัดไป
+    (it,) = [i for i in d["items"] if i["tesseract"]]
+    assert it["typhoon"]["text"] == "2 " + L1 and it["kind"] == "diff" and d["invariant"]["dropped"] == 0
+
+
+def test_short_gap_prefers_neighbour_on_the_same_typhoon_line(prep):
+    # บรรทัด Typhoon ที่ 2 คือ "2 L3": "2" ต้องไปกับ L3 (บรรทัดเดียวกัน) ไม่ใช่ L1 (บรรทัดก่อนหน้า)
+    d = prep.build_items("f.PDF", 1, ty(NL.join([L1, "2 " + L3])), te([L1, L3]))
+    first, second = d["items"][0], d["items"][1]
+    assert first["kind"] == "agree" and second["typhoon"]["text"] == "2 " + L3 and second["kind"] == "diff"
+
+
+def test_short_gap_with_no_neighbouring_item_becomes_typhoon_only(prep):
+    d = prep.build_items("f.PDF", 1, ty("xy"), te([]))
+    (it,) = d["items"]
+    assert it["kind"] == "typhoon_only" and it["typhoon"]["text"] == "xy" and d["invariant"]["dropped"] == 0
+    assert d["span_stats"]["short_gap_typhoon_only"] == 1
+
+
+def test_invariant_every_typhoon_char_in_exactly_one_item(prep):
+    import random
+
+    rng = random.Random(7)
+    words = [L1, L2, L3, CONTRACT, "หมายเหตุประกอบงบการเงิน", "กำไรสุทธิต่อหุ้น", "2. การบริหารจัดการความเสี่ยง", "ไม่ปรากฏ"]
+    for _ in range(40):
+        lines = rng.sample(words, rng.randint(2, 6))
+        text = NL.join(rng.choice([l, l + " " + rng.choice(words)]) for l in lines)
+        flat = text.replace(NL, " ")
+        slices = []
+        for _ in range(rng.randint(1, 9)):  # บรรทัด Tesseract = ช่วงสุ่ม (ตัดกลางคำ/ซ้อนกัน/ซ้ำ) + ตัวอักษรเพี้ยนบ้าง
+            a = rng.randint(0, max(len(flat) - 15, 0))
+            seg = flat[a:a + rng.randint(8, 70)].replace(" ", "")
+            if seg and rng.random() < 0.4:
+                i = rng.randrange(len(seg))
+                seg = seg[:i] + "x" + seg[i + 1:]
+            slices.append(seg)
+        d = prep.build_items("f.PDF", 1, ty(text), te([s for s in slices if len(s) >= 2]))
+        assert d["invariant"]["dropped"] == 0 and d["invariant"]["doubled"] == 0
+        covered = sum(it["pos_end"] - it["pos"] for it in d["items"] if it["kind"] in ("agree", "diff", "typhoon_only"))
+        assert covered == d["invariant"]["hay_chars"]
+
+
+def test_overlapping_matches_are_resolved_best_first(prep):
+    """บรรทัด Tesseract สองบรรทัดคล้ายข้อความ Typhoon ช่วงเดียวกัน (อ่านซ้ำ) — ต้องไม่ครอบซ้ำ"""
+    d = prep.build_items("f.PDF", 1, ty(L1), te([L1, L1.replace("ธนาคาร", "ธนากร")]))
+    assert sorted(it["kind"] for it in d["items"]) == ["agree", "tesseract_only"] and d["invariant"]["doubled"] == 0
+    assert d["span_stats"]["demoted_by_overlap"] == 1
+
+
+def test_repeated_phrase_is_relocated_to_its_second_occurrence(prep):
+    d = prep.build_items("f.PDF", 1, ty(NL.join([L1, L2, L1])), te([L1, L2, L1]))
+    assert [it["kind"] for it in d["items"]] == ["agree"] * 3 and d["span_stats"]["relocated"] == 1
+    assert [it["pos"] for it in d["items"]] == sorted(it["pos"] for it in d["items"])
+
+
+def test_pos_end_is_saved_for_every_item(prep):
+    invented = "ข้อมูลเพิ่มเติมเกณฑ์การประเมินความเสี่ยงและตัวชี้วัดความเสี่ยง"
+    missed = "หมายเหตุประกอบงบการเงินรวมข้อสี่จุดสองจุดสอง"
+    d = prep.build_items("f.PDF", 1, ty(NL.join([L1, invented, L3])), te([L1, missed, L3]))
+    by = {it["kind"]: it for it in d["items"]}
+    assert by["typhoon_only"]["pos_end"] - by["typhoon_only"]["pos"] == len(prep.canon(invented))
+    assert by["tesseract_only"]["pos_end"] == by["tesseract_only"]["pos"]
+    agree = [it for it in d["items"] if it["kind"] == "agree"]
+    assert [it["pos_end"] - it["pos"] for it in agree] == [len(prep.canon(L1)), len(prep.canon(L3))]
+
+
+# ---------- แยกคอลัมน์ (แถบข้าง) ถึงรายการและภาพ debug ----------
+
+def test_column_of_each_tesseract_line_and_page_level_split_recorded(prep):
+    side = {"size": [1000, 500], "column_split": {"x": 300, "method": "side-band-v1", "crossing_lines_before": 6},
+            "lines": [{"text": L1, "bbox": [20, 50, 280, 80], "conf": 90, "block": 1, "par": 1, "col": 0},
+                      {"text": L3, "bbox": [320, 50, 900, 80], "conf": 90, "block": 1001, "par": 1, "col": 1}]}
+    res = OcrResult(text="", backend="tesseract-local", model="t", revision="v", seconds=1.0, extra={"parts": [side, {"size": [100, 100], "lines": []}]})
+    d = prep.build_items("f.PDF", 1, ty(NL.join([L1, L3])), res)
+    assert {it["tesseract"]["text"]: it["tesseract"]["column"] for it in d["items"]} == {L1: 0, L3: 1}
+    assert d["column_split"] == [300, None]
+
+
+def test_column_debug_images_have_one_file_per_region(prep, tmp_path):
+    from PIL import Image
+
+    side = {"size": [1000, 500], "column_split": {"x": 300, "method": "side-band-v1", "crossing_lines_before": 6},
+            "lines": [{"text": L1, "bbox": [20, 50, 280, 80], "conf": 90, "block": 1, "par": 1, "col": 0},
+                      {"text": L3, "bbox": [320, 50, 900, 80], "conf": 90, "block": 1001, "par": 1, "col": 1}]}
+    res = OcrResult(text="", backend="tesseract-local", model="t", revision="v", seconds=1.0, extra={"parts": [side]})
+    paths = prep.save_column_debug("ONEREPORTKBANKT.PDF", 87, res, [png(1000, 500)], out_dir=tmp_path)
+    assert [p.name for p in paths] == ["kbank87_cols_img0_side.png", "kbank87_cols_img0_body.png"]
+    assert Image.open(paths[0]).size == (300, 500) and Image.open(paths[1]).size == (700, 500)
+    plain = OcrResult(text="", backend="tesseract-local", model="t", revision="v", seconds=1.0, extra={"size": [10, 10], "lines": []})
+    assert prep.save_column_debug("x.PDF", 1, plain, [png(10, 10)], out_dir=tmp_path) == []

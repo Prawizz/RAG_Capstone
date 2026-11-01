@@ -12,11 +12,46 @@
   "backend": "tesseract-local",
   "model": "tesseract-5.4.0.20240606",
   "revision": "b02ddf48069f",
-  "seconds": 10.368391000083648
+  "seconds": 6.519940000027418
  },
  "typhoon_page_numbers": [
   41
  ],
+ "column_split": [
+  null
+ ],
+ "invariant": {
+  "hay_chars": 2669,
+  "dropped": 0,
+  "doubled": 0
+ },
+ "span_stats": {
+  "relocated": 0,
+  "trimmed": 0,
+  "demoted_by_overlap": 3,
+  "snapped_items": 3,
+  "snapped_chars": 3,
+  "gap_merged_runs": 1,
+  "gap_merged_chars": 2,
+  "short_gap_typhoon_only": 0,
+  "agree_to_diff": [
+   {
+    "id": "ONEREPORTPTTT_p43_019",
+    "tesseract": ". บูรณาการเรื่องความยั่งยืนเข้ากับการดําเนินธุรกิจ",
+    "typhoon_before": ". บูรณาการเรื่องความยั่งยืนเข้ากับการดำเนินธุรกิจ",
+    "typhoon_after": "3. บูรณาการเรื่องความยั่งยืนเข้ากับการดำเนินธุรกิจ"
+   },
+   {
+    "id": "ONEREPORTPTTT_p43_028",
+    "tesseract": ". สร้างปัจจัยทําให้เกิดการขับเคลื่อนอย่างเป็นรูปธรรม",
+    "typhoon_before": ". สร้างปัจจัยทำให้เกิดการขับเคลื่อนอย่างเป็นรูปธรรม",
+    "typhoon_after": "4. สร้างปัจจัยทำให้เกิดการขับเคลื่อนอย่างเป็นรูปธรรม"
+   }
+  ],
+  "cut_mid": [
+   "ONEREPORTPTTT_p43_100"
+  ]
+ },
  "figures": [
   "ภาพแผนผังแสดงกลยุทธ์การดำเนินธุรกิจของกลุ่มบริษัท ปตท. สำหรับปี 2568 โดยแบ่งออกเป็น 5 ด้านหลัก ได้แก่ \"LT ADJ. EBITDA & NET PROFIT\", \"BALANCE\", \"SUSTAINABILITY: NET ZERO BY 2050\", \"SUSTAINABILITY: UNLEASH BUSINESS VALUES THROUGH SUSTAINABILITY\", \"ENABLERS FOR TRANSFORMATION\" และ \"FOUNDATION\" แต่ละด้านมีองค์ประกอบที่เกี่ยวข้องกับธุรกิจและเป้าหมายต่างๆ **LT ADJ. EBITDA & NET PROFIT** * **COMPETITIVENESS ENHANCEMENT & GROWTH: EXISTING BUSINESS** * **1.1 Hydrocarbon & Power Business** * Cost Competitiveness Enhancement * **UPSTREAM:** E&P, GAS, สาธารณูปโภคทางทะเลและชายฝั่ง, Competitive Supply * **1.2 Non-Hydrocarbon Business** * Right to Play & Attractiveness * **POWER:** POWER, Decarbonize และเพิ่ม Reliability ให้กับกลุ่ม ปตท. * **ELECTRIC VEHICLE:** บูรณาการ EV Charging * **LIFE SCIENCE:** บูรณาการ Self-funded * **DOWNSTREAM:** PETROCHEMICAL & REFINERY, ปรับ Portfolio ทางด้านความสามารถในการแข่งขันร่วมกับ Partner, LNG VALUE CHAIN, เน้นยกระดับ LNG Portfolio ให้สอดคล้องกับ Scope, Diversification และ Flexibility * **NEW VENTURES:** บูรณาการการลงทุนในธุรกิจ Sustainability และ AI Tech **BALANCE** * **SUSTAINABILITY: NET ZERO BY 2050** * **2. Necessity & Opportunity** * **Hydrogen & Carbon Business Integration** * H₂ & CCS เป็นตัวช่วย Decarbonize สำหรับกลุ่ม ปตท. และประเทศ เพื่อมุ่งสู่เป้าหมาย Net Zero * เป็นโอกาส Transform ธุรกิจเดิมของกลุ่ม ปตท. ให้แข็งขันได้ระยะยาว และพัฒนาเป็นธุรกิจใหม่ * การลงทุนด้วยมุมความคุ้มค่า ยังคงอยู่และยับยั้งความเสี่ยงด้วย Signpost ที่สำคัญ * **CCS** **SUSTAINABILITY: UNLEASH BUSINESS VALUES THROUGH SUSTAINABILITY** * **3. SUSTAINABILITY: UNLEASH BUSINESS VALUES THROUGH SUSTAINABILITY** * บูรณาการเรื่องความยั่งยืนเข้ากับการดำเนินธุรกิจ * มุ่งสู่ Net Zero, Balancing ESG Outcomes toward Resilience & Sustainable Businesses **ENABLERS FOR TRANSFORMATION** * **4. ENABLERS FOR TRANSFORMATION** * **Triple Transformation** * ยกระดับการขับเคลื่อนองค์กรผ่านการบูรณาการ Operational Excellence, AI & Digital Transformation และ People & Organization * **Asset Monetization** * Synergy, Optimize & Monetize Assets เพื่อเพิ่มประสิทธิภาพ และยกระดับผลการดำเนินงาน **FOUNDATION** * **5. FOUNDATION** * **Convergence of GRC & Sustainability** * **Value-Driven Financial Excellence** * **Stakeholder Management**"
  ],
@@ -45,12 +80,15 @@
   }
  ],
  "counts": {
-  "agree": 50,
-  "agree_audit": 6,
-  "diff": 14,
+  "agree": 49,
+  "agree_audit": 5,
+  "diff": 13,
   "typhoon_only": 1,
-  "tesseract_only": 49,
-  "to_judge": 70
+  "tesseract_only": 50,
+  "fragment": 2,
+  "duplicate": 0,
+  "to_judge": 69,
+  "maybe_duplicate": 0
  },
  "items": [
   {
@@ -66,7 +104,8 @@
      1510,
      110
     ],
-    "conf": 94.3
+    "conf": 94.3,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -74,9 +113,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 0,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_001",
    "suggest": "typhoon",
-   "order": 0
+   "order": 0,
+   "pos_end": 44
   },
   {
    "typhoon": {
@@ -91,7 +137,8 @@
      1509,
      132
     ],
-    "conf": 93.8
+    "conf": 93.8,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -99,9 +146,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 44,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_002",
    "suggest": "typhoon",
-   "order": 1
+   "order": 1,
+   "pos_end": 84
   },
   {
    "typhoon": {
@@ -116,7 +170,8 @@
      497,
      130
     ],
-    "conf": 94.5
+    "conf": 94.5,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -124,9 +179,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 84,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_003",
    "suggest": "typhoon",
-   "order": 2
+   "order": 2,
+   "pos_end": 124
   },
   {
    "typhoon": {
@@ -141,7 +203,8 @@
      850,
      132
     ],
-    "conf": 93.5
+    "conf": 93.5,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -149,13 +212,20 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 124,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_004",
    "suggest": "typhoon",
-   "order": 3
+   "order": 3,
+   "pos_end": 164
   },
   {
    "typhoon": {
-    "text": "แสวงหาโอกาสทางธุรกิจพร้อมมุ่งสู่ Net Zero (Necessity"
+    "text": "2. แสวงหาโอกาสทางธุรกิจพร้อมมุ่งสู่ Net Zero (Necessity"
    },
    "tesseract": {
     "text": "แสวงหาโอกาสทางธุรกิจพร้อมมุ่งสู่ !1 อ 6 Zero (Necessity",
@@ -166,17 +236,25 @@
      826,
      286
     ],
-    "conf": 91.0
+    "conf": 91.0,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
    "kind": "diff",
-   "score": 92.0,
-   "pos": 166,
+   "score": 88.2,
+   "pos": 164,
+   "snap": 0,
+   "gap_merged": 2,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_005",
    "suggest": "typhoon",
-   "order": 4
+   "order": 4,
+   "pos_end": 215
   },
   {
    "typhoon": {
@@ -191,7 +269,8 @@
      823,
      327
     ],
-    "conf": 94.0
+    "conf": 94.0,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -199,9 +278,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 215,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_006",
    "suggest": "typhoon",
-   "order": 5
+   "order": 5,
+   "pos_end": 258
   },
   {
    "typhoon": {
@@ -216,7 +302,8 @@
      825,
      364
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -224,9 +311,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 258,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_007",
    "suggest": "typhoon",
-   "order": 6
+   "order": 6,
+   "pos_end": 303
   },
   {
    "typhoon": {
@@ -241,7 +335,8 @@
      826,
      413
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -249,9 +344,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 303,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_008",
    "suggest": "typhoon",
-   "order": 7
+   "order": 7,
+   "pos_end": 350
   },
   {
    "typhoon": {
@@ -266,7 +368,8 @@
      826,
      448
     ],
-    "conf": 89.3
+    "conf": 89.3,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -274,9 +377,16 @@
    "kind": "diff",
    "score": 91.7,
    "pos": 350,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_009",
    "suggest": "typhoon",
-   "order": 8
+   "order": 8,
+   "pos_end": 397
   },
   {
    "typhoon": {
@@ -291,7 +401,8 @@
      825,
      488
     ],
-    "conf": 94.9
+    "conf": 94.9,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -299,9 +410,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 397,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_010",
    "suggest": "typhoon",
-   "order": 9
+   "order": 9,
+   "pos_end": 446
   },
   {
    "typhoon": {
@@ -316,7 +434,8 @@
      825,
      528
     ],
-    "conf": 94.6
+    "conf": 94.6,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -324,9 +443,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 446,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_011",
    "suggest": "typhoon",
-   "order": 10
+   "order": 10,
+   "pos_end": 492
   },
   {
    "typhoon": {
@@ -341,7 +467,8 @@
      825,
      568
     ],
-    "conf": 93.9
+    "conf": 93.9,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -349,9 +476,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 492,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_012",
    "suggest": "typhoon",
-   "order": 11
+   "order": 11,
+   "pos_end": 545
   },
   {
    "typhoon": {
@@ -366,7 +500,8 @@
      823,
      609
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -374,9 +509,16 @@
    "kind": "diff",
    "score": 96.2,
    "pos": 545,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_013",
    "suggest": "typhoon",
-   "order": 12
+   "order": 12,
+   "pos_end": 598
   },
   {
    "typhoon": {
@@ -391,7 +533,8 @@
      824,
      649
     ],
-    "conf": 93.9
+    "conf": 93.9,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -399,9 +542,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 598,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_014",
    "suggest": "typhoon",
-   "order": 13
+   "order": 13,
+   "pos_end": 651
   },
   {
    "typhoon": {
@@ -416,7 +566,8 @@
      825,
      689
     ],
-    "conf": 94.5
+    "conf": 94.5,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -424,9 +575,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 651,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_015",
    "suggest": "typhoon",
-   "order": 14
+   "order": 14,
+   "pos_end": 700
   },
   {
    "typhoon": {
@@ -441,7 +599,8 @@
      825,
      726
     ],
-    "conf": 94.2
+    "conf": 94.2,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -449,9 +608,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 700,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_016",
    "suggest": "typhoon",
-   "order": 15
+   "order": 15,
+   "pos_end": 750
   },
   {
    "typhoon": {
@@ -466,7 +632,8 @@
      823,
      767
     ],
-    "conf": 95.0
+    "conf": 95.0,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -474,9 +641,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 750,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_017",
    "suggest": "typhoon",
-   "order": 16
+   "order": 16,
+   "pos_end": 798
   },
   {
    "typhoon": {
@@ -491,7 +665,8 @@
      370,
      807
     ],
-    "conf": 94.9
+    "conf": 94.9,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -499,13 +674,20 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 798,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_018",
    "suggest": "typhoon",
-   "order": 17
+   "order": 17,
+   "pos_end": 811
   },
   {
    "typhoon": {
-    "text": ". บูรณาการเรื่องความยั่งยืนเข้ากับการดำเนินธุรกิจ"
+    "text": "3. บูรณาการเรื่องความยั่งยืนเข้ากับการดำเนินธุรกิจ"
    },
    "tesseract": {
     "text": ". บูรณาการเรื่องความยั่งยืนเข้ากับการดําเนินธุรกิจ",
@@ -516,410 +698,25 @@
      824,
      850
     ],
-    "conf": 94.4
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 812,
-   "id": "ONEREPORTPTTT_p43_019",
-   "suggest": "typhoon",
-   "order": 18
-  },
-  {
-   "typhoon": {
-    "text": ". บูรณาการเรื่องความยั่งยืนเข้ากับการดำเนินธุรกิจ"
-   },
-   "tesseract": {
-    "text": "+ บูรณาการเรื่องความฮั๋งยืนเข้ากับการดําเนินธุรกิจ",
-    "image": 0,
-    "bbox": [
-     242,
-     1852,
-     528,
-     1880
-    ],
-    "conf": 91.1
+    "conf": 94.4,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
    "kind": "diff",
-   "score": 93.8,
-   "pos": 812,
-   "id": "ONEREPORTPTTT_p43_020",
+   "score": 98.0,
+   "pos": 811,
+   "snap": 1,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_019",
    "suggest": "typhoon",
-   "order": 19
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "2 NECESSITY",
-    "image": 0,
-    "bbox": [
-     774,
-     1264,
-     906,
-     1300
-    ],
-    "conf": 96.6
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_021",
-   "suggest": "tesseract",
-   "order": 20
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "& OPPORTUNITY",
-    "image": 0,
-    "bbox": [
-     821,
-     1289,
-     946,
-     1300
-    ],
-    "conf": 94.7
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_022",
-   "suggest": "tesseract",
-   "order": 21
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "Hydrogen & Carbon Business",
-    "image": 0,
-    "bbox": [
-     751,
-     1328,
-     965,
-     1342
-    ],
-    "conf": 94.9
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_023",
-   "suggest": "tesseract",
-   "order": 22
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "Integration",
-    "image": 0,
-    "bbox": [
-     751,
-     1347,
-     832,
-     1361
-    ],
-    "conf": 94.4
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_024",
-   "suggest": "tesseract",
-   "order": 23
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "+ H, & CCS เป็นตัวช่วย Decarbonize",
-    "image": 0,
-    "bbox": [
-     750,
-     1363,
-     968,
-     1393
-    ],
-    "conf": 80.5
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_025",
-   "suggest": "tesseract",
-   "order": 24
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "สําหรับกลุ่มปตท . และประเทศ",
-    "image": 0,
-    "bbox": [
-     759,
-     1382,
-     920,
-     1412
-    ],
-    "conf": 93.9
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_026",
-   "suggest": "tesseract",
-   "order": 25
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "พื่อมุ่งสู่เป้าหมาย Net Zero",
-    "image": 0,
-    "bbox": [
-     759,
-     1401,
-     913,
-     1431
-    ],
-    "conf": 92.3
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_027",
-   "suggest": "tesseract",
-   "order": 26
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "+ เป็นโอกาส Transform ธุรกิจเดิม",
-    "image": 0,
-    "bbox": [
-     750,
-     1420,
-     938,
-     1450
-    ],
-    "conf": 91.7
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_028",
-   "suggest": "tesseract",
-   "order": 27
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "ของกลุ่มปตท . ให้แข่งขันได้ระยะยาว",
-    "image": 0,
-    "bbox": [
-     759,
-     1439,
-     952,
-     1469
-    ],
-    "conf": 92.7
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_029",
-   "suggest": "tesseract",
-   "order": 28
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "และเพัฒนาเป็นธุรกิจใหม่",
-    "image": 0,
-    "bbox": [
-     759,
-     1458,
-     887,
-     1488
-    ],
-    "conf": 92.0
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_030",
-   "suggest": "tesseract",
-   "order": 29
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "+ การลงทุนต้องมีความคุ้มค่า",
-    "image": 0,
-    "bbox": [
-     750,
-     1476,
-     904,
-     1506
-    ],
-    "conf": 92.1
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_031",
-   "suggest": "tesseract",
-   "order": 30
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "ยิดหยุ่นและขับเคลื่อนด้วย",
-    "image": 0,
-    "bbox": [
-     759,
-     1495,
-     897,
-     1525
-    ],
-    "conf": 94.5
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_032",
-   "suggest": "tesseract",
-   "order": 31
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "Signpost ที่สําคัญ",
-    "image": 0,
-    "bbox": [
-     759,
-     1517,
-     866,
-     1541
-    ],
-    "conf": 91.4
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_033",
-   "suggest": "tesseract",
-   "order": 32
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "+ 1ivd Net Zero, Balancing ESG Outcomes toward Resilience & Sustainable Businesses ®",
-    "image": 0,
-    "bbox": [
-     242,
-     1851,
-     907,
-     1919
-    ],
-    "conf": 85.6
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_034",
-   "suggest": "tesseract",
-   "order": 33
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "TION",
-    "image": 0,
-    "bbox": [
-     519,
-     1957,
-     555,
-     1968
-    ],
-    "conf": 70.9
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_035",
-   "suggest": "tesseract",
-   "order": 34
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "Operational Excellence, Al & Digital Assets",
-    "image": 0,
-    "bbox": [
-     252,
-     2038,
-     704,
-     2051
-    ],
-    "conf": 85.4
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 859.5,
-   "id": "ONEREPORTPTTT_p43_036",
-   "suggest": "tesseract",
-   "order": 35
+   "order": 18,
+   "pos_end": 860
   },
   {
    "typhoon": {
@@ -934,17 +731,25 @@
      825,
      888
     ],
-    "conf": 94.1
+    "conf": 94.1,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": true,
+   "audit": false,
    "kind": "agree",
    "score": 100.0,
    "pos": 860,
-   "id": "ONEREPORTPTTT_p43_037",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_020",
    "suggest": "typhoon",
-   "order": 36
+   "order": 19,
+   "pos_end": 907
   },
   {
    "typhoon": {
@@ -959,17 +764,25 @@
      823,
      931
     ],
-    "conf": 94.4
+    "conf": 94.4,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": false,
+   "audit": true,
    "kind": "agree",
    "score": 100.0,
    "pos": 907,
-   "id": "ONEREPORTPTTT_p43_038",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_021",
    "suggest": "typhoon",
-   "order": 37
+   "order": 20,
+   "pos_end": 953
   },
   {
    "typhoon": {
@@ -984,7 +797,8 @@
      1509,
      283
     ],
-    "conf": 94.5
+    "conf": 94.5,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -992,9 +806,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 953,
-   "id": "ONEREPORTPTTT_p43_039",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_022",
    "suggest": "typhoon",
-   "order": 38
+   "order": 21,
+   "pos_end": 1007
   },
   {
    "typhoon": {
@@ -1009,7 +830,8 @@
      1509,
      325
     ],
-    "conf": 92.8
+    "conf": 92.8,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1017,9 +839,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1007,
-   "id": "ONEREPORTPTTT_p43_040",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_023",
    "suggest": "typhoon",
-   "order": 39
+   "order": 22,
+   "pos_end": 1056
   },
   {
    "typhoon": {
@@ -1034,7 +863,8 @@
      1510,
      372
     ],
-    "conf": 94.4
+    "conf": 94.4,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1042,9 +872,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1056,
-   "id": "ONEREPORTPTTT_p43_041",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_024",
    "suggest": "typhoon",
-   "order": 40
+   "order": 23,
+   "pos_end": 1102
   },
   {
    "typhoon": {
@@ -1059,7 +896,8 @@
      1509,
      413
     ],
-    "conf": 94.1
+    "conf": 94.1,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1067,9 +905,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1102,
-   "id": "ONEREPORTPTTT_p43_042",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_025",
    "suggest": "typhoon",
-   "order": 41
+   "order": 24,
+   "pos_end": 1154
   },
   {
    "typhoon": {
@@ -1084,7 +929,8 @@
      1508,
      448
     ],
-    "conf": 94.6
+    "conf": 94.6,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1092,9 +938,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1154,
-   "id": "ONEREPORTPTTT_p43_043",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_026",
    "suggest": "typhoon",
-   "order": 42
+   "order": 25,
+   "pos_end": 1203
   },
   {
    "typhoon": {
@@ -1109,7 +962,8 @@
      1391,
      484
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1117,13 +971,20 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1203,
-   "id": "ONEREPORTPTTT_p43_044",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_027",
    "suggest": "typhoon",
-   "order": 43
+   "order": 26,
+   "pos_end": 1240
   },
   {
    "typhoon": {
-    "text": ". สร้างปัจจัยทำให้เกิดการขับเคลื่อนอย่างเป็นรูปธรรม"
+    "text": "4. สร้างปัจจัยทำให้เกิดการขับเคลื่อนอย่างเป็นรูปธรรม"
    },
    "tesseract": {
     "text": ". สร้างปัจจัยทําให้เกิดการขับเคลื่อนอย่างเป็นรูปธรรม",
@@ -1134,17 +995,25 @@
      1509,
      528
     ],
-    "conf": 94.6
+    "conf": 94.6,
+    "column": null
    },
    "region": null,
-   "auto_accept": true,
-   "audit": true,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 1241,
-   "id": "ONEREPORTPTTT_p43_045",
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.0,
+   "pos": 1240,
+   "snap": 1,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_028",
    "suggest": "typhoon",
-   "order": 44
+   "order": 27,
+   "pos_end": 1291
   },
   {
    "typhoon": {
@@ -1159,7 +1028,8 @@
      1510,
      569
     ],
-    "conf": 95.0
+    "conf": 95.0,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1167,9 +1037,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1291,
-   "id": "ONEREPORTPTTT_p43_046",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_029",
    "suggest": "typhoon",
-   "order": 45
+   "order": 28,
+   "pos_end": 1338
   },
   {
    "typhoon": {
@@ -1184,249 +1061,25 @@
      1508,
      605
     ],
-    "conf": 95.3
+    "conf": 95.3,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": false,
+   "audit": true,
    "kind": "agree",
    "score": 100.0,
    "pos": 1338,
-   "id": "ONEREPORTPTTT_p43_047",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_030",
    "suggest": "typhoon",
-   "order": 46
-  },
-  {
-   "typhoon": {
-    "text": "Triple Transformation"
-   },
-   "tesseract": {
-    "text": "+ Triple Transformation",
-    "image": 0,
-    "bbox": [
-     244,
-     2003,
-     401,
-     2016
-    ],
-    "conf": 90.4
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "diff",
-   "score": 95.2,
-   "pos": 1355,
-   "id": "ONEREPORTPTTT_p43_048",
-   "suggest": "typhoon",
-   "order": 47
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "ยกระดับการขับเคลื่อนองค์กรผ่านการบูรณาการจิ",
-    "image": 0,
-    "bbox": [
-     252,
-     2003,
-     570,
-     2066
-    ],
-    "conf": 92.5
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 1374.5,
-   "id": "ONEREPORTPTTT_p43_049",
-   "suggest": "tesseract",
-   "order": 48
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "Transformation ua: People & Organization gf",
-    "image": 0,
-    "bbox": [
-     252,
-     2055,
-     569,
-     2074
-    ],
-    "conf": 84.6
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 1374.5,
-   "id": "ONEREPORTPTTT_p43_050",
-   "suggest": "tesseract",
-   "order": 49
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "5 FOUNDATION",
-    "image": 0,
-    "bbox": [
-     242,
-     2106,
-     389,
-     2131
-    ],
-    "conf": 53.2
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 1374.5,
-   "id": "ONEREPORTPTTT_p43_051",
-   "suggest": "tesseract",
-   "order": 50
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "+ Convergence of + Value-Driven",
-    "image": 0,
-    "bbox": [
-     242,
-     2154,
-     580,
-     2167
-    ],
-    "conf": 77.2
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 1374.5,
-   "id": "ONEREPORTPTTT_p43_052",
-   "suggest": "tesseract",
-   "order": 51
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "GRC & Sus ility",
-    "image": 0,
-    "bbox": [
-     251,
-     2171,
-     395,
-     2184
-    ],
-    "conf": 79.6
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 1374.5,
-   "id": "ONEREPORTPTTT_p43_053",
-   "suggest": "tesseract",
-   "order": 52
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "+ Asset Monetization",
-    "image": 0,
-    "bbox": [
-     651,
-     2003,
-     794,
-     2013
-    ],
-    "conf": 91.1
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 1374.5,
-   "id": "ONEREPORTPTTT_p43_054",
-   "suggest": "tesseract",
-   "order": 53
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "Synergize, Of",
-    "image": 0,
-    "bbox": [
-     660,
-     2021,
-     742,
-     2034
-    ],
-    "conf": 86.8
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 1374.5,
-   "id": "ONEREPORTPTTT_p43_055",
-   "suggest": "tesseract",
-   "order": 54
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "+ Stakeholder",
-    "image": 0,
-    "bbox": [
-     760,
-     2153,
-     853,
-     2164
-    ],
-    "conf": 85.9
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 1374.5,
-   "id": "ONEREPORTPTTT_p43_056",
-   "suggest": "tesseract",
-   "order": 55
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "Management",
-    "image": 0,
-    "bbox": [
-     769,
-     2171,
-     860,
-     2184
-    ],
-    "conf": 94.9
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 1374.5,
-   "id": "ONEREPORTPTTT_p43_057",
-   "suggest": "tesseract",
-   "order": 56
+   "order": 29,
+   "pos_end": 1390
   },
   {
    "typhoon": {
@@ -1441,7 +1094,8 @@
      1510,
      650
     ],
-    "conf": 94.1
+    "conf": 94.1,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1449,9 +1103,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1390,
-   "id": "ONEREPORTPTTT_p43_058",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_031",
    "suggest": "typhoon",
-   "order": 57
+   "order": 30,
+   "pos_end": 1432
   },
   {
    "typhoon": {
@@ -1466,7 +1127,8 @@
      1508,
      686
     ],
-    "conf": 94.4
+    "conf": 94.4,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1474,9 +1136,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1432,
-   "id": "ONEREPORTPTTT_p43_059",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_032",
    "suggest": "typhoon",
-   "order": 58
+   "order": 31,
+   "pos_end": 1487
   },
   {
    "typhoon": {
@@ -1491,7 +1160,8 @@
      1510,
      729
     ],
-    "conf": 94.8
+    "conf": 94.8,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1499,9 +1169,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1487,
-   "id": "ONEREPORTPTTT_p43_060",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_033",
    "suggest": "typhoon",
-   "order": 59
+   "order": 32,
+   "pos_end": 1544
   },
   {
    "typhoon": {
@@ -1516,17 +1193,25 @@
      1511,
      769
     ],
-    "conf": 94.3
+    "conf": 94.3,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": true,
+   "audit": false,
    "kind": "agree",
    "score": 100.0,
    "pos": 1544,
-   "id": "ONEREPORTPTTT_p43_061",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_034",
    "suggest": "typhoon",
-   "order": 60
+   "order": 33,
+   "pos_end": 1594
   },
   {
    "typhoon": {
@@ -1541,7 +1226,8 @@
      1508,
      811
     ],
-    "conf": 94.1
+    "conf": 94.1,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1549,9 +1235,16 @@
    "kind": "diff",
    "score": 98.0,
    "pos": 1594,
-   "id": "ONEREPORTPTTT_p43_062",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_035",
    "suggest": "typhoon",
-   "order": 61
+   "order": 34,
+   "pos_end": 1645
   },
   {
    "typhoon": {
@@ -1566,7 +1259,8 @@
      1508,
      850
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1574,9 +1268,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1645,
-   "id": "ONEREPORTPTTT_p43_063",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_036",
    "suggest": "typhoon",
-   "order": 62
+   "order": 35,
+   "pos_end": 1693
   },
   {
    "typhoon": {
@@ -1591,17 +1292,25 @@
      1508,
      891
     ],
-    "conf": 93.9
+    "conf": 93.9,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": false,
+   "audit": true,
    "kind": "agree",
    "score": 100.0,
    "pos": 1693,
-   "id": "ONEREPORTPTTT_p43_064",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_037",
    "suggest": "typhoon",
-   "order": 63
+   "order": 36,
+   "pos_end": 1740
   },
   {
    "typhoon": {
@@ -1616,7 +1325,8 @@
      1510,
      933
     ],
-    "conf": 95.2
+    "conf": 95.2,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1624,9 +1334,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1740,
-   "id": "ONEREPORTPTTT_p43_065",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_038",
    "suggest": "typhoon",
-   "order": 64
+   "order": 37,
+   "pos_end": 1785
   },
   {
    "typhoon": {
@@ -1641,7 +1358,8 @@
      1512,
      977
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1649,9 +1367,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1785,
-   "id": "ONEREPORTPTTT_p43_066",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_039",
    "suggest": "typhoon",
-   "order": 65
+   "order": 38,
+   "pos_end": 1817
   },
   {
    "typhoon": {
@@ -1666,7 +1391,8 @@
      1510,
      1012
     ],
-    "conf": 94.6
+    "conf": 94.6,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1674,9 +1400,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1817,
-   "id": "ONEREPORTPTTT_p43_067",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_040",
    "suggest": "typhoon",
-   "order": 66
+   "order": 39,
+   "pos_end": 1853
   },
   {
    "typhoon": {
@@ -1691,17 +1424,25 @@
      1510,
      1054
     ],
-    "conf": 95.8
+    "conf": 95.8,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": true,
+   "audit": false,
    "kind": "agree",
    "score": 100.0,
    "pos": 1853,
-   "id": "ONEREPORTPTTT_p43_068",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_041",
    "suggest": "typhoon",
-   "order": 67
+   "order": 40,
+   "pos_end": 1876
   },
   {
    "typhoon": {
@@ -1716,7 +1457,8 @@
      1510,
      1093
     ],
-    "conf": 94.1
+    "conf": 94.1,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1724,9 +1466,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1876,
-   "id": "ONEREPORTPTTT_p43_069",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_042",
    "suggest": "typhoon",
-   "order": 68
+   "order": 41,
+   "pos_end": 1907
   },
   {
    "typhoon": {
@@ -1741,17 +1490,25 @@
      1508,
      1133
     ],
-    "conf": 94.6
+    "conf": 94.6,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": false,
+   "audit": true,
    "kind": "agree",
    "score": 100.0,
    "pos": 1907,
-   "id": "ONEREPORTPTTT_p43_070",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_043",
    "suggest": "typhoon",
-   "order": 69
+   "order": 42,
+   "pos_end": 1939
   },
   {
    "typhoon": {
@@ -1766,7 +1523,8 @@
      1509,
      1173
     ],
-    "conf": 94.0
+    "conf": 94.0,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1774,9 +1532,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1939,
-   "id": "ONEREPORTPTTT_p43_071",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_044",
    "suggest": "typhoon",
-   "order": 70
+   "order": 43,
+   "pos_end": 1974
   },
   {
    "typhoon": {
@@ -1791,7 +1556,8 @@
      1509,
      1215
     ],
-    "conf": 90.9
+    "conf": 90.9,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1799,9 +1565,16 @@
    "kind": "diff",
    "score": 83.8,
    "pos": 1974,
-   "id": "ONEREPORTPTTT_p43_072",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_045",
    "suggest": "typhoon",
-   "order": 71
+   "order": 44,
+   "pos_end": 2010
   },
   {
    "typhoon": null,
@@ -1814,7 +1587,8 @@
      992,
      1221
     ],
-    "conf": 95.8
+    "conf": 95.8,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1822,9 +1596,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 2009.5,
-   "id": "ONEREPORTPTTT_p43_073",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_046",
    "suggest": "tesseract",
-   "order": 72
+   "order": 45,
+   "pos_end": 2009.5
   },
   {
    "typhoon": null,
@@ -1837,7 +1618,8 @@
      654,
      1300
     ],
-    "conf": 92.0
+    "conf": 92.0,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1845,9 +1627,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 2009.5,
-   "id": "ONEREPORTPTTT_p43_074",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_047",
    "suggest": "tesseract",
-   "order": 73
+   "order": 46,
+   "pos_end": 2009.5
   },
   {
    "typhoon": null,
@@ -1860,7 +1649,8 @@
      444,
      1300
     ],
-    "conf": 96.5
+    "conf": 96.5,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1868,9 +1658,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 2009.5,
-   "id": "ONEREPORTPTTT_p43_075",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_048",
    "suggest": "tesseract",
-   "order": 74
+   "order": 47,
+   "pos_end": 2009.5
   },
   {
    "typhoon": null,
@@ -1883,7 +1680,8 @@
      693,
      1349
     ],
-    "conf": 90.3
+    "conf": 90.3,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1891,9 +1689,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 2009.5,
-   "id": "ONEREPORTPTTT_p43_076",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_049",
    "suggest": "tesseract",
-   "order": 75
+   "order": 48,
+   "pos_end": 2009.5
   },
   {
    "typhoon": null,
@@ -1906,7 +1711,8 @@
      729,
      1361
     ],
-    "conf": 93.4
+    "conf": 93.4,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1914,9 +1720,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 2009.5,
-   "id": "ONEREPORTPTTT_p43_077",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_050",
    "suggest": "tesseract",
-   "order": 76
+   "order": 49,
+   "pos_end": 2009.5
   },
   {
    "typhoon": null,
@@ -1929,7 +1742,8 @@
      674,
      1423
     ],
-    "conf": 58.1
+    "conf": 58.1,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1937,9 +1751,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 2009.5,
-   "id": "ONEREPORTPTTT_p43_078",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_051",
    "suggest": "tesseract",
-   "order": 77
+   "order": 50,
+   "pos_end": 2009.5
   },
   {
    "typhoon": null,
@@ -1952,7 +1773,8 @@
      685,
      1433
     ],
-    "conf": 88.8
+    "conf": 88.8,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1960,9 +1782,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 2009.5,
-   "id": "ONEREPORTPTTT_p43_079",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_052",
    "suggest": "tesseract",
-   "order": 78
+   "order": 51,
+   "pos_end": 2009.5
   },
   {
    "typhoon": null,
@@ -1975,7 +1804,8 @@
      480,
      1507
     ],
-    "conf": 87.7
+    "conf": 87.7,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1983,9 +1813,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 2009.5,
-   "id": "ONEREPORTPTTT_p43_080",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_053",
    "suggest": "tesseract",
-   "order": 79
+   "order": 52,
+   "pos_end": 2009.5
   },
   {
    "typhoon": null,
@@ -1998,7 +1835,8 @@
      329,
      1523
     ],
-    "conf": 84.7
+    "conf": 84.7,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -2006,9 +1844,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 2009.5,
-   "id": "ONEREPORTPTTT_p43_081",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_054",
    "suggest": "tesseract",
-   "order": 80
+   "order": 53,
+   "pos_end": 2009.5
   },
   {
    "typhoon": null,
@@ -2021,7 +1866,8 @@
      344,
      1530
     ],
-    "conf": 81.8
+    "conf": 81.8,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -2029,9 +1875,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 2009.5,
-   "id": "ONEREPORTPTTT_p43_082",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_055",
    "suggest": "tesseract",
-   "order": 81
+   "order": 54,
+   "pos_end": 2009.5
   },
   {
    "typhoon": null,
@@ -2044,7 +1897,8 @@
      494,
      1523
     ],
-    "conf": 88.0
+    "conf": 88.0,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -2052,9 +1906,1259 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_056",
+   "suggest": "tesseract",
+   "order": 55,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ให้กับกลุ่มปตท . ' +",
+    "image": 0,
+    "bbox": [
+     409,
+     1508,
+     661,
+     1536
+    ],
+    "conf": 79.7,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_057",
+   "suggest": "tesseract",
+   "order": 56,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "บุ่งเติบโตแบบ Self-funded",
+    "image": 0,
+    "bbox": [
+     551,
+     1529,
+     686,
+     1557
+    ],
+    "conf": 81.4,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_058",
+   "suggest": "tesseract",
+   "order": 57,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "[ฟะแร rom.",
+    "image": 0,
+    "bbox": [
+     212,
+     1556,
+     495,
+     1619
+    ],
+    "conf": 53.1,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_059",
+   "suggest": "tesseract",
+   "order": 58,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "PETROCHEMICAL TRADING RETAIL ad",
+    "image": 0,
+    "bbox": [
+     212,
+     1602,
+     652,
+     1627
+    ],
+    "conf": 48.2,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_060",
+   "suggest": "tesseract",
+   "order": 59,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "นอเฟ่อนอยกระดับแอพบยพรมตุรร",
+    "image": 0,
+    "bbox": [
+     300,
+     1620,
+     665,
+     1660
+    ],
+    "conf": 73.2,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_061",
+   "suggest": "tesseract",
+   "order": 60,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ความสามารถในการแข่งขันร่วมกับ Partner Streaming การสงกุม",
+    "image": 0,
+    "bbox": [
+     256,
+     1644,
+     673,
+     1677
+    ],
+    "conf": 90.0,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_062",
+   "suggest": "tesseract",
+   "order": 61,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": ". ๓นุ่งเน็นการลงทุนในธุรกิจ Sustainability",
+    "image": 0,
+    "bbox": [
+     319,
+     1664,
+     715,
+     1693
+    ],
+    "conf": 86.8,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_063",
+   "suggest": "tesseract",
+   "order": 62,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "1 0 sto:",
+    "image": 0,
+    "bbox": [
+     305,
+     1685,
+     649,
+     1699
+    ],
+    "conf": 38.8,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "fragment",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "ONEREPORTPTTT_p43_063",
+    "ONEREPORTPTTT_p43_062"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_064",
+   "suggest": "tesseract",
+   "order": 63,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "we",
+    "image": 0,
+    "bbox": [
+     309,
+     1705,
+     326,
+     1712
+    ],
+    "conf": 35.7,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "fragment",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_065",
+   "suggest": "tesseract",
+   "order": 64,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ขยายธุรกิจตลอด LNG ปอ [บอ Chain",
+    "image": 0,
+    "bbox": [
+     269,
+     1730,
+     442,
+     1758
+    ],
+    "conf": 89.8,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_066",
+   "suggest": "tesseract",
+   "order": 65,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "พื่อสร้าจป 6 Portfolio Rulounsb ด้วย Scale,",
+    "image": 0,
+    "bbox": [
+     240,
+     1744,
+     472,
+     1772
+    ],
+    "conf": 84.4,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_067",
+   "suggest": "tesseract",
+   "order": 66,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Diversification และ Flexibility",
+    "image": 0,
+    "bbox": [
+     281,
+     1758,
+     431,
+     1786
+    ],
+    "conf": 89.7,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_068",
+   "suggest": "tesseract",
+   "order": 67,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "3 SUSTAINABILITY: UNLEASH BUSINESS VALUES THROUGH SUSTAINABILITY",
+    "image": 0,
+    "bbox": [
+     241,
+     1812,
+     857,
+     1837
+    ],
+    "conf": 91.1,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_069",
+   "suggest": "tesseract",
+   "order": 68,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ บูรณาการเรื่องความฮั๋งยืนเข้ากับการดําเนินธุรกิจ",
+    "image": 0,
+    "bbox": [
+     242,
+     1852,
+     528,
+     1880
+    ],
+    "conf": 91.1,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_070",
+   "suggest": "tesseract",
+   "order": 69,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "2 NECESSITY",
+    "image": 0,
+    "bbox": [
+     774,
+     1264,
+     906,
+     1300
+    ],
+    "conf": 96.6,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_071",
+   "suggest": "tesseract",
+   "order": 70,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "& OPPORTUNITY",
+    "image": 0,
+    "bbox": [
+     821,
+     1289,
+     946,
+     1300
+    ],
+    "conf": 94.7,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_072",
+   "suggest": "tesseract",
+   "order": 71,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Hydrogen & Carbon Business",
+    "image": 0,
+    "bbox": [
+     751,
+     1328,
+     965,
+     1342
+    ],
+    "conf": 94.9,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_073",
+   "suggest": "tesseract",
+   "order": 72,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Integration",
+    "image": 0,
+    "bbox": [
+     751,
+     1347,
+     832,
+     1361
+    ],
+    "conf": 94.4,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_074",
+   "suggest": "tesseract",
+   "order": 73,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ H, & CCS เป็นตัวช่วย Decarbonize",
+    "image": 0,
+    "bbox": [
+     750,
+     1363,
+     968,
+     1393
+    ],
+    "conf": 80.5,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_075",
+   "suggest": "tesseract",
+   "order": 74,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "สําหรับกลุ่มปตท . และประเทศ",
+    "image": 0,
+    "bbox": [
+     759,
+     1382,
+     920,
+     1412
+    ],
+    "conf": 93.9,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_076",
+   "suggest": "tesseract",
+   "order": 75,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "พื่อมุ่งสู่เป้าหมาย Net Zero",
+    "image": 0,
+    "bbox": [
+     759,
+     1401,
+     913,
+     1431
+    ],
+    "conf": 92.3,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_077",
+   "suggest": "tesseract",
+   "order": 76,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ เป็นโอกาส Transform ธุรกิจเดิม",
+    "image": 0,
+    "bbox": [
+     750,
+     1420,
+     938,
+     1450
+    ],
+    "conf": 91.7,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_078",
+   "suggest": "tesseract",
+   "order": 77,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ของกลุ่มปตท . ให้แข่งขันได้ระยะยาว",
+    "image": 0,
+    "bbox": [
+     759,
+     1439,
+     952,
+     1469
+    ],
+    "conf": 92.7,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_079",
+   "suggest": "tesseract",
+   "order": 78,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "และเพัฒนาเป็นธุรกิจใหม่",
+    "image": 0,
+    "bbox": [
+     759,
+     1458,
+     887,
+     1488
+    ],
+    "conf": 92.0,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_080",
+   "suggest": "tesseract",
+   "order": 79,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ การลงทุนต้องมีความคุ้มค่า",
+    "image": 0,
+    "bbox": [
+     750,
+     1476,
+     904,
+     1506
+    ],
+    "conf": 92.1,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_081",
+   "suggest": "tesseract",
+   "order": 80,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ยิดหยุ่นและขับเคลื่อนด้วย",
+    "image": 0,
+    "bbox": [
+     759,
+     1495,
+     897,
+     1525
+    ],
+    "conf": 94.5,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_082",
+   "suggest": "tesseract",
+   "order": 81,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Signpost ที่สําคัญ",
+    "image": 0,
+    "bbox": [
+     759,
+     1517,
+     866,
+     1541
+    ],
+    "conf": 91.4,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_083",
    "suggest": "tesseract",
-   "order": 82
+   "order": 82,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ 1ivd Net Zero, Balancing ESG Outcomes toward Resilience & Sustainable Businesses ®",
+    "image": 0,
+    "bbox": [
+     242,
+     1851,
+     907,
+     1919
+    ],
+    "conf": 85.6,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_084",
+   "suggest": "tesseract",
+   "order": 83,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "TION",
+    "image": 0,
+    "bbox": [
+     519,
+     1957,
+     555,
+     1968
+    ],
+    "conf": 70.9,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_085",
+   "suggest": "tesseract",
+   "order": 84,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Operational Excellence, Al & Digital Assets",
+    "image": 0,
+    "bbox": [
+     252,
+     2038,
+     704,
+     2051
+    ],
+    "conf": 85.4,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_086",
+   "suggest": "tesseract",
+   "order": 85,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ Triple Transformation",
+    "image": 0,
+    "bbox": [
+     244,
+     2003,
+     401,
+     2016
+    ],
+    "conf": 90.4,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_087",
+   "suggest": "tesseract",
+   "order": 86,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ยกระดับการขับเคลื่อนองค์กรผ่านการบูรณาการจิ",
+    "image": 0,
+    "bbox": [
+     252,
+     2003,
+     570,
+     2066
+    ],
+    "conf": 92.5,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_088",
+   "suggest": "tesseract",
+   "order": 87,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Transformation ua: People & Organization gf",
+    "image": 0,
+    "bbox": [
+     252,
+     2055,
+     569,
+     2074
+    ],
+    "conf": 84.6,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_089",
+   "suggest": "tesseract",
+   "order": 88,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "5 FOUNDATION",
+    "image": 0,
+    "bbox": [
+     242,
+     2106,
+     389,
+     2131
+    ],
+    "conf": 53.2,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_090",
+   "suggest": "tesseract",
+   "order": 89,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ Convergence of + Value-Driven",
+    "image": 0,
+    "bbox": [
+     242,
+     2154,
+     580,
+     2167
+    ],
+    "conf": 77.2,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_091",
+   "suggest": "tesseract",
+   "order": 90,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "GRC & Sus ility",
+    "image": 0,
+    "bbox": [
+     251,
+     2171,
+     395,
+     2184
+    ],
+    "conf": 79.6,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_092",
+   "suggest": "tesseract",
+   "order": 91,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ Asset Monetization",
+    "image": 0,
+    "bbox": [
+     651,
+     2003,
+     794,
+     2013
+    ],
+    "conf": 91.1,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_093",
+   "suggest": "tesseract",
+   "order": 92,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Synergize, Of",
+    "image": 0,
+    "bbox": [
+     660,
+     2021,
+     742,
+     2034
+    ],
+    "conf": 86.8,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_094",
+   "suggest": "tesseract",
+   "order": 93,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ Stakeholder",
+    "image": 0,
+    "bbox": [
+     760,
+     2153,
+     853,
+     2164
+    ],
+    "conf": 85.9,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_095",
+   "suggest": "tesseract",
+   "order": 94,
+   "pos_end": 2009.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Management",
+    "image": 0,
+    "bbox": [
+     769,
+     2171,
+     860,
+     2184
+    ],
+    "conf": 94.9,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_096",
+   "suggest": "tesseract",
+   "order": 95,
+   "pos_end": 2009.5
   },
   {
    "typhoon": {
@@ -2069,17 +3173,25 @@
      1510,
      1255
     ],
-    "conf": 94.3
+    "conf": 94.3,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": true,
+   "audit": false,
    "kind": "agree",
    "score": 100.0,
    "pos": 2010,
-   "id": "ONEREPORTPTTT_p43_084",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_097",
    "suggest": "typhoon",
-   "order": 83
+   "order": 96,
+   "pos_end": 2039
   },
   {
    "typhoon": {
@@ -2094,7 +3206,8 @@
      1508,
      1294
     ],
-    "conf": 94.6
+    "conf": 94.6,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2102,9 +3215,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2039,
-   "id": "ONEREPORTPTTT_p43_085",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_098",
    "suggest": "typhoon",
-   "order": 84
+   "order": 97,
+   "pos_end": 2068
   },
   {
    "typhoon": {
@@ -2119,7 +3239,8 @@
      1508,
      1332
     ],
-    "conf": 94.8
+    "conf": 94.8,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2127,9 +3248,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2068,
-   "id": "ONEREPORTPTTT_p43_086",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_099",
    "suggest": "typhoon",
-   "order": 85
+   "order": 98,
+   "pos_end": 2098
   },
   {
    "typhoon": {
@@ -2144,7 +3272,8 @@
      1508,
      1372
     ],
-    "conf": 94.3
+    "conf": 94.3,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2152,9 +3281,18 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2098,
-   "id": "ONEREPORTPTTT_p43_087",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": true,
+   "cut_mid_sides": [
+    "end"
+   ],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_100",
    "suggest": "typhoon",
-   "order": 86
+   "order": 99,
+   "pos_end": 2125
   },
   {
    "typhoon": null,
@@ -2167,7 +3305,8 @@
      1510,
      1412
     ],
-    "conf": 87.1
+    "conf": 87.1,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -2175,9 +3314,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 2124.5,
-   "id": "ONEREPORTPTTT_p43_088",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_101",
    "suggest": "tesseract",
-   "order": 87
+   "order": 100,
+   "pos_end": 2124.5
   },
   {
    "typhoon": {
@@ -2198,9 +3344,16 @@
    "kind": "typhoon_only",
    "score": 0.0,
    "pos": 2125,
-   "id": "ONEREPORTPTTT_p43_089",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_102",
    "suggest": "typhoon",
-   "order": 88
+   "order": 101,
+   "pos_end": 2155
   },
   {
    "typhoon": {
@@ -2215,7 +3368,8 @@
      1471,
      1452
     ],
-    "conf": 94.4
+    "conf": 94.4,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -2223,13 +3377,20 @@
    "kind": "diff",
    "score": 96.7,
    "pos": 2155,
-   "id": "ONEREPORTPTTT_p43_090",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_103",
    "suggest": "typhoon",
-   "order": 89
+   "order": 102,
+   "pos_end": 2185
   },
   {
    "typhoon": {
-    "text": ". รักษาพื้นฐานที่สำคัญ (Foundation)"
+    "text": "5. รักษาพื้นฐานที่สำคัญ (Foundation)"
    },
    "tesseract": {
     "text": ". รักษาพื่นฐานที่สําคัญ (Foundation)",
@@ -2240,17 +3401,25 @@
      1510,
      1497
     ],
-    "conf": 91.6
+    "conf": 91.6,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
    "kind": "diff",
-   "score": 97.0,
-   "pos": 2186,
-   "id": "ONEREPORTPTTT_p43_091",
+   "score": 94.1,
+   "pos": 2185,
+   "snap": 1,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_104",
    "suggest": "typhoon",
-   "order": 90
+   "order": 103,
+   "pos_end": 2219
   },
   {
    "typhoon": {
@@ -2265,7 +3434,8 @@
      1509,
      1536
     ],
-    "conf": 93.6
+    "conf": 93.6,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -2273,9 +3443,16 @@
    "kind": "diff",
    "score": 96.6,
    "pos": 2219,
-   "id": "ONEREPORTPTTT_p43_092",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_105",
    "suggest": "typhoon",
-   "order": 91
+   "order": 104,
+   "pos_end": 2248
   },
   {
    "typhoon": {
@@ -2290,7 +3467,8 @@
      1510,
      1576
     ],
-    "conf": 94.4
+    "conf": 94.4,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2298,9 +3476,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2248,
-   "id": "ONEREPORTPTTT_p43_093",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_106",
    "suggest": "typhoon",
-   "order": 92
+   "order": 105,
+   "pos_end": 2281
   },
   {
    "typhoon": {
@@ -2315,7 +3500,8 @@
      1509,
      1616
     ],
-    "conf": 93.5
+    "conf": 93.5,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -2323,9 +3509,16 @@
    "kind": "diff",
    "score": 90.6,
    "pos": 2281,
-   "id": "ONEREPORTPTTT_p43_094",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_107",
    "suggest": "typhoon",
-   "order": 93
+   "order": 106,
+   "pos_end": 2313
   },
   {
    "typhoon": {
@@ -2340,7 +3533,8 @@
      1509,
      1658
     ],
-    "conf": 95.0
+    "conf": 95.0,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2348,9 +3542,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2313,
-   "id": "ONEREPORTPTTT_p43_095",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_108",
    "suggest": "typhoon",
-   "order": 94
+   "order": 107,
+   "pos_end": 2343
   },
   {
    "typhoon": {
@@ -2365,7 +3566,8 @@
      1510,
      1697
     ],
-    "conf": 94.2
+    "conf": 94.2,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2373,9 +3575,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2343,
-   "id": "ONEREPORTPTTT_p43_096",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_109",
    "suggest": "typhoon",
-   "order": 95
+   "order": 108,
+   "pos_end": 2374
   },
   {
    "typhoon": {
@@ -2390,7 +3599,8 @@
      1509,
      1737
     ],
-    "conf": 95.0
+    "conf": 95.0,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2398,9 +3608,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2374,
-   "id": "ONEREPORTPTTT_p43_097",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_110",
    "suggest": "typhoon",
-   "order": 96
+   "order": 109,
+   "pos_end": 2399
   },
   {
    "typhoon": {
@@ -2415,7 +3632,8 @@
      1508,
      1774
     ],
-    "conf": 95.1
+    "conf": 95.1,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2423,9 +3641,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2399,
-   "id": "ONEREPORTPTTT_p43_098",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_111",
    "suggest": "typhoon",
-   "order": 97
+   "order": 110,
+   "pos_end": 2427
   },
   {
    "typhoon": {
@@ -2440,7 +3665,8 @@
      1509,
      1818
     ],
-    "conf": 92.4
+    "conf": 92.4,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -2448,9 +3674,16 @@
    "kind": "diff",
    "score": 96.3,
    "pos": 2427,
-   "id": "ONEREPORTPTTT_p43_099",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_112",
    "suggest": "typhoon",
-   "order": 98
+   "order": 111,
+   "pos_end": 2453
   },
   {
    "typhoon": {
@@ -2465,7 +3698,8 @@
      1510,
      1858
     ],
-    "conf": 94.4
+    "conf": 94.4,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2473,9 +3707,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2453,
-   "id": "ONEREPORTPTTT_p43_100",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_113",
    "suggest": "typhoon",
-   "order": 99
+   "order": 112,
+   "pos_end": 2483
   },
   {
    "typhoon": {
@@ -2490,7 +3731,8 @@
      1508,
      1898
     ],
-    "conf": 94.5
+    "conf": 94.5,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2498,34 +3740,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2483,
-   "id": "ONEREPORTPTTT_p43_101",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "ONEREPORTPTTT_p43_114",
    "suggest": "typhoon",
-   "order": 100
-  },
-  {
-   "typhoon": {
-    "text": "ให้กลุ่ม ปตท. มี"
-   },
-   "tesseract": {
-    "text": "ให้กับกลุ่มปตท . ' +",
-    "image": 0,
-    "bbox": [
-     409,
-     1508,
-     661,
-     1536
-    ],
-    "conf": 79.7
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "diff",
-   "score": 70.6,
-   "pos": 2498,
-   "id": "ONEREPORTPTTT_p43_102",
-   "suggest": "typhoon",
-   "order": 101
+   "order": 113,
+   "pos_end": 2510
   },
   {
    "typhoon": {
@@ -2540,7 +3764,8 @@
      1508,
      1939
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2548,285 +3773,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2510,
-   "id": "ONEREPORTPTTT_p43_103",
-   "suggest": "typhoon",
-   "order": 102
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "บุ่งเติบโตแบบ Self-funded",
-    "image": 0,
-    "bbox": [
-     551,
-     1529,
-     686,
-     1557
-    ],
-    "conf": 81.4
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 2511.5,
-   "id": "ONEREPORTPTTT_p43_104",
-   "suggest": "tesseract",
-   "order": 103
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "[ฟะแร rom.",
-    "image": 0,
-    "bbox": [
-     212,
-     1556,
-     495,
-     1619
-    ],
-    "conf": 53.1
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 2511.5,
-   "id": "ONEREPORTPTTT_p43_105",
-   "suggest": "tesseract",
-   "order": 104
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "PETROCHEMICAL TRADING RETAIL ad",
-    "image": 0,
-    "bbox": [
-     212,
-     1602,
-     652,
-     1627
-    ],
-    "conf": 48.2
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 2511.5,
-   "id": "ONEREPORTPTTT_p43_106",
-   "suggest": "tesseract",
-   "order": 105
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "นอเฟ่อนอยกระดับแอพบยพรมตุรร",
-    "image": 0,
-    "bbox": [
-     300,
-     1620,
-     665,
-     1660
-    ],
-    "conf": 73.2
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 2511.5,
-   "id": "ONEREPORTPTTT_p43_107",
-   "suggest": "tesseract",
-   "order": 106
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "ความสามารถในการแข่งขันร่วมกับ Partner Streaming การสงกุม",
-    "image": 0,
-    "bbox": [
-     256,
-     1644,
-     673,
-     1677
-    ],
-    "conf": 90.0
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 2511.5,
-   "id": "ONEREPORTPTTT_p43_108",
-   "suggest": "tesseract",
-   "order": 107
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": ". ๓นุ่งเน็นการลงทุนในธุรกิจ Sustainability",
-    "image": 0,
-    "bbox": [
-     319,
-     1664,
-     715,
-     1693
-    ],
-    "conf": 86.8
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 2511.5,
-   "id": "ONEREPORTPTTT_p43_109",
-   "suggest": "tesseract",
-   "order": 108
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "1 0 sto:",
-    "image": 0,
-    "bbox": [
-     305,
-     1685,
-     649,
-     1699
-    ],
-    "conf": 38.8
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 2511.5,
-   "id": "ONEREPORTPTTT_p43_110",
-   "suggest": "tesseract",
-   "order": 109
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "we",
-    "image": 0,
-    "bbox": [
-     309,
-     1705,
-     326,
-     1712
-    ],
-    "conf": 35.7
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 2511.5,
-   "id": "ONEREPORTPTTT_p43_111",
-   "suggest": "tesseract",
-   "order": 110
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "ขยายธุรกิจตลอด LNG ปอ [บอ Chain",
-    "image": 0,
-    "bbox": [
-     269,
-     1730,
-     442,
-     1758
-    ],
-    "conf": 89.8
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 2511.5,
-   "id": "ONEREPORTPTTT_p43_112",
-   "suggest": "tesseract",
-   "order": 111
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "พื่อสร้าจป 6 Portfolio Rulounsb ด้วย Scale,",
-    "image": 0,
-    "bbox": [
-     240,
-     1744,
-     472,
-     1772
-    ],
-    "conf": 84.4
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 2511.5,
-   "id": "ONEREPORTPTTT_p43_113",
-   "suggest": "tesseract",
-   "order": 112
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "Diversification และ Flexibility",
-    "image": 0,
-    "bbox": [
-     281,
-     1758,
-     431,
-     1786
-    ],
-    "conf": 89.7
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 2511.5,
-   "id": "ONEREPORTPTTT_p43_114",
-   "suggest": "tesseract",
-   "order": 113
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "3 SUSTAINABILITY: UNLEASH BUSINESS VALUES THROUGH SUSTAINABILITY",
-    "image": 0,
-    "bbox": [
-     241,
-     1812,
-     857,
-     1837
-    ],
-    "conf": 91.1
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 2511.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_115",
-   "suggest": "tesseract",
-   "order": 114
+   "suggest": "typhoon",
+   "order": 114,
+   "pos_end": 2542
   },
   {
    "typhoon": {
@@ -2841,7 +3797,8 @@
      1510,
      1979
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2849,9 +3806,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2542,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_116",
    "suggest": "typhoon",
-   "order": 115
+   "order": 115,
+   "pos_end": 2571
   },
   {
    "typhoon": {
@@ -2866,7 +3830,8 @@
      1510,
      2019
     ],
-    "conf": 94.3
+    "conf": 94.3,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2874,9 +3839,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2571,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_117",
    "suggest": "typhoon",
-   "order": 116
+   "order": 116,
+   "pos_end": 2605
   },
   {
    "typhoon": {
@@ -2891,7 +3863,8 @@
      1417,
      2060
     ],
-    "conf": 95.4
+    "conf": 95.4,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2899,9 +3872,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2605,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_118",
    "suggest": "typhoon",
-   "order": 117
+   "order": 117,
+   "pos_end": 2629
   },
   {
    "typhoon": {
@@ -2916,7 +3896,8 @@
      753,
      1101
     ],
-    "conf": 94.3
+    "conf": 94.3,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -2924,9 +3905,16 @@
    "kind": "diff",
    "score": 95.5,
    "pos": 2629,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_119",
    "suggest": "typhoon",
-   "order": 118
+   "order": 118,
+   "pos_end": 2651
   },
   {
    "typhoon": {
@@ -2941,7 +3929,8 @@
      749,
      1135
     ],
-    "conf": 95.2
+    "conf": 95.2,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -2949,9 +3938,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 2651,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "ONEREPORTPTTT_p43_120",
    "suggest": "typhoon",
-   "order": 119
+   "order": 119,
+   "pos_end": 2669
   }
  ],
  "split": {

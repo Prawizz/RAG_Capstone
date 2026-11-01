@@ -21,6 +21,17 @@
   .meta { display:flex; flex-wrap:wrap; gap:8px; align-items:center; color:var(--mute); font-size:13px; margin-bottom:10px; }
   .tag { padding:1px 8px; border-radius:10px; border:1px solid var(--line); font-size:12px; }
   .tag.diff { color:var(--warn); } .tag.typhoon_only { color:var(--bad); } .tag.tesseract_only { color:var(--accent); } .tag.agree { color:var(--ok); }
+  .tag.fragment, .tag.duplicate { color:var(--mute); border-style:dashed; }
+  .tag.maybe { color:var(--warn); border-color:var(--warn); }
+  .notice { border:1px solid var(--warn); color:var(--warn); border-radius:6px; padding:6px 10px; margin-bottom:10px; font-size:14px; }
+  .notice.info { border-color:var(--line); color:var(--mute); }
+  .related { border:1px dashed var(--line); border-radius:6px; padding:8px 10px; margin-bottom:12px; font-size:14px; }
+  .related h4 { margin:0 0 6px; font-size:12px; color:var(--mute); font-weight:600; }
+  .related .row { margin-bottom:6px; white-space:pre-wrap; word-break:break-word; }
+  .related .row b { font-weight:600; }
+  .pagewrap { position:relative; margin-top:8px; border:1px solid var(--line); }
+  .pagewrap img { display:block; width:100%; }
+  .pagewrap .hl { position:absolute; border:2px solid #e53935; background:rgba(229,57,53,.12); pointer-events:none; }
   .crop { overflow:auto; max-height:420px; border:1px solid var(--line); background:#fff; border-radius:6px; padding:4px; margin-bottom:12px; }
   .crop img { display:block; image-rendering:auto; max-width:none; }
   .pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
@@ -50,8 +61,10 @@
     <span class="grow"></span>
     <label>หน้า <select id="fPage"></select></label>
     <label>แบบ <select id="fKind">
-      <option value="">ทั้งหมด</option><option value="diff">ต่างกัน</option><option value="typhoon_only">มีแต่ใน Typhoon</option>
-      <option value="tesseract_only">มีแต่ใน Tesseract</option><option value="agree">สุ่มตรวจซ้ำ (ตรงกัน)</option></select></label>
+      <option value="">ที่ต้องตัดสินทั้งหมด</option><option value="diff">ต่างกัน</option><option value="typhoon_only">มีแต่ใน Typhoon</option>
+      <option value="tesseract_only">มีแต่ใน Tesseract</option><option value="agree">สุ่มตรวจซ้ำ (ตรงกัน)</option>
+      <option value="maybe_dup">อาจซ้ำกับรายการอื่น (ต้องตัดสิน)</option>
+      <option value="fragment" id="optFragment">เศษบรรทัด — กรองออก</option><option value="duplicate" id="optDuplicate">บรรทัดซ้ำ — กรองออก</option></select></label>
     <label><input type="checkbox" id="fUndone"> เฉพาะที่ยังไม่ทำ</label>
     <button id="btnDownload" class="primary">ดาวน์โหลดผล (JSON)</button>
     <button id="btnImport">นำเข้าผลเดิม</button>
@@ -69,7 +82,7 @@
     <span id="pos"></span>
   </div>
   <p class="help">
-    ภาพที่เห็นคือภาพที่ส่งให้ OCR (200 dpi). คลิกกล่องข้อความเพื่อคัดลอกลงช่องแก้ไข ·
+    ภาพที่เห็นคือภาพที่ส่งให้ OCR (200 dpi). รายการ "เศษบรรทัด/บรรทัดซ้ำ" ถูกกรองออกแล้ว (เปิดดูได้ที่ตัวกรอง "แบบ" ไม่นับในตัวนับ). คลิกกล่องข้อความเพื่อคัดลอกลงช่องแก้ไข ·
     ปุ่มลัด: <kbd>1</kbd> Typhoon ถูก · <kbd>2</kbd> Tesseract ถูก · <kbd>3</kbd> ไม่มีในภาพ · <kbd>Ctrl</kbd>+<kbd>Enter</kbd> บันทึกข้อความที่แก้ ·
     <kbd>←</kbd> <kbd>→</kbd> เลื่อนรายการ (ตอนไม่ได้พิมพ์อยู่) ·
     ความคืบหน้าเก็บในเบราว์เซอร์นี้อัตโนมัติ; อย่าลืมกด "ดาวน์โหลดผล" แล้วบันทึกเป็น <code>eval/datasets/ocr_truth/judgments.json</code>
@@ -80,9 +93,14 @@
 (function () {
   const DATA = JSON.parse(document.getElementById('data').textContent);
   const KEY = 'ocr_truth_review:' + DATA.dataset_id;
-  const KIND = { diff: 'ต่างกัน', typhoon_only: 'มีแต่ใน Typhoon (สงสัยแต่งขึ้น)', tesseract_only: 'มีแต่ใน Tesseract (สงสัยอ่านตก)', agree: 'ตรงกัน — สุ่มตรวจซ้ำ' };
+  const KIND = { diff: 'ต่างกัน', typhoon_only: 'มีแต่ใน Typhoon (สงสัยแต่งขึ้น)', tesseract_only: 'มีแต่ใน Tesseract (สงสัยอ่านตก)', agree: 'ตรงกัน — สุ่มตรวจซ้ำ',
+                 fragment: 'เศษบรรทัด — กรองออก ไม่ต้องตัดสิน', duplicate: 'บรรทัดซ้ำ — กรองออก ไม่ต้องตัดสิน' };
+  const RELATED_KIND = { agree: 'ตรงกัน', diff: 'ต่างกัน', tesseract_only: 'มีแต่ใน Tesseract', typhoon_only: 'มีแต่ใน Typhoon', fragment: 'เศษบรรทัด', duplicate: 'บรรทัดซ้ำ' };
+  const FILTERED = ['fragment', 'duplicate'];
   const all = [];
-  DATA.pages.forEach(p => p.items.forEach(it => all.push(Object.assign({ file: p.file, page: p.page, page_images: p.page_images }, it))));
+  DATA.pages.forEach((p, pi) => p.items.forEach(it => all.push(Object.assign({ file: p.file, page: p.page, page_images: p.page_images, page_sizes: p.page_sizes || [],
+    judge: FILTERED.indexOf(it.kind) < 0 }, it))));
+  const todo = all.filter(it => it.judge);
   let j = {};
   try { j = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { j = {}; }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(j)); } catch (e) {} };
@@ -90,20 +108,42 @@
   let view = all.slice(), cur = 0;
 
   const pageSel = $('fPage');
-  pageSel.innerHTML = '<option value="">ทุกหน้า</option>' + DATA.pages.map(p => `<option value="${p.file}|${p.page}">${p.file} p${p.page} (${p.items.length})</option>`).join('');
+  pageSel.innerHTML = '<option value="">ทุกหน้า</option>' + DATA.pages.map(p => `<option value="${p.file}|${p.page}">${p.file} p${p.page} (${p.items.filter(it => FILTERED.indexOf(it.kind) < 0).length})</option>`).join('');
+  $('optFragment').textContent += ` (${all.filter(it => it.kind === 'fragment').length})`;
+  $('optDuplicate').textContent += ` (${all.filter(it => it.kind === 'duplicate').length})`;
 
   function refreshView(keepId) {
     const fp = pageSel.value, fk = $('fKind').value, fu = $('fUndone').checked;
-    view = all.filter(it => (!fp || fp === it.file + '|' + it.page) && (!fk || fk === it.kind) && (!fu || !j[it.id]));
+    const kindOk = it => fk === '' ? it.judge : fk === 'maybe_dup' ? (it.judge && it.maybe_duplicate_of && it.maybe_duplicate_of.length > 0) : fk === it.kind;
+    view = all.filter(it => (!fp || fp === it.file + '|' + it.page) && kindOk(it) && (!fu || !j[it.id]));
     cur = keepId ? Math.max(view.findIndex(it => it.id === keepId), 0) : 0;
     render();
   }
-  function counts() {
-    const done = all.filter(it => j[it.id]).length;
-    $('count').textContent = `ทำแล้ว ${done} / ${all.length} รายการ`;
-    $('bar').style.width = (all.length ? 100 * done / all.length : 0) + '%';
+  function counts() {  // นับเฉพาะรายการที่ต้องตัดสิน (fragment / duplicate ไม่นับ)
+    const done = todo.filter(it => j[it.id]).length;
+    $('count').textContent = `ทำแล้ว ${done} / ${todo.length} รายการ`;
+    $('bar').style.width = (todo.length ? 100 * done / todo.length : 0) + '%';
   }
   const esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+
+  function relatedHtml(it) {
+    const rel = it.related || [];
+    if (!rel.length) return '';
+    const title = it.kind === 'fragment' ? 'เป็นเศษของบรรทัดข้างเคียง' : it.kind === 'duplicate' ? 'ทับกับรายการ (เป็นบรรทัดเดียวกัน)' : 'อาจซ้ำกับรายการเหล่านี้ — ถ้าเป็นบรรทัดเดียวกันกด 3 (ไม่มีในภาพ)';
+    return `<div class="related"><h4>${title}</h4>` + rel.map(r =>
+      `<div class="row"><b>${esc(r.id)}</b> <span class="tag">${RELATED_KIND[r.kind] || r.kind}</span><br>` +
+      `Tesseract: ${r.tesseract != null ? esc(r.tesseract) : '—'}<br>Typhoon: ${r.typhoon != null ? esc(r.typhoon) : '—'}</div>`).join('') + '</div>';
+  }
+  function pageNearHtml(it) {  // ภาพทั้งหน้าใกล้ภาพครอป พร้อมกรอบแดงตรงบรรทัดนี้ (ย่อ ตามสัดส่วนของภาพจริง)
+    const box = it.tesseract && it.tesseract.bbox ? it.tesseract.bbox : (it.region ? it.region.bbox : null);
+    const idx = it.tesseract ? it.tesseract.image : (it.region ? it.region.image : null);
+    const ids = idx != null && it.page_images[idx] ? [idx] : it.page_images.map((_, k) => k);
+    return ids.map(k => {
+      const sz = it.page_sizes[k];
+      const hl = box && idx === k && sz ? `<div class="hl" style="left:${100 * box[0] / sz[0]}%;top:${100 * box[1] / sz[1]}%;width:${100 * Math.min(box[2] - box[0], sz[0]) / sz[0]}%;height:${100 * (box[3] - box[1]) / sz[1]}%"></div>` : '';
+      return `<div class="pagewrap"><img src="${it.page_images[k]}">${hl}</div>`;
+    }).join('');
+  }
 
   function render() {
     counts();
@@ -115,19 +155,15 @@
     const sug = it.suggest === 'tesseract' && te != null ? te : (ty != null ? ty : (te || ''));
     const initial = jd ? jd.text : sug;
     let imgHtml = '';
-    if (it.crop) imgHtml = `<div class="crop"><img id="cropimg" src="${it.crop}" alt="ภาพครอป"></div>`;
+    if (it.crop) imgHtml = `<div class="crop"><img id="cropimg" src="${it.crop}" alt="ภาพครอป"></div>` +
+      '<div class="notice" id="wideWarn" style="display:none">ภาพอาจขาดด้านข้าง — พิมพ์ให้ครบบรรทัดตามเอกสาร ' +
+      '<button id="bPageNear" type="button">เปิดภาพทั้งหน้า</button></div><div id="pageNear"></div>';
     else imgHtml = '<p class="meta">ไม่มีตำแหน่งของบรรทัดนี้ — ดูภาพทั้งหน้า (หรือครึ่งหน้า) ด้านล่าง</p>' +
       it.page_images.map(s => `<div class="crop"><img src="${s}" style="width:100%"></div>`).join('');
     const conf = it.tesseract && it.tesseract.conf != null ? ` · conf ${it.tesseract.conf}` : '';
-    card.innerHTML = `
-      <div class="meta"><span class="tag ${it.kind}">${KIND[it.kind]}</span><span>${esc(it.file)} หน้า ${it.page}</span>
-        <span>${esc(it.id)}</span>${it.score ? `<span>คล้าย ${it.score}%</span>` : ''}<span>${conf}</span>
-        ${jd ? `<span class="done-mark">✓ ทำแล้ว (${esc(jd.verdict)})</span>` : ''}</div>
-      ${imgHtml}
-      <div class="pair">
-        <div class="box ty" id="boxTy"><h4>Typhoon</h4>${ty != null ? esc(ty) : '<span class="none">(ไม่มีบรรทัดนี้)</span>'}</div>
-        <div class="box te" id="boxTe"><h4>Tesseract</h4>${te != null ? esc(te) : '<span class="none">(ไม่มีบรรทัดนี้)</span>'}</div>
-      </div>
+    const maybe = it.judge && it.maybe_duplicate_of && it.maybe_duplicate_of.length
+      ? `<span class="tag maybe">อาจซ้ำกับ ${it.maybe_duplicate_of.map(esc).join(', ')}</span>` : '';
+    const judgeHtml = it.judge ? `
       <label for="truth"><strong>ข้อความที่ถูกตามภาพ</strong> <span class="meta">(ใส่ของตัวที่ใกล้กว่าไว้ให้แล้ว แก้ต่อได้)</span></label>
       <textarea id="truth" spellcheck="false">${esc(initial)}</textarea>
       <div class="btns">
@@ -136,21 +172,44 @@
         <button id="bAbsent">3 · ไม่มีในภาพ</button>
         <button id="bSave" class="primary">บันทึกข้อความที่แก้ (Ctrl+Enter)</button>
         ${jd ? '<button id="bClear">ล้างผลรายการนี้</button>' : ''}
+      </div>` : '<div class="notice info">รายการนี้ถูกกรองออก ไม่ต้องตัดสิน และไม่นับในงานที่ต้องทำ — เปิดดูไว้สุ่มตรวจว่ากรองถูก</div>';
+    card.innerHTML = `
+      <div class="meta"><span class="tag ${it.kind}">${KIND[it.kind]}</span><span>${esc(it.file)} หน้า ${it.page}</span>
+        <span>${esc(it.id)}</span>${it.score ? `<span>คล้าย ${it.score}%</span>` : ''}<span>${conf}</span>${maybe}
+        ${jd ? `<span class="done-mark">✓ ทำแล้ว (${esc(jd.verdict)})</span>` : ''}</div>
+      ${imgHtml}
+      ${relatedHtml(it)}
+      <div class="pair">
+        <div class="box ty" id="boxTy"><h4>Typhoon</h4>${ty != null ? esc(ty) : '<span class="none">(ไม่มีบรรทัดนี้)</span>'}</div>
+        <div class="box te" id="boxTe"><h4>Tesseract</h4>${te != null ? esc(te) : '<span class="none">(ไม่มีบรรทัดนี้)</span>'}</div>
       </div>
+      ${judgeHtml}
       <details><summary>ดูภาพทั้งหน้า (ย่อ)</summary>${it.page_images.map(s => `<img src="${s}">`).join('')}</details>`;
     const img = $('cropimg');
-    if (img) img.onload = () => { img.style.width = Math.min(img.naturalWidth * 2, card.clientWidth - 24) + 'px'; };
+    if (img) img.onload = () => {
+      const avail = card.clientWidth - 32, w = img.naturalWidth;
+      if (w > avail) {  // กว้างเกินจอแม้ที่ขนาดจริง: ไม่ย่อ (อ่านไม่ออก) ให้เลื่อนดู + เตือน
+        img.style.width = w + 'px';
+        $('wideWarn').style.display = 'block';
+      } else img.style.width = Math.min(w * 2, avail) + 'px';
+    };
+    if ($('bPageNear')) $('bPageNear').onclick = () => { $('pageNear').innerHTML = pageNearHtml(it); };
     const area = $('truth');
-    $('boxTy').onclick = () => { if (ty != null) area.value = ty; };
-    $('boxTe').onclick = () => { if (te != null) area.value = te; };
-    if ($('bTy')) $('bTy').onclick = () => decide(it, 'typhoon', ty);
-    if ($('bTe')) $('bTe').onclick = () => decide(it, 'tesseract', te);
-    $('bAbsent').onclick = () => decide(it, 'absent', '');
-    $('bSave').onclick = () => saveEdited(it);
-    if ($('bClear')) $('bClear').onclick = () => { delete j[it.id]; save(); render(); };
+    if (area) {
+      $('boxTy').onclick = () => { if (ty != null) area.value = ty; };
+      $('boxTe').onclick = () => { if (te != null) area.value = te; };
+    }
+    if (it.judge) {
+      if ($('bTy')) $('bTy').onclick = () => decide(it, 'typhoon', ty);
+      if ($('bTe')) $('bTe').onclick = () => decide(it, 'tesseract', te);
+      $('bAbsent').onclick = () => decide(it, 'absent', '');
+      $('bSave').onclick = () => saveEdited(it);
+      if ($('bClear')) $('bClear').onclick = () => { delete j[it.id]; save(); render(); };
+    }
   }
-  function decide(it, verdict, text) { j[it.id] = { verdict, text }; save(); next(true); }
+  function decide(it, verdict, text) { if (!it.judge) return; j[it.id] = { verdict, text }; save(); next(true); }
   function saveEdited(it) {
+    if (!it.judge) return;
     const text = $('truth').value.trim();
     const ty = it.typhoon && it.typhoon.text, te = it.tesseract && it.tesseract.text;
     const verdict = text === '' ? 'absent' : text === ty ? 'typhoon' : text === te ? 'tesseract' : 'edited';
@@ -164,14 +223,14 @@
   $('btnPrev').onclick = () => { cur = Math.max(cur - 1, 0); render(); };
   $('btnNext').onclick = () => next(false);
   $('btnNextUndone').onclick = () => {
-    const i = view.findIndex((it, k) => k > cur && !j[it.id]);
-    const k = i >= 0 ? i : view.findIndex(it => !j[it.id]);
+    const i = view.findIndex((it, k) => k > cur && it.judge && !j[it.id]);
+    const k = i >= 0 ? i : view.findIndex(it => it.judge && !j[it.id]);
     if (k >= 0) { cur = k; render(); } else alert('ทำครบทุกรายการตามตัวกรองแล้ว');
   };
   ['fPage', 'fKind', 'fUndone'].forEach(id => $(id).onchange = () => refreshView());
   $('btnDownload').onclick = () => {
     const done = Object.keys(j).length;
-    const blob = new Blob([JSON.stringify({ version: 1, dataset_id: DATA.dataset_id, total: all.length, done, judgments: j }, null, 1)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify({ version: 1, dataset_id: DATA.dataset_id, total: todo.length, done, judgments: j }, null, 1)], { type: 'application/json' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'judgments.json'; a.click();
   };
   $('btnImport').onclick = () => $('fileImport').click();

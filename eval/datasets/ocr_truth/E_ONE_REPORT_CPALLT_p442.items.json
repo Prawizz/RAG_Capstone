@@ -12,11 +12,44 @@
   "backend": "tesseract-local",
   "model": "tesseract-5.4.0.20240606",
   "revision": "b02ddf48069f",
-  "seconds": 9.2036100999685
+  "seconds": 5.848432899918407
  },
  "typhoon_page_numbers": [
   436
  ],
+ "column_split": [
+  null
+ ],
+ "invariant": {
+  "hay_chars": 2192,
+  "dropped": 0,
+  "doubled": 0
+ },
+ "span_stats": {
+  "relocated": 1,
+  "trimmed": 0,
+  "demoted_by_overlap": 1,
+  "snapped_items": 6,
+  "snapped_chars": 19,
+  "gap_merged_runs": 0,
+  "gap_merged_chars": 0,
+  "short_gap_typhoon_only": 0,
+  "agree_to_diff": [
+   {
+    "id": "E_ONE_REPORT_CPALLT_p442_017",
+    "tesseract": "คู่",
+    "typhoon_before": "คู่",
+    "typhoon_after": "คู่ส"
+   },
+   {
+    "id": "E_ONE_REPORT_CPALLT_p442_062",
+    "tesseract": "ัญญาฝ่ายใดฝ่ายหนึ่งมีความประสงค์ที่จะขอเลิกสัญญาคู่สัญญาฝ่ายนั้นจะต้องทําหนังสือแจ้งให้คู่สัญญา",
+    "typhoon_before": "ัญญาฝ่ายใดฝ่ายหนึ่งมีความประสงค์ที่จะขอเลิกสัญญา คู่สัญญาฝ่ายนั้นจะต้องทำหนังสือแจ้งให้คู่สัญญา",
+    "typhoon_after": "คู่สัญญาฝ่ายใดฝ่ายหนึ่งมีความประสงค์ที่จะขอเลิกสัญญา คู่สัญญาฝ่ายนั้นจะต้องทำหนังสือแจ้งให้คู่สัญญา"
+   }
+  ],
+  "cut_mid": []
+ },
  "figures": [],
  "skipped_tesseract": [
   {
@@ -153,12 +186,15 @@
   }
  ],
  "counts": {
-  "agree": 11,
+  "agree": 9,
   "agree_audit": 1,
-  "diff": 18,
-  "typhoon_only": 3,
-  "tesseract_only": 33,
-  "to_judge": 55
+  "diff": 19,
+  "typhoon_only": 1,
+  "tesseract_only": 15,
+  "fragment": 19,
+  "duplicate": 0,
+  "to_judge": 36,
+  "maybe_duplicate": 12
  },
  "items": [
   {
@@ -172,17 +208,27 @@
      678,
      123
     ],
-    "conf": 63.6
+    "conf": 63.6,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": -0.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_002"
+   ],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_001",
    "suggest": "tesseract",
-   "order": 0
+   "order": 0,
+   "pos_end": -0.5
   },
   {
    "typhoon": null,
@@ -195,7 +241,8 @@
      711,
      154
     ],
-    "conf": 92.6
+    "conf": 92.6,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -203,9 +250,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": -0.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_002",
    "suggest": "tesseract",
-   "order": 1
+   "order": 1,
+   "pos_end": -0.5
   },
   {
    "typhoon": {
@@ -218,9 +272,16 @@
    "kind": "typhoon_only",
    "score": 0.0,
    "pos": 0,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_003",
    "suggest": "typhoon",
-   "order": 2
+   "order": 2,
+   "pos_end": 40
   },
   {
    "typhoon": {
@@ -235,7 +296,8 @@
      485,
      211
     ],
-    "conf": 93.9
+    "conf": 93.9,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -243,9 +305,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 40,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_004",
    "suggest": "typhoon",
-   "order": 3
+   "order": 3,
+   "pos_end": 63
   },
   {
    "typhoon": null,
@@ -258,7 +327,8 @@
      447,
      233
     ],
-    "conf": 52.2
+    "conf": 52.2,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -266,9 +336,18 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 62.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [
+    "E_ONE_REPORT_CPALLT_p442_006"
+   ],
    "id": "E_ONE_REPORT_CPALLT_p442_005",
    "suggest": "tesseract",
-   "order": 4
+   "order": 4,
+   "pos_end": 62.5
   },
   {
    "typhoon": {
@@ -283,7 +362,8 @@
      595,
      267
     ],
-    "conf": 92.5
+    "conf": 92.5,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -291,9 +371,16 @@
    "kind": "diff",
    "score": 91.2,
    "pos": 63,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_006",
    "suggest": "typhoon",
-   "order": 5
+   "order": 5,
+   "pos_end": 97
   },
   {
    "typhoon": null,
@@ -306,7 +393,8 @@
      872,
      356
     ],
-    "conf": 44.0
+    "conf": 44.0,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -314,13 +402,22 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 96.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [
+    "E_ONE_REPORT_CPALLT_p442_008"
+   ],
    "id": "E_ONE_REPORT_CPALLT_p442_007",
    "suggest": "tesseract",
-   "order": 6
+   "order": 6,
+   "pos_end": 96.5
   },
   {
    "typhoon": {
-    "text": ") บริษัทมีสัญญาบริการฉบับหนึ่งกับบริษัท เคาน์เตอร์เซอร์วิส จำกัด ซึ่งเป็นบริษัทย่อยในประเทศแห่งหนึ่ง"
+    "text": "(ง) บริษัทมีสัญญาบริการฉบับหนึ่งกับบริษัท เคาน์เตอร์เซอร์วิส จำกัด ซึ่งเป็นบริษัทย่อยในประเทศแห่งหนึ่ง"
    },
    "tesseract": {
     "text": "@) บริษัทมีสัญญาบริการฉบับหนึ่งกับบริษัทเคาน์เตอร์เซอร์วิสจํากัดซึ่งเป็นบริษัทย่อยในประเทศแห่งหนึ่ง",
@@ -331,17 +428,25 @@
      1465,
      378
     ],
-    "conf": 94.4
+    "conf": 94.4,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
    "kind": "diff",
-   "score": 99.0,
-   "pos": 99,
+   "score": 98.0,
+   "pos": 97,
+   "snap": 2,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_008",
    "suggest": "typhoon",
-   "order": 7
+   "order": 7,
+   "pos_end": 195
   },
   {
    "typhoon": null,
@@ -354,17 +459,28 @@
      1385,
      403
     ],
-    "conf": 53.2
+    "conf": 53.2,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 194.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_010",
+    "E_ONE_REPORT_CPALLT_p442_008"
+   ],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_009",
    "suggest": "tesseract",
-   "order": 8
+   "order": 8,
+   "pos_end": 194.5
   },
   {
    "typhoon": {
@@ -379,7 +495,8 @@
      1469,
      436
     ],
-    "conf": 94.3
+    "conf": 94.3,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -387,9 +504,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 195,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_010",
    "suggest": "typhoon",
-   "order": 9
+   "order": 9,
+   "pos_end": 286
   },
   {
    "typhoon": null,
@@ -402,17 +526,61 @@
      1053,
      460
     ],
-    "conf": 47.0
+    "conf": 47.0,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 285.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_013"
+   ],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_011",
    "suggest": "tesseract",
-   "order": 10
+   "order": 10,
+   "pos_end": 285.5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "รระ 4",
+    "image": 0,
+    "bbox": [
+     487,
+     439,
+     1418,
+     452
+    ],
+    "conf": 63.6,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "fragment",
+   "score": 0.0,
+   "pos": 285.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_013",
+    "E_ONE_REPORT_CPALLT_p442_010"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_012",
+   "suggest": "tesseract",
+   "order": 11,
+   "pos_end": 285.5
   },
   {
    "typhoon": {
@@ -427,7 +595,8 @@
      1465,
      492
     ],
-    "conf": 94.3
+    "conf": 94.3,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -435,9 +604,16 @@
    "kind": "diff",
    "score": 97.9,
    "pos": 286,
-   "id": "E_ONE_REPORT_CPALLT_p442_012",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_013",
    "suggest": "typhoon",
-   "order": 11
+   "order": 12,
+   "pos_end": 381
   },
   {
    "typhoon": null,
@@ -450,17 +626,28 @@
      1008,
      505
     ],
-    "conf": 39.8
+    "conf": 39.8,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 380.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_013",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_015",
+    "E_ONE_REPORT_CPALLT_p442_019"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_014",
    "suggest": "tesseract",
-   "order": 12
+   "order": 13,
+   "pos_end": 380.5
   },
   {
    "typhoon": null,
@@ -473,7 +660,8 @@
      1053,
      521
     ],
-    "conf": 42.9
+    "conf": 42.9,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -481,9 +669,18 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 380.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_014",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [
+    "E_ONE_REPORT_CPALLT_p442_019"
+   ],
+   "id": "E_ONE_REPORT_CPALLT_p442_015",
    "suggest": "tesseract",
-   "order": 13
+   "order": 14,
+   "pos_end": 380.5
   },
   {
    "typhoon": null,
@@ -496,21 +693,32 @@
      1172,
      507
     ],
-    "conf": 25.0
+    "conf": 25.0,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 380.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_015",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_015",
+    "E_ONE_REPORT_CPALLT_p442_019"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_016",
    "suggest": "tesseract",
-   "order": 14
+   "order": 15,
+   "pos_end": 380.5
   },
   {
    "typhoon": {
-    "text": "คู่"
+    "text": "คู่ส"
    },
    "tesseract": {
     "text": "คู่",
@@ -521,17 +729,25 @@
      311,
      1780
     ],
-    "conf": 92.4
+    "conf": 92.4,
+    "column": null
    },
    "region": null,
-   "auto_accept": true,
+   "auto_accept": false,
    "audit": false,
-   "kind": "agree",
-   "score": 100.0,
+   "kind": "diff",
+   "score": 75.0,
    "pos": 381,
-   "id": "E_ONE_REPORT_CPALLT_p442_016",
-   "suggest": "typhoon",
-   "order": 15
+   "snap": 1,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_017",
+   "suggest": "tesseract",
+   "order": 16,
+   "pos_end": 385
   },
   {
    "typhoon": null,
@@ -544,17 +760,27 @@
      307,
      1776
     ],
-    "conf": 76.5
+    "conf": 76.5,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
-   "pos": 383.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_017",
+   "pos": 384.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_017"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_018",
    "suggest": "tesseract",
-   "order": 16
+   "order": 17,
+   "pos_end": 384.5
   },
   {
    "typhoon": {
@@ -569,7 +795,8 @@
      1467,
      547
     ],
-    "conf": 93.0
+    "conf": 93.0,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -577,9 +804,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 385,
-   "id": "E_ONE_REPORT_CPALLT_p442_018",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_019",
    "suggest": "typhoon",
-   "order": 17
+   "order": 18,
+   "pos_end": 478
   },
   {
    "typhoon": null,
@@ -592,7 +826,8 @@
      1042,
      571
     ],
-    "conf": 84.7
+    "conf": 84.7,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -600,13 +835,20 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 477.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_019",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_020",
    "suggest": "tesseract",
-   "order": 18
+   "order": 19,
+   "pos_end": 477.5
   },
   {
    "typhoon": {
-    "text": "ัญญาอีกฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า 60 วัน ก่อนวันสิ้นสุดสัญญา"
+    "text": "คู่สัญญาอีกฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า 60 วัน ก่อนวันสิ้นสุดสัญญา"
    },
    "tesseract": {
     "text": "ศัญญาอีกฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า 60 วันก่อนวันสิ่นสุดสัญญา",
@@ -617,42 +859,25 @@
      1162,
      604
     ],
-    "conf": 93.6
+    "conf": 93.6,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
    "kind": "diff",
-   "score": 97.0,
-   "pos": 482,
-   "id": "E_ONE_REPORT_CPALLT_p442_020",
-   "suggest": "typhoon",
-   "order": 19
-  },
-  {
-   "typhoon": {
-    "text": "60 วัน ก่อนวันสิ้นสุดสัญญา"
-   },
-   "tesseract": {
-    "text": "60 วันก่อนวันสิ่นสุดสัญญา",
-    "image": 0,
-    "bbox": [
-     295,
-     949,
-     596,
-     993
-    ],
-    "conf": 94.0
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "diff",
-   "score": 95.8,
-   "pos": 524,
+   "score": 92.9,
+   "pos": 478,
+   "snap": 4,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_021",
    "suggest": "typhoon",
-   "order": 20
+   "order": 20,
+   "pos_end": 548
   },
   {
    "typhoon": null,
@@ -665,7 +890,8 @@
      1149,
      609
     ],
-    "conf": 76.5
+    "conf": 76.5,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -673,9 +899,18 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 547.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [
+    "E_ONE_REPORT_CPALLT_p442_021"
+   ],
    "id": "E_ONE_REPORT_CPALLT_p442_022",
    "suggest": "tesseract",
-   "order": 21
+   "order": 21,
+   "pos_end": 547.5
   },
   {
    "typhoon": null,
@@ -688,7 +923,8 @@
      309,
      598
     ],
-    "conf": 47.9
+    "conf": 47.9,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -696,9 +932,16 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 547.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_023",
    "suggest": "tesseract",
-   "order": 22
+   "order": 22,
+   "pos_end": 547.5
   },
   {
    "typhoon": null,
@@ -711,7 +954,8 @@
      666,
      693
     ],
-    "conf": 38.8
+    "conf": 38.8,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -719,9 +963,18 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 547.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [
+    "E_ONE_REPORT_CPALLT_p442_026"
+   ],
    "id": "E_ONE_REPORT_CPALLT_p442_024",
    "suggest": "tesseract",
-   "order": 23
+   "order": 23,
+   "pos_end": 547.5
   },
   {
    "typhoon": null,
@@ -734,7 +987,8 @@
      1444,
      694
     ],
-    "conf": 49.5
+    "conf": 49.5,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -742,32 +996,18 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 547.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [
+    "E_ONE_REPORT_CPALLT_p442_026"
+   ],
    "id": "E_ONE_REPORT_CPALLT_p442_025",
    "suggest": "tesseract",
-   "order": 24
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "Ss",
-    "image": 0,
-    "bbox": [
-     793,
-     1096,
-     802,
-     1103
-    ],
-    "conf": 36.5
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "tesseract_only",
-   "score": 0.0,
-   "pos": 547.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_026",
-   "suggest": "tesseract",
-   "order": 25
+   "order": 24,
+   "pos_end": 547.5
   },
   {
    "typhoon": {
@@ -782,7 +1022,8 @@
      1461,
      715
     ],
-    "conf": 94.4
+    "conf": 94.4,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -790,9 +1031,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 548,
-   "id": "E_ONE_REPORT_CPALLT_p442_027",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_026",
    "suggest": "typhoon",
-   "order": 26
+   "order": 25,
+   "pos_end": 646
   },
   {
    "typhoon": {
@@ -807,7 +1055,8 @@
      1462,
      774
     ],
-    "conf": 94.8
+    "conf": 94.8,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -815,9 +1064,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 646,
-   "id": "E_ONE_REPORT_CPALLT_p442_028",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_027",
    "suggest": "typhoon",
-   "order": 27
+   "order": 26,
+   "pos_end": 733
   },
   {
    "typhoon": null,
@@ -830,17 +1086,28 @@
      1463,
      788
     ],
-    "conf": 27.5
+    "conf": 27.5,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 732.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_029",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_029",
+    "E_ONE_REPORT_CPALLT_p442_027"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_028",
    "suggest": "tesseract",
-   "order": 28
+   "order": 27,
+   "pos_end": 732.5
   },
   {
    "typhoon": {
@@ -855,7 +1122,8 @@
      1464,
      829
     ],
-    "conf": 94.5
+    "conf": 94.5,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -863,9 +1131,16 @@
    "kind": "diff",
    "score": 98.9,
    "pos": 733,
-   "id": "E_ONE_REPORT_CPALLT_p442_030",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_029",
    "suggest": "typhoon",
-   "order": 29
+   "order": 28,
+   "pos_end": 827
   },
   {
    "typhoon": null,
@@ -878,17 +1153,28 @@
      902,
      843
     ],
-    "conf": 25.0
+    "conf": 25.0,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 826.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_031",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_031",
+    "E_ONE_REPORT_CPALLT_p442_032"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_030",
    "suggest": "tesseract",
-   "order": 30
+   "order": 29,
+   "pos_end": 826.5
   },
   {
    "typhoon": null,
@@ -901,7 +1187,8 @@
      1460,
      853
     ],
-    "conf": 40.8
+    "conf": 40.8,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -909,9 +1196,18 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 826.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_032",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [
+    "E_ONE_REPORT_CPALLT_p442_032"
+   ],
+   "id": "E_ONE_REPORT_CPALLT_p442_031",
    "suggest": "tesseract",
-   "order": 31
+   "order": 30,
+   "pos_end": 826.5
   },
   {
    "typhoon": {
@@ -926,7 +1222,8 @@
      1465,
      884
     ],
-    "conf": 94.2
+    "conf": 94.2,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -934,9 +1231,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 827,
-   "id": "E_ONE_REPORT_CPALLT_p442_033",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_032",
    "suggest": "typhoon",
-   "order": 32
+   "order": 31,
+   "pos_end": 921
   },
   {
    "typhoon": null,
@@ -949,7 +1253,8 @@
      1449,
      915
     ],
-    "conf": 41.2
+    "conf": 41.2,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -957,9 +1262,18 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 920.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_034",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [
+    "E_ONE_REPORT_CPALLT_p442_035"
+   ],
+   "id": "E_ONE_REPORT_CPALLT_p442_033",
    "suggest": "tesseract",
-   "order": 33
+   "order": 32,
+   "pos_end": 920.5
   },
   {
    "typhoon": {
@@ -974,7 +1288,8 @@
      457,
      937
     ],
-    "conf": 93.1
+    "conf": 93.1,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -982,9 +1297,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 921,
-   "id": "E_ONE_REPORT_CPALLT_p442_035",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_034",
    "suggest": "typhoon",
-   "order": 34
+   "order": 33,
+   "pos_end": 934
   },
   {
    "typhoon": {
@@ -999,7 +1321,8 @@
      1462,
      940
     ],
-    "conf": 92.2
+    "conf": 92.2,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1007,32 +1330,83 @@
    "kind": "diff",
    "score": 94.1,
    "pos": 934,
-   "id": "E_ONE_REPORT_CPALLT_p442_036",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_035",
    "suggest": "typhoon",
-   "order": 35
+   "order": 34,
+   "pos_end": 1019
   },
   {
    "typhoon": {
     "text": "60 วัน ก่อนวันสิ้นสุดสัญญา"
    },
-   "tesseract": null,
-   "region": {
+   "tesseract": {
+    "text": "60 วันก่อนวันสิ่นสุดสัญญา",
     "image": 0,
     "bbox": [
-     0,
-     866,
-     1000000,
-     1137
-    ]
+     295,
+     949,
+     596,
+     993
+    ],
+    "conf": 94.0,
+    "column": null
    },
+   "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "typhoon_only",
-   "score": 0.0,
+   "kind": "diff",
+   "score": 95.8,
    "pos": 1019,
-   "id": "E_ONE_REPORT_CPALLT_p442_037",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_036",
    "suggest": "typhoon",
-   "order": 36
+   "order": 35,
+   "pos_end": 1043
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Ss",
+    "image": 0,
+    "bbox": [
+     793,
+     1096,
+     802,
+     1103
+    ],
+    "conf": 36.5,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "fragment",
+   "score": 0.0,
+   "pos": 1042.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_038",
+    "E_ONE_REPORT_CPALLT_p442_040"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_037",
+   "suggest": "tesseract",
+   "order": 36,
+   "pos_end": 1042.5
   },
   {
    "typhoon": {
@@ -1047,17 +1421,25 @@
      1470,
      1109
     ],
-    "conf": 94.5
+    "conf": 94.5,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
-   "audit": false,
+   "audit": true,
    "kind": "agree",
    "score": 100.0,
    "pos": 1043,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_038",
    "suggest": "typhoon",
-   "order": 37
+   "order": 37,
+   "pos_end": 1137
   },
   {
    "typhoon": null,
@@ -1070,17 +1452,28 @@
      909,
      1132
     ],
-    "conf": 78.9
+    "conf": 78.9,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 1136.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_040",
+    "E_ONE_REPORT_CPALLT_p442_041"
+   ],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_039",
    "suggest": "tesseract",
-   "order": 38
+   "order": 38,
+   "pos_end": 1136.5
   },
   {
    "typhoon": null,
@@ -1093,7 +1486,8 @@
      1446,
      1142
     ],
-    "conf": 35.1
+    "conf": 35.1,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1101,13 +1495,22 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 1136.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [
+    "E_ONE_REPORT_CPALLT_p442_041"
+   ],
    "id": "E_ONE_REPORT_CPALLT_p442_040",
    "suggest": "tesseract",
-   "order": 39
+   "order": 39,
+   "pos_end": 1136.5
   },
   {
    "typhoon": {
-    "text": "การเช่าอสังหาริมทรัพย์ ซี.พี.ทาวเวอร์ ซึ่งเป็นบริษัทที่เกี่ยวข้องกันแห่งหนึ่ง สำหรับการใช้พื้นที่อาค"
+    "text": "การเช่าอสังหาริมทรัพย์ ซี.พี.ทาวเวอร์ ซึ่งเป็นบริษัทที่เกี่ยวข้องกันแห่งหนึ่ง สำหรับการใช้พื้นที่อาคารเป็น"
    },
    "tesseract": {
     "text": "การเช่าอสังหาริมทรัพย์ซี . พี . ทาวเวอร์ซึ่งเป็นบริษัททีเยวของกนแหงหนงสําหรับการใช้พืนทีอาคารเป็น",
@@ -1118,17 +1521,25 @@
      1470,
      1162
     ],
-    "conf": 93.2
+    "conf": 93.2,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
    "kind": "diff",
-   "score": 82.5,
+   "score": 89.3,
    "pos": 1137,
+   "snap": 6,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_041",
    "suggest": "typhoon",
-   "order": 40
+   "order": 40,
+   "pos_end": 1240
   },
   {
    "typhoon": null,
@@ -1141,40 +1552,27 @@
      858,
      1188
     ],
-    "conf": 76.7
+    "conf": 76.7,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
-   "pos": 1233.5,
+   "pos": 1239.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_043"
+   ],
+   "maybe_duplicate_of": [],
    "id": "E_ONE_REPORT_CPALLT_p442_042",
    "suggest": "tesseract",
-   "order": 41
-  },
-  {
-   "typhoon": {
-    "text": "ารเป็น"
-   },
-   "tesseract": null,
-   "region": {
-    "image": 0,
-    "bbox": [
-     0,
-     1092,
-     1000000,
-     1245
-    ]
-   },
-   "auto_accept": false,
-   "audit": false,
-   "kind": "typhoon_only",
-   "score": 0.0,
-   "pos": 1234,
-   "id": "E_ONE_REPORT_CPALLT_p442_043",
-   "suggest": "typhoon",
-   "order": 42
+   "order": 41,
+   "pos_end": 1239.5
   },
   {
    "typhoon": {
@@ -1189,7 +1587,8 @@
      1470,
      1217
     ],
-    "conf": 94.6
+    "conf": 94.6,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1197,9 +1596,16 @@
    "kind": "diff",
    "score": 98.9,
    "pos": 1240,
-   "id": "E_ONE_REPORT_CPALLT_p442_044",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_043",
    "suggest": "typhoon",
-   "order": 43
+   "order": 42,
+   "pos_end": 1332
   },
   {
    "typhoon": null,
@@ -1212,17 +1618,27 @@
      1401,
      1246
     ],
-    "conf": 55.2
+    "conf": 55.2,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 1331.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_045",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_045"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_044",
    "suggest": "tesseract",
-   "order": 44
+   "order": 43,
+   "pos_end": 1331.5
   },
   {
    "typhoon": {
@@ -1237,7 +1653,8 @@
      1469,
      1273
     ],
-    "conf": 94.6
+    "conf": 94.6,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1245,9 +1662,16 @@
    "kind": "diff",
    "score": 97.9,
    "pos": 1332,
-   "id": "E_ONE_REPORT_CPALLT_p442_046",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_045",
    "suggest": "typhoon",
-   "order": 45
+   "order": 44,
+   "pos_end": 1426
   },
   {
    "typhoon": {
@@ -1262,7 +1686,8 @@
      1475,
      1333
     ],
-    "conf": 94.1
+    "conf": 94.1,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1270,9 +1695,16 @@
    "kind": "diff",
    "score": 99.0,
    "pos": 1426,
-   "id": "E_ONE_REPORT_CPALLT_p442_047",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_046",
    "suggest": "typhoon",
-   "order": 46
+   "order": 45,
+   "pos_end": 1525
   },
   {
    "typhoon": {
@@ -1287,7 +1719,8 @@
      939,
      1388
     ],
-    "conf": 94.7
+    "conf": 94.7,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1295,9 +1728,16 @@
    "kind": "diff",
    "score": 98.0,
    "pos": 1525,
-   "id": "E_ONE_REPORT_CPALLT_p442_048",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_047",
    "suggest": "typhoon",
-   "order": 47
+   "order": 46,
+   "pos_end": 1576
   },
   {
    "typhoon": {
@@ -1312,7 +1752,8 @@
      1474,
      1498
     ],
-    "conf": 94.4
+    "conf": 94.4,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1320,34 +1761,16 @@
    "kind": "diff",
    "score": 98.8,
    "pos": 1576,
-   "id": "E_ONE_REPORT_CPALLT_p442_049",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_048",
    "suggest": "tesseract",
-   "order": 48
-  },
-  {
-   "typhoon": {
-    "text": "รระ"
-   },
-   "tesseract": {
-    "text": "รระ 4",
-    "image": 0,
-    "bbox": [
-     487,
-     439,
-     1418,
-     452
-    ],
-    "conf": 63.6
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "diff",
-   "score": 75.0,
-   "pos": 1625,
-   "id": "E_ONE_REPORT_CPALLT_p442_050",
-   "suggest": "typhoon",
-   "order": 49
+   "order": 47,
+   "pos_end": 1657
   },
   {
    "typhoon": null,
@@ -1360,7 +1783,8 @@
      876,
      1505
     ],
-    "conf": 64.8
+    "conf": 64.8,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1368,9 +1792,18 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 1656.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_051",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [
+    "E_ONE_REPORT_CPALLT_p442_048"
+   ],
+   "id": "E_ONE_REPORT_CPALLT_p442_049",
    "suggest": "tesseract",
-   "order": 50
+   "order": 48,
+   "pos_end": 1656.5
   },
   {
    "typhoon": {
@@ -1385,7 +1818,8 @@
      1469,
      1557
     ],
-    "conf": 93.8
+    "conf": 93.8,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1393,9 +1827,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1657,
-   "id": "E_ONE_REPORT_CPALLT_p442_052",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_050",
    "suggest": "typhoon",
-   "order": 51
+   "order": 49,
+   "pos_end": 1746
   },
   {
    "typhoon": null,
@@ -1408,17 +1849,27 @@
      1146,
      1582
     ],
-    "conf": 51.0
+    "conf": 51.0,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 1745.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_053",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_053"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_051",
    "suggest": "tesseract",
-   "order": 52
+   "order": 50,
+   "pos_end": 1745.5
   },
   {
    "typhoon": null,
@@ -1431,17 +1882,28 @@
      1053,
      1572
     ],
-    "conf": 44.0
+    "conf": 44.0,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 1745.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_054",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_053",
+    "E_ONE_REPORT_CPALLT_p442_050"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_052",
    "suggest": "tesseract",
-   "order": 53
+   "order": 51,
+   "pos_end": 1745.5
   },
   {
    "typhoon": {
@@ -1456,7 +1918,8 @@
      1469,
      1614
     ],
-    "conf": 93.6
+    "conf": 93.6,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1464,9 +1927,16 @@
    "kind": "diff",
    "score": 97.7,
    "pos": 1746,
-   "id": "E_ONE_REPORT_CPALLT_p442_055",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_053",
    "suggest": "typhoon",
-   "order": 54
+   "order": 52,
+   "pos_end": 1833
   },
   {
    "typhoon": null,
@@ -1479,17 +1949,27 @@
      1053,
      1637
     ],
-    "conf": 81.5
+    "conf": 81.5,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 1832.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_056",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_056"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_054",
    "suggest": "tesseract",
-   "order": 55
+   "order": 53,
+   "pos_end": 1832.5
   },
   {
    "typhoon": null,
@@ -1502,17 +1982,28 @@
      1471,
      1629
     ],
-    "conf": 55.4
+    "conf": 55.4,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 1832.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_057",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_056",
+    "E_ONE_REPORT_CPALLT_p442_053"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_055",
    "suggest": "tesseract",
-   "order": 56
+   "order": 54,
+   "pos_end": 1832.5
   },
   {
    "typhoon": {
@@ -1527,7 +2018,8 @@
      1469,
      1669
     ],
-    "conf": 94.1
+    "conf": 94.1,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1535,9 +2027,16 @@
    "kind": "diff",
    "score": 98.9,
    "pos": 1833,
-   "id": "E_ONE_REPORT_CPALLT_p442_058",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_056",
    "suggest": "typhoon",
-   "order": 57
+   "order": 55,
+   "pos_end": 1921
   },
   {
    "typhoon": null,
@@ -1550,7 +2049,8 @@
      1093,
      1674
     ],
-    "conf": 69.8
+    "conf": 69.8,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1558,9 +2058,18 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 1920.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_059",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [
+    "E_ONE_REPORT_CPALLT_p442_056"
+   ],
+   "id": "E_ONE_REPORT_CPALLT_p442_057",
    "suggest": "tesseract",
-   "order": 58
+   "order": 56,
+   "pos_end": 1920.5
   },
   {
    "typhoon": null,
@@ -1573,17 +2082,27 @@
      1041,
      1695
     ],
-    "conf": 60.4
+    "conf": 60.4,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 1920.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_060",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_060"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_058",
    "suggest": "tesseract",
-   "order": 59
+   "order": 57,
+   "pos_end": 1920.5
   },
   {
    "typhoon": null,
@@ -1596,17 +2115,28 @@
      1421,
      1685
     ],
-    "conf": 56.2
+    "conf": 56.2,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "tesseract_only",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 1920.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_061",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [
+    "E_ONE_REPORT_CPALLT_p442_060",
+    "E_ONE_REPORT_CPALLT_p442_056"
+   ],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_059",
    "suggest": "tesseract",
-   "order": 60
+   "order": 58,
+   "pos_end": 1920.5
   },
   {
    "typhoon": {
@@ -1621,7 +2151,8 @@
      1469,
      1726
     ],
-    "conf": 94.3
+    "conf": 94.3,
+    "column": null
    },
    "region": null,
    "auto_accept": true,
@@ -1629,9 +2160,16 @@
    "kind": "agree",
    "score": 100.0,
    "pos": 1921,
-   "id": "E_ONE_REPORT_CPALLT_p442_062",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_060",
    "suggest": "typhoon",
-   "order": 61
+   "order": 59,
+   "pos_end": 2016
   },
   {
    "typhoon": null,
@@ -1644,7 +2182,8 @@
      1417,
      1752
     ],
-    "conf": 38.3
+    "conf": 38.3,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1652,13 +2191,22 @@
    "kind": "tesseract_only",
    "score": 0.0,
    "pos": 2015.5,
-   "id": "E_ONE_REPORT_CPALLT_p442_063",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [
+    "E_ONE_REPORT_CPALLT_p442_062"
+   ],
+   "id": "E_ONE_REPORT_CPALLT_p442_061",
    "suggest": "tesseract",
-   "order": 62
+   "order": 60,
+   "pos_end": 2015.5
   },
   {
    "typhoon": {
-    "text": "ัญญาฝ่ายใดฝ่ายหนึ่งมีความประสงค์ที่จะขอเลิกสัญญา คู่สัญญาฝ่ายนั้นจะต้องทำหนังสือแจ้งให้คู่สัญญา"
+    "text": "คู่สัญญาฝ่ายใดฝ่ายหนึ่งมีความประสงค์ที่จะขอเลิกสัญญา คู่สัญญาฝ่ายนั้นจะต้องทำหนังสือแจ้งให้คู่สัญญา"
    },
    "tesseract": {
     "text": "ัญญาฝ่ายใดฝ่ายหนึ่งมีความประสงค์ที่จะขอเลิกสัญญาคู่สัญญาฝ่ายนั้นจะต้องทําหนังสือแจ้งให้คู่สัญญา",
@@ -1669,21 +2217,29 @@
      1469,
      1783
     ],
-    "conf": 93.8
+    "conf": 93.8,
+    "column": null
    },
    "region": null,
-   "auto_accept": true,
-   "audit": true,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 2020,
-   "id": "E_ONE_REPORT_CPALLT_p442_064",
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 95.9,
+   "pos": 2016,
+   "snap": 4,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_062",
    "suggest": "typhoon",
-   "order": 63
+   "order": 61,
+   "pos_end": 2114
   },
   {
    "typhoon": {
-    "text": "กฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า 90 วัน ก่อนวันสิ้นสุดสัญญา"
+    "text": "อีกฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า 90 วัน ก่อนวันสิ้นสุดสัญญา"
    },
    "tesseract": {
     "text": "กฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า 90 วันก่อนวันสิ่นสุดสัญญา",
@@ -1694,17 +2250,25 @@
      1054,
      1836
     ],
-    "conf": 94.0
+    "conf": 94.0,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
    "kind": "diff",
-   "score": 98.3,
-   "pos": 2116,
-   "id": "E_ONE_REPORT_CPALLT_p442_065",
+   "score": 95.2,
+   "pos": 2114,
+   "snap": 2,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_063",
    "suggest": "typhoon",
-   "order": 64
+   "order": 62,
+   "pos_end": 2176
   },
   {
    "typhoon": {
@@ -1719,7 +2283,8 @@
      1519,
      2233
     ],
-    "conf": 91.1
+    "conf": 91.1,
+    "column": null
    },
    "region": null,
    "auto_accept": false,
@@ -1727,9 +2292,16 @@
    "kind": "diff",
    "score": 84.2,
    "pos": 2176,
-   "id": "E_ONE_REPORT_CPALLT_p442_066",
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "id": "E_ONE_REPORT_CPALLT_p442_064",
    "suggest": "typhoon",
-   "order": 65
+   "order": 63,
+   "pos_end": 2192
   }
  ],
  "split": {

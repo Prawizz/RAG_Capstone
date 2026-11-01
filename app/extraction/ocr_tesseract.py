@@ -4,10 +4,17 @@
 เพราะ ``--tessdata-dir`` ที่เราตั้งไม่มีโฟลเดอร์ configs) ด้วยภาพ PNG ชุดเดียวกับที่ส่งให้ Typhoon
 (dpi เดียวกัน ตัดหน้าคู่ตรงร่องเหมือนกัน) ผลลัพธ์รูปแบบ TSV (``image_to_data``) -> บรรทัดพร้อม bbox
 - ``OcrResult.text`` = ข้อความล้วน (บรรทัดละบรรทัด ย่อหน้าคั่นด้วยบรรทัดว่าง)
-- ``OcrResult.extra`` = {"size": [กว้าง, สูง], "lines": [{"text", "bbox": [x0, y0, x1, y1], "conf", "block", "par"}]}
+- ``OcrResult.extra`` = {"size": [กว้าง, สูง], "column_split": ..., "lines": [{"text", "bbox": [x0, y0, x1, y1], "conf", "block", "par"(, "col")}]}
   (พิกัดเป็นพิกเซลของภาพที่ส่ง; หน้าตัดครึ่งจะได้ extra ต่อภาพใน ``{"parts": [...]}``)
 - Tesseract ภาษาไทยคั่นช่องว่างระหว่างคำ ตัดช่องว่างระหว่างตัวอักษรไทยกับไทยออก (ภาษาไทยไม่เว้นวรรคระหว่างคำ);
   ช่องว่างที่คั่นตัวอักษรไทยกับละติน/ตัวเลขคงไว้
+
+แยกแถบข้างสีพื้น (side band): บางหน้ามีแถบสารบัญสีพื้นอยู่ซ้ายของเนื้อหา (KBANK) ซึ่ง Tesseract จัดหน้าอัตโนมัติ (psm 3) อ่านแถบกับ
+แถวตารางเป็นบรรทัดเดียวกัน หลังรันเต็มภาพแล้ว ถ้า (ก) หาขอบแถบสีพื้นได้ชัด (``find_side_band_edge``: สีกลาง (median) ของแต่ละ
+คอลัมน์พิกเซลในช่วง ``SIDE_BAND_WINDOW`` ของความกว้างเปลี่ยนจาก "มีสี" ไปเป็น "ขาว" อย่างฉับพลัน — ไม่ใช้โปรไฟล์หมึกแบบ ``find_gutter``
+เพราะแถบเป็นพื้นสีไม่ใช่ช่องว่าง) และ (ข) มีบรรทัดคร่อมเส้นนั้นอย่างน้อย ``SPLIT_MIN_CROSSING`` บรรทัด จะรัน Tesseract แยกทีละ region
+(แถบข้าง / เนื้อหา) แล้วบวก offset ให้ bbox กลับเป็นพิกัดภาพเดิม แต่ละบรรทัดมี ``col`` = 0 (แถบ) / 1 (เนื้อหา) และ
+``extra["column_split"]`` = {"x", "method", "crossing_lines_before"} (ไม่แยก = None) ค่า/เวอร์ชันของวิธีนี้อยู่ใน ``cache_params``
 
 การตั้งค่า: env ``TESSERACT_CMD`` (path ของ tesseract), ``OCR_TESSDATA_DIR`` (โฟลเดอร์ traineddata ชนิด best ถ้ามี;
 ไม่ตั้ง = ใช้ tessdata ข้างโปรแกรม) ไม่มีโปรแกรม / ไม่มี tha.traineddata หรือ eng.traineddata -> ``OcrUnavailable``
@@ -27,6 +34,13 @@ from typing import Optional
 
 from app.extraction.ocr import OCR_RENDER_DPI, OcrResult, OcrUnavailable
 
+SIDE_BAND_WINDOW = (0.05, 0.40)  # ช่วงความกว้างของภาพที่หาขอบแถบข้าง
+SIDE_BAND_MIN_TINT = 25.0  # ระยะสี RGB จากสีขาวของฝั่งแถบ (ค่ากลางของคอลัมน์) ขั้นต่ำ — น้อยกว่านี้ไม่ถือว่ามีสีพื้น
+SIDE_BAND_MAX_WHITE = 8.0  # ระยะสีจากสีขาวของฝั่งเนื้อหา สูงสุดที่ยังถือว่าขาว
+SIDE_BAND_EDGE_SPAN = 40  # px: ความกว้างของช่วงที่เฉลี่ยทั้งสองข้างของขอบ
+SPLIT_CROSS_MARGIN = 20  # px: บรรทัดต้องยื่นพ้นเส้นแบ่งเกินนี้ทั้งสองข้างถึงนับว่า "คร่อม"
+SPLIT_MIN_CROSSING = 5  # จำนวนบรรทัดคร่อมขั้นต่ำถึงจะแยก region
+COLUMN_SPLIT_METHOD = "side-band-v1"
 LANGS = "tha+eng"
 PSM = 3  # จัดหน้าอัตโนมัติ (เต็มหน้า ไม่มี OSD)
 RUN_TIMEOUT_SECONDS = 300
@@ -57,6 +71,30 @@ def _run(cmd: list[str], timeout: float) -> tuple[int, str, str]:
         kwargs["creationflags"] = subprocess.CREATE_NO_WINDOW
     p = subprocess.run(cmd, capture_output=True, timeout=timeout, **kwargs)
     return p.returncode, p.stdout.decode("utf-8", "replace"), p.stderr.decode("utf-8", "replace")
+
+
+def find_side_band_edge(image) -> Optional[int]:
+    """x (พิกเซล) ที่แถบพื้นสีทางซ้ายสิ้นสุด (คอลัมน์แรกที่เป็นพื้นขาว) หรือ None ถ้าไม่มีขอบที่ชัด
+
+    สีกลางของแต่ละคอลัมน์ (median ตามแนวตั้ง ทนต่อตัวหนังสือ/ภาพประกอบ) -> ระยะ RGB จากสีขาว; ขอบ = จุดที่ **ทุก** ``SIDE_BAND_EDGE_SPAN``
+    คอลัมน์ทางซ้ายมีระยะ >= ``SIDE_BAND_MIN_TINT`` และ **ทุก** คอลัมน์ทางขวา <= ``SIDE_BAND_MAX_WHITE`` ในช่วง ``SIDE_BAND_WINDOW``
+    (ใช้ min/max ไม่ใช่ค่าเฉลี่ย กันแถบที่แคบกว่าช่วงเฉลี่ยถูกจับเป็นขอบเพี้ยน); หลายจุดเลือกที่ต่างกันมากสุด
+    """
+    import numpy as np
+
+    a = np.asarray(image.convert("RGB"), dtype=np.float32)
+    dist = np.sqrt(((255.0 - np.median(a, axis=0)) ** 2).sum(axis=1))
+    width, span = len(dist), SIDE_BAND_EDGE_SPAN
+    best: Optional[tuple[float, int]] = None
+    for x in range(max(int(width * SIDE_BAND_WINDOW[0]), span), min(int(width * SIDE_BAND_WINDOW[1]), width - span)):
+        left, right = float(dist[x - span:x].min()), float(dist[x:x + span].max())
+        if left >= SIDE_BAND_MIN_TINT and right <= SIDE_BAND_MAX_WHITE and (best is None or left - right > best[0]):
+            best = (left - right, x)
+    return best[1] if best else None
+
+
+def crossing_lines(lines: list[dict], x: int) -> list[dict]:
+    return [ln for ln in lines if ln["bbox"][0] < x - SPLIT_CROSS_MARGIN and ln["bbox"][2] > x + SPLIT_CROSS_MARGIN]
 
 
 def join_words(words: list[str]) -> str:
@@ -142,10 +180,11 @@ class TesseractLocalBackend:
         self.revision = h.hexdigest()[:12]
 
     def cache_params(self) -> dict:
-        return {"langs": self.langs, "psm": self.psm, "dpi": OCR_RENDER_DPI}
+        return {"langs": self.langs, "psm": self.psm, "dpi": OCR_RENDER_DPI,
+                "column_split": [COLUMN_SPLIT_METHOD, SIDE_BAND_WINDOW, SIDE_BAND_MIN_TINT, SIDE_BAND_MAX_WHITE,
+                                 SIDE_BAND_EDGE_SPAN, SPLIT_CROSS_MARGIN, SPLIT_MIN_CROSSING]}
 
-    def recognize(self, image_png: bytes) -> OcrResult:
-        t0 = time.perf_counter()
+    def _tsv_lines(self, image_png: bytes) -> list[dict]:
         with tempfile.TemporaryDirectory(prefix="rag-tess-") as tmp:
             img = Path(tmp) / "page.png"
             img.write_bytes(image_png)
@@ -158,10 +197,28 @@ class TesseractLocalBackend:
             raise RuntimeError(f"tesseract ล้มเหลว (exit {code}): {err.strip()[:300]}")
         if not out.lstrip().startswith("level"):  # ไม่ใช่ TSV (เช่น config ไม่ถูกอ่าน) ห้ามเงียบแล้วได้ผลว่าง
             raise RuntimeError("tesseract ไม่ได้คืนผลแบบ TSV")
-        lines = parse_tsv(out)
-        from PIL import Image
+        return parse_tsv(out)
+
+    def recognize(self, image_png: bytes) -> OcrResult:
         import io
 
-        size = list(Image.open(io.BytesIO(image_png)).size)
+        from PIL import Image
+
+        t0 = time.perf_counter()
+        lines = self._tsv_lines(image_png)
+        im = Image.open(io.BytesIO(image_png))
+        column_split = None
+        edge = find_side_band_edge(im)
+        crossing = crossing_lines(lines, edge) if edge else []
+        if edge and len(crossing) >= SPLIT_MIN_CROSSING:
+            regions = []
+            for col, box in enumerate(((0, 0, edge, im.height), (edge, 0, im.width, im.height))):
+                buf = io.BytesIO()
+                im.crop(box).save(buf, "PNG")
+                for ln in self._tsv_lines(buf.getvalue()):
+                    x0, y0, x1, y1 = ln["bbox"]
+                    regions.append({**ln, "bbox": [x0 + box[0], y0, x1 + box[0], y1], "col": col, "block": ln["block"] + 1000 * col})
+            lines = regions
+            column_split = {"x": edge, "method": COLUMN_SPLIT_METHOD, "crossing_lines_before": len(crossing)}
         return OcrResult(text=lines_to_text(lines), backend=self.name, model=self.model, revision=self.revision,
-                         seconds=time.perf_counter() - t0, extra={"size": size, "lines": lines})
+                         seconds=time.perf_counter() - t0, extra={"size": list(im.size), "lines": lines, "column_split": column_split})

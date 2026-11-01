@@ -139,3 +139,114 @@ def test_real_tesseract_reads_thai(tmp_path):
     page.insert_text((20, 60), "Net Zero 2050 Tesseract", fontsize=24)
     png = page.get_pixmap(dpi=200).tobytes("png")
     assert "Zero" in b.recognize(png).text
+
+
+# ---------- แยกแถบข้างสีพื้น (side band) ----------
+
+def band_image(width=1000, height=600, band=200, tint=(212, 233, 217)):
+    from PIL import Image, ImageDraw
+
+    im = Image.new("RGB", (width, height), "white")
+    d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, band - 1, height], fill=tint)
+    for y in range(40, height, 60):  # ตัวหนังสือ (ink) ทั้งสองฝั่ง — median ตามแนวตั้งต้องไม่หลงไปตามหมึก
+        d.rectangle([20, y, max(band - 30, 21), y + 14], fill=(0, 90, 40))
+        d.rectangle([band + 40, y, width - 40, y + 14], fill=(30, 30, 30))
+    return im
+
+
+def test_find_side_band_edge_at_color_step():
+    assert T.find_side_band_edge(band_image(band=200)) == 200
+    assert T.find_side_band_edge(band_image(band=330)) == 330
+
+
+def test_no_edge_on_white_page_or_weak_tint_or_outside_window():
+    from PIL import Image
+
+    assert T.find_side_band_edge(Image.new("RGB", (1000, 600), "white")) is None
+    assert T.find_side_band_edge(band_image(tint=(250, 250, 250))) is None  # สีจางเกินเกณฑ์
+    assert T.find_side_band_edge(band_image(band=30)) is None  # แคบกว่าช่วงค้นหา (< 5%)
+    assert T.find_side_band_edge(band_image(band=600)) is None  # กว้างเกิน 40%
+
+
+def test_gradient_without_step_is_not_a_band():
+    from PIL import Image
+
+    im = Image.new("RGB", (1000, 400), "white")
+    px = im.load()
+    for x in range(1000):
+        v = int(255 - 60 * x / 1000)  # ไล่สีทีละน้อย ไม่มีขอบฉับพลัน
+        for y in range(400):
+            px[x, y] = (v, 255, v)
+    assert T.find_side_band_edge(im) is None
+
+
+def test_crossing_lines_need_margin_on_both_sides():
+    lines = [{"bbox": [10, 0, 600, 20]}, {"bbox": [10, 0, 210, 20]}, {"bbox": [300, 0, 700, 20]}, {"bbox": [190, 0, 400, 20]}]
+    assert [ln["bbox"] for ln in T.crossing_lines(lines, 200)] == [[10, 0, 600, 20]]  # 190..400 ล้ำซ้ายแค่ 10 px < margin
+
+
+def png_of(im):
+    import io
+
+    buf = io.BytesIO()
+    im.save(buf, "PNG")
+    return buf.getvalue()
+
+
+def side_band_fake(monkeypatch, tmp_path, crossing):
+    """คืน TSV ตามความกว้างของภาพที่ส่งให้ (ภาพเต็ม = บรรทัดคร่อม `crossing` บรรทัด, ซีกซ้าย/ขวา = บรรทัดเดียว)"""
+    from PIL import Image
+
+    fake_install(monkeypatch, tmp_path)
+    widths = []
+
+    def fake_run(cmd, timeout):
+        if "--version" in cmd:
+            return 0, "tesseract v5.4.0.20240606\n", ""
+        w = Image.open(cmd[1]).size[0]
+        widths.append(w)
+        rows = [HEAD]
+        if w == 1000:
+            for i in range(crossing):
+                rows.append(row(5, 1, 1, i + 1, 1, 10, 30 * i, 900, 20, 80.0, f"คร่อม{i}"))
+        elif w == 200:
+            rows.append(row(5, 1, 1, 1, 1, 15, 50, 120, 20, 90.0, "แถบ"))
+        else:
+            rows.append(row(5, 1, 1, 1, 1, 20, 50, 300, 20, 95.0, "เนื้อหา"))
+        return 0, "\n".join(rows), ""
+
+    monkeypatch.setattr(T, "_run", fake_run)
+    return widths
+
+
+def test_side_band_page_is_ocrd_per_region_with_offsets(monkeypatch, tmp_path):
+    widths = side_band_fake(monkeypatch, tmp_path, crossing=6)
+    r = T.TesseractLocalBackend().recognize(png_of(band_image(band=200)))
+    assert widths == [1000, 200, 800]  # เต็มภาพก่อน แล้วแถบข้าง / เนื้อหา
+    assert r.extra["column_split"] == {"x": 200, "method": "side-band-v1", "crossing_lines_before": 6}
+    by = {ln["text"]: ln for ln in r.extra["lines"]}
+    assert by["แถบ"]["bbox"] == [15, 50, 135, 70] and by["แถบ"]["col"] == 0
+    assert by["เนื้อหา"]["bbox"] == [220, 50, 520, 70] and by["เนื้อหา"]["col"] == 1  # บวก offset ซีกขวาคืนพิกัดภาพเดิม
+    assert by["แถบ"]["block"] != by["เนื้อหา"]["block"] and set(by) == {"แถบ", "เนื้อหา"}
+    assert "\n\n" in r.text  # คนละ block = คนละย่อหน้า
+
+
+def test_side_band_not_split_when_too_few_lines_cross(monkeypatch, tmp_path):
+    widths = side_band_fake(monkeypatch, tmp_path, crossing=4)  # ขอบชัดแต่คร่อมแค่ 4 < 5
+    r = T.TesseractLocalBackend().recognize(png_of(band_image(band=200)))
+    assert widths == [1000] and r.extra["column_split"] is None and len(r.extra["lines"]) == 4
+
+
+def test_side_band_not_split_without_clear_edge(monkeypatch, tmp_path):
+    from PIL import Image
+
+    widths = side_band_fake(monkeypatch, tmp_path, crossing=9)
+    r = T.TesseractLocalBackend().recognize(png_of(Image.new("RGB", (1000, 600), "white")))
+    assert widths == [1000] and r.extra["column_split"] is None
+
+
+def test_cache_key_params_include_column_split_method(monkeypatch, tmp_path):
+    fake_install(monkeypatch, tmp_path)
+    p = T.TesseractLocalBackend().cache_params()
+    assert p["column_split"][0] == "side-band-v1" and p["langs"] == "tha+eng"
