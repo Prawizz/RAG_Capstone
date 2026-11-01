@@ -31,6 +31,7 @@ chunking / citation / eval อ่านต่อจาก contract นี้
   (method = ocr เพราะไม่มีชั้นข้อความ) ดู ``app/extraction/image.py``
 - OCR เป็นขั้นแยกจาก extract_file (``app/extraction/ocr.py::run_ocr``): unit ที่ OCR แล้วมี method = ocr เสมอ
   ``signals``: ``ocr:seconds``, ``ocr:figure_count``, ``ocr:page_number`` (+ ``ocr:page_number_2`` หน้าคู่),
+  ``ocr:tokens``, ``ocr:split_x`` / ``ocr:split_fallback`` (หน้ากว้างที่ถูกตัด), ``ocr:repeated_lines``, ``ocr:cache_hit``,
   ``ocr:text_layer_recall`` / ``ocr:text_layer_precision`` (0–1, เฉพาะหน้าที่มีชั้นข้อความเดิม; วัดอย่างเดียว ห้ามใช้ตัดสิน
   ข้อจำกัดอยู่ใน docstring ของ ocr.py); ``<figure>`` ของโมเดลเป็น block image ที่ **ไม่รวมใน Unit.text**;
   ชื่อ backend และ revision ของโมเดลเป็นข้อความ จึงเก็บใน ``reason``

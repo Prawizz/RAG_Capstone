@@ -1,0 +1,2962 @@
+{
+ "file": "ONEREPORTPTTT.PDF",
+ "page": 43,
+ "typhoon": {
+  "backend": "typhoon-local",
+  "model": "scb10x/typhoon-ocr1.5-2b",
+  "revision": "15b381a2d625",
+  "seconds": 330.3821814999683,
+  "tokens": 2305
+ },
+ "tesseract": {
+  "backend": "tesseract-local",
+  "model": "tesseract-5.4.0.20240606",
+  "revision": "b02ddf48069f",
+  "seconds": 10.368391000083648
+ },
+ "typhoon_page_numbers": [
+  41
+ ],
+ "figures": [
+  "ภาพแผนผังแสดงกลยุทธ์การดำเนินธุรกิจของกลุ่มบริษัท ปตท. สำหรับปี 2568 โดยแบ่งออกเป็น 5 ด้านหลัก ได้แก่ \"LT ADJ. EBITDA & NET PROFIT\", \"BALANCE\", \"SUSTAINABILITY: NET ZERO BY 2050\", \"SUSTAINABILITY: UNLEASH BUSINESS VALUES THROUGH SUSTAINABILITY\", \"ENABLERS FOR TRANSFORMATION\" และ \"FOUNDATION\" แต่ละด้านมีองค์ประกอบที่เกี่ยวข้องกับธุรกิจและเป้าหมายต่างๆ **LT ADJ. EBITDA & NET PROFIT** * **COMPETITIVENESS ENHANCEMENT & GROWTH: EXISTING BUSINESS** * **1.1 Hydrocarbon & Power Business** * Cost Competitiveness Enhancement * **UPSTREAM:** E&P, GAS, สาธารณูปโภคทางทะเลและชายฝั่ง, Competitive Supply * **1.2 Non-Hydrocarbon Business** * Right to Play & Attractiveness * **POWER:** POWER, Decarbonize และเพิ่ม Reliability ให้กับกลุ่ม ปตท. * **ELECTRIC VEHICLE:** บูรณาการ EV Charging * **LIFE SCIENCE:** บูรณาการ Self-funded * **DOWNSTREAM:** PETROCHEMICAL & REFINERY, ปรับ Portfolio ทางด้านความสามารถในการแข่งขันร่วมกับ Partner, LNG VALUE CHAIN, เน้นยกระดับ LNG Portfolio ให้สอดคล้องกับ Scope, Diversification และ Flexibility * **NEW VENTURES:** บูรณาการการลงทุนในธุรกิจ Sustainability และ AI Tech **BALANCE** * **SUSTAINABILITY: NET ZERO BY 2050** * **2. Necessity & Opportunity** * **Hydrogen & Carbon Business Integration** * H₂ & CCS เป็นตัวช่วย Decarbonize สำหรับกลุ่ม ปตท. และประเทศ เพื่อมุ่งสู่เป้าหมาย Net Zero * เป็นโอกาส Transform ธุรกิจเดิมของกลุ่ม ปตท. ให้แข็งขันได้ระยะยาว และพัฒนาเป็นธุรกิจใหม่ * การลงทุนด้วยมุมความคุ้มค่า ยังคงอยู่และยับยั้งความเสี่ยงด้วย Signpost ที่สำคัญ * **CCS** **SUSTAINABILITY: UNLEASH BUSINESS VALUES THROUGH SUSTAINABILITY** * **3. SUSTAINABILITY: UNLEASH BUSINESS VALUES THROUGH SUSTAINABILITY** * บูรณาการเรื่องความยั่งยืนเข้ากับการดำเนินธุรกิจ * มุ่งสู่ Net Zero, Balancing ESG Outcomes toward Resilience & Sustainable Businesses **ENABLERS FOR TRANSFORMATION** * **4. ENABLERS FOR TRANSFORMATION** * **Triple Transformation** * ยกระดับการขับเคลื่อนองค์กรผ่านการบูรณาการ Operational Excellence, AI & Digital Transformation และ People & Organization * **Asset Monetization** * Synergy, Optimize & Monetize Assets เพื่อเพิ่มประสิทธิภาพ และยกระดับผลการดำเนินงาน **FOUNDATION** * **5. FOUNDATION** * **Convergence of GRC & Sustainability** * **Value-Driven Financial Excellence** * **Stakeholder Management**"
+ ],
+ "skipped_tesseract": [
+  {
+   "text": "[",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    314,
+    1545,
+    321,
+    1553
+   ]
+  },
+  {
+   "text": "ก",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    228,
+    1629,
+    291,
+    1638
+   ]
+  }
+ ],
+ "counts": {
+  "agree": 50,
+  "agree_audit": 6,
+  "diff": 14,
+  "typhoon_only": 1,
+  "tesseract_only": 49,
+  "to_judge": 70
+ },
+ "items": [
+  {
+   "typhoon": {
+    "text": "แบบแสดงรายการข้อมูลประจำปี/ รายงานประจำปี 2568"
+   },
+   "tesseract": {
+    "text": "แบบแสดงรายการข้อมูลประจําปี / รายงานประจําปี 2568",
+    "image": 0,
+    "bbox": [
+     1146,
+     76,
+     1510,
+     110
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 0,
+   "id": "ONEREPORTPTTT_p43_001",
+   "suggest": "typhoon",
+   "order": 0
+  },
+  {
+   "typhoon": {
+    "text": "(แบบ 56-1 One Report) บริษัท ปตท. จำกัด (มหาชน)"
+   },
+   "tesseract": {
+    "text": "(แบบ 56-1 One Report) บริษัทปตท . จํากัด (มหาชน )",
+    "image": 0,
+    "bbox": [
+     1144,
+     98,
+     1509,
+     132
+    ],
+    "conf": 93.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 44,
+   "id": "ONEREPORTPTTT_p43_002",
+   "suggest": "typhoon",
+   "order": 1
+  },
+  {
+   "typhoon": {
+    "text": "ส่วนที่ 1 การประกอบธุรกิจและผลการดำเนินงาน"
+   },
+   "tesseract": {
+    "text": "ส่วนที่ 1 การประกอบธุรกิจและผลการดําเนินงาน",
+    "image": 0,
+    "bbox": [
+     180,
+     101,
+     497,
+     130
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 84,
+   "id": "ONEREPORTPTTT_p43_003",
+   "suggest": "typhoon",
+   "order": 2
+  },
+  {
+   "typhoon": {
+    "text": "1. โครงสร้างและการดำเนินงานของกลุ่มบริษัท"
+   },
+   "tesseract": {
+    "text": "1. โครงสร้างและการดําเนินงานของกลุ่มบริษัท",
+    "image": 0,
+    "bbox": [
+     549,
+     98,
+     850,
+     132
+    ],
+    "conf": 93.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 124,
+   "id": "ONEREPORTPTTT_p43_004",
+   "suggest": "typhoon",
+   "order": 3
+  },
+  {
+   "typhoon": {
+    "text": "แสวงหาโอกาสทางธุรกิจพร้อมมุ่งสู่ Net Zero (Necessity"
+   },
+   "tesseract": {
+    "text": "แสวงหาโอกาสทางธุรกิจพร้อมมุ่งสู่ !1 อ 6 Zero (Necessity",
+    "image": 0,
+    "bbox": [
+     221,
+     244,
+     826,
+     286
+    ],
+    "conf": 91.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 92.0,
+   "pos": 166,
+   "id": "ONEREPORTPTTT_p43_005",
+   "suggest": "typhoon",
+   "order": 4
+  },
+  {
+   "typhoon": {
+    "text": "& Opportunity) ผ่านการพัฒนาธุรกิจ CCS และธุรกิจ"
+   },
+   "tesseract": {
+    "text": "& Opportunity) ผ่านการพัฒนาธุรกิจ CCS และธุรกิจ",
+    "image": 0,
+    "bbox": [
+     220,
+     287,
+     823,
+     327
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 215,
+   "id": "ONEREPORTPTTT_p43_006",
+   "suggest": "typhoon",
+   "order": 5
+  },
+  {
+   "typhoon": {
+    "text": "ไฮโดรเจน เป็นกลไกสำคัญในการลดการปล่อยก๊าซเรือน"
+   },
+   "tesseract": {
+    "text": "ไฮโดรเจนเป็นกลไกสําคัญในการลดการปล่อยก๊าซเรือน",
+    "image": 0,
+    "bbox": [
+     218,
+     324,
+     825,
+     364
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 258,
+   "id": "ONEREPORTPTTT_p43_007",
+   "suggest": "typhoon",
+   "order": 6
+  },
+  {
+   "typhoon": {
+    "text": "กระจกของกลุ่ม ปตท. เพื่อสนับสนุนเป้าหมายการดำเนิน"
+   },
+   "tesseract": {
+    "text": "กระจกของกลุ่มปตท . เพื่อสนับสนุนเป้าหมายการดําเนิน",
+    "image": 0,
+    "bbox": [
+     221,
+     359,
+     826,
+     413
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 303,
+   "id": "ONEREPORTPTTT_p43_008",
+   "suggest": "typhoon",
+   "order": 7
+  },
+  {
+   "typhoon": {
+    "text": "ธุรกิจสู่ Net Zero Emissions ภายในปี ค.ศ. 2050 ทั้งนี้"
+   },
+   "tesseract": {
+    "text": "ธุรกิจสู่ [น๐ ! Zero Emissions ภายในปีค . ศ . 2050 ทั้งนี้",
+    "image": 0,
+    "bbox": [
+     221,
+     392,
+     826,
+     448
+    ],
+    "conf": 89.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 91.7,
+   "pos": 350,
+   "id": "ONEREPORTPTTT_p43_009",
+   "suggest": "typhoon",
+   "order": 8
+  },
+  {
+   "typhoon": {
+    "text": "กลุ่ม ปตท. ได้กำหนดโครงสร้างการดำเนินงานภายในองค์กร"
+   },
+   "tesseract": {
+    "text": "กลุ่มปตท . ได้กําหนดโครงสร้างการดําเนินงานภายในองค์กร",
+    "image": 0,
+    "bbox": [
+     221,
+     437,
+     825,
+     488
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 397,
+   "id": "ONEREPORTPTTT_p43_010",
+   "suggest": "typhoon",
+   "order": 9
+  },
+  {
+   "typhoon": {
+    "text": "อย่างชัดเจน โดยมี ปตท. ทำหน้าที่บูรณาการและประสาน"
+   },
+   "tesseract": {
+    "text": "อย่างชัดเจนโดยมีปตท . ทําหน้าที่บูรณาการและประสาน",
+    "image": 0,
+    "bbox": [
+     220,
+     480,
+     825,
+     528
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 446,
+   "id": "ONEREPORTPTTT_p43_011",
+   "suggest": "typhoon",
+   "order": 10
+  },
+  {
+   "typhoon": {
+    "text": "ความร่วมมือระหว่างบริษัทในกลุ่ม โดยใช้จุดแข็งเฉพาะด้าน"
+   },
+   "tesseract": {
+    "text": "ความร่วมมือระหว่างบริษัทในกลุ่มโดยใช้จุดแข็งเฉพาะด้าน",
+    "image": 0,
+    "bbox": [
+     222,
+     526,
+     825,
+     568
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 492,
+   "id": "ONEREPORTPTTT_p43_012",
+   "suggest": "typhoon",
+   "order": 11
+  },
+  {
+   "typhoon": {
+    "text": "ของแต่ละบริษัทให้เกิดประโยชน์สูงสุด พร้อมทั้งวางแผนทาง"
+   },
+   "tesseract": {
+    "text": "ของแต่ละบริษัทให้เกิดประโยชน์สูงสุดพร้อมทั้งวางแนวทาง",
+    "image": 0,
+    "bbox": [
+     220,
+     560,
+     823,
+     609
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.2,
+   "pos": 545,
+   "id": "ONEREPORTPTTT_p43_013",
+   "suggest": "typhoon",
+   "order": 12
+  },
+  {
+   "typhoon": {
+    "text": "การลงทุนที่เหมาะสม โดยคำนึงถึงความคุ้มค่า (Feasibility)"
+   },
+   "tesseract": {
+    "text": "การลงทุนที่เหมาะสมโดยคํานึงถึงความคุ้มค่า (Feasibility)",
+    "image": 0,
+    "bbox": [
+     221,
+     601,
+     824,
+     649
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 598,
+   "id": "ONEREPORTPTTT_p43_014",
+   "suggest": "typhoon",
+   "order": 13
+  },
+  {
+   "typhoon": {
+    "text": "การขับเคลื่อนตาม Strategic Signposts และความยืดหยุ่น"
+   },
+   "tesseract": {
+    "text": "การขับเคลื่อนตาม Strategic Signposts และความยืดหยุ่น",
+    "image": 0,
+    "bbox": [
+     221,
+     641,
+     825,
+     689
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 651,
+   "id": "ONEREPORTPTTT_p43_015",
+   "suggest": "typhoon",
+   "order": 14
+  },
+  {
+   "typhoon": {
+    "text": "(Flexibility) เพื่อให้สามารถปรับเปลี่ยนแผนการดำเนิน"
+   },
+   "tesseract": {
+    "text": "(Flexibility) เพื่อให้สามารถปรับเปลี่ยนแผนการดําเนิน",
+    "image": 0,
+    "bbox": [
+     221,
+     681,
+     825,
+     726
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 700,
+   "id": "ONEREPORTPTTT_p43_016",
+   "suggest": "typhoon",
+   "order": 15
+  },
+  {
+   "typhoon": {
+    "text": "งานให้สอดคล้องกับสถานการณ์ที่เปลี่ยนแปลงได้อย่าง"
+   },
+   "tesseract": {
+    "text": "งานให้สอดคล้องกับสถานการณ์ที่เปลี่ยนแปลงได้อย่าง",
+    "image": 0,
+    "bbox": [
+     220,
+     722,
+     823,
+     767
+    ],
+    "conf": 95.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 750,
+   "id": "ONEREPORTPTTT_p43_017",
+   "suggest": "typhoon",
+   "order": 16
+  },
+  {
+   "typhoon": {
+    "text": "มีประสิทธิภาพ"
+   },
+   "tesseract": {
+    "text": "มีประสิทธิภาพ",
+    "image": 0,
+    "bbox": [
+     221,
+     768,
+     370,
+     807
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 798,
+   "id": "ONEREPORTPTTT_p43_018",
+   "suggest": "typhoon",
+   "order": 17
+  },
+  {
+   "typhoon": {
+    "text": ". บูรณาการเรื่องความยั่งยืนเข้ากับการดำเนินธุรกิจ"
+   },
+   "tesseract": {
+    "text": ". บูรณาการเรื่องความยั่งยืนเข้ากับการดําเนินธุรกิจ",
+    "image": 0,
+    "bbox": [
+     197,
+     803,
+     824,
+     850
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 812,
+   "id": "ONEREPORTPTTT_p43_019",
+   "suggest": "typhoon",
+   "order": 18
+  },
+  {
+   "typhoon": {
+    "text": ". บูรณาการเรื่องความยั่งยืนเข้ากับการดำเนินธุรกิจ"
+   },
+   "tesseract": {
+    "text": "+ บูรณาการเรื่องความฮั๋งยืนเข้ากับการดําเนินธุรกิจ",
+    "image": 0,
+    "bbox": [
+     242,
+     1852,
+     528,
+     1880
+    ],
+    "conf": 91.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 93.8,
+   "pos": 812,
+   "id": "ONEREPORTPTTT_p43_020",
+   "suggest": "typhoon",
+   "order": 19
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "2 NECESSITY",
+    "image": 0,
+    "bbox": [
+     774,
+     1264,
+     906,
+     1300
+    ],
+    "conf": 96.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_021",
+   "suggest": "tesseract",
+   "order": 20
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "& OPPORTUNITY",
+    "image": 0,
+    "bbox": [
+     821,
+     1289,
+     946,
+     1300
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_022",
+   "suggest": "tesseract",
+   "order": 21
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Hydrogen & Carbon Business",
+    "image": 0,
+    "bbox": [
+     751,
+     1328,
+     965,
+     1342
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_023",
+   "suggest": "tesseract",
+   "order": 22
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Integration",
+    "image": 0,
+    "bbox": [
+     751,
+     1347,
+     832,
+     1361
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_024",
+   "suggest": "tesseract",
+   "order": 23
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ H, & CCS เป็นตัวช่วย Decarbonize",
+    "image": 0,
+    "bbox": [
+     750,
+     1363,
+     968,
+     1393
+    ],
+    "conf": 80.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_025",
+   "suggest": "tesseract",
+   "order": 24
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "สําหรับกลุ่มปตท . และประเทศ",
+    "image": 0,
+    "bbox": [
+     759,
+     1382,
+     920,
+     1412
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_026",
+   "suggest": "tesseract",
+   "order": 25
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "พื่อมุ่งสู่เป้าหมาย Net Zero",
+    "image": 0,
+    "bbox": [
+     759,
+     1401,
+     913,
+     1431
+    ],
+    "conf": 92.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_027",
+   "suggest": "tesseract",
+   "order": 26
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ เป็นโอกาส Transform ธุรกิจเดิม",
+    "image": 0,
+    "bbox": [
+     750,
+     1420,
+     938,
+     1450
+    ],
+    "conf": 91.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_028",
+   "suggest": "tesseract",
+   "order": 27
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ของกลุ่มปตท . ให้แข่งขันได้ระยะยาว",
+    "image": 0,
+    "bbox": [
+     759,
+     1439,
+     952,
+     1469
+    ],
+    "conf": 92.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_029",
+   "suggest": "tesseract",
+   "order": 28
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "และเพัฒนาเป็นธุรกิจใหม่",
+    "image": 0,
+    "bbox": [
+     759,
+     1458,
+     887,
+     1488
+    ],
+    "conf": 92.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_030",
+   "suggest": "tesseract",
+   "order": 29
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ การลงทุนต้องมีความคุ้มค่า",
+    "image": 0,
+    "bbox": [
+     750,
+     1476,
+     904,
+     1506
+    ],
+    "conf": 92.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_031",
+   "suggest": "tesseract",
+   "order": 30
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ยิดหยุ่นและขับเคลื่อนด้วย",
+    "image": 0,
+    "bbox": [
+     759,
+     1495,
+     897,
+     1525
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_032",
+   "suggest": "tesseract",
+   "order": 31
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Signpost ที่สําคัญ",
+    "image": 0,
+    "bbox": [
+     759,
+     1517,
+     866,
+     1541
+    ],
+    "conf": 91.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_033",
+   "suggest": "tesseract",
+   "order": 32
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ 1ivd Net Zero, Balancing ESG Outcomes toward Resilience & Sustainable Businesses ®",
+    "image": 0,
+    "bbox": [
+     242,
+     1851,
+     907,
+     1919
+    ],
+    "conf": 85.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_034",
+   "suggest": "tesseract",
+   "order": 33
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "TION",
+    "image": 0,
+    "bbox": [
+     519,
+     1957,
+     555,
+     1968
+    ],
+    "conf": 70.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_035",
+   "suggest": "tesseract",
+   "order": 34
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Operational Excellence, Al & Digital Assets",
+    "image": 0,
+    "bbox": [
+     252,
+     2038,
+     704,
+     2051
+    ],
+    "conf": 85.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 859.5,
+   "id": "ONEREPORTPTTT_p43_036",
+   "suggest": "tesseract",
+   "order": 35
+  },
+  {
+   "typhoon": {
+    "text": "(Sustainability) เสริมสร้างความสามารถในการดำเนิน"
+   },
+   "tesseract": {
+    "text": "(Sustainability) เสริมสร้างความสามารถในการดําเนิน",
+    "image": 0,
+    "bbox": [
+     221,
+     849,
+     825,
+     888
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 860,
+   "id": "ONEREPORTPTTT_p43_037",
+   "suggest": "typhoon",
+   "order": 36
+  },
+  {
+   "typhoon": {
+    "text": "ธุรกิจ Hydrocarbon และ Non-Hydrocarbon อย่างมั่นคง"
+   },
+   "tesseract": {
+    "text": "ธุรกิจ Hydrocarbon และ Non-Hydrocarbon อย่างมั่นคง",
+    "image": 0,
+    "bbox": [
+     221,
+     883,
+     823,
+     931
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 907,
+   "id": "ONEREPORTPTTT_p43_038",
+   "suggest": "typhoon",
+   "order": 37
+  },
+  {
+   "typhoon": {
+    "text": "และสร้างผลลัพธ์ด้านความยั่งยืนในมิติ ESG: (1) สิ่งแวดล้อม"
+   },
+   "tesseract": {
+    "text": "และสร้างผลลัพธ์ด้านความยั่งยืนในมิติ ESG: (1) สิ่งแวดล้อม",
+    "image": 0,
+    "bbox": [
+     907,
+     238,
+     1509,
+     283
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 953,
+   "id": "ONEREPORTPTTT_p43_039",
+   "suggest": "typhoon",
+   "order": 38
+  },
+  {
+   "typhoon": {
+    "text": "(Environmental: E) (2) สังคม (Social: S) และ (3) การกำกับ"
+   },
+   "tesseract": {
+    "text": "(Environmental: E) (2) สังคม (Social: S) และ (3) การกํากับ",
+    "image": 0,
+    "bbox": [
+     906,
+     286,
+     1509,
+     325
+    ],
+    "conf": 92.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1007,
+   "id": "ONEREPORTPTTT_p43_040",
+   "suggest": "typhoon",
+   "order": 39
+  },
+  {
+   "typhoon": {
+    "text": "ดูแล (Governance: G) ผสานการบริหารจัดการ Portfolio"
+   },
+   "tesseract": {
+    "text": "ดูแล (Governance: G) ผสานการบริหารจัดการ Portfolio",
+    "image": 0,
+    "bbox": [
+     907,
+     327,
+     1510,
+     372
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1056,
+   "id": "ONEREPORTPTTT_p43_041",
+   "suggest": "typhoon",
+   "order": 40
+  },
+  {
+   "typhoon": {
+    "text": "และ Net Zero Emissions เข้าด้วยกันทั้งกลุ่ม ปตท. พร้อมทั้ง"
+   },
+   "tesseract": {
+    "text": "และ Net Zero Emissions เข้าด้วยกันทั้งกลุ่มปตท . พร้อมทั้ง",
+    "image": 0,
+    "bbox": [
+     907,
+     358,
+     1509,
+     413
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1102,
+   "id": "ONEREPORTPTTT_p43_042",
+   "suggest": "typhoon",
+   "order": 41
+  },
+  {
+   "typhoon": {
+    "text": "ขับเคลื่อนการดำเนินงานด้านความยั่งยืนของกลุ่ม ปตท."
+   },
+   "tesseract": {
+    "text": "ขับเคลื่อนการดําเนินงานด้านความยั่งยืนของกลุ่มปตท .",
+    "image": 0,
+    "bbox": [
+     905,
+     400,
+     1508,
+     448
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1154,
+   "id": "ONEREPORTPTTT_p43_043",
+   "suggest": "typhoon",
+   "order": 42
+  },
+  {
+   "typhoon": {
+    "text": "ด้วย PTT Group Decarbonization Master Plan"
+   },
+   "tesseract": {
+    "text": "ด้วย PTT Group Decarbonization Master Plan",
+    "image": 0,
+    "bbox": [
+     907,
+     448,
+     1391,
+     484
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1203,
+   "id": "ONEREPORTPTTT_p43_044",
+   "suggest": "typhoon",
+   "order": 43
+  },
+  {
+   "typhoon": {
+    "text": ". สร้างปัจจัยทำให้เกิดการขับเคลื่อนอย่างเป็นรูปธรรม"
+   },
+   "tesseract": {
+    "text": ". สร้างปัจจัยทําให้เกิดการขับเคลื่อนอย่างเป็นรูปธรรม",
+    "image": 0,
+    "bbox": [
+     882,
+     485,
+     1509,
+     528
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1241,
+   "id": "ONEREPORTPTTT_p43_045",
+   "suggest": "typhoon",
+   "order": 44
+  },
+  {
+   "typhoon": {
+    "text": "(Enablers for Transformation) ยกระดับการขับเคลื่อน"
+   },
+   "tesseract": {
+    "text": "(Enablers for Transformation) ยกระดับการขับเคลื่อน",
+    "image": 0,
+    "bbox": [
+     906,
+     526,
+     1510,
+     569
+    ],
+    "conf": 95.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1291,
+   "id": "ONEREPORTPTTT_p43_046",
+   "suggest": "typhoon",
+   "order": 45
+  },
+  {
+   "typhoon": {
+    "text": "องค์กรผ่านแนวคิด \"Triple Transformation\" ซึ่งประกอบด้วย"
+   },
+   "tesseract": {
+    "text": "องค์กรผ่านแนวคิด “Triple Transformation” ซึ่งประกอบด้วย",
+    "image": 0,
+    "bbox": [
+     905,
+     561,
+     1508,
+     605
+    ],
+    "conf": 95.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1338,
+   "id": "ONEREPORTPTTT_p43_047",
+   "suggest": "typhoon",
+   "order": 46
+  },
+  {
+   "typhoon": {
+    "text": "Triple Transformation"
+   },
+   "tesseract": {
+    "text": "+ Triple Transformation",
+    "image": 0,
+    "bbox": [
+     244,
+     2003,
+     401,
+     2016
+    ],
+    "conf": 90.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 95.2,
+   "pos": 1355,
+   "id": "ONEREPORTPTTT_p43_048",
+   "suggest": "typhoon",
+   "order": 47
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ยกระดับการขับเคลื่อนองค์กรผ่านการบูรณาการจิ",
+    "image": 0,
+    "bbox": [
+     252,
+     2003,
+     570,
+     2066
+    ],
+    "conf": 92.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1374.5,
+   "id": "ONEREPORTPTTT_p43_049",
+   "suggest": "tesseract",
+   "order": 48
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Transformation ua: People & Organization gf",
+    "image": 0,
+    "bbox": [
+     252,
+     2055,
+     569,
+     2074
+    ],
+    "conf": 84.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1374.5,
+   "id": "ONEREPORTPTTT_p43_050",
+   "suggest": "tesseract",
+   "order": 49
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "5 FOUNDATION",
+    "image": 0,
+    "bbox": [
+     242,
+     2106,
+     389,
+     2131
+    ],
+    "conf": 53.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1374.5,
+   "id": "ONEREPORTPTTT_p43_051",
+   "suggest": "tesseract",
+   "order": 50
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ Convergence of + Value-Driven",
+    "image": 0,
+    "bbox": [
+     242,
+     2154,
+     580,
+     2167
+    ],
+    "conf": 77.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1374.5,
+   "id": "ONEREPORTPTTT_p43_052",
+   "suggest": "tesseract",
+   "order": 51
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "GRC & Sus ility",
+    "image": 0,
+    "bbox": [
+     251,
+     2171,
+     395,
+     2184
+    ],
+    "conf": 79.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1374.5,
+   "id": "ONEREPORTPTTT_p43_053",
+   "suggest": "tesseract",
+   "order": 52
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ Asset Monetization",
+    "image": 0,
+    "bbox": [
+     651,
+     2003,
+     794,
+     2013
+    ],
+    "conf": 91.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1374.5,
+   "id": "ONEREPORTPTTT_p43_054",
+   "suggest": "tesseract",
+   "order": 53
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Synergize, Of",
+    "image": 0,
+    "bbox": [
+     660,
+     2021,
+     742,
+     2034
+    ],
+    "conf": 86.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1374.5,
+   "id": "ONEREPORTPTTT_p43_055",
+   "suggest": "tesseract",
+   "order": 54
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "+ Stakeholder",
+    "image": 0,
+    "bbox": [
+     760,
+     2153,
+     853,
+     2164
+    ],
+    "conf": 85.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1374.5,
+   "id": "ONEREPORTPTTT_p43_056",
+   "suggest": "tesseract",
+   "order": 55
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Management",
+    "image": 0,
+    "bbox": [
+     769,
+     2171,
+     860,
+     2184
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1374.5,
+   "id": "ONEREPORTPTTT_p43_057",
+   "suggest": "tesseract",
+   "order": 56
+  },
+  {
+   "typhoon": {
+    "text": "สามเสาหลัก ได้แก่ (1) การบูรณาการการดำเนินงาน"
+   },
+   "tesseract": {
+    "text": "สามเสาหลักได้แก่ (1) การบูรณาการการดําเนินงาน",
+    "image": 0,
+    "bbox": [
+     906,
+     607,
+     1510,
+     650
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1390,
+   "id": "ONEREPORTPTTT_p43_058",
+   "suggest": "typhoon",
+   "order": 57
+  },
+  {
+   "typhoon": {
+    "text": "ที่เป็นเลิศ (Operational Excellence) เพื่อเพิ่มประสิทธิภาพ"
+   },
+   "tesseract": {
+    "text": "ที่เป็นเลิศ (Operational Excellence) เพื่อเพิ่มประสิทธิภาพ",
+    "image": 0,
+    "bbox": [
+     901,
+     641,
+     1508,
+     686
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1432,
+   "id": "ONEREPORTPTTT_p43_059",
+   "suggest": "typhoon",
+   "order": 58
+  },
+  {
+   "typhoon": {
+    "text": "และสร้างผลลัพธ์ทางธุรกิจอย่างเป็นรูปธรรม (2) การปรับเปลี่ยน"
+   },
+   "tesseract": {
+    "text": "และสร้างผลลัพธ์ทางธุรกิจอย่างเป็นรูปธรรม (2) การปรับเปลี่ยน",
+    "image": 0,
+    "bbox": [
+     907,
+     681,
+     1510,
+     729
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1487,
+   "id": "ONEREPORTPTTT_p43_060",
+   "suggest": "typhoon",
+   "order": 59
+  },
+  {
+   "typhoon": {
+    "text": "กระบวนการทำงานด้วยเทคโนโลยีดิจิทัลและปัญญาประดิษฐ์"
+   },
+   "tesseract": {
+    "text": "กระบวนการทํางานด้วยเทคโนโลยีดิจิทัลและปัญญาประดิษฐ์",
+    "image": 0,
+    "bbox": [
+     906,
+     728,
+     1511,
+     769
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1544,
+   "id": "ONEREPORTPTTT_p43_061",
+   "suggest": "typhoon",
+   "order": 60
+  },
+  {
+   "typhoon": {
+    "text": "(Digital & AI Transformation) โดยมุ่งเน้นการนำเทคโนโลยี"
+   },
+   "tesseract": {
+    "text": "(Digital & Al Transformation) โดยมุ่งเน้นการนําเทคโนโลยี",
+    "image": 0,
+    "bbox": [
+     906,
+     768,
+     1508,
+     811
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.0,
+   "pos": 1594,
+   "id": "ONEREPORTPTTT_p43_062",
+   "suggest": "typhoon",
+   "order": 61
+  },
+  {
+   "typhoon": {
+    "text": "มาใช้ในการปรับปรุงกระบวนการ การบริหารจัดการข้อมูล"
+   },
+   "tesseract": {
+    "text": "มาใช้ในการปรับปรุงกระบวนการการบริหารจัดการข้อมูล",
+    "image": 0,
+    "bbox": [
+     906,
+     808,
+     1508,
+     850
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1645,
+   "id": "ONEREPORTPTTT_p43_063",
+   "suggest": "typhoon",
+   "order": 62
+  },
+  {
+   "typhoon": {
+    "text": "และการสร้างคุณค่าใหม่ให้กับองค์กร และ (3) การพัฒนา"
+   },
+   "tesseract": {
+    "text": "และการสร้างคุณค่าใหม่ให้กับองค์กรและ (3) การพัฒนา",
+    "image": 0,
+    "bbox": [
+     907,
+     849,
+     1508,
+     891
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1693,
+   "id": "ONEREPORTPTTT_p43_064",
+   "suggest": "typhoon",
+   "order": 63
+  },
+  {
+   "typhoon": {
+    "text": "ศักยภาพบุคลากรและการเปลี่ยนผ่านองค์กร (People &"
+   },
+   "tesseract": {
+    "text": "ศักยภาพบุคลากรและการเปลี่ยนผ่านองค์กร (People &",
+    "image": 0,
+    "bbox": [
+     907,
+     883,
+     1510,
+     933
+    ],
+    "conf": 95.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1740,
+   "id": "ONEREPORTPTTT_p43_065",
+   "suggest": "typhoon",
+   "order": 64
+  },
+  {
+   "typhoon": {
+    "text": "Organization Transformation) เพื่อ"
+   },
+   "tesseract": {
+    "text": "Organization Transformation) เพื่อ",
+    "image": 0,
+    "bbox": [
+     1142,
+     924,
+     1512,
+     977
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1785,
+   "id": "ONEREPORTPTTT_p43_066",
+   "suggest": "typhoon",
+   "order": 65
+  },
+  {
+   "typhoon": {
+    "text": "เสริมสร้างทักษะขั้นสูง การปรับเปลี่ยน"
+   },
+   "tesseract": {
+    "text": "เสริมสร้างทักษะขั้นสูงการปรับเปลี่ยน",
+    "image": 0,
+    "bbox": [
+     1143,
+     963,
+     1510,
+     1012
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1817,
+   "id": "ONEREPORTPTTT_p43_067",
+   "suggest": "typhoon",
+   "order": 66
+  },
+  {
+   "typhoon": {
+    "text": "แนวคิดและพฤติกรรม ตลอดจน"
+   },
+   "tesseract": {
+    "text": "แนวคิดและพฤติกรรมตลอดจน",
+    "image": 0,
+    "bbox": [
+     1143,
+     1012,
+     1510,
+     1054
+    ],
+    "conf": 95.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1853,
+   "id": "ONEREPORTPTTT_p43_068",
+   "suggest": "typhoon",
+   "order": 67
+  },
+  {
+   "typhoon": {
+    "text": "การสร้างระบบการทำงานที่ยืดหยุ่น"
+   },
+   "tesseract": {
+    "text": "การสร้างระบบการทํางานที่ยืดหยุ่น",
+    "image": 0,
+    "bbox": [
+     1142,
+     1045,
+     1510,
+     1093
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1876,
+   "id": "ONEREPORTPTTT_p43_069",
+   "suggest": "typhoon",
+   "order": 68
+  },
+  {
+   "typhoon": {
+    "text": "และยั่งยืน ในขณะเดียวกัน กลุ่ม ปตท."
+   },
+   "tesseract": {
+    "text": "และยั่งยืนในขณะเดียวกันกลุ่มปตท .",
+    "image": 0,
+    "bbox": [
+     1143,
+     1085,
+     1508,
+     1133
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1907,
+   "id": "ONEREPORTPTTT_p43_070",
+   "suggest": "typhoon",
+   "order": 69
+  },
+  {
+   "typhoon": {
+    "text": "ได้เร่งดำเนินการสร้างคุณค่าเพิ่มจาก"
+   },
+   "tesseract": {
+    "text": "ได้เร่งดําเนินการสร้างคุณค่าเพิ่มจาก",
+    "image": 0,
+    "bbox": [
+     1139,
+     1125,
+     1509,
+     1173
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1939,
+   "id": "ONEREPORTPTTT_p43_071",
+   "suggest": "typhoon",
+   "order": 70
+  },
+  {
+   "typhoon": {
+    "text": "สินทรัพย์ที่มีอยู่ (Asset Optimization"
+   },
+   "tesseract": {
+    "text": "สินทรัพย์ที่มีอยู่ (/ เ 556[ Optimization",
+    "image": 0,
+    "bbox": [
+     1142,
+     1172,
+     1509,
+     1215
+    ],
+    "conf": 90.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 83.8,
+   "pos": 1974,
+   "id": "ONEREPORTPTTT_p43_072",
+   "suggest": "typhoon",
+   "order": 71
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "LT ADJ. EBITDA & NET PROFIT SUSTAINABILITY: NET ZERO BY 2050",
+    "image": 0,
+    "bbox": [
+     245,
+     1209,
+     992,
+     1221
+    ],
+    "conf": 95.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "id": "ONEREPORTPTTT_p43_073",
+   "suggest": "tesseract",
+   "order": 72
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "1 COMPETITIVENESS ENHANCEMENT & GROWTH:",
+    "image": 0,
+    "bbox": [
+     247,
+     1272,
+     654,
+     1300
+    ],
+    "conf": 92.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "id": "ONEREPORTPTTT_p43_074",
+   "suggest": "tesseract",
+   "order": 73
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "EXISTING BUSINESS",
+    "image": 0,
+    "bbox": [
+     290,
+     1289,
+     444,
+     1300
+    ],
+    "conf": 96.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "id": "ONEREPORTPTTT_p43_075",
+   "suggest": "tesseract",
+   "order": 74
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "11 Hydrocarbon & Power Busi 12 ผ๐๓ - i",
+    "image": 0,
+    "bbox": [
+     216,
+     1318,
+     693,
+     1349
+    ],
+    "conf": 90.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "id": "ONEREPORTPTTT_p43_076",
+   "suggest": "tesseract",
+   "order": 75
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Cost Competitiveness Enhancement Right to Play & Attractiveness",
+    "image": 0,
+    "bbox": [
+     235,
+     1347,
+     729,
+     1361
+    ],
+    "conf": 93.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "id": "ONEREPORTPTTT_p43_077",
+   "suggest": "tesseract",
+   "order": 76
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "แกรรพะผด ower อหอบตแอ",
+    "image": 0,
+    "bbox": [
+     258,
+     1379,
+     674,
+     1423
+    ],
+    "conf": 58.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "id": "ONEREPORTPTTT_p43_078",
+   "suggest": "tesseract",
+   "order": 77
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "บุ่งเน้นธุรกิจ EV Charging",
+    "image": 0,
+    "bbox": [
+     552,
+     1407,
+     685,
+     1433
+    ],
+    "conf": 88.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "id": "ONEREPORTPTTT_p43_079",
+   "suggest": "tesseract",
+   "order": 78
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "สร้างความมั่นคง Decarbonize",
+    "image": 0,
+    "bbox": [
+     251,
+     1486,
+     480,
+     1507
+    ],
+    "conf": 87.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "id": "ONEREPORTPTTT_p43_080",
+   "suggest": "tesseract",
+   "order": 79
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "เกาจพลังงานและมี",
+    "image": 0,
+    "bbox": [
+     245,
+     1495,
+     329,
+     1523
+    ],
+    "conf": 84.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "id": "ONEREPORTPTTT_p43_081",
+   "suggest": "tesseract",
+   "order": 80
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Competitive Supply",
+    "image": 0,
+    "bbox": [
+     234,
+     1518,
+     344,
+     1530
+    ],
+    "conf": 81.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "id": "ONEREPORTPTTT_p43_082",
+   "suggest": "tesseract",
+   "order": 81
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "และเสริม Reliability",
+    "image": 0,
+    "bbox": [
+     397,
+     1495,
+     494,
+     1523
+    ],
+    "conf": 88.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2009.5,
+   "id": "ONEREPORTPTTT_p43_083",
+   "suggest": "tesseract",
+   "order": 82
+  },
+  {
+   "typhoon": {
+    "text": "& Monetization) ผ่านการบูรณาการ"
+   },
+   "tesseract": {
+    "text": "& Monetization) ผ่านการบูรณาการ",
+    "image": 0,
+    "bbox": [
+     1141,
+     1214,
+     1510,
+     1255
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2010,
+   "id": "ONEREPORTPTTT_p43_084",
+   "suggest": "typhoon",
+   "order": 83
+  },
+  {
+   "typhoon": {
+    "text": "การดำเนินงานร่วมกันภายในกลุ่ม"
+   },
+   "tesseract": {
+    "text": "การดําเนินงานร่วมกันภายในกลุ่ม",
+    "image": 0,
+    "bbox": [
+     1142,
+     1252,
+     1508,
+     1294
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2039,
+   "id": "ONEREPORTPTTT_p43_085",
+   "suggest": "typhoon",
+   "order": 84
+  },
+  {
+   "typhoon": {
+    "text": "(Synergy) เพื่อเพิ่มประสิทธิภาพ"
+   },
+   "tesseract": {
+    "text": "(Synergy) เพื่อเพิ่มประสิทธิภาพ",
+    "image": 0,
+    "bbox": [
+     1142,
+     1287,
+     1508,
+     1332
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2068,
+   "id": "ONEREPORTPTTT_p43_086",
+   "suggest": "typhoon",
+   "order": 85
+  },
+  {
+   "typhoon": {
+    "text": "การใช้สินทรัพย์ และยกระดับผล"
+   },
+   "tesseract": {
+    "text": "การใช้สินทรัพย์และยกระดับผล",
+    "image": 0,
+    "bbox": [
+     1142,
+     1333,
+     1508,
+     1372
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2098,
+   "id": "ONEREPORTPTTT_p43_087",
+   "suggest": "typhoon",
+   "order": 86
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "การดําเนินงานโดยรวม (6 ห์อกทาลท 06",
+    "image": 0,
+    "bbox": [
+     1142,
+     1373,
+     1510,
+     1412
+    ],
+    "conf": 87.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2124.5,
+   "id": "ONEREPORTPTTT_p43_088",
+   "suggest": "tesseract",
+   "order": 87
+  },
+  {
+   "typhoon": {
+    "text": "การดำเนินงานโดยรวม (Performance"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1305,
+     1000000,
+     1480
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 2125,
+   "id": "ONEREPORTPTTT_p43_089",
+   "suggest": "typhoon",
+   "order": 88
+  },
+  {
+   "typhoon": {
+    "text": "Uplift) อย่างเป็นระบบและยั่งยืน"
+   },
+   "tesseract": {
+    "text": "Uplift) อย่างเป็นระบบและยังยืน",
+    "image": 0,
+    "bbox": [
+     1143,
+     1407,
+     1471,
+     1452
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.7,
+   "pos": 2155,
+   "id": "ONEREPORTPTTT_p43_090",
+   "suggest": "typhoon",
+   "order": 89
+  },
+  {
+   "typhoon": {
+    "text": ". รักษาพื้นฐานที่สำคัญ (Foundation)"
+   },
+   "tesseract": {
+    "text": ". รักษาพื่นฐานที่สําคัญ (Foundation)",
+    "image": 0,
+    "bbox": [
+     1119,
+     1455,
+     1510,
+     1497
+    ],
+    "conf": 91.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.0,
+   "pos": 2186,
+   "id": "ONEREPORTPTTT_p43_091",
+   "suggest": "typhoon",
+   "order": 90
+  },
+  {
+   "typhoon": {
+    "text": "มุ่งเน้นธรรมาภิบาลและการกำกับ"
+   },
+   "tesseract": {
+    "text": "มุ่งเน็นธรรมาภิบาลและการกํากับ",
+    "image": 0,
+    "bbox": [
+     1142,
+     1495,
+     1509,
+     1536
+    ],
+    "conf": 93.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.6,
+   "pos": 2219,
+   "id": "ONEREPORTPTTT_p43_092",
+   "suggest": "typhoon",
+   "order": 91
+  },
+  {
+   "typhoon": {
+    "text": "กิจการที่ดี โดยยกระดับการดำเนินงาน"
+   },
+   "tesseract": {
+    "text": "กิจการที่ดีโดยยกระดับการดําเนินงาน",
+    "image": 0,
+    "bbox": [
+     1142,
+     1528,
+     1510,
+     1576
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2248,
+   "id": "ONEREPORTPTTT_p43_093",
+   "suggest": "typhoon",
+   "order": 92
+  },
+  {
+   "typhoon": {
+    "text": "ด้าน GRC เพื่อสร้างความเข้มแข็งจาก"
+   },
+   "tesseract": {
+    "text": "ด้าน @80 เพื่อสร้างความเข้มแข็งจาก",
+    "image": 0,
+    "bbox": [
+     1143,
+     1568,
+     1509,
+     1616
+    ],
+    "conf": 93.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 90.6,
+   "pos": 2281,
+   "id": "ONEREPORTPTTT_p43_094",
+   "suggest": "typhoon",
+   "order": 93
+  },
+  {
+   "typhoon": {
+    "text": "ภายในสู่ความเชื่อมั่นจากภายนอก"
+   },
+   "tesseract": {
+    "text": "ภายในสู่ความเชื่อมั่นจากภายนอก",
+    "image": 0,
+    "bbox": [
+     1141,
+     1609,
+     1509,
+     1658
+    ],
+    "conf": 95.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2313,
+   "id": "ONEREPORTPTTT_p43_095",
+   "suggest": "typhoon",
+   "order": 94
+  },
+  {
+   "typhoon": {
+    "text": "และสร้างความเป็นเลิศด้านการเงิน"
+   },
+   "tesseract": {
+    "text": "และสร้างความเป็นเลิศด้านการเงิน",
+    "image": 0,
+    "bbox": [
+     1143,
+     1656,
+     1510,
+     1697
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2343,
+   "id": "ONEREPORTPTTT_p43_096",
+   "suggest": "typhoon",
+   "order": 95
+  },
+  {
+   "typhoon": {
+    "text": "โดยรักษาระดับสภาพคล่อง และ"
+   },
+   "tesseract": {
+    "text": "โดยรักษาระดับสภาพคล่องและ",
+    "image": 0,
+    "bbox": [
+     1140,
+     1695,
+     1509,
+     1737
+    ],
+    "conf": 95.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2374,
+   "id": "ONEREPORTPTTT_p43_097",
+   "suggest": "typhoon",
+   "order": 96
+  },
+  {
+   "typhoon": {
+    "text": "Credit Rating ของ ปตท. พร้อมทั้ง"
+   },
+   "tesseract": {
+    "text": "Credit Rating ของปตท . พร้อมทั้ง",
+    "image": 0,
+    "bbox": [
+     1142,
+     1729,
+     1508,
+     1774
+    ],
+    "conf": 95.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2399,
+   "id": "ONEREPORTPTTT_p43_098",
+   "suggest": "typhoon",
+   "order": 97
+  },
+  {
+   "typhoon": {
+    "text": "ดูแลและบริหารจัดการเชิงรุก"
+   },
+   "tesseract": {
+    "text": "ดูแลและบริหารจัดการเชซิงรุก",
+    "image": 0,
+    "bbox": [
+     1143,
+     1778,
+     1509,
+     1818
+    ],
+    "conf": 92.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.3,
+   "pos": 2427,
+   "id": "ONEREPORTPTTT_p43_099",
+   "suggest": "typhoon",
+   "order": 98
+  },
+  {
+   "typhoon": {
+    "text": "ผู้มีส่วนได้ส่วนเสียทุกภาคส่วน"
+   },
+   "tesseract": {
+    "text": "ผู้มีส่วนได้ส่วนเสียทุกภาคส่วน",
+    "image": 0,
+    "bbox": [
+     1139,
+     1815,
+     1510,
+     1858
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2453,
+   "id": "ONEREPORTPTTT_p43_100",
+   "suggest": "typhoon",
+   "order": 99
+  },
+  {
+   "typhoon": {
+    "text": "อย่างสมดุล เพื่อให้กลุ่ม ปตท."
+   },
+   "tesseract": {
+    "text": "อย่างสมดุลเพื่อให้กลุ่มปตท .",
+    "image": 0,
+    "bbox": [
+     1141,
+     1850,
+     1508,
+     1898
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2483,
+   "id": "ONEREPORTPTTT_p43_101",
+   "suggest": "typhoon",
+   "order": 100
+  },
+  {
+   "typhoon": {
+    "text": "ให้กลุ่ม ปตท. มี"
+   },
+   "tesseract": {
+    "text": "ให้กับกลุ่มปตท . ' +",
+    "image": 0,
+    "bbox": [
+     409,
+     1508,
+     661,
+     1536
+    ],
+    "conf": 79.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 70.6,
+   "pos": 2498,
+   "id": "ONEREPORTPTTT_p43_102",
+   "suggest": "typhoon",
+   "order": 101
+  },
+  {
+   "typhoon": {
+    "text": "มีพื้นฐานในการทำธุรกิจที่แข็งแรง"
+   },
+   "tesseract": {
+    "text": "มีพื้นฐานในการทําธุรกิจที่แข็งแรง",
+    "image": 0,
+    "bbox": [
+     1142,
+     1890,
+     1508,
+     1939
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2510,
+   "id": "ONEREPORTPTTT_p43_103",
+   "suggest": "typhoon",
+   "order": 102
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "บุ่งเติบโตแบบ Self-funded",
+    "image": 0,
+    "bbox": [
+     551,
+     1529,
+     686,
+     1557
+    ],
+    "conf": 81.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2511.5,
+   "id": "ONEREPORTPTTT_p43_104",
+   "suggest": "tesseract",
+   "order": 103
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "[ฟะแร rom.",
+    "image": 0,
+    "bbox": [
+     212,
+     1556,
+     495,
+     1619
+    ],
+    "conf": 53.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2511.5,
+   "id": "ONEREPORTPTTT_p43_105",
+   "suggest": "tesseract",
+   "order": 104
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "PETROCHEMICAL TRADING RETAIL ad",
+    "image": 0,
+    "bbox": [
+     212,
+     1602,
+     652,
+     1627
+    ],
+    "conf": 48.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2511.5,
+   "id": "ONEREPORTPTTT_p43_106",
+   "suggest": "tesseract",
+   "order": 105
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "นอเฟ่อนอยกระดับแอพบยพรมตุรร",
+    "image": 0,
+    "bbox": [
+     300,
+     1620,
+     665,
+     1660
+    ],
+    "conf": 73.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2511.5,
+   "id": "ONEREPORTPTTT_p43_107",
+   "suggest": "tesseract",
+   "order": 106
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ความสามารถในการแข่งขันร่วมกับ Partner Streaming การสงกุม",
+    "image": 0,
+    "bbox": [
+     256,
+     1644,
+     673,
+     1677
+    ],
+    "conf": 90.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2511.5,
+   "id": "ONEREPORTPTTT_p43_108",
+   "suggest": "tesseract",
+   "order": 107
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": ". ๓นุ่งเน็นการลงทุนในธุรกิจ Sustainability",
+    "image": 0,
+    "bbox": [
+     319,
+     1664,
+     715,
+     1693
+    ],
+    "conf": 86.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2511.5,
+   "id": "ONEREPORTPTTT_p43_109",
+   "suggest": "tesseract",
+   "order": 108
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "1 0 sto:",
+    "image": 0,
+    "bbox": [
+     305,
+     1685,
+     649,
+     1699
+    ],
+    "conf": 38.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2511.5,
+   "id": "ONEREPORTPTTT_p43_110",
+   "suggest": "tesseract",
+   "order": 109
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "we",
+    "image": 0,
+    "bbox": [
+     309,
+     1705,
+     326,
+     1712
+    ],
+    "conf": 35.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2511.5,
+   "id": "ONEREPORTPTTT_p43_111",
+   "suggest": "tesseract",
+   "order": 110
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ขยายธุรกิจตลอด LNG ปอ [บอ Chain",
+    "image": 0,
+    "bbox": [
+     269,
+     1730,
+     442,
+     1758
+    ],
+    "conf": 89.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2511.5,
+   "id": "ONEREPORTPTTT_p43_112",
+   "suggest": "tesseract",
+   "order": 111
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "พื่อสร้าจป 6 Portfolio Rulounsb ด้วย Scale,",
+    "image": 0,
+    "bbox": [
+     240,
+     1744,
+     472,
+     1772
+    ],
+    "conf": 84.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2511.5,
+   "id": "ONEREPORTPTTT_p43_113",
+   "suggest": "tesseract",
+   "order": 112
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Diversification และ Flexibility",
+    "image": 0,
+    "bbox": [
+     281,
+     1758,
+     431,
+     1786
+    ],
+    "conf": 89.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2511.5,
+   "id": "ONEREPORTPTTT_p43_114",
+   "suggest": "tesseract",
+   "order": 113
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "3 SUSTAINABILITY: UNLEASH BUSINESS VALUES THROUGH SUSTAINABILITY",
+    "image": 0,
+    "bbox": [
+     241,
+     1812,
+     857,
+     1837
+    ],
+    "conf": 91.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2511.5,
+   "id": "ONEREPORTPTTT_p43_115",
+   "suggest": "tesseract",
+   "order": 114
+  },
+  {
+   "typhoon": {
+    "text": "ได้รับการยอมรับ และการสนับสนุน"
+   },
+   "tesseract": {
+    "text": "ได้รับการยอมรับและการสนับสนุน",
+    "image": 0,
+    "bbox": [
+     1139,
+     1937,
+     1510,
+     1979
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2542,
+   "id": "ONEREPORTPTTT_p43_116",
+   "suggest": "typhoon",
+   "order": 115
+  },
+  {
+   "typhoon": {
+    "text": "จากผู้มีส่วนได้ส่วนเสียในการดำเนิน"
+   },
+   "tesseract": {
+    "text": "จากผู้มีส่วนได้ส่วนเสียในการดําเนิน",
+    "image": 0,
+    "bbox": [
+     1141,
+     1976,
+     1510,
+     2019
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2571,
+   "id": "ONEREPORTPTTT_p43_117",
+   "suggest": "typhoon",
+   "order": 116
+  },
+  {
+   "typhoon": {
+    "text": "ธุรกิจ (License to operate)"
+   },
+   "tesseract": {
+    "text": "ธุรกิจ (License to operate)",
+    "image": 0,
+    "bbox": [
+     1142,
+     2020,
+     1417,
+     2060
+    ],
+    "conf": 95.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2605,
+   "id": "ONEREPORTPTTT_p43_118",
+   "suggest": "typhoon",
+   "order": 117
+  },
+  {
+   "typhoon": {
+    "text": "กลยุทธ์การดำเนินธุรกิจ"
+   },
+   "tesseract": {
+    "text": "กลยุทธ์การดําเน็นธุรกิจ",
+    "image": 0,
+    "bbox": [
+     465,
+     1062,
+     753,
+     1101
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 95.5,
+   "pos": 2629,
+   "id": "ONEREPORTPTTT_p43_119",
+   "suggest": "typhoon",
+   "order": 118
+  },
+  {
+   "typhoon": {
+    "text": "Strategic Direction"
+   },
+   "tesseract": {
+    "text": "Strategic Direction",
+    "image": 0,
+    "bbox": [
+     469,
+     1107,
+     749,
+     1135
+    ],
+    "conf": 95.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2651,
+   "id": "ONEREPORTPTTT_p43_120",
+   "suggest": "typhoon",
+   "order": 119
+  }
+ ],
+ "split": {
+  "method": "none",
+  "x": null,
+  "dpi": 200
+ }
+}

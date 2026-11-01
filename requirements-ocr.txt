@@ -7,3 +7,4 @@ torchvision==0.26.0+cu128
 transformers==5.20.2
 accelerate==1.15.0
 pillow==12.3.0
+rapidfuzz==3.14.5

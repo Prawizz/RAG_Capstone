@@ -1,0 +1,1434 @@
+{
+ "file": "ONEREPORTKBANKT.PDF",
+ "page": 2,
+ "typhoon": {
+  "backend": "typhoon-local",
+  "model": "scb10x/typhoon-ocr1.5-2b",
+  "revision": "15b381a2d625",
+  "seconds": 62.91482980013825,
+  "tokens": 1230
+ },
+ "tesseract": {
+  "backend": "tesseract-local",
+  "model": "tesseract-5.4.0.20240606",
+  "revision": "b02ddf48069f",
+  "seconds": 2.884643000084907
+ },
+ "typhoon_page_numbers": [],
+ "figures": [
+  "ภาพโลโก้ของ KASIKORNTHAI เป็นตัวอักษร \"K\" ขนาดใหญ่สีขาวที่มีลักษณะเป็นลายเส้นคล้ายกับใบไม้หรือคลื่น และมีคำว่า \"KASIKORNTHAI\" อยู่ด้านล่างในกรอบสี่เหลี่ยมผืนผ้าสีเทาอ่อน",
+  "ภาพถ่ายขาวดำของหญิงสาวชาวไทยในชุดไทยโบราณสีอ่อนหรือสีเทาอ่อน เธอมีผมสีเข้มรวบขึ้นเป็นทรงสูงประดับด้วยเครื่องประดับทรงกลมเล็กๆ ที่ศีรษะ เธอสวมสร้อยคอทองคำและต่างหูทรงกลมเล็กๆ ด้านขวาของเธอสวมผ้าคลุมไหล่ที่มีลวดลายละเอียดอ่อนคล้ายผ้าไหมสีเข้ม มีเข็มกลัดสีขาวติดอยู่ที่ข้อมือซ้าย ภาพนี้ถูกจัดวางในกรอบวงรีสีเงินที่มีลวดลายประดับอยู่รอบๆ ซึ่งทำให้ดูเหมือนภาพถ่ายในสมัยเก่าหรือภาพวาด ภาพพื้นหลังเป็นสีเข้ม มีลวดลายดอกไม้หรือใบไม้เล็กๆ ซ้ำๆ กันทั่วทั้งพื้นหลัง"
+ ],
+ "skipped_tesseract": [
+  {
+   "text": "ว",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    165,
+    395,
+    178,
+    402
+   ]
+  },
+  {
+   "text": "i Er ov od",
+   "reason": "conf ต่ำ (18.0)",
+   "image": 0,
+   "bbox": [
+    151,
+    758,
+    403,
+    794
+   ]
+  },
+  {
+   "text": "๓",
+   "reason": "สั้นเกินไป",
+   "image": 1,
+   "bbox": [
+    1700,
+    1573,
+    1734,
+    1608
+   ]
+  }
+ ],
+ "counts": {
+  "agree": 24,
+  "agree_audit": 3,
+  "diff": 10,
+  "typhoon_only": 15,
+  "tesseract_only": 4,
+  "to_judge": 32
+ },
+ "items": [
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "fe",
+    "image": 0,
+    "bbox": [
+     324,
+     93,
+     378,
+     140
+    ],
+    "conf": 51.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": -0.5,
+   "id": "ONEREPORTKBANKT_p2_001",
+   "suggest": "tesseract",
+   "order": 0
+  },
+  {
+   "typhoon": {
+    "text": "ธนาคารกสิกรไทย"
+   },
+   "tesseract": {
+    "text": "ธนาคารกสิกรไทย",
+    "image": 0,
+    "bbox": [
+     236,
+     187,
+     463,
+     232
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 0,
+   "id": "ONEREPORTKBANKT_p2_002",
+   "suggest": "typhoon",
+   "order": 1
+  },
+  {
+   "typhoon": {
+    "text": "รายงานแบบ 56-1 One Report"
+   },
+   "tesseract": {
+    "text": "รายงานแบบ 56-1 One Report",
+    "image": 0,
+    "bbox": [
+     150,
+     246,
+     551,
+     276
+    ],
+    "conf": 95.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 14,
+   "id": "ONEREPORTKBANKT_p2_003",
+   "suggest": "typhoon",
+   "order": 2
+  },
+  {
+   "typhoon": {
+    "text": "ประจำปี 2568"
+   },
+   "tesseract": {
+    "text": "ประจําปี 2568",
+    "image": 0,
+    "bbox": [
+     259,
+     281,
+     440,
+     328
+    ],
+    "conf": 93.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 36,
+   "id": "ONEREPORTKBANKT_p2_004",
+   "suggest": "typhoon",
+   "order": 3
+  },
+  {
+   "typhoon": {
+    "text": "สารบัญ"
+   },
+   "tesseract": {
+    "text": "สารบัญ",
+    "image": 0,
+    "bbox": [
+     121,
+     391,
+     194,
+     430
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 47,
+   "id": "ONEREPORTKBANKT_p2_005",
+   "suggest": "typhoon",
+   "order": 4
+  },
+  {
+   "typhoon": {
+    "text": "สารจากคณะกรรมการธนาคาร"
+   },
+   "tesseract": {
+    "text": "สารจากคณะกรรมการธนาคาร",
+    "image": 0,
+    "bbox": [
+     121,
+     460,
+     405,
+     499
+    ],
+    "conf": 95.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 53,
+   "id": "ONEREPORTKBANKT_p2_006",
+   "suggest": "typhoon",
+   "order": 5
+  },
+  {
+   "typhoon": {
+    "text": "สารจากประธานเจ้าหน้าที่บริหาร"
+   },
+   "tesseract": {
+    "text": "สารจากประธานเจ้าหน้าที่บริหาร",
+    "image": 0,
+    "bbox": [
+     121,
+     515,
+     424,
+     552
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 75,
+   "id": "ONEREPORTKBANKT_p2_007",
+   "suggest": "typhoon",
+   "order": 6
+  },
+  {
+   "typhoon": {
+    "text": "ส่วนที่ 1 การประกอบธุรกิจและผลการดำเนินงาน"
+   },
+   "tesseract": {
+    "text": "ส่วนที่ 1 การประกอบธุรกิจและผลการดําเนินงาน",
+    "image": 0,
+    "bbox": [
+     121,
+     571,
+     580,
+     612
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 104,
+   "id": "ONEREPORTKBANKT_p2_008",
+   "suggest": "typhoon",
+   "order": 7
+  },
+  {
+   "typhoon": {
+    "text": "1. โครงสร้างและการดำเนินงาน"
+   },
+   "tesseract": {
+    "text": "1. โครงสร้างและการดําเนินงาน",
+    "image": 0,
+    "bbox": [
+     122,
+     606,
+     398,
+     641
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 144,
+   "id": "ONEREPORTKBANKT_p2_009",
+   "suggest": "typhoon",
+   "order": 8
+  },
+  {
+   "typhoon": {
+    "text": "ของกลุ่มธุรกิจทางการเงินธนาคารกสิกรไทย"
+   },
+   "tesseract": {
+    "text": "ของกลุ่มธุรกิจทางการเงินธนาคารกสิกรไทย",
+    "image": 0,
+    "bbox": [
+     148,
+     640,
+     529,
+     678
+    ],
+    "conf": 95.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 170,
+   "id": "ONEREPORTKBANKT_p2_010",
+   "suggest": "typhoon",
+   "order": 9
+  },
+  {
+   "typhoon": {
+    "text": ". การบริหารจัดการความเสี่ยง"
+   },
+   "tesseract": {
+    "text": ". การบริหารจัดการความเสียง",
+    "image": 0,
+    "bbox": [
+     133,
+     673,
+     392,
+     708
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.2,
+   "pos": 209,
+   "id": "ONEREPORTKBANKT_p2_011",
+   "suggest": "typhoon",
+   "order": 10
+  },
+  {
+   "typhoon": {
+    "text": ". การขับเคลื่อนธุรกิจเพื่อความยั่งยืน"
+   },
+   "tesseract": {
+    "text": ". การขับเคลื่อนธุรกิจเพื่อความยังยืน",
+    "image": 0,
+    "bbox": [
+     133,
+     706,
+     450,
+     744
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.2,
+   "pos": 236,
+   "id": "ONEREPORTKBANKT_p2_012",
+   "suggest": "typhoon",
+   "order": 11
+  },
+  {
+   "typhoon": {
+    "text": ". การวิเคราะห์และคำอธิบายของฝ่ายจัดการ"
+   },
+   "tesseract": {
+    "text": ". การวิเคราะห์และคําอธิบายของฝ่ายจัดการ",
+    "image": 0,
+    "bbox": [
+     133,
+     739,
+     510,
+     775
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 273,
+   "id": "ONEREPORTKBANKT_p2_013",
+   "suggest": "typhoon",
+   "order": 12
+  },
+  {
+   "typhoon": {
+    "text": ". ข้อมูลทั่วไปและข้อมูลสำคัญอื่น"
+   },
+   "tesseract": {
+    "text": ". ข้อมูลทัวไปและข้อมูลสําคัญอื่น",
+    "image": 0,
+    "bbox": [
+     133,
+     773,
+     419,
+     811
+    ],
+    "conf": 93.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.8,
+   "pos": 311,
+   "id": "ONEREPORTKBANKT_p2_014",
+   "suggest": "typhoon",
+   "order": 13
+  },
+  {
+   "typhoon": {
+    "text": "ส่วนที่ 2 การกำกับดูแลกิจการ"
+   },
+   "tesseract": {
+    "text": "ส่วนที่ 2 การกํากับดูแลกิจการ",
+    "image": 0,
+    "bbox": [
+     121,
+     820,
+     406,
+     867
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 342,
+   "id": "ONEREPORTKBANKT_p2_015",
+   "suggest": "typhoon",
+   "order": 14
+  },
+  {
+   "typhoon": {
+    "text": "6. นโยบายการกำกับดูแลกิจการ"
+   },
+   "tesseract": {
+    "text": "6. นโยบายการกํากับดูแลกิจการ",
+    "image": 0,
+    "bbox": [
+     121,
+     862,
+     403,
+     900
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 368,
+   "id": "ONEREPORTKBANKT_p2_016",
+   "suggest": "typhoon",
+   "order": 15
+  },
+  {
+   "typhoon": {
+    "text": "7. โครงสร้างการกำกับดูแลกิจการ"
+   },
+   "tesseract": {
+    "text": "7. โครงสร้างการกํากับดูแลกิจการ",
+    "image": 0,
+    "bbox": [
+     121,
+     895,
+     418,
+     933
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 394,
+   "id": "ONEREPORTKBANKT_p2_017",
+   "suggest": "typhoon",
+   "order": 16
+  },
+  {
+   "typhoon": {
+    "text": "และข้อมูลสำคัญเกี่ยวกับคณะกรรมการ"
+   },
+   "tesseract": {
+    "text": "และข้อมูลสําคัญเกี่ยวกับคณะกรรมการ",
+    "image": 0,
+    "bbox": [
+     149,
+     922,
+     484,
+     966
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 423,
+   "id": "ONEREPORTKBANKT_p2_018",
+   "suggest": "typhoon",
+   "order": 17
+  },
+  {
+   "typhoon": {
+    "text": "คณะกรรมการชุดย่อย ผู้บริหาร พนักงาน และอื่นๆ"
+   },
+   "tesseract": {
+    "text": "คณะกรรมการชุดย่อยผู้บริหารพนักงานและอื่นๆ",
+    "image": 0,
+    "bbox": [
+     148,
+     956,
+     580,
+     1000
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 456,
+   "id": "ONEREPORTKBANKT_p2_019",
+   "suggest": "typhoon",
+   "order": 18
+  },
+  {
+   "typhoon": {
+    "text": ". รายงานผลการดำเนินงานสำคัญ"
+   },
+   "tesseract": {
+    "text": ". รายงานผลการดําเนินงานสําคัญ",
+    "image": 0,
+    "bbox": [
+     133,
+     996,
+     424,
+     1032
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 498,
+   "id": "ONEREPORTKBANKT_p2_020",
+   "suggest": "typhoon",
+   "order": 19
+  },
+  {
+   "typhoon": {
+    "text": "ด้านการกำกับดูแลกิจการ"
+   },
+   "tesseract": {
+    "text": "ด้านการกํากับดูแลกิจการ",
+    "image": 0,
+    "bbox": [
+     148,
+     1028,
+     369,
+     1066
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 524,
+   "id": "ONEREPORTKBANKT_p2_021",
+   "suggest": "typhoon",
+   "order": 20
+  },
+  {
+   "typhoon": {
+    "text": "9. การควบคุมภายในและรายการระหว่างกัน"
+   },
+   "tesseract": {
+    "text": "9. การควบคุมภายในและรายการระหว่างกัน",
+    "image": 0,
+    "bbox": [
+     120,
+     1062,
+     505,
+     1100
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 546,
+   "id": "ONEREPORTKBANKT_p2_022",
+   "suggest": "typhoon",
+   "order": 21
+  },
+  {
+   "typhoon": {
+    "text": "ส่วนที่ 3 งบการเงิน"
+   },
+   "tesseract": {
+    "text": "ส่วนที่ 3 งบการเงิน",
+    "image": 0,
+    "bbox": [
+     121,
+     1109,
+     305,
+     1153
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 581,
+   "id": "ONEREPORTKBANKT_p2_023",
+   "suggest": "typhoon",
+   "order": 22
+  },
+  {
+   "typhoon": {
+    "text": "น รายงานความรับผิดชอบของคณะกรรมการธนาคาร"
+   },
+   "tesseract": {
+    "text": "๑รายงานความรับผิดชอบของคณะกรรมการธนาคาร",
+    "image": 0,
+    "bbox": [
+     120,
+     1152,
+     587,
+     1186
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.4,
+   "pos": 597,
+   "id": "ONEREPORTKBANKT_p2_024",
+   "suggest": "typhoon",
+   "order": 23
+  },
+  {
+   "typhoon": {
+    "text": "ต่อรายงานทางการเงิน"
+   },
+   "tesseract": {
+    "text": "ต่อรายงานทางการเงิน",
+    "image": 0,
+    "bbox": [
+     148,
+     1184,
+     344,
+     1219
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 636,
+   "id": "ONEREPORTKBANKT_p2_025",
+   "suggest": "typhoon",
+   "order": 24
+  },
+  {
+   "typhoon": {
+    "text": "รายงานของผู้สอบบัญชีรับอนุญาต"
+   },
+   "tesseract": {
+    "text": "รายงานของผู้สอบบัญชีรับอนุญาต",
+    "image": 0,
+    "bbox": [
+     145,
+     1217,
+     442,
+     1257
+    ],
+    "conf": 93.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 655,
+   "id": "ONEREPORTKBANKT_p2_026",
+   "suggest": "typhoon",
+   "order": 25
+  },
+  {
+   "typhoon": {
+    "text": "บการเงินและหมายเหตุประกอบงบการเงิน"
+   },
+   "tesseract": {
+    "text": "บการเงินและหมายเหตุประกอบงบการเงิน",
+    "image": 0,
+    "bbox": [
+     158,
+     1252,
+     522,
+     1289
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 685,
+   "id": "ONEREPORTKBANKT_p2_027",
+   "suggest": "typhoon",
+   "order": 26
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "KASIKORNTHAI",
+    "image": 0,
+    "bbox": [
+     1273,
+     1205,
+     1827,
+     1261
+    ],
+    "conf": 92.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 718.5,
+   "id": "ONEREPORTKBANKT_p2_028",
+   "suggest": "tesseract",
+   "order": 27
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1224,
+     1000000,
+     1537
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 719,
+   "id": "ONEREPORTKBANKT_p2_029",
+   "suggest": "typhoon",
+   "order": 28
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 1"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1224,
+     1000000,
+     1537
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 728,
+   "id": "ONEREPORTKBANKT_p2_030",
+   "suggest": "typhoon",
+   "order": 29
+  },
+  {
+   "typhoon": {
+    "text": "รายละเอียดเกี่ยวกับกรรมการ ผู้บริหาร"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1224,
+     1000000,
+     1537
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 738,
+   "id": "ONEREPORTKBANKT_p2_031",
+   "suggest": "typhoon",
+   "order": 30
+  },
+  {
+   "typhoon": {
+    "text": "ผู้มีอำนาจควบคุม เลขานุการบริษัท และสมุห์บัญชีใหญ่"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1224,
+     1000000,
+     1537
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 773,
+   "id": "ONEREPORTKBANKT_p2_032",
+   "suggest": "typhoon",
+   "order": 31
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 2"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1224,
+     1000000,
+     1537
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 821,
+   "id": "ONEREPORTKBANKT_p2_033",
+   "suggest": "typhoon",
+   "order": 32
+  },
+  {
+   "typhoon": {
+    "text": "รายละเ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1224,
+     1000000,
+     1537
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 831,
+   "id": "ONEREPORTKBANKT_p2_034",
+   "suggest": "typhoon",
+   "order": 33
+  },
+  {
+   "typhoon": {
+    "text": "อียดเกี่ยวกับการดำรงตำแหน่ง"
+   },
+   "tesseract": {
+    "text": "อียดเกียวกับการดํารงตําแหน่ง",
+    "image": 0,
+    "bbox": [
+     180,
+     1473,
+     446,
+     1509
+    ],
+    "conf": 93.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.3,
+   "pos": 837,
+   "id": "ONEREPORTKBANKT_p2_035",
+   "suggest": "typhoon",
+   "order": 34
+  },
+  {
+   "typhoon": {
+    "text": "ของกรร"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1445,
+     1000000,
+     1572
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 864,
+   "id": "ONEREPORTKBANKT_p2_036",
+   "suggest": "typhoon",
+   "order": 35
+  },
+  {
+   "typhoon": {
+    "text": "มการและผู้บริหารธนาคารในบริษัทย่อย"
+   },
+   "tesseract": {
+    "text": "มการและผู้บริหารธนาคารในบริษัทย่อย",
+    "image": 0,
+    "bbox": [
+     192,
+     1505,
+     530,
+     1544
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 870,
+   "id": "ONEREPORTKBANKT_p2_037",
+   "suggest": "typhoon",
+   "order": 36
+  },
+  {
+   "typhoon": {
+    "text": "ย บริษัทร่วม การร่วมค้า และบริษัทที่เกี่ยวข้อง"
+   },
+   "tesseract": {
+    "text": ". บริษัทร่วมการร่วมค้าและบริษัททีเกียวข้อง",
+    "image": 0,
+    "bbox": [
+     106,
+     1540,
+     501,
+     1575
+    ],
+    "conf": 93.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 93.0,
+   "pos": 903,
+   "id": "ONEREPORTKBANKT_p2_038",
+   "suggest": "typhoon",
+   "order": 37
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 3"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1512,
+     1000000,
+     1809
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 946,
+   "id": "ONEREPORTKBANKT_p2_039",
+   "suggest": "typhoon",
+   "order": 38
+  },
+  {
+   "typhoon": {
+    "text": "รายละเอียดเกี่ยวกับหัวหน้าหน่วยงานตรวจสอบภายใน"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1512,
+     1000000,
+     1809
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 956,
+   "id": "ONEREPORTKBANKT_p2_040",
+   "suggest": "typhoon",
+   "order": 39
+  },
+  {
+   "typhoon": {
+    "text": "และหัวหน้างานกำกับดูแลการปฏิบัติงาน"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1512,
+     1000000,
+     1809
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1002,
+   "id": "ONEREPORTKBANKT_p2_041",
+   "suggest": "typhoon",
+   "order": 40
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 4"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1512,
+     1000000,
+     1809
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1037,
+   "id": "ONEREPORTKBANKT_p2_042",
+   "suggest": "typhoon",
+   "order": 41
+  },
+  {
+   "typhoon": {
+    "text": "ทรัพย์สินที่ใช้ในการประกอบธุรกิจ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1512,
+     1000000,
+     1809
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1047,
+   "id": "ONEREPORTKBANKT_p2_043",
+   "suggest": "typhoon",
+   "order": 42
+  },
+  {
+   "typhoon": {
+    "text": "และรายละเอียดเกี่ยวกับรา"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1512,
+     1000000,
+     1809
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1079,
+   "id": "ONEREPORTKBANKT_p2_044",
+   "suggest": "typhoon",
+   "order": 43
+  },
+  {
+   "typhoon": {
+    "text": "ยการประเมินราคาทรัพย์สิน"
+   },
+   "tesseract": {
+    "text": "ยการประเมินราคาทรัพย์สิน",
+    "image": 0,
+    "bbox": [
+     349,
+     1730,
+     590,
+     1781
+    ],
+    "conf": 93.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1103,
+   "id": "ONEREPORTKBANKT_p2_045",
+   "suggest": "typhoon",
+   "order": 44
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 5"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1702,
+     1000000,
+     1906
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1127,
+   "id": "ONEREPORTKBANKT_p2_046",
+   "suggest": "typhoon",
+   "order": 45
+  },
+  {
+   "typhoon": {
+    "text": "นโยบายและแนวปฏิบัติการกำกับดูแลกิจการ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1702,
+     1000000,
+     1906
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1137,
+   "id": "ONEREPORTKBANKT_p2_047",
+   "suggest": "typhoon",
+   "order": 46
+  },
+  {
+   "typhoon": {
+    "text": "และจรรยาบรรณธุรกิจ (ฉบับเต็ม) เ"
+   },
+   "tesseract": {
+    "text": "และจรรยาบรรณรธุรกิจ (ฉบับเต็ม ) .",
+    "image": 0,
+    "bbox": [
+     122,
+     1839,
+     431,
+     1878
+    ],
+    "conf": 90.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 93.3,
+   "pos": 1174,
+   "id": "ONEREPORTKBANKT_p2_048",
+   "suggest": "typhoon",
+   "order": 47
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 6"
+   },
+   "tesseract": {
+    "text": "เอกสารแนบ 6",
+    "image": 0,
+    "bbox": [
+     121,
+     1883,
+     248,
+     1899
+    ],
+    "conf": 95.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1202,
+   "id": "ONEREPORTKBANKT_p2_049",
+   "suggest": "typhoon",
+   "order": 48
+  },
+  {
+   "typhoon": {
+    "text": "รายงานคณะกรรมการชุดย่อย"
+   },
+   "tesseract": {
+    "text": "รายงานคณะกรรมการชุดย่อย",
+    "image": 0,
+    "bbox": [
+     120,
+     1906,
+     377,
+     1944
+    ],
+    "conf": 95.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1212,
+   "id": "ONEREPORTKBANKT_p2_050",
+   "suggest": "typhoon",
+   "order": 49
+  },
+  {
+   "typhoon": {
+    "text": "รางวัลเกียรติคุณ"
+   },
+   "tesseract": {
+    "text": "รางวัลเกียรติคุณ",
+    "image": 0,
+    "bbox": [
+     120,
+     1940,
+     264,
+     1978
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1235,
+   "id": "ONEREPORTKBANKT_p2_051",
+   "suggest": "typhoon",
+   "order": 50
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "~~ บ =",
+    "image": 1,
+    "bbox": [
+     1261,
+     1463,
+     1402,
+     1513
+    ],
+    "conf": 60.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1250.5,
+   "id": "ONEREPORTKBANKT_p2_052",
+   "suggest": "tesseract",
+   "order": 51
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "oof @ โอร Yea",
+    "image": 1,
+    "bbox": [
+     1173,
+     1481,
+     1495,
+     1534
+    ],
+    "conf": 58.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1250.5,
+   "id": "ONEREPORTKBANKT_p2_053",
+   "suggest": "tesseract",
+   "order": 52
+  },
+  {
+   "typhoon": {
+    "text": "สถิตอยู่ในใจตราบนิรันดร์"
+   },
+   "tesseract": {
+    "text": "สถิตอยู่ในใจตราบนิรันตร์",
+    "image": 1,
+    "bbox": [
+     959,
+     1571,
+     1724,
+     1707
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 95.8,
+   "pos": 1251,
+   "id": "ONEREPORTKBANKT_p2_054",
+   "suggest": "typhoon",
+   "order": 53
+  },
+  {
+   "typhoon": {
+    "text": "น้อมสำนึกในพระมหากรุณาธิคุณเป็นสันพันอันหาที่สุดมิได้"
+   },
+   "tesseract": {
+    "text": "น้อมลํานึกในพระผหากรุณาจิคุณเป็นลันพันอันหาที่สุดผิได้",
+    "image": 1,
+    "bbox": [
+     695,
+     1700,
+     1997,
+     1806
+    ],
+    "conf": 91.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 90.6,
+   "pos": 1275,
+   "id": "ONEREPORTKBANKT_p2_055",
+   "suggest": "typhoon",
+   "order": 54
+  },
+  {
+   "typhoon": {
+    "text": "ข้าพระพุทธเจ้า คณะกรรมการ ผู้บริหาร และพนักงาน บมจ. ธนาคารกสิกรไทย"
+   },
+   "tesseract": {
+    "text": "ข้าพระพุทธเจ้าคณะกรรมการผู้บริหา 7 รและพนักงานบมจ . ธนาคารกสิกรไทย",
+    "image": 1,
+    "bbox": [
+     743,
+     1951,
+     1921,
+     2016
+    ],
+    "conf": 93.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.4,
+   "pos": 1328,
+   "id": "ONEREPORTKBANKT_p2_056",
+   "suggest": "typhoon",
+   "order": 55
+  }
+ ],
+ "split": {
+  "method": "gutter",
+  "x": 0.4675609756097561,
+  "dpi": 200
+ }
+}

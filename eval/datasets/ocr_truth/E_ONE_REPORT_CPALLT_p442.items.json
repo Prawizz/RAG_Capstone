@@ -1,0 +1,1740 @@
+{
+ "file": "E_ONE_REPORT_CPALLT.PDF",
+ "page": 442,
+ "typhoon": {
+  "backend": "typhoon-local",
+  "model": "scb10x/typhoon-ocr1.5-2b",
+  "revision": "15b381a2d625",
+  "seconds": 54.49999009992462,
+  "tokens": 1339
+ },
+ "tesseract": {
+  "backend": "tesseract-local",
+  "model": "tesseract-5.4.0.20240606",
+  "revision": "b02ddf48069f",
+  "seconds": 9.2036100999685
+ },
+ "typhoon_page_numbers": [
+  436
+ ],
+ "figures": [],
+ "skipped_tesseract": [
+  {
+   "text": "o",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    1098,
+    565,
+    1109,
+    572
+   ]
+  },
+  {
+   "text": "ญ",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    439,
+    908,
+    457,
+    926
+   ]
+  },
+  {
+   "text": "ย",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    463,
+    945,
+    472,
+    954
+   ]
+  },
+  {
+   "text": "จ",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    816,
+    1124,
+    828,
+    1132
+   ]
+  },
+  {
+   "text": "9",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    785,
+    1169,
+    794,
+    1178
+   ]
+  },
+  {
+   "text": ". .",
+   "reason": "conf ต่ำ (4.4)",
+   "image": 0,
+   "bbox": [
+    985,
+    1283,
+    1366,
+    1292
+   ]
+  },
+  {
+   "text": "q",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    1106,
+    1601,
+    1113,
+    1608
+   ]
+  },
+  {
+   "text": "จ",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    1211,
+    1714,
+    1217,
+    1721
+   ]
+  },
+  {
+   "text": "ม",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    920,
+    1788,
+    929,
+    1797
+   ]
+  },
+  {
+   "text": "จ",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    956,
+    1825,
+    962,
+    1832
+   ]
+  },
+  {
+   "text": "a",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    293,
+    1795,
+    306,
+    1803
+   ]
+  },
+  {
+   "text": "8",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    293,
+    1806,
+    307,
+    1823
+   ]
+  }
+ ],
+ "counts": {
+  "agree": 11,
+  "agree_audit": 1,
+  "diff": 18,
+  "typhoon_only": 3,
+  "tesseract_only": 33,
+  "to_judge": 55
+ },
+ "items": [
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "av รค d ๐ aw 1",
+    "image": 0,
+    "bbox": [
+     163,
+     109,
+     678,
+     123
+    ],
+    "conf": 63.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": -0.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_001",
+   "suggest": "tesseract",
+   "order": 0
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "บรษท FW ออลล 910A (มหาชน ) และบรษทยอย",
+    "image": 0,
+    "bbox": [
+     146,
+     118,
+     711,
+     154
+    ],
+    "conf": 92.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": -0.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_002",
+   "suggest": "tesseract",
+   "order": 1
+  },
+  {
+   "typhoon": {
+    "text": "บริษัท ซีพี ออลล์ จำกัด (มหาชน) และบริษัทย่อย"
+   },
+   "tesseract": null,
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 0,
+   "id": "E_ONE_REPORT_CPALLT_p442_003",
+   "suggest": "typhoon",
+   "order": 2
+  },
+  {
+   "typhoon": {
+    "text": "หมายเหตุประกอบงบการเงิน"
+   },
+   "tesseract": {
+    "text": "หมายเหตุประกอบงบการเงิน",
+    "image": 0,
+    "bbox": [
+     146,
+     164,
+     485,
+     211
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 40,
+   "id": "E_ONE_REPORT_CPALLT_p442_004",
+   "suggest": "typhoon",
+   "order": 3
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ow aa odo",
+    "image": 0,
+    "bbox": [
+     154,
+     213,
+     447,
+     233
+    ],
+    "conf": 52.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 62.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_005",
+   "suggest": "tesseract",
+   "order": 4
+  },
+  {
+   "typhoon": {
+    "text": "สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2568"
+   },
+   "tesseract": {
+    "text": "สําหรับปีสินสุดวันที 31 ธนวาคม 2568",
+    "image": 0,
+    "bbox": [
+     143,
+     219,
+     595,
+     267
+    ],
+    "conf": 92.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 91.2,
+   "pos": 63,
+   "id": "E_ONE_REPORT_CPALLT_p442_006",
+   "suggest": "typhoon",
+   "order": 5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "oa 2 ou aw Ps Pe",
+    "image": 0,
+    "bbox": [
+     338,
+     326,
+     872,
+     356
+    ],
+    "conf": 44.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 96.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_007",
+   "suggest": "tesseract",
+   "order": 6
+  },
+  {
+   "typhoon": {
+    "text": ") บริษัทมีสัญญาบริการฉบับหนึ่งกับบริษัท เคาน์เตอร์เซอร์วิส จำกัด ซึ่งเป็นบริษัทย่อยในประเทศแห่งหนึ่ง"
+   },
+   "tesseract": {
+    "text": "@) บริษัทมีสัญญาบริการฉบับหนึ่งกับบริษัทเคาน์เตอร์เซอร์วิสจํากัดซึ่งเป็นบริษัทย่อยในประเทศแห่งหนึ่ง",
+    "image": 0,
+    "bbox": [
+     220,
+     332,
+     1465,
+     378
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 99.0,
+   "pos": 99,
+   "id": "E_ONE_REPORT_CPALLT_p442_008",
+   "suggest": "typhoon",
+   "order": 7
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ม o a a oa = @ - a N a 4",
+    "image": 0,
+    "bbox": [
+     386,
+     385,
+     1385,
+     403
+    ],
+    "conf": 53.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 194.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_009",
+   "suggest": "tesseract",
+   "order": 8
+  },
+  {
+   "typhoon": {
+    "text": "ภายใต้เงื่อนไขของสัญญา บริษัทจะดำเนินการเป็นตัวแทนการรับชำระเงินค่าบริการตามรายการที่ระบุไว้"
+   },
+   "tesseract": {
+    "text": "ภายใต้เงื่อนไขของสัญญาบริษัทจะดําเนินการเป็นตัวแทนการรับชําระเงินค่าบริการตามรายการที่ระบุไว้",
+    "image": 0,
+    "bbox": [
+     296,
+     387,
+     1469,
+     436
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 195,
+   "id": "E_ONE_REPORT_CPALLT_p442_010",
+   "suggest": "typhoon",
+   "order": 9
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "aw ๑",
+    "image": 0,
+    "bbox": [
+     940,
+     451,
+     1053,
+     460
+    ],
+    "conf": 47.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 285.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_011",
+   "suggest": "tesseract",
+   "order": 10
+  },
+  {
+   "typhoon": {
+    "text": "ในสัญญา ในการนี้ บริษัทย่อยตกลงจะจ่ายค่าบริการให้กับบริษัทตามจำนวนเงินที่ระบุไว้ในสัญญา ทั้งนี้หาก"
+   },
+   "tesseract": {
+    "text": "ในสัญญาในการนีบริษัทย่อยตกลงจะจ่ายค่าบริการให้กับบริษัทตามจํานวนเงินทีระบุไว้ในสัญญาทั้งนี้หาก",
+    "image": 0,
+    "bbox": [
+     295,
+     445,
+     1465,
+     492
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.9,
+   "pos": 286,
+   "id": "E_ONE_REPORT_CPALLT_p442_012",
+   "suggest": "typhoon",
+   "order": 11
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ข่",
+    "image": 0,
+    "bbox": [
+     999,
+     497,
+     1008,
+     505
+    ],
+    "conf": 39.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 380.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_013",
+   "suggest": "tesseract",
+   "order": 12
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "\"| A ro",
+    "image": 0,
+    "bbox": [
+     393,
+     493,
+     1053,
+     521
+    ],
+    "conf": 42.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 380.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_014",
+   "suggest": "tesseract",
+   "order": 13
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "; หะ",
+    "image": 0,
+    "bbox": [
+     533,
+     498,
+     1172,
+     507
+    ],
+    "conf": 25.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 380.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_015",
+   "suggest": "tesseract",
+   "order": 14
+  },
+  {
+   "typhoon": {
+    "text": "คู่"
+   },
+   "tesseract": {
+    "text": "คู่",
+    "image": 0,
+    "bbox": [
+     293,
+     1736,
+     311,
+     1780
+    ],
+    "conf": 92.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 381,
+   "id": "E_ONE_REPORT_CPALLT_p442_016",
+   "suggest": "typhoon",
+   "order": 15
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ปู",
+    "image": 0,
+    "bbox": [
+     297,
+     1768,
+     307,
+     1776
+    ],
+    "conf": 76.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 383.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_017",
+   "suggest": "tesseract",
+   "order": 16
+  },
+  {
+   "typhoon": {
+    "text": "ัญญาฝ่ายใดฝ่ายหนึ่งมีความประสงค์ที่จะขอเลิกสัญญาฉบับนี้ คู่สัญญาฝ่ายนั้นจะต้องทำหนังสือแจ้งให้"
+   },
+   "tesseract": {
+    "text": "ัญญาฝ่ายใดฝ่ายหนึ่งมีความประสงค์ที่จะขอเลิกสัญญาฉบับนี้คู่สัญญาฝ่ายนั้นจะต้องทําหนังสือแจ้งให้",
+    "image": 0,
+    "bbox": [
+     327,
+     500,
+     1467,
+     547
+    ],
+    "conf": 93.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 385,
+   "id": "E_ONE_REPORT_CPALLT_p442_018",
+   "suggest": "typhoon",
+   "order": 17
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "De ๕",
+    "image": 0,
+    "bbox": [
+     1007,
+     533,
+     1042,
+     571
+    ],
+    "conf": 84.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 477.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_019",
+   "suggest": "tesseract",
+   "order": 18
+  },
+  {
+   "typhoon": {
+    "text": "ัญญาอีกฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า 60 วัน ก่อนวันสิ้นสุดสัญญา"
+   },
+   "tesseract": {
+    "text": "ศัญญาอีกฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า 60 วันก่อนวันสิ่นสุดสัญญา",
+    "image": 0,
+    "bbox": [
+     319,
+     555,
+     1162,
+     604
+    ],
+    "conf": 93.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.0,
+   "pos": 482,
+   "id": "E_ONE_REPORT_CPALLT_p442_020",
+   "suggest": "typhoon",
+   "order": 19
+  },
+  {
+   "typhoon": {
+    "text": "60 วัน ก่อนวันสิ้นสุดสัญญา"
+   },
+   "tesseract": {
+    "text": "60 วันก่อนวันสิ่นสุดสัญญา",
+    "image": 0,
+    "bbox": [
+     295,
+     949,
+     596,
+     993
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 95.8,
+   "pos": 524,
+   "id": "E_ONE_REPORT_CPALLT_p442_021",
+   "suggest": "typhoon",
+   "order": 20
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ขาย",
+    "image": 0,
+    "bbox": [
+     1118,
+     581,
+     1149,
+     609
+    ],
+    "conf": 76.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 547.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_022",
+   "suggest": "tesseract",
+   "order": 21
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ed. ed.",
+    "image": 0,
+    "bbox": [
+     295,
+     505,
+     309,
+     598
+    ],
+    "conf": 47.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 547.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_023",
+   "suggest": "tesseract",
+   "order": 22
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "© ao 2 o",
+    "image": 0,
+    "bbox": [
+     337,
+     662,
+     666,
+     693
+    ],
+    "conf": 38.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 547.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_024",
+   "suggest": "tesseract",
+   "order": 23
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "a o ๑ .% J a 5 ๑ซ้ ao นี k",
+    "image": 0,
+    "bbox": [
+     311,
+     665,
+     1444,
+     694
+    ],
+    "conf": 49.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 547.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_025",
+   "suggest": "tesseract",
+   "order": 24
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Ss",
+    "image": 0,
+    "bbox": [
+     793,
+     1096,
+     802,
+     1103
+    ],
+    "conf": 36.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 547.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_026",
+   "suggest": "tesseract",
+   "order": 25
+  },
+  {
+   "typhoon": {
+    "text": "(จ) บริษัทมีสัญญาบริการฉบับหนึ่งกับบริษัท เคาน์เตอร์เซอร์วิส จำกัด ซึ่งเป็นบริษัทย่อยในประเทศแห่งหนึ่ง"
+   },
+   "tesseract": {
+    "text": "(จ ) บริษัทมีสัญญาบริการฉบับหนึ่งกับบริษัทเคาน์เตอร์เซอร์วิสจํากัดซึ่งเป็นบริษัทย่อยในประเทศแห่งหนึ่ง",
+    "image": 0,
+    "bbox": [
+     220,
+     669,
+     1461,
+     715
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 548,
+   "id": "E_ONE_REPORT_CPALLT_p442_027",
+   "suggest": "typhoon",
+   "order": 26
+  },
+  {
+   "typhoon": {
+    "text": "ภายใต้เงื่อนไขของสัญญา บริษัทย่อยตกลงจะบริหารจัดการคะแนนสำหรับโปรแกรมสิทธิพิเศษแก่ลูกค้า"
+   },
+   "tesseract": {
+    "text": "ภายใต้เงื่อนไขของสัญญาบริษัทย่อยตกลงจะบริหารจัดการคะแนนสําหรับโปรแกรมสิทธิพิเศษแก่ลูกค้า",
+    "image": 0,
+    "bbox": [
+     295,
+     724,
+     1462,
+     774
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 646,
+   "id": "E_ONE_REPORT_CPALLT_p442_028",
+   "suggest": "typhoon",
+   "order": 27
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "p :",
+    "image": 0,
+    "bbox": [
+     378,
+     776,
+     1463,
+     788
+    ],
+    "conf": 27.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 732.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_029",
+   "suggest": "tesseract",
+   "order": 28
+  },
+  {
+   "typhoon": {
+    "text": "ในการนี้ บริษัทตกลงจ่ายค่าบริการรายเดือนให้กับบริษัทย่อยดังกล่าวเป็นจำนวนเงิน 0.3 ล้านบาท สัญญานี้"
+   },
+   "tesseract": {
+    "text": "ในการนีบริษัทตกลงจ่ายค่าบริการรายเดือนให้กับบริษัทย่อยดังกล่าวเป็นจํานวนเงิน 0.3 ล้านบาทสัญญานี้",
+    "image": 0,
+    "bbox": [
+     295,
+     781,
+     1464,
+     829
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.9,
+   "pos": 733,
+   "id": "E_ONE_REPORT_CPALLT_p442_030",
+   "suggest": "typhoon",
+   "order": 29
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ทื",
+    "image": 0,
+    "bbox": [
+     892,
+     834,
+     902,
+     843
+    ],
+    "conf": 25.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 826.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_031",
+   "suggest": "tesseract",
+   "order": 30
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "= 1 ส o 1 1 2 yaa ว",
+    "image": 0,
+    "bbox": [
+     445,
+     833,
+     1460,
+     853
+    ],
+    "conf": 40.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 826.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_032",
+   "suggest": "tesseract",
+   "order": 31
+  },
+  {
+   "typhoon": {
+    "text": "มีระยะเวลา 3 ปี และจะต่ออายุออกไปอีกคราวละ 3 ปี ทั้งนี้หากคู่สัญญาฝ่ายใดฝ่ายหนึ่งไม่มีความประสงค์ที่"
+   },
+   "tesseract": {
+    "text": "มีระยะเวลา 3 ปีและจะต่ออายุออกไปอีกคราวละ 3 ปีทั้งนี้หากคู่สัญญาฝ่ายใดฝ่ายหนึ่งไม่มีความประสงค์ที่",
+    "image": 0,
+    "bbox": [
+     294,
+     837,
+     1465,
+     884
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 827,
+   "id": "E_ONE_REPORT_CPALLT_p442_033",
+   "suggest": "typhoon",
+   "order": 32
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "นูว่ Ye od YgYry ay , 9 1 ง",
+    "image": 0,
+    "bbox": [
+     486,
+     885,
+     1449,
+     915
+    ],
+    "conf": 41.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 920.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_034",
+   "suggest": "tesseract",
+   "order": 33
+  },
+  {
+   "typhoon": {
+    "text": "จะต่ออายุสัญญ"
+   },
+   "tesseract": {
+    "text": "จะต่ออายุสัญญ",
+    "image": 0,
+    "bbox": [
+     295,
+     894,
+     457,
+     937
+    ],
+    "conf": 93.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 921,
+   "id": "E_ONE_REPORT_CPALLT_p442_035",
+   "suggest": "typhoon",
+   "order": 34
+  },
+  {
+   "typhoon": {
+    "text": "า คู่สัญญาฝ่ายนั้นจะต้องทำหนังสือแจ้งให้คู่สัญญาอีกฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า"
+   },
+   "tesseract": {
+    "text": "าคู่สัญญาฝ่ายนันจะต้องทําหนังสือแจ้งให้กคู่ัญญาอีกฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า",
+    "image": 0,
+    "bbox": [
+     460,
+     894,
+     1462,
+     940
+    ],
+    "conf": 92.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 94.1,
+   "pos": 934,
+   "id": "E_ONE_REPORT_CPALLT_p442_036",
+   "suggest": "typhoon",
+   "order": 35
+  },
+  {
+   "typhoon": {
+    "text": "60 วัน ก่อนวันสิ้นสุดสัญญา"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     866,
+     1000000,
+     1137
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1019,
+   "id": "E_ONE_REPORT_CPALLT_p442_037",
+   "suggest": "typhoon",
+   "order": 36
+  },
+  {
+   "typhoon": {
+    "text": "(ฉ) บริษัทและบริษัทย่อยในประเทศบางแห่งมีสัญญาเช่าและบริการหลายฉบับกับทรัสต์เพื่อการลงทุนในสิทธิ"
+   },
+   "tesseract": {
+    "text": "( ฉ ) บริษัทและบริษัทย่อยในประเทศบางแห่งมีสัญญาเช่าและบริการหลายฉบับกับทรัสต์เพื่อการลงทุนในสิทธิ",
+    "image": 0,
+    "bbox": [
+     219,
+     1062,
+     1470,
+     1109
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1043,
+   "id": "E_ONE_REPORT_CPALLT_p442_038",
+   "suggest": "typhoon",
+   "order": 37
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "o ซ่",
+    "image": 0,
+    "bbox": [
+     842,
+     1123,
+     909,
+     1132
+    ],
+    "conf": 78.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1136.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_039",
+   "suggest": "tesseract",
+   "order": 38
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "I ya oo daa 22g ฮ่ PE SN ไ 0] gi 4 ซี",
+    "image": 0,
+    "bbox": [
+     355,
+     1108,
+     1446,
+     1142
+    ],
+    "conf": 35.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1136.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_040",
+   "suggest": "tesseract",
+   "order": 39
+  },
+  {
+   "typhoon": {
+    "text": "การเช่าอสังหาริมทรัพย์ ซี.พี.ทาวเวอร์ ซึ่งเป็นบริษัทที่เกี่ยวข้องกันแห่งหนึ่ง สำหรับการใช้พื้นที่อาค"
+   },
+   "tesseract": {
+    "text": "การเช่าอสังหาริมทรัพย์ซี . พี . ทาวเวอร์ซึ่งเป็นบริษัททีเยวของกนแหงหนงสําหรับการใช้พืนทีอาคารเป็น",
+    "image": 0,
+    "bbox": [
+     295,
+     1120,
+     1470,
+     1162
+    ],
+    "conf": 93.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 82.5,
+   "pos": 1137,
+   "id": "E_ONE_REPORT_CPALLT_p442_041",
+   "suggest": "typhoon",
+   "order": 40
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "A ao",
+    "image": 0,
+    "bbox": [
+     778,
+     1180,
+     858,
+     1188
+    ],
+    "conf": 76.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1233.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_042",
+   "suggest": "tesseract",
+   "order": 41
+  },
+  {
+   "typhoon": {
+    "text": "ารเป็น"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1092,
+     1000000,
+     1245
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1234,
+   "id": "E_ONE_REPORT_CPALLT_p442_043",
+   "suggest": "typhoon",
+   "order": 42
+  },
+  {
+   "typhoon": {
+    "text": "สำนักงานของบริษัทและบริษัทย่อย ในการนี้ บริษัทและบริษัทย่อยตกลงจ่ายค่าเช่าและค่าบริการรายเดือน"
+   },
+   "tesseract": {
+    "text": "สํานักงานของบริษัทและบริษัทย่อยในการนีบริษัทและบริษัทย่อยตกลงจ่ายค่าเช่าและค่าบริการรายเดือน",
+    "image": 0,
+    "bbox": [
+     294,
+     1176,
+     1470,
+     1217
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.9,
+   "pos": 1240,
+   "id": "E_ONE_REPORT_CPALLT_p442_044",
+   "suggest": "typhoon",
+   "order": 43
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "2 0 a a ฆซ่ aw Ad oo ม ° a",
+    "image": 0,
+    "bbox": [
+     302,
+     1229,
+     1401,
+     1246
+    ],
+    "conf": 55.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1331.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_045",
+   "suggest": "tesseract",
+   "order": 44
+  },
+  {
+   "typhoon": {
+    "text": "เป็นจำนวนเงิน 9.3 ล้านบาท และได้วางเงินประกันไว้กับบริษัทที่เกี่ยวข้องกันดังกล่าว เป็นจำนวนเงินรวม"
+   },
+   "tesseract": {
+    "text": "เป็นจํานวนเงิน 93 ล้านบาทและได้วางเงินประกันไว้กับบริษัททีเกี่ยวข้องกันดังกล่าวเป็นจํานวนเงินรวม",
+    "image": 0,
+    "bbox": [
+     294,
+     1229,
+     1469,
+     1273
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.9,
+   "pos": 1332,
+   "id": "E_ONE_REPORT_CPALLT_p442_046",
+   "suggest": "typhoon",
+   "order": 45
+  },
+  {
+   "typhoon": {
+    "text": "29.6 ล้านบาท โดยบริษัทและบริษัทย่อยจะได้รับเงินประกันคืนเมื่อมีการยกเลิกการเช่า สัญญาเหล่านี้มีอายุ 3 ปี"
+   },
+   "tesseract": {
+    "text": "20.6 ล้านบาทโดยบริษัทและบริษัทย่อยจะได้รับเงินประกันคืนเมื่อมีการยกเลิกการเช่าสัญญาเหล่านี้มีอายุ 3 ปี",
+    "image": 0,
+    "bbox": [
+     293,
+     1284,
+     1475,
+     1333
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 99.0,
+   "pos": 1426,
+   "id": "E_ONE_REPORT_CPALLT_p442_047",
+   "suggest": "typhoon",
+   "order": 46
+  },
+  {
+   "typhoon": {
+    "text": "โดยมีระยะเวลาสิ้นสุดแตกต่างกันจนถึงเดือนสิงหาคม 2570"
+   },
+   "tesseract": {
+    "text": "โดยมีระยะเวลาสินสุดแตกต่างกันจนถึงเดือนสิงหาคม 2570",
+    "image": 0,
+    "bbox": [
+     294,
+     1343,
+     939,
+     1388
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.0,
+   "pos": 1525,
+   "id": "E_ONE_REPORT_CPALLT_p442_048",
+   "suggest": "typhoon",
+   "order": 47
+  },
+  {
+   "typhoon": {
+    "text": "(ช) บริษัทและบริษัทย่อยในประเทศบางแห่งมีสัญญาบริการระบบงานสารสนเทศกับบริษัท โกซอฟท์"
+   },
+   "tesseract": {
+    "text": "( ช ) บริษัทและบริษัทย่อยในประเทศบางแห่งมีสัญญาบริการระบบงานสารสนเทศกับบริษัทโกซอฟตท์",
+    "image": 0,
+    "bbox": [
+     219,
+     1455,
+     1474,
+     1498
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.8,
+   "pos": 1576,
+   "id": "E_ONE_REPORT_CPALLT_p442_049",
+   "suggest": "tesseract",
+   "order": 48
+  },
+  {
+   "typhoon": {
+    "text": "รระ"
+   },
+   "tesseract": {
+    "text": "รระ 4",
+    "image": 0,
+    "bbox": [
+     487,
+     439,
+     1418,
+     452
+    ],
+    "conf": 63.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 75.0,
+   "pos": 1625,
+   "id": "E_ONE_REPORT_CPALLT_p442_050",
+   "suggest": "typhoon",
+   "order": 49
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ขาย",
+    "image": 0,
+    "bbox": [
+     839,
+     1477,
+     876,
+     1505
+    ],
+    "conf": 64.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1656.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_051",
+   "suggest": "tesseract",
+   "order": 50
+  },
+  {
+   "typhoon": {
+    "text": "(ประเทศไทย) จำกัด (\"ผู้ให้บริการ\") ซึ่งเป็นบริษัทย่อยในประเทศแห่งหนึ่ง ภายใต้เงื่อนไขของสัญญา"
+   },
+   "tesseract": {
+    "text": "(ประเทศไทย ) จํากัด (“ผู้ให้บริการ ”) ซึ่งเป็นบริษัทย่อยในประเทศแห่งหนึ่งภายใต้เงื่อนไขของสัญญา",
+    "image": 0,
+    "bbox": [
+     293,
+     1509,
+     1469,
+     1557
+    ],
+    "conf": 93.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1657,
+   "id": "E_ONE_REPORT_CPALLT_p442_052",
+   "suggest": "typhoon",
+   "order": 51
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "o >",
+    "image": 0,
+    "bbox": [
+     1084,
+     1574,
+     1146,
+     1582
+    ],
+    "conf": 51.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1745.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_053",
+   "suggest": "tesseract",
+   "order": 52
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": ". ะ",
+    "image": 0,
+    "bbox": [
+     491,
+     1563,
+     1053,
+     1572
+    ],
+    "conf": 44.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1745.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_054",
+   "suggest": "tesseract",
+   "order": 53
+  },
+  {
+   "typhoon": {
+    "text": "ผู้ให้บริการตกลงที่จะให้บริการปรึกษา แนะนำ พัฒนา ออกแบบ ติดตั้ง บำรุงรักษา และสนับสนุนระบบงาน"
+   },
+   "tesseract": {
+    "text": "ผู้ให้บริการตกลงที่จะให้บริการปรึกษาแนะนําพัฒนาออกแบบติดตังบํารุงรักษาและสนับสนูนระบบงาน",
+    "image": 0,
+    "bbox": [
+     290,
+     1564,
+     1469,
+     1614
+    ],
+    "conf": 93.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.7,
+   "pos": 1746,
+   "id": "E_ONE_REPORT_CPALLT_p442_055",
+   "suggest": "typhoon",
+   "order": 54
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "2 o",
+    "image": 0,
+    "bbox": [
+     897,
+     1628,
+     1053,
+     1637
+    ],
+    "conf": 81.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1832.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_056",
+   "suggest": "tesseract",
+   "order": 55
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "วร",
+    "image": 0,
+    "bbox": [
+     968,
+     1620,
+     1471,
+     1629
+    ],
+    "conf": 55.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1832.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_057",
+   "suggest": "tesseract",
+   "order": 56
+  },
+  {
+   "typhoon": {
+    "text": "สารสนเทศให้กับบริษัทและบริษัทย่อย เป็นเวลา 1 ปี ซึ่งจะสิ้นสุดสัญญาในเดือนธันวาคม 2569 ในการนี้"
+   },
+   "tesseract": {
+    "text": "สารสนเทศให้กับบริษัทและบริษัทย่อยเป็นเวลา 1 ปีซึ่งจะสินสุดสัญญาในเดือนธันวาคม 2569 ในการนี้",
+    "image": 0,
+    "bbox": [
+     294,
+     1622,
+     1469,
+     1669
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.9,
+   "pos": 1833,
+   "id": "E_ONE_REPORT_CPALLT_p442_058",
+   "suggest": "typhoon",
+   "order": 57
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ขาย",
+    "image": 0,
+    "bbox": [
+     1063,
+     1646,
+     1093,
+     1674
+    ],
+    "conf": 69.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1920.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_059",
+   "suggest": "tesseract",
+   "order": 58
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ฆ Ya 13",
+    "image": 0,
+    "bbox": [
+     337,
+     1683,
+     1041,
+     1695
+    ],
+    "conf": 60.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1920.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_060",
+   "suggest": "tesseract",
+   "order": 59
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": ": ะ 4",
+    "image": 0,
+    "bbox": [
+     1163,
+     1676,
+     1421,
+     1685
+    ],
+    "conf": 56.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1920.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_061",
+   "suggest": "tesseract",
+   "order": 60
+  },
+  {
+   "typhoon": {
+    "text": "บริษัทและบริษัทย่อยตกลงจะจ่ายค่าบริการให้กับผู้ให้บริการตามจำนวนเงินที่ระบุไว้ในสัญญา ทั้งนี้หาก"
+   },
+   "tesseract": {
+    "text": "บริษัทและบริษัทย่อยตกลงจะจ่ายค่าบริการให้กับผู้ให้บริการตามจํานวนเงินที่ระบุไว้ในสัญญาทั้งนี้หาก",
+    "image": 0,
+    "bbox": [
+     293,
+     1679,
+     1469,
+     1726
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1921,
+   "id": "E_ONE_REPORT_CPALLT_p442_062",
+   "suggest": "typhoon",
+   "order": 61
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "% ง \\ 2 a od ao vy wv. 2 Yow A Yq",
+    "image": 0,
+    "bbox": [
+     317,
+     1732,
+     1417,
+     1752
+    ],
+    "conf": 38.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2015.5,
+   "id": "E_ONE_REPORT_CPALLT_p442_063",
+   "suggest": "tesseract",
+   "order": 62
+  },
+  {
+   "typhoon": {
+    "text": "ัญญาฝ่ายใดฝ่ายหนึ่งมีความประสงค์ที่จะขอเลิกสัญญา คู่สัญญาฝ่ายนั้นจะต้องทำหนังสือแจ้งให้คู่สัญญา"
+   },
+   "tesseract": {
+    "text": "ัญญาฝ่ายใดฝ่ายหนึ่งมีความประสงค์ที่จะขอเลิกสัญญาคู่สัญญาฝ่ายนั้นจะต้องทําหนังสือแจ้งให้คู่สัญญา",
+    "image": 0,
+    "bbox": [
+     325,
+     1736,
+     1469,
+     1783
+    ],
+    "conf": 93.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2020,
+   "id": "E_ONE_REPORT_CPALLT_p442_064",
+   "suggest": "typhoon",
+   "order": 63
+  },
+  {
+   "typhoon": {
+    "text": "กฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า 90 วัน ก่อนวันสิ้นสุดสัญญา"
+   },
+   "tesseract": {
+    "text": "กฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า 90 วันก่อนวันสิ่นสุดสัญญา",
+    "image": 0,
+    "bbox": [
+     311,
+     1789,
+     1054,
+     1836
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.3,
+   "pos": 2116,
+   "id": "E_ONE_REPORT_CPALLT_p442_065",
+   "suggest": "typhoon",
+   "order": 64
+  },
+  {
+   "typhoon": {
+    "text": "รายงานทางการเงิน"
+   },
+   "tesseract": {
+    "text": "รายงานทางการเงิน๕36",
+    "image": 0,
+    "bbox": [
+     1319,
+     2203,
+     1519,
+     2233
+    ],
+    "conf": 91.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 84.2,
+   "pos": 2176,
+   "id": "E_ONE_REPORT_CPALLT_p442_066",
+   "suggest": "typhoon",
+   "order": 65
+  }
+ ],
+ "split": {
+  "method": "none",
+  "x": null,
+  "dpi": 200
+ }
+}

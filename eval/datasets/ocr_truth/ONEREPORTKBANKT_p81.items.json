@@ -1,0 +1,3931 @@
+{
+ "file": "ONEREPORTKBANKT.PDF",
+ "page": 81,
+ "typhoon": {
+  "backend": "typhoon-local",
+  "model": "scb10x/typhoon-ocr1.5-2b",
+  "revision": "15b381a2d625",
+  "seconds": 182.50153329991736,
+  "tokens": 3722
+ },
+ "tesseract": {
+  "backend": "tesseract-local",
+  "model": "tesseract-5.4.0.20240606",
+  "revision": "b02ddf48069f",
+  "seconds": 29.916005000006407
+ },
+ "typhoon_page_numbers": [
+  158,
+  159
+ ],
+ "figures": [
+  "ภาพประกอบด้านล่างแสดงถึงแนวคิดเรื่องโลกสีเขียวที่มีพลังงานทดแทน เช่น กังหันลมและแผงโซลาร์เซลล์ ซึ่งสื่อถึงการดำเนินงานของธนาคารกสิกรไทยในฐานะผู้นำด้านพลังงานสะอาดและการบริหารจัดการสิ่งแวดล้อม"
+ ],
+ "skipped_tesseract": [
+  {
+   "text": "ว",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    165,
+    395,
+    178,
+    402
+   ]
+  },
+  {
+   "text": "ม",
+   "reason": "สั้นเกินไป",
+   "image": 1,
+   "bbox": [
+    258,
+    334,
+    267,
+    342
+   ]
+  }
+ ],
+ "counts": {
+  "agree": 43,
+  "agree_audit": 5,
+  "diff": 54,
+  "typhoon_only": 12,
+  "tesseract_only": 46,
+  "to_judge": 117
+ },
+ "items": [
+  {
+   "typhoon": {
+    "text": "ธนาคารกสิกรไทย"
+   },
+   "tesseract": {
+    "text": "ธนาคารกสิกรไทย",
+    "image": 0,
+    "bbox": [
+     236,
+     187,
+     463,
+     232
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 0,
+   "id": "ONEREPORTKBANKT_p81_001",
+   "suggest": "typhoon",
+   "order": 0
+  },
+  {
+   "typhoon": {
+    "text": "ธนาคารกสิกรไทย"
+   },
+   "tesseract": {
+    "text": "ธนาคารกสิกรไทย 159",
+    "image": 1,
+    "bbox": [
+     1154,
+     101,
+     1581,
+     132
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 82.4,
+   "pos": 0,
+   "id": "ONEREPORTKBANKT_p81_002",
+   "suggest": "typhoon",
+   "order": 1
+  },
+  {
+   "typhoon": {
+    "text": "รายงานแบบ 56-1 One Report"
+   },
+   "tesseract": {
+    "text": "รายงานแบบ 56-1 One Report",
+    "image": 0,
+    "bbox": [
+     150,
+     242,
+     551,
+     280
+    ],
+    "conf": 95.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 14,
+   "id": "ONEREPORTKBANKT_p81_003",
+   "suggest": "typhoon",
+   "order": 2
+  },
+  {
+   "typhoon": {
+    "text": "ประจำปี"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     104,
+     1000000,
+     270
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 36,
+   "id": "ONEREPORTKBANKT_p81_004",
+   "suggest": "typhoon",
+   "order": 3
+  },
+  {
+   "typhoon": {
+    "text": "2568 ธนาคารกสิกรไทย"
+   },
+   "tesseract": {
+    "text": "158 ธนาคารกสิกรไทย",
+    "image": 0,
+    "bbox": [
+     821,
+     102,
+     1042,
+     132
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 88.9,
+   "pos": 43,
+   "id": "ONEREPORTKBANKT_p81_005",
+   "suggest": "typhoon",
+   "order": 4
+  },
+  {
+   "typhoon": {
+    "text": "รายงานแบบ 56-1 One Report ประจำปี 2568"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     74,
+     1000000,
+     458
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 61,
+   "id": "ONEREPORTKBANKT_p81_006",
+   "suggest": "typhoon",
+   "order": 5
+  },
+  {
+   "typhoon": {
+    "text": "สารบัญ"
+   },
+   "tesseract": {
+    "text": "สารบัญ",
+    "image": 0,
+    "bbox": [
+     121,
+     391,
+     194,
+     430
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 94,
+   "id": "ONEREPORTKBANKT_p81_007",
+   "suggest": "typhoon",
+   "order": 6
+  },
+  {
+   "typhoon": {
+    "text": "สารจากคณะกรรมการธนาคาร"
+   },
+   "tesseract": {
+    "text": "สารจากคณะกรรมการธนาคาร",
+    "image": 0,
+    "bbox": [
+     121,
+     460,
+     405,
+     499
+    ],
+    "conf": 95.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 100,
+   "id": "ONEREPORTKBANKT_p81_008",
+   "suggest": "typhoon",
+   "order": 7
+  },
+  {
+   "typhoon": {
+    "text": "สารจากประธานเจ้าหน้าที่บริหาร"
+   },
+   "tesseract": {
+    "text": "สารจากประธานเจ้าหน้าที่บริหาร",
+    "image": 0,
+    "bbox": [
+     121,
+     515,
+     424,
+     552
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 122,
+   "id": "ONEREPORTKBANKT_p81_009",
+   "suggest": "typhoon",
+   "order": 8
+  },
+  {
+   "typhoon": {
+    "text": "ส่วนที่ 1 การประกอบธุรกิจและผลการดำเนินงาน"
+   },
+   "tesseract": {
+    "text": "ส่วนที่ 1 การประกอบธุรกิจและผลการดําเนินงาน",
+    "image": 0,
+    "bbox": [
+     121,
+     571,
+     580,
+     612
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 151,
+   "id": "ONEREPORTKBANKT_p81_010",
+   "suggest": "typhoon",
+   "order": 9
+  },
+  {
+   "typhoon": {
+    "text": "1. โครงสร้างและการดำเนินงาน"
+   },
+   "tesseract": {
+    "text": "1. โครงสร้างและการดําเนินงาน",
+    "image": 0,
+    "bbox": [
+     122,
+     606,
+     398,
+     641
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 191,
+   "id": "ONEREPORTKBANKT_p81_011",
+   "suggest": "typhoon",
+   "order": 10
+  },
+  {
+   "typhoon": {
+    "text": "ของกลุ่มธุรกิจทางการเงินธนาคารกสิกรไทย"
+   },
+   "tesseract": {
+    "text": "ของกลุ่มธุรกิจทางการเงินธนาคารกสิกรไทย",
+    "image": 0,
+    "bbox": [
+     148,
+     640,
+     529,
+     678
+    ],
+    "conf": 95.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 217,
+   "id": "ONEREPORTKBANKT_p81_012",
+   "suggest": "typhoon",
+   "order": 11
+  },
+  {
+   "typhoon": {
+    "text": ". การบริหารจัดการความเสี่ยง"
+   },
+   "tesseract": {
+    "text": ". การบริหารจัดการความเสียง",
+    "image": 0,
+    "bbox": [
+     133,
+     673,
+     392,
+     708
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.2,
+   "pos": 256,
+   "id": "ONEREPORTKBANKT_p81_013",
+   "suggest": "typhoon",
+   "order": 12
+  },
+  {
+   "typhoon": {
+    "text": ". การขับเคลื่อนธุรกิจเพื่อความยั่งยืน"
+   },
+   "tesseract": {
+    "text": ". การขับเคลื่อนธุรกิจเพื่อความยังยืน",
+    "image": 0,
+    "bbox": [
+     133,
+     706,
+     450,
+     744
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.2,
+   "pos": 283,
+   "id": "ONEREPORTKBANKT_p81_014",
+   "suggest": "typhoon",
+   "order": 13
+  },
+  {
+   "typhoon": {
+    "text": ". การวิเคราะห์และคำอธิบายของฝ่ายจัดการ"
+   },
+   "tesseract": {
+    "text": ". การวิเคราะห์และคําอธิบายของฝ่ายจัดการ",
+    "image": 0,
+    "bbox": [
+     133,
+     739,
+     510,
+     775
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 320,
+   "id": "ONEREPORTKBANKT_p81_015",
+   "suggest": "typhoon",
+   "order": 14
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Ci ว od",
+    "image": 0,
+    "bbox": [
+     151,
+     771,
+     403,
+     784
+    ],
+    "conf": 35.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 356.5,
+   "id": "ONEREPORTKBANKT_p81_016",
+   "suggest": "tesseract",
+   "order": 15
+  },
+  {
+   "typhoon": {
+    "text": ". ข้อมูลทั่วไปและข้อมูลสำคัญอื่น"
+   },
+   "tesseract": {
+    "text": ". ข้อมูลทัวไปและข้อมูลสําคัญอื่น",
+    "image": 0,
+    "bbox": [
+     133,
+     773,
+     419,
+     811
+    ],
+    "conf": 93.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.8,
+   "pos": 358,
+   "id": "ONEREPORTKBANKT_p81_017",
+   "suggest": "typhoon",
+   "order": 16
+  },
+  {
+   "typhoon": {
+    "text": "น ส่วนที่ 2 การกำกับดูแลกิจการ"
+   },
+   "tesseract": {
+    "text": "๕ 9 ล่วนที่ 2 การกํากับดูแลกิจการ",
+    "image": 0,
+    "bbox": [
+     61,
+     820,
+     406,
+     867
+    ],
+    "conf": 92.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 89.3,
+   "pos": 388,
+   "id": "ONEREPORTKBANKT_p81_018",
+   "suggest": "typhoon",
+   "order": 17
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "๓๑๓๑ ND",
+    "image": 0,
+    "bbox": [
+     112,
+     683,
+     140,
+     799
+    ],
+    "conf": 58.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 388.5,
+   "id": "ONEREPORTKBANKT_p81_019",
+   "suggest": "tesseract",
+   "order": 18
+  },
+  {
+   "typhoon": {
+    "text": "6. นโยบายการกำกับดูแลกิจการ"
+   },
+   "tesseract": {
+    "text": "6. นโยบายการกํากับดูแลกิจการ",
+    "image": 0,
+    "bbox": [
+     121,
+     862,
+     403,
+     900
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 415,
+   "id": "ONEREPORTKBANKT_p81_020",
+   "suggest": "typhoon",
+   "order": 19
+  },
+  {
+   "typhoon": {
+    "text": "ร 7. โครงสร้างการกำกับดูแลกิจการ"
+   },
+   "tesseract": {
+    "text": ": 7. โครงสร้างการกํากับดูแลกิจการ",
+    "image": 0,
+    "bbox": [
+     0,
+     895,
+     418,
+     933
+    ],
+    "conf": 91.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.7,
+   "pos": 440,
+   "id": "ONEREPORTKBANKT_p81_021",
+   "suggest": "typhoon",
+   "order": 20
+  },
+  {
+   "typhoon": {
+    "text": "และข้อมูลสำคัญเกี่ยวกับคณะกรรมการ"
+   },
+   "tesseract": {
+    "text": "และข้อมูลสําคัญเกี่ยวกับคณะกรรมการ",
+    "image": 0,
+    "bbox": [
+     149,
+     922,
+     484,
+     966
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 470,
+   "id": "ONEREPORTKBANKT_p81_022",
+   "suggest": "typhoon",
+   "order": 21
+  },
+  {
+   "typhoon": {
+    "text": "คณะกรรมการชุดย่อย ผู้บริหาร พนักงาน และอื่นๆ"
+   },
+   "tesseract": {
+    "text": "คณะกรรมการชุดย่อยผู้บริหารพนักงานและอื่นๆ",
+    "image": 0,
+    "bbox": [
+     148,
+     956,
+     580,
+     1000
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 503,
+   "id": "ONEREPORTKBANKT_p81_023",
+   "suggest": "typhoon",
+   "order": 22
+  },
+  {
+   "typhoon": {
+    "text": "8. รายงานผลการดำเนินงานสำคัญ"
+   },
+   "tesseract": {
+    "text": "8. รายงานผลการดําเนินงานสําคัญ",
+    "image": 0,
+    "bbox": [
+     120,
+     996,
+     424,
+     1032
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 544,
+   "id": "ONEREPORTKBANKT_p81_024",
+   "suggest": "typhoon",
+   "order": 23
+  },
+  {
+   "typhoon": {
+    "text": "ด้านการกำกับดูแลกิจการ"
+   },
+   "tesseract": {
+    "text": "ด้านการกํากับดูแลกิจการ",
+    "image": 0,
+    "bbox": [
+     148,
+     1028,
+     369,
+     1066
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 571,
+   "id": "ONEREPORTKBANKT_p81_025",
+   "suggest": "typhoon",
+   "order": 24
+  },
+  {
+   "typhoon": {
+    "text": "9. การควบคุมภายในและรายการระหว่างกัน"
+   },
+   "tesseract": {
+    "text": "9. การควบคุมภายในและรายการระหว่างกัน",
+    "image": 0,
+    "bbox": [
+     121,
+     1062,
+     505,
+     1100
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 593,
+   "id": "ONEREPORTKBANKT_p81_026",
+   "suggest": "typhoon",
+   "order": 25
+  },
+  {
+   "typhoon": {
+    "text": "ส่วนที่ 3 งบการเงิน"
+   },
+   "tesseract": {
+    "text": "ส่วนที่ 3 งบการเงิน",
+    "image": 0,
+    "bbox": [
+     121,
+     1109,
+     305,
+     1153
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 628,
+   "id": "ONEREPORTKBANKT_p81_027",
+   "suggest": "typhoon",
+   "order": 26
+  },
+  {
+   "typhoon": {
+    "text": "น รายงานความรับผิดชอบของคณะกรรมการธนาคาร"
+   },
+   "tesseract": {
+    "text": "๑รายงานความรับผิดชอบของคณะกรรมการธนาคาร",
+    "image": 0,
+    "bbox": [
+     120,
+     1152,
+     587,
+     1186
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.4,
+   "pos": 644,
+   "id": "ONEREPORTKBANKT_p81_028",
+   "suggest": "typhoon",
+   "order": 27
+  },
+  {
+   "typhoon": {
+    "text": "ต่อรายงานทางการเงิน"
+   },
+   "tesseract": {
+    "text": "ต่อรายงานทางการเงิน",
+    "image": 0,
+    "bbox": [
+     148,
+     1184,
+     344,
+     1219
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 683,
+   "id": "ONEREPORTKBANKT_p81_029",
+   "suggest": "typhoon",
+   "order": 28
+  },
+  {
+   "typhoon": {
+    "text": "รายงานของผู้สอบบัญชีรับอนุญาต"
+   },
+   "tesseract": {
+    "text": "๑รายงานของผู้สอบบัญชีรับอนุญาต",
+    "image": 0,
+    "bbox": [
+     120,
+     1217,
+     442,
+     1255
+    ],
+    "conf": 93.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.7,
+   "pos": 702,
+   "id": "ONEREPORTKBANKT_p81_030",
+   "suggest": "typhoon",
+   "order": 29
+  },
+  {
+   "typhoon": {
+    "text": "งบการเงินและหมายเหตุประกอบงบการเงิน"
+   },
+   "tesseract": {
+    "text": "งบการเงินและหมายเหตุประกอบงบการเงิน",
+    "image": 0,
+    "bbox": [
+     148,
+     1252,
+     522,
+     1289
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 731,
+   "id": "ONEREPORTKBANKT_p81_031",
+   "suggest": "typhoon",
+   "order": 30
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1224,
+     1000000,
+     1472
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 766,
+   "id": "ONEREPORTKBANKT_p81_032",
+   "suggest": "typhoon",
+   "order": 31
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 1 รายละเอียดเกี่ยวกับกรรมการ ผู้บริหาร ผู้มี"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1224,
+     1000000,
+     1472
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 775,
+   "id": "ONEREPORTKBANKT_p81_033",
+   "suggest": "typhoon",
+   "order": 32
+  },
+  {
+   "typhoon": {
+    "text": "อำนาจควบคุม เลขานุการบริษัท และสมุห์บัญชีใหญ่"
+   },
+   "tesseract": {
+    "text": "อํานาจควบคุมเลขานุการบริษัทและสมุห์บัญชีใหญ่",
+    "image": 0,
+    "bbox": [
+     149,
+     1405,
+     595,
+     1444
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 825,
+   "id": "ONEREPORTKBANKT_p81_034",
+   "suggest": "typhoon",
+   "order": 33
+  },
+  {
+   "typhoon": {
+    "text": "อกสารแนบ 2"
+   },
+   "tesseract": {
+    "text": "อกสารแนบ 2",
+    "image": 0,
+    "bbox": [
+     128,
+     1440,
+     248,
+     1476
+    ],
+    "conf": 95.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 869,
+   "id": "ONEREPORTKBANKT_p81_035",
+   "suggest": "typhoon",
+   "order": 34
+  },
+  {
+   "typhoon": {
+    "text": "รายละเอียดเกี่ยวกับการดำรงตำแหน่ง"
+   },
+   "tesseract": {
+    "text": "รายละเอียดเกี่ยวกับการดํารงตําแหน่ง",
+    "image": 0,
+    "bbox": [
+     116,
+     1467,
+     445,
+     1508
+    ],
+    "conf": 93.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 878,
+   "id": "ONEREPORTKBANKT_p81_036",
+   "suggest": "typhoon",
+   "order": 35
+  },
+  {
+   "typhoon": {
+    "text": "ของกรรมการและผู้บริหารธนาคารในบริษัทย่อย"
+   },
+   "tesseract": {
+    "text": ". ของกรรมการและผู้บริหารธนาคารในบริษัทย่อย",
+    "image": 0,
+    "bbox": [
+     86,
+     1506,
+     530,
+     1544
+    ],
+    "conf": 93.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.6,
+   "pos": 911,
+   "id": "ONEREPORTKBANKT_p81_037",
+   "suggest": "typhoon",
+   "order": 36
+  },
+  {
+   "typhoon": {
+    "text": "ย บริษัทร่วม การร่วมค้า และบริษัทที่เกี่ยวข้อง"
+   },
+   "tesseract": {
+    "text": ". บริษัทร่วมการร่วมค้าและบริษัทที่เกี่ยวข้อง",
+    "image": 0,
+    "bbox": [
+     106,
+     1534,
+     500,
+     1575
+    ],
+    "conf": 93.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.7,
+   "pos": 950,
+   "id": "ONEREPORTKBANKT_p81_038",
+   "suggest": "tesseract",
+   "order": 37
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 3"
+   },
+   "tesseract": {
+    "text": ". เอกสารแนบ 3",
+    "image": 0,
+    "bbox": [
+     96,
+     1573,
+     248,
+     1599
+    ],
+    "conf": 93.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 90.9,
+   "pos": 993,
+   "id": "ONEREPORTKBANKT_p81_039",
+   "suggest": "typhoon",
+   "order": 38
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 3"
+   },
+   "tesseract": {
+    "text": "เอกสารแนบ 5 253",
+    "image": 0,
+    "bbox": [
+     122,
+     1772,
+     397,
+     1799
+    ],
+    "conf": 90.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 76.9,
+   "pos": 993,
+   "id": "ONEREPORTKBANKT_p81_040",
+   "suggest": "typhoon",
+   "order": 39
+  },
+  {
+   "typhoon": {
+    "text": "รายละเอียดเกี่ยวกับหัวหน้าหน่วยงานตรวจสอบภายใน"
+   },
+   "tesseract": {
+    "text": ". รายละเอียดเกี่ยวกับหัวหน้าหน่วยงานตรวจสอบภายใน",
+    "image": 0,
+    "bbox": [
+     73,
+     1600,
+     590,
+     1655
+    ],
+    "conf": 93.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.9,
+   "pos": 1003,
+   "id": "ONEREPORTKBANKT_p81_041",
+   "suggest": "typhoon",
+   "order": 40
+  },
+  {
+   "typhoon": {
+    "text": "น และหัวหน้างานกำกับดูแลการปฏิบัติงาน"
+   },
+   "tesseract": {
+    "text": "> และหัวหน้างานกํากับดูแลการปฏิบัติงาน",
+    "image": 0,
+    "bbox": [
+     96,
+     1632,
+     468,
+     1684
+    ],
+    "conf": 91.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.2,
+   "pos": 1048,
+   "id": "ONEREPORTKBANKT_p81_042",
+   "suggest": "typhoon",
+   "order": 41
+  },
+  {
+   "typhoon": {
+    "text": "เอกสาร"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1604,
+     1000000,
+     1737
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1084,
+   "id": "ONEREPORTKBANKT_p81_043",
+   "suggest": "typhoon",
+   "order": 42
+  },
+  {
+   "typhoon": {
+    "text": "แนบ 4"
+   },
+   "tesseract": {
+    "text": "แนบ 4",
+    "image": 0,
+    "bbox": [
+     188,
+     1673,
+     248,
+     1709
+    ],
+    "conf": 93.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1090,
+   "id": "ONEREPORTKBANKT_p81_044",
+   "suggest": "typhoon",
+   "order": 43
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ทรัพย์สิ ' เการประกอบธุรกิจ",
+    "image": 0,
+    "bbox": [
+     121,
+     1705,
+     413,
+     1744
+    ],
+    "conf": 93.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1093.5,
+   "id": "ONEREPORTKBANKT_p81_045",
+   "suggest": "tesseract",
+   "order": 44
+  },
+  {
+   "typhoon": {
+    "text": "ทรัพย์สินที่ใช้ในการประกอบธุรกิจ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1645,
+     1000000,
+     1804
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1094,
+   "id": "ONEREPORTKBANKT_p81_046",
+   "suggest": "typhoon",
+   "order": 45
+  },
+  {
+   "typhoon": {
+    "text": "และรายละเอียดเกี่ยวกับรายการประเมินราคาทรัพย์สิน"
+   },
+   "tesseract": {
+    "text": "และรายละเอียดเกี่ยวกับรายการประเมินราคาทรัพย์สิน",
+    "image": 0,
+    "bbox": [
+     122,
+     1730,
+     590,
+     1776
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1126,
+   "id": "ONEREPORTKBANKT_p81_047",
+   "suggest": "typhoon",
+   "order": 46
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 5"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1702,
+     1000000,
+     1872
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1174,
+   "id": "ONEREPORTKBANKT_p81_048",
+   "suggest": "typhoon",
+   "order": 47
+  },
+  {
+   "typhoon": {
+    "text": "นโยบายและแนวปฏิบัติการกำกับดูแลกิจการ"
+   },
+   "tesseract": {
+    "text": "นโยบายและแนวปฏิบัติการกํากับดูแลกิจการ 3",
+    "image": 0,
+    "bbox": [
+     120,
+     1802,
+     538,
+     1844
+    ],
+    "conf": 92.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.4,
+   "pos": 1184,
+   "id": "ONEREPORTKBANKT_p81_049",
+   "suggest": "typhoon",
+   "order": 48
+  },
+  {
+   "typhoon": {
+    "text": "และจรรยาบรรณธุรกิจ (ฉบับเต็ม) เอ"
+   },
+   "tesseract": {
+    "text": "และจรรยาบรรณรธุรกิจ (ฉบับเต็ม ) 72",
+    "image": 0,
+    "bbox": [
+     122,
+     1839,
+     553,
+     1878
+    ],
+    "conf": 89.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 90.3,
+   "pos": 1221,
+   "id": "ONEREPORTKBANKT_p81_050",
+   "suggest": "typhoon",
+   "order": 49
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 6"
+   },
+   "tesseract": {
+    "text": "เอกสารแนบ 6",
+    "image": 0,
+    "bbox": [
+     122,
+     1883,
+     248,
+     1899
+    ],
+    "conf": 95.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1249,
+   "id": "ONEREPORTKBANKT_p81_051",
+   "suggest": "typhoon",
+   "order": 50
+  },
+  {
+   "typhoon": {
+    "text": "รายงานคณะกรรมการชุดย่อย"
+   },
+   "tesseract": {
+    "text": "รายงานคณะกรรมการชุดย่อย",
+    "image": 0,
+    "bbox": [
+     120,
+     1906,
+     377,
+     1944
+    ],
+    "conf": 95.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1259,
+   "id": "ONEREPORTKBANKT_p81_052",
+   "suggest": "typhoon",
+   "order": 51
+  },
+  {
+   "typhoon": {
+    "text": "รางวัลเกียรติคุณ"
+   },
+   "tesseract": {
+    "text": "รางวัลเกียรติคุณ",
+    "image": 0,
+    "bbox": [
+     120,
+     1940,
+     264,
+     1978
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1282,
+   "id": "ONEREPORTKBANKT_p81_053",
+   "suggest": "typhoon",
+   "order": 52
+  },
+  {
+   "typhoon": {
+    "text": "เรื่องสำคัญในการตรวจสอบ"
+   },
+   "tesseract": null,
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1298,
+   "id": "ONEREPORTKBANKT_p81_054",
+   "suggest": "typhoon",
+   "order": 53
+  },
+  {
+   "typhoon": {
+    "text": "เรื่องสำคัญในการตรวจสอบคือเรื่องต่างๆ ที่มีนัยสำคัญที่สุดตามดุลยพินิจเยี่ยงผู้ประกอบวิชาชีพของข้าพเจ้าในการตรวจสอบงบการเงิน"
+   },
+   "tesseract": {
+    "text": "เรืองสําคัญในการตรวจสอบคือเรื่องต่างๆที่มีนัยสําคัญที่สุดตามดุลยพินิจเยียงผู้ประกอบวิชาชีพของข้าพเจ้าในการตรวจสอบงบการเงิน",
+    "image": 0,
+    "bbox": [
+     819,
+     322,
+     2145,
+     363
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.4,
+   "pos": 1321,
+   "id": "ONEREPORTKBANKT_p81_055",
+   "suggest": "typhoon",
+   "order": 54
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "a ° a o od กจ a",
+    "image": 0,
+    "bbox": [
+     967,
+     368,
+     2021,
+     384
+    ],
+    "conf": 51.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1442.5,
+   "id": "ONEREPORTKBANKT_p81_056",
+   "suggest": "tesseract",
+   "order": 55
+  },
+  {
+   "typhoon": {
+    "text": "รวมและงบการเงินเฉพาะธนาคารสำหรับงวดปัจจุบัน ข้าพเจ้าได้นำเรื่องเหล่านี้มาพิจารณาในบริบทของการตรวจสอบงบการเงินรวมและงบ"
+   },
+   "tesseract": {
+    "text": "รวมและงบการเงินเอพาะธนาคารสําหรับงวดปัจจุบันข้าพเจ้าได้นําเรื่องเหล่านี่มาพิจารณาในบริบทของการตรวจสอบงบการเงินรวมและงบ",
+    "image": 0,
+    "bbox": [
+     818,
+     371,
+     2146,
+     412
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.3,
+   "pos": 1443,
+   "id": "ONEREPORTKBANKT_p81_057",
+   "suggest": "typhoon",
+   "order": 56
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "- PA YA we = , ond LX",
+    "image": 0,
+    "bbox": [
+     859,
+     417,
+     2108,
+     434
+    ],
+    "conf": 35.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1558.5,
+   "id": "ONEREPORTKBANKT_p81_058",
+   "suggest": "tesseract",
+   "order": 57
+  },
+  {
+   "typhoon": {
+    "text": "การเงินเฉพาะธนาคารโดยรวม และในการแสดงความเห็นของข้าพเจ้า ทั้งนี้ข้าพเจ้าไม่ได้แสดงความเห็นแยกต่างหากสำหรับเรื่องเหล่านี้"
+   },
+   "tesseract": {
+    "text": "การเงินเคพาะธนาคารโดยรวมและในการแสดงความเห็นของข้าพเจ้าทังนี้ข้าพเจ้าไม่ได้แสดงความเห็นแยกต่างหากสําหรับเรื่องเหล่านี่",
+    "image": 0,
+    "bbox": [
+     818,
+     421,
+     2110,
+     464
+    ],
+    "conf": 93.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.5,
+   "pos": 1559,
+   "id": "ONEREPORTKBANKT_p81_059",
+   "suggest": "typhoon",
+   "order": 58
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "dl 8 ad Lado aa ชื่อแก่ลกหนี้",
+    "image": 0,
+    "bbox": [
+     828,
+     500,
+     1630,
+     548
+    ],
+    "conf": 77.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1676.5,
+   "id": "ONEREPORTKBANKT_p81_060",
+   "suggest": "tesseract",
+   "order": 59
+  },
+  {
+   "typhoon": {
+    "text": "ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นสำหรับเงินให้สินเชื่อแก่ลูกหนี"
+   },
+   "tesseract": {
+    "text": "ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขืนสําหรับเงินให้สินเชื่อแก่ลูกหนี",
+    "image": 0,
+    "bbox": [
+     819,
+     515,
+     1622,
+     557
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.3,
+   "pos": 1677,
+   "id": "ONEREPORTKBANKT_p81_061",
+   "suggest": "typhoon",
+   "order": 60
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "คจยลัล 3 ae สี่ a - 3 : ฮั | a ao งลิ๑สึ้ง",
+    "image": 0,
+    "bbox": [
+     825,
+     595,
+     2140,
+     638
+    ],
+    "conf": 69.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1751.5,
+   "id": "ONEREPORTKBANKT_p81_062",
+   "suggest": "tesseract",
+   "order": 61
+  },
+  {
+   "typhoon": {
+    "text": "สำหรับการเปิดเผยข้อมูลเกี่ยวกับความเสี่ยงด้านเครดิตของเงินให้สินเชื่อแก่ลูกหนี้ และค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดข"
+   },
+   "tesseract": {
+    "text": "สําหรับการเปิดเผยข้อมูลเกียวกับความเยงด้านเครดิตของเงินให้สินก์อแกลูกหนและค่าเผื่อผลขาดทุนด้านเครดิตทีคาดว่าจะเกิดขีน",
+    "image": 0,
+    "bbox": [
+     818,
+     605,
+     2148,
+     646
+    ],
+    "conf": 93.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 88.7,
+   "pos": 1753,
+   "id": "ONEREPORTKBANKT_p81_063",
+   "suggest": "typhoon",
+   "order": 62
+  },
+  {
+   "typhoon": {
+    "text": "อ้างอิงหมายเหตุประกอบงบการเงินรวมและงบการเงินเฉพาะธนาคารข้อ 4.2.2), 5, 14 และ 16"
+   },
+   "tesseract": {
+    "text": "อ้างอิงหมายเหตุประกอบงบการเงินรวมและงบการเงินเอพาะธนาคารข้อ 4.2.2), 5, 14 และ 16",
+    "image": 0,
+    "bbox": [
+     817,
+     655,
+     1722,
+     696
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.7,
+   "pos": 1880,
+   "id": "ONEREPORTKBANKT_p81_064",
+   "suggest": "typhoon",
+   "order": 63
+  },
+  {
+   "typhoon": {
+    "text": "เรื่องสำคัญในการตรวจสอบ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     627,
+     1000000,
+     900
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1955,
+   "id": "ONEREPORTKBANKT_p81_065",
+   "suggest": "typhoon",
+   "order": 64
+  },
+  {
+   "typhoon": {
+    "text": "ณ วันที่ 31 ธันวาคม 2568 เงินให้สินเชื่อแก่ลูกหนี้คิดเป็นร้อยละ 54.33 และร้อยละ 62.91 ของสินทรัพย์รวมในงบการเงินรวมและงบการเงิน"
+   },
+   "tesseract": {
+    "text": "ณวันที่ 31 ธันวาคม 2568 เงินให้สินเชื่อแก่ลูกหนี้คิดเป็นร้อยละ 54.33 และร้อยละ 62.91 ของสินทรัพย์รวมในงบการเงินรวมและงบการเงิน",
+    "image": 0,
+    "bbox": [
+     818,
+     831,
+     2150,
+     872
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1978,
+   "id": "ONEREPORTKBANKT_p81_066",
+   "suggest": "typhoon",
+   "order": 65
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "จิกเดังเคเพื้ , x Bahr ad . a จ",
+    "image": 0,
+    "bbox": [
+     1020,
+     868,
+     1844,
+     905
+    ],
+    "conf": 48.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2095.5,
+   "id": "ONEREPORTKBANKT_p81_067",
+   "suggest": "tesseract",
+   "order": 66
+  },
+  {
+   "typhoon": {
+    "text": "เฉพาะธนาคาร ตามลำดับ โดยมีค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นเป็นจำนวนเงิน 142,997 ล้านบาท และ 132,977 ล้านบาท"
+   },
+   "tesseract": {
+    "text": "เอพาะธนาคารตามลาดับโดยมีค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ่นเป็นจํานวนเงิน 142,997 ล้านบาทและ 132,977 ล้านบาท",
+    "image": 0,
+    "bbox": [
+     819,
+     880,
+     2148,
+     921
+    ],
+    "conf": 93.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.3,
+   "pos": 2096,
+   "id": "ONEREPORTKBANKT_p81_068",
+   "suggest": "typhoon",
+   "order": 67
+  },
+  {
+   "typhoon": {
+    "text": "ตามลำดับ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     852,
+     1000000,
+     1094
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 2209,
+   "id": "ONEREPORTKBANKT_p81_069",
+   "suggest": "typhoon",
+   "order": 68
+  },
+  {
+   "typhoon": {
+    "text": "มาตรฐานการรายงานทางการเงินฉบับที่ 9 กำหนดให้ธนาคารและบริษัทย่อยประมาณการและบันทึกการด้อยค่าของเงินให้สินเชื่อแก่ลูกหนี้"
+   },
+   "tesseract": {
+    "text": "มาตรฐานการรายงานทางการเงินอบับทิ 9 กําหนดให้ธนาคารและบริษัทย่อยประมาณการและบันทึกการต้อยค่าของเงินให้สินเชื่อแก่ลูกหนี้",
+    "image": 0,
+    "bbox": [
+     818,
+     1016,
+     2152,
+     1066
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.6,
+   "pos": 2217,
+   "id": "ONEREPORTKBANKT_p81_070",
+   "suggest": "typhoon",
+   "order": 69
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "คักคเว๊ม๓๑ 1 ดรธิตซี่๑๑ 9 ค่กละเกิดสื้ . ซิง๓๑เพื่อเครก้ริตพี่ดาดก่า๑๓เกิดสิ้งอําหรังงิจใช้",
+    "image": 0,
+    "bbox": [
+     824,
+     1057,
+     2150,
+     1099
+    ],
+    "conf": 74.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2333.5,
+   "id": "ONEREPORTKBANKT_p81_071",
+   "suggest": "tesseract",
+   "order": 70
+  },
+  {
+   "typhoon": {
+    "text": "ด้วยวิธีผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น การประมาณการของผู้บริหารเกี่ยวกับผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นสำหรับเงินให้"
+   },
+   "tesseract": {
+    "text": "ด้วยวิธีผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ่นการประมาณการของผู้บริหารเกียวกับผลขาดทุนด้านเครดิตทีคาดว่าจะเกิดขืนลําหรับเงินให้",
+    "image": 0,
+    "bbox": [
+     819,
+     1073,
+     2148,
+     1115
+    ],
+    "conf": 93.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 95.3,
+   "pos": 2334,
+   "id": "ONEREPORTKBANKT_p81_072",
+   "suggest": "typhoon",
+   "order": 71
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ชี่ลบก่ลกหนี้บี่วัดบลดําดักครี ET eT ติดปี่ %",
+    "image": 0,
+    "bbox": [
+     856,
+     1107,
+     1829,
+     1149
+    ],
+    "conf": 72.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2461.5,
+   "id": "ONEREPORTKBANKT_p81_073",
+   "suggest": "tesseract",
+   "order": 72
+  },
+  {
+   "typhoon": {
+    "text": "สินเชื่อแก่ลูกหนี้ที่วัดมูลค่าด้วยวิธีราคาทุนตัดจำหน่ายขึ้นอยู่กับโมเดลด้านเครดิตที่มีความซับซ้อน ผู้บริหารต้องใช้วิจารณญาณและการ"
+   },
+   "tesseract": {
+    "text": "สินเชือแก่ลูกหนี่ที่วัดมูลค่าด้วยวิธีราคาทุนตัดจําหน่ายขึ่นอยู่กับโมเดลด้านเครดิตที่มีความซับซ้อนผู้บริหารต้องใช้วิจารณญาณและการ",
+    "image": 0,
+    "bbox": [
+     818,
+     1122,
+     2148,
+     1165
+    ],
+    "conf": 93.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.7,
+   "pos": 2462,
+   "id": "ONEREPORTKBANKT_p81_074",
+   "suggest": "typhoon",
+   "order": 73
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "io wv god ดกรแดรดิตคังกล่ากสิ่งรกบถึงวิธีเพศ - สี่ยงด้านเครดิ",
+    "image": 0,
+    "bbox": [
+     943,
+     1157,
+     2132,
+     1206
+    ],
+    "conf": 80.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2589.5,
+   "id": "ONEREPORTKBANKT_p81_075",
+   "suggest": "tesseract",
+   "order": 74
+  },
+  {
+   "typhoon": {
+    "text": "ประมาณการที่สำคัญในการจัดทำโมเดลด้านเครดิตดังกล่าว ซึ่งรวมถึงวิธีการระบุดับการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต"
+   },
+   "tesseract": {
+    "text": "ประมาณการทิสําคัญในการจัดทําโมเดลด้านเครดิตดังกล่าวซึงรวมถึงวิธีการระบุระดับการเพิมขีนอย่างมีนัยลําคัญของความเสียงด้านเครดิต",
+    "image": 0,
+    "bbox": [
+     818,
+     1174,
+     2148,
+     1215
+    ],
+    "conf": 93.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 91.9,
+   "pos": 2590,
+   "id": "ONEREPORTKBANKT_p81_076",
+   "suggest": "typhoon",
+   "order": 75
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "; : FI PS. ลั « od คิดจื้จ 1 เรกิอ๕กหรั้อิดจัดซาระหนี้ต่อณาร 1 ครนร 4",
+    "image": 0,
+    "bbox": [
+     828,
+     1207,
+     2102,
+     1249
+    ],
+    "conf": 64.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2713.5,
+   "id": "ONEREPORTKBANKT_p81_077",
+   "suggest": "tesseract",
+   "order": 76
+  },
+  {
+   "typhoon": {
+    "text": "ค่าความน่าจะเป็นที่ลูกหนี้จะผิดนัดชำระหนี้ ร้อยละของความเสียหายที่อาจจะเกิดขึ้นเมื่อลูกหนี้ผิดนัดชำระหนี้ต่อจำนวนเงินของยอดหนี้ และ"
+   },
+   "tesseract": {
+    "text": "ค่าความน่าจะเป็นที่ลูกหนี่จะผิดนัดชําระหนี่ร้อยละของความเสียหายที่อาจจะเกิดขึ่นเมื่อลูกหนี้ผิดนัดชําระหนี่ต่อจํานวนเงินของยอดหนี่และ",
+    "image": 0,
+    "bbox": [
+     819,
+     1223,
+     2152,
+     1265
+    ],
+    "conf": 93.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.1,
+   "pos": 2714,
+   "id": "ONEREPORTKBANKT_p81_078",
+   "suggest": "typhoon",
+   "order": 77
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "34 vo. . อ 5 พื่จาติ",
+    "image": 0,
+    "bbox": [
+     1006,
+     1257,
+     2131,
+     1298
+    ],
+    "conf": 49.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2842.5,
+   "id": "ONEREPORTKBANKT_p81_079",
+   "suggest": "tesseract",
+   "order": 78
+  },
+  {
+   "typhoon": {
+    "text": "ประมาณการยอดหนี้เมื่อลูกหนี้ผิดนัดชำระ การใช้ปัจจัยทางเศรษฐกิจมหภาคและการปรับปรุงเชิงคุณภาพรวมถึงการประมาณการเพิ่มเติม"
+   },
+   "tesseract": {
+    "text": "ประมาณการยอดหนี่เมื่อลูกหนี้ผิดนัดซําระการใช้ปัจจัยทางเศรษฐกิจมหภาคและการปรับปรุงเชิงคุณภาพรวมถึงการประมาณการเพิ่มเติม",
+    "image": 0,
+    "bbox": [
+     818,
+     1273,
+     2147,
+     1317
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.3,
+   "pos": 2843,
+   "id": "ONEREPORTKBANKT_p81_080",
+   "suggest": "typhoon",
+   "order": 79
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "a ew โฆได้เพี่ \" กริษา๑ดังนัง",
+    "image": 0,
+    "bbox": [
+     860,
+     1308,
+     2142,
+     1349
+    ],
+    "conf": 69.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2959.5,
+   "id": "ONEREPORTKBANKT_p81_081",
+   "suggest": "tesseract",
+   "order": 80
+  },
+  {
+   "typhoon": {
+    "text": "โดยผู้บริหาร โดยเฉพาะอย่างยิ่ง เมื่อสภาวะเศรษฐกิจในปัจจุบันได้เพิ่มความซับซ้อนให้กับกระบวนการในการประมาณการของผู้บริหาร ดังนั้น"
+   },
+   "tesseract": {
+    "text": "โดยผู้บริหารโดยเฉพาะอย่างยิงเมื่อสภาวะเศรษฐกิจในบปัจจุบันได้เพิ่มความซับซ้อนให้กับกระบวนการในการประมาณการของผู้บริหารดังนัน",
+    "image": 0,
+    "bbox": [
+     814,
+     1324,
+     2150,
+     1367
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.6,
+   "pos": 2960,
+   "id": "ONEREPORTKBANKT_p81_082",
+   "suggest": "typhoon",
+   "order": 81
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "aa เค ad aX ood oa",
+    "image": 0,
+    "bbox": [
+     818,
+     1370,
+     1494,
+     1387
+    ],
+    "conf": 38.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3083.5,
+   "id": "ONEREPORTKBANKT_p81_083",
+   "suggest": "tesseract",
+   "order": 82
+  },
+  {
+   "typhoon": {
+    "text": "จึงพิจารณาค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นเป็นเรื่องสำคัญในการตรวจสอบ"
+   },
+   "tesseract": {
+    "text": "จึงพิจารณาค่าเผื่อผลขาดทุนด้านเครดิตทีคาดว่าจะเกิดขิ่นเป็นเรืองสําคัญในการตรวจสอบ",
+    "image": 0,
+    "bbox": [
+     818,
+     1375,
+     1668,
+     1415
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 95.1,
+   "pos": 3084,
+   "id": "ONEREPORTKBANKT_p81_084",
+   "suggest": "typhoon",
+   "order": 83
+  },
+  {
+   "typhoon": {
+    "text": "เรื่องสำคัญในการตรวจสอบ"
+   },
+   "tesseract": {
+    "text": "เรื่องสําคัญในการตรวจสอบ",
+    "image": 0,
+    "bbox": [
+     818,
+     232,
+     1085,
+     271
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3143,
+   "id": "ONEREPORTKBANKT_p81_085",
+   "suggest": "typhoon",
+   "order": 84
+  },
+  {
+   "typhoon": {
+    "text": "เรื่องสำคัญในการตรวจสอบ"
+   },
+   "tesseract": {
+    "text": "เรื่องสําคัญในการตรวจสอบ",
+    "image": 1,
+    "bbox": [
+     254,
+     1339,
+     547,
+     1385
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3143,
+   "id": "ONEREPORTKBANKT_p81_086",
+   "suggest": "typhoon",
+   "order": 85
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "od oo a dL dete oo od as da a a oy a",
+    "image": 0,
+    "bbox": [
+     822,
+     314,
+     2127,
+     343
+    ],
+    "conf": 44.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3165.5,
+   "id": "ONEREPORTKBANKT_p81_087",
+   "suggest": "tesseract",
+   "order": 86
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "o ฆ่ a งจ",
+    "image": 0,
+    "bbox": [
+     864,
+     1454,
+     1100,
+     1480
+    ],
+    "conf": 43.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3165.5,
+   "id": "ONEREPORTKBANKT_p81_088",
+   "suggest": "tesseract",
+   "order": 87
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "i 4 om Sosa ร -",
+    "image": 1,
+    "bbox": [
+     289,
+     1432,
+     1356,
+     1447
+    ],
+    "conf": 33.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3165.5,
+   "id": "ONEREPORTKBANKT_p81_089",
+   "suggest": "tesseract",
+   "order": 88
+  },
+  {
+   "typhoon": {
+    "text": "การจัดการเรื่องดังกล่าวอย่างไรในการตรวจสอบ"
+   },
+   "tesseract": {
+    "text": "การจัดการเรืองดังกล่าวอย่างไรในการตรวจสอบ",
+    "image": 0,
+    "bbox": [
+     819,
+     1460,
+     1325,
+     1500
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.6,
+   "pos": 3166,
+   "id": "ONEREPORTKBANKT_p81_090",
+   "suggest": "typhoon",
+   "order": 89
+  },
+  {
+   "typhoon": {
+    "text": "ในการวางแผนวิธีการตรวจสอบ ข้าพเจ้าได้ประเมินความเสี่ยงโดยพิจารณาปัจจัยภายใน และปัจจัยภายนอกซึ่งอาจมีผลกระทบต่อผลการ"
+   },
+   "tesseract": {
+    "text": "ในการวางแผนวิธีการตรวจสอบข้าพเจ้าได้ประเมินความเสี่ยงโดยพิจารณาบัจจัยภายในและปัจจัยภายนอกซึ่งอาจมีผลกระทบต่อผลการ",
+    "image": 0,
+    "bbox": [
+     818,
+     1538,
+     2147,
+     1585
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 99.1,
+   "pos": 3208,
+   "id": "ONEREPORTKBANKT_p81_091",
+   "suggest": "typhoon",
+   "order": 90
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "oa & o เชื่๑๓ ya ood od rT) x",
+    "image": 0,
+    "bbox": [
+     827,
+     1589,
+     1733,
+     1618
+    ],
+    "conf": 53.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3320.5,
+   "id": "ONEREPORTKBANKT_p81_092",
+   "suggest": "tesseract",
+   "order": 91
+  },
+  {
+   "typhoon": {
+    "text": "ำเนินงานของลูกหนี้รายตัว กลุ่มอุตสาหกรรมหรือกลุ่มลูกค้าหรือปัจจัยอื่นซึ่งอาจมีผลต่อการใช้ประมาณการ และการใช้วิจารณญาณ"
+   },
+   "tesseract": {
+    "text": "ดาเนนงานของลูกหนรายตัวกลุ่มอุตสาหกรรมหรือกลุ่มลูกค้าหรือบัจจัยอินซึงอาจมีผลต่อการใช้ประมาณการและการใช้วิจารณญาณ",
+    "image": 0,
+    "bbox": [
+     819,
+     1597,
+     2096,
+     1638
+    ],
+    "conf": 93.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 92.2,
+   "pos": 3322,
+   "id": "ONEREPORTKBANKT_p81_093",
+   "suggest": "typhoon",
+   "order": 92
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "จ '",
+    "image": 0,
+    "bbox": [
+     1118,
+     1614,
+     1127,
+     1642
+    ],
+    "conf": 58.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3436.5,
+   "id": "ONEREPORTKBANKT_p81_094",
+   "suggest": "tesseract",
+   "order": 93
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "a 7 4 A de",
+    "image": 0,
+    "bbox": [
+     817,
+     1685,
+     2098,
+     1701
+    ],
+    "conf": 59.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3436.5,
+   "id": "ONEREPORTKBANKT_p81_095",
+   "suggest": "tesseract",
+   "order": 94
+  },
+  {
+   "typhoon": {
+    "text": "วิธีการตรวจสอบของข้าพเจ้ารวมถึงการทดสอบการออกแบบ และประสิทธิผลของการควบคุมภายในเพื่อตอบสนองต่อความเสี่ยงที่สำคัญ"
+   },
+   "tesseract": {
+    "text": "วิธีการตรวจสอบของข้าพเจ้ารวมถึงการทดสอบการออกแบบและประสิทธิผลของการควบคุมภายในเพื่อตอบสนองต่อความเสี่ยงที่สําคัญ",
+    "image": 0,
+    "bbox": [
+     819,
+     1681,
+     2149,
+     1730
+    ],
+    "conf": 95.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3437,
+   "id": "ONEREPORTKBANKT_p81_096",
+   "suggest": "typhoon",
+   "order": 95
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "4 เลเซื่ติตปี่ดาดกํา @= เกิดสื้ง he ล",
+    "image": 0,
+    "bbox": [
+     1045,
+     1724,
+     2096,
+     1763
+    ],
+    "conf": 72.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3547.5,
+   "id": "ONEREPORTKBANKT_p81_097",
+   "suggest": "tesseract",
+   "order": 96
+  },
+  {
+   "typhoon": {
+    "text": "ของกระบวนการให้สินเชื่อ และการประมาณการค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น โดยเฉพาะอย่างยิ่ง ข้าพเจ้าได้ประเมินการ"
+   },
+   "tesseract": {
+    "text": "ของกระบวนการให้สินเชื่อและการประมาณการค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึนโดยเอพาะอย่างยิงข้าพเจ้าได้ประเมินการ",
+    "image": 0,
+    "bbox": [
+     819,
+     1738,
+     2150,
+     1779
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.5,
+   "pos": 3548,
+   "id": "ONEREPORTKBANKT_p81_098",
+   "suggest": "typhoon",
+   "order": 97
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "doo Tia ' ญี่ลกหมี้อะณิดจโดซิาระงมี้ 2. ฮ่ POF SF TE: A",
+    "image": 0,
+    "bbox": [
+     960,
+     1773,
+     2138,
+     1813
+    ],
+    "conf": 65.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3668.5,
+   "id": "ONEREPORTKBANKT_p81_099",
+   "suggest": "tesseract",
+   "order": 98
+  },
+  {
+   "typhoon": {
+    "text": "ควบคุมภายในที่สำคัญในการประเมินค่าความน่าจะเป็นที่ลูกหนี้จะผิดนัดชำระหนี้ ร้อยละของความเสียหายที่อาจจะเกิดขึ้นเมื่อลูกหนี้ผิดนัด"
+   },
+   "tesseract": {
+    "text": "ควบคุมภายในที่สําคัญในการประเมินค่าความน่าจะเป็นที่ลูกหนี่จะผิดนัดชําระหนี่ร้อยละของความเสียหายที่อาจจะเกิดขึ่นเมื่อลูกหนี่ผิดนัด",
+    "image": 0,
+    "bbox": [
+     820,
+     1788,
+     2149,
+     1830
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.9,
+   "pos": 3669,
+   "id": "ONEREPORTKBANKT_p81_100",
+   "suggest": "typhoon",
+   "order": 99
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "กรมจเจ็ต่ x Id Xo Lo. ฑ TER A Ea",
+    "image": 0,
+    "bbox": [
+     825,
+     1824,
+     2035,
+     1863
+    ],
+    "conf": 50.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3795.5,
+   "id": "ONEREPORTKBANKT_p81_101",
+   "suggest": "tesseract",
+   "order": 100
+  },
+  {
+   "typhoon": {
+    "text": "ชำระหนี้ต่อยอดหนี้ และประมาณการยอดหนี้เมื่อลูกหนี้ผิดนัดชำระ และการพัฒนาวิธีการระบุดับการเพิ่มขึ้นอย่างมีนัยสำคัญของความ"
+   },
+   "tesseract": {
+    "text": "ซําระหนีต่อยอดหนีและประมาณการยอดหนีเมื่อลูกหนี่ผิดนัดชําระและการพัฒนาวิธีการระบุระดับการเพิ่มขืนอย่างมีนัยสําคัญของความ",
+    "image": 0,
+    "bbox": [
+     819,
+     1841,
+     2148,
+     1880
+    ],
+    "conf": 93.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 92.4,
+   "pos": 3796,
+   "id": "ONEREPORTKBANKT_p81_102",
+   "suggest": "typhoon",
+   "order": 101
+  },
+  {
+   "typhoon": {
+    "text": "เสี่ยงด้านเครดิต ปัจจัยทางเศรษฐกิจมหภาค และการปรับปรุงเชิงคุณภาพ"
+   },
+   "tesseract": {
+    "text": "เสี่ยงด้านเครดิตปบัจจัยทางเศรษฐกิจมหภาคและการปรับปรุงเชิงคุณภาพ",
+    "image": 0,
+    "bbox": [
+     820,
+     1889,
+     1510,
+     1932
+    ],
+    "conf": 93.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.4,
+   "pos": 3914,
+   "id": "ONEREPORTKBANKT_p81_103",
+   "suggest": "typhoon",
+   "order": 102
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ค้าคฆ่างเพื่องกิบัติล ; TF ;",
+    "image": 0,
+    "bbox": [
+     933,
+     1966,
+     2138,
+     2008
+    ],
+    "conf": 76.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3975.5,
+   "id": "ONEREPORTKBANKT_p81_104",
+   "suggest": "tesseract",
+   "order": 103
+  },
+  {
+   "typhoon": {
+    "text": "ข้าพเจ้าสุ่มตัวอย่างเพื่อปฏิบัติงานสอบทานเงินให้สินเชื่อ โดยสอบทานในรายละเอียดของประวัติสินเชื่อรายตัวและข้อมูลอื่นที่เกี่ยวข้อง ซึ่ง"
+   },
+   "tesseract": {
+    "text": "ข้าพเจ้าสุ่มตัวอย่างเพื่อปฏิบัติงานสอบทานเงินให้สินเชื่อโดยสอบทานในรายละเอียดของประวัติสินเชื่อรายตัวและข้อมูลอื่นทีเกี่ยวข้องซึ่ง",
+    "image": 0,
+    "bbox": [
+     815,
+     1981,
+     2154,
+     2024
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 99.2,
+   "pos": 3976,
+   "id": "ONEREPORTKBANKT_p81_105",
+   "suggest": "typhoon",
+   "order": 104
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "วคิจัติคฆ่างเจ็ใบลิศระตักคย่างที่ฉั om 4d 5 x ล่ 4",
+    "image": 0,
+    "bbox": [
+     823,
+     2015,
+     2059,
+     2058
+    ],
+    "conf": 73.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 4106.5,
+   "id": "ONEREPORTKBANKT_p81_106",
+   "suggest": "tesseract",
+   "order": 105
+  },
+  {
+   "typhoon": {
+    "text": "ข้าพเจ้าปฏิบัติอย่างเป็นอิสระ ตัวอย่างที่เลือกรวมถึงลูกหนี้รายใหญ่ เงินให้สินเชื่อที่มีการปรับโครงสร้างหนี้และการเปลี่ยนแปลงเงื่อนไขการ"
+   },
+   "tesseract": {
+    "text": "ข้าพเจ้าปฏิบัติอย่างเป็นอิสระตัวอย่างที่เลือกรวมถึงลูกหนี่รายใหญ่เงินให้สินเชื่อที่มีการปรับโครงสร้างหนี่และการเปลี่ยนแปลงเงื่อนไขการ",
+    "image": 0,
+    "bbox": [
+     819,
+     2031,
+     2150,
+     2074
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.5,
+   "pos": 4107,
+   "id": "ONEREPORTKBANKT_p81_107",
+   "suggest": "typhoon",
+   "order": 106
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "rode ” ล , J",
+    "image": 0,
+    "bbox": [
+     828,
+     2066,
+     1450,
+     2104
+    ],
+    "conf": 44.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 4239.5,
+   "id": "ONEREPORTKBANKT_p81_108",
+   "suggest": "tesseract",
+   "order": 107
+  },
+  {
+   "typhoon": {
+    "text": "จ่ายชำระหนี้ รวมถึงเงินให้สินเชื่อที่ได้เลือกจากการประเมินความเสี่ยงของข้าพเจ้า"
+   },
+   "tesseract": {
+    "text": "จ่ายซําระหนี้รวมถึงเงินให้สินเชื่อที่ได้เลือกจากการประเมินความเสี่ยงของข้าพเจ้า",
+    "image": 0,
+    "bbox": [
+     819,
+     2075,
+     1589,
+     2121
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.7,
+   "pos": 4240,
+   "id": "ONEREPORTKBANKT_p81_109",
+   "suggest": "typhoon",
+   "order": 108
+  },
+  {
+   "typhoon": {
+    "text": "ธนาคารกสิกรไทย"
+   },
+   "tesseract": null,
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 4318,
+   "id": "ONEREPORTKBANKT_p81_110",
+   "suggest": "typhoon",
+   "order": 109
+  },
+  {
+   "typhoon": {
+    "text": "รายงานแบบ 56-1 One Report ประจำปี 2568"
+   },
+   "tesseract": {
+    "text": "รายงานแบบ 56-1 One Report ประจําปี 2568",
+    "image": 0,
+    "bbox": [
+     922,
+     127,
+     1242,
+     156
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4332,
+   "id": "ONEREPORTKBANKT_p81_111",
+   "suggest": "typhoon",
+   "order": 110
+  },
+  {
+   "typhoon": {
+    "text": "รายงานแบบ 56-1 One Report ประจำปี 2568"
+   },
+   "tesseract": {
+    "text": "รายงานแบบ 56-1 One Report ประจําปี 2568",
+    "image": 1,
+    "bbox": [
+     1154,
+     127,
+     1474,
+     156
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4332,
+   "id": "ONEREPORTKBANKT_p81_112",
+   "suggest": "typhoon",
+   "order": 111
+  },
+  {
+   "typhoon": {
+    "text": "ประจำปี 2568"
+   },
+   "tesseract": {
+    "text": "ประจําปี 2568",
+    "image": 0,
+    "bbox": [
+     259,
+     281,
+     440,
+     328
+    ],
+    "conf": 93.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4354,
+   "id": "ONEREPORTKBANKT_p81_113",
+   "suggest": "typhoon",
+   "order": 112
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ad.",
+    "image": 0,
+    "bbox": [
+     824,
+     228,
+     909,
+     243
+    ],
+    "conf": 31.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 4364.5,
+   "id": "ONEREPORTKBANKT_p81_114",
+   "suggest": "tesseract",
+   "order": 113
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "จักขธักการลัดจั้ i 4 งิ่งจิ้น๓ข่างขีบัยตักลั : จ๊",
+    "image": 1,
+    "bbox": [
+     259,
+     219,
+     1375,
+     264
+    ],
+    "conf": 58.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 4364.5,
+   "id": "ONEREPORTKBANKT_p81_115",
+   "suggest": "tesseract",
+   "order": 114
+  },
+  {
+   "typhoon": {
+    "text": "สำหรับการจัดชั้นและการระบุความเสี่ยงด้านเครดิตของสินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสำคัญ ข้าพเจ้าประเมินและทดสอบความ"
+   },
+   "tesseract": {
+    "text": "สําหรับการจัดชั้นและการระบุความเสี่ยงด้านเครดิตของสินเชื่อที่มีการเพิ่มขึ้นอย่างมีนัยสําคัญข้าพเจ้าประเมินและทดสอบความ",
+    "image": 1,
+    "bbox": [
+     251,
+     230,
+     1578,
+     280
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4365,
+   "id": "ONEREPORTKBANKT_p81_116",
+   "suggest": "typhoon",
+   "order": 115
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "tol o ติ ; จักได้รระเบีบร",
+    "image": 1,
+    "bbox": [
+     621,
+     269,
+     1431,
+     313
+    ],
+    "conf": 62.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 4480.5,
+   "id": "ONEREPORTKBANKT_p81_117",
+   "suggest": "tesseract",
+   "order": 116
+  },
+  {
+   "typhoon": {
+    "text": "สมเหตุสมผลของเกณฑ์ที่ธนาคารและบริษัทย่อยใช้ในการโอนเปลี่ยนความเสี่ยงด้านเครดิตประเภทต่างๆ ข้าพเจ้าได้ประเมินว่าเกณฑ์การโอน"
+   },
+   "tesseract": {
+    "text": "สมเหตุสมผลของเกณฑ์ที่ธนาคารและบริษัทย่อยใช้ในการโอนเปลี่ยนความเสี่ยงด้านเครดิตประเภทต่างๆข้าพเจ้าได้ประเมินว่าเกณฑ์การโอน",
+    "image": 1,
+    "bbox": [
+     251,
+     280,
+     1582,
+     330
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4481,
+   "id": "ONEREPORTKBANKT_p81_118",
+   "suggest": "typhoon",
+   "order": 117
+  },
+  {
+   "typhoon": {
+    "text": "นั้นสอดคล้องกับแนวทางการบริหารความเสี่ยงด้านเครดิตของธนาคารและบริษัทย่อย"
+   },
+   "tesseract": {
+    "text": "นั้นสอดคล้องกับแนวทางการบริหารความเสี่ยงด้านเครดิตของธนาคารและบริษัทย่อย",
+    "image": 1,
+    "bbox": [
+     251,
+     331,
+     1050,
+     376
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4602,
+   "id": "ONEREPORTKBANKT_p81_119",
+   "suggest": "typhoon",
+   "order": 118
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "จรติจ 1 การอ้คิดชี่อาดกํก๕๓เกิดจี้: es nad 5",
+    "image": 1,
+    "bbox": [
+     259,
+     414,
+     1448,
+     454
+    ],
+    "conf": 64.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 4673.5,
+   "id": "ONEREPORTKBANKT_p81_120",
+   "suggest": "tesseract",
+   "order": 119
+  },
+  {
+   "typhoon": {
+    "text": "สำหรับการคำนวณผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น ข้าพเจ้าประเมินและทดสอบความสมเหตุสมผลของโมเดลด้านเครดิตของธนาคาร"
+   },
+   "tesseract": {
+    "text": "สําหรับการคํานวณผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ่นข้าพเจ้าประเมินและทดสอบความสมเหตุสมผลของโมเดลด้านเครดิตของธนาคาร",
+    "image": 1,
+    "bbox": [
+     251,
+     430,
+     1582,
+     471
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 99.1,
+   "pos": 4674,
+   "id": "ONEREPORTKBANKT_p81_121",
+   "suggest": "typhoon",
+   "order": 120
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "วิฉักต๑๓ลี่ o ลกจรจัจเกณ่จพลกจจงัหีตัวดักฉ",
+    "image": 1,
+    "bbox": [
+     304,
+     464,
+     1384,
+     505
+    ],
+    "conf": 62.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 4788.5,
+   "id": "ONEREPORTKBANKT_p81_122",
+   "suggest": "tesseract",
+   "order": 121
+  },
+  {
+   "typhoon": {
+    "text": "และบริษัทย่อย ซึ่งรวมถึง ข้อมูลที่ใช้ การออกแบบ และประสิทธิภาพของโมเดลสำหรับกลุ่มลูกหนี้ที่สำคัญ ข้าพเจ้าประเมินความสมเหตุสมผล"
+   },
+   "tesseract": {
+    "text": "และบริษัทย่อยซึ่งรวมถึงข้อมูลที่ใช้การออกแบบและประสิทธิภาพของโมเดลสําหรับกลุ่มลูกหนีที่สําคัญข้าพเจ้าประเมินความสมเหตุสมผล",
+    "image": 1,
+    "bbox": [
+     252,
+     480,
+     1582,
+     521
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 99.2,
+   "pos": 4789,
+   "id": "ONEREPORTKBANKT_p81_123",
+   "suggest": "typhoon",
+   "order": 122
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "5. f Jd, ¥ oo ol oe",
+    "image": 1,
+    "bbox": [
+     320,
+     522,
+     1171,
+     553
+    ],
+    "conf": 37.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 4909.5,
+   "id": "ONEREPORTKBANKT_p81_124",
+   "suggest": "tesseract",
+   "order": 123
+  },
+  {
+   "typhoon": {
+    "text": "ของปัจจัยทางเศรษฐศาสตร์มหภาค และความน่าจะเป็นที่ถ่วงน้ำหนักของสถานการณ์ที่แตกต่างกัน"
+   },
+   "tesseract": {
+    "text": "ของบัจจัยทางเศรษฐศาสตร์มหภาคและความน่าจะเป็นทิถ่วงน่าหนักของสถานการณ์ที่แตกต่างกัน",
+    "image": 1,
+    "bbox": [
+     251,
+     531,
+     1184,
+     573
+    ],
+    "conf": 93.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 94.0,
+   "pos": 4910,
+   "id": "ONEREPORTKBANKT_p81_125",
+   "suggest": "typhoon",
+   "order": 124
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "5 ื่อรคพริจคไรงเฟี",
+    "image": 1,
+    "bbox": [
+     376,
+     613,
+     1085,
+     656
+    ],
+    "conf": 57.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 4992.5,
+   "id": "ONEREPORTKBANKT_p81_126",
+   "suggest": "tesseract",
+   "order": 125
+  },
+  {
+   "typhoon": {
+    "text": "ข้าพเจ้าประเมินวิธีการและข้อมูลที่ฝ่ายบริหารใช้ในการระบุและประมาณการปรับปรุงเชิงคุณภาพ"
+   },
+   "tesseract": {
+    "text": "ข้าพเจ้าประเมินวิธีการและข้อมูลที่ฝ่ายบริหารใช้ในการระบุและประมาณการปรับปรุงเชิงคุณภาพ",
+    "image": 1,
+    "bbox": [
+     251,
+     631,
+     1179,
+     672
+    ],
+    "conf": 93.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4993,
+   "id": "ONEREPORTKBANKT_p81_127",
+   "suggest": "typhoon",
+   "order": 126
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "2 a คิฑัติ de a Ld",
+    "image": 1,
+    "bbox": [
+     555,
+     706,
+     1503,
+     748
+    ],
+    "conf": 69.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 5078.5,
+   "id": "ONEREPORTKBANKT_p81_128",
+   "suggest": "tesseract",
+   "order": 127
+  },
+  {
+   "typhoon": {
+    "text": "ข้าพเจ้าใช้ผู้เชี่ยวชาญด้านการบริหารความเสี่ยงทางการเงินในการปฏิบัติงานตรวจสอบที่จำเป็นต้องใช้ความเชี่ยวชาญเฉพาะด้านซึ่งรวมถึง"
+   },
+   "tesseract": {
+    "text": "ข้าพเจ้าใช้ผู้เชี่ยวชาญด้านการบริหารความเสี่ยงทางการเงินในการปฏิบัติงานตรวจสอบที่จําเป็นต้องใช้ความเชี่ยวชาญเฉพาะด้านซึ่งรวมถึง",
+    "image": 1,
+    "bbox": [
+     251,
+     716,
+     1582,
+     765
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5079,
+   "id": "ONEREPORTKBANKT_p81_129",
+   "suggest": "typhoon",
+   "order": 128
+  },
+  {
+   "typhoon": {
+    "text": "การประเมินสมมติฐานและวิธีการที่ใช้ในการพัฒนาตัวแปรในโมเดล"
+   },
+   "tesseract": {
+    "text": "การประเมินสมมติฐานและวิธีการที่ใช้ในการพัฒนาตัวแปรในโมเดล",
+    "image": 1,
+    "bbox": [
+     252,
+     766,
+     895,
+     816
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5205,
+   "id": "ONEREPORTKBANKT_p81_130",
+   "suggest": "typhoon",
+   "order": 129
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "4 ต, ว i",
+    "image": 1,
+    "bbox": [
+     373,
+     857,
+     1209,
+     899
+    ],
+    "conf": 47.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 5261.5,
+   "id": "ONEREPORTKBANKT_p81_131",
+   "suggest": "tesseract",
+   "order": 130
+  },
+  {
+   "typhoon": {
+    "text": "ข้าพเจ้าใช้ผู้เชี่ยวชาญด้านเทคโนโลยีสารสนเทศในการทดสอบความครบถ้วนและความถูกต้องของข้อมูลที่ใช้"
+   },
+   "tesseract": {
+    "text": "ข้าพเจ้าใช้ผู้เชี่ยวชาญด้านเทคโนโลยีสารสนเทศในการทดสอบความครบถ้วนและความถูกต้องของข้อมูลที่ใช้",
+    "image": 1,
+    "bbox": [
+     252,
+     865,
+     1295,
+     915
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5262,
+   "id": "ONEREPORTKBANKT_p81_132",
+   "suggest": "typhoon",
+   "order": 131
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "2 aoa a a = ฮ่ชะ , a '",
+    "image": 1,
+    "bbox": [
+     257,
+     966,
+     1434,
+     1002
+    ],
+    "conf": 51.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 5355.5,
+   "id": "ONEREPORTKBANKT_p81_133",
+   "suggest": "tesseract",
+   "order": 132
+  },
+  {
+   "typhoon": {
+    "text": "ข้าพเจ้าได้ประเมินว่าการเปิดเผยในงบการเงินมีความเพียงพอและเหมาะสมที่จะสะท้อนความเสี่ยงของธนาคารและบริษัทย่อยต่อความ"
+   },
+   "tesseract": {
+    "text": "ข้าพเจ้าได้ประเมินว่าการเปิดเผยในงบการเงินมีความเพียงพอและเหมาะสมทีจะสะท้อนความเสียงของธนาคารและบริษัทย่อยต่อความ",
+    "image": 1,
+    "bbox": [
+     252,
+     974,
+     1579,
+     1012
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.3,
+   "pos": 5356,
+   "id": "ONEREPORTKBANKT_p81_134",
+   "suggest": "typhoon",
+   "order": 133
+  },
+  {
+   "typhoon": {
+    "text": "เสี่ยงด้านเครดิตตามมาตรฐานรายงานทางการเงินและหลักเกณฑ์ของธนาคารแห่งประเทศไทย"
+   },
+   "tesseract": {
+    "text": "เสี่ยงด้านเครดิตตามมาตรฐานรายงานทางการเงินและหลักเกณฑ์ของธนาคารแห่งประเทศไทย",
+    "image": 1,
+    "bbox": [
+     253,
+     1017,
+     1153,
+     1067
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5471,
+   "id": "ONEREPORTKBANKT_p81_135",
+   "suggest": "typhoon",
+   "order": 134
+  },
+  {
+   "typhoon": {
+    "text": "การวัดมูลค่าของเครื่องมือทางการเงินในงบฐานะการเงิน"
+   },
+   "tesseract": {
+    "text": "การวัดมูลค่าของเครื่องมือทางการเงินในงบฐานะการเงิน",
+    "image": 1,
+    "bbox": [
+     253,
+     1108,
+     845,
+     1156
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5547,
+   "id": "ONEREPORTKBANKT_p81_136",
+   "suggest": "typhoon",
+   "order": 135
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ry ๑๑ 2",
+    "image": 1,
+    "bbox": [
+     800,
+     1197,
+     956,
+     1225
+    ],
+    "conf": 72.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 5596.5,
+   "id": "ONEREPORTKBANKT_p81_137",
+   "suggest": "tesseract",
+   "order": 136
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "do od a a a",
+    "image": 1,
+    "bbox": [
+     434,
+     1201,
+     1419,
+     1216
+    ],
+    "conf": 64.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 5596.5,
+   "id": "ONEREPORTKBANKT_p81_138",
+   "suggest": "tesseract",
+   "order": 137
+  },
+  {
+   "typhoon": {
+    "text": "การเปิดเผยข้อมูลเกี่ยวกับเครื่องมือทางการเงิน และมูลค่ายุติธรรม อ้างอิงหมายเหตุประกอบงบการเงินรวมและงบการเงินเฉพาะธนาคาร"
+   },
+   "tesseract": {
+    "text": "การเปิดเผยข้อมูลเกี่ยวกับเครื่องมือทางการเงินและมูลคายุตธรรมอ้างอิงหมายเหตุประกอบงบการเงินรวมและงบการเงินเอพาะธนาคาร",
+    "image": 1,
+    "bbox": [
+     253,
+     1203,
+     1581,
+     1245
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.5,
+   "pos": 5597,
+   "id": "ONEREPORTKBANKT_p81_139",
+   "suggest": "typhoon",
+   "order": 138
+  },
+  {
+   "typhoon": {
+    "text": "ข้อ 4.13, 5 และ 29"
+   },
+   "tesseract": {
+    "text": "ข้อ 4.13, 5 และ 29",
+    "image": 1,
+    "bbox": [
+     252,
+     1256,
+     439,
+     1294
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5715,
+   "id": "ONEREPORTKBANKT_p81_140",
+   "suggest": "typhoon",
+   "order": 139
+  },
+  {
+   "typhoon": {
+    "text": "เรื่องสำคัญในการตรวจสอบ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 1,
+    "bbox": [
+     0,
+     1228,
+     1000000,
+     1503
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 5729,
+   "id": "ONEREPORTKBANKT_p81_141",
+   "suggest": "typhoon",
+   "order": 140
+  },
+  {
+   "typhoon": {
+    "text": "ณ วันที่ 31 ธันวาคม 2568 เครื่องมือทางการเงินบันทึกด้วยมูลค่ายุติธรรมในงบการเงินรวม เป็นสินทรัพย์จำนวน 1,262,141"
+   },
+   "tesseract": {
+    "text": "ณวันที่ 31 ธันวาคม 2568 เครื่องมือทางการเงินบันทึกด้วยมูลค่ายุติธรรมในงบการเงินรวมเป็นสินทรัพย์จํานวน 1,262,141",
+    "image": 1,
+    "bbox": [
+     250,
+     1433,
+     1581,
+     1475
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5752,
+   "id": "ONEREPORTKBANKT_p81_142",
+   "suggest": "typhoon",
+   "order": 141
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ลง. คลังจ -'",
+    "image": 1,
+    "bbox": [
+     410,
+     1467,
+     1246,
+     1506
+    ],
+    "conf": 60.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 5856.5,
+   "id": "ONEREPORTKBANKT_p81_143",
+   "suggest": "tesseract",
+   "order": 142
+  },
+  {
+   "typhoon": {
+    "text": "ล้านบาท และหนี้สินจำนวน 92,270 ล้านบาท ตามลำดับ ในงบการเงินเฉพาะธนาคารเป็นสินทรัพย์จำนวน 576,745 ล้านบาท และเป็น"
+   },
+   "tesseract": {
+    "text": "ล้านบาทและหนี่สินจํานวน 92,270 ล้านบาทตามลําดับในงบการเงินเอพาะธนาคารเป็นสินทรัพย์จํานวน 576,745 ล้านบาทและเป็น",
+    "image": 1,
+    "bbox": [
+     254,
+     1484,
+     1589,
+     1523
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.1,
+   "pos": 5857,
+   "id": "ONEREPORTKBANKT_p81_144",
+   "suggest": "typhoon",
+   "order": 143
+  },
+  {
+   "typhoon": {
+    "text": "หนี้สินจำนวน 92,527 ล้านบาท ตามลำดับ"
+   },
+   "tesseract": {
+    "text": "หนี้สินจํานวน 92,527 ล้านบาทตามลําดับ",
+    "image": 1,
+    "bbox": [
+     253,
+     1527,
+     662,
+     1574
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5961,
+   "id": "ONEREPORTKBANKT_p81_145",
+   "suggest": "typhoon",
+   "order": 144
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ow soit md 5 3 & รเพีล้ ! ค",
+    "image": 1,
+    "bbox": [
+     286,
+     1609,
+     1549,
+     1651
+    ],
+    "conf": 36.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 5993.5,
+   "id": "ONEREPORTKBANKT_p81_146",
+   "suggest": "tesseract",
+   "order": 145
+  },
+  {
+   "typhoon": {
+    "text": "ในจำนวนดังกล่าว ณ วันที่ 31 ธันวาคม 2568 สินทรัพย์ทางการเงินและหนี้สินทางการเงินที่จัดลำดับขั้นมูลค่ายุติธรรมเป็นข้อมูลระดับ 2"
+   },
+   "tesseract": {
+    "text": "ในจํานวนดังกล่าวณวันที่ 31 ธันวาคม 2568 สินทรัพย์ทางการเงินและหนี่สินทางการเงินทิจัดลําดับชันมูลค่ายุติธรรมเป็นข้อมูลระดับ 2",
+    "image": 1,
+    "bbox": [
+     252,
+     1626,
+     1585,
+     1668
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 95.8,
+   "pos": 5994,
+   "id": "ONEREPORTKBANKT_p81_147",
+   "suggest": "typhoon",
+   "order": 146
+  },
+  {
+   "typhoon": {
+    "text": "และระดับ 3 ในงบการเงินรวมเป็นจำนวน 1,154,868 ล้านบาท และจำนวน 92,043 ล้านบาท ตามลำดับ และในงบการเงินเฉพาะธนาคาร"
+   },
+   "tesseract": {
+    "text": "และระดับ 3 ในงบการเงินรวมเป็นจํานวน 1,154,868 ล้านบาทและจํานวน 92,043 ล้านบาทตามลําดับและในงบการเงินเอพาะธนาคาร",
+    "image": 1,
+    "bbox": [
+     254,
+     1677,
+     1585,
+     1719
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 99.0,
+   "pos": 6113,
+   "id": "ONEREPORTKBANKT_p81_148",
+   "suggest": "typhoon",
+   "order": 147
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "NE สึ่งทุคตําคดิครรมค้างต 4",
+    "image": 1,
+    "bbox": [
+     834,
+     1710,
+     1237,
+     1752
+    ],
+    "conf": 75.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 6214.5,
+   "id": "ONEREPORTKBANKT_p81_149",
+   "suggest": "tesseract",
+   "order": 148
+  },
+  {
+   "typhoon": {
+    "text": "เป็นจำนวน 548,360 ล้านบาท และ 92,527 ล้านบาท ตามลำดับ ซึ่งมูลค่ายุติธรรมอ้างอิงจากข้อมูลอื่นประกอบนอกเหนือจากราคาเสนอ"
+   },
+   "tesseract": {
+    "text": "เป็นจํานวน 548,360 ล้านบาทและ 92,527 ล้านบาทตามลําดับซึ่งมูลค่ายุติธรรมอ้างอิงจากข้อมูลอื่นประกอบนอกเหนือจากราคาเสนอ",
+    "image": 1,
+    "bbox": [
+     255,
+     1725,
+     1583,
+     1769
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 6215,
+   "id": "ONEREPORTKBANKT_p81_150",
+   "suggest": "typhoon",
+   "order": 149
+  },
+  {
+   "typhoon": {
+    "text": "ตามลำดับ"
+   },
+   "tesseract": {
+    "text": "ตามลําดับ",
+    "image": 0,
+    "bbox": [
+     819,
+     932,
+     915,
+     970
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 6254,
+   "id": "ONEREPORTKBANKT_p81_151",
+   "suggest": "typhoon",
+   "order": 150
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "เจิย๓ขัจเที่๑กํ Bia \" _ \"",
+    "image": 0,
+    "bbox": [
+     1110,
+     1007,
+     2085,
+     1048
+    ],
+    "conf": 62.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 6261.5,
+   "id": "ONEREPORTKBANKT_p81_152",
+   "suggest": "tesseract",
+   "order": 151
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "d : ลอิจจเลด์คังกล้ากดังนั้ง Bil",
+    "image": 1,
+    "bbox": [
+     409,
+     1760,
+     1378,
+     1802
+    ],
+    "conf": 66.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 6324.5,
+   "id": "ONEREPORTKBANKT_p81_153",
+   "suggest": "tesseract",
+   "order": 152
+  },
+  {
+   "typhoon": {
+    "text": "ซื้อขายในตลาดที่มีสภาพคล่อง หรือโดยใช้เทคนิคการประเมินมูลค่าโดยใช้ข้อมูลดังกล่าว ดังนั้นธนาคารและบริษัทย่อยได้ใช้วิจารณญาณ"
+   },
+   "tesseract": {
+    "text": "ซื้อขายในตลาดที่มีสภาพคล่องหรือโดยใช้เทคนิคการประเมินมูลค่าโดยใช้ข้อมูลดังกล่าวดังนั้นธนาคารและบริษัทย่อยได้ใช้วิจารณญาณ",
+    "image": 1,
+    "bbox": [
+     254,
+     1770,
+     1585,
+     1819
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 6325,
+   "id": "ONEREPORTKBANKT_p81_154",
+   "suggest": "typhoon",
+   "order": 153
+  },
+  {
+   "typhoon": {
+    "text": "ในการประมาณมูลค่ายุติธรรม ซึ่งอาจมีผลต่อความเสี่ยงที่สูงขึ้นต่อจำนวนเงินของเครื่องมือทางการเงินที่แสดงในงบฐานะการเงินที่อาจ"
+   },
+   "tesseract": {
+    "text": "ในการประมาณมูลค่ายุติธรรมซึ่งอาจมีผลต่อความเสียงที่สูงขึ่นต่อจํานวนเงินของเครื่องมือทางการเงินทิแสดงในงบฐานะการเงินทีอาจ",
+    "image": 1,
+    "bbox": [
+     253,
+     1827,
+     1582,
+     1869
+    ],
+    "conf": 93.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 95.9,
+   "pos": 6445,
+   "id": "ONEREPORTKBANKT_p81_155",
+   "suggest": "typhoon",
+   "order": 154
+  },
+  {
+   "typhoon": {
+    "text": "่ายุติธรรม ซึ่งอาจมีผลต่อความเสี่ยงที่สูงขึ้นต่อจำนวนเงินขอ"
+   },
+   "tesseract": {
+    "text": "่ายติธรรมซึ่งอาจมีผลต่สี่ยงที่สูงขึ้นต่อจํานวนเงิ da il ad",
+    "image": 1,
+    "bbox": [
+     453,
+     1810,
+     1539,
+     1861
+    ],
+    "conf": 88.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 77.6,
+   "pos": 6460,
+   "id": "ONEREPORTKBANKT_p81_156",
+   "suggest": "typhoon",
+   "order": 155
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ฮี่ vil gm ฑท 4 Te",
+    "image": 1,
+    "bbox": [
+     435,
+     1861,
+     1174,
+     1900
+    ],
+    "conf": 44.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 6566.5,
+   "id": "ONEREPORTKBANKT_p81_157",
+   "suggest": "tesseract",
+   "order": 156
+  },
+  {
+   "typhoon": {
+    "text": "แสดงราคาคลาดเคลื่อนไป ดังนั้นจึงพิจารณาการวัดมูลค่าของเครื่องมือทางการเงินเป็นเรื่องสำคัญในการตรวจสอบ"
+   },
+   "tesseract": {
+    "text": "แสดงราคาคลาดเคลื่อนไปดังนันจึงพิจารณาการวัดมูลค่าของเครื่องมือทางการเงินเป็นเรืองสําคัญในการตรวจสอบ",
+    "image": 1,
+    "bbox": [
+     255,
+     1877,
+     1351,
+     1918
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.0,
+   "pos": 6567,
+   "id": "ONEREPORTKBANKT_p81_158",
+   "suggest": "typhoon",
+   "order": 157
+  },
+  {
+   "typhoon": {
+    "text": "เรื่องสำคัญในการตรวจสอบ"
+   },
+   "tesseract": {
+    "text": "เรืองสําคัญในการตรวจสอบ",
+    "image": 0,
+    "bbox": [
+     815,
+     746,
+     1111,
+     786
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 95.7,
+   "pos": 6644,
+   "id": "ONEREPORTKBANKT_p81_159",
+   "suggest": "typhoon",
+   "order": 158
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ลัจซี่ว 1 ลัฯรสี่๑กกดกรมี้ 8 x x x a a",
+    "image": 0,
+    "bbox": [
+     850,
+     818,
+     2132,
+     855
+    ],
+    "conf": 71.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 6666.5,
+   "id": "ONEREPORTKBANKT_p81_160",
+   "suggest": "tesseract",
+   "order": 159
+  }
+ ],
+ "split": {
+  "method": "gutter",
+  "x": 0.5853658536585366,
+  "dpi": 200
+ }
+}

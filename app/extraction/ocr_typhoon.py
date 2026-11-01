@@ -102,6 +102,9 @@ class TyphoonLocalBackend:
         self.do_sample = do_sample
         self.max_new_tokens = max_new_tokens
 
+    def cache_params(self) -> dict:
+        return {"do_sample": self.do_sample, "max_new_tokens": self.max_new_tokens, "long_side": IMAGE_LONG_SIDE}
+
     def recognize(self, image_png: bytes) -> OcrResult:
         import torch
         from PIL import Image

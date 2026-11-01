@@ -39,8 +39,11 @@ signals ของ unit ที่ OCR: ``ocr:seconds`` (เวลา backend ต�
 ยังไม่ใช้ตัดสิน ข้อจำกัด: เอกสารจริงมีบรรทัดซ้ำได้ (ส่วนหัว/ท้ายหน้า ช่องตาราง "-" "0") ค่าสูงจึงแปลว่า "ควรดู" ไม่ใช่ "ผิด"
 
 backend: interface ``OcrBackend`` รับภาพ PNG ของหนึ่งภาพ คืน ``OcrResult``; เลือกจาก config (env ``OCR_BACKEND``,
-ค่าเริ่มต้น ``typhoon-local`` = รันบนเครื่อง); backend ที่ส่งข้อมูลออกนอกเครื่อง (``sends_data_offsite = True``)
+ค่าเริ่มต้น ``typhoon-local`` = รันบนเครื่อง; ``tesseract-local`` = Tesseract บน CPU ไว้เทียบความแม่น); backend ที่ส่งข้อมูลออกนอกเครื่อง (``sends_data_offsite = True``)
 ``run_ocr`` ปฏิเสธเว้นแต่เปิดอนุญาตชัดเจน (พารามิเตอร์ ``allow_offsite`` หรือ env ``OCR_ALLOW_OFFSITE=1``)
+
+แคช (``ocr_cache.py``): ``run_ocr`` ใช้แคชราย "หน้า" ก่อนเสมอ (``use_cache=False`` = ข้าม, ``refresh_cache=True`` = ไม่อ่านแต่เขียนทับ)
+signal ``ocr:cache_hit`` = 1 เมื่อได้ผลจากแคช (``ocr:seconds`` คือเวลาที่ใช้จริงตอนรันครั้งแรก)
 """
 
 import hashlib
@@ -56,6 +59,7 @@ import numpy as np
 import pymupdf
 
 from app.extraction.image import load_oriented_image
+from app.extraction.ocr_cache import OcrCache, make_key, make_key_fields
 from app.extraction.ocr_markdown import parse_ocr_markdown
 from app.extraction.pdf import _norm_signals
 from app.extraction.quality import evaluate_unit
@@ -107,6 +111,7 @@ class OcrResult:
     revision: str
     seconds: float
     tokens: Optional[int] = None  # จำนวนโทเคนที่สร้าง (ถ้า backend รายงาน)
+    extra: Optional[dict] = None  # ข้อมูลเฉพาะ backend (JSON ได้) เช่น บรรทัด+bbox ของ Tesseract; หน้าตัดครึ่งเก็บเป็น {"parts": [...]}
 
 
 class OcrBackend(Protocol):
@@ -114,6 +119,8 @@ class OcrBackend(Protocol):
     sends_data_offsite: bool
 
     def recognize(self, image_png: bytes) -> OcrResult: ...
+
+    def cache_params(self) -> dict: ...  # พารามิเตอร์ที่มีผลต่อข้อความ (เข้า key ของแคช); ไม่มี = {}
 
 
 class FakeBackend:
@@ -129,6 +136,9 @@ class FakeBackend:
         self.sends_data_offsite = sends_data_offsite
         self.calls = 0
         self.images: list[bytes] = []
+
+    def cache_params(self) -> dict:
+        return {"texts": repr(self.texts)}  # ข้อความต่างกัน = key ต่างกัน
 
     def recognize(self, image_png: bytes) -> OcrResult:
         n = self.calls
@@ -147,6 +157,10 @@ def get_backend(name: Optional[str] = None) -> OcrBackend:
         from app.extraction.ocr_typhoon import TyphoonLocalBackend  # import หนัก (torch) เมื่อใช้จริงเท่านั้น
 
         return TyphoonLocalBackend()
+    if name == "tesseract-local":
+        from app.extraction.ocr_tesseract import TesseractLocalBackend
+
+        return TesseractLocalBackend()
     raise OcrUnavailable(f"ไม่รู้จัก OCR backend: {name}")
 
 
@@ -191,6 +205,11 @@ class PageImages:
     images: list[bytes]  # หนึ่งภาพ หรือสองภาพ (ซ้าย, ขวา)
     split_x: Optional[float] = None  # สัดส่วนความกว้างที่ตัด (เฉพาะหน้าที่ถูกตัด)
     split_fallback: bool = False  # True = ไม่เจอร่อง ใช้กลางหน้า
+    dpi: Optional[int] = None  # dpi ที่ render (PDF); ภาพ = None
+
+    @property
+    def split_method(self) -> str:
+        return "none" if self.split_x is None else ("center" if self.split_fallback else "gutter")
 
 
 def render_page_images(path: Path, detected: DetectedType, page_no: int, dpi: Optional[int] = None) -> PageImages:
@@ -203,7 +222,7 @@ def render_page_images(path: Path, detected: DetectedType, page_no: int, dpi: Op
             page = doc.load_page(page_no - 1)
             r = page.rect
             if r.width / r.height <= WIDE_PAGE_RATIO:
-                return PageImages([page.get_pixmap(dpi=dpi).tobytes("png")])
+                return PageImages([page.get_pixmap(dpi=dpi).tobytes("png")], dpi=dpi)
             probe = page.get_pixmap(dpi=GUTTER_PROBE_DPI, colorspace=pymupdf.csGRAY)
             gray = np.frombuffer(probe.samples, np.uint8).reshape(probe.height, probe.width)
             frac, fallback = find_gutter(gray)
@@ -213,7 +232,7 @@ def render_page_images(path: Path, detected: DetectedType, page_no: int, dpi: Op
                     page.get_pixmap(dpi=dpi, clip=pymupdf.Rect(r.x0, r.y0, cut, r.y1)).tobytes("png"),
                     page.get_pixmap(dpi=dpi, clip=pymupdf.Rect(cut, r.y0, r.x1, r.y1)).tobytes("png"),
                 ],
-                frac, fallback,
+                frac, fallback, dpi,
             )
     if detected in (DetectedType.JPG, DetectedType.PNG):
         im = load_oriented_image(path)
@@ -292,7 +311,8 @@ def _failed(unit: Unit, error: Exception, elapsed_ms: float) -> Unit:
     )
 
 
-def _ocr_unit(unit: Unit, res: OcrResult, elapsed_ms: float, page: Optional[PageImages] = None) -> Unit:
+def _ocr_unit(unit: Unit, res: OcrResult, elapsed_ms: float, page: Optional[PageImages] = None,
+              cache_hit: bool = False) -> Unit:
     parsed = parse_ocr_markdown(res.text)
     blocks: list[Block] = []
     fixes: dict[str, int] = {}
@@ -330,6 +350,8 @@ def _ocr_unit(unit: Unit, res: OcrResult, elapsed_ms: float, page: Optional[Page
     }
     if res.tokens is not None:
         signals["ocr:tokens"] = float(res.tokens)
+    if cache_hit:
+        signals["ocr:cache_hit"] = 1.0
     if page is not None and page.split_x is not None:
         signals["ocr:split_x"] = float(page.split_x)
         signals["ocr:split_fallback"] = 1.0 if page.split_fallback else 0.0
@@ -363,12 +385,45 @@ def _recognize_page(backend: OcrBackend, images: list[bytes]) -> OcrResult:
     results = [backend.recognize(img) for img in images]
     first = results[0]
     counted = [r.tokens for r in results if r.tokens is not None]
+    extra = None
+    if any(r.extra is not None for r in results):  # ต่อภาพ (ซ้าย, ขวา) ตามลำดับ
+        extra = {"parts": [r.extra for r in results]}
     return OcrResult(
         text=PART_SEPARATOR.join(r.text for r in results),
         backend=first.backend, model=first.model, revision=first.revision,
         seconds=sum(r.seconds for r in results),
         tokens=sum(counted) if counted else None,
+        extra=extra,
     )
+
+
+def backend_params(backend: OcrBackend) -> dict:
+    fn = getattr(backend, "cache_params", None)
+    return dict(fn()) if callable(fn) else {}
+
+
+def recognize_page_cached(
+    backend: OcrBackend, path: Path, detected: DetectedType, content_hash: str, page_no: int,
+    *, use_cache: bool = True, refresh_cache: bool = False, cache: Optional[OcrCache] = None,
+) -> tuple[OcrResult, PageImages, bool]:
+    """OCR หนึ่งหน้า (ผ่านแคช): คืน (ผลดิบ, ภาพที่ส่งโมเดล, ได้จากแคชหรือไม่)"""
+    page = render_page_images(path, detected, page_no)
+    fields = make_key_fields(
+        content_hash=content_hash, page=page_no, backend=backend.name,
+        revision=getattr(backend, "revision", ""), dpi=page.dpi, split_method=page.split_method,
+        split_x=page.split_x, params=backend_params(backend),
+    )
+    key = make_key(fields)
+    store = cache or OcrCache()
+    if use_cache and not refresh_cache:
+        hit = store.get(key)
+        if hit is not None:
+            return OcrResult(text=hit["text"], backend=hit["backend"], model=hit["model"], revision=hit["revision"],
+                             seconds=hit["seconds"], tokens=hit.get("tokens"), extra=hit.get("extra")), page, True
+    res = _recognize_page(backend, page.images)
+    if use_cache:
+        store.put(key, fields, res)
+    return res, page, False
 
 
 def run_ocr(
@@ -376,6 +431,8 @@ def run_ocr(
     source_path: str | Path,
     backend: OcrBackend,
     allow_offsite: Optional[bool] = None,
+    use_cache: bool = True,
+    refresh_cache: bool = False,
 ) -> Document:
     """OCR เฉพาะ unit ที่ needs_ocr; คืน Document ใหม่ (ของเดิมไม่ถูกแก้)"""
     allowed = offsite_allowed() if allow_offsite is None else allow_offsite
@@ -399,9 +456,11 @@ def run_ocr(
             continue
         t0 = time.perf_counter()
         try:
-            page = render_page_images(path, document.detected_type, int(unit.position["page"]))
-            res = _recognize_page(backend, page.images)
-            out.append(_ocr_unit(unit, res, (time.perf_counter() - t0) * 1000, page))
+            res, page, hit = recognize_page_cached(
+                backend, path, document.detected_type, document.content_hash, int(unit.position["page"]),
+                use_cache=use_cache, refresh_cache=refresh_cache,
+            )
+            out.append(_ocr_unit(unit, res, (time.perf_counter() - t0) * 1000, page, hit))
         except Exception as e:  # รายหน้า: ไม่ให้หน้าเดียวล้มทั้งไฟล์
             out.append(_failed(unit, e, (time.perf_counter() - t0) * 1000))
     return document.model_copy(update={"units": out})

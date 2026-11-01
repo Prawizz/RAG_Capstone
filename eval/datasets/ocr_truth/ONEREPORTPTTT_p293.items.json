@@ -1,0 +1,2455 @@
+{
+ "file": "ONEREPORTPTTT.PDF",
+ "page": 293,
+ "typhoon": {
+  "backend": "typhoon-local",
+  "model": "scb10x/typhoon-ocr1.5-2b",
+  "revision": "15b381a2d625",
+  "seconds": 428.06931779999286,
+  "tokens": 2352
+ },
+ "tesseract": {
+  "backend": "tesseract-local",
+  "model": "tesseract-5.4.0.20240606",
+  "revision": "b02ddf48069f",
+  "seconds": 7.966239999979734
+ },
+ "typhoon_page_numbers": [
+  291
+ ],
+ "figures": [
+  "ภาพประกอบแสดงโลโก้ขององค์กร 5 องค์กร ได้แก่ Synergy, Performance Excellence, Innovation, Responsibility for Society, และ Integrity & Ethics โดยแต่ละโลโก้มีตัวอักษรย่อและชื่อเต็มขององค์กรอยู่ด้านบน และมีคำอธิบายสั้นๆ อยู่ด้านล่าง โลโก้ Synergy เป็นรูปตัว S สีฟ้า พร้อมคำว่า \"Synergy\" และคำอธิบาย \"S ผสานพลัง สร้างพันธมิตร\" โลโก้ Performance Excellence เป็นรูปตัว P สีเหลือง พร้อมคำว่า \"Performance Excellence\" และคำอธิบาย \"P สร้าง ความเป็นเลิศ\" โลโก้ Innovation เป็นรูปตัว I สีส้ม พร้อมคำว่า \"Innovation\" และคำอธิบาย \"I สร้างการเติบโต ด้วยนวัตกรรม\" โลโก้ Responsibility for Society เป็นรูปตัว R สีเขียว พร้อมคำว่า \"Responsibility for Society\" และคำอธิบาย \"R สร้างสรรค์สังคม และสิ่งแวดล้อม\" โลโก้ Integrity & Ethics เป็นรูปตัว T สีแดง พร้อมคำว่า \"Integrity & Ethics\" และคำอธิบาย \"T สร้างพลัง ความดี\" โลโก้ Trust & Respect เป็นรูปตัว T สีแดง พร้อมคำว่า \"Trust & Respect\" และคำอธิบาย \"T สร้างความเชื่อมั่น และไว้วางใจ\""
+ ],
+ "skipped_tesseract": [
+  {
+   "text": "๐",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    1114,
+    597,
+    1126,
+    607
+   ]
+  }
+ ],
+ "counts": {
+  "agree": 59,
+  "agree_audit": 7,
+  "diff": 13,
+  "typhoon_only": 3,
+  "tesseract_only": 16,
+  "to_judge": 39
+ },
+ "items": [
+  {
+   "typhoon": {
+    "text": "ส่วนที่ 2 การกำกับดูแลกิจการ"
+   },
+   "tesseract": null,
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 0,
+   "id": "ONEREPORTPTTT_p293_001",
+   "suggest": "typhoon",
+   "order": 0
+  },
+  {
+   "typhoon": {
+    "text": "7. โครงสร้างการกำกับดูแลกิจการ และข้อมูลสำคัญเกี่ยวกับคณะกรรมการ"
+   },
+   "tesseract": {
+    "text": "7. โครงสร้างการกํากับดูแลกิจการและข้อมูลสําคัญเกี่ยวกับคณะกรรมการ",
+    "image": 0,
+    "bbox": [
+     432,
+     76,
+     922,
+     110
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 26,
+   "id": "ONEREPORTPTTT_p293_002",
+   "suggest": "typhoon",
+   "order": 1
+  },
+  {
+   "typhoon": {
+    "text": "สำคัญเกี่ยวกับคณะกรรมการ คณะกรรมการชุดย่อย ผู้บริหาร พนักงาน และอื่น ๆ"
+   },
+   "tesseract": {
+    "text": "ส่วนที่ 2 การกํากับดูแลกิจการคณะกรรมการชุดย่อยผู้บริหารพนักงานและอื่นๆ",
+    "image": 0,
+    "bbox": [
+     176,
+     102,
+     768,
+     130
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 73.1,
+   "pos": 64,
+   "id": "ONEREPORTPTTT_p293_003",
+   "suggest": "typhoon",
+   "order": 2
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Synergy Performance Innovation",
+    "image": 0,
+    "bbox": [
+     273,
+     285,
+     800,
+     318
+    ],
+    "conf": 96.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 128.5,
+   "id": "ONEREPORTPTTT_p293_004",
+   "suggest": "tesseract",
+   "order": 3
+  },
+  {
+   "typhoon": {
+    "text": "แบบแสดงรายการข้อมูลประจำปี/ รายงานประจำปี 2568"
+   },
+   "tesseract": {
+    "text": "แบบแสดงรายการข้อมูลประจําปี / รายงานประจําปี 2568",
+    "image": 0,
+    "bbox": [
+     1146,
+     76,
+     1510,
+     110
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 129,
+   "id": "ONEREPORTPTTT_p293_005",
+   "suggest": "typhoon",
+   "order": 4
+  },
+  {
+   "typhoon": {
+    "text": "(แบบ 56-1 One Report) บริษัท ปตท. จำกัด (มหาชน)"
+   },
+   "tesseract": {
+    "text": "(แบบ 56-1 One Report) บริษัทปตท . จํากัด (มหาชน )",
+    "image": 0,
+    "bbox": [
+     1144,
+     98,
+     1509,
+     132
+    ],
+    "conf": 93.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 173,
+   "id": "ONEREPORTPTTT_p293_006",
+   "suggest": "typhoon",
+   "order": 5
+  },
+  {
+   "typhoon": {
+    "text": "Re"
+   },
+   "tesseract": {
+    "text": "Re",
+    "image": 0,
+    "bbox": [
+     181,
+     660,
+     196,
+     679
+    ],
+    "conf": 61.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 184,
+   "id": "ONEREPORTPTTT_p293_007",
+   "suggest": "typhoon",
+   "order": 6
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Responsibility Integrity Trust",
+    "image": 0,
+    "bbox": [
+     911,
+     288,
+     1418,
+     318
+    ],
+    "conf": 96.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 212.5,
+   "id": "ONEREPORTPTTT_p293_008",
+   "suggest": "tesseract",
+   "order": 7
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "for Society & Ethics & Respect",
+    "image": 0,
+    "bbox": [
+     925,
+     314,
+     1442,
+     335
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 212.5,
+   "id": "ONEREPORTPTTT_p293_009",
+   "suggest": "tesseract",
+   "order": 8
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Reach Embed integrity Tune-up",
+    "image": 0,
+    "bbox": [
+     955,
+     349,
+     1422,
+     363
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 212.5,
+   "id": "ONEREPORTPTTT_p293_010",
+   "suggest": "tesseract",
+   "order": 9
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "sustainability & ethics trust through",
+    "image": 0,
+    "bbox": [
+     929,
+     359,
+     1440,
+     385
+    ],
+    "conf": 88.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 212.5,
+   "id": "ONEREPORTPTTT_p293_011",
+   "suggest": "tesseract",
+   "order": 10
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "with green to enhance ‘empowerment",
+    "image": 0,
+    "bbox": [
+     939,
+     385,
+     1445,
+     399
+    ],
+    "conf": 81.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 212.5,
+   "id": "ONEREPORTPTTT_p293_012",
+   "suggest": "tesseract",
+   "order": 11
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "economy and good corporate and respect",
+    "image": 0,
+    "bbox": [
+     928,
+     403,
+     1436,
+     417
+    ],
+    "conf": 88.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 212.5,
+   "id": "ONEREPORTPTTT_p293_013",
+   "suggest": "tesseract",
+   "order": 12
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "social care citizenship",
+    "image": 0,
+    "bbox": [
+     938,
+     421,
+     1222,
+     435
+    ],
+    "conf": 92.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 212.5,
+   "id": "ONEREPORTPTTT_p293_014",
+   "suggest": "tesseract",
+   "order": 13
+  },
+  {
+   "typhoon": {
+    "text": ": Responsibility for Society, I: Integrity & Ethics, T: Trust"
+   },
+   "tesseract": {
+    "text": ": Responsibility for Society, I: Integrity & Ethics, T: Trust",
+    "image": 0,
+    "bbox": [
+     199,
+     618,
+     826,
+     642
+    ],
+    "conf": 92.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 214,
+   "id": "ONEREPORTPTTT_p293_015",
+   "suggest": "typhoon",
+   "order": 14
+  },
+  {
+   "typhoon": {
+    "text": "Respect ซึ่งค่านิยม SPIRIT ทั้ง 6 ตัว คือ รากฐานสำคัญ"
+   },
+   "tesseract": {
+    "text": "Respect ซึงค่านิยม SPIRIT ทัง 6 ตัวคือรากฐานสําคัญ",
+    "image": 0,
+    "bbox": [
+     211,
+     650,
+     824,
+     691
+    ],
+    "conf": 93.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 95.7,
+   "pos": 267,
+   "id": "ONEREPORTPTTT_p293_016",
+   "suggest": "typhoon",
+   "order": 15
+  },
+  {
+   "typhoon": {
+    "text": "ที่หล่อหลอมให้ผู้บริหารและพนักงานกลุ่ม ปตท. เป็นคนเก่ง"
+   },
+   "tesseract": {
+    "text": "ทีหล่อหลอมให้ผู้บริหารและพนักงานกลุ่มปตท . เป็นคนเก่ง",
+    "image": 0,
+    "bbox": [
+     181,
+     691,
+     823,
+     733
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.1,
+   "pos": 313,
+   "id": "ONEREPORTPTTT_p293_017",
+   "suggest": "typhoon",
+   "order": 16
+  },
+  {
+   "typhoon": {
+    "text": "ผู้บริหาร"
+   },
+   "tesseract": {
+    "text": "ผู้บริหาร",
+    "image": 0,
+    "bbox": [
+     863,
+     1371,
+     951,
+     1411
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 327,
+   "id": "ONEREPORTPTTT_p293_018",
+   "suggest": "typhoon",
+   "order": 17
+  },
+  {
+   "typhoon": {
+    "text": "คนดี มุ่งสร้างคุณค่าและประโยชน์ให้กับผู้มีส่วนได้ส่วนเสีย"
+   },
+   "tesseract": {
+    "text": "คนดีมุ่งสร้างคุณค่าและประโยชน์ให้กับผู้มีส่วนได้ส่วนเสีย",
+    "image": 0,
+    "bbox": [
+     182,
+     732,
+     824,
+     775
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 365,
+   "id": "ONEREPORTPTTT_p293_019",
+   "suggest": "typhoon",
+   "order": 18
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ซ่เ o ซ่ซึขุ v ©,",
+    "image": 0,
+    "bbox": [
+     193,
+     769,
+     810,
+     794
+    ],
+    "conf": 44.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 420.5,
+   "id": "ONEREPORTPTTT_p293_020",
+   "suggest": "tesseract",
+   "order": 19
+  },
+  {
+   "typhoon": {
+    "text": "เพื่อร่วมขับเคลื่อนองค์กรและประเทศไทยให้ยั่งยืนไปด้วยกัน"
+   },
+   "tesseract": {
+    "text": "เพื่อร่วมขับเคลื่อนองค์กรและประเทศไทยให้ยังยืนไปด้วยกัน",
+    "image": 0,
+    "bbox": [
+     182,
+     774,
+     825,
+     814
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.2,
+   "pos": 421,
+   "id": "ONEREPORTPTTT_p293_021",
+   "suggest": "typhoon",
+   "order": 20
+  },
+  {
+   "typhoon": {
+    "text": "โดยดำเนินการส่งเสริมค่านิยม SPIRIT ให้มีความสอดคล้อง"
+   },
+   "tesseract": {
+    "text": "โดยดําเนินการส่งเสริมค่านิยม SPIRIT ให้มีความสอดคล้อง",
+    "image": 0,
+    "bbox": [
+     179,
+     816,
+     823,
+     855
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 477,
+   "id": "ONEREPORTPTTT_p293_022",
+   "suggest": "typhoon",
+   "order": 21
+  },
+  {
+   "typhoon": {
+    "text": "ตอบสนองต่อวิสัยทัศน์ขององค์กร และรองรับความท้าทาย"
+   },
+   "tesseract": {
+    "text": "ตอบสนองต่อวิสัยทัศน์ขององค์กรและรองรับความท้าทาย",
+    "image": 0,
+    "bbox": [
+     182,
+     859,
+     824,
+     897
+    ],
+    "conf": 95.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 527,
+   "id": "ONEREPORTPTTT_p293_023",
+   "suggest": "typhoon",
+   "order": 22
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "\" ox",
+    "image": 0,
+    "bbox": [
+     182,
+     897,
+     484,
+     912
+    ],
+    "conf": 41.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 574.5,
+   "id": "ONEREPORTPTTT_p293_024",
+   "suggest": "tesseract",
+   "order": 23
+  },
+  {
+   "typhoon": {
+    "text": "ที่เปลี่ยนแปลงในอนาคต ดังนี้"
+   },
+   "tesseract": {
+    "text": "ที่เปลี่ยนแปลงในอนาคตดังนี้",
+    "image": 0,
+    "bbox": [
+     181,
+     900,
+     487,
+     939
+    ],
+    "conf": 92.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 575,
+   "id": "ONEREPORTPTTT_p293_025",
+   "suggest": "typhoon",
+   "order": 24
+  },
+  {
+   "typhoon": {
+    "text": "Synergy: ผสานพลังสร้างพันธมิตร มุ่งเน้นให้พนักงานแบ่งปัน"
+   },
+   "tesseract": {
+    "text": "๑ Synergy: ผสานพลังสร้างพันธมิตรมุ่งเน็นให้พนักงานแบ่งปัน",
+    "image": 0,
+    "bbox": [
+     182,
+     983,
+     825,
+     1025
+    ],
+    "conf": 93.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 96.4,
+   "pos": 602,
+   "id": "ONEREPORTPTTT_p293_026",
+   "suggest": "typhoon",
+   "order": 25
+  },
+  {
+   "typhoon": {
+    "text": "องค์ความรู้ ทำงานเป็นทีม และผสานพลังความร่วมมือ"
+   },
+   "tesseract": {
+    "text": "องค์ความรู้ทํางานเป็นทีมและผสานพลังความร่วมมือ",
+    "image": 0,
+    "bbox": [
+     220,
+     1025,
+     824,
+     1067
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 656,
+   "id": "ONEREPORTPTTT_p293_027",
+   "suggest": "typhoon",
+   "order": 26
+  },
+  {
+   "typhoon": {
+    "text": "ให้เกิดขึ้นทั้งภายในและภายนอกองค์กร"
+   },
+   "tesseract": {
+    "text": "ให้เกิดขึ้นทั้งภายในและภายนอกองค์กร",
+    "image": 0,
+    "bbox": [
+     219,
+     1059,
+     623,
+     1108
+    ],
+    "conf": 95.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 701,
+   "id": "ONEREPORTPTTT_p293_028",
+   "suggest": "typhoon",
+   "order": 27
+  },
+  {
+   "typhoon": {
+    "text": "Performance Excellence: สร้างความเป็นเลิศ มุ่งเน้นให้"
+   },
+   "tesseract": {
+    "text": "«Performance Excellence: สร้างความเป็นเลิศมุ่งเน้นให้",
+    "image": 0,
+    "bbox": [
+     182,
+     1107,
+     825,
+     1150
+    ],
+    "conf": 90.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.0,
+   "pos": 736,
+   "id": "ONEREPORTPTTT_p293_029",
+   "suggest": "typhoon",
+   "order": 28
+  },
+  {
+   "typhoon": {
+    "text": "Excellence"
+   },
+   "tesseract": {
+    "text": "Excellence",
+    "image": 0,
+    "bbox": [
+     482,
+     315,
+     585,
+     331
+    ],
+    "conf": 96.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 747,
+   "id": "ONEREPORTPTTT_p293_030",
+   "suggest": "typhoon",
+   "order": 29
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "Synchronize Agile for Invent future",
+    "image": 0,
+    "bbox": [
+     274,
+     339,
+     786,
+     370
+    ],
+    "conf": 91.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 756.5,
+   "id": "ONEREPORTPTTT_p293_031",
+   "suggest": "tesseract",
+   "order": 30
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "through excellence growth through",
+    "image": 0,
+    "bbox": [
+     289,
+     357,
+     795,
+     388
+    ],
+    "conf": 92.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 756.5,
+   "id": "ONEREPORTPTTT_p293_032",
+   "suggest": "tesseract",
+   "order": 31
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "partnership innovation",
+    "image": 0,
+    "bbox": [
+     276,
+     375,
+     778,
+     406
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 756.5,
+   "id": "ONEREPORTPTTT_p293_033",
+   "suggest": "tesseract",
+   "order": 32
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ผสานพลังสร้างสร้างการเติบโต",
+    "image": 0,
+    "bbox": [
+     283,
+     451,
+     790,
+     478
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 756.5,
+   "id": "ONEREPORTPTTT_p293_034",
+   "suggest": "tesseract",
+   "order": 33
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "สร้างเพ้นธมิตรความเป็นเลิศเด้วยนวัตกรรม",
+    "image": 0,
+    "bbox": [
+     269,
+     473,
+     789,
+     500
+    ],
+    "conf": 92.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 756.5,
+   "id": "ONEREPORTPTTT_p293_035",
+   "suggest": "tesseract",
+   "order": 34
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "pel",
+    "image": 0,
+    "bbox": [
+     182,
+     618,
+     195,
+     637
+    ],
+    "conf": 64.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 756.5,
+   "id": "ONEREPORTPTTT_p293_036",
+   "suggest": "tesseract",
+   "order": 35
+  },
+  {
+   "typhoon": {
+    "text": "พนักงานพร้อมปรับตัวต่อการเปลี่ยนแปลงอย่างรวดเร็ว ตั้งใจ"
+   },
+   "tesseract": {
+    "text": "พนักงานพร้อมปรับตัวต่อการเปลี่ยนแปลงอย่างรวดเร็วตั้งใจ",
+    "image": 0,
+    "bbox": [
+     220,
+     1143,
+     824,
+     1192
+    ],
+    "conf": 95.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 786,
+   "id": "ONEREPORTPTTT_p293_037",
+   "suggest": "typhoon",
+   "order": 36
+  },
+  {
+   "typhoon": {
+    "text": "ทำงานเพื่อให้ได้ผลลัพธ์ที่เหนือความคาดหมาย เพื่อสร้าง"
+   },
+   "tesseract": {
+    "text": "ทํางานเพื่อให้ได้ผลลัพธ์ที่เหนือความคาดหมายเพื่อสร้าง",
+    "image": 0,
+    "bbox": [
+     220,
+     1185,
+     823,
+     1233
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 840,
+   "id": "ONEREPORTPTTT_p293_038",
+   "suggest": "typhoon",
+   "order": 37
+  },
+  {
+   "typhoon": {
+    "text": "ความคา"
+   },
+   "tesseract": {
+    "text": "ความคี",
+    "image": 0,
+    "bbox": [
+     1161,
+     477,
+     1207,
+     503
+    ],
+    "conf": 88.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 83.3,
+   "pos": 871,
+   "id": "ONEREPORTPTTT_p293_039",
+   "suggest": "typhoon",
+   "order": 38
+  },
+  {
+   "typhoon": {
+    "text": "และส่งมอบคุณค่าที่ดีที่สุดให้แก่ผู้มีส่วนได้ส่วนเสีย"
+   },
+   "tesseract": {
+    "text": "และส่งมอบคุณค่าที่ดีที่สุดให้แก่ผู้มีส่วนได้ส่วนเสีย",
+    "image": 0,
+    "bbox": [
+     222,
+     1227,
+     735,
+     1275
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 892,
+   "id": "ONEREPORTPTTT_p293_040",
+   "suggest": "typhoon",
+   "order": 39
+  },
+  {
+   "typhoon": {
+    "text": "Innovation: สร้างการเติบโตด้วยนวัตกรรม มุ่งเน้นให้"
+   },
+   "tesseract": {
+    "text": "๑ Innovation: สร้างการเติบโตด้วยนวัตกรรมมุ่งเน้นให้",
+    "image": 0,
+    "bbox": [
+     182,
+     1275,
+     825,
+     1317
+    ],
+    "conf": 93.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.0,
+   "pos": 944,
+   "id": "ONEREPORTPTTT_p293_041",
+   "suggest": "typhoon",
+   "order": 40
+  },
+  {
+   "typhoon": {
+    "text": "พนักงานมีทัศนคติเชิงบวก แสวงหาโอกาสแนวคิดใหม่ ๆ"
+   },
+   "tesseract": {
+    "text": "พนักงานมีทัศนคติเชิงบวกแสวงหาโอกาสแนวคิดใหม่ๆ",
+    "image": 0,
+    "bbox": [
+     220,
+     1316,
+     823,
+     1356
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 992,
+   "id": "ONEREPORTPTTT_p293_042",
+   "suggest": "typhoon",
+   "order": 41
+  },
+  {
+   "typhoon": {
+    "text": "และกล้าคิดอย่างสร้างสรรค์ มีแนวคิดเชิงผู้ประกอบการ"
+   },
+   "tesseract": {
+    "text": "และกล้าคิดอย่างสร้างสรรค์มีแนวคิดเชิงผู้ประกอบการ",
+    "image": 0,
+    "bbox": [
+     222,
+     1359,
+     824,
+     1400
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1037,
+   "id": "ONEREPORTPTTT_p293_043",
+   "suggest": "typhoon",
+   "order": 42
+  },
+  {
+   "typhoon": {
+    "text": "ตอบสนอง Mega Trend และนำเทคโนโลยีดิจิทัลใหม่ ๆ มา"
+   },
+   "tesseract": {
+    "text": "ตอบสนอง Mega Trend และนําเทคโนโลยีดิจิทัลใหม่ๆมา",
+    "image": 0,
+    "bbox": [
+     222,
+     1400,
+     824,
+     1440
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1086,
+   "id": "ONEREPORTPTTT_p293_044",
+   "suggest": "typhoon",
+   "order": 43
+  },
+  {
+   "typhoon": {
+    "text": "ประยุกต์ใช้ เพื่อต่อยอดสร้างมูลค่าเพิ่มให้กับองค์กร และส่ง"
+   },
+   "tesseract": {
+    "text": "ประยุกต์ใช้เพื่อต่อยอดสร้างมูลค่าเพิ่มให้กับองค์กรและส่ง",
+    "image": 0,
+    "bbox": [
+     220,
+     1435,
+     823,
+     1483
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1130,
+   "id": "ONEREPORTPTTT_p293_045",
+   "suggest": "typhoon",
+   "order": 44
+  },
+  {
+   "typhoon": {
+    "text": "เสริมให้การทำงานมีประสิทธิภาพมากยิ่งขึ้น พร้อมทั้งเรียนรู้"
+   },
+   "tesseract": {
+    "text": "เสริมให้การทํางานมีประสิทธิภาพมากยิ่งขึ้นพร้อมทั้งเรียนรู้",
+    "image": 0,
+    "bbox": [
+     222,
+     1476,
+     828,
+     1525
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1186,
+   "id": "ONEREPORTPTTT_p293_046",
+   "suggest": "typhoon",
+   "order": 45
+  },
+  {
+   "typhoon": {
+    "text": "และพัฒนาตนเองอย่างต่อเนื่อง"
+   },
+   "tesseract": {
+    "text": "และพัฒนาตนเองอย่างต่อเนื่อง",
+    "image": 0,
+    "bbox": [
+     222,
+     1520,
+     541,
+     1567
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1243,
+   "id": "ONEREPORTPTTT_p293_047",
+   "suggest": "typhoon",
+   "order": 46
+  },
+  {
+   "typhoon": {
+    "text": "Responsibility for Society: สร้างสรรค์สังคมและสิ่งแวดล้อม"
+   },
+   "tesseract": {
+    "text": "«Responsibility for Society: สร้างสรรค์สังคมและสิ่งแวดล้อม",
+    "image": 0,
+    "bbox": [
+     182,
+     1561,
+     824,
+     1604
+    ],
+    "conf": 93.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.2,
+   "pos": 1270,
+   "id": "ONEREPORTPTTT_p293_048",
+   "suggest": "typhoon",
+   "order": 47
+  },
+  {
+   "typhoon": {
+    "text": "สร้างสรรค์สังคม"
+   },
+   "tesseract": {
+    "text": "สร้างสรรค์สังคม",
+    "image": 0,
+    "bbox": [
+     921,
+     454,
+     1033,
+     481
+    ],
+    "conf": 95.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1295,
+   "id": "ONEREPORTPTTT_p293_049",
+   "suggest": "typhoon",
+   "order": 48
+  },
+  {
+   "typhoon": {
+    "text": "และสิ่งแวดล้อม"
+   },
+   "tesseract": {
+    "text": "และสิ่งแวดล้อม",
+    "image": 0,
+    "bbox": [
+     926,
+     474,
+     1029,
+     504
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1310,
+   "id": "ONEREPORTPTTT_p293_050",
+   "suggest": "typhoon",
+   "order": 49
+  },
+  {
+   "typhoon": {
+    "text": "มุ่งเน้นให้พนักงานทำงาน โดยคำนึงถึงผลกระทบที่มีต่อ"
+   },
+   "tesseract": {
+    "text": "มุ่งเน้นให้พนักงานทํางานโดยคํานึงถึงผลกระทบที่มีต่อ",
+    "image": 0,
+    "bbox": [
+     221,
+     1602,
+     824,
+     1650
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1324,
+   "id": "ONEREPORTPTTT_p293_051",
+   "suggest": "typhoon",
+   "order": 50
+  },
+  {
+   "typhoon": {
+    "text": "ผู้มีส่วนได้ส่วนเสียอยู่เสมอ พึ่งพาและพัฒนาร่วมกัน"
+   },
+   "tesseract": {
+    "text": "ผู้มีส่วนได้ส่วนเสียอยู่เสมอพึ่งพาและพัฒนาร่วมกัน",
+    "image": 0,
+    "bbox": [
+     218,
+     1645,
+     825,
+     1692
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1373,
+   "id": "ONEREPORTPTTT_p293_052",
+   "suggest": "typhoon",
+   "order": 51
+  },
+  {
+   "typhoon": {
+    "text": "อย่างยั่งยืน พัฒนาธุรกิจที่คำนึงถึงสิ่งแวดล้อม และมีจิตอาสา"
+   },
+   "tesseract": {
+    "text": "อย่างยั่งยืนพัฒนาธุรกิจที่คํานึงถึงสิ่งแวดล้อมและมีจิตอาสา",
+    "image": 0,
+    "bbox": [
+     220,
+     1686,
+     824,
+     1733
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1422,
+   "id": "ONEREPORTPTTT_p293_053",
+   "suggest": "typhoon",
+   "order": 52
+  },
+  {
+   "typhoon": {
+    "text": "ในการทำงานเพื่อส่วนรวม ชุมชน สังคม และประเทศชาติ"
+   },
+   "tesseract": {
+    "text": "ในการทํางานเพื่อส่วนรวมชุมชนสังคมและประเทศชาติ",
+    "image": 0,
+    "bbox": [
+     219,
+     1727,
+     801,
+     1775
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1479,
+   "id": "ONEREPORTPTTT_p293_054",
+   "suggest": "typhoon",
+   "order": 53
+  },
+  {
+   "typhoon": {
+    "text": "Integrity & Ethics: สร้างพลังความดี มุ่งเน้นให้พนักงาน"
+   },
+   "tesseract": {
+    "text": "๑ Integrity & Ethics: สร้างพลังความดีมุ่งเน้นให้พนักงาน",
+    "image": 0,
+    "bbox": [
+     182,
+     1775,
+     825,
+     1817
+    ],
+    "conf": 93.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.0,
+   "pos": 1524,
+   "id": "ONEREPORTPTTT_p293_055",
+   "suggest": "typhoon",
+   "order": 54
+  },
+  {
+   "typhoon": {
+    "text": "สร้างพลัง"
+   },
+   "tesseract": {
+    "text": "สร้างพลัง",
+    "image": 0,
+    "bbox": [
+     1151,
+     455,
+     1217,
+     482
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1541,
+   "id": "ONEREPORTPTTT_p293_056",
+   "suggest": "typhoon",
+   "order": 55
+  },
+  {
+   "typhoon": {
+    "text": "ทำงานอย่างถูกต้อง โปร่งใส ปฏิบัติตนเป็นพนักงานที่ดี"
+   },
+   "tesseract": {
+    "text": "ทํางานอย่างถูกต้องโปร่งใสปฏิบัติตนเป็นพนักงานที่ดี",
+    "image": 0,
+    "bbox": [
+     220,
+     1811,
+     823,
+     1858
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1574,
+   "id": "ONEREPORTPTTT_p293_057",
+   "suggest": "typhoon",
+   "order": 56
+  },
+  {
+   "typhoon": {
+    "text": "ขององค์กร ประพฤติตนด้วยความซื่อสัตย์สุจริต ตั้งอยู่ใน"
+   },
+   "tesseract": {
+    "text": "ขององค์กรประพฤติตนด้วยความซื่อสัตย์สุจริตตั้งอยู่ใน",
+    "image": 0,
+    "bbox": [
+     220,
+     1851,
+     828,
+     1900
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1623,
+   "id": "ONEREPORTPTTT_p293_058",
+   "suggest": "typhoon",
+   "order": 57
+  },
+  {
+   "typhoon": {
+    "text": "จริยธรรมอันดีงาม"
+   },
+   "tesseract": {
+    "text": "จริยธรรมอันดีงาม",
+    "image": 0,
+    "bbox": [
+     220,
+     1901,
+     405,
+     1942
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1674,
+   "id": "ONEREPORTPTTT_p293_059",
+   "suggest": "typhoon",
+   "order": 58
+  },
+  {
+   "typhoon": {
+    "text": "ม Trust & Respect: สร้างความเชื่อมั่นและไว้ใจ มุ่งเน้นให้"
+   },
+   "tesseract": {
+    "text": "๑ Trust & Respect: สร้างความเชื่อมั่นและไว้ใจมุ่งเห็นให้",
+    "image": 0,
+    "bbox": [
+     182,
+     1936,
+     825,
+     1983
+    ],
+    "conf": 93.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 94.2,
+   "pos": 1689,
+   "id": "ONEREPORTPTTT_p293_060",
+   "suggest": "typhoon",
+   "order": 59
+  },
+  {
+   "typhoon": {
+    "text": "และไว้ใจ"
+   },
+   "tesseract": {
+    "text": "และไว้ใจ",
+    "image": 0,
+    "bbox": [
+     1367,
+     476,
+     1418,
+     503
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1722,
+   "id": "ONEREPORTPTTT_p293_061",
+   "suggest": "typhoon",
+   "order": 60
+  },
+  {
+   "typhoon": {
+    "text": "พนักงานสร้างความเชื่อมั่นและความไว้วางใจในการทำงาน"
+   },
+   "tesseract": {
+    "text": "พนักงานสร้างความเชื่อมันและความไว้วางใจในการทํางาน",
+    "image": 0,
+    "bbox": [
+     220,
+     1978,
+     825,
+     2025
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.0,
+   "pos": 1741,
+   "id": "ONEREPORTPTTT_p293_062",
+   "suggest": "typhoon",
+   "order": 61
+  },
+  {
+   "typhoon": {
+    "text": "สร้างความเชื่อมั่น"
+   },
+   "tesseract": {
+    "text": "สร้างความเชื่อมั่น",
+    "image": 0,
+    "bbox": [
+     1334,
+     452,
+     1454,
+     482
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1748,
+   "id": "ONEREPORTPTTT_p293_063",
+   "suggest": "typhoon",
+   "order": 62
+  },
+  {
+   "typhoon": {
+    "text": "ร่วมกัน มีความเข้าใจซึ่งกันและกัน เปิดโอกาสและเชื่อใจ"
+   },
+   "tesseract": {
+    "text": "ร่วมกันมีความเข้าใจซึ่งกันและกันเปิดโอกาสและเชื่อใจ",
+    "image": 0,
+    "bbox": [
+     220,
+     2020,
+     824,
+     2067
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1791,
+   "id": "ONEREPORTPTTT_p293_064",
+   "suggest": "typhoon",
+   "order": 63
+  },
+  {
+   "typhoon": {
+    "text": "ในศักยภาพความสามารถของผู้อื่น เปิดใจและเคารพ"
+   },
+   "tesseract": {
+    "text": "ในศักยภาพความสามารถของผู้อื่นเปิดใจและเคารพ",
+    "image": 0,
+    "bbox": [
+     219,
+     2061,
+     824,
+     2108
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1842,
+   "id": "ONEREPORTPTTT_p293_065",
+   "suggest": "typhoon",
+   "order": 64
+  },
+  {
+   "typhoon": {
+    "text": "ในความหลากหลายของผู้อื่น"
+   },
+   "tesseract": {
+    "text": "ในความหลากหลายของผู้อื่น",
+    "image": 0,
+    "bbox": [
+     219,
+     2102,
+     519,
+     2151
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1885,
+   "id": "ONEREPORTPTTT_p293_066",
+   "suggest": "typhoon",
+   "order": 65
+  },
+  {
+   "typhoon": {
+    "text": "7.6 ข้อมูลสำคัญอื่น ๆ"
+   },
+   "tesseract": {
+    "text": "7.6 ข้อมูลสําคัญอื่นๆ",
+    "image": 0,
+    "bbox": [
+     865,
+     582,
+     1354,
+     657
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1909,
+   "id": "ONEREPORTPTTT_p293_067",
+   "suggest": "typhoon",
+   "order": 66
+  },
+  {
+   "typhoon": {
+    "text": "เลขานุการบริษัท"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     554,
+     1000000,
+     856
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1928,
+   "id": "ONEREPORTPTTT_p293_068",
+   "suggest": "typhoon",
+   "order": 67
+  },
+  {
+   "typhoon": {
+    "text": "เพื่อให้เป็นไปตามหลักการกำกับดูแลกิจการที่ดีของ"
+   },
+   "tesseract": {
+    "text": "เพื่อให้เป็นไปตามหลักการกํากับดูแลกิจการที่ดีของ",
+    "image": 0,
+    "bbox": [
+     867,
+     780,
+     1508,
+     828
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1943,
+   "id": "ONEREPORTPTTT_p293_069",
+   "suggest": "typhoon",
+   "order": 68
+  },
+  {
+   "typhoon": {
+    "text": "บริษัทจดทะเบียนในหมวดความรับผิดชอบของคณะกรรมการ"
+   },
+   "tesseract": {
+    "text": "บริษัทจดทะเบียนในหมวดความรับผิดชอบของคณะกรรมการ",
+    "image": 0,
+    "bbox": [
+     866,
+     828,
+     1510,
+     869
+    ],
+    "conf": 95.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1990,
+   "id": "ONEREPORTPTTT_p293_070",
+   "suggest": "typhoon",
+   "order": 69
+  },
+  {
+   "typhoon": {
+    "text": "และตามข้อกำหนดของพระราชบัญญัติหลักทรัพย์และ"
+   },
+   "tesseract": {
+    "text": "และตามข้อกําหนดของพระราชบัญญัติหลักทรัพย์และ",
+    "image": 0,
+    "bbox": [
+     867,
+     870,
+     1509,
+     908
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2037,
+   "id": "ONEREPORTPTTT_p293_071",
+   "suggest": "typhoon",
+   "order": 70
+  },
+  {
+   "typhoon": {
+    "text": "ตลาดหลักทรัพย์ คณะกรรมการ ปตท. จึงได้แต่งตั้งเลขานุการ"
+   },
+   "tesseract": {
+    "text": "ตลาดหลักทรัพย์คณะกรรมการปตท . จึงได้แต่งตั้งเลขานุการ",
+    "image": 0,
+    "bbox": [
+     867,
+     904,
+     1510,
+     953
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2080,
+   "id": "ONEREPORTPTTT_p293_072",
+   "suggest": "typhoon",
+   "order": 71
+  },
+  {
+   "typhoon": {
+    "text": "บริษัทขึ้น โดยมีภาระหน้าที่ในการให้คำแนะนำด้านกฎหมาย"
+   },
+   "tesseract": {
+    "text": "บริษัทขึ้นโดยมีภาระหน้าที่ในการให้คําแนะนําด้านกฎหมาย",
+    "image": 0,
+    "bbox": [
+     866,
+     946,
+     1509,
+     993
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2131,
+   "id": "ONEREPORTPTTT_p293_073",
+   "suggest": "typhoon",
+   "order": 72
+  },
+  {
+   "typhoon": {
+    "text": "และกฎเกณฑ์ต่าง ๆ ที่คณะกรรมการต้องทราบและปฏิบัติการ"
+   },
+   "tesseract": {
+    "text": "และกฎเกณฑ์ต่างๆที่คณะกรรมการต้องทราบและปฏิบัติการ",
+    "image": 0,
+    "bbox": [
+     867,
+     989,
+     1509,
+     1034
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2182,
+   "id": "ONEREPORTPTTT_p293_074",
+   "suggest": "typhoon",
+   "order": 73
+  },
+  {
+   "typhoon": {
+    "text": "จัดการประชุม รวมทั้งดูแลกิจกรรมต่าง ๆ ของคณะกรรมการ"
+   },
+   "tesseract": {
+    "text": "จัดการประชุมรวมทั้งดูแลกิจกรรมต่างๆของคณะกรรมการ",
+    "image": 0,
+    "bbox": [
+     865,
+     1029,
+     1510,
+     1078
+    ],
+    "conf": 95.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2231,
+   "id": "ONEREPORTPTTT_p293_075",
+   "suggest": "typhoon",
+   "order": 74
+  },
+  {
+   "typhoon": {
+    "text": "เพื่อให้กรรมการสามารถปฏิบัติหน้าที่ได้อย่างมีประสิทธิภาพ"
+   },
+   "tesseract": {
+    "text": "เพื่อให้กรรมการสามารถปฏิบัติหน้าที่ได้อย่างมีประสิทธิภาพ",
+    "image": 0,
+    "bbox": [
+     867,
+     1073,
+     1509,
+     1118
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2279,
+   "id": "ONEREPORTPTTT_p293_076",
+   "suggest": "typhoon",
+   "order": 75
+  },
+  {
+   "typhoon": {
+    "text": "และประสิทธิผล และก่อให้เกิดประโยชน์สูงสุดต่อ ปตท."
+   },
+   "tesseract": {
+    "text": "และประสิทธิผลและก่อให้เกิดประโยชน์สูงสุดต่อปตท .",
+    "image": 0,
+    "bbox": [
+     867,
+     1119,
+     1508,
+     1161
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2335,
+   "id": "ONEREPORTPTTT_p293_077",
+   "suggest": "typhoon",
+   "order": 76
+  },
+  {
+   "typhoon": {
+    "text": "รวมทั้งการจัดทำและเก็บรักษาเอกสาร อาทิ ทะเบียนกรรมการ"
+   },
+   "tesseract": {
+    "text": "รวมทั้งการจัดทําและเก็บรักษาเอกสารอาทิทะเบียนกรรมการ",
+    "image": 0,
+    "bbox": [
+     866,
+     1154,
+     1510,
+     1202
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2382,
+   "id": "ONEREPORTPTTT_p293_078",
+   "suggest": "typhoon",
+   "order": 77
+  },
+  {
+   "typhoon": {
+    "text": "หนังสือนัดประชุมคณะกรรมการ รายงานการประชุม"
+   },
+   "tesseract": {
+    "text": "หนังสือนัดประชุมคณะกรรมการรายงานการประชุม",
+    "image": 0,
+    "bbox": [
+     866,
+     1203,
+     1508,
+     1245
+    ],
+    "conf": 95.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2433,
+   "id": "ONEREPORTPTTT_p293_079",
+   "suggest": "typhoon",
+   "order": 78
+  },
+  {
+   "typhoon": {
+    "text": "คณะกรรมการ และรายงานประจำปีของบริษัท หนังสือ"
+   },
+   "tesseract": {
+    "text": "คณะกรรมการและรายงานประจําปีของบริษัทหนังสือ",
+    "image": 0,
+    "bbox": [
+     867,
+     1244,
+     1509,
+     1285
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2474,
+   "id": "ONEREPORTPTTT_p293_080",
+   "suggest": "typhoon",
+   "order": 79
+  },
+  {
+   "typhoon": {
+    "text": "นัดประชุมผู้ถือหุ้น รายงานการประชุมผู้ถือหุ้นและเก็บรักษา"
+   },
+   "tesseract": {
+    "text": "นัดประชุมผู้ถือหุ้นรายงานการประชุมผู้ถือหุ้นและเก็บรักษา",
+    "image": 0,
+    "bbox": [
+     866,
+     1286,
+     1509,
+     1328
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2516,
+   "id": "ONEREPORTPTTT_p293_081",
+   "suggest": "typhoon",
+   "order": 80
+  },
+  {
+   "typhoon": {
+    "text": "รายงานการมีส่วนได้ส่วนเสียที่รายงานโดยกรรมการหรือ"
+   },
+   "tesseract": {
+    "text": "รายงานการมีส่วนได้ส่วนเสียที่รายงานโดยกรรมการหรือ",
+    "image": 0,
+    "bbox": [
+     866,
+     1322,
+     1509,
+     1369
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2572,
+   "id": "ONEREPORTPTTT_p293_082",
+   "suggest": "typhoon",
+   "order": 81
+  },
+  {
+   "typhoon": {
+    "text": "ผู้บริหาร"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1294,
+     1000000,
+     1523
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 2621,
+   "id": "ONEREPORTPTTT_p293_083",
+   "suggest": "typhoon",
+   "order": 82
+  },
+  {
+   "typhoon": {
+    "text": "โดยคณะกรรมการฯ ได้แต่งตั้งเลขานุการบริษัทตั้งแต่ปี 2551"
+   },
+   "tesseract": {
+    "text": "โดยคณะกรรมการฯได้แต่งตั้งเลขานุการบริษัทตั้งแต่ปี 2551",
+    "image": 0,
+    "bbox": [
+     864,
+     1446,
+     1507,
+     1495
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2630,
+   "id": "ONEREPORTPTTT_p293_084",
+   "suggest": "typhoon",
+   "order": 83
+  },
+  {
+   "typhoon": {
+    "text": "มาเป็นลำดับ โดยตั้งแต่วันที่ 16 พฤษภาคม 2567 จนถึง"
+   },
+   "tesseract": {
+    "text": "มาเป็นลําดับโดยตั้งแต่วันที่ 16 พฤษภาคม 2567 จนถึง",
+    "image": 0,
+    "bbox": [
+     866,
+     1487,
+     1508,
+     1534
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2683,
+   "id": "ONEREPORTPTTT_p293_085",
+   "suggest": "typhoon",
+   "order": 84
+  },
+  {
+   "typhoon": {
+    "text": "31 ธันวาคม 2568 ได้แต่งตั้งนางพิลาสพรรณ อุดมจารุมณี ปฏิบัติ"
+   },
+   "tesseract": {
+    "text": "31 ธันวาคม 2568 ได้แต่งตั้งนางพิลาสพรรณอุดมจารุมณีปฏิบัติ",
+    "image": 0,
+    "bbox": [
+     866,
+     1529,
+     1509,
+     1578
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2728,
+   "id": "ONEREPORTPTTT_p293_086",
+   "suggest": "typhoon",
+   "order": 85
+  },
+  {
+   "typhoon": {
+    "text": "2568"
+   },
+   "tesseract": {
+    "text": "2568",
+    "image": 0,
+    "bbox": [
+     866,
+     2046,
+     921,
+     2065
+    ],
+    "conf": 90.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2737,
+   "id": "ONEREPORTPTTT_p293_087",
+   "suggest": "typhoon",
+   "order": 86
+  },
+  {
+   "typhoon": {
+    "text": "หน้าที่เป็นเลขานุการบริษัท ซึ่งเป็นผู้มีความรู้ ความสามารถ"
+   },
+   "tesseract": {
+    "text": "หน้าที่เป็นเลขานุการบริษัทซึ่งเป็นผู้มีความรู้ความสามารถ",
+    "image": 0,
+    "bbox": [
+     866,
+     1573,
+     1509,
+     1620
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2782,
+   "id": "ONEREPORTPTTT_p293_088",
+   "suggest": "typhoon",
+   "order": 87
+  },
+  {
+   "typhoon": {
+    "text": "เลขานุการบริษัท"
+   },
+   "tesseract": {
+    "text": "เลขานุการบริษัท",
+    "image": 0,
+    "bbox": [
+     868,
+     694,
+     1147,
+     746
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2793,
+   "id": "ONEREPORTPTTT_p293_089",
+   "suggest": "typhoon",
+   "order": 88
+  },
+  {
+   "typhoon": {
+    "text": "รวมถึงประสบการณ์อื่น ๆ ในงานเลขานุการบริษัท อีกทั้งยัง"
+   },
+   "tesseract": {
+    "text": "รวมถึงประสบการณ์อื่นๆในงานเลขานุการบริษัทอีกทั้งยัง",
+    "image": 0,
+    "bbox": [
+     866,
+     1612,
+     1509,
+     1661
+    ],
+    "conf": 95.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2838,
+   "id": "ONEREPORTPTTT_p293_090",
+   "suggest": "tesseract",
+   "order": 89
+  },
+  {
+   "typhoon": {
+    "text": "เข้ารับการอบรมในหลักสูตรที่สำคัญกับการปฏิบัติหน้าที่ และ"
+   },
+   "tesseract": {
+    "text": "เข้ารับการอบรมในหลักสูตรที่สําคัญกับการปฏิบัติหน้าที่และ",
+    "image": 0,
+    "bbox": [
+     867,
+     1655,
+     1511,
+     1703
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2889,
+   "id": "ONEREPORTPTTT_p293_091",
+   "suggest": "typhoon",
+   "order": 90
+  },
+  {
+   "typhoon": {
+    "text": "เป็นวิทยากรในเรื่องที่เกี่ยวข้องกับการปฏิบัติหน้าที่เพิ่มเติมด้วย"
+   },
+   "tesseract": {
+    "text": "เป็นวิทยากรในเรื่องที่เกี่ยวข้องกับการปฏิบัติหน้าที่เพิ่มเติมด้วย",
+    "image": 0,
+    "bbox": [
+     867,
+     1697,
+     1505,
+     1743
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 2944,
+   "id": "ONEREPORTPTTT_p293_092",
+   "suggest": "typhoon",
+   "order": 91
+  },
+  {
+   "typhoon": {
+    "text": "ที่ประชุมคณะกรรมการ ปตท. ครั้งที่ 8/2568 วันที่ 21 สิงหาคม"
+   },
+   "tesseract": {
+    "text": "ที่ประชุมคณะกรรมการปตท . ครั้งที่ 8/2568 วันที่ 21 สิงหาคม",
+    "image": 0,
+    "bbox": [
+     866,
+     1779,
+     1509,
+     1828
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3009,
+   "id": "ONEREPORTPTTT_p293_093",
+   "suggest": "typhoon",
+   "order": 92
+  },
+  {
+   "typhoon": {
+    "text": "2568 มีมติแต่งตั้ง นางสาวปิยะภรณ์ ธนังธีรพงษ์ เป็นเลขานุการ"
+   },
+   "tesseract": {
+    "text": "2568 มีมติแต่งตั้งนางสาวปิยะภรณ์ธนังธีรพงษ์เป็นเลขานุการ",
+    "image": 0,
+    "bbox": [
+     866,
+     1821,
+     1509,
+     1870
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3061,
+   "id": "ONEREPORTPTTT_p293_094",
+   "suggest": "typhoon",
+   "order": 93
+  },
+  {
+   "typhoon": {
+    "text": "บริษัท แทนนางพิลาสพรรณ อุดมจารุมณี ซึ่งเกษียณอายุ"
+   },
+   "tesseract": {
+    "text": "บริษัทแทนนางพิลาสพรรณอุดมจกรุมณีซึ่งเกษียณอายุ",
+    "image": 0,
+    "bbox": [
+     866,
+     1864,
+     1508,
+     1911
+    ],
+    "conf": 93.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.8,
+   "pos": 3116,
+   "id": "ONEREPORTPTTT_p293_095",
+   "suggest": "typhoon",
+   "order": 94
+  },
+  {
+   "typhoon": {
+    "text": "วันที่ 31 ธันวาคม 2568 โดยให้มีผลตั้งแต่วันที่ 1 มกราคม 2569"
+   },
+   "tesseract": {
+    "text": "วันที่ 31 ธันวาคม 2568 โดยให้มีผลตั้งแต่วันที่ 1 มกราคม 2569",
+    "image": 0,
+    "bbox": [
+     866,
+     1904,
+     1510,
+     1953
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3162,
+   "id": "ONEREPORTPTTT_p293_096",
+   "suggest": "typhoon",
+   "order": 95
+  },
+  {
+   "typhoon": {
+    "text": "เป็นต้นไป ทั้งนี้ ปตท. ได้แจ้งการเปลี่ยนแปลงเลขานุการบริษัท"
+   },
+   "tesseract": {
+    "text": "เป็นต้นไปทั้งนี้ปตท . ได้แจ้งการเปลี่ยนแปลงเลขานุการบริษัท",
+    "image": 0,
+    "bbox": [
+     867,
+     1946,
+     1508,
+     1995
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3215,
+   "id": "ONEREPORTPTTT_p293_097",
+   "suggest": "typhoon",
+   "order": 96
+  },
+  {
+   "typhoon": {
+    "text": "ไปยังตลาดหลักทรัพย์แห่งประเทศไทย เมื่อวันที่ 22 ธันวาคม"
+   },
+   "tesseract": {
+    "text": "ไปยังตลาดหลักทรัพย์แห่งประเทศไทยเมื่อวันที่ 22 ธันวาคม",
+    "image": 0,
+    "bbox": [
+     864,
+     1988,
+     1511,
+     2036
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3271,
+   "id": "ONEREPORTPTTT_p293_098",
+   "suggest": "typhoon",
+   "order": 97
+  }
+ ],
+ "split": {
+  "method": "none",
+  "x": null,
+  "dpi": 200
+ }
+}

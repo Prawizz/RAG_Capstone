@@ -1,0 +1,1013 @@
+{
+ "file": "E_ONE_REPORT_CPALLT.PDF",
+ "page": 462,
+ "typhoon": {
+  "backend": "typhoon-local",
+  "model": "scb10x/typhoon-ocr1.5-2b",
+  "revision": "15b381a2d625",
+  "seconds": 47.46849699993618,
+  "tokens": 1162
+ },
+ "tesseract": {
+  "backend": "tesseract-local",
+  "model": "tesseract-5.4.0.20240606",
+  "revision": "b02ddf48069f",
+  "seconds": 3.5293913999339566
+ },
+ "typhoon_page_numbers": [
+  456
+ ],
+ "figures": [],
+ "skipped_tesseract": [
+  {
+   "text": ".",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    1331,
+    579,
+    1337,
+    586
+   ]
+  },
+  {
+   "text": "ขดซ้",
+   "reason": "conf ต่ำ (19.5)",
+   "image": 0,
+   "bbox": [
+    302,
+    807,
+    372,
+    837
+   ]
+  }
+ ],
+ "counts": {
+  "agree": 15,
+  "agree_audit": 2,
+  "diff": 11,
+  "typhoon_only": 2,
+  "tesseract_only": 9,
+  "to_judge": 24
+ },
+ "items": [
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "av aa ๕",
+    "image": 0,
+    "bbox": [
+     159,
+     112,
+     339,
+     124
+    ],
+    "conf": 73.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": -0.5,
+   "id": "E_ONE_REPORT_CPALLT_p462_001",
+   "suggest": "tesseract",
+   "order": 0
+  },
+  {
+   "typhoon": {
+    "text": "บริษัท ซีพี ออลล์ จำกัด (มหาชน) และบริษัทย่อย"
+   },
+   "tesseract": {
+    "text": "บริษัทซีพีออลล์จํากัด (มหาชน ) และบริษัทย่อย",
+    "image": 0,
+    "bbox": [
+     143,
+     111,
+     708,
+     154
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 0,
+   "id": "E_ONE_REPORT_CPALLT_p462_002",
+   "suggest": "typhoon",
+   "order": 1
+  },
+  {
+   "typhoon": {
+    "text": "หมายเหตุประกอบงบการเงิน"
+   },
+   "tesseract": {
+    "text": "หมายเหตุประกอบงบการถิิน",
+    "image": 0,
+    "bbox": [
+     143,
+     165,
+     481,
+     212
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 91.3,
+   "pos": 40,
+   "id": "E_ONE_REPORT_CPALLT_p462_003",
+   "suggest": "typhoon",
+   "order": 2
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "oo ey ส่ 9)",
+    "image": 0,
+    "bbox": [
+     150,
+     215,
+     443,
+     234
+    ],
+    "conf": 40.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 62.5,
+   "id": "E_ONE_REPORT_CPALLT_p462_004",
+   "suggest": "tesseract",
+   "order": 3
+  },
+  {
+   "typhoon": {
+    "text": "สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2568"
+   },
+   "tesseract": {
+    "text": "สําหรับปีสินสุดวันที่ 31 ธันวาคม 2568",
+    "image": 0,
+    "bbox": [
+     139,
+     221,
+     592,
+     268
+    ],
+    "conf": 93.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.1,
+   "pos": 63,
+   "id": "E_ONE_REPORT_CPALLT_p462_005",
+   "suggest": "typhoon",
+   "order": 4
+  },
+  {
+   "typhoon": {
+    "text": "การเพิ่มเงินลงทุนในระหว่างปี"
+   },
+   "tesseract": {
+    "text": "การเพิ่มเงินลงทุนในระหว่างปี",
+    "image": 0,
+    "bbox": [
+     281,
+     328,
+     611,
+     373
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 97,
+   "id": "E_ONE_REPORT_CPALLT_p462_006",
+   "suggest": "typhoon",
+   "order": 5
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "1 เ Ye ๑ 1 A a 2 ๑ % a ald oo A daw",
+    "image": 0,
+    "bbox": [
+     415,
+     416,
+     1438,
+     445
+    ],
+    "conf": 52.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 124.5,
+   "id": "E_ONE_REPORT_CPALLT_p462_007",
+   "suggest": "tesseract",
+   "order": 6
+  },
+  {
+   "typhoon": {
+    "text": "ก) ในระหว่างปี 2568 กลุ่มบริษัทได้ทำการชำระค่าทุนเพิ่มเติมในบริษัท สุขุมวิท ลีฟวิ่ง จำกัด ซึ่งเป็นบริษัทร่วม"
+   },
+   "tesseract": {
+    "text": "กในระหว่างปี 2568 กลุ่มบริษัทได้ทําการชําระค่าทุนเพิ่มเติมในบริษัทสุขุมวท avs จากคซิ่งเป็นบริษัทร่วม",
+    "image": 0,
+    "bbox": [
+     281,
+     420,
+     1472,
+     467
+    ],
+    "conf": 93.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 87.1,
+   "pos": 125,
+   "id": "E_ONE_REPORT_CPALLT_p462_008",
+   "suggest": "typhoon",
+   "order": 7
+  },
+  {
+   "typhoon": {
+    "text": "เป็นจำนวนเงิน 16 ล้านบาท (เพิ่มจาก 94 ล้านบาท เป็น 110 ล้านบาท)"
+   },
+   "tesseract": {
+    "text": "เป็นจํานวนเงิน 16 ล้านบาท (เพิ่มจาก 94 ล้านบาทเป็น 110 ล้านบาท )",
+    "image": 0,
+    "bbox": [
+     330,
+     474,
+     1053,
+     520
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 226,
+   "id": "E_ONE_REPORT_CPALLT_p462_009",
+   "suggest": "typhoon",
+   "order": 8
+  },
+  {
+   "typhoon": {
+    "text": "ข) ในระหว่างปี 2568 กลุ่มบริษัทได้ทำการชำระค่าทุนเพิ่มเติมในบริษัท สุขุมวิท มิกซ์-ยูส จำกัด ซึ่งเป็น"
+   },
+   "tesseract": {
+    "text": "ข ) ในระหว่างปี 2568 กลุ่มบริษัทได้ทําการชําระค่าทุนเพิ่มเติมในบริษัทสุขุมวิทมิกซ์ - ยูสจํากัดซึ่งเป็น",
+    "image": 0,
+    "bbox": [
+     280,
+     569,
+     1472,
+     617
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 281,
+   "id": "E_ONE_REPORT_CPALLT_p462_010",
+   "suggest": "typhoon",
+   "order": 9
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "aw 1 So a v. 2 v. ม",
+    "image": 0,
+    "bbox": [
+     345,
+     622,
+     1143,
+     650
+    ],
+    "conf": 35.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 373.5,
+   "id": "E_ONE_REPORT_CPALLT_p462_011",
+   "suggest": "tesseract",
+   "order": 10
+  },
+  {
+   "typhoon": {
+    "text": "บริษัทร่วม เป็นจำนวนเงิน 112 ล้านบาท (เพิ่มจาก 248 ล้านบาท เป็น 360 ล้านบาท)"
+   },
+   "tesseract": {
+    "text": "บริษัทรวมเป็นจํานวนเงิน 112 ล้านบาท (เพมจาก 248 ล้านบาทเป็น 360 ด้านบาท )",
+    "image": 0,
+    "bbox": [
+     330,
+     628,
+     1230,
+     670
+    ],
+    "conf": 93.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 94.0,
+   "pos": 374,
+   "id": "E_ONE_REPORT_CPALLT_p462_012",
+   "suggest": "typhoon",
+   "order": 11
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ะะ",
+    "image": 0,
+    "bbox": [
+     568,
+     716,
+     815,
+     725
+    ],
+    "conf": 56.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 440.5,
+   "id": "E_ONE_REPORT_CPALLT_p462_013",
+   "suggest": "tesseract",
+   "order": 12
+  },
+  {
+   "typhoon": {
+    "text": "บริษัทร่วมและการร่วมค้าทั้งหมดจดทะเบียนจัดตั้งและดำเนินธุรกิจในประเทศไทย"
+   },
+   "tesseract": {
+    "text": "บริษัทร่วมและการร่วมค้าทั้งหมดจดทะเบียนจัดตั้งและดําเนินธุรกิจในประเทศไทย",
+    "image": 0,
+    "bbox": [
+     280,
+     719,
+     1176,
+     766
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 441,
+   "id": "E_ONE_REPORT_CPALLT_p462_014",
+   "suggest": "typhoon",
+   "order": 13
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "” 0 ไฝ 2 ไไไ 5. a 2 2 cad gaa a",
+    "image": 0,
+    "bbox": [
+     554,
+     805,
+     1343,
+     837
+    ],
+    "conf": 51.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 512.5,
+   "id": "E_ONE_REPORT_CPALLT_p462_015",
+   "suggest": "tesseract",
+   "order": 14
+  },
+  {
+   "typhoon": {
+    "text": "ทรัสต์เพื่อการลงทุนในอสังหาริมทรัพย์และสิทธิการเช่า แอ็กซ์ตร้า ฟิวเจอร์ ซิตี้ เป็นบริษัทจดทะเบียนในตลาด"
+   },
+   "tesseract": {
+    "text": "ทรัสต์เพื่อการลงทุนในอสังหาริมทรัพย์และสิทธิการเช่าแอ็กซ์ตร้าฟิวเจอร์ 3a เป็นบริษัทจดทะเบียนในตลาด",
+    "image": 0,
+    "bbox": [
+     280,
+     815,
+     1471,
+     860
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 94.9,
+   "pos": 513,
+   "id": "E_ONE_REPORT_CPALLT_p462_016",
+   "suggest": "typhoon",
+   "order": 15
+  },
+  {
+   "typhoon": {
+    "text": "หลักทรัพย์แห่งประเทศไทย ซึ่งมูลค่ายุติธรรมของเงินลงทุนดังกล่าวที่คำนวณจากราคาปิด ณ วันที่ 31 ธันวาคม"
+   },
+   "tesseract": {
+    "text": "หลักทรัพย์แห่งประเทศไทยซึ่งมูลค่ายุติธรรมของเงินลงทุนดังกล่าวที่คํานวณจากราคาปิดณวันที่ 31 ธันวาคม",
+    "image": 0,
+    "bbox": [
+     280,
+     867,
+     1471,
+     915
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 612,
+   "id": "E_ONE_REPORT_CPALLT_p462_017",
+   "suggest": "typhoon",
+   "order": 16
+  },
+  {
+   "typhoon": {
+    "text": "2568 มีมูลค่า 7,713 ล้านบาท (2567: 7,012 ล้านบาท)"
+   },
+   "tesseract": {
+    "text": "2568 มีมูลค่า 7,713 ล้านบาท (2567: 7,012 ล้านบาท )",
+    "image": 0,
+    "bbox": [
+     280,
+     924,
+     850,
+     970
+    ],
+    "conf": 93.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 707,
+   "id": "E_ONE_REPORT_CPALLT_p462_018",
+   "suggest": "typhoon",
+   "order": 17
+  },
+  {
+   "typhoon": {
+    "text": "กลุ่มบริษัทพิจารณาแล้วว่าไม่มีส่วนได้เสียในบริษัทร่วมและการร่วมค้ารายการใดรายการหนึ่งที่มีสาระสำคัญ"
+   },
+   "tesseract": {
+    "text": "กลุ่มบริษัทพิจารณาแล้วว่าไม่มีส่วนได้เสียในบริษัทร่วมและการร่วมค้ารายการใดรายการหนึ่งที่มีสาระสําคัญ",
+    "image": 0,
+    "bbox": [
+     281,
+     1018,
+     1472,
+     1065
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 750,
+   "id": "E_ONE_REPORT_CPALLT_p462_019",
+   "suggest": "typhoon",
+   "order": 18
+  },
+  {
+   "typhoon": {
+    "text": "ต่อกลุ่มบริษัท"
+   },
+   "tesseract": {
+    "text": "ต่อกลุ่มบริษัท",
+    "image": 0,
+    "bbox": [
+     280,
+     1076,
+     429,
+     1120
+    ],
+    "conf": 94.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 849,
+   "id": "E_ONE_REPORT_CPALLT_p462_020",
+   "suggest": "typhoon",
+   "order": 19
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "aw 1 ' ขูสา ra Py",
+    "image": 0,
+    "bbox": [
+     298,
+     1162,
+     706,
+     1190
+    ],
+    "conf": 57.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 862.5,
+   "id": "E_ONE_REPORT_CPALLT_p462_021",
+   "suggest": "tesseract",
+   "order": 20
+  },
+  {
+   "typhoon": {
+    "text": "บริษัทร่วมและการร่วมค้าที่ไม่มีสาระสำคัญ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1048,
+     1000000,
+     1336
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 863,
+   "id": "E_ONE_REPORT_CPALLT_p462_022",
+   "suggest": "typhoon",
+   "order": 21
+  },
+  {
+   "typhoon": {
+    "text": "ตารางต่อไปนี้สรุปข้อมูลทางการเงินของส่วนได้เสียของกลุ่มบริษัทในบริษัทร่วมและการร่วมค้าที่ไม่มี"
+   },
+   "tesseract": {
+    "text": "ตารางต่อไปนี่สรุปข้อมูลทางการเงินของส่วนได้เสียของกลุ่มบริษัทในบริษัทร่วมและการร่วมค้าที่ไม่มี",
+    "image": 0,
+    "bbox": [
+     280,
+     1260,
+     1472,
+     1308
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.9,
+   "pos": 903,
+   "id": "E_ONE_REPORT_CPALLT_p462_023",
+   "suggest": "typhoon",
+   "order": 22
+  },
+  {
+   "typhoon": {
+    "text": "สาระสำคัญจากจำนวนเงินที่รายงานในงบการเงินรวมของกลุ่มบริษัท"
+   },
+   "tesseract": {
+    "text": "สาระสําคัญจากจํานวนเงินที่รายงานในงบการเงินรวมของกลุ่มบริษัท",
+    "image": 0,
+    "bbox": [
+     281,
+     1319,
+     1024,
+     1363
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 997,
+   "id": "E_ONE_REPORT_CPALLT_p462_024",
+   "suggest": "typhoon",
+   "order": 23
+  },
+  {
+   "typhoon": {
+    "text": "การร่วมค้า"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1291,
+     1000000,
+     1544
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1055,
+   "id": "E_ONE_REPORT_CPALLT_p462_025",
+   "suggest": "typhoon",
+   "order": 24
+  },
+  {
+   "typhoon": {
+    "text": "ที่ไม่มีสาระสำคัญ ที่ไม่มีสาระสำคัญ"
+   },
+   "tesseract": {
+    "text": "ที่ไม่มีสาระสําคัญที่ไม่มีสาระลําคัญ",
+    "image": 0,
+    "bbox": [
+     919,
+     1462,
+     1468,
+     1516
+    ],
+    "conf": 92.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.1,
+   "pos": 1065,
+   "id": "E_ONE_REPORT_CPALLT_p462_026",
+   "suggest": "typhoon",
+   "order": 25
+  },
+  {
+   "typhoon": {
+    "text": "2568 2567 2568 2567"
+   },
+   "tesseract": {
+    "text": "2568 2567 2568 2567",
+    "image": 0,
+    "bbox": [
+     905,
+     1540,
+     1481,
+     1561
+    ],
+    "conf": 93.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1099,
+   "id": "E_ONE_REPORT_CPALLT_p462_027",
+   "suggest": "typhoon",
+   "order": 26
+  },
+  {
+   "typhoon": {
+    "text": "(ล้านบาท)"
+   },
+   "tesseract": {
+    "text": "(ล้านบาท )",
+    "image": 0,
+    "bbox": [
+     1138,
+     1582,
+     1250,
+     1625
+    ],
+    "conf": 93.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1115,
+   "id": "E_ONE_REPORT_CPALLT_p462_028",
+   "suggest": "typhoon",
+   "order": 27
+  },
+  {
+   "typhoon": {
+    "text": "มูลค่าตามบัญชีของส่วนได้เสียในบริษัทร่วม"
+   },
+   "tesseract": {
+    "text": "มูลค่าตามบัญชีของส่วนได้เสียในบริษัทร่วม",
+    "image": 0,
+    "bbox": [
+     279,
+     1641,
+     755,
+     1688
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1124,
+   "id": "E_ONE_REPORT_CPALLT_p462_029",
+   "suggest": "typhoon",
+   "order": 28
+  },
+  {
+   "typhoon": {
+    "text": "บริษัทร่วม และการร่วมค้าที่ไม่มีสาระสำคัญ"
+   },
+   "tesseract": {
+    "text": "บริษัทร่วมและการร่วมค้าที่ไม่มีสาระสําคัญ",
+    "image": 0,
+    "bbox": [
+     282,
+     1167,
+     755,
+     1211
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1154,
+   "id": "E_ONE_REPORT_CPALLT_p462_030",
+   "suggest": "typhoon",
+   "order": 29
+  },
+  {
+   "typhoon": {
+    "text": "บริษัทร่วม และการร่วมค้า"
+   },
+   "tesseract": {
+    "text": "บริษัทร่วมการร่วมค้า",
+    "image": 0,
+    "bbox": [
+     961,
+     1413,
+     1426,
+     1456
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 87.0,
+   "pos": 1154,
+   "id": "E_ONE_REPORT_CPALLT_p462_031",
+   "suggest": "typhoon",
+   "order": 30
+  },
+  {
+   "typhoon": {
+    "text": "และการร่วมค้าที่ไม่มีสาระสำคัญ 9,084 9,039 6,204 5,981"
+   },
+   "tesseract": {
+    "text": "และการร่วมค้าที่ไม่มีสาระลําคัญ 9,084 9,039 6,204 5,981",
+    "image": 0,
+    "bbox": [
+     299,
+     1691,
+     1498,
+     1744
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.0,
+   "pos": 1164,
+   "id": "E_ONE_REPORT_CPALLT_p462_032",
+   "suggest": "typhoon",
+   "order": 31
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ซ่",
+    "image": 0,
+    "bbox": [
+     742,
+     1202,
+     751,
+     1209
+    ],
+    "conf": 50.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1193.5,
+   "id": "E_ONE_REPORT_CPALLT_p462_033",
+   "suggest": "tesseract",
+   "order": 32
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "1 สฆร 1 Ya 1 ๑. PS 1 ' ข่ dy 1a",
+    "image": 0,
+    "bbox": [
+     364,
+     1253,
+     1471,
+     1284
+    ],
+    "conf": 53.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1193.5,
+   "id": "E_ONE_REPORT_CPALLT_p462_034",
+   "suggest": "tesseract",
+   "order": 33
+  },
+  {
+   "typhoon": {
+    "text": "ส่วนแบ่งของกลุ่มบริษัทใน"
+   },
+   "tesseract": {
+    "text": "ส่วนแบ่งของกลุ่มบริษัทใน",
+    "image": 0,
+    "bbox": [
+     279,
+     1819,
+     572,
+     1863
+    ],
+    "conf": 95.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1214,
+   "id": "E_ONE_REPORT_CPALLT_p462_035",
+   "suggest": "typhoon",
+   "order": 34
+  },
+  {
+   "typhoon": {
+    "text": "- กำไรจากการดำเนินงานอย่างต่อเนื่อง 341 396 239 277"
+   },
+   "tesseract": {
+    "text": "- กําไรจากการดําเนินงานอย่างต่อเนื่อง 341 396 239 277",
+    "image": 0,
+    "bbox": [
+     305,
+     1869,
+     1499,
+     1917
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1238,
+   "id": "E_ONE_REPORT_CPALLT_p462_036",
+   "suggest": "typhoon",
+   "order": 35
+  },
+  {
+   "typhoon": {
+    "text": "- กำไรขาดทุนเบ็ดเสร็จอื่น - - (3) (3)"
+   },
+   "tesseract": {
+    "text": "- กําไรขาดทุนเบ็ดเสร็จอื่น - - ©) เ 5)",
+    "image": 0,
+    "bbox": [
+     305,
+     1924,
+     1507,
+     1976
+    ],
+    "conf": 87.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 87.1,
+   "pos": 1283,
+   "id": "E_ONE_REPORT_CPALLT_p462_037",
+   "suggest": "typhoon",
+   "order": 36
+  },
+  {
+   "typhoon": {
+    "text": "- กำไรขาดทุนเบ็ดเสร็จรวม 341 396 236 274"
+   },
+   "tesseract": {
+    "text": "- กําไรขาดทุนเบ็ดเสร็จรวม 341 396 236 274",
+    "image": 0,
+    "bbox": [
+     305,
+     1986,
+     1500,
+     2033
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1314,
+   "id": "E_ONE_REPORT_CPALLT_p462_038",
+   "suggest": "typhoon",
+   "order": 37
+  },
+  {
+   "typhoon": {
+    "text": "รายงานทางการเงิน"
+   },
+   "tesseract": {
+    "text": "รายงานทางการเงิน๕56",
+    "image": 0,
+    "bbox": [
+     1319,
+     2203,
+     1519,
+     2233
+    ],
+    "conf": 92.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 84.2,
+   "pos": 1348,
+   "id": "E_ONE_REPORT_CPALLT_p462_039",
+   "suggest": "typhoon",
+   "order": 38
+  }
+ ],
+ "split": {
+  "method": "none",
+  "x": null,
+  "dpi": 200
+ }
+}

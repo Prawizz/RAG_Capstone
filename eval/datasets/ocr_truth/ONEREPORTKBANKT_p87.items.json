@@ -1,0 +1,4263 @@
+{
+ "file": "ONEREPORTKBANKT.PDF",
+ "page": 87,
+ "typhoon": {
+  "backend": "typhoon-local",
+  "model": "scb10x/typhoon-ocr1.5-2b",
+  "revision": "15b381a2d625",
+  "seconds": 628.6051667999709,
+  "tokens": 7254
+ },
+ "tesseract": {
+  "backend": "tesseract-local",
+  "model": "tesseract-5.4.0.20240606",
+  "revision": "b02ddf48069f",
+  "seconds": 17.265895200078376
+ },
+ "typhoon_page_numbers": [
+  170,
+  171
+ ],
+ "figures": [],
+ "skipped_tesseract": [
+  {
+   "text": "ย",
+   "reason": "สั้นเกินไป",
+   "image": 0,
+   "bbox": [
+    183,
+    419,
+    194,
+    426
+   ]
+  },
+  {
+   "text": "foi dunn",
+   "reason": "conf ต่ำ (18.6)",
+   "image": 1,
+   "bbox": [
+    832,
+    1969,
+    1072,
+    2011
+   ]
+  }
+ ],
+ "counts": {
+  "agree": 44,
+  "agree_audit": 5,
+  "diff": 44,
+  "typhoon_only": 54,
+  "tesseract_only": 29,
+  "to_judge": 132
+ },
+ "items": [
+  {
+   "typhoon": {
+    "text": "ธนาคารกสิกรไทย"
+   },
+   "tesseract": {
+    "text": "{= 170 ธนาคารกสิกรไทย",
+    "image": 0,
+    "bbox": [
+     320,
+     89,
+     1042,
+     144
+    ],
+    "conf": 92.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 73.7,
+   "pos": 0,
+   "id": "ONEREPORTKBANKT_p87_001",
+   "suggest": "typhoon",
+   "order": 0
+  },
+  {
+   "typhoon": {
+    "text": "ธนาคารกสิกรไทย"
+   },
+   "tesseract": {
+    "text": "ธนาคารกสิกรไทย",
+    "image": 0,
+    "bbox": [
+     236,
+     187,
+     462,
+     233
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 0,
+   "id": "ONEREPORTKBANKT_p87_002",
+   "suggest": "typhoon",
+   "order": 1
+  },
+  {
+   "typhoon": {
+    "text": "ธนาคารกสิกรไทย"
+   },
+   "tesseract": {
+    "text": "ธนาคารกสิกรไทย 171",
+    "image": 1,
+    "bbox": [
+     1154,
+     102,
+     1577,
+     131
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 82.4,
+   "pos": 0,
+   "id": "ONEREPORTKBANKT_p87_003",
+   "suggest": "typhoon",
+   "order": 2
+  },
+  {
+   "typhoon": {
+    "text": "รายงานแบบ 56-1 One Report"
+   },
+   "tesseract": {
+    "text": "รายงานแบบ 56-1 One Report",
+    "image": 0,
+    "bbox": [
+     150,
+     242,
+     550,
+     280
+    ],
+    "conf": 95.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 14,
+   "id": "ONEREPORTKBANKT_p87_004",
+   "suggest": "typhoon",
+   "order": 3
+  },
+  {
+   "typhoon": {
+    "text": "ประจำปี 2568"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     214,
+     1000000,
+     356
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 36,
+   "id": "ONEREPORTKBANKT_p87_005",
+   "suggest": "typhoon",
+   "order": 4
+  },
+  {
+   "typhoon": {
+    "text": "ธนาคารกสิกรไทย รายงานแบบ 56-1 One Report"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     214,
+     1000000,
+     356
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 47,
+   "id": "ONEREPORTKBANKT_p87_006",
+   "suggest": "typhoon",
+   "order": 5
+  },
+  {
+   "typhoon": {
+    "text": "ประจำปี 2568"
+   },
+   "tesseract": {
+    "text": "ประจําปี 2568",
+    "image": 0,
+    "bbox": [
+     259,
+     282,
+     440,
+     328
+    ],
+    "conf": 93.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 83,
+   "id": "ONEREPORTKBANKT_p87_007",
+   "suggest": "typhoon",
+   "order": 6
+  },
+  {
+   "typhoon": {
+    "text": "สารบัญ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     254,
+     1000000,
+     638
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 94,
+   "id": "ONEREPORTKBANKT_p87_008",
+   "suggest": "typhoon",
+   "order": 7
+  },
+  {
+   "typhoon": {
+    "text": "สารจากคณะกรรมการธนาคาร"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     254,
+     1000000,
+     638
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 100,
+   "id": "ONEREPORTKBANKT_p87_009",
+   "suggest": "typhoon",
+   "order": 8
+  },
+  {
+   "typhoon": {
+    "text": "สารจากประธานเจ้าหน้าที่บริหาร"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     254,
+     1000000,
+     638
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 122,
+   "id": "ONEREPORTKBANKT_p87_010",
+   "suggest": "typhoon",
+   "order": 9
+  },
+  {
+   "typhoon": {
+    "text": "่วนที่ 1 การประกอบธุรกิจและผลการดำเนินงาน 1."
+   },
+   "tesseract": {
+    "text": "@ ล่วนที่ 1 การประกอบธุรกิจและผลการดําเนินงาน \" -",
+    "image": 0,
+    "bbox": [
+     61,
+     572,
+     978,
+     610
+    ],
+    "conf": 90.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 90.7,
+   "pos": 152,
+   "id": "ONEREPORTKBANKT_p87_011",
+   "suggest": "typhoon",
+   "order": 10
+  },
+  {
+   "typhoon": {
+    "text": "1. โครงสร้างและการดำเนินงาน ของกลุ่มธ"
+   },
+   "tesseract": {
+    "text": "1. โครงสร้างและการดําเนินงานก 0 แซ 5 ธั้ 0",
+    "image": 0,
+    "bbox": [
+     122,
+     606,
+     1139,
+     642
+    ],
+    "conf": 82.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 74.3,
+   "pos": 191,
+   "id": "ONEREPORTKBANKT_p87_012",
+   "suggest": "typhoon",
+   "order": 11
+  },
+  {
+   "typhoon": {
+    "text": "ของกลุ่มธุรกิจทางการเงินธนาคารกสิกรไทย"
+   },
+   "tesseract": {
+    "text": "ของกลุ่มธุรกิจทางการเงินธนาคารกสิกรไทย \"",
+    "image": 0,
+    "bbox": [
+     148,
+     640,
+     1229,
+     678
+    ],
+    "conf": 92.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.4,
+   "pos": 217,
+   "id": "ONEREPORTKBANKT_p87_013",
+   "suggest": "typhoon",
+   "order": 12
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "2. การบริหารจัดการความเสี่ยงรายการปรับกระทบกําไรจากการดําเนินงานก่อนภาษีเงินได้เป็น",
+    "image": 0,
+    "bbox": [
+     120,
+     666,
+     1301,
+     703
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 254.5,
+   "id": "ONEREPORTKBANKT_p87_014",
+   "suggest": "tesseract",
+   "order": 13
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "3. การขับเคลื่อนธุรกิจเพื่อความยังยืนเงินสดรับ (จ่าย ) จากกิจกรรมดําเนินงาน",
+    "image": 0,
+    "bbox": [
+     120,
+     705,
+     1169,
+     744
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 254.5,
+   "id": "ONEREPORTKBANKT_p87_015",
+   "suggest": "tesseract",
+   "order": 14
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "4. การวิเคราะห์และคําอธิบายของฝ่ายจัดการค่าเสื่อมราคาและรายจ่ายตัดบัญชี 9,648,867 8,992,194 7,918,784 7,507,917",
+    "image": 0,
+    "bbox": [
+     120,
+     738,
+     2192,
+     774
+    ],
+    "conf": 93.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 254.5,
+   "id": "ONEREPORTKBANKT_p87_016",
+   "suggest": "tesseract",
+   "order": 15
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "wv < v",
+    "image": 0,
+    "bbox": [
+     147,
+     767,
+     297,
+     793
+    ],
+    "conf": 33.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 254.5,
+   "id": "ONEREPORTKBANKT_p87_017",
+   "suggest": "tesseract",
+   "order": 16
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "5. ข้อมูลทัวไปและข้อมูลสําคัญอื่นผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น 43,108,719 49,421,662 41,197,131 46,119,562",
+    "image": 0,
+    "bbox": [
+     121,
+     773,
+     2192,
+     812
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 254.5,
+   "id": "ONEREPORTKBANKT_p87_018",
+   "suggest": "tesseract",
+   "order": 17
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "PY ส่วนที่ 2 การกํากับดูแลกิจการกําไรจากอัตราแลกเปลี่ยนจากการแปลงค่าของเงินกู้ยืมระยะยาว (847,956) (305,482) (138,235) (244,125)",
+    "image": 0,
+    "bbox": [
+     57,
+     814,
+     2197,
+     867
+    ],
+    "conf": 92.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 254.5,
+   "id": "ONEREPORTKBANKT_p87_019",
+   "suggest": "tesseract",
+   "order": 18
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "6. นโยบายการกํากับดูแลกิจการกําไรจากการปรับมูลค่าสินทรัพย์ทางการเงินที่วัดมูลค่าด้วย",
+    "image": 0,
+    "bbox": [
+     121,
+     858,
+     1317,
+     900
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 254.5,
+   "id": "ONEREPORTKBANKT_p87_020",
+   "suggest": "tesseract",
+   "order": 19
+  },
+  {
+   "typhoon": {
+    "text": "2. การบริหารจัดการความเสี่ยง"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     612,
+     1000000,
+     1090
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 255,
+   "id": "ONEREPORTKBANKT_p87_021",
+   "suggest": "typhoon",
+   "order": 20
+  },
+  {
+   "typhoon": {
+    "text": "3. การขับเคลื่อนธุรกิจเพื่อความยั่งยืน"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     612,
+     1000000,
+     1090
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 282,
+   "id": "ONEREPORTKBANKT_p87_022",
+   "suggest": "typhoon",
+   "order": 21
+  },
+  {
+   "typhoon": {
+    "text": "4. การวิเคราะห์และคำอธิบายของฝ่ายจัดการ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     612,
+     1000000,
+     1090
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 319,
+   "id": "ONEREPORTKBANKT_p87_023",
+   "suggest": "typhoon",
+   "order": 22
+  },
+  {
+   "typhoon": {
+    "text": "5. ข้อมูลทั่วไปและข้อมูลสำคัญอื่น"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     612,
+     1000000,
+     1090
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 357,
+   "id": "ONEREPORTKBANKT_p87_024",
+   "suggest": "typhoon",
+   "order": 23
+  },
+  {
+   "typhoon": {
+    "text": "ส่วนที่ 2 การกำกับดูแลกิจการ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     612,
+     1000000,
+     1090
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 389,
+   "id": "ONEREPORTKBANKT_p87_025",
+   "suggest": "typhoon",
+   "order": 24
+  },
+  {
+   "typhoon": {
+    "text": "6. นโยบายการกำกับดูแลกิจการ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     612,
+     1000000,
+     1090
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 415,
+   "id": "ONEREPORTKBANKT_p87_026",
+   "suggest": "typhoon",
+   "order": 25
+  },
+  {
+   "typhoon": {
+    "text": "7. โครงสร้างการกำกับดูแลกิจการ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     612,
+     1000000,
+     1090
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 441,
+   "id": "ONEREPORTKBANKT_p87_027",
+   "suggest": "typhoon",
+   "order": 26
+  },
+  {
+   "typhoon": {
+    "text": "และข้อมูลสำคัญเกี่ยวกับคณะกรรมการ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     612,
+     1000000,
+     1090
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 470,
+   "id": "ONEREPORTKBANKT_p87_028",
+   "suggest": "typhoon",
+   "order": 27
+  },
+  {
+   "typhoon": {
+    "text": "คณะกรรมการชุดย่อย ผู้บริหาร พนักงาน และอื่นๆ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     612,
+     1000000,
+     1090
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 503,
+   "id": "ONEREPORTKBANKT_p87_029",
+   "suggest": "typhoon",
+   "order": 28
+  },
+  {
+   "typhoon": {
+    "text": "8. รายงานผลการดำเนินงานสำคัญ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     612,
+     1000000,
+     1090
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 544,
+   "id": "ONEREPORTKBANKT_p87_030",
+   "suggest": "typhoon",
+   "order": 29
+  },
+  {
+   "typhoon": {
+    "text": "ด้านการกำกับดูแลกิจการ 9"
+   },
+   "tesseract": {
+    "text": "ด้านการกํากับดูแลกิจการ “",
+    "image": 0,
+    "bbox": [
+     148,
+     1029,
+     1035,
+     1062
+    ],
+    "conf": 90.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 95.7,
+   "pos": 571,
+   "id": "ONEREPORTKBANKT_p87_031",
+   "suggest": "typhoon",
+   "order": 30
+  },
+  {
+   "typhoon": {
+    "text": "9. การควบคุมภายในและรายการระหว่างกัน ส่"
+   },
+   "tesseract": {
+    "text": "9. การควบคุมภายในและรายการระหว่างกันญ่",
+    "image": 0,
+    "bbox": [
+     121,
+     1062,
+     1168,
+     1102
+    ],
+    "conf": 92.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.3,
+   "pos": 593,
+   "id": "ONEREPORTKBANKT_p87_032",
+   "suggest": "typhoon",
+   "order": 31
+  },
+  {
+   "typhoon": {
+    "text": "วนที่ 3 งบการเงิน"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1034,
+     1000000,
+     1283
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 630,
+   "id": "ONEREPORTKBANKT_p87_033",
+   "suggest": "typhoon",
+   "order": 32
+  },
+  {
+   "typhoon": {
+    "text": "รายงานความรับผิดชอบของคณะกรรมการธนาคาร"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1034,
+     1000000,
+     1283
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 645,
+   "id": "ONEREPORTKBANKT_p87_034",
+   "suggest": "typhoon",
+   "order": 33
+  },
+  {
+   "typhoon": {
+    "text": "ต่อรายงานทางการเงิ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1034,
+     1000000,
+     1283
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 683,
+   "id": "ONEREPORTKBANKT_p87_035",
+   "suggest": "typhoon",
+   "order": 34
+  },
+  {
+   "typhoon": {
+    "text": "น รายงานของผู้สอบบัญชีรับอนุญาต งบก"
+   },
+   "tesseract": {
+    "text": ". รายงานของผู้สอบบญชรบอนุญาต . . 4",
+    "image": 0,
+    "bbox": [
+     120,
+     1224,
+     1148,
+     1255
+    ],
+    "conf": 89.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 78.8,
+   "pos": 701,
+   "id": "ONEREPORTKBANKT_p87_036",
+   "suggest": "typhoon",
+   "order": 35
+  },
+  {
+   "typhoon": {
+    "text": "าต งบการเงินและหมายเหตุประกอบงบการเงิน"
+   },
+   "tesseract": {
+    "text": "x ๑งบการเงินและหมายเหตุประกอบงบการเงิน . ซ่ .",
+    "image": 0,
+    "bbox": [
+     38,
+     1254,
+     1259,
+     1293
+    ],
+    "conf": 85.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 85.4,
+   "pos": 729,
+   "id": "ONEREPORTKBANKT_p87_037",
+   "suggest": "typhoon",
+   "order": 36
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1226,
+     1000000,
+     1435
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 766,
+   "id": "ONEREPORTKBANKT_p87_038",
+   "suggest": "typhoon",
+   "order": 37
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 1"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1226,
+     1000000,
+     1435
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 775,
+   "id": "ONEREPORTKBANKT_p87_039",
+   "suggest": "typhoon",
+   "order": 38
+  },
+  {
+   "typhoon": {
+    "text": "รายละเอียดเกี่ยวกับกรรมการ ผู้บริหาร ผู"
+   },
+   "tesseract": {
+    "text": "รายละเอยดเกยวกบกรรมการผูบรหาร \\ 3 2",
+    "image": 0,
+    "bbox": [
+     120,
+     1381,
+     1049,
+     1407
+    ],
+    "conf": 90.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 75.7,
+   "pos": 785,
+   "id": "ONEREPORTKBANKT_p87_040",
+   "suggest": "typhoon",
+   "order": 39
+  },
+  {
+   "typhoon": {
+    "text": "ู้มีอำนาจควบคุม เลขานุการบริษัท และสมุห์บัญชีใหญ่"
+   },
+   "tesseract": {
+    "text": "ผูมอานาจควบคุมเลขานุการบรษทและสมุห : ัญชีใหญ่",
+    "image": 0,
+    "bbox": [
+     121,
+     1406,
+     595,
+     1444
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 83.0,
+   "pos": 821,
+   "id": "ONEREPORTKBANKT_p87_041",
+   "suggest": "typhoon",
+   "order": 40
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 2"
+   },
+   "tesseract": {
+    "text": "เอกสารแนบ 5 2 0",
+    "image": 0,
+    "bbox": [
+     122,
+     1783,
+     1037,
+     1804
+    ],
+    "conf": 88.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 83.3,
+   "pos": 868,
+   "id": "ONEREPORTKBANKT_p87_042",
+   "suggest": "typhoon",
+   "order": 41
+  },
+  {
+   "typhoon": {
+    "text": "รายละเอียดเกี่ยวกับการดำรงตำแหน่ง"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1650,
+     1000000,
+     1811
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 878,
+   "id": "ONEREPORTKBANKT_p87_043",
+   "suggest": "typhoon",
+   "order": 42
+  },
+  {
+   "typhoon": {
+    "text": "ของกรรมการและผู้บริหารธนาคารในบริษัทย่อย"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1650,
+     1000000,
+     1811
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 911,
+   "id": "ONEREPORTKBANKT_p87_044",
+   "suggest": "typhoon",
+   "order": 43
+  },
+  {
+   "typhoon": {
+    "text": "บริษัทร่วม การร่วมค้า และบริษัทที่เกี่ยวข้อง"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1650,
+     1000000,
+     1811
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 951,
+   "id": "ONEREPORTKBANKT_p87_045",
+   "suggest": "typhoon",
+   "order": 44
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 3"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1650,
+     1000000,
+     1811
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 993,
+   "id": "ONEREPORTKBANKT_p87_046",
+   "suggest": "typhoon",
+   "order": 45
+  },
+  {
+   "typhoon": {
+    "text": "รายละเอียดเกี่ยวกับหัวหน้าหน่วยงานตรวจสอบภายใน"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1650,
+     1000000,
+     1811
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1003,
+   "id": "ONEREPORTKBANKT_p87_047",
+   "suggest": "typhoon",
+   "order": 46
+  },
+  {
+   "typhoon": {
+    "text": "และหัวหน้างานกำกับดูแลการปฏิบัติงาน"
+   },
+   "tesseract": {
+    "text": "และหัวหน้างานกํากับดูแลการปฏิบัติงาน",
+    "image": 0,
+    "bbox": [
+     122,
+     1643,
+     468,
+     1678
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1049,
+   "id": "ONEREPORTKBANKT_p87_048",
+   "suggest": "typhoon",
+   "order": 47
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 4"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1615,
+     1000000,
+     1872
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1084,
+   "id": "ONEREPORTKBANKT_p87_049",
+   "suggest": "typhoon",
+   "order": 48
+  },
+  {
+   "typhoon": {
+    "text": "ทรัพย์สินที่ใช้ในการประกอบธุรกิจ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1615,
+     1000000,
+     1872
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1094,
+   "id": "ONEREPORTKBANKT_p87_050",
+   "suggest": "typhoon",
+   "order": 49
+  },
+  {
+   "typhoon": {
+    "text": "และรายละเอียดเกี่ยวกับรายการประเมินราคาทรัพย์สิน"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1615,
+     1000000,
+     1872
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1126,
+   "id": "ONEREPORTKBANKT_p87_051",
+   "suggest": "typhoon",
+   "order": 50
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 5"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1615,
+     1000000,
+     1872
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1174,
+   "id": "ONEREPORTKBANKT_p87_052",
+   "suggest": "typhoon",
+   "order": 51
+  },
+  {
+   "typhoon": {
+    "text": "นโยบายและแนวปฏิบัติการกำกับดูแลกิจการ"
+   },
+   "tesseract": {
+    "text": "นโยบายและแนวปฏิบัติการกํากับดูแลกิจการวง",
+    "image": 0,
+    "bbox": [
+     120,
+     1806,
+     1070,
+     1844
+    ],
+    "conf": 89.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 94.9,
+   "pos": 1184,
+   "id": "ONEREPORTKBANKT_p87_053",
+   "suggest": "typhoon",
+   "order": 52
+  },
+  {
+   "typhoon": {
+    "text": "และจรรยาบรรณธุรกิจ (ฉบับเต็ม)"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1778,
+     1000000,
+     2006
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1221,
+   "id": "ONEREPORTKBANKT_p87_054",
+   "suggest": "typhoon",
+   "order": 53
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 6"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1778,
+     1000000,
+     2006
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1249,
+   "id": "ONEREPORTKBANKT_p87_055",
+   "suggest": "typhoon",
+   "order": 54
+  },
+  {
+   "typhoon": {
+    "text": "รายงานคณะกรรมการชุดย่อย"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1778,
+     1000000,
+     2006
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1259,
+   "id": "ONEREPORTKBANKT_p87_056",
+   "suggest": "typhoon",
+   "order": 55
+  },
+  {
+   "typhoon": {
+    "text": "รางวัลเกียรติคุณ"
+   },
+   "tesseract": {
+    "text": "รางวัลเกียรติคุณ",
+    "image": 0,
+    "bbox": [
+     120,
+     1940,
+     264,
+     1978
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1282,
+   "id": "ONEREPORTKBANKT_p87_057",
+   "suggest": "typhoon",
+   "order": 56
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "- วจเหรร ad",
+    "image": 0,
+    "bbox": [
+     992,
+     2085,
+     1207,
+     2113
+    ],
+    "conf": 62.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1297.5,
+   "id": "ONEREPORTKBANKT_p87_058",
+   "suggest": "tesseract",
+   "order": 57
+  },
+  {
+   "typhoon": {
+    "text": "งบกระแสเงินสด"
+   },
+   "tesseract": {
+    "text": "งบกระแสเงินสด",
+    "image": 0,
+    "bbox": [
+     852,
+     258,
+     1102,
+     307
+    ],
+    "conf": 95.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1298,
+   "id": "ONEREPORTKBANKT_p87_059",
+   "suggest": "typhoon",
+   "order": 58
+  },
+  {
+   "typhoon": {
+    "text": "งบกระแสเงินสด"
+   },
+   "tesseract": {
+    "text": "งบกระแสเงินสด",
+    "image": 1,
+    "bbox": [
+     230,
+     258,
+     479,
+     307
+    ],
+    "conf": 95.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1298,
+   "id": "ONEREPORTKBANKT_p87_060",
+   "suggest": "typhoon",
+   "order": 59
+  },
+  {
+   "typhoon": {
+    "text": "ธนาคารกสิกรไทย จำกัด (มหาชน) และบริษัทย่อย"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 1,
+    "bbox": [
+     0,
+     230,
+     1000000,
+     449
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1311,
+   "id": "ONEREPORTKBANKT_p87_061",
+   "suggest": "typhoon",
+   "order": 60
+  },
+  {
+   "typhoon": {
+    "text": "พันบาท"
+   },
+   "tesseract": {
+    "text": "พันบาท",
+    "image": 1,
+    "bbox": [
+     1266,
+     394,
+     1313,
+     421
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1350,
+   "id": "ONEREPORTKBANKT_p87_062",
+   "suggest": "typhoon",
+   "order": 61
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "งบการเงินรวมงบการเงินเจพาะธนาคาร",
+    "image": 1,
+    "bbox": [
+     1098,
+     429,
+     1514,
+     456
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1355.5,
+   "id": "ONEREPORTKBANKT_p87_063",
+   "suggest": "tesseract",
+   "order": 62
+  },
+  {
+   "typhoon": {
+    "text": "บการเงินเฉพาะธนาคาร สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2"
+   },
+   "tesseract": {
+    "text": "๕ 9 สารจากคณะกรรมการธนาคารสําหรับปีสิ้นสุดวันที่ 31 ธันวาคมสําหรับปีสิ้นสุดวันที่ 31 ธันวาคม",
+    "image": 0,
+    "bbox": [
+     61,
+     464,
+     2154,
+     505
+    ],
+    "conf": 93.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 81.0,
+   "pos": 1357,
+   "id": "ONEREPORTKBANKT_p87_064",
+   "suggest": "typhoon",
+   "order": 63
+  },
+  {
+   "typhoon": {
+    "text": "สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม"
+   },
+   "tesseract": {
+    "text": "สําหรับปีสิ้นสุดวันที่ 31 ธันวาคมสําหรับปีสิ้นสุดวันที่ 31 ธันวาคม",
+    "image": 1,
+    "bbox": [
+     1042,
+     457,
+     1535,
+     491
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1376,
+   "id": "ONEREPORTKBANKT_p87_065",
+   "suggest": "typhoon",
+   "order": 64
+  },
+  {
+   "typhoon": {
+    "text": "2568 2567 2568 2567"
+   },
+   "tesseract": {
+    "text": "2568 2567 2568 2567",
+    "image": 1,
+    "bbox": [
+     1052,
+     505,
+     1526,
+     516
+    ],
+    "conf": 96.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1436,
+   "id": "ONEREPORTKBANKT_p87_066",
+   "suggest": "typhoon",
+   "order": 65
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "๕๑สารจากประธานเจ้าหน้าทีบริหาร 2568 2567 2568 2567",
+    "image": 0,
+    "bbox": [
+     61,
+     516,
+     2145,
+     554
+    ],
+    "conf": 91.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1436.5,
+   "id": "ONEREPORTKBANKT_p87_067",
+   "suggest": "tesseract",
+   "order": 66
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ว่หมายเหตุ (ปรับปรุงใหม่ )",
+    "image": 0,
+    "bbox": [
+     168,
+     548,
+     1847,
+     590
+    ],
+    "conf": 92.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1436.5,
+   "id": "ONEREPORTKBANKT_p87_068",
+   "suggest": "tesseract",
+   "order": 67
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "หมายเหตุ (ปรับปรุงใหม่ )",
+    "image": 1,
+    "bbox": [
+     914,
+     530,
+     1257,
+     561
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 1451.5,
+   "id": "ONEREPORTKBANKT_p87_069",
+   "suggest": "tesseract",
+   "order": 68
+  },
+  {
+   "typhoon": {
+    "text": "(ปรับปรุงให"
+   },
+   "tesseract": null,
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1452,
+   "id": "ONEREPORTKBANKT_p87_070",
+   "suggest": "typhoon",
+   "order": 69
+  },
+  {
+   "typhoon": {
+    "text": "ม่) กระแสเงินสดจากกิจกรรมดำเนินงาน"
+   },
+   "tesseract": {
+    "text": "ย La กระแสเงินสดจากกิจกรรมดําเนินงาน",
+    "image": 0,
+    "bbox": [
+     204,
+     589,
+     1099,
+     620
+    ],
+    "conf": 90.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 90.9,
+   "pos": 1463,
+   "id": "ONEREPORTKBANKT_p87_071",
+   "suggest": "typhoon",
+   "order": 70
+  },
+  {
+   "typhoon": {
+    "text": "งาน กำไรจากการดำเนินงานก่อนภาษีเงินได้ 69,639,802 66,742,675 56,388,397 59,554,439"
+   },
+   "tesseract": {
+    "text": "ฝุ a a กําไรจากการดําเนินงานก่อนภาษีเงินได้ 69,639,802 66,742,675 56,388,397 59,554,439",
+    "image": 0,
+    "bbox": [
+     202,
+     627,
+     2192,
+     659
+    ],
+    "conf": 91.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 94.9,
+   "pos": 1493,
+   "id": "ONEREPORTKBANKT_p87_072",
+   "suggest": "typhoon",
+   "order": 71
+  },
+  {
+   "typhoon": {
+    "text": "รายการปรับกระทบกำไรจากการดำเนินงานก่อนภาษีเงินได้เป็น"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     599,
+     1000000,
+     961
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1570,
+   "id": "ONEREPORTKBANKT_p87_073",
+   "suggest": "typhoon",
+   "order": 72
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดรับ (จ่าย) จากกิจกรรมดำเนินงาน"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     599,
+     1000000,
+     961
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1623,
+   "id": "ONEREPORTKBANKT_p87_074",
+   "suggest": "typhoon",
+   "order": 73
+  },
+  {
+   "typhoon": {
+    "text": "ค่าเสื่อมราคาและรายจ่ายตัดบัญชี 9,648,867 8,992,194 7,918,784 7,507,917"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     599,
+     1000000,
+     961
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1657,
+   "id": "ONEREPORTKBANKT_p87_075",
+   "suggest": "typhoon",
+   "order": 74
+  },
+  {
+   "typhoon": {
+    "text": "ผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น 43,108,719 49,421,662 41,197,131 46,119,562"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     599,
+     1000000,
+     961
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1724,
+   "id": "ONEREPORTKBANKT_p87_076",
+   "suggest": "typhoon",
+   "order": 75
+  },
+  {
+   "typhoon": {
+    "text": "กำไรจากอัตราแลกเปลี่ยนจากการแปลงค่าของเงินกู้ยืมระยะยาว (847,956) (305,482) (138,235) (244,125)"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     599,
+     1000000,
+     961
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1801,
+   "id": "ONEREPORTKBANKT_p87_077",
+   "suggest": "typhoon",
+   "order": 76
+  },
+  {
+   "typhoon": {
+    "text": "กำไรจากการปรับมูลค่าสินทรัพย์"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     599,
+     1000000,
+     961
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 1892,
+   "id": "ONEREPORTKBANKT_p87_078",
+   "suggest": "typhoon",
+   "order": 77
+  },
+  {
+   "typhoon": {
+    "text": "ทางการเงินที่วัดมูลค่าด้วย มูลค่ายุติธรรมผ่านกำไรหรือขาดทุน (3,405,180) (1,850,729) (1,751,932) (862,642)"
+   },
+   "tesseract": {
+    "text": "7. โครงสร้างการกํากับดูแลกิจการมูลค่ายุติธรรมผ่านกําไรหรือขาดทุน (3,405,180) (1,850,729) (1,751,932) (862,642)",
+    "image": 0,
+    "bbox": [
+     121,
+     895,
+     2197,
+     933
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 75.7,
+   "pos": 1921,
+   "id": "ONEREPORTKBANKT_p87_079",
+   "suggest": "typhoon",
+   "order": 78
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "และข้อมูลสําคัญเกียวกับคณะกรรมการขาดทุนจากการด้อยค่าทรัพย์สินรอการขาย 648,655 405,577 704,416 316,627",
+    "image": 0,
+    "bbox": [
+     149,
+     928,
+     2192,
+     966
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2020.5,
+   "id": "ONEREPORTKBANKT_p87_080",
+   "suggest": "tesseract",
+   "order": 79
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "TPN o 4",
+    "image": 0,
+    "bbox": [
+     305,
+     966,
+     554,
+     973
+    ],
+    "conf": 49.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2020.5,
+   "id": "ONEREPORTKBANKT_p87_081",
+   "suggest": "tesseract",
+   "order": 80
+  },
+  {
+   "typhoon": {
+    "text": "ขาดทุนจากการด้อยค่าทรัพย์สิ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     867,
+     1000000,
+     1032
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 2021,
+   "id": "ONEREPORTKBANKT_p87_082",
+   "suggest": "typhoon",
+   "order": 81
+  },
+  {
+   "typhoon": {
+    "text": "นรอการขาย 648,655 405,577 704,416 316,627 ขาดทุน (กลับรายการขาดทุน) จากการด้อยค่าที่ดิน อาคารและอุปกรณ์ 11,203 (28,833) 7,106 (29,659)"
+   },
+   "tesseract": {
+    "text": "คณะกรรมการชุดยอยผูบรหารพนกงานและอนๆขาดทุน (กลับรายการขาดทุน ) จากการตด้อยค่าที่ดินอาคารและอุปกรณ์ 11,203 (28,833) 7,106 (29,659)",
+    "image": 0,
+    "bbox": [
+     148,
+     968,
+     2197,
+     1004
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 70.5,
+   "pos": 2048,
+   "id": "ONEREPORTKBANKT_p87_083",
+   "suggest": "typhoon",
+   "order": 82
+  },
+  {
+   "typhoon": {
+    "text": "8,833) 7,106 (29,659) ขาดทุน (กลับรายการขาดทุน) จากการด้อยค่าสินทรัพย์ไม่มีตัวตน 207,911 (180,787) 190,476 (200,150) ขาด"
+   },
+   "tesseract": {
+    "text": "8. ฉกยงานคลการดําเฉินงานสํากัญขาดทุน (กลับรายการขาดทุน ) จากการตด้อยค่าสินทรัพย์ไม่มีตัวตน 207,911 (180,787) 190,476 (200,150)",
+    "image": 0,
+    "bbox": [
+     121,
+     997,
+     2197,
+     1043
+    ],
+    "conf": 90.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 74.1,
+   "pos": 2151,
+   "id": "ONEREPORTKBANKT_p87_084",
+   "suggest": "typhoon",
+   "order": 83
+  },
+  {
+   "typhoon": {
+    "text": "0) ขาดทุนจากการตีราคาที่ดินและอาคาร 227 34,708 227 -"
+   },
+   "tesseract": {
+    "text": "อ ' ขาดทุนจากการตีราคาที่ดินและอาคาร 227 34,708 227 -",
+    "image": 0,
+    "bbox": [
+     275,
+     1049,
+     2174,
+     1080
+    ],
+    "conf": 89.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 95.7,
+   "pos": 2256,
+   "id": "ONEREPORTKBANKT_p87_085",
+   "suggest": "typhoon",
+   "order": 84
+  },
+  {
+   "typhoon": {
+    "text": "- กลับรายการสำรองสำหรับสินทรัพย์อื่น (540,018) (549,132) (535,171) (565,234)"
+   },
+   "tesseract": {
+    "text": "1 กลับรายการสํารองสําหรับสินทรัพย์อื่น (540,018) (549,132) (535,171) (565,234)",
+    "image": 0,
+    "bbox": [
+     172,
+     1088,
+     2197,
+     1118
+    ],
+    "conf": 93.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.6,
+   "pos": 2302,
+   "id": "ONEREPORTKBANKT_p87_086",
+   "suggest": "typhoon",
+   "order": 85
+  },
+  {
+   "typhoon": {
+    "text": "1) (565,234) (กลับรายการ) ประมาณการหนี้สิน (2,976,869) 808,412 (3,216,407) 249,584"
+   },
+   "tesseract": {
+    "text": "@ ล่วนที่ 3 งบการเงิน (กลับรายการ ) ประมาณการหนี้สิน (2.976,869) 808,412 (3,216,407) 249,584",
+    "image": 0,
+    "bbox": [
+     61,
+     1116,
+     2192,
+     1154
+    ],
+    "conf": 92.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 78.0,
+   "pos": 2362,
+   "id": "ONEREPORTKBANKT_p87_087",
+   "suggest": "typhoon",
+   "order": 86
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ฮ่ a",
+    "image": 0,
+    "bbox": [
+     160,
+     1106,
+     288,
+     1137
+    ],
+    "conf": 71.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2372.5,
+   "id": "ONEREPORTKBANKT_p87_088",
+   "suggest": "tesseract",
+   "order": 87
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": ": พอรคณะกรรมกภารธนาคกร (กําไร ) ขาดทุนจากการจําหน่ายเงินลงทุน (1,355,268) (47,889) (1,358,061) 920",
+    "image": 0,
+    "bbox": [
+     120,
+     1159,
+     2192,
+     1199
+    ],
+    "conf": 87.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2436.5,
+   "id": "ONEREPORTKBANKT_p87_089",
+   "suggest": "tesseract",
+   "order": 88
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ตอรายงานทางการเงนจ , - Pa เริฉัทซ์",
+    "image": 0,
+    "bbox": [
+     148,
+     1195,
+     1285,
+     1221
+    ],
+    "conf": 84.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2436.5,
+   "id": "ONEREPORTKBANKT_p87_090",
+   "suggest": "tesseract",
+   "order": 89
+  },
+  {
+   "typhoon": {
+    "text": "(กำไร) ขาดทุนจากการจำหน่ายเงินลงทุน (1,355,268) (47,889) (1,358,0"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1088,
+     1000000,
+     1262
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 2437,
+   "id": "ONEREPORTKBANKT_p87_091",
+   "suggest": "typhoon",
+   "order": 90
+  },
+  {
+   "typhoon": {
+    "text": "61) 920 ขาดทุน (กำไร) จากเงินลงทุนในบริษัทย่อยและบริษัทร่วม 2,995 2,524 (12,925) -"
+   },
+   "tesseract": {
+    "text": "สนคบคุขาดทุน (hls) จากเงินลงทุนในบริษัทย่อยและบริษัทร่วม 2,995 2,524 (12,925) -",
+    "image": 0,
+    "bbox": [
+     39,
+     1203,
+     2174,
+     1234
+    ],
+    "conf": 88.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 86.5,
+   "pos": 2498,
+   "id": "ONEREPORTKBANKT_p87_092",
+   "suggest": "typhoon",
+   "order": 91
+  },
+  {
+   "typhoon": {
+    "text": ") - ขาดทุน (กำไร) จากการจำหน่ายที่ดิน อาคารและอุปกรณ์ 643 (13,326) 2,042 938"
+   },
+   "tesseract": {
+    "text": "= - ขาดทุน (กําไร ) จากการจําหน่ายที่ดินอาคารและอุปกรณ์ 643 (13,326) 2,042 938",
+    "image": 0,
+    "bbox": [
+     212,
+     1240,
+     2192,
+     1269
+    ],
+    "conf": 92.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.5,
+   "pos": 2570,
+   "id": "ONEREPORTKBANKT_p87_093",
+   "suggest": "typhoon",
+   "order": 92
+  },
+  {
+   "typhoon": {
+    "text": "ขาดทุนจากการตัดจำหน่ายสินทรัพย์อื่น 66,985 13,428 5,219 -"
+   },
+   "tesseract": {
+    "text": "ขาดทุนจากการตัดจําหน่ายสินทรัพย์อื่น 66,985 13,428 5219 -",
+    "image": 0,
+    "bbox": [
+     920,
+     1279,
+     2174,
+     1310
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.1,
+   "pos": 2637,
+   "id": "ONEREPORTKBANKT_p87_094",
+   "suggest": "typhoon",
+   "order": 93
+  },
+  {
+   "typhoon": {
+    "text": "3,428 5,219 - ส่วนแบ่งกำไรจากเงินลงทุนตามวิธีส่วนได้เสีย (822,211) (981,380) - -"
+   },
+   "tesseract": {
+    "text": "๕ 9 เอกสารแนบส่วนแบ่งกําไรจากเงินลงทุนตามวิธีส่วนได้เสีย (822,211) (981,380) - -",
+    "image": 0,
+    "bbox": [
+     61,
+     1308,
+     2174,
+     1349
+    ],
+    "conf": 93.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 84.9,
+   "pos": 2679,
+   "id": "ONEREPORTKBANKT_p87_095",
+   "suggest": "typhoon",
+   "order": 94
+  },
+  {
+   "typhoon": {
+    "text": ") (981,380) - - 113,388,505 122,463,622 99,401,067 111,848,177"
+   },
+   "tesseract": {
+    "text": "แลสาแน่ง | 1 ง yl 113,388,505 122,463,622 99,401,067 111,848,177",
+    "image": 0,
+    "bbox": [
+     121,
+     1344,
+     2192,
+     1388
+    ],
+    "conf": 61.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 78.2,
+   "pos": 2740,
+   "id": "ONEREPORTKBANKT_p87_096",
+   "suggest": "typhoon",
+   "order": 95
+  },
+  {
+   "typhoon": {
+    "text": "48,177 รายได้ดอกเบี้ยสุทธิ (137,151,628) (148,004,290) (110,781,928) (120,484,824)"
+   },
+   "tesseract": {
+    "text": "เ Ho oo 1 รายได้ดอกเบียสุทธิ (137,151,628) (148,004,290) (110,781,928) (120,484,824)",
+    "image": 0,
+    "bbox": [
+     124,
+     1394,
+     2197,
+     1425
+    ],
+    "conf": 86.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 90.9,
+   "pos": 2789,
+   "id": "ONEREPORTKBANKT_p87_097",
+   "suggest": "typhoon",
+   "order": 96
+  },
+  {
+   "typhoon": {
+    "text": "4,824) รายได้เงินปันผล (3,385,865) (3,525,591) (5,195,763) (5,908,811)"
+   },
+   "tesseract": {
+    "text": "เอกสารแนบ 3 รายได้เงินปันผล (3,385,865) (3,525,591) (5,195,763) (5,908,811)",
+    "image": 0,
+    "bbox": [
+     121,
+     1431,
+     2197,
+     1478
+    ],
+    "conf": 92.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 85.5,
+   "pos": 2860,
+   "id": "ONEREPORTKBANKT_p87_098",
+   "suggest": "typhoon",
+   "order": 97
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "รายละเอียดเกี่ยวกับการดํารงตําแหน่งเงินสดรับดอกเบีย 169,523,473 182,976,640 139,018,450 152,747,240",
+    "image": 0,
+    "bbox": [
+     120,
+     1471,
+     2192,
+     1505
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2924.5,
+   "id": "ONEREPORTKBANKT_p87_099",
+   "suggest": "tesseract",
+   "order": 98
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ของกรรมการและผู้บริหารธนาคารในบริษัทย่อยเงินสดจ่ายดอกเบี้ย (35,233,065) (40,660,297) (32,312,285) (387.715.2193)",
+    "image": 0,
+    "bbox": [
+     120,
+     1506,
+     2197,
+     1544
+    ],
+    "conf": 92.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2924.5,
+   "id": "ONEREPORTKBANKT_p87_100",
+   "suggest": "tesseract",
+   "order": 99
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "PR ow aw dd w",
+    "image": 0,
+    "bbox": [
+     133,
+     1538,
+     478,
+     1551
+    ],
+    "conf": 51.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2924.5,
+   "id": "ONEREPORTKBANKT_p87_101",
+   "suggest": "tesseract",
+   "order": 100
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "บรษทรวมการรวมคําและบริษททเกยวของเงินสดรับเงินบันผล 3,682,777 4,641,011 5,196,317 5,922,769",
+    "image": 0,
+    "bbox": [
+     120,
+     1548,
+     2192,
+     1580
+    ],
+    "conf": 90.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 2924.5,
+   "id": "ONEREPORTKBANKT_p87_102",
+   "suggest": "tesseract",
+   "order": 101
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดรับดอกเบี้ย 169,523,473 182,976,640 139,018,450 152,747,240"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1403,
+     1000000,
+     1659
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 2925,
+   "id": "ONEREPORTKBANKT_p87_103",
+   "suggest": "typhoon",
+   "order": 102
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดจ่ายดอกเบี้ย (35,233,065) (40,660,297) (32,312,285) (37,715,213)"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1403,
+     1000000,
+     1659
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 2986,
+   "id": "ONEREPORTKBANKT_p87_104",
+   "suggest": "typhoon",
+   "order": 103
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดรับเงินปันผล 3,682,777 4,641,011 5,196"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1403,
+     1000000,
+     1659
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 3052,
+   "id": "ONEREPORTKBANKT_p87_105",
+   "suggest": "typhoon",
+   "order": 104
+  },
+  {
+   "typhoon": {
+    "text": ",317 5,922,769 เงินสดจ่ายภาษีเงินได้ (11,755,358) (12,626,415) (9,614,460) (10,790,824)"
+   },
+   "tesseract": {
+    "text": "เอกสารเหบ 3 wat y เงินสดจ่ายภาษีเงินได้ (11,755,358) (12,626,415) (9,614,460) (10,790,824)",
+    "image": 0,
+    "bbox": [
+     122,
+     1581,
+     2197,
+     1631
+    ],
+    "conf": 85.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 82.9,
+   "pos": 3093,
+   "id": "ONEREPORTKBANKT_p87_106",
+   "suggest": "typhoon",
+   "order": 105
+  },
+  {
+   "typhoon": {
+    "text": "24) กำไรจากการดำเนินงานก่อนการเปลี่ยนแปลงในสินทรัพย์และหนี้สินดำเนินงาน 99,068,839 105,264,680 85,711,398 95,618,514"
+   },
+   "tesseract": {
+    "text": "SE ic ET กําไรจากการดําเนินงานก่อนการเปลี่ยนแปลงในสินทรัพย์และหนี้สินดําเนินงาน 99,068,839 105,264,680 85,711,398 95,618,514",
+    "image": 0,
+    "bbox": [
+     160,
+     1624,
+     2192,
+     1655
+    ],
+    "conf": 91.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 94.7,
+   "pos": 3171,
+   "id": "ONEREPORTKBANKT_p87_107",
+   "suggest": "typhoon",
+   "order": 106
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "รายละเอยดเกยวกับหัวหนาหนวยงานตรวจสอบภายเนจ , oa ๆเล่, Pa ก",
+    "image": 0,
+    "bbox": [
+     120,
+     1613,
+     1435,
+     1642
+    ],
+    "conf": 87.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3173.5,
+   "id": "ONEREPORTKBANKT_p87_108",
+   "suggest": "tesseract",
+   "order": 107
+  },
+  {
+   "typhoon": {
+    "text": "พย์แล"
+   },
+   "tesseract": {
+    "text": "พย์: ล",
+    "image": 0,
+    "bbox": [
+     136,
+     1709,
+     400,
+     1717
+    ],
+    "conf": 62.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 80.0,
+   "pos": 3219,
+   "id": "ONEREPORTKBANKT_p87_109",
+   "suggest": "typhoon",
+   "order": 108
+  },
+  {
+   "typhoon": {
+    "text": ",514 สินทรัพย์ดำเนินงาน (เพิ่มขึ้น) ลดลง รา"
+   },
+   "tesseract": {
+    "text": "เอกสารแนบ 4 สินทรัพย์ดําเนินงาน (เพิ่มขึ้น ) ลดลง",
+    "image": 0,
+    "bbox": [
+     121,
+     1673,
+     1118,
+     1709
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 74.4,
+   "pos": 3278,
+   "id": "ONEREPORTKBANKT_p87_110",
+   "suggest": "typhoon",
+   "order": 109
+  },
+  {
+   "typhoon": {
+    "text": "ทรัพย์ดำเนินงาน (เพิ่มขึ้น) ลดลง รายการระหว่างธนาคารและตลาดเงิน (สินทรัพย์) (42,503,064) 45,384,905 (25,847,268) 48,711,660"
+   },
+   "tesseract": {
+    "text": "ทรัพย์สินทีใช้ในการประกอบธุรกิจรายการระหว่างธนาคารและตลาดเงิน (สินทรัพย์ ) (42,503,064) 45,384,905 (25,847,268) 48,711,660",
+    "image": 0,
+    "bbox": [
+     121,
+     1706,
+     2192,
+     1747
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 79.3,
+   "pos": 3285,
+   "id": "ONEREPORTKBANKT_p87_111",
+   "suggest": "typhoon",
+   "order": 110
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "สี๓๑เลี่ออากังฉิย์:",
+    "image": 0,
+    "bbox": [
+     220,
+     1730,
+     563,
+     1761
+    ],
+    "conf": 68.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3399.5,
+   "id": "ONEREPORTKBANKT_p87_112",
+   "suggest": "tesseract",
+   "order": 111
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "และรายละเอียดเกี่ยวกับรายการประเมินราคาทรัพย์สินสินทรัพย์ทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่านกําไรหรือขาดทุน 11,518,410 (1,658,609) 16,051,792 1,584,920",
+    "image": 0,
+    "bbox": [
+     122,
+     1742,
+     2192,
+     1786
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3399.5,
+   "id": "ONEREPORTKBANKT_p87_113",
+   "suggest": "tesseract",
+   "order": 112
+  },
+  {
+   "typhoon": {
+    "text": "สินทรัพย์ทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่านกำไรหรือขาดทุน 11,518,410 (1,658,609) 16,051,792 1,584,92"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1678,
+     1000000,
+     1853
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 3400,
+   "id": "ONEREPORTKBANKT_p87_114",
+   "suggest": "typhoon",
+   "order": 113
+  },
+  {
+   "typhoon": {
+    "text": "0 สินทรัพย์อนุพันธ์ (6,332,631) (8,419,585) (2,798,796) (5,366,817) เ"
+   },
+   "tesseract": {
+    "text": "awa oa a สินทรัพย์อนุพันธ์ (6,332,631) (8,419,585) (2,798,796) (5,366,817)",
+    "image": 0,
+    "bbox": [
+     282,
+     1795,
+     2197,
+     1825
+    ],
+    "conf": 90.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 89.6,
+   "pos": 3506,
+   "id": "ONEREPORTKBANKT_p87_115",
+   "suggest": "tesseract",
+   "order": 114
+  },
+  {
+   "typhoon": {
+    "text": "19,585) (2,798,796) (5,366,817) เงินให้สินเชื่อแก่ลูกหนี้ (38,409,544) (85,981,323) (28,523,408) (83,408,968)"
+   },
+   "tesseract": {
+    "text": "และจรรยาบรรณธุรกิจ (ฉบับเต็ม ) เงินให้สินเชื่อแก่ลูกหนี้ (38,409,544) (85,981,323) (28,523,408) (83,408,968)",
+    "image": 0,
+    "bbox": [
+     122,
+     1832,
+     2197,
+     1878
+    ],
+    "conf": 93.5
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 73.5,
+   "pos": 3539,
+   "id": "ONEREPORTKBANKT_p87_116",
+   "suggest": "typhoon",
+   "order": 115
+  },
+  {
+   "typhoon": {
+    "text": ",408,968) ทรัพย์สินรอการขาย 7,651,494 13,392,921 5,987,290 10,967,490"
+   },
+   "tesseract": {
+    "text": "เอกสารแนบ 6 ทรัพย์สินรอการขาย 7,651,494 13,302,921 5,987,290 10,967,490",
+    "image": 0,
+    "bbox": [
+     122,
+     1868,
+     2192,
+     1902
+    ],
+    "conf": 92.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 83.1,
+   "pos": 3632,
+   "id": "ONEREPORTKBANKT_p87_117",
+   "suggest": "typhoon",
+   "order": 116
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "รายงานคณะกรรมการชุดย่อยสินทรัพย์อื่น 5,058,307 2,753,235 7,445,610 1,576,976",
+    "image": 0,
+    "bbox": [
+     120,
+     1904,
+     2192,
+     1944
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3695.5,
+   "id": "ONEREPORTKBANKT_p87_118",
+   "suggest": "tesseract",
+   "order": 117
+  },
+  {
+   "typhoon": {
+    "text": "สินทรัพย์อื่น 5,058,307 2,753,235 7,445,610 1,576,976"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1840,
+     1000000,
+     2154
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 3696,
+   "id": "ONEREPORTKBANKT_p87_119",
+   "suggest": "typhoon",
+   "order": 118
+  },
+  {
+   "typhoon": {
+    "text": "หมายเหตุประกอบงบการเงินเป็นส่วนหนึ่งของงบการเงินนี้"
+   },
+   "tesseract": {
+    "text": "หมายเหตุประกอบงบการเงินเป็นส่วนหนึ่งของงบการเงินนี้",
+    "image": 0,
+    "bbox": [
+     818,
+     2095,
+     1210,
+     2126
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3745,
+   "id": "ONEREPORTKBANKT_p87_120",
+   "suggest": "typhoon",
+   "order": 119
+  },
+  {
+   "typhoon": {
+    "text": "หมายเหตุประกอบงบการเงินเป็นส่วนหนึ่งของงบการเงินนี้"
+   },
+   "tesseract": {
+    "text": "หมายเหตุประกอบงบการเงินเป็นส่วนหนึ่งของงบการเงินนี้",
+    "image": 1,
+    "bbox": [
+     196,
+     2095,
+     588,
+     2126
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3745,
+   "id": "ONEREPORTKBANKT_p87_121",
+   "suggest": "typhoon",
+   "order": 120
+  },
+  {
+   "typhoon": {
+    "text": "ธนาคารกสิกรไทย"
+   },
+   "tesseract": null,
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 3796,
+   "id": "ONEREPORTKBANKT_p87_122",
+   "suggest": "typhoon",
+   "order": 121
+  },
+  {
+   "typhoon": {
+    "text": "รายงานแบบ 56-1 One Report ประจำปี 2568"
+   },
+   "tesseract": {
+    "text": "รายงานแบบ 56-1 One Report ประจําปี 2568",
+    "image": 0,
+    "bbox": [
+     922,
+     127,
+     1241,
+     154
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3810,
+   "id": "ONEREPORTKBANKT_p87_123",
+   "suggest": "typhoon",
+   "order": 122
+  },
+  {
+   "typhoon": {
+    "text": "รายงานแบบ 56-1 One Report ประจำปี 2568"
+   },
+   "tesseract": {
+    "text": "รายงานแบบ 56-1 One Report ประจําปี 2568",
+    "image": 1,
+    "bbox": [
+     1154,
+     127,
+     1473,
+     154
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3810,
+   "id": "ONEREPORTKBANKT_p87_124",
+   "suggest": "typhoon",
+   "order": 123
+  },
+  {
+   "typhoon": {
+    "text": "งบกระแสเงินสด"
+   },
+   "tesseract": null,
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 3843,
+   "id": "ONEREPORTKBANKT_p87_125",
+   "suggest": "typhoon",
+   "order": 124
+  },
+  {
+   "typhoon": {
+    "text": "ธนาคารกสิกรไทย จำกัด (มหาชน) และบริษัทย่อย"
+   },
+   "tesseract": {
+    "text": "ธนาคารกสิกรไทยจํากัด (มหาชน ) และบริษัทย่อย",
+    "image": 0,
+    "bbox": [
+     819,
+     351,
+     1285,
+     387
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3856,
+   "id": "ONEREPORTKBANKT_p87_126",
+   "suggest": "typhoon",
+   "order": 125
+  },
+  {
+   "typhoon": {
+    "text": "ธนาคารกสิกรไทย จำกัด (มหาชน) และบริษัทย่อย"
+   },
+   "tesseract": {
+    "text": "ธนาคารกสิกรไทยจํากัด (มหาชน ) และบริษัทย่อย",
+    "image": 1,
+    "bbox": [
+     197,
+     351,
+     663,
+     387
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 3856,
+   "id": "ONEREPORTKBANKT_p87_127",
+   "suggest": "typhoon",
+   "order": 126
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "สารบัญพันบาท",
+    "image": 0,
+    "bbox": [
+     121,
+     391,
+     1909,
+     428
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3894.5,
+   "id": "ONEREPORTKBANKT_p87_128",
+   "suggest": "tesseract",
+   "order": 127
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "งบการเงินรวมงบการเงินเฉพาะธนาคาร",
+    "image": 0,
+    "bbox": [
+     1672,
+     437,
+     2131,
+     467
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 3894.5,
+   "id": "ONEREPORTKBANKT_p87_129",
+   "suggest": "tesseract",
+   "order": 128
+  },
+  {
+   "typhoon": {
+    "text": "พันบาท"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 1,
+    "bbox": [
+     0,
+     323,
+     1000000,
+     621
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 3895,
+   "id": "ONEREPORTKBANKT_p87_130",
+   "suggest": "typhoon",
+   "order": 129
+  },
+  {
+   "typhoon": {
+    "text": "งบการเงินเฉพาะธนาคาร"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 1,
+    "bbox": [
+     0,
+     323,
+     1000000,
+     621
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 3901,
+   "id": "ONEREPORTKBANKT_p87_131",
+   "suggest": "typhoon",
+   "order": 130
+  },
+  {
+   "typhoon": {
+    "text": "สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2568 สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2567 (ปรับปรุงใหม่) สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2568 สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2567"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 1,
+    "bbox": [
+     0,
+     323,
+     1000000,
+     621
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 3921,
+   "id": "ONEREPORTKBANKT_p87_132",
+   "suggest": "typhoon",
+   "order": 131
+  },
+  {
+   "typhoon": {
+    "text": "หนี้สินดำเนินงานเพิ่มขึ้น (ลดลง)"
+   },
+   "tesseract": {
+    "text": "หนี้สินดําเนินงานเพิ่มขึ้น (ลดลง )",
+    "image": 1,
+    "bbox": [
+     368,
+     561,
+     572,
+     593
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4071,
+   "id": "ONEREPORTKBANKT_p87_133",
+   "suggest": "typhoon",
+   "order": 132
+  },
+  {
+   "typhoon": {
+    "text": "เงินรับฝาก 133,209,886 21,239,358 130,003,455 7,936,871"
+   },
+   "tesseract": {
+    "text": "เงินรับฝาก 133,209,886 21,239,358 130,003,455 7,936,871",
+    "image": 1,
+    "bbox": [
+     413,
+     603,
+     1567,
+     631
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4102,
+   "id": "ONEREPORTKBANKT_p87_134",
+   "suggest": "typhoon",
+   "order": 133
+  },
+  {
+   "typhoon": {
+    "text": "รายการระหว่างธนาคารและตลาดเงิน (หนี้สิน) 34,229,249 (9,305,887) 28,361,425 (5,715,786)"
+   },
+   "tesseract": {
+    "text": "รายการระหว่างธนาคารและตลาดเงิน (หนี้สิน ) 34,229,249 (9,305,887) 28,361,425 (5,715,786)",
+    "image": 1,
+    "bbox": [
+     416,
+     631,
+     1574,
+     666
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4153,
+   "id": "ONEREPORTKBANKT_p87_135",
+   "suggest": "typhoon",
+   "order": 134
+  },
+  {
+   "typhoon": {
+    "text": "หนี้สินจ่ายคืนเมื่อทวงถาม 3,430,376 (655,448) 3,774,157 (655,448)"
+   },
+   "tesseract": {
+    "text": "หนี้สินจ่ายคืนเมื่อทวงถาม 3,430,376 (655,448) 3,774,157 (655,448)",
+    "image": 1,
+    "bbox": [
+     415,
+     666,
+     1574,
+     701
+    ],
+    "conf": 92.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4234,
+   "id": "ONEREPORTKBANKT_p87_136",
+   "suggest": "typhoon",
+   "order": 135
+  },
+  {
+   "typhoon": {
+    "text": "หนี้สินทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่านกำไรหรือขาดทุน 1,047,389 (239,530) - -"
+   },
+   "tesseract": {
+    "text": "หนี้สินทางการเงินที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่านกําไรหรือขาดทุน 1,047,389 (239,530) - -",
+    "image": 1,
+    "bbox": [
+     415,
+     700,
+     1553,
+     734
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4295,
+   "id": "ONEREPORTKBANKT_p87_137",
+   "suggest": "typhoon",
+   "order": 136
+  },
+  {
+   "typhoon": {
+    "text": "หนี้สินอนุพันธ์ 431,026 559,099 (1,001,385) 392,933"
+   },
+   "tesseract": {
+    "text": "หนี้สินอนุพันธ์ 431,026 559,099 (1,001,385) 392,933",
+    "image": 1,
+    "bbox": [
+     415,
+     735,
+     1570,
+     770
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4380,
+   "id": "ONEREPORTKBANKT_p87_138",
+   "suggest": "typhoon",
+   "order": 137
+  },
+  {
+   "typhoon": {
+    "text": "ตราสารหนี้ที่ออกและเงินกู้ยืมระยะสั้น 407,669 (14,636,389) - (15,126,433)"
+   },
+   "tesseract": {
+    "text": "ตราสารหนี้ที่ออกและเงินกู้ยืมระยะสั้น 407,669 (14,636,389) - (15,126,433)",
+    "image": 1,
+    "bbox": [
+     416,
+     770,
+     1574,
+     804
+    ],
+    "conf": 93.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4427,
+   "id": "ONEREPORTKBANKT_p87_139",
+   "suggest": "typhoon",
+   "order": 138
+  },
+  {
+   "typhoon": {
+    "text": "หนี้สินอื่น 8,853,746 10,138,625 14,548,551 11,855,411"
+   },
+   "tesseract": {
+    "text": "หนี้สินอื่น 8,853,746 10,138,625 14,548,551 11,855,411",
+    "image": 1,
+    "bbox": [
+     416,
+     805,
+     1567,
+     840
+    ],
+    "conf": 90.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4496,
+   "id": "ONEREPORTKBANKT_p87_140",
+   "suggest": "typhoon",
+   "order": 139
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดสุทธิได้มาจากกิจกรรมดำเนินงาน 217,661,152 77,836,052 233,712,821 68,371,323"
+   },
+   "tesseract": {
+    "text": "เงินสดสุทธิได้มาจากกิจกรรมดําเนินงาน 217,661,152 77,836,052 233,712,821 68,371,323",
+    "image": 1,
+    "bbox": [
+     434,
+     845,
+     1570,
+     874
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4546,
+   "id": "ONEREPORTKBANKT_p87_141",
+   "suggest": "typhoon",
+   "order": 140
+  },
+  {
+   "typhoon": {
+    "text": "กระแสเงินสดจากกิจกรรมลงทุน"
+   },
+   "tesseract": {
+    "text": "กระแสเงินสดจากกิจกรรมลงทุน",
+    "image": 1,
+    "bbox": [
+     352,
+     881,
+     547,
+     908
+    ],
+    "conf": 95.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4623,
+   "id": "ONEREPORTKBANKT_p87_142",
+   "suggest": "typhoon",
+   "order": 141
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดรับจากการจำหน่ายเงินลงทุนที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่าน"
+   },
+   "tesseract": {
+    "text": "เงินสดรับจากการจําหน่ายเงินลงทุนที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่าน",
+    "image": 1,
+    "bbox": [
+     413,
+     910,
+     841,
+     943
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4649,
+   "id": "ONEREPORTKBANKT_p87_143",
+   "suggest": "typhoon",
+   "order": 142
+  },
+  {
+   "typhoon": {
+    "text": "กำไรขาดทุนเบ็ดเสร็จอื่น 254,451,885 197,746,572 101,654,496 87,373,162"
+   },
+   "tesseract": {
+    "text": "กําไรขาดทุนเบ็ดเสร็จอื่น 254,451,885 197,746,572 101,654,496 87,373,162",
+    "image": 1,
+    "bbox": [
+     438,
+     945,
+     1569,
+     979
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4714,
+   "id": "ONEREPORTKBANKT_p87_144",
+   "suggest": "typhoon",
+   "order": 143
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดรับจากการไถ่ถอนเงินลงทุนที่วัดมูลค่าด้วยราคาทุนตัดจำหน่าย 144,311,345 141,687,779 69,988,417 95,719,876"
+   },
+   "tesseract": {
+    "text": "เงินสดรับจากการไถ่ถอนเงินลงทุนที่วัดมูลค่าด้วยราคาทุนตัดจําหน่าย 144,311,345 141,687,779 69,988,417 95,719,876",
+    "image": 1,
+    "bbox": [
+     413,
+     980,
+     1569,
+     1013
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4780,
+   "id": "ONEREPORTKBANKT_p87_145",
+   "suggest": "typhoon",
+   "order": 144
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดรับจากการลดทุนและจำหน่ายเงินลงทุนในบริษัทย่อยและบริษัทร่วม 3,908 4,544 62,925 -"
+   },
+   "tesseract": {
+    "text": "เงินสดรับจากการลดทุนและจําหน่ายเงินลงทุนในบริษัทย่อยและบริษัทร่วม 3,908 4,544 62,925 -",
+    "image": 1,
+    "bbox": [
+     413,
+     1020,
+     1553,
+     1048
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4885,
+   "id": "ONEREPORTKBANKT_p87_146",
+   "suggest": "typhoon",
+   "order": 145
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดจ่ายเพื่อซื้อเงินลงทุนที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่าน"
+   },
+   "tesseract": {
+    "text": "เงินสดจ่ายเพื่อซื้อเงินลงทุนที่วัดมูลค่าด้วยมูลค่ายุติธรรมผ่าน",
+    "image": 1,
+    "bbox": [
+     413,
+     1048,
+     788,
+     1082
+    ],
+    "conf": 93.9
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 4966,
+   "id": "ONEREPORTKBANKT_p87_147",
+   "suggest": "typhoon",
+   "order": 146
+  },
+  {
+   "typhoon": {
+    "text": "กำไรขาดทุนเบ็ดเสร็จอื่น (430,490,800) (305,937,610) (289,104,043) (193,915,136)"
+   },
+   "tesseract": {
+    "text": "กําไรขาดทุนเบ็ดเสร็จอื่น (430,490,800) (305,937,610) (289,104,043) (193,915,136)",
+    "image": 1,
+    "bbox": [
+     438,
+     1084,
+     1574,
+     1118
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5028,
+   "id": "ONEREPORTKBANKT_p87_148",
+   "suggest": "typhoon",
+   "order": 147
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดจ่ายเพื่อซื้อเงินลงทุนที่วัดมูลค่าด้วยราคาทุนตัดจำหน่าย (114,556,596) (82,766,620) (38,500,000) (30,487,775)"
+   },
+   "tesseract": {
+    "text": "เงินสดจ่ายเพื่อซื้อเงินลงทุนที่วัดมูลค่าด้วยราคาทุนตัดจําหน่าย (114,556,596) (82,766,620) (38,500,000) (30,487,775)",
+    "image": 1,
+    "bbox": [
+     413,
+     1118,
+     1574,
+     1152
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5103,
+   "id": "ONEREPORTKBANKT_p87_149",
+   "suggest": "typhoon",
+   "order": 148
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดจ่ายเพื่อซื้อเงินลงทุนในบริษัทย่อย บริษัทร่วมและการร่วมค้า (1,427,048) (1,920,360) (11,316,011) (3,118,084)"
+   },
+   "tesseract": {
+    "text": "เงินสดจ่ายเพื่อซื้อเงินลงทุนในบริษัทย่อยบริษัทร่วมและการร่วมค้า (1,427,048) (1,920,360) (11,316,011) (3,118,084)",
+    "image": 1,
+    "bbox": [
+     413,
+     1153,
+     1574,
+     1187
+    ],
+    "conf": 94.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5213,
+   "id": "ONEREPORTKBANKT_p87_150",
+   "suggest": "typhoon",
+   "order": 149
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดรับจากการจำหน่ายที่ดิน อาคารและอุปกรณ์ 95,562 59,867 30,388 39,059"
+   },
+   "tesseract": {
+    "text": "เงินสดรับจากการจําหน่ายที่ดินอาคารและอุปกรณ์ 95,562 59,867 30,388 39,059",
+    "image": 1,
+    "bbox": [
+     413,
+     1188,
+     1569,
+     1221
+    ],
+    "conf": 94.6
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5321,
+   "id": "ONEREPORTKBANKT_p87_151",
+   "suggest": "typhoon",
+   "order": 150
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดรับจากการจำหน่ายสินทรัพย์ไม่มีตัวตน 49,510 65,424 10,976 65,013"
+   },
+   "tesseract": {
+    "text": "เงินสดรับจากการจําหน่ายสินทรัพย์ไม่มีตัวตน 49,510 65,424 10976 65,013",
+    "image": 1,
+    "bbox": [
+     413,
+     1227,
+     1569,
+     1257
+    ],
+    "conf": 93.2
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.5,
+   "pos": 5388,
+   "id": "ONEREPORTKBANKT_p87_152",
+   "suggest": "typhoon",
+   "order": 151
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดจ่ายในการซื้อที่ดิน อาคารและอุปกรณ์ (1,005,302) (3,136,519) (626,103) (2,653,007)"
+   },
+   "tesseract": {
+    "text": "เงินสดจ่ายในการซื้อที่ดินอาคารและอุปกรณ์ (1,005,302) (3,136,519) (626,103) (2,653,007)",
+    "image": 1,
+    "bbox": [
+     413,
+     1257,
+     1574,
+     1291
+    ],
+    "conf": 93.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5453,
+   "id": "ONEREPORTKBANKT_p87_153",
+   "suggest": "typhoon",
+   "order": 152
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดจ่ายในการซื้อสินทรัพย์ไม่มีตัวตน (6,035,931) (5,933,149) (4,877,985) (4,402,520)"
+   },
+   "tesseract": {
+    "text": "เงินสดจ่ายในการซื้อสินทรัพย์ไม่มีตัวตน (6,035,931) (5,933,149) (4,877,985) (4,402,520)",
+    "image": 1,
+    "bbox": [
+     413,
+     1292,
+     1574,
+     1327
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5535,
+   "id": "ONEREPORTKBANKT_p87_154",
+   "suggest": "typhoon",
+   "order": 153
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดสุทธิใช้ไปในกิจกรรมลงทุน (154,603,467) (60,130,072) (172,676,940) (51,379,412)"
+   },
+   "tesseract": {
+    "text": "เงินสดสุทธิใช้ไปในกิจกรรมลงทุน (154,603,467) (60,130,072) (172,676,940) (51,379,412)",
+    "image": 1,
+    "bbox": [
+     434,
+     1332,
+     1574,
+     1361
+    ],
+    "conf": 94.8
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5617,
+   "id": "ONEREPORTKBANKT_p87_155",
+   "suggest": "typhoon",
+   "order": 154
+  },
+  {
+   "typhoon": {
+    "text": "กระแสเงินสดจากกิจกรรมจัดหาเงิน"
+   },
+   "tesseract": {
+    "text": "กระแสเงินสดจากกิจกรรมจัดหาเงิน",
+    "image": 1,
+    "bbox": [
+     352,
+     1368,
+     568,
+     1395
+    ],
+    "conf": 95.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5697,
+   "id": "ONEREPORTKBANKT_p87_156",
+   "suggest": "typhoon",
+   "order": 155
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดรับจากตราสารหนี้ที่ออกและเงินกู้ยืมระยะยาว - 6,556 - -"
+   },
+   "tesseract": {
+    "text": "เงินสดรับจากตราสารหนี้ที่ออกและเงินกู้ยืมระยะยาว - 6,556 - -",
+    "image": 1,
+    "bbox": [
+     413,
+     1396,
+     1552,
+     1430
+    ],
+    "conf": 93.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5727,
+   "id": "ONEREPORTKBANKT_p87_157",
+   "suggest": "typhoon",
+   "order": 156
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดจ่ายชำระคืนตราสารหนี้ที่ออกและเงินกู้ยืมระยะยาว (2,532,220) (117,640) (2,530,220) (117,640)"
+   },
+   "tesseract": {
+    "text": "เงินสดจ่ายซําระคืนตราสารหนี้ที่ออกและเงินกู้ยืมระยะยาว (2,532,220) (117,640) (2,530,220) (117,640)",
+    "image": 1,
+    "bbox": [
+     413,
+     1431,
+     1574,
+     1465
+    ],
+    "conf": 93.8
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.9,
+   "pos": 5783,
+   "id": "ONEREPORTKBANKT_p87_158",
+   "suggest": "typhoon",
+   "order": 157
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดจ่ายหนี้สินตามสัญญาเช่า (1,156,999) (1,093,579) (1,030,344) (984,021)"
+   },
+   "tesseract": {
+    "text": "เงินสดจ่ายหนี้สินตามสัญญาเช่า (1,156,999) (1,093,579) (1,030,344) (984,021)",
+    "image": 1,
+    "bbox": [
+     413,
+     1466,
+     1574,
+     1499
+    ],
+    "conf": 94.2
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 5876,
+   "id": "ONEREPORTKBANKT_p87_159",
+   "suggest": "typhoon",
+   "order": 158
+  },
+  {
+   "typhoon": {
+    "text": "เงินสด (จ่ายสำหรับ) รับจากการได้มาซึ่งส่วนได้เสียที่ไม่มีอำนาจควบคุม (951,899) 199,998 - -"
+   },
+   "tesseract": {
+    "text": "เงินสด (จ่ายลําหรับ ) รับจากการได้มาซึ่งส่วนได้เสียที่ไม่มีอํานาจควบคุม (951,899) 199,998 - -",
+    "image": 1,
+    "bbox": [
+     413,
+     1501,
+     1552,
+     1534
+    ],
+    "conf": 93.6
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.8,
+   "pos": 5947,
+   "id": "ONEREPORTKBANKT_p87_160",
+   "suggest": "typhoon",
+   "order": 159
+  },
+  {
+   "typhoon": {
+    "text": "เงินปันผลจ่ายให้แก่ผู้ถือหุ้น 34 (29,616,595) (17,769,957) (29,616,595) (17,769,957)"
+   },
+   "tesseract": {
+    "text": "เงินปันผลจ่ายให้แก่ผู้ถือหุ้น 34 (29,616,595) (17,769,957) (29,616,595) (17,769,957)",
+    "image": 1,
+    "bbox": [
+     413,
+     1540,
+     1574,
+     1570
+    ],
+    "conf": 94.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 6031,
+   "id": "ONEREPORTKBANKT_p87_161",
+   "suggest": "typhoon",
+   "order": 160
+  },
+  {
+   "typhoon": {
+    "text": "เงินปันผลจ่ายให้แก่ส่วนได้เสียที่ไม่มีอำนาจควบคุม (910,969) (609,650) - -"
+   },
+   "tesseract": {
+    "text": "เงินปันผลจ่ายให้แก่ส่วนได้เสียที่ไม่มีอํานาจควบคุม (910,969) (609,650) - -",
+    "image": 1,
+    "bbox": [
+     413,
+     1571,
+     1552,
+     1604
+    ],
+    "conf": 93.7
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 6110,
+   "id": "ONEREPORTKBANKT_p87_162",
+   "suggest": "typhoon",
+   "order": 161
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดจ่ายชำระคืนตราสารอื่นที่มีลักษณะคล้ายทุน 31 (16,366,250) - (16,366,250) -"
+   },
+   "tesseract": {
+    "text": "เงินสดจ่ายซําระคืนตราสารยื่นที่มีลักษณะคล้ายทุน 31 (16,366,250) - (16,366,250) -",
+    "image": 1,
+    "bbox": [
+     413,
+     1606,
+     1552,
+     1639
+    ],
+    "conf": 93.0
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.3,
+   "pos": 6179,
+   "id": "ONEREPORTKBANKT_p87_163",
+   "suggest": "typhoon",
+   "order": 162
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดจ่ายผลตอบแทนของตราสารอื่นที่มีลักษณะคล้ายทุน 31 (872,836) (907,334) (872,836) (907,334)"
+   },
+   "tesseract": {
+    "text": "เงินสดจ่ายผลตอบแทนของตราสางอื่นที่มีลักษณะคล้ายทุน 31 (872,836) (907,334) (872,836) (907,334)",
+    "image": 1,
+    "bbox": [
+     413,
+     1641,
+     1574,
+     1674
+    ],
+    "conf": 94.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 98.9,
+   "pos": 6253,
+   "id": "ONEREPORTKBANKT_p87_164",
+   "suggest": "typhoon",
+   "order": 163
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดจ่ายซื้อหุ้นทุนซื้อคืน 33 (2,554,778) - (2,554,778) -"
+   },
+   "tesseract": {
+    "text": "เงินสดจ่ายซื้อหุ้นทุนซื้อคืน 33 (2,554,778) - (2,554,778) -",
+    "image": 1,
+    "bbox": [
+     413,
+     1674,
+     1553,
+     1708
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": true,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 6341,
+   "id": "ONEREPORTKBANKT_p87_165",
+   "suggest": "typhoon",
+   "order": 164
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดสุทธิใช้ไปในกิจกรรมจัดหาเงิน (54,962,546) (20,291,606) (52,971,023) (19,778,952)"
+   },
+   "tesseract": {
+    "text": "เงินสดสุทธิใช้ไปในกิจกรรมจัดหาเงิน (54,962,546) (20,291,606) (52,971,023) (19,778,952)",
+    "image": 1,
+    "bbox": [
+     434,
+     1714,
+     1574,
+     1743
+    ],
+    "conf": 94.0
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 6395,
+   "id": "ONEREPORTKBANKT_p87_166",
+   "suggest": "typhoon",
+   "order": 165
+  },
+  {
+   "typhoon": {
+    "text": "ผลกระทบจากอัตราแลกเปลี่ยนของเงินตราต่างประเทศคงเหลือสิ้นปี (67,831) (82,681) (12,470) (2,316)"
+   },
+   "tesseract": {
+    "text": "ผลกระทบจากอัตราแลกเปลี่ยนของเงินตราต่างประเทศคงเหลือสิ้นปี (67,831) (82,681) (12,470) (2,316)",
+    "image": 1,
+    "bbox": [
+     352,
+     1743,
+     1574,
+     1776
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 6477,
+   "id": "ONEREPORTKBANKT_p87_167",
+   "suggest": "typhoon",
+   "order": 166
+  },
+  {
+   "typhoon": {
+    "text": "เงินสดเพิ่มขึ้น (ลดลง) สุทธิ 8,027,308 (2,668,307) 8,052,388 (2,789,357)"
+   },
+   "tesseract": {
+    "text": "เงินสดเพิ่มชื้น (ลดลง ) สุทธิ 8,027,308 (2,668,307) 8,052,388 (2,789,357)",
+    "image": 1,
+    "bbox": [
+     348,
+     1779,
+     1574,
+     1814
+    ],
+    "conf": 91.7
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 97.0,
+   "pos": 6566,
+   "id": "ONEREPORTKBANKT_p87_168",
+   "suggest": "typhoon",
+   "order": 167
+  },
+  {
+   "typhoon": {
+    "text": "ินสด ณ วันต้นปี 46,021,380 48,689,687 45,675,851 48,465,208"
+   },
+   "tesseract": {
+    "text": "Guan ณวันต้นปี 46,021,380 48,689,687 45,675,851 48,465,208",
+    "image": 1,
+    "bbox": [
+     352,
+     1818,
+     1569,
+     1848
+    ],
+    "conf": 89.4
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 92.5,
+   "pos": 6634,
+   "id": "ONEREPORTKBANKT_p87_169",
+   "suggest": "tesseract",
+   "order": 168
+  },
+  {
+   "typhoon": {
+    "text": "เงินสด ณ วันสิ้นปี 54,048,688 46,021,380 53,728,239 45,675,851"
+   },
+   "tesseract": {
+    "text": "เงินสดณวันสิ้นปี 54,048,688 46,021,380 53,728,239 45,675,851",
+    "image": 1,
+    "bbox": [
+     348,
+     1848,
+     1567,
+     1883
+    ],
+    "conf": 93.3
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 6687,
+   "id": "ONEREPORTKBANKT_p87_170",
+   "suggest": "typhoon",
+   "order": 169
+  },
+  {
+   "typhoon": {
+    "text": "ขัตติยา อินทรวิชัย"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 1,
+    "bbox": [
+     0,
+     1820,
+     1000000,
+     2084
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 6743,
+   "id": "ONEREPORTKBANKT_p87_171",
+   "suggest": "typhoon",
+   "order": 170
+  },
+  {
+   "typhoon": {
+    "text": "(นางสาวขัตติยา อินทรวิชัย)"
+   },
+   "tesseract": {
+    "text": "(นางสาวขัตติยาอินทรวิชัย )",
+    "image": 1,
+    "bbox": [
+     855,
+     2028,
+     1033,
+     2056
+    ],
+    "conf": 94.5
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 6760,
+   "id": "ONEREPORTKBANKT_p87_172",
+   "suggest": "typhoon",
+   "order": 171
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ลักษาร้าที่จริ:",
+    "image": 1,
+    "bbox": [
+     965,
+     2052,
+     1036,
+     2080
+    ],
+    "conf": 74.1
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 6784.5,
+   "id": "ONEREPORTKBANKT_p87_173",
+   "suggest": "tesseract",
+   "order": 172
+  },
+  {
+   "typhoon": {
+    "text": "กรรมการและประธานเจ้าหน้าที่บริหาร"
+   },
+   "tesseract": {
+    "text": "กรรมการและประธานเจ้าหน้าที่บริหาร",
+    "image": 1,
+    "bbox": [
+     827,
+     2062,
+     1062,
+     2090
+    ],
+    "conf": 94.4
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 6785,
+   "id": "ONEREPORTKBANKT_p87_174",
+   "suggest": "typhoon",
+   "order": 173
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "- วจเหรร ad",
+    "image": 1,
+    "bbox": [
+     370,
+     2085,
+     585,
+     2113
+    ],
+    "conf": 62.3
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 6817.5,
+   "id": "ONEREPORTKBANKT_p87_175",
+   "suggest": "tesseract",
+   "order": 174
+  },
+  {
+   "typhoon": {
+    "text": "หมายเหตุประกอบงบการเงินเป็นส่วนหนึ่งของงบการเงินนี้"
+   },
+   "tesseract": null,
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 6818,
+   "id": "ONEREPORTKBANKT_p87_176",
+   "suggest": "typhoon",
+   "order": 175
+  }
+ ],
+ "split": {
+  "method": "gutter",
+  "x": 0.5853658536585366,
+  "dpi": 200
+ }
+}

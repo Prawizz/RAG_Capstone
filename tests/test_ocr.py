@@ -532,7 +532,7 @@ def test_tokens_signal_summed_across_halves(tmp_path):
 
     u = run_ocr(extract_file(f), f, Counting(THAI_LONG)).units[0]
     assert u.signals["ocr:tokens"] == 200.0
-    assert "ocr:tokens" not in run_ocr(extract_file(f), f, FakeBackend(THAI_LONG)).units[0].signals
+    assert "ocr:tokens" not in run_ocr(extract_file(f), f, FakeBackend(THAI_LONG), use_cache=False).units[0].signals
 
 
 def test_typhoon_defaults_greedy_and_named_token_cap():
