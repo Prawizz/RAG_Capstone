@@ -1,10 +1,12 @@
-"""ทดลอง OCR กับหน้าที่ระบุ: extract_file + run_ocr แล้วพิมพ์ข้อความ เวลาต่อหน้า VRAM สูงสุด agreement
+"""ทดลอง OCR กับหน้าที่ระบุ: extract_file + run_ocr แล้วพิมพ์ข้อความ เวลาต่อหน้า VRAM สูงสุด recall/precision
 
     python scripts/ocr_try.py eval/datasets/ONEREPORTKBANKT.PDF 2
-    python scripts/ocr_try.py eval/datasets/ONEREPORTKBANKT.PDF 81-82 --out-dir eval/datasets/files/ocr_try
+    python scripts/ocr_try.py eval/datasets/ONEREPORTKBANKT.PDF 81 --save-images --repeat 2 --tag greedy
+    python scripts/ocr_try.py eval/datasets/ONEREPORTKBANKT.PDF 81 --sample --tag sample   # สุ่มตาม model card
 
 หน้าที่ด่านตรวจไม่ได้ส่ง OCR (status = ok) จะถูกบังคับเป็น needs_ocr เฉพาะในสคริปต์นี้เพื่อทดลอง (--no-force เพื่อปิด)
-ข้อความเต็มของแต่ละหน้าเขียนลงไฟล์ <out-dir>/<ชื่อไฟล์>_p<หน้า>.md (ค่าเริ่มต้น eval/datasets/files/ocr_try ซึ่งไม่เข้า git)
+ข้อความเต็มของแต่ละหน้าเขียนลงไฟล์ <out-dir>/<ชื่อไฟล์>_p<หน้า>[_<tag>][_r<รอบ>].md
+(ค่าเริ่มต้น eval/datasets/files/ocr_try ซึ่งไม่เข้า git) --repeat N รัน N รอบ แล้วบอกว่าข้อความเหมือนกันทุกตัวอักษรหรือไม่
 """
 
 import argparse
@@ -34,6 +36,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("path")
     ap.add_argument("pages", type=parse_pages, nargs="?", default=None, help="N หรือ N-M (PDF); ภาพไม่ต้องระบุ")
     ap.add_argument("--backend", default=None, help="ค่าเริ่มต้นจาก config (OCR_BACKEND)")
+    ap.add_argument("--sample", action="store_true", help="สุ่มตาม generation_config ของโมเดล (เหมือน model card) แทน greedy")
+    ap.add_argument("--repeat", type=int, default=1, help="จำนวนรอบ (ดูว่าผลเหมือนกันทุกตัวอักษรไหม)")
+    ap.add_argument("--tag", default="", help="ต่อท้ายชื่อไฟล์ผลลัพธ์ เช่น greedy")
     ap.add_argument("--out-dir", default="eval/datasets/files/ocr_try")
     ap.add_argument("--no-force", action="store_true", help="OCR เฉพาะหน้าที่ด่านตรวจส่งมาเอง")
     ap.add_argument("--lines", type=int, default=PREVIEW_LINES)
@@ -60,52 +65,62 @@ def main(argv: list[str] | None = None) -> int:
         doc = doc.model_copy(update={"units": forced})
 
     backend = get_backend(args.backend)
-    peak = None
-    t0 = time.perf_counter()
-    out = run_ocr(doc, path, backend)
-    wall = time.perf_counter() - t0
-    try:
-        from app.extraction.ocr_typhoon import peak_vram_bytes
-
-        peak = peak_vram_bytes()
-    except Exception:
-        pass
+    if hasattr(backend, "do_sample"):
+        backend.do_sample = args.sample
+        print(f"การถอดข้อความ: {'สุ่ม (generation_config ของโมเดล)' if args.sample else 'greedy'}"
+              f"  max_new_tokens={backend.max_new_tokens}")
 
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    for u in out.units:
-        page = u.position["page"]
-        print(f"\n===== {u.label} =====")
-        if before[u.index].status == UnitStatus.OK and args.no_force:
-            print("(ไม่ได้ OCR — ด่านตรวจไม่ได้ส่งมา)")
-            continue
-        print(f"status: {u.status.value}  method: {u.method.value}  เวลา OCR: {u.signals.get('ocr:seconds', 0):.1f} s"
-              f"  ทั้งหน้า: {u.elapsed_ms / 1000:.1f} s")
-        if u.reason:
-            print(f"reason: {u.reason}")
-        recall = u.signals.get("ocr:text_layer_recall")
-        precision = u.signals.get("ocr:text_layer_precision")
-        layer = before[u.index].text.strip()
-        fmt = lambda v: "-" if v is None else f"{v:.3f}"  # noqa: E731
-        print(f"ชั้นข้อความเดิม: {len(layer)} ตัว  recall: {fmt(recall)}  precision: {fmt(precision)}")
-        print(f"figure: {int(u.signals.get('ocr:figure_count', 0))}  page_number: {u.signals.get('ocr:page_number')}"
-              f" / {u.signals.get('ocr:page_number_2')}")
-        images = render_page_images(path, doc.detected_type, page)
-        print(f"ภาพที่ส่งโมเดล: {len(images)} ภาพ")
-        if args.save_images:
-            for i, img in enumerate(images, 1):
-                (out_dir / f"{path.stem}_p{page}_part{i}.png").write_bytes(img)
-        print(f"flags: {[f.value for f in u.quality.flags]}  letters: {u.signals.get('gate:letters')}  "
-              f"broken_events: {u.signals.get('gate:broken_events')}")
-        dest = out_dir / f"{path.stem}_p{page}.md"
-        dest.write_text(u.text, encoding="utf-8")
-        print(f"ข้อความเต็ม: {dest}")
-        print(f"--- {args.lines} บรรทัดแรก ---")
-        for line in u.text.splitlines()[: args.lines]:
-            print(line[:300])
-    print(f"\nเวลารวม run_ocr: {wall:.1f} s")
-    if peak is not None:
-        print(f"VRAM สูงสุด (torch allocated): {peak / 2**30:.2f} GiB")
+    texts: dict[int, list[str]] = {}
+    tag = f"_{args.tag}" if args.tag else ""
+    for rnd in range(1, args.repeat + 1):
+        t0 = time.perf_counter()
+        out = run_ocr(doc, path, backend)
+        wall = time.perf_counter() - t0
+        suffix = f"{tag}_r{rnd}" if args.repeat > 1 else tag
+        print(f"\n######## รอบที่ {rnd}/{args.repeat}  run_ocr {wall:.1f} s")
+        for u in out.units:
+            page = u.position["page"]
+            print(f"\n===== {u.label} =====")
+            if before[u.index].status == UnitStatus.OK and args.no_force:
+                print("(ไม่ได้ OCR — ด่านตรวจไม่ได้ส่งมา)")
+                continue
+            s = u.signals
+            print(f"status: {u.status.value}  method: {u.method.value}  เวลา OCR: {s.get('ocr:seconds', 0):.1f} s"
+                  f"  ทั้งหน้า: {u.elapsed_ms / 1000:.1f} s  tokens: {s.get('ocr:tokens')}")
+            if u.reason:
+                print(f"reason: {u.reason}")
+            fmt = lambda v: "-" if v is None else f"{v:.3f}"  # noqa: E731
+            layer = before[u.index].text.strip()
+            print(f"ชั้นข้อความเดิม: {len(layer)} ตัว  recall: {fmt(s.get('ocr:text_layer_recall'))}"
+                  f"  precision: {fmt(s.get('ocr:text_layer_precision'))}")
+            print(f"figure: {int(s.get('ocr:figure_count', 0))}  page_number: {s.get('ocr:page_number')}"
+                  f" / {s.get('ocr:page_number_2')}  repeated_lines: {int(s.get('ocr:repeated_lines', 0))}")
+            pg = render_page_images(path, doc.detected_type, page)
+            print(f"ภาพที่ส่งโมเดล: {len(pg.images)} ภาพ  split_x: {pg.split_x}  split_fallback: {pg.split_fallback}")
+            if args.save_images and rnd == 1:
+                for i, img in enumerate(pg.images, 1):
+                    (out_dir / f"{path.stem}_p{page}_part{i}.png").write_bytes(img)
+            print(f"flags: {[f.value for f in u.quality.flags]}  letters: {s.get('gate:letters')}  "
+                  f"broken_events: {s.get('gate:broken_events')}")
+            dest = out_dir / f"{path.stem}_p{page}{suffix}.md"
+            dest.write_text(u.text, encoding="utf-8")
+            texts.setdefault(page, []).append(u.text)
+            print(f"ข้อความเต็ม: {dest}")
+            print(f"--- {args.lines} บรรทัดแรก ---")
+            for line in u.text.splitlines()[: args.lines]:
+                print(line[:300])
+    try:
+        from app.extraction.ocr_typhoon import peak_vram_bytes
+
+        print(f"\nVRAM สูงสุด (torch allocated): {peak_vram_bytes() / 2**30:.2f} GiB")
+    except Exception:
+        pass
+    if args.repeat > 1:
+        for page, ts in texts.items():
+            same = all(t == ts[0] for t in ts)
+            print(f"หน้า {page}: {len(ts)} รอบ {'เหมือนกันทุกตัวอักษร' if same else 'ต่างกัน'}")
     return 0
 
 

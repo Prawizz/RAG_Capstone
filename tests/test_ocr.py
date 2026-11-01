@@ -324,21 +324,20 @@ def test_wide_page_is_split_left_then_right(tmp_path):
     assert backend.calls == 2
     pix = [pymupdf.Pixmap(b) for b in backend.images]
     assert pix[0].height == pix[1].height
-    assert abs(pix[0].width - pix[1].width) <= 1
     assert u.text.index("ซ้าย") < u.text.index("ขวา")
     assert u.signals["ocr:seconds"] == pytest.approx(0.02)  # รวมสองครึ่ง
 
 
 def test_page_at_or_below_ratio_not_split(tmp_path):
     f = wide_pdf(tmp_path / "n.pdf", 650, 500)  # 1.3 พอดี ไม่เกิน
-    assert len(render_page_images(f, DetectedType.PDF, 1)) == 1
+    assert len(render_page_images(f, DetectedType.PDF, 1).images) == 1
     g = wide_pdf(tmp_path / "m.pdf", 660, 500)  # 1.32
-    assert len(render_page_images(g, DetectedType.PDF, 1)) == 2
+    assert len(render_page_images(g, DetectedType.PDF, 1).images) == 2
     assert ocr_mod.WIDE_PAGE_RATIO == 1.3
 
 
 def test_portrait_page_not_split(scan_pdf):
-    assert len(render_page_images(scan_pdf, DetectedType.PDF, 2)) == 1
+    assert len(render_page_images(scan_pdf, DetectedType.PDF, 2).images) == 1
 
 
 def test_wide_image_file_is_split_too(tmp_path):
@@ -346,7 +345,7 @@ def test_wide_image_file_is_split_too(tmp_path):
 
     f = tmp_path / "wide.png"
     Image.new("RGB", (900, 300), (200, 200, 200)).save(f)
-    assert len(render_page_images(f, DetectedType.PNG, 1)) == 2
+    assert len(render_page_images(f, DetectedType.PNG, 1).images) == 2
 
 
 # ---------- EXIF ----------
@@ -377,3 +376,169 @@ def test_image_without_exif_unchanged(tmp_path):
     run_ocr(extract_file(f), f, backend)
     pix = pymupdf.Pixmap(backend.images[0])
     assert (pix.width, pix.height) == (30, 50)
+
+
+# ---------- ตัดตรงร่อง ----------
+
+def ink_image(w, h, ink_ranges, gray=20):
+    """ภาพขาวพร้อมแท่งหมึกสูง 60% ของหน้า ในช่วงคอลัมน์ (สัดส่วน) ที่ระบุ"""
+    from PIL import Image, ImageDraw
+
+    im = Image.new("RGB", (w, h), (255, 255, 255))
+    d = ImageDraw.Draw(im)
+    for a, b in ink_ranges:
+        for y in range(int(0.25 * h), int(0.75 * h), 12):  # แถบหมึกเป็นเส้นๆ เหมือนบรรทัดข้อความ
+            d.rectangle([int(a * w), y, int(b * w) - 1, y + 5], fill=(gray, gray, gray))
+    return im
+
+
+def save_png(tmp_path, im, name="g.png"):
+    f = tmp_path / name
+    im.save(f)
+    return f
+
+
+def split_at(img_bytes):
+    """ความกว้างของครึ่งซ้าย / (ซ้าย+ขวา)"""
+    from PIL import Image
+    import io
+
+    a, b = (Image.open(io.BytesIO(x)).width for x in img_bytes)
+    return a / (a + b)
+
+
+def test_gutter_at_60_percent_cuts_there(tmp_path):
+    f = save_png(tmp_path, ink_image(2000, 800, [(0.02, 0.56), (0.64, 0.98)]))  # ร่อง 56–64% กลาง 60%
+    page = render_page_images(f, DetectedType.PNG, 1)
+    assert len(page.images) == 2 and not page.split_fallback
+    assert page.split_x == pytest.approx(0.60, abs=0.01)
+    assert split_at(page.images) == pytest.approx(0.60, abs=0.01)
+
+
+def test_no_gutter_falls_back_to_center(tmp_path):
+    f = save_png(tmp_path, ink_image(2000, 800, [(0.02, 0.98)]))
+    page = render_page_images(f, DetectedType.PNG, 1)
+    assert page.split_fallback and page.split_x == 0.5
+    assert split_at(page.images) == pytest.approx(0.5, abs=0.01)
+
+
+def test_gutter_outside_window_is_ignored(tmp_path):
+    # ร่อง 75–85% อยู่นอก 35–65% ส่วนในช่วงมีหมึกเต็ม -> กลางหน้า
+    f = save_png(tmp_path, ink_image(2000, 800, [(0.02, 0.75), (0.85, 0.98)]))
+    page = render_page_images(f, DetectedType.PNG, 1)
+    assert page.split_fallback and page.split_x == 0.5
+    # ร่อง 10–20% ก็เช่นกัน
+    g = save_png(tmp_path, ink_image(2000, 800, [(0.02, 0.10), (0.20, 0.98)]), "h.png")
+    assert render_page_images(g, DetectedType.PNG, 1).split_fallback
+
+
+def test_gutter_straddling_window_edge_is_clipped_to_window(tmp_path):
+    # ร่อง 50–80% ยื่นออกนอก window -> ใช้เฉพาะส่วน 50–65% กลาง 57.5%
+    f = save_png(tmp_path, ink_image(2000, 800, [(0.02, 0.50), (0.80, 0.98)]))
+    page = render_page_images(f, DetectedType.PNG, 1)
+    assert not page.split_fallback and page.split_x == pytest.approx(0.575, abs=0.01)
+
+
+def test_gutter_narrower_than_minimum_is_ignored(tmp_path):
+    f = save_png(tmp_path, ink_image(2000, 800, [(0.02, 0.495), (0.505, 0.98)]))  # ร่อง 1% < 2%
+    assert render_page_images(f, DetectedType.PNG, 1).split_fallback
+
+
+def test_widest_gutter_wins(tmp_path):
+    ranges = [(0.02, 0.40), (0.42, 0.55), (0.62, 0.98)]  # ร่อง 40–42 (แคบ) กับ 55–62 (กว้าง กลาง 58.5%)
+    f = save_png(tmp_path, ink_image(2000, 800, ranges))
+    assert render_page_images(f, DetectedType.PNG, 1).split_x == pytest.approx(0.585, abs=0.01)
+
+
+def test_header_footer_ink_outside_row_band_is_ignored(tmp_path):
+    from PIL import ImageDraw
+
+    im = ink_image(2000, 800, [(0.02, 0.56), (0.64, 0.98)])
+    ImageDraw.Draw(im).rectangle([0, 10, 1999, 60], fill=(0, 0, 0))  # แถบหัวหน้าเต็มความกว้าง (บน 7%)
+    page = render_page_images(save_png(tmp_path, im), DetectedType.PNG, 1)
+    assert not page.split_fallback and page.split_x == pytest.approx(0.60, abs=0.01)
+
+
+def test_scanner_dust_does_not_hide_gutter(tmp_path):
+    from PIL import ImageDraw
+
+    im = ink_image(2000, 800, [(0.02, 0.56), (0.64, 0.98)])
+    ImageDraw.Draw(im).point([(1200, 400)], fill=(0, 0, 0))  # ฝุ่นจุดเดียวในร่อง
+    assert not render_page_images(save_png(tmp_path, im), DetectedType.PNG, 1).split_fallback
+
+
+def test_pdf_gutter_cut_and_signals(tmp_path):
+    doc = pymupdf.open()
+    page = doc.new_page(width=1000, height=500)
+    page.insert_image(page.rect, pixmap=_gray())  # ภาพเต็มหน้า -> scan_like (needs_ocr)
+    for y in range(130, 400, 14):
+        page.draw_rect(pymupdf.Rect(20, y, 560, y + 6), fill=(0, 0, 0))
+        page.draw_rect(pymupdf.Rect(640, y, 980, y + 6), fill=(0, 0, 0))
+    f = tmp_path / "g.pdf"
+    doc.save(str(f))
+    pg = render_page_images(f, DetectedType.PDF, 1)
+    assert not pg.split_fallback and pg.split_x == pytest.approx(0.60, abs=0.01)
+    assert split_at(pg.images) == pytest.approx(0.60, abs=0.01)
+    backend = FakeBackend([THAI_LONG + " ซ้าย", THAI_LONG + " ขวา"])
+    u = run_ocr(extract_file(f), f, backend).units[0]
+    assert u.signals["ocr:split_x"] == pytest.approx(0.60, abs=0.01) and u.signals["ocr:split_fallback"] == 0.0
+
+
+def test_fallback_signal_and_unsplit_pages_have_no_split_signals(tmp_path, scan_pdf):
+    f = save_png(tmp_path, ink_image(2000, 800, [(0.02, 0.98)]))
+    u = run_ocr(extract_file(f), f, FakeBackend(THAI_LONG)).units[0]
+    assert u.signals["ocr:split_x"] == 0.5 and u.signals["ocr:split_fallback"] == 1.0
+    p = run_ocr(extract_file(scan_pdf), scan_pdf, FakeBackend(THAI_LONG)).units[1]  # หน้าตั้ง ไม่ตัด
+    assert "ocr:split_x" not in p.signals and "ocr:split_fallback" not in p.signals
+
+
+def test_find_gutter_constants_are_named():
+    assert ocr_mod.GUTTER_WINDOW == (0.35, 0.65) and ocr_mod.GUTTER_MIN_WIDTH > 0
+    assert ocr_mod.GUTTER_INK_GRAY and ocr_mod.GUTTER_ROW_BAND and ocr_mod.GUTTER_NOISE_FRACTION
+
+
+# ---------- บรรทัดซ้ำ ----------
+
+def test_repeated_lines_counts_excess_over_first():
+    t = NL.join(["ก", "ข", "ก", "ค", "ก", "", "  ", "ข", "ข", "ง"])  # ก×3 (ข้อ 2 เกิน) ข×3 (เกิน 2) ค,ง ครั้งเดียว
+    assert ocr_mod.repeated_lines(t) == 4
+    assert ocr_mod.repeated_lines(NL.join(["ก", "ก", "ข"])) == 0  # ซ้ำ 2 ครั้ง ยังไม่ถึงเกณฑ์
+    assert ocr_mod.repeated_lines(NL.join(["x"] * 3)) == 2
+    assert ocr_mod.repeated_lines(NL.join(["  ก  ", "ก", "ก "])) == 2  # ตัดช่องว่างหัวท้ายก่อนเทียบ
+    assert ocr_mod.repeated_lines(NL.join(["ก", "ก ก", "ก"])) == 0  # ต้องเหมือนทุกตัวอักษร
+    assert ocr_mod.repeated_lines("") == 0 and ocr_mod.REPEATED_LINE_MIN == 3
+
+
+def test_repeated_lines_signal_on_unit(scan_pdf):
+    md = NL.join(["**ข้อมูลที่ใช้ในการวิเคราะห์**"] * 6 + ["", THAI_LONG])
+    u = run_ocr(extract_file(scan_pdf), scan_pdf, FakeBackend(md)).units[1]
+    assert u.signals["ocr:repeated_lines"] == 5.0 and u.status == UnitStatus.OK  # ยังไม่ใช้ตัดสิน
+
+
+def test_repeated_lines_zero_for_clean_text_and_ignores_figures(scan_pdf):
+    fig = "<figure>" + NL.join(["ซ้ำ"] * 5) + "</figure>"  # คำบรรยายภาพไม่ใช่ข้อความของหน้า
+    u = run_ocr(extract_file(scan_pdf), scan_pdf, FakeBackend(THAI_LONG + NL + NL + fig)).units[1]
+    assert u.signals["ocr:repeated_lines"] == 0.0
+
+
+def test_tokens_signal_summed_across_halves(tmp_path):
+    f = save_png(tmp_path, ink_image(2000, 800, [(0.02, 0.98)]))
+
+    class Counting(FakeBackend):
+        def recognize(self, image_png):
+            r = super().recognize(image_png)
+            r.tokens = 100
+            return r
+
+    u = run_ocr(extract_file(f), f, Counting(THAI_LONG)).units[0]
+    assert u.signals["ocr:tokens"] == 200.0
+    assert "ocr:tokens" not in run_ocr(extract_file(f), f, FakeBackend(THAI_LONG)).units[0].signals
+
+
+def test_typhoon_defaults_greedy_and_named_token_cap():
+    from app.extraction import ocr_typhoon as t
+
+    assert t.DO_SAMPLE is False and isinstance(t.MAX_NEW_TOKENS, int)
+    b = t.TyphoonLocalBackend()
+    assert b.do_sample is False and b.max_new_tokens == t.MAX_NEW_TOKENS
+    assert t.TyphoonLocalBackend(do_sample=True).do_sample is True

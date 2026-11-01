@@ -9,12 +9,18 @@
   เกณฑ์เดิมก็ยัง needs_ocr; ``image_coverage`` ของ unit เดิมไม่ถูกยกมา (หน้าภาพที่ OCR แล้วได้ตัวอักษรน้อย
   ต้องเป็น low_text ไม่ใช่ scan_like วน)
 - ``<figure>`` (คำบรรยายภาพที่โมเดลแต่งเอง) เก็บเป็น block image แต่ไม่รวมใน ``Unit.text``
-- หน้ากว้าง (กว้าง/สูง > ``WIDE_PAGE_RATIO`` เช่นหน้าคู่ของรายงานประจำปี) ถูกตัดครึ่งซ้าย-ขวา OCR ทีละครึ่ง
+- หน้ากว้าง (กว้าง/สูง > ``WIDE_PAGE_RATIO`` เช่นหน้าคู่ของรายงานประจำปี) ถูกตัดซ้าย-ขวา OCR ทีละครึ่ง
   แล้วต่อข้อความซ้ายก่อนขวา เพราะโมเดลย่อภาพให้ด้านยาว 1800 px (ตาม model card) หน้ากว้างจึงเหลือตัวหนังสือเล็กเกินอ่าน
+  จุดตัด = กลางช่องว่างแนวตั้งที่กว้างที่สุดในช่วง ``GUTTER_WINDOW`` ของความกว้าง (``find_gutter``: โปรไฟล์หมึกของภาพที่
+  render แล้ว) เพราะหน้าคู่ไม่สมมาตร (เช่น KBANK มีแถบสารบัญด้านซ้าย) การตัดกลางหน้าจะผ่ากลางตัวหนังสือแล้วโมเดลเดาคำ
+  ที่ขอบตัด; ไม่มีช่องว่างกว้างพอ -> ตัดกลางหน้า (``ocr:split_fallback`` = 1)
 - OCR หน้าไหนล้มเหลว (โมเดล error, GPU หน่วยความจำไม่พอ) -> unit นั้น failed พร้อมเหตุผล หน้าอื่นทำต่อ
 
 signals ของ unit ที่ OCR: ``ocr:seconds`` (เวลา backend ต่อหน้า รวมทุกครึ่ง), ``ocr:figure_count``,
 ``ocr:page_number`` (เลขหน้าที่โมเดลอ่านได้จาก <page_number>; หน้าคู่ที่ได้สองเลขใส่เลขที่สองใน ``ocr:page_number_2``),
+``ocr:tokens`` (จำนวนโทเคนที่โมเดลสร้าง รวมทุกครึ่ง; ถ้ามี), ``ocr:split_x`` (ตำแหน่งตัดหน้ากว้าง สัดส่วน 0–1 ของความกว้าง) และ
+``ocr:split_fallback`` (1 = ไม่เจอร่อง ใช้กลางหน้า, 0 = ตัดที่ร่อง) เฉพาะหน้าที่ถูกตัด,
+``ocr:repeated_lines`` (ตัวนับการพิมพ์วน: ดูด้านล่าง),
 ``ocr:text_layer_recall`` / ``ocr:text_layer_precision`` (ดูด้านล่าง)
 ชื่อ backend / รุ่น / revision ของโมเดลเป็นข้อความ ใส่ใน ``reason`` ("OCR: <backend> · <model>@<revision>")
 
@@ -27,6 +33,10 @@ signals ของ unit ที่ OCR: ``ocr:seconds`` (เวลา backend ต�
   และคำที่ชั้นข้อความพัง ก็จะนับว่า OCR "เติมเอง"
 - ทั้งสองตัวเทียบเป็นคำ ไม่เห็นความผิดที่ทำให้ได้คำที่มีอยู่จริงในชั้นข้อความ (เช่นสลับตัวเลข) และไม่ดูลำดับการอ่าน
 - หน้าที่ไม่มีชั้นข้อความเดิม (ข้อความว่าง) ไม่ใส่ signal ทั้งสอง
+
+``ocr:repeated_lines`` = จำนวนบรรทัดที่เกินจากบรรทัดแรก ของบรรทัดที่เหมือนกันทุกตัวและปรากฏ >= ``REPEATED_LINE_MIN`` ครั้ง
+ใน ``Unit.text`` (หลัง normalize ไม่นับบรรทัดว่าง; ผลรวมของ (จำนวนครั้ง - 1) ต่อบรรทัดที่ซ้ำ) จับโมเดลพิมพ์วน — วัดอย่างเดียว
+ยังไม่ใช้ตัดสิน ข้อจำกัด: เอกสารจริงมีบรรทัดซ้ำได้ (ส่วนหัว/ท้ายหน้า ช่องตาราง "-" "0") ค่าสูงจึงแปลว่า "ควรดู" ไม่ใช่ "ผิด"
 
 backend: interface ``OcrBackend`` รับภาพ PNG ของหนึ่งภาพ คืน ``OcrResult``; เลือกจาก config (env ``OCR_BACKEND``,
 ค่าเริ่มต้น ``typhoon-local`` = รันบนเครื่อง); backend ที่ส่งข้อมูลออกนอกเครื่อง (``sends_data_offsite = True``)
@@ -42,6 +52,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Optional, Protocol, Union
 
+import numpy as np
 import pymupdf
 
 from app.extraction.image import load_oriented_image
@@ -63,7 +74,14 @@ from app.models import (
 from app.thai.normalizer import normalize_with_report
 
 OCR_RENDER_DPI = 200  # ความละเอียดตอน render หน้า PDF เป็นภาพ — ปรับที่เดียว
-WIDE_PAGE_RATIO = 1.3  # กว้าง/สูง เกินนี้ = หน้าคู่ -> ตัดครึ่งซ้าย-ขวา
+WIDE_PAGE_RATIO = 1.3  # กว้าง/สูง เกินนี้ = หน้าคู่ -> ตัดซ้าย-ขวา
+GUTTER_WINDOW = (0.35, 0.65)  # หาร่องเฉพาะช่วงนี้ของความกว้าง (สัดส่วน 0–1)
+GUTTER_MIN_WIDTH = 0.02  # ช่องว่างแนวตั้งต้องกว้างอย่างน้อยเท่านี้ของความกว้างหน้า (ในช่วง window) ถึงนับเป็นร่อง
+GUTTER_INK_GRAY = 160  # พิกเซลที่เข้มกว่านี้ (ขาวดำ 0–255) นับเป็นหมึก
+GUTTER_ROW_BAND = (0.15, 0.90)  # ดูหมึกเฉพาะช่วงความสูงนี้ (ข้ามหัว/ท้ายหน้า)
+GUTTER_NOISE_FRACTION = 0.002  # คอลัมน์ที่มีหมึกไม่เกินสัดส่วนนี้ของแถวใน band นับเป็นว่าง (กันจุดฝุ่นจากการสแกน)
+GUTTER_PROBE_DPI = 100  # ความละเอียดของภาพที่ใช้หาร่อง (PDF)
+REPEATED_LINE_MIN = 3  # บรรทัดเหมือนกันตั้งแต่กี่ครั้งถึงนับเป็นการพิมพ์วน
 DEFAULT_BACKEND = "typhoon-local"
 SUPPORTED_TYPES = (DetectedType.PDF, DetectedType.JPG, DetectedType.PNG)
 PART_SEPARATOR = "\n\n"
@@ -88,6 +106,7 @@ class OcrResult:
     model: str
     revision: str
     seconds: float
+    tokens: Optional[int] = None  # จำนวนโทเคนที่สร้าง (ถ้า backend รายงาน)
 
 
 class OcrBackend(Protocol):
@@ -143,27 +162,67 @@ def _png(im) -> bytes:
     return buf.getvalue()
 
 
-def render_page_images(path: Path, detected: DetectedType, page_no: int, dpi: Optional[int] = None) -> list[bytes]:
+def find_gutter(gray: "np.ndarray") -> tuple[float, bool]:
+    """หาจุดตัดหน้ากว้างจากภาพขาวดำ (แถว x คอลัมน์, 0–255): กลางช่องว่างแนวตั้ง (คอลัมน์ที่แทบไม่มีหมึกใน
+    ``GUTTER_ROW_BAND``) ที่กว้างที่สุดภายใน ``GUTTER_WINDOW``; คืน (สัดส่วนของความกว้าง, ใช้กลางหน้าแทนหรือไม่)
+    ช่องว่างแคบกว่า ``GUTTER_MIN_WIDTH`` หรือไม่มีเลย -> (0.5, True) ช่องว่างที่ยื่นออกนอก window ถูกตัดให้เหลือแค่ในช่วง"""
+    h, w = gray.shape
+    band = gray[int(GUTTER_ROW_BAND[0] * h): max(int(GUTTER_ROW_BAND[1] * h), int(GUTTER_ROW_BAND[0] * h) + 1)]
+    ink = (band < GUTTER_INK_GRAY).sum(axis=0)
+    empty = ink <= GUTTER_NOISE_FRACTION * band.shape[0]
+    lo, hi = int(GUTTER_WINDOW[0] * w), int(GUTTER_WINDOW[1] * w)
+    best: Optional[tuple[int, int]] = None
+    start: Optional[int] = None
+    for x in range(lo, hi + 1):
+        free = x < hi and bool(empty[x])
+        if free and start is None:
+            start = x
+        elif not free and start is not None:
+            if best is None or x - start > best[1] - best[0]:
+                best = (start, x)
+            start = None
+    if best is None or (best[1] - best[0]) < GUTTER_MIN_WIDTH * w:
+        return 0.5, True
+    return (best[0] + best[1]) / 2 / w, False
+
+
+@dataclass
+class PageImages:
+    images: list[bytes]  # หนึ่งภาพ หรือสองภาพ (ซ้าย, ขวา)
+    split_x: Optional[float] = None  # สัดส่วนความกว้างที่ตัด (เฉพาะหน้าที่ถูกตัด)
+    split_fallback: bool = False  # True = ไม่เจอร่อง ใช้กลางหน้า
+
+
+def render_page_images(path: Path, detected: DetectedType, page_no: int, dpi: Optional[int] = None) -> PageImages:
     """ภาพ PNG ที่ส่งให้ backend: หนึ่งภาพต่อหน้า หรือสองภาพ (ซ้าย, ขวา) ถ้าหน้ากว้างเกิน ``WIDE_PAGE_RATIO``
-    PDF: render ด้วย PyMuPDF ที่ ``OCR_RENDER_DPI`` (ครึ่งหน้า render ด้วย clip); jpg/png: เปิดด้วย PIL หมุนตาม EXIF แล้ว"""
+    PDF: render ด้วย PyMuPDF ที่ ``OCR_RENDER_DPI`` (ครึ่งหน้า render ด้วย clip; หาร่องจากภาพที่ ``GUTTER_PROBE_DPI``)
+    jpg/png: เปิดด้วย PIL หมุนตาม EXIF แล้ว"""
     if detected == DetectedType.PDF:
         dpi = dpi or OCR_RENDER_DPI
         with pymupdf.open(str(path)) as doc:
             page = doc.load_page(page_no - 1)
             r = page.rect
             if r.width / r.height <= WIDE_PAGE_RATIO:
-                return [page.get_pixmap(dpi=dpi).tobytes("png")]
-            mid = (r.x0 + r.x1) / 2
-            return [
-                page.get_pixmap(dpi=dpi, clip=pymupdf.Rect(r.x0, r.y0, mid, r.y1)).tobytes("png"),
-                page.get_pixmap(dpi=dpi, clip=pymupdf.Rect(mid, r.y0, r.x1, r.y1)).tobytes("png"),
-            ]
+                return PageImages([page.get_pixmap(dpi=dpi).tobytes("png")])
+            probe = page.get_pixmap(dpi=GUTTER_PROBE_DPI, colorspace=pymupdf.csGRAY)
+            gray = np.frombuffer(probe.samples, np.uint8).reshape(probe.height, probe.width)
+            frac, fallback = find_gutter(gray)
+            cut = r.x0 + frac * r.width
+            return PageImages(
+                [
+                    page.get_pixmap(dpi=dpi, clip=pymupdf.Rect(r.x0, r.y0, cut, r.y1)).tobytes("png"),
+                    page.get_pixmap(dpi=dpi, clip=pymupdf.Rect(cut, r.y0, r.x1, r.y1)).tobytes("png"),
+                ],
+                frac, fallback,
+            )
     if detected in (DetectedType.JPG, DetectedType.PNG):
         im = load_oriented_image(path)
         if im.width / im.height <= WIDE_PAGE_RATIO:
-            return [_png(im)]
-        half = im.width // 2
-        return [_png(im.crop((0, 0, half, im.height))), _png(im.crop((half, 0, im.width, im.height)))]
+            return PageImages([_png(im)])
+        frac, fallback = find_gutter(np.asarray(im.convert("L")))
+        x = min(max(int(round(frac * im.width)), 1), im.width - 1)
+        return PageImages([_png(im.crop((0, 0, x, im.height))), _png(im.crop((x, 0, im.width, im.height)))],
+                          frac, fallback)
     raise OcrError(f"OCR ยังไม่รองรับไฟล์ชนิด {detected.value}")
 
 
@@ -201,6 +260,17 @@ def text_layer_agreement(text_layer: str, ocr_text: str) -> Optional[tuple[float
 
 # ---------- ต่อ unit ----------
 
+def repeated_lines(text: str) -> int:
+    """จำนวนบรรทัดที่เกิน (นับ - 1 ต่อบรรทัด) ของบรรทัดที่เหมือนกันทุกตัวและปรากฏ >= ``REPEATED_LINE_MIN`` ครั้ง
+    ไม่นับบรรทัดว่าง (หลัง strip)"""
+    counts: dict[str, int] = {}
+    for line in text.splitlines():
+        line = line.strip()
+        if line:
+            counts[line] = counts.get(line, 0) + 1
+    return sum(n - 1 for n in counts.values() if n >= REPEATED_LINE_MIN)
+
+
 def _ocr_info(res: OcrResult) -> str:
     return f"OCR: {res.backend} · {res.model}@{res.revision}"
 
@@ -222,7 +292,7 @@ def _failed(unit: Unit, error: Exception, elapsed_ms: float) -> Unit:
     )
 
 
-def _ocr_unit(unit: Unit, res: OcrResult, elapsed_ms: float) -> Unit:
+def _ocr_unit(unit: Unit, res: OcrResult, elapsed_ms: float, page: Optional[PageImages] = None) -> Unit:
     parsed = parse_ocr_markdown(res.text)
     blocks: list[Block] = []
     fixes: dict[str, int] = {}
@@ -256,7 +326,13 @@ def _ocr_unit(unit: Unit, res: OcrResult, elapsed_ms: float) -> Unit:
         **_norm_signals(fixes, sigs),
         "ocr:seconds": res.seconds,
         "ocr:figure_count": float(parsed.figure_count),
+        "ocr:repeated_lines": float(repeated_lines(text)),
     }
+    if res.tokens is not None:
+        signals["ocr:tokens"] = float(res.tokens)
+    if page is not None and page.split_x is not None:
+        signals["ocr:split_x"] = float(page.split_x)
+        signals["ocr:split_fallback"] = 1.0 if page.split_fallback else 0.0
     for i, n in enumerate(parsed.page_numbers[:2]):
         signals["ocr:page_number" if i == 0 else "ocr:page_number_2"] = float(n)
     agreement = text_layer_agreement(unit.text, text) if unit.text.strip() else None
@@ -286,10 +362,12 @@ def _ocr_unit(unit: Unit, res: OcrResult, elapsed_ms: float) -> Unit:
 def _recognize_page(backend: OcrBackend, images: list[bytes]) -> OcrResult:
     results = [backend.recognize(img) for img in images]
     first = results[0]
+    counted = [r.tokens for r in results if r.tokens is not None]
     return OcrResult(
         text=PART_SEPARATOR.join(r.text for r in results),
         backend=first.backend, model=first.model, revision=first.revision,
         seconds=sum(r.seconds for r in results),
+        tokens=sum(counted) if counted else None,
     )
 
 
@@ -321,9 +399,9 @@ def run_ocr(
             continue
         t0 = time.perf_counter()
         try:
-            images = render_page_images(path, document.detected_type, int(unit.position["page"]))
-            res = _recognize_page(backend, images)
-            out.append(_ocr_unit(unit, res, (time.perf_counter() - t0) * 1000))
+            page = render_page_images(path, document.detected_type, int(unit.position["page"]))
+            res = _recognize_page(backend, page.images)
+            out.append(_ocr_unit(unit, res, (time.perf_counter() - t0) * 1000, page))
         except Exception as e:  # รายหน้า: ไม่ให้หน้าเดียวล้มทั้งไฟล์
             out.append(_failed(unit, e, (time.perf_counter() - t0) * 1000))
     return document.model_copy(update={"units": out})

@@ -3,7 +3,8 @@
 วิธีเรียกและ prompt ตาม model card ทุกอย่าง (https://huggingface.co/scb10x/typhoon-ocr1.5-2b):
 ``AutoModelForImageTextToText`` + ``AutoProcessor``, ภาพย่อ/ขยายให้ด้านยาว 1800 px (โมเดลฝึกที่ขนาดนี้),
 ``apply_chat_template`` ด้วย prompt เดียว, ``max_new_tokens=10000``, ``skip_special_tokens=True``
-ที่ต่างจาก card: ปักเลข revision (MODEL_REVISION) และตรวจว่าโมเดลอยู่บน GPU ทั้งหมด
+ที่ต่างจาก card: ปักเลข revision (MODEL_REVISION), ตรวจว่าโมเดลอยู่บน GPU ทั้งหมด และ **ปิดการสุ่ม** (``DO_SAMPLE = False``):
+card เรียก generate() ตามค่าใน generation_config ของโมเดลซึ่งสุ่ม (temperature 0.7) ผล OCR เปลี่ยนทุกรอบ
 
 ห้ามถอยไป CPU เงียบๆ: ไม่มี CUDA / โมเดลถูก offload ไป CPU -> ``OcrUnavailable``
 โหลดโมเดลครั้งเดียวต่อ process (``_load``) ใช้ซ้ำทุกหน้า
@@ -19,7 +20,10 @@ from app.extraction.ocr import OcrResult, OcrUnavailable
 MODEL_ID = "scb10x/typhoon-ocr1.5-2b"
 MODEL_REVISION = "15b381a2d62569e6736f9c085859dff68e48608d"  # commit ของ HF repo ที่ทดสอบ (2026-06-11)
 IMAGE_LONG_SIDE = 1800
-MAX_NEW_TOKENS = 10000
+MAX_NEW_TOKENS = 10000  # เพดานโทเคนที่สร้างต่อภาพ (กันลูปไม่รู้จบ); ค่าเดียวกับ model card
+# ต่างจาก model card: card เรียก generate() ตามค่าใน generation_config ของโมเดล ซึ่งเป็นการสุ่ม
+# (do_sample, temperature 0.7, top_k 20, top_p 0.8) ผล OCR จึงเปลี่ยนทุกรอบ เราต้องการผลที่ทำซ้ำได้ -> greedy
+DO_SAMPLE = False
 
 # prompt ตาม model card (ห้ามแก้เอง)
 PROMPT = """Extract all text from the image.
@@ -94,6 +98,10 @@ class TyphoonLocalBackend:
     revision = MODEL_REVISION[:12]
     sends_data_offsite = False
 
+    def __init__(self, do_sample: bool = DO_SAMPLE, max_new_tokens: int = MAX_NEW_TOKENS):
+        self.do_sample = do_sample
+        self.max_new_tokens = max_new_tokens
+
     def recognize(self, image_png: bytes) -> OcrResult:
         import torch
         from PIL import Image
@@ -107,14 +115,19 @@ class TyphoonLocalBackend:
         ).to(model.device)
         try:
             with torch.inference_mode():
-                generated = model.generate(**inputs, max_new_tokens=MAX_NEW_TOKENS)
+                if self.do_sample:  # ค่าสุ่มตาม generation_config ของโมเดล (เหมือน card)
+                    generated = model.generate(**inputs, max_new_tokens=self.max_new_tokens)
+                else:  # greedy: ปิดพารามิเตอร์การสุ่มด้วย เพื่อไม่ให้ transformers เตือนว่าไม่ได้ใช้
+                    generated = model.generate(**inputs, max_new_tokens=self.max_new_tokens, do_sample=False,
+                                               temperature=None, top_k=None, top_p=None)
         except torch.cuda.OutOfMemoryError:
             torch.cuda.empty_cache()
             raise
         trimmed = [out[len(inp):] for inp, out in zip(inputs.input_ids, generated)]
+        n_tokens = int(trimmed[0].shape[0])
         text = processor.batch_decode(trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
         return OcrResult(text=text, backend=self.name, model=MODEL_ID, revision=self.revision,
-                         seconds=time.perf_counter() - t0)
+                         seconds=time.perf_counter() - t0, tokens=n_tokens)
 
 
 def peak_vram_bytes() -> int:
