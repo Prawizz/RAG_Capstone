@@ -86,6 +86,8 @@
 | PPT ใส่รหัสตรวจก่อนแปลงไม่ได้ (จบที่ timeout/corrupt) · ยังไม่ได้ทดสอบกับไฟล์ใส่รหัสจริงทั้ง 3 ประเภท | T05d | — | ก่อนวัด KPI |
 | ~~T05d แก้ต่อ 2 ข้อ~~ ✅ DOCX ตารางไม่มีธง tblHeader ใส่ "[แถวแรกของตาราง: ...]" · .doc page_equivalent จาก SummaryInformation (real_msword = 45) | T05d review | — | เสร็จ |
 | บรรทัดบริบทที่ระบบเติมเอง (`[แถวแรกของตาราง: ...]` ของ DOCX, `[ป้ายก่อนหน้า: ...]` ของ XLSX) เป็น paragraph block ธรรมดา แยกจากข้อความในไฟล์ไม่ได้ — เสี่ยงถูกยกเป็นคำพูดอ้างอิงเหมือนเป็นข้อความในเอกสาร · เสนอ BlockType ใหม่ `context` (แก้ contract) ให้ chunker/citation แยกได้ · ต้องคุยกับ Prawizz ฝั่ง citation | T05d review | ทีม | ก่อนเชื่อม retrieval |
+| T06 OCR — ตกลง: (1) OCR เป็นขั้นแยกหลัง extract_file (run_ocr กับ unit needs_ocr) ไม่ทำใน extract_file เพราะช้า · (2) backend สลับได้ ค่าเริ่มต้นรันในเครื่อง backend ภายนอกต้องเปิดเอง (นโยบายราย box รอเฟส ACL) · (3) VLM OCR เสี่ยงข้อความลื่นแต่ผิด (CLAUDE.md ข้อ 5) → unit จาก OCR ติด method=ocr + เทียบกับ text layer เดิมถ้ามี เป็น signal · (4) jpg/png = เอกสาร 1 หน้า · เครื่อง dev: RTX 3070 laptop 8 GB → Typhoon OCR 1.5 2B รันได้, 7B ไม่พอ (ต้อง quantize) | 1 พ.ย. | ตกลงแล้ว | T06 |
+| T06 benchmark: ข้อความ VLM ของ AKL (dumps/ingest/56one_*_sample/*.vlm.md + ภาพ png) เป็นหน้าของไฟล์ sample ต้อง map กลับไปหน้าของ PDF เต็มก่อน และต้องให้คนตรวจ (มีส่วนที่ VLM ตกหล่น) | 1 พ.ย. | — | T06b |
 | ทำงานบน main อย่างเดียว ไม่แยก branch — Claude Code ทิ้งงานไว้แบบยังไม่ commit → review → ทีม commit และ push เอง | T01 | ทีม (ตกลงแล้ว) | ทุก task |
 
 ---

@@ -27,6 +27,14 @@ chunking / citation / eval อ่านต่อจาก contract นี้
   XLSX (หนึ่งตารางในชีตต่อ unit) ใส่ ``xlsx:data_rows``, ``xlsx:merged_cells`` และเมื่อมี ``xlsx:hidden_sheets`` (unit แรกของไฟล์),
   ``xlsx:repeated_header_rows``, ``xlsx:group_label_max_repeat`` (ดูอย่างเดียว ห้ามใช้ตัดสิน), ``xlsx:formula_no_cache``; ด่านตรวจเพิ่ม ``gate:letters`` (อักษรไทย+ละติน), ``gate:thai_chars``, ``gate:latin_in_thai``, ``gate:mojibake``, ``gate:broken_events`` ให้ unit ที่ status = ok ตอนเข้าด่าน
 - Unit ที่ status = ok แต่ text ว่าง (หลัง strip) ต้องมี flag ``empty`` ใน quality
+- ไฟล์ภาพ (jpg / png) = เอกสาร 1 หน้า: unit เดียว type=page, position {"page": 1}, status needs_ocr ตั้งแต่ extract_file
+  (method = ocr เพราะไม่มีชั้นข้อความ) ดู ``app/extraction/image.py``
+- OCR เป็นขั้นแยกจาก extract_file (``app/extraction/ocr.py::run_ocr``): unit ที่ OCR แล้วมี method = ocr เสมอ
+  ``signals``: ``ocr:seconds``, ``ocr:figure_count``, ``ocr:page_number`` (+ ``ocr:page_number_2`` หน้าคู่),
+  ``ocr:text_layer_recall`` / ``ocr:text_layer_precision`` (0–1, เฉพาะหน้าที่มีชั้นข้อความเดิม; วัดอย่างเดียว ห้ามใช้ตัดสิน
+  ข้อจำกัดอยู่ใน docstring ของ ocr.py); ``<figure>`` ของโมเดลเป็น block image ที่ **ไม่รวมใน Unit.text**;
+  ชื่อ backend และ revision ของโมเดลเป็นข้อความ จึงเก็บใน ``reason``
+  ("OCR: <backend> · <model>@<revision>") ซึ่งอนุญาตให้มีได้แม้ status = ok; unit ที่ OCR ล้มเหลว = failed
 - ``Document.detected_type`` เป็น None ได้ก็ต่อเมื่อมี ``error`` (validator บังคับ)
 - ``Document.error`` ถ้าไม่ใช่ None ``status`` จะเป็น failed เสมอ
 - extractor ชนิดใดได้ 0 unit -> pipeline ใส่ error ``empty`` ("ไฟล์ไม่มีเนื้อหาที่อ่านได้") ไม่ปล่อยให้เป็น failed เงียบ ๆ
@@ -96,6 +104,8 @@ class DetectedType(str, Enum):
     DOC = "doc"
     PPT = "ppt"
     XLS = "xls"
+    JPG = "jpg"
+    PNG = "png"
 
 
 class ErrorCode(str, Enum):

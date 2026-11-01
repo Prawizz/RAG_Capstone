@@ -4,6 +4,7 @@
 - ZIP -> เปิดดูข้างใน: ``word/`` docx, ``ppt/`` pptx, ``xl/`` xlsx, อย่างอื่น unsupported_type
 - OLE2 -> ดูชื่อ stream: WordDocument doc, PowerPoint Document ppt, Workbook/Book xls
   ถ้ามี EncryptionInfo / EncryptedPackage -> encrypted (docx/xlsx/pptx ที่ตั้งรหัสผ่านถูกห่อเป็น OLE2)
+- ``FF D8 FF`` -> jpg, ``89 50 4E 47 0D 0A 1A 0A`` -> png
 - อย่างอื่น -> unsupported_type
 - ZIP/OLE2 ที่โครงสร้างเสีย -> corrupt
 """
@@ -20,6 +21,8 @@ PDF_MAGIC = b"%PDF-"
 PDF_SCAN_BYTES = 1024
 ZIP_MAGIC = b"PK\x03\x04"
 OLE_MAGIC = bytes.fromhex("D0CF11E0A1B11AE1")
+JPEG_MAGIC = bytes.fromhex("FFD8FF")
+PNG_MAGIC = bytes.fromhex("89504E470D0A1A0A")
 
 _ZIP_PREFIXES = (
     ("word/", DetectedType.DOCX),
@@ -46,6 +49,10 @@ def detect(path: str | Path) -> DetectedType:
         return _detect_zip(path)
     if head.startswith(OLE_MAGIC):
         return _detect_ole(path)
+    if head.startswith(JPEG_MAGIC):
+        return DetectedType.JPG
+    if head.startswith(PNG_MAGIC):
+        return DetectedType.PNG
     if PDF_MAGIC in head:
         return DetectedType.PDF
     raise ExtractionError(

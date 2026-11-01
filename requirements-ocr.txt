@@ -1,0 +1,9 @@
+# OCR backend ในเครื่อง (Typhoon OCR 1.5 2B) — ต้องมี GPU NVIDIA; แยกจาก requirements.txt เพราะหนัก
+# ติดตั้ง torch CUDA ก่อน (ไม่ใช่ torch CPU จาก PyPI):
+#   pip install -r requirements-ocr.txt --extra-index-url https://download.pytorch.org/whl/cu128
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+torchvision==0.26.0+cu128
+transformers==5.20.2
+accelerate==1.15.0
+pillow==12.3.0

@@ -142,7 +142,7 @@ def test_section_heading_path_includes_own_heading():
 
 
 def test_detected_type_is_enum():
-    assert {t.value for t in DetectedType} == {"pdf", "docx", "pptx", "xlsx", "doc", "ppt", "xls"}
+    assert {t.value for t in DetectedType} == {"pdf", "docx", "pptx", "xlsx", "doc", "ppt", "xls", "jpg", "png"}
     with pytest.raises(ValidationError):
         Document.model_validate({**make_doc([]).model_dump(), "detected_type": "txt"})
 

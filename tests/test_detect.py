@@ -67,7 +67,7 @@ def test_broken_zip_corrupt(tmp_path):
     assert e.value.code == ErrorCode.CORRUPT
 
 
-@pytest.mark.parametrize("data", [b"hello world", b"", b"\xff\xd8\xff\xe0jpeg"])
+@pytest.mark.parametrize("data", [b"hello world", b"", b"GIF89a-not-supported"])
 def test_garbage_unsupported(tmp_path, data):
     f = tmp_path / "a.pdf"
     f.write_bytes(data)

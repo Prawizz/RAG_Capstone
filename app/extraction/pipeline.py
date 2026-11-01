@@ -13,6 +13,7 @@ from app.extraction.convert import TARGETS, converted, legacy_page_count
 from app.extraction.detect import detect
 from app.extraction.errors import ExtractionError
 from app.extraction.docx import extract_docx
+from app.extraction.image import extract_image
 from app.extraction.pdf import extract_pdf
 from app.extraction.pptx import extract_pptx
 from app.extraction.quality import apply_gate
@@ -48,6 +49,9 @@ def _extract(path: Path, detected: DetectedType, pages):
     if detected == DetectedType.XLSX:
         result = extract_xlsx(path)
         return result, result.page_equivalent  # ชั่วคราวตาม T01: 1 ต่อ sheet_region
+    if detected in (DetectedType.JPG, DetectedType.PNG):
+        result = extract_image(path)
+        return result, result.page_count
     raise ExtractionError(ErrorCode.UNSUPPORTED_TYPE, "ยังไม่รองรับใน v1")
 
 
