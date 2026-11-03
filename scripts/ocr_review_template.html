@@ -175,7 +175,7 @@
       </div>` : '<div class="notice info">รายการนี้ถูกกรองออก ไม่ต้องตัดสิน และไม่นับในงานที่ต้องทำ — เปิดดูไว้สุ่มตรวจว่ากรองถูก</div>';
     card.innerHTML = `
       <div class="meta"><span class="tag ${it.kind}">${KIND[it.kind]}</span><span>${esc(it.file)} หน้า ${it.page}</span>
-        <span>${esc(it.id)}</span>${it.score ? `<span>คล้าย ${it.score}%</span>` : ''}<span>${conf}</span>${maybe}
+        <span>${esc(it.id)}</span>${it.score ? `<span>คล้าย ${it.score}%</span>` : ''}<span>${conf}</span>${maybe}${it.cut_mid ? '<span class="tag maybe">ขอบช่วง Typhoon อาจถูกตัดกลางคำ — ดูต้น/ท้ายบรรทัดให้ครบ</span>' : ''}
         ${jd ? `<span class="done-mark">✓ ทำแล้ว (${esc(jd.verdict)})</span>` : ''}</div>
       ${imgHtml}
       ${relatedHtml(it)}

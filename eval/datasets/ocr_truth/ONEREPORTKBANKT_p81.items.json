@@ -27,15 +27,39 @@
   "dropped": 0,
   "doubled": 0
  },
+ "inversions": [],
  "span_stats": {
-  "relocated": 11,
-  "trimmed": 8,
-  "demoted_by_overlap": 1,
-  "snapped_items": 11,
-  "snapped_chars": 36,
-  "gap_merged_runs": 2,
-  "gap_merged_chars": 2,
+  "relocated": 2,
+  "trimmed": 10,
+  "demoted_by_overlap": 0,
+  "snapped_items": 10,
+  "snapped_chars": 21,
+  "gap_merged_runs": 0,
+  "gap_merged_chars": 0,
   "short_gap_typhoon_only": 0,
+  "anchors": 87,
+  "window_rejected": 1,
+  "window_inverted": 0,
+  "slivers_moved": 3,
+  "window_rejects": [
+   {
+    "text": "่ายติธรรมซึ่งอาจมีผลต่สี่ยงที่สูงขึ้นต่อจํานวนเงิ da il ad",
+    "bbox": [
+     453,
+     1810,
+     1539,
+     1861
+    ],
+    "window": [
+     6445,
+     6445
+    ],
+    "first": [
+     6460,
+     6518
+    ]
+   }
+  ],
   "agree_to_diff": [
    {
     "id": "ONEREPORTKBANKT_p81_015",
@@ -50,12 +74,51 @@
     "typhoon_after": "ผู้มีอำนาจควบคุม เลขานุการบริษัท และสมุห์บัญชีใหญ่"
    },
    {
+    "id": "ONEREPORTKBANKT_p81_035",
+    "tesseract": "อกสารแนบ 2",
+    "typhoon_before": "อกสารแนบ 2",
+    "typhoon_after": "เอกสารแนบ 2"
+   },
+   {
     "id": "ONEREPORTKBANKT_p81_042",
     "tesseract": "แนบ 4",
     "typhoon_before": "แนบ 4",
     "typhoon_after": "เอกสารแนบ 4"
    }
   ],
+  "sliver_moves": [
+   {
+    "src": "ONEREPORTKBANKT_p81_021",
+    "dst": "ONEREPORTKBANKT_p81_020",
+    "side": "start",
+    "chars": "ร",
+    "src_before": "ร 7. โครงสร้างการกำกับดูแลกิจการ",
+    "dst_before": "6. นโยบายการกำกับดูแลกิจกา",
+    "src_after": "7. โครงสร้างการกำกับดูแลกิจการ",
+    "dst_after": "6. นโยบายการกำกับดูแลกิจการ"
+   },
+   {
+    "src": "ONEREPORTKBANKT_p81_028",
+    "dst": "ONEREPORTKBANKT_p81_027",
+    "side": "start",
+    "chars": "น",
+    "src_before": "น รายงานความรับผิดชอบของคณะกรรมการธนาคาร",
+    "dst_before": "ส่วนที่ 3 งบการเงิ",
+    "src_after": "รายงานความรับผิดชอบของคณะกรรมการธนาคาร",
+    "dst_after": "ส่วนที่ 3 งบการเงิน"
+   },
+   {
+    "src": "ONEREPORTKBANKT_p81_048",
+    "dst": "ONEREPORTKBANKT_p81_049",
+    "side": "end",
+    "chars": "เอ",
+    "src_before": "และจรรยาบรรณธุรกิจ (ฉบับเต็ม) เอ",
+    "dst_before": "กสารแนบ 6",
+    "src_after": "และจรรยาบรรณธุรกิจ (ฉบับเต็ม)",
+    "dst_after": "เอกสารแนบ 6"
+   }
+  ],
+  "inversions": 0,
   "cut_mid": []
  },
  "figures": [
@@ -86,14 +149,14 @@
   }
  ],
  "counts": {
-  "agree": 37,
+  "agree": 39,
   "agree_audit": 4,
-  "diff": 60,
-  "typhoon_only": 2,
+  "diff": 58,
+  "typhoon_only": 3,
   "tesseract_only": 20,
   "fragment": 8,
   "duplicate": 19,
-  "to_judge": 86,
+  "to_judge": 85,
   "maybe_duplicate": 18
  },
  "items": [
@@ -123,111 +186,14 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_001",
    "suggest": "typhoon",
    "order": 0,
    "pos_end": 14
-  },
-  {
-   "typhoon": {
-    "text": "รายงานแบบ 56-1 One Report ประจำปี 2568"
-   },
-   "tesseract": {
-    "text": "รายงานแบบ 56-1 One Report ประจําปี 2568",
-    "image": 1,
-    "bbox": [
-     1154,
-     127,
-     1474,
-     156
-    ],
-    "conf": 94.5,
-    "column": null
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 14,
-   "snap": 0,
-   "gap_merged": 0,
-   "cut_mid": false,
-   "cut_mid_sides": [],
-   "covered_by": [],
-   "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_002",
-   "suggest": "typhoon",
-   "order": 1,
-   "pos_end": 47
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "จักขธักการลัดจั้ i 4 งิ่งจิ้น๓ข่างขีบัยตักลั : จ๊",
-    "image": 1,
-    "bbox": [
-     259,
-     219,
-     1375,
-     264
-    ],
-    "conf": 58.5,
-    "column": null
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "duplicate",
-   "score": 0.0,
-   "pos": 46.5,
-   "snap": 0,
-   "gap_merged": 0,
-   "cut_mid": false,
-   "cut_mid_sides": [],
-   "covered_by": [
-    "ONEREPORTKBANKT_p81_109"
-   ],
-   "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_003",
-   "suggest": "tesseract",
-   "order": 2,
-   "pos_end": 46.5
-  },
-  {
-   "typhoon": {
-    "text": "ธนาคารกสิกรไทย"
-   },
-   "tesseract": {
-    "text": "158 ธนาคารกสิกรไทย",
-    "image": 0,
-    "bbox": [
-     821,
-     102,
-     1042,
-     132
-    ],
-    "conf": 94.8,
-    "column": null
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "diff",
-   "score": 82.4,
-   "pos": 47,
-   "snap": 0,
-   "gap_merged": 0,
-   "cut_mid": false,
-   "cut_mid_sides": [],
-   "covered_by": [],
-   "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_004",
-   "suggest": "typhoon",
-   "order": 3,
-   "pos_end": 61
   },
   {
    "typhoon": {
@@ -250,21 +216,23 @@
    "audit": false,
    "kind": "agree",
    "score": 100.0,
-   "pos": 61,
+   "pos": 14,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_005",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_002",
    "suggest": "typhoon",
-   "order": 4,
-   "pos_end": 83
+   "order": 1,
+   "pos_end": 36
   },
   {
    "typhoon": {
-    "text": "ประจำปี 2568"
+    "text": "ประจำปี"
    },
    "tesseract": {
     "text": "ประจําปี 2568",
@@ -279,21 +247,128 @@
     "column": null
    },
    "region": null,
-   "auto_accept": true,
+   "auto_accept": false,
    "audit": false,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 83,
+   "kind": "diff",
+   "score": 63.6,
+   "pos": 36,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_006",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_003",
    "suggest": "typhoon",
-   "order": 5,
+   "order": 2,
+   "pos_end": 43
+  },
+  {
+   "typhoon": {
+    "text": "2568 ธนาคารกสิกรไทย"
+   },
+   "tesseract": {
+    "text": "158 ธนาคารกสิกรไทย",
+    "image": 0,
+    "bbox": [
+     821,
+     102,
+     1042,
+     132
+    ],
+    "conf": 94.8,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "diff",
+   "score": 88.9,
+   "pos": 43,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "sliver_moved": false,
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_004",
+   "suggest": "typhoon",
+   "order": 3,
+   "pos_end": 61
+  },
+  {
+   "typhoon": {
+    "text": "รายงานแบบ 56-1 One Report ประจำปี 2568"
+   },
+   "tesseract": {
+    "text": "รายงานแบบ 56-1 One Report ประจําปี 2568",
+    "image": 0,
+    "bbox": [
+     922,
+     127,
+     1242,
+     156
+    ],
+    "conf": 94.5,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 61,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "sliver_moved": false,
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_005",
+   "suggest": "typhoon",
+   "order": 4,
    "pos_end": 94
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ad.",
+    "image": 0,
+    "bbox": [
+     824,
+     228,
+     909,
+     243
+    ],
+    "conf": 31.5,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "fragment",
+   "score": 0.0,
+   "pos": 93.5,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "sliver_moved": false,
+   "covered_by": [
+    "ONEREPORTKBANKT_p81_052"
+   ],
+   "maybe_duplicate_of": [],
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_006",
+   "suggest": "tesseract",
+   "order": 5,
+   "pos_end": 93.5
   },
   {
    "typhoon": {
@@ -321,8 +396,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_007",
    "suggest": "typhoon",
    "order": 6,
@@ -354,8 +431,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_008",
    "suggest": "typhoon",
    "order": 7,
@@ -387,8 +466,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_009",
    "suggest": "typhoon",
    "order": 8,
@@ -420,8 +501,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_010",
    "suggest": "typhoon",
    "order": 9,
@@ -453,8 +536,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_011",
    "suggest": "typhoon",
    "order": 10,
@@ -486,8 +571,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_012",
    "suggest": "typhoon",
    "order": 11,
@@ -519,8 +606,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_013",
    "suggest": "typhoon",
    "order": 12,
@@ -552,8 +641,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_014",
    "suggest": "typhoon",
    "order": 13,
@@ -585,8 +676,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_015",
    "suggest": "typhoon",
    "order": 14,
@@ -616,11 +709,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
     "ONEREPORTKBANKT_p81_017",
     "ONEREPORTKBANKT_p81_015"
    ],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_016",
    "suggest": "tesseract",
    "order": 15,
@@ -652,8 +747,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_017",
    "suggest": "typhoon",
    "order": 16,
@@ -683,8 +780,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_018",
    "suggest": "tesseract",
    "order": 17,
@@ -716,8 +815,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_019",
    "suggest": "typhoon",
    "order": 18,
@@ -725,7 +826,7 @@
   },
   {
    "typhoon": {
-    "text": "6. นโยบายการกำกับดูแลกิจกา"
+    "text": "6. นโยบายการกำกับดูแลกิจการ"
    },
    "tesseract": {
     "text": "6. นโยบายการกํากับดูแลกิจการ",
@@ -740,25 +841,27 @@
     "column": null
    },
    "region": null,
-   "auto_accept": false,
+   "auto_accept": true,
    "audit": false,
-   "kind": "diff",
-   "score": 96.2,
+   "kind": "agree",
+   "score": 100.0,
    "pos": 415,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": true,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_020",
    "suggest": "typhoon",
    "order": 19,
-   "pos_end": 440
+   "pos_end": 441
   },
   {
    "typhoon": {
-    "text": "ร 7. โครงสร้างการกำกับดูแลกิจการ"
+    "text": "7. โครงสร้างการกำกับดูแลกิจการ"
    },
    "tesseract": {
     "text": ": 7. โครงสร้างการกํากับดูแลกิจการ",
@@ -777,13 +880,15 @@
    "audit": false,
    "kind": "diff",
    "score": 96.7,
-   "pos": 440,
+   "pos": 441,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": true,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_021",
    "suggest": "typhoon",
    "order": 20,
@@ -815,8 +920,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_022",
    "suggest": "typhoon",
    "order": 21,
@@ -848,8 +955,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_023",
    "suggest": "typhoon",
    "order": 22,
@@ -881,8 +990,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": "sample",
    "id": "ONEREPORTKBANKT_p81_024",
    "suggest": "typhoon",
    "order": 23,
@@ -914,8 +1025,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_025",
    "suggest": "typhoon",
    "order": 24,
@@ -947,8 +1060,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_026",
    "suggest": "typhoon",
    "order": 25,
@@ -956,7 +1071,7 @@
   },
   {
    "typhoon": {
-    "text": "ส่วนที่ 3 งบการเงิ"
+    "text": "ส่วนที่ 3 งบการเงิน"
    },
    "tesseract": {
     "text": "ส่วนที่ 3 งบการเงิน",
@@ -971,25 +1086,27 @@
     "column": null
    },
    "region": null,
-   "auto_accept": false,
+   "auto_accept": true,
    "audit": false,
-   "kind": "diff",
-   "score": 94.1,
+   "kind": "agree",
+   "score": 100.0,
    "pos": 628,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": true,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_027",
-   "suggest": "tesseract",
+   "suggest": "typhoon",
    "order": 26,
-   "pos_end": 644
+   "pos_end": 645
   },
   {
    "typhoon": {
-    "text": "น รายงานความรับผิดชอบของคณะกรรมการธนาคาร"
+    "text": "รายงานความรับผิดชอบของคณะกรรมการธนาคาร"
    },
    "tesseract": {
     "text": "๑รายงานความรับผิดชอบของคณะกรรมการธนาคาร",
@@ -1008,13 +1125,15 @@
    "audit": false,
    "kind": "diff",
    "score": 97.4,
-   "pos": 644,
+   "pos": 645,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": true,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_028",
    "suggest": "typhoon",
    "order": 27,
@@ -1046,8 +1165,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_029",
    "suggest": "typhoon",
    "order": 28,
@@ -1079,8 +1200,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_030",
    "suggest": "typhoon",
    "order": 29,
@@ -1112,8 +1235,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_031",
    "suggest": "typhoon",
    "order": 30,
@@ -1121,47 +1246,14 @@
   },
   {
    "typhoon": {
-    "text": "เอกสารแนบ เอกสารแนบ"
-   },
-   "tesseract": {
-    "text": "อกสารแนบ 2",
-    "image": 0,
-    "bbox": [
-     128,
-     1440,
-     248,
-     1476
-    ],
-    "conf": 95.7,
-    "column": null
-   },
-   "region": null,
-   "auto_accept": false,
-   "audit": false,
-   "kind": "diff",
-   "score": 44.4,
-   "pos": 766,
-   "snap": 9,
-   "gap_merged": 0,
-   "cut_mid": false,
-   "cut_mid_sides": [],
-   "covered_by": [],
-   "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_032",
-   "suggest": "typhoon",
-   "order": 31,
-   "pos_end": 784
-  },
-  {
-   "typhoon": {
-    "text": "1 รายละเอียดเกี่ยวกับกรรมการ ผู้บริหาร"
+    "text": "เอกสารแนบ"
    },
    "tesseract": null,
    "region": {
     "image": 0,
     "bbox": [
      0,
-     1412,
+     1224,
      1000000,
      1472
     ]
@@ -1170,13 +1262,47 @@
    "audit": false,
    "kind": "typhoon_only",
    "score": 0.0,
-   "pos": 784,
+   "pos": 766,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_032",
+   "suggest": "typhoon",
+   "order": 31,
+   "pos_end": 775
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 1 รายละเอียดเกี่ยวกับกรรมการ ผู้บริหาร"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     1224,
+     1000000,
+     1472
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 775,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "sliver_moved": false,
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_033",
    "suggest": "typhoon",
    "order": 32,
@@ -1208,8 +1334,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_034",
    "suggest": "typhoon",
    "order": 33,
@@ -1220,29 +1348,31 @@
     "text": "เอกสารแนบ 2"
    },
    "tesseract": {
-    "text": "เอกสารแนบ 5 253",
+    "text": "อกสารแนบ 2",
     "image": 0,
     "bbox": [
-     122,
-     1772,
-     397,
-     1799
+     128,
+     1440,
+     248,
+     1476
     ],
-    "conf": 90.3,
+    "conf": 95.7,
     "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
    "kind": "diff",
-   "score": 76.9,
+   "score": 90.0,
    "pos": 868,
-   "snap": 0,
+   "snap": 1,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_035",
    "suggest": "typhoon",
    "order": 34,
@@ -1274,8 +1404,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_036",
    "suggest": "typhoon",
    "order": 35,
@@ -1307,8 +1439,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_037",
    "suggest": "typhoon",
    "order": 36,
@@ -1340,8 +1474,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_038",
    "suggest": "tesseract",
    "order": 37,
@@ -1373,8 +1509,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_039",
    "suggest": "typhoon",
    "order": 38,
@@ -1406,8 +1544,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_040",
    "suggest": "typhoon",
    "order": 39,
@@ -1439,8 +1579,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_041",
    "suggest": "typhoon",
    "order": 40,
@@ -1472,8 +1614,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_042",
    "suggest": "typhoon",
    "order": 41,
@@ -1503,8 +1647,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_043",
    "suggest": "tesseract",
    "order": 42,
@@ -1533,8 +1679,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_044",
    "suggest": "typhoon",
    "order": 43,
@@ -1566,8 +1714,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_045",
    "suggest": "typhoon",
    "order": 44,
@@ -1578,29 +1728,31 @@
     "text": "เอกสารแนบ 5"
    },
    "tesseract": {
-    "text": "เอกสารแนบ 6",
+    "text": "เอกสารแนบ 5 253",
     "image": 0,
     "bbox": [
      122,
-     1883,
-     248,
-     1899
+     1772,
+     397,
+     1799
     ],
-    "conf": 95.9,
+    "conf": 90.3,
     "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
    "kind": "diff",
-   "score": 90.0,
+   "score": 76.9,
    "pos": 1174,
    "snap": 0,
-   "gap_merged": 1,
+   "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_046",
    "suggest": "typhoon",
    "order": 45,
@@ -1632,8 +1784,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_047",
    "suggest": "typhoon",
    "order": 46,
@@ -1641,7 +1795,7 @@
   },
   {
    "typhoon": {
-    "text": "และจรรยาบรรณธุรกิจ (ฉบับเต็ม) เอกสารแนบ 6"
+    "text": "และจรรยาบรรณธุรกิจ (ฉบับเต็ม)"
    },
    "tesseract": {
     "text": "และจรรยาบรรณรธุรกิจ (ฉบับเต็ม ) 72",
@@ -1659,17 +1813,54 @@
    "auto_accept": false,
    "audit": false,
    "kind": "diff",
-   "score": 71.1,
+   "score": 90.3,
    "pos": 1221,
-   "snap": 7,
-   "gap_merged": 1,
+   "snap": 0,
+   "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": true,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTKBANKT_p81_048",
    "suggest": "typhoon",
    "order": 47,
+   "pos_end": 1249
+  },
+  {
+   "typhoon": {
+    "text": "เอกสารแนบ 6"
+   },
+   "tesseract": {
+    "text": "เอกสารแนบ 6",
+    "image": 0,
+    "bbox": [
+     122,
+     1883,
+     248,
+     1899
+    ],
+    "conf": 95.9,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": true,
+   "audit": false,
+   "kind": "agree",
+   "score": 100.0,
+   "pos": 1249,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "sliver_moved": true,
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_049",
+   "suggest": "typhoon",
+   "order": 48,
    "pos_end": 1259
   },
   {
@@ -1698,11 +1889,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_049",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_050",
    "suggest": "typhoon",
-   "order": 48,
+   "order": 49,
    "pos_end": 1282
   },
   {
@@ -1723,7 +1916,7 @@
    },
    "region": null,
    "auto_accept": true,
-   "audit": false,
+   "audit": true,
    "kind": "agree",
    "score": 100.0,
    "pos": 1282,
@@ -1731,11 +1924,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_050",
+   "audit_reason": "sample",
+   "id": "ONEREPORTKBANKT_p81_051",
    "suggest": "typhoon",
-   "order": 49,
+   "order": 50,
    "pos_end": 1298
   },
   {
@@ -1764,11 +1959,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_051",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_052",
    "suggest": "typhoon",
-   "order": 50,
+   "order": 51,
    "pos_end": 1321
   },
   {
@@ -1795,13 +1992,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_053"
+    "ONEREPORTKBANKT_p81_054"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_052",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_053",
    "suggest": "tesseract",
-   "order": 51,
+   "order": 52,
    "pos_end": 1320.5
   },
   {
@@ -1830,11 +2029,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_053",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_054",
    "suggest": "typhoon",
-   "order": 52,
+   "order": 53,
    "pos_end": 1443
   },
   {
@@ -1861,14 +2062,16 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_055",
-    "ONEREPORTKBANKT_p81_053"
+    "ONEREPORTKBANKT_p81_056",
+    "ONEREPORTKBANKT_p81_054"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_054",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_055",
    "suggest": "tesseract",
-   "order": 53,
+   "order": 54,
    "pos_end": 1442.5
   },
   {
@@ -1897,11 +2100,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_055",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_056",
    "suggest": "typhoon",
-   "order": 54,
+   "order": 55,
    "pos_end": 1559
   },
   {
@@ -1928,14 +2133,16 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_057",
-    "ONEREPORTKBANKT_p81_055"
+    "ONEREPORTKBANKT_p81_058",
+    "ONEREPORTKBANKT_p81_056"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_056",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_057",
    "suggest": "tesseract",
-   "order": 55,
+   "order": 56,
    "pos_end": 1558.5
   },
   {
@@ -1964,11 +2171,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_057",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_058",
    "suggest": "typhoon",
-   "order": 56,
+   "order": 57,
    "pos_end": 1677
   },
   {
@@ -1995,13 +2204,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_059"
+    "ONEREPORTKBANKT_p81_060"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_058",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_059",
    "suggest": "tesseract",
-   "order": 57,
+   "order": 58,
    "pos_end": 1676.5
   },
   {
@@ -2030,11 +2241,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_059",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_060",
    "suggest": "typhoon",
-   "order": 58,
+   "order": 59,
    "pos_end": 1753
   },
   {
@@ -2061,13 +2274,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_061"
+    "ONEREPORTKBANKT_p81_062"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_060",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_061",
    "suggest": "tesseract",
-   "order": 59,
+   "order": 60,
    "pos_end": 1752.5
   },
   {
@@ -2096,11 +2311,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_061",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_062",
    "suggest": "typhoon",
-   "order": 60,
+   "order": 61,
    "pos_end": 1880
   },
   {
@@ -2129,11 +2346,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_062",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_063",
    "suggest": "typhoon",
-   "order": 61,
+   "order": 62,
    "pos_end": 1955
   },
   {
@@ -2141,65 +2360,69 @@
     "text": "เรื่องสำคัญในการตรวจสอบ"
    },
    "tesseract": {
-    "text": "เรื่องสําคัญในการตรวจสอบ",
-    "image": 1,
+    "text": "เรืองสําคัญในการตรวจสอบ",
+    "image": 0,
     "bbox": [
-     254,
-     1339,
-     547,
-     1385
+     815,
+     746,
+     1111,
+     786
     ],
-    "conf": 94.3,
-    "column": null
-   },
-   "region": null,
-   "auto_accept": true,
-   "audit": true,
-   "kind": "agree",
-   "score": 100.0,
-   "pos": 1955,
-   "snap": 0,
-   "gap_merged": 0,
-   "cut_mid": false,
-   "cut_mid_sides": [],
-   "covered_by": [],
-   "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_063",
-   "suggest": "typhoon",
-   "order": 62,
-   "pos_end": 1978
-  },
-  {
-   "typhoon": null,
-   "tesseract": {
-    "text": "i 4 om Sosa ร -",
-    "image": 1,
-    "bbox": [
-     289,
-     1432,
-     1356,
-     1447
-    ],
-    "conf": 33.6,
+    "conf": 94.5,
     "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "fragment",
+   "kind": "diff",
+   "score": 95.7,
+   "pos": 1955,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "sliver_moved": false,
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_064",
+   "suggest": "typhoon",
+   "order": 63,
+   "pos_end": 1978
+  },
+  {
+   "typhoon": null,
+   "tesseract": {
+    "text": "ลัจซี่ว 1 ลัฯรสี่๑กกดกรมี้ 8 x x x a a",
+    "image": 0,
+    "bbox": [
+     850,
+     818,
+     2132,
+     855
+    ],
+    "conf": 71.5,
+    "column": null
+   },
+   "region": null,
+   "auto_accept": false,
+   "audit": false,
+   "kind": "duplicate",
    "score": 0.0,
    "pos": 1977.5,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_136"
+    "ONEREPORTKBANKT_p81_066"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_064",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_065",
    "suggest": "tesseract",
-   "order": 63,
+   "order": 64,
    "pos_end": 1977.5
   },
   {
@@ -2228,11 +2451,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_065",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_066",
    "suggest": "typhoon",
-   "order": 64,
+   "order": 65,
    "pos_end": 2096
   },
   {
@@ -2259,13 +2484,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_067"
+    "ONEREPORTKBANKT_p81_068"
    ],
-   "id": "ONEREPORTKBANKT_p81_066",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_067",
    "suggest": "tesseract",
-   "order": 65,
+   "order": 66,
    "pos_end": 2095.5
   },
   {
@@ -2294,11 +2521,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_067",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_068",
    "suggest": "typhoon",
-   "order": 66,
+   "order": 67,
    "pos_end": 2209
   },
   {
@@ -2327,11 +2556,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_068",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_069",
    "suggest": "typhoon",
-   "order": 67,
+   "order": 68,
    "pos_end": 2217
   },
   {
@@ -2358,13 +2589,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_070"
+    "ONEREPORTKBANKT_p81_071"
    ],
-   "id": "ONEREPORTKBANKT_p81_069",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_070",
    "suggest": "tesseract",
-   "order": 68,
+   "order": 69,
    "pos_end": 2216.5
   },
   {
@@ -2393,11 +2626,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_070",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_071",
    "suggest": "typhoon",
-   "order": 69,
+   "order": 70,
    "pos_end": 2334
   },
   {
@@ -2424,13 +2659,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_072"
+    "ONEREPORTKBANKT_p81_073"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_071",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_072",
    "suggest": "tesseract",
-   "order": 70,
+   "order": 71,
    "pos_end": 2333.5
   },
   {
@@ -2459,11 +2696,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_072",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_073",
    "suggest": "typhoon",
-   "order": 71,
+   "order": 72,
    "pos_end": 2462
   },
   {
@@ -2490,13 +2729,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_074"
+    "ONEREPORTKBANKT_p81_075"
    ],
-   "id": "ONEREPORTKBANKT_p81_073",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_074",
    "suggest": "tesseract",
-   "order": 72,
+   "order": 73,
    "pos_end": 2461.5
   },
   {
@@ -2525,11 +2766,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_074",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_075",
    "suggest": "typhoon",
-   "order": 73,
+   "order": 74,
    "pos_end": 2590
   },
   {
@@ -2556,13 +2799,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_076"
+    "ONEREPORTKBANKT_p81_077"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_075",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_076",
    "suggest": "tesseract",
-   "order": 74,
+   "order": 75,
    "pos_end": 2589.5
   },
   {
@@ -2591,11 +2836,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_076",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_077",
    "suggest": "typhoon",
-   "order": 75,
+   "order": 76,
    "pos_end": 2714
   },
   {
@@ -2622,13 +2869,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_078"
+    "ONEREPORTKBANKT_p81_079"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_077",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_078",
    "suggest": "tesseract",
-   "order": 76,
+   "order": 77,
    "pos_end": 2713.5
   },
   {
@@ -2657,11 +2906,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_078",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_079",
    "suggest": "typhoon",
-   "order": 77,
+   "order": 78,
    "pos_end": 2843
   },
   {
@@ -2688,13 +2939,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_080"
+    "ONEREPORTKBANKT_p81_081"
    ],
-   "id": "ONEREPORTKBANKT_p81_079",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_080",
    "suggest": "tesseract",
-   "order": 78,
+   "order": 79,
    "pos_end": 2842.5
   },
   {
@@ -2723,11 +2976,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_080",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_081",
    "suggest": "typhoon",
-   "order": 79,
+   "order": 80,
    "pos_end": 2960
   },
   {
@@ -2754,13 +3009,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_082"
+    "ONEREPORTKBANKT_p81_083"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_081",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_082",
    "suggest": "tesseract",
-   "order": 80,
+   "order": 81,
    "pos_end": 2959.5
   },
   {
@@ -2789,11 +3046,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_082",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_083",
    "suggest": "typhoon",
-   "order": 81,
+   "order": 82,
    "pos_end": 3084
   },
   {
@@ -2820,14 +3079,16 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_084",
-    "ONEREPORTKBANKT_p81_082"
+    "ONEREPORTKBANKT_p81_085",
+    "ONEREPORTKBANKT_p81_083"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_083",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_084",
    "suggest": "tesseract",
-   "order": 82,
+   "order": 83,
    "pos_end": 3083.5
   },
   {
@@ -2856,11 +3117,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_084",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_085",
    "suggest": "typhoon",
-   "order": 83,
+   "order": 84,
    "pos_end": 3166
   },
   {
@@ -2887,13 +3150,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_086"
+    "ONEREPORTKBANKT_p81_087"
    ],
-   "id": "ONEREPORTKBANKT_p81_085",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_086",
    "suggest": "tesseract",
-   "order": 84,
+   "order": 85,
    "pos_end": 3165.5
   },
   {
@@ -2922,11 +3187,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_086",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_087",
    "suggest": "typhoon",
-   "order": 85,
+   "order": 86,
    "pos_end": 3208
   },
   {
@@ -2955,11 +3222,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_087",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_088",
    "suggest": "typhoon",
-   "order": 86,
+   "order": 87,
    "pos_end": 3321
   },
   {
@@ -2986,13 +3255,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_089"
+    "ONEREPORTKBANKT_p81_090"
    ],
-   "id": "ONEREPORTKBANKT_p81_088",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_089",
    "suggest": "tesseract",
-   "order": 87,
+   "order": 88,
    "pos_end": 3320.5
   },
   {
@@ -3021,11 +3292,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_089",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_090",
    "suggest": "typhoon",
-   "order": 88,
+   "order": 89,
    "pos_end": 3437
   },
   {
@@ -3052,13 +3325,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_089"
+    "ONEREPORTKBANKT_p81_090"
    ],
-   "id": "ONEREPORTKBANKT_p81_090",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_091",
    "suggest": "tesseract",
-   "order": 89,
+   "order": 90,
    "pos_end": 3436.5
   },
   {
@@ -3085,13 +3360,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_092"
+    "ONEREPORTKBANKT_p81_093"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_091",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_092",
    "suggest": "tesseract",
-   "order": 90,
+   "order": 91,
    "pos_end": 3436.5
   },
   {
@@ -3112,7 +3389,7 @@
    },
    "region": null,
    "auto_accept": true,
-   "audit": false,
+   "audit": true,
    "kind": "agree",
    "score": 100.0,
    "pos": 3437,
@@ -3120,11 +3397,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_092",
+   "audit_reason": "sample",
+   "id": "ONEREPORTKBANKT_p81_093",
    "suggest": "typhoon",
-   "order": 91,
+   "order": 92,
    "pos_end": 3548
   },
   {
@@ -3151,13 +3430,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_094"
+    "ONEREPORTKBANKT_p81_095"
    ],
-   "id": "ONEREPORTKBANKT_p81_093",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_094",
    "suggest": "tesseract",
-   "order": 92,
+   "order": 93,
    "pos_end": 3547.5
   },
   {
@@ -3186,11 +3467,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_094",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_095",
    "suggest": "typhoon",
-   "order": 93,
+   "order": 94,
    "pos_end": 3669
   },
   {
@@ -3217,13 +3500,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_096"
+    "ONEREPORTKBANKT_p81_097"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_095",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_096",
    "suggest": "tesseract",
-   "order": 94,
+   "order": 95,
    "pos_end": 3668.5
   },
   {
@@ -3252,11 +3537,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_096",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_097",
    "suggest": "typhoon",
-   "order": 95,
+   "order": 96,
    "pos_end": 3796
   },
   {
@@ -3283,13 +3570,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_098"
+    "ONEREPORTKBANKT_p81_099"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_097",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_098",
    "suggest": "tesseract",
-   "order": 96,
+   "order": 97,
    "pos_end": 3795.5
   },
   {
@@ -3318,11 +3607,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_098",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_099",
    "suggest": "typhoon",
-   "order": 97,
+   "order": 98,
    "pos_end": 3914
   },
   {
@@ -3351,11 +3642,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_099",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_100",
    "suggest": "typhoon",
-   "order": 98,
+   "order": 99,
    "pos_end": 3976
   },
   {
@@ -3382,13 +3675,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_101"
+    "ONEREPORTKBANKT_p81_102"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_100",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_101",
    "suggest": "tesseract",
-   "order": 99,
+   "order": 100,
    "pos_end": 3975.5
   },
   {
@@ -3417,11 +3712,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_101",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_102",
    "suggest": "typhoon",
-   "order": 100,
+   "order": 101,
    "pos_end": 4107
   },
   {
@@ -3448,13 +3745,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_103"
+    "ONEREPORTKBANKT_p81_104"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_102",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_103",
    "suggest": "tesseract",
-   "order": 101,
+   "order": 102,
    "pos_end": 4106.5
   },
   {
@@ -3483,11 +3782,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_103",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_104",
    "suggest": "typhoon",
-   "order": 102,
+   "order": 103,
    "pos_end": 4240
   },
   {
@@ -3514,13 +3815,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_105"
+    "ONEREPORTKBANKT_p81_106"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_104",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_105",
    "suggest": "tesseract",
-   "order": 103,
+   "order": 104,
    "pos_end": 4239.5
   },
   {
@@ -3549,11 +3852,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_105",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_106",
    "suggest": "typhoon",
-   "order": 104,
+   "order": 105,
    "pos_end": 4318
   },
   {
@@ -3582,11 +3887,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_106",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_107",
    "suggest": "typhoon",
-   "order": 105,
+   "order": 106,
    "pos_end": 4332
   },
   {
@@ -3595,11 +3902,11 @@
    },
    "tesseract": {
     "text": "รายงานแบบ 56-1 One Report ประจําปี 2568",
-    "image": 0,
+    "image": 1,
     "bbox": [
-     922,
+     1154,
      127,
-     1242,
+     1474,
      156
     ],
     "conf": 94.5,
@@ -3607,7 +3914,7 @@
    },
    "region": null,
    "auto_accept": true,
-   "audit": true,
+   "audit": false,
    "kind": "agree",
    "score": 100.0,
    "pos": 4332,
@@ -3615,44 +3922,48 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_107",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_108",
    "suggest": "typhoon",
-   "order": 106,
+   "order": 107,
    "pos_end": 4365
   },
   {
    "typhoon": null,
    "tesseract": {
-    "text": "ad.",
-    "image": 0,
+    "text": "จักขธักการลัดจั้ i 4 งิ่งจิ้น๓ข่างขีบัยตักลั : จ๊",
+    "image": 1,
     "bbox": [
-     824,
-     228,
-     909,
-     243
+     259,
+     219,
+     1375,
+     264
     ],
-    "conf": 31.5,
+    "conf": 58.5,
     "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "fragment",
+   "kind": "duplicate",
    "score": 0.0,
    "pos": 4364.5,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_051"
+    "ONEREPORTKBANKT_p81_110"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_108",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_109",
    "suggest": "tesseract",
-   "order": 107,
+   "order": 108,
    "pos_end": 4364.5
   },
   {
@@ -3681,11 +3992,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_109",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_110",
    "suggest": "typhoon",
-   "order": 108,
+   "order": 109,
    "pos_end": 4481
   },
   {
@@ -3712,13 +4025,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_111"
+    "ONEREPORTKBANKT_p81_112"
    ],
-   "id": "ONEREPORTKBANKT_p81_110",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_111",
    "suggest": "tesseract",
-   "order": 109,
+   "order": 110,
    "pos_end": 4480.5
   },
   {
@@ -3747,11 +4062,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_111",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_112",
    "suggest": "typhoon",
-   "order": 110,
+   "order": 111,
    "pos_end": 4602
   },
   {
@@ -3780,11 +4097,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_112",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_113",
    "suggest": "typhoon",
-   "order": 111,
+   "order": 112,
    "pos_end": 4674
   },
   {
@@ -3811,13 +4130,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_114"
+    "ONEREPORTKBANKT_p81_115"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_113",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_114",
    "suggest": "tesseract",
-   "order": 112,
+   "order": 113,
    "pos_end": 4673.5
   },
   {
@@ -3846,11 +4167,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_114",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_115",
    "suggest": "typhoon",
-   "order": 113,
+   "order": 114,
    "pos_end": 4789
   },
   {
@@ -3877,13 +4200,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_116"
+    "ONEREPORTKBANKT_p81_117"
    ],
-   "id": "ONEREPORTKBANKT_p81_115",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_116",
    "suggest": "tesseract",
-   "order": 114,
+   "order": 115,
    "pos_end": 4788.5
   },
   {
@@ -3912,11 +4237,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_116",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_117",
    "suggest": "typhoon",
-   "order": 115,
+   "order": 116,
    "pos_end": 4910
   },
   {
@@ -3943,13 +4270,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_118"
+    "ONEREPORTKBANKT_p81_119"
    ],
-   "id": "ONEREPORTKBANKT_p81_117",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_118",
    "suggest": "tesseract",
-   "order": 116,
+   "order": 117,
    "pos_end": 4909.5
   },
   {
@@ -3978,11 +4307,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_118",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_119",
    "suggest": "typhoon",
-   "order": 117,
+   "order": 118,
    "pos_end": 4993
   },
   {
@@ -4009,13 +4340,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_120"
+    "ONEREPORTKBANKT_p81_121"
    ],
-   "id": "ONEREPORTKBANKT_p81_119",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_120",
    "suggest": "tesseract",
-   "order": 118,
+   "order": 119,
    "pos_end": 4992.5
   },
   {
@@ -4044,11 +4377,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_120",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_121",
    "suggest": "typhoon",
-   "order": 119,
+   "order": 120,
    "pos_end": 5079
   },
   {
@@ -4075,13 +4410,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_122"
+    "ONEREPORTKBANKT_p81_123"
    ],
-   "id": "ONEREPORTKBANKT_p81_121",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_122",
    "suggest": "tesseract",
-   "order": 120,
+   "order": 121,
    "pos_end": 5078.5
   },
   {
@@ -4110,11 +4447,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_122",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_123",
    "suggest": "typhoon",
-   "order": 121,
+   "order": 122,
    "pos_end": 5205
   },
   {
@@ -4143,11 +4482,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_123",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_124",
    "suggest": "typhoon",
-   "order": 122,
+   "order": 123,
    "pos_end": 5262
   },
   {
@@ -4174,13 +4515,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_125"
+    "ONEREPORTKBANKT_p81_126"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_124",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_125",
    "suggest": "tesseract",
-   "order": 123,
+   "order": 124,
    "pos_end": 5261.5
   },
   {
@@ -4209,11 +4552,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_125",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_126",
    "suggest": "typhoon",
-   "order": 124,
+   "order": 125,
    "pos_end": 5356
   },
   {
@@ -4240,13 +4585,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_127"
+    "ONEREPORTKBANKT_p81_128"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_126",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_127",
    "suggest": "tesseract",
-   "order": 125,
+   "order": 126,
    "pos_end": 5355.5
   },
   {
@@ -4275,11 +4622,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_127",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_128",
    "suggest": "typhoon",
-   "order": 126,
+   "order": 127,
    "pos_end": 5471
   },
   {
@@ -4308,11 +4657,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_128",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_129",
    "suggest": "typhoon",
-   "order": 127,
+   "order": 128,
    "pos_end": 5547
   },
   {
@@ -4341,11 +4692,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_129",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_130",
    "suggest": "typhoon",
-   "order": 128,
+   "order": 129,
    "pos_end": 5597
   },
   {
@@ -4372,13 +4725,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_132"
+    "ONEREPORTKBANKT_p81_133"
    ],
-   "id": "ONEREPORTKBANKT_p81_130",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_131",
    "suggest": "tesseract",
-   "order": 129,
+   "order": 130,
    "pos_end": 5596.5
   },
   {
@@ -4405,13 +4760,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_132"
+    "ONEREPORTKBANKT_p81_133"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_131",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_132",
    "suggest": "tesseract",
-   "order": 130,
+   "order": 131,
    "pos_end": 5596.5
   },
   {
@@ -4440,11 +4797,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_132",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_133",
    "suggest": "typhoon",
-   "order": 131,
+   "order": 132,
    "pos_end": 5715
   },
   {
@@ -4465,7 +4824,7 @@
    },
    "region": null,
    "auto_accept": true,
-   "audit": true,
+   "audit": false,
    "kind": "agree",
    "score": 100.0,
    "pos": 5715,
@@ -4473,11 +4832,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_133",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_134",
    "suggest": "typhoon",
-   "order": 132,
+   "order": 133,
    "pos_end": 5729
   },
   {
@@ -4485,65 +4846,69 @@
     "text": "เรื่องสำคัญในการตรวจสอบ"
    },
    "tesseract": {
-    "text": "เรืองสําคัญในการตรวจสอบ",
-    "image": 0,
+    "text": "เรื่องสําคัญในการตรวจสอบ",
+    "image": 1,
     "bbox": [
-     815,
-     746,
-     1111,
-     786
+     254,
+     1339,
+     547,
+     1385
     ],
-    "conf": 94.5,
+    "conf": 94.3,
     "column": null
    },
    "region": null,
-   "auto_accept": false,
+   "auto_accept": true,
    "audit": false,
-   "kind": "diff",
-   "score": 95.7,
+   "kind": "agree",
+   "score": 100.0,
    "pos": 5729,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_134",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_135",
    "suggest": "typhoon",
-   "order": 133,
+   "order": 134,
    "pos_end": 5752
   },
   {
    "typhoon": null,
    "tesseract": {
-    "text": "ลัจซี่ว 1 ลัฯรสี่๑กกดกรมี้ 8 x x x a a",
-    "image": 0,
+    "text": "i 4 om Sosa ร -",
+    "image": 1,
     "bbox": [
-     850,
-     818,
-     2132,
-     855
+     289,
+     1432,
+     1356,
+     1447
     ],
-    "conf": 71.5,
+    "conf": 33.6,
     "column": null
    },
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "duplicate",
+   "kind": "fragment",
    "score": 0.0,
    "pos": 5751.5,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_065"
+    "ONEREPORTKBANKT_p81_137"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_135",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_136",
    "suggest": "tesseract",
-   "order": 134,
+   "order": 135,
    "pos_end": 5751.5
   },
   {
@@ -4572,11 +4937,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_136",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_137",
    "suggest": "typhoon",
-   "order": 135,
+   "order": 136,
    "pos_end": 5857
   },
   {
@@ -4603,13 +4970,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_138"
+    "ONEREPORTKBANKT_p81_139"
    ],
-   "id": "ONEREPORTKBANKT_p81_137",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_138",
    "suggest": "tesseract",
-   "order": 136,
+   "order": 137,
    "pos_end": 5856.5
   },
   {
@@ -4638,11 +5007,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_138",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_139",
    "suggest": "typhoon",
-   "order": 137,
+   "order": 138,
    "pos_end": 5961
   },
   {
@@ -4671,11 +5042,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_139",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_140",
    "suggest": "typhoon",
-   "order": 138,
+   "order": 139,
    "pos_end": 5994
   },
   {
@@ -4702,13 +5075,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_141"
+    "ONEREPORTKBANKT_p81_142"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_140",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_141",
    "suggest": "tesseract",
-   "order": 139,
+   "order": 140,
    "pos_end": 5993.5
   },
   {
@@ -4737,11 +5112,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_141",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_142",
    "suggest": "typhoon",
-   "order": 140,
+   "order": 141,
    "pos_end": 6113
   },
   {
@@ -4770,11 +5147,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_142",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_143",
    "suggest": "typhoon",
-   "order": 141,
+   "order": 142,
    "pos_end": 6215
   },
   {
@@ -4801,13 +5180,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_144"
+    "ONEREPORTKBANKT_p81_145"
    ],
-   "id": "ONEREPORTKBANKT_p81_143",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_144",
    "suggest": "tesseract",
-   "order": 142,
+   "order": 143,
    "pos_end": 6214.5
   },
   {
@@ -4828,7 +5209,7 @@
    },
    "region": null,
    "auto_accept": true,
-   "audit": false,
+   "audit": true,
    "kind": "agree",
    "score": 100.0,
    "pos": 6215,
@@ -4836,11 +5217,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_144",
+   "audit_reason": "sample",
+   "id": "ONEREPORTKBANKT_p81_145",
    "suggest": "typhoon",
-   "order": 143,
+   "order": 144,
    "pos_end": 6325
   },
   {
@@ -4867,13 +5250,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_146"
+    "ONEREPORTKBANKT_p81_147"
    ],
-   "id": "ONEREPORTKBANKT_p81_145",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_146",
    "suggest": "tesseract",
-   "order": 144,
+   "order": 145,
    "pos_end": 6324.5
   },
   {
@@ -4902,11 +5287,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_146",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_147",
    "suggest": "typhoon",
-   "order": 145,
+   "order": 146,
    "pos_end": 6445
   },
   {
@@ -4933,13 +5320,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTKBANKT_p81_148"
+    "ONEREPORTKBANKT_p81_149"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_147",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_148",
    "suggest": "tesseract",
-   "order": 146,
+   "order": 147,
    "pos_end": 6444.5
   },
   {
@@ -4968,11 +5357,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_148",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_149",
    "suggest": "typhoon",
-   "order": 147,
+   "order": 148,
    "pos_end": 6567
   },
   {
@@ -4999,13 +5390,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTKBANKT_p81_150"
+    "ONEREPORTKBANKT_p81_151"
    ],
-   "id": "ONEREPORTKBANKT_p81_149",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_150",
    "suggest": "tesseract",
-   "order": 148,
+   "order": 149,
    "pos_end": 6566.5
   },
   {
@@ -5034,11 +5427,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTKBANKT_p81_150",
+   "audit_reason": null,
+   "id": "ONEREPORTKBANKT_p81_151",
    "suggest": "typhoon",
-   "order": 149,
+   "order": 150,
    "pos_end": 6667
   }
  ],

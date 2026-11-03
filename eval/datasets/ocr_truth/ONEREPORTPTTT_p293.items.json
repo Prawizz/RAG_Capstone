@@ -25,23 +25,77 @@
   "dropped": 0,
   "doubled": 0
  },
+ "inversions": [],
  "span_stats": {
-  "relocated": 3,
-  "trimmed": 2,
-  "demoted_by_overlap": 8,
+  "relocated": 0,
+  "trimmed": 1,
+  "demoted_by_overlap": 7,
   "snapped_items": 1,
   "snapped_chars": 1,
   "gap_merged_runs": 1,
   "gap_merged_chars": 1,
   "short_gap_typhoon_only": 0,
+  "anchors": 68,
+  "window_rejected": 2,
+  "window_inverted": 0,
+  "slivers_moved": 1,
+  "window_rejects": [
+   {
+    "text": "ส่วนที่ 2 การกํากับดูแลกิจการคณะกรรมการชุดย่อยผู้บริหารพนักงานและอื่นๆ",
+    "bbox": [
+     176,
+     102,
+     768,
+     130
+    ],
+    "window": [
+     88,
+     214
+    ],
+    "first": [
+     64,
+     129
+    ]
+   },
+   {
+    "text": "Excellence",
+    "bbox": [
+     482,
+     315,
+     585,
+     331
+    ],
+    "window": [
+     88,
+     214
+    ],
+    "first": [
+     747,
+     757
+    ]
+   }
+  ],
   "agree_to_diff": [
    {
-    "id": "ONEREPORTPTTT_p293_027",
+    "id": "ONEREPORTPTTT_p293_028",
     "tesseract": ": Responsibility for Society, I: Integrity & Ethics, T: Trust",
     "typhoon_before": ": Responsibility for Society, I: Integrity & Ethics, T: Trust",
     "typhoon_after": "R: Responsibility for Society, I: Integrity & Ethics, T: Trust &"
    }
   ],
+  "sliver_moves": [
+   {
+    "src": "ONEREPORTPTTT_p293_062",
+    "dst": "ONEREPORTPTTT_p293_061",
+    "side": "start",
+    "chars": "ม",
+    "src_before": "ม Trust & Respect: สร้างความเชื่อมั่นและไว้ใจ มุ่งเน้นให้",
+    "dst_before": "จริยธรรมอันดีงา",
+    "src_after": "Trust & Respect: สร้างความเชื่อมั่นและไว้ใจ มุ่งเน้นให้",
+    "dst_after": "จริยธรรมอันดีงาม"
+   }
+  ],
+  "inversions": 0,
   "cut_mid": []
  },
  "figures": [
@@ -61,11 +115,11 @@
   }
  ],
  "counts": {
-  "agree": 51,
+  "agree": 52,
   "agree_audit": 6,
-  "diff": 14,
-  "typhoon_only": 1,
-  "tesseract_only": 21,
+  "diff": 12,
+  "typhoon_only": 2,
+  "tesseract_only": 22,
   "fragment": 3,
   "duplicate": 0,
   "to_judge": 42,
@@ -87,8 +141,10 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTPTTT_p293_001",
    "suggest": "typhoon",
    "order": 0,
@@ -120,17 +176,17 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTPTTT_p293_002",
    "suggest": "typhoon",
    "order": 1,
    "pos_end": 88
   },
   {
-   "typhoon": {
-    "text": "คณะกรรมการชุดย่อย ผู้บริหาร พนักงาน และอื่น ๆ"
-   },
+   "typhoon": null,
    "tesseract": {
     "text": "ส่วนที่ 2 การกํากับดูแลกิจการคณะกรรมการชุดย่อยผู้บริหารพนักงานและอื่นๆ",
     "image": 0,
@@ -146,19 +202,21 @@
    "region": null,
    "auto_accept": false,
    "audit": false,
-   "kind": "diff",
-   "score": 61.2,
-   "pos": 88,
+   "kind": "tesseract_only",
+   "score": 0.0,
+   "pos": 87.5,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTPTTT_p293_003",
-   "suggest": "typhoon",
+   "suggest": "tesseract",
    "order": 2,
-   "pos_end": 129
+   "pos_end": 87.5
   },
   {
    "typhoon": null,
@@ -179,17 +237,19 @@
    "audit": false,
    "kind": "tesseract_only",
    "score": 0.0,
-   "pos": 128.5,
+   "pos": 87.5,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTPTTT_p293_004",
    "suggest": "tesseract",
    "order": 3,
-   "pos_end": 128.5
+   "pos_end": 87.5
   },
   {
    "typhoon": null,
@@ -210,17 +270,19 @@
    "audit": false,
    "kind": "tesseract_only",
    "score": 0.0,
-   "pos": 128.5,
+   "pos": 87.5,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTPTTT_p293_005",
    "suggest": "tesseract",
    "order": 4,
-   "pos_end": 128.5
+   "pos_end": 87.5
   },
   {
    "typhoon": null,
@@ -241,17 +303,19 @@
    "audit": false,
    "kind": "tesseract_only",
    "score": 0.0,
-   "pos": 128.5,
+   "pos": 87.5,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTPTTT_p293_006",
    "suggest": "tesseract",
    "order": 5,
-   "pos_end": 128.5
+   "pos_end": 87.5
   },
   {
    "typhoon": null,
@@ -272,17 +336,19 @@
    "audit": false,
    "kind": "tesseract_only",
    "score": 0.0,
-   "pos": 128.5,
+   "pos": 87.5,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTPTTT_p293_007",
    "suggest": "tesseract",
    "order": 6,
-   "pos_end": 128.5
+   "pos_end": 87.5
   },
   {
    "typhoon": null,
@@ -303,17 +369,19 @@
    "audit": false,
    "kind": "tesseract_only",
    "score": 0.0,
-   "pos": 128.5,
+   "pos": 87.5,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTPTTT_p293_008",
    "suggest": "tesseract",
    "order": 7,
-   "pos_end": 128.5
+   "pos_end": 87.5
   },
   {
    "typhoon": null,
@@ -334,17 +402,19 @@
    "audit": false,
    "kind": "tesseract_only",
    "score": 0.0,
-   "pos": 128.5,
+   "pos": 87.5,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTPTTT_p293_009",
    "suggest": "tesseract",
    "order": 8,
-   "pos_end": 128.5
+   "pos_end": 87.5
   },
   {
    "typhoon": null,
@@ -365,17 +435,19 @@
    "audit": false,
    "kind": "tesseract_only",
    "score": 0.0,
-   "pos": 128.5,
+   "pos": 87.5,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTPTTT_p293_010",
    "suggest": "tesseract",
    "order": 9,
-   "pos_end": 128.5
+   "pos_end": 87.5
   },
   {
    "typhoon": null,
@@ -396,17 +468,51 @@
    "audit": false,
    "kind": "fragment",
    "score": 0.0,
-   "pos": 128.5,
+   "pos": 87.5,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
+   "audit_reason": null,
    "id": "ONEREPORTPTTT_p293_011",
    "suggest": "tesseract",
    "order": 10,
-   "pos_end": 128.5
+   "pos_end": 87.5
+  },
+  {
+   "typhoon": {
+    "text": "คณะกรรมการชุดย่อย ผู้บริหาร พนักงาน และอื่น ๆ"
+   },
+   "tesseract": null,
+   "region": {
+    "image": 0,
+    "bbox": [
+     0,
+     48,
+     1000000,
+     138
+    ]
+   },
+   "auto_accept": false,
+   "audit": false,
+   "kind": "typhoon_only",
+   "score": 0.0,
+   "pos": 88,
+   "snap": 0,
+   "gap_merged": 0,
+   "cut_mid": false,
+   "cut_mid_sides": [],
+   "sliver_moved": false,
+   "covered_by": [],
+   "maybe_duplicate_of": [],
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_012",
+   "suggest": "typhoon",
+   "order": 11,
+   "pos_end": 129
   },
   {
    "typhoon": {
@@ -434,11 +540,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_012",
+   "audit_reason": "sample",
+   "id": "ONEREPORTPTTT_p293_013",
    "suggest": "typhoon",
-   "order": 11,
+   "order": 12,
    "pos_end": 173
   },
   {
@@ -467,11 +575,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_013",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_014",
    "suggest": "typhoon",
-   "order": 12,
+   "order": 13,
    "pos_end": 213
   },
   {
@@ -498,11 +608,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_014",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_015",
    "suggest": "tesseract",
-   "order": 13,
+   "order": 14,
    "pos_end": 212.5
   },
   {
@@ -529,11 +641,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_015",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_016",
    "suggest": "tesseract",
-   "order": 14,
+   "order": 15,
    "pos_end": 212.5
   },
   {
@@ -560,11 +674,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_016",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_017",
    "suggest": "tesseract",
-   "order": 15,
+   "order": 16,
    "pos_end": 212.5
   },
   {
@@ -591,11 +707,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_017",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_018",
    "suggest": "tesseract",
-   "order": 16,
+   "order": 17,
    "pos_end": 212.5
   },
   {
@@ -622,11 +740,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_018",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_019",
    "suggest": "tesseract",
-   "order": 17,
+   "order": 18,
    "pos_end": 212.5
   },
   {
@@ -653,11 +773,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_019",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_020",
    "suggest": "tesseract",
-   "order": 18,
+   "order": 19,
    "pos_end": 212.5
   },
   {
@@ -684,11 +806,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_020",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_021",
    "suggest": "tesseract",
-   "order": 19,
+   "order": 20,
    "pos_end": 212.5
   },
   {
@@ -715,11 +839,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_021",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_022",
    "suggest": "tesseract",
-   "order": 20,
+   "order": 21,
    "pos_end": 212.5
   },
   {
@@ -746,11 +872,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_022",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_023",
    "suggest": "tesseract",
-   "order": 21,
+   "order": 22,
    "pos_end": 212.5
   },
   {
@@ -777,11 +905,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_023",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_024",
    "suggest": "tesseract",
-   "order": 22,
+   "order": 23,
    "pos_end": 212.5
   },
   {
@@ -808,11 +938,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_024",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_025",
    "suggest": "tesseract",
-   "order": 23,
+   "order": 24,
    "pos_end": 212.5
   },
   {
@@ -839,11 +971,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_025",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_026",
    "suggest": "tesseract",
-   "order": 24,
+   "order": 25,
    "pos_end": 212.5
   },
   {
@@ -870,11 +1004,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_026",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_027",
    "suggest": "tesseract",
-   "order": 25,
+   "order": 26,
    "pos_end": 212.5
   },
   {
@@ -903,11 +1039,13 @@
    "gap_merged": 1,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_027",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_028",
    "suggest": "typhoon",
-   "order": 26,
+   "order": 27,
    "pos_end": 267
   },
   {
@@ -936,11 +1074,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_028",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_029",
    "suggest": "typhoon",
-   "order": 27,
+   "order": 28,
    "pos_end": 313
   },
   {
@@ -969,11 +1109,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_029",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_030",
    "suggest": "typhoon",
-   "order": 28,
+   "order": 29,
    "pos_end": 365
   },
   {
@@ -1000,11 +1142,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_030",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_031",
    "suggest": "tesseract",
-   "order": 29,
+   "order": 30,
    "pos_end": 364.5
   },
   {
@@ -1033,11 +1177,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_031",
+   "audit_reason": "sample",
+   "id": "ONEREPORTPTTT_p293_032",
    "suggest": "typhoon",
-   "order": 30,
+   "order": 31,
    "pos_end": 421
   },
   {
@@ -1064,13 +1210,15 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [
-    "ONEREPORTPTTT_p293_033"
+    "ONEREPORTPTTT_p293_034"
    ],
-   "id": "ONEREPORTPTTT_p293_032",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_033",
    "suggest": "tesseract",
-   "order": 31,
+   "order": 32,
    "pos_end": 420.5
   },
   {
@@ -1099,11 +1247,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_033",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_034",
    "suggest": "typhoon",
-   "order": 32,
+   "order": 33,
    "pos_end": 477
   },
   {
@@ -1132,11 +1282,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_034",
+   "audit_reason": "sample",
+   "id": "ONEREPORTPTTT_p293_035",
    "suggest": "typhoon",
-   "order": 33,
+   "order": 34,
    "pos_end": 527
   },
   {
@@ -1165,11 +1317,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_035",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_036",
    "suggest": "typhoon",
-   "order": 34,
+   "order": 35,
    "pos_end": 575
   },
   {
@@ -1196,14 +1350,16 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [
-    "ONEREPORTPTTT_p293_037",
-    "ONEREPORTPTTT_p293_035"
+    "ONEREPORTPTTT_p293_038",
+    "ONEREPORTPTTT_p293_036"
    ],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_036",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_037",
    "suggest": "tesseract",
-   "order": 35,
+   "order": 36,
    "pos_end": 574.5
   },
   {
@@ -1232,11 +1388,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_037",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_038",
    "suggest": "typhoon",
-   "order": 36,
+   "order": 37,
    "pos_end": 602
   },
   {
@@ -1265,11 +1423,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_038",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_039",
    "suggest": "typhoon",
-   "order": 37,
+   "order": 38,
    "pos_end": 656
   },
   {
@@ -1298,11 +1458,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_039",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_040",
    "suggest": "typhoon",
-   "order": 38,
+   "order": 39,
    "pos_end": 701
   },
   {
@@ -1331,11 +1493,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_040",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_041",
    "suggest": "typhoon",
-   "order": 39,
+   "order": 40,
    "pos_end": 736
   },
   {
@@ -1364,11 +1528,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_041",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_042",
    "suggest": "typhoon",
-   "order": 40,
+   "order": 41,
    "pos_end": 786
   },
   {
@@ -1397,11 +1563,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_042",
+   "audit_reason": "sample",
+   "id": "ONEREPORTPTTT_p293_043",
    "suggest": "typhoon",
-   "order": 41,
+   "order": 42,
    "pos_end": 840
   },
   {
@@ -1430,11 +1598,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_043",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_044",
    "suggest": "typhoon",
-   "order": 42,
+   "order": 43,
    "pos_end": 892
   },
   {
@@ -1463,11 +1633,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_044",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_045",
    "suggest": "typhoon",
-   "order": 43,
+   "order": 44,
    "pos_end": 944
   },
   {
@@ -1496,11 +1668,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_045",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_046",
    "suggest": "typhoon",
-   "order": 44,
+   "order": 45,
    "pos_end": 992
   },
   {
@@ -1529,11 +1703,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_046",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_047",
    "suggest": "typhoon",
-   "order": 45,
+   "order": 46,
    "pos_end": 1037
   },
   {
@@ -1562,11 +1738,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_047",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_048",
    "suggest": "typhoon",
-   "order": 46,
+   "order": 47,
    "pos_end": 1086
   },
   {
@@ -1595,11 +1773,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_048",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_049",
    "suggest": "typhoon",
-   "order": 47,
+   "order": 48,
    "pos_end": 1130
   },
   {
@@ -1628,11 +1808,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_049",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_050",
    "suggest": "typhoon",
-   "order": 48,
+   "order": 49,
    "pos_end": 1186
   },
   {
@@ -1661,11 +1843,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_050",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_051",
    "suggest": "typhoon",
-   "order": 49,
+   "order": 50,
    "pos_end": 1243
   },
   {
@@ -1694,11 +1878,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_051",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_052",
    "suggest": "typhoon",
-   "order": 50,
+   "order": 51,
    "pos_end": 1270
   },
   {
@@ -1727,11 +1913,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_052",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_053",
    "suggest": "typhoon",
-   "order": 51,
+   "order": 52,
    "pos_end": 1324
   },
   {
@@ -1760,11 +1948,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_053",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_054",
    "suggest": "typhoon",
-   "order": 52,
+   "order": 53,
    "pos_end": 1373
   },
   {
@@ -1793,11 +1983,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_054",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_055",
    "suggest": "typhoon",
-   "order": 53,
+   "order": 54,
    "pos_end": 1422
   },
   {
@@ -1826,11 +2018,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_055",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_056",
    "suggest": "typhoon",
-   "order": 54,
+   "order": 55,
    "pos_end": 1479
   },
   {
@@ -1859,11 +2053,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_056",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_057",
    "suggest": "typhoon",
-   "order": 55,
+   "order": 56,
    "pos_end": 1524
   },
   {
@@ -1892,11 +2088,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_057",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_058",
    "suggest": "typhoon",
-   "order": 56,
+   "order": 57,
    "pos_end": 1574
   },
   {
@@ -1925,11 +2123,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_058",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_059",
    "suggest": "typhoon",
-   "order": 57,
+   "order": 58,
    "pos_end": 1623
   },
   {
@@ -1958,16 +2158,18 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_059",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_060",
    "suggest": "typhoon",
-   "order": 58,
+   "order": 59,
    "pos_end": 1674
   },
   {
    "typhoon": {
-    "text": "จริยธรรมอันดีงา"
+    "text": "จริยธรรมอันดีงาม"
    },
    "tesseract": {
     "text": "จริยธรรมอันดีงาม",
@@ -1982,25 +2184,27 @@
     "column": null
    },
    "region": null,
-   "auto_accept": false,
+   "auto_accept": true,
    "audit": false,
-   "kind": "diff",
-   "score": 93.8,
+   "kind": "agree",
+   "score": 100.0,
    "pos": 1674,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": true,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_060",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_061",
    "suggest": "typhoon",
-   "order": 59,
-   "pos_end": 1689
+   "order": 60,
+   "pos_end": 1690
   },
   {
    "typhoon": {
-    "text": "ม Trust & Respect: สร้างความเชื่อมั่นและไว้ใจ มุ่งเน้นให้"
+    "text": "Trust & Respect: สร้างความเชื่อมั่นและไว้ใจ มุ่งเน้นให้"
    },
    "tesseract": {
     "text": "๑ Trust & Respect: สร้างความเชื่อมั่นและไว้ใจมุ่งเห็นให้",
@@ -2019,16 +2223,18 @@
    "audit": false,
    "kind": "diff",
    "score": 94.2,
-   "pos": 1689,
+   "pos": 1690,
    "snap": 0,
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": true,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_061",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_062",
    "suggest": "typhoon",
-   "order": 60,
+   "order": 61,
    "pos_end": 1741
   },
   {
@@ -2057,11 +2263,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_062",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_063",
    "suggest": "typhoon",
-   "order": 61,
+   "order": 62,
    "pos_end": 1791
   },
   {
@@ -2090,11 +2298,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_063",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_064",
    "suggest": "typhoon",
-   "order": 62,
+   "order": 63,
    "pos_end": 1842
   },
   {
@@ -2123,11 +2333,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_064",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_065",
    "suggest": "typhoon",
-   "order": 63,
+   "order": 64,
    "pos_end": 1885
   },
   {
@@ -2156,11 +2368,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_065",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_066",
    "suggest": "typhoon",
-   "order": 64,
+   "order": 65,
    "pos_end": 1909
   },
   {
@@ -2189,11 +2403,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_066",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_067",
    "suggest": "typhoon",
-   "order": 65,
+   "order": 66,
    "pos_end": 1928
   },
   {
@@ -2222,11 +2438,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_067",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_068",
    "suggest": "typhoon",
-   "order": 66,
+   "order": 67,
    "pos_end": 1943
   },
   {
@@ -2255,11 +2473,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_068",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_069",
    "suggest": "typhoon",
-   "order": 67,
+   "order": 68,
    "pos_end": 1990
   },
   {
@@ -2288,11 +2508,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_069",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_070",
    "suggest": "typhoon",
-   "order": 68,
+   "order": 69,
    "pos_end": 2037
   },
   {
@@ -2321,11 +2543,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_070",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_071",
    "suggest": "typhoon",
-   "order": 69,
+   "order": 70,
    "pos_end": 2080
   },
   {
@@ -2354,11 +2578,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_071",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_072",
    "suggest": "typhoon",
-   "order": 70,
+   "order": 71,
    "pos_end": 2131
   },
   {
@@ -2379,7 +2605,7 @@
    },
    "region": null,
    "auto_accept": true,
-   "audit": false,
+   "audit": true,
    "kind": "agree",
    "score": 100.0,
    "pos": 2131,
@@ -2387,11 +2613,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_072",
+   "audit_reason": "sample",
+   "id": "ONEREPORTPTTT_p293_073",
    "suggest": "typhoon",
-   "order": 71,
+   "order": 72,
    "pos_end": 2182
   },
   {
@@ -2412,7 +2640,7 @@
    },
    "region": null,
    "auto_accept": true,
-   "audit": true,
+   "audit": false,
    "kind": "agree",
    "score": 100.0,
    "pos": 2182,
@@ -2420,11 +2648,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_073",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_074",
    "suggest": "typhoon",
-   "order": 72,
+   "order": 73,
    "pos_end": 2231
   },
   {
@@ -2453,11 +2683,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_074",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_075",
    "suggest": "typhoon",
-   "order": 73,
+   "order": 74,
    "pos_end": 2279
   },
   {
@@ -2486,11 +2718,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_075",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_076",
    "suggest": "typhoon",
-   "order": 74,
+   "order": 75,
    "pos_end": 2335
   },
   {
@@ -2519,11 +2753,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_076",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_077",
    "suggest": "typhoon",
-   "order": 75,
+   "order": 76,
    "pos_end": 2382
   },
   {
@@ -2552,11 +2788,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_077",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_078",
    "suggest": "typhoon",
-   "order": 76,
+   "order": 77,
    "pos_end": 2433
   },
   {
@@ -2585,11 +2823,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_078",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_079",
    "suggest": "typhoon",
-   "order": 77,
+   "order": 78,
    "pos_end": 2474
   },
   {
@@ -2618,11 +2858,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_079",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_080",
    "suggest": "typhoon",
-   "order": 78,
+   "order": 79,
    "pos_end": 2516
   },
   {
@@ -2651,11 +2893,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_080",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_081",
    "suggest": "typhoon",
-   "order": 79,
+   "order": 80,
    "pos_end": 2572
   },
   {
@@ -2684,11 +2928,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_081",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_082",
    "suggest": "typhoon",
-   "order": 80,
+   "order": 81,
    "pos_end": 2621
   },
   {
@@ -2709,7 +2955,7 @@
    },
    "region": null,
    "auto_accept": true,
-   "audit": false,
+   "audit": true,
    "kind": "agree",
    "score": 100.0,
    "pos": 2621,
@@ -2717,11 +2963,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_082",
+   "audit_reason": "sample",
+   "id": "ONEREPORTPTTT_p293_083",
    "suggest": "typhoon",
-   "order": 81,
+   "order": 82,
    "pos_end": 2630
   },
   {
@@ -2742,7 +2990,7 @@
    },
    "region": null,
    "auto_accept": true,
-   "audit": true,
+   "audit": false,
    "kind": "agree",
    "score": 100.0,
    "pos": 2630,
@@ -2750,11 +2998,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_083",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_084",
    "suggest": "typhoon",
-   "order": 82,
+   "order": 83,
    "pos_end": 2683
   },
   {
@@ -2783,11 +3033,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_084",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_085",
    "suggest": "typhoon",
-   "order": 83,
+   "order": 84,
    "pos_end": 2728
   },
   {
@@ -2816,11 +3068,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_085",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_086",
    "suggest": "typhoon",
-   "order": 84,
+   "order": 85,
    "pos_end": 2782
   },
   {
@@ -2849,11 +3103,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_086",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_087",
    "suggest": "typhoon",
-   "order": 85,
+   "order": 86,
    "pos_end": 2838
   },
   {
@@ -2882,11 +3138,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_087",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_088",
    "suggest": "tesseract",
-   "order": 86,
+   "order": 87,
    "pos_end": 2889
   },
   {
@@ -2915,11 +3173,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_088",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_089",
    "suggest": "typhoon",
-   "order": 87,
+   "order": 88,
    "pos_end": 2944
   },
   {
@@ -2948,11 +3208,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_089",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_090",
    "suggest": "typhoon",
-   "order": 88,
+   "order": 89,
    "pos_end": 3009
   },
   {
@@ -2981,11 +3243,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_090",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_091",
    "suggest": "typhoon",
-   "order": 89,
+   "order": 90,
    "pos_end": 3061
   },
   {
@@ -3014,11 +3278,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_091",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_092",
    "suggest": "typhoon",
-   "order": 90,
+   "order": 91,
    "pos_end": 3116
   },
   {
@@ -3047,11 +3313,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_092",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_093",
    "suggest": "typhoon",
-   "order": 91,
+   "order": 92,
    "pos_end": 3162
   },
   {
@@ -3080,11 +3348,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_093",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_094",
    "suggest": "typhoon",
-   "order": 92,
+   "order": 93,
    "pos_end": 3215
   },
   {
@@ -3113,11 +3383,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_094",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_095",
    "suggest": "typhoon",
-   "order": 93,
+   "order": 94,
    "pos_end": 3271
   },
   {
@@ -3146,11 +3418,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_095",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_096",
    "suggest": "typhoon",
-   "order": 94,
+   "order": 95,
    "pos_end": 3323
   },
   {
@@ -3179,11 +3453,13 @@
    "gap_merged": 0,
    "cut_mid": false,
    "cut_mid_sides": [],
+   "sliver_moved": false,
    "covered_by": [],
    "maybe_duplicate_of": [],
-   "id": "ONEREPORTPTTT_p293_096",
+   "audit_reason": null,
+   "id": "ONEREPORTPTTT_p293_097",
    "suggest": "typhoon",
-   "order": 95,
+   "order": 96,
    "pos_end": 3327
   }
  ],

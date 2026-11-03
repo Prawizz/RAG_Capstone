@@ -547,7 +547,7 @@ def test_overlapping_matches_are_resolved_best_first(prep):
 
 def test_repeated_phrase_is_relocated_to_its_second_occurrence(prep):
     d = prep.build_items("f.PDF", 1, ty(NL.join([L1, L2, L1])), te([L1, L2, L1]))
-    assert [it["kind"] for it in d["items"]] == ["agree"] * 3 and d["span_stats"]["relocated"] == 1
+    assert [it["kind"] for it in d["items"]] == ["agree"] * 3  # ที่สองของ L1 เลือกจากลำดับการอ่านของภาพ (ไม่ใช่ที่แรกซ้ำ)
     assert [it["pos"] for it in d["items"]] == sorted(it["pos"] for it in d["items"])
 
 
@@ -586,3 +586,162 @@ def test_column_debug_images_have_one_file_per_region(prep, tmp_path):
     assert Image.open(paths[0]).size == (300, 500) and Image.open(paths[1]).size == (700, 500)
     plain = OcrResult(text="", backend="tesseract-local", model="t", revision="v", seconds=1.0, extra={"size": [10, 10], "lines": []})
     assert prep.save_column_debug("x.PDF", 1, plain, [png(10, 10)], out_dir=tmp_path) == []
+
+
+# ---------- รอบ 3: C sliver · D anchor/ลำดับ · E cut_mid ----------
+
+def make_segs(prep, lines):
+    segs, hay = [], ""
+    for line in lines:
+        disp = prep._display(line)
+        c = prep.canon(disp)
+        idx = [i for i, ch in enumerate(disp) if not ch.isspace()]
+        segs.append({"display": disp, "canon": c, "idx": idx if len(idx) == len(c) else None, "start": len(hay), "end": len(hay) + len(c)})
+        hay += c
+    return segs, hay
+
+
+def mk(i, k, s, e, cut=()):
+    return {"i": i, "k": k, "s": s, "e": e, "s0": s, "e0": e, "snap": 0, "gap": 0, "cut": list(cut), "sliver": False}
+
+
+def test_sliver_at_line_start_goes_back_to_the_previous_line(prep):
+    """"…ดูแลกิจกา" + "ร 7. โครงสร้าง…": ตัว "ร" ท้ายบรรทัดแรกของ Typhoon หลุดไปอยู่กับรายการถัดไป ต้องกลับไปอยู่รายการแรก"""
+    segs, hay = make_segs(prep, ["6. นโยบายการกำกับดูแลกิจการ", "7. โครงสร้างการกำกับดูแลกิจการ"])
+    a_end = segs[0]["end"]
+    m0, m1 = mk(0, 0, 0, a_end - 1), mk(1, 1, a_end - 1, segs[1]["end"], cut=["start"])
+    owner = [0] * (a_end - 1) + [1] * (segs[1]["end"] - a_end + 1)
+    moves = prep._move_slivers([m0, m1], owner, hay, segs, {0: prep.canon("6. นโยบายการกํากับดูแลกิจการ"), 1: prep.canon(": 7. โครงสร้างการกํากับดูแลกิจการ")})
+    assert (m0["s"], m0["e"]) == (0, a_end) and (m1["s"], m1["e"]) == (a_end, segs[1]["end"])
+    assert m0["sliver"] and m1["sliver"] and m1["cut"] == [] and owner[a_end - 1] == 0
+    assert [(mv["side"], mv["chars"], mv["src"], mv["dst"]) for mv in moves] == [("start", "ร", 1, 0)]
+    assert moves[0]["src_after"].startswith("7.") and moves[0]["dst_after"].endswith("กิจการ")
+
+
+def test_sliver_at_line_end_goes_to_the_next_line(prep):
+    segs, hay = make_segs(prep, ["(ฉบับเต็ม)", "เอกสารแนบ 6"])
+    b = segs[1]["start"]
+    m0, m1 = mk(0, 0, 0, b + 1), mk(1, 1, b + 1, segs[1]["end"])  # m0 กินตัว "เ" ของบรรทัดถัดไป
+    owner = [0] * (b + 1) + [1] * (segs[1]["end"] - b - 1)
+    moves = prep._move_slivers([m0, m1], owner, hay, segs, {0: prep.canon("(ฉบับเต็ม )"), 1: prep.canon("อกสารแนบ 6")})
+    assert m0["e"] == b and m1["s"] == b and owner[b] == 1 and [(mv["side"], mv["chars"]) for mv in moves] == [("end", "เ")]
+
+
+def test_sliver_that_tesseract_also_reads_is_kept(prep):
+    """CPALL 442 _035: Tesseract ก็อ่าน "า" นำหน้าเหมือนกัน — ไม่ใช่เศษ ต้องไม่ย้าย"""
+    segs, hay = make_segs(prep, ["และข้อมูลสำคัญเกี่ยวกับกรรม", "การบริษัทและบริษัทย่อย"])
+    a_end = segs[0]["end"]
+    m0, m1 = mk(0, 0, 0, a_end - 1), mk(1, 1, a_end - 1, segs[1]["end"])
+    owner = [0] * (a_end - 1) + [1] * (segs[1]["end"] - a_end + 1)
+    moves = prep._move_slivers([m0, m1], owner, hay, segs, {0: "x", 1: hay[a_end - 1:]})  # Tesseract ขึ้นต้นด้วย "ม..." เหมือนช่วง
+    assert moves == [] and m1["s"] == a_end - 1 and not m1["sliver"]
+
+
+def test_sliver_longer_than_max_or_without_neighbour(prep):
+    segs, hay = make_segs(prep, ["6. นโยบายการกำกับดูแลกิจการ", "7. โครงสร้างการกำกับดูแลกิจการ"])
+    a_end = segs[0]["end"]
+    n = prep.SLIVER_MAX + 1
+    m1 = mk(1, 1, a_end - n, segs[1]["end"])
+    owner = [-1] * (a_end - n) + [1] * (segs[1]["end"] - a_end + n)
+    assert prep._move_slivers([m1], owner, hay, segs, {1: prep.canon("7. โครงสร้างการกำกับดูแลกิจการ")}) == []  # ยาวเกิน SLIVER_MAX
+    m1 = mk(1, 1, a_end - 1, segs[1]["end"])
+    owner = [-1] * (a_end - 1) + [1] * (segs[1]["end"] - a_end + 1)  # ไม่มีรายการที่ครอบบรรทัดแรก
+    moves = prep._move_slivers([m1], owner, hay, segs, {1: prep.canon("7. โครงสร้างการกำกับดูแลกิจการ")})
+    assert moves[0]["dst"] is None and m1["s"] == a_end and owner[a_end - 1] == -1  # ปล่อยว่างให้กฎรวมช่องว่างจัดการ
+
+
+def test_sliver_flag_and_stats_in_build_items(prep, monkeypatch):
+    """ผ่าน build_items: ใส่ sliver_moved ทั้งสองรายการ + บันทึกการย้ายใน span_stats"""
+    real = prep._move_slivers
+
+    def fake(matches, owner, hay, segs, canons):
+        # จำลองช่วงที่ล้ำขอบบรรทัด: ขยายรายการที่สองถอยหลังไปกินท้ายบรรทัดแรก 1 ตัว แล้วให้ฟังก์ชันจริงย้ายกลับ
+        a, b = sorted(matches, key=lambda m: m["s"])[:2]
+        owner[a["e"] - 1] = b["i"]
+        b["s"], a["e"] = a["e"] - 1, a["e"] - 1
+        return real(matches, owner, hay, segs, {k: "ไม่ตรง" for k in canons})
+
+    monkeypatch.setattr(prep, "_move_slivers", fake)
+    d = prep.build_items("f.PDF", 1, ty(NL.join([L1, L3])), te([L1, L3]))
+    assert d["span_stats"]["slivers_moved"] == 1 and d["span_stats"]["sliver_moves"][0]["chars"] == prep.canon(L1)[-1]
+    assert [it["sliver_moved"] for it in d["items"] if it["tesseract"]] == [True, True]
+    assert d["span_stats"]["sliver_moves"][0]["src"] and d["span_stats"]["sliver_moves"][0]["dst"]  # id ของสองรายการ
+
+
+def appendix_lines(n=6):
+    long = ["รายละเอียดเกี่ยวกับกรรมการและผู้บริหารของบริษัท", "รายละเอียดเกี่ยวกับการดำรงตำแหน่งของกรรมการ", "นโยบายและแนวปฏิบัติการกำกับดูแลกิจการที่ดี",
+            "รายงานคณะกรรมการชุดย่อยและรางวัลเกียรติคุณ", "ข้อมูลทั่วไปและข้อมูลสำคัญอื่นของบริษัทย่อย", "การควบคุมภายในและรายการระหว่างกันของกลุ่ม"]
+    return long[:n]
+
+
+def test_short_lines_stay_between_their_anchors_when_a_neighbour_is_missed(prep):
+    """sidebar "เอกสารแนบ N": Tesseract อ่านแถว 2 ตก และอ่านแถว 3 เป็น "เอกสารแนบ 2" — ต้องไม่กระโดดไปจับกับ Y "เอกสารแนบ 2" ของแถวบน"""
+    long = appendix_lines()
+    ty_lines = []
+    for n in range(1, 5):
+        ty_lines += [f"เอกสารแนบ {n}", long[n - 1]]
+    rows = ["เอกสารแนบ 1", long[0], long[1], "เอกสารแนบ 2", long[2], "เอกสารแนบ 4", long[3]]  # ท่อนที่สองเป็นแถวที่ 3 ที่ถูกอ่านผิดเป็น 2
+    d = prep.build_items("f.PDF", 1, ty(NL.join(ty_lines)), te(rows))
+    by_y = sorted((it for it in d["items"] if it["tesseract"]), key=lambda it: it["tesseract"]["bbox"][1])
+    mapped = {it["tesseract"]["bbox"][1]: (it["typhoon"] or {}).get("text") for it in by_y if "แนบ" in it["tesseract"]["text"]}
+    assert list(mapped.values()) == ["เอกสารแนบ 1", "เอกสารแนบ 3", "เอกสารแนบ 4"]  # แถวที่ 3 จับกับ "3" ไม่ใช่ "2" ของแถวบน
+    assert d["span_stats"]["anchors"] == 4 and d["invariant"]["dropped"] == 0 and d["inversions"] == []
+    assert [it["typhoon"]["text"] for it in d["items"] if it["kind"] == "typhoon_only"] == ["เอกสารแนบ 2"]  # แถวที่ Tesseract อ่านตก
+
+
+def test_misread_row_matches_its_own_number_between_anchors(prep):
+    long = appendix_lines()
+    ty_lines = []
+    for n in range(1, 7):
+        ty_lines += [f"เอกสารแนบ {n}", long[n - 1]]
+    rows = []
+    for n, misread in enumerate(["เอกสารแนบ 1", "เอกสารแนบ 2", "เอกสารแนบ 3", "เอกสารแนบ 4", "เอกสารแนบ 3", "เอกสารแนบ 6"], 1):  # แถว 5 อ่านเป็น 3
+        rows += [misread, long[n - 1]]
+    d = prep.build_items("f.PDF", 1, ty(NL.join(ty_lines)), te(rows))
+    got = [(it["tesseract"]["text"], it["typhoon"]["text"]) for it in sorted((i for i in d["items"] if i["tesseract"] and "แนบ" in i["tesseract"]["text"]),
+                                                                              key=lambda i: i["tesseract"]["bbox"][1])]
+    assert [y for _, y in got] == [f"เอกสารแนบ {n}" for n in range(1, 7)]  # ตรงเลขตามลำดับ y ทุกแถว แม้แถว 5 จะอ่านเป็น 3
+    assert d["inversions"] == [] and d["counts"]["typhoon_only"] == 0
+
+
+def test_top_and_bottom_lines_may_match_anywhere_in_hay(prep):
+    """บรรทัดบนสุด/ล่างสุดของภาพ (ไม่มี anchor อีกฝั่ง เช่น header/footer) หาได้ทั้ง hay"""
+    header = "รายงานแบบ 56-1 One Report ประจำปี 2568"
+    ty_lines = [L1, L2, L3, header]  # Typhoon เขียน header ไว้ท้ายสุด
+    rows = [header, L1, L2, L3]  # แต่ในภาพ header อยู่บนสุด
+    d = prep.build_items("f.PDF", 1, ty(NL.join(ty_lines)), te(rows))
+    hd = by_text(d, header)
+    assert hd["kind"] == "agree" and hd["pos"] > by_text(d, L3)["pos"]
+
+
+def test_identical_text_in_two_images_follows_reading_order(prep):
+    """หัวกระดาษซ้ำเป๊ะในสองครึ่งหน้า: ภาพที่ 0 ต้องได้ที่แรก ภาพที่ 1 ได้ที่หลัง (ไม่ใช่ตามลำดับที่ประมวลผล)"""
+    header = "รายงานแบบ 56-1 One Report ประจำปี 2568"
+    ln = lambda text, y: {"text": text, "bbox": [50, y, 900, y + 30], "conf": 90.0, "block": 1, "par": 1}
+    res = te([], parts=[{"size": [1000, 1000], "lines": [ln(header, 20), ln(L1, 100)]}, {"size": [1000, 1000], "lines": [ln(L2, 100), ln(header, 20)]}])
+    d = prep.build_items("f.PDF", 1, ty(NL.join([header, L1, L2, header])), res)
+    heads = sorted((it for it in d["items"] if it["tesseract"] and it["tesseract"]["text"] == header), key=lambda it: it["tesseract"]["image"])
+    assert heads[0]["pos"] < by_text(d, L1)["pos"] < by_text(d, L2)["pos"] < heads[1]["pos"]
+
+
+def test_inversions_metric_counts_x_overlapping_pairs_in_wrong_order(prep):
+    a = {"id": "a", "kind": "agree", "pos": 100, "tesseract": {"image": 0, "bbox": [0, 500, 300, 530]}}
+    b = {"id": "b", "kind": "agree", "pos": 10, "tesseract": {"image": 0, "bbox": [100, 100, 400, 130]}}  # อยู่บนกว่าแต่ pos มากกว่าไม่ได้: pos ต่ำกว่า = ก่อน
+    assert prep.find_inversions([a, b]) == []  # b อยู่บนและ pos ต่ำกว่า = ถูกต้อง
+    b["pos"] = 500
+    assert prep.find_inversions([a, b]) == [{"lower": "a", "upper": "b", "dy": 400}]
+    b["tesseract"]["bbox"] = [600, 100, 800, 130]  # x ไม่ทับ
+    assert prep.find_inversions([a, b]) == []
+    b["tesseract"]["bbox"] = [100, 480, 400, 510]  # y ห่างไม่เกิน 40
+    assert prep.find_inversions([a, b]) == []
+
+
+def test_cut_mid_agree_is_not_auto_accepted_and_goes_to_a_human(prep):
+    base = "ข้อมูลทั่วไปของบริษัทนี้ครอบคลุมหลายด้านสำคัญ"  # ไม่มีช่องว่าง ไม่มีขอบคำให้ snap
+    d = prep.build_items("f.PDF", 1, ty(NL.join([base, L1, L2])), te([base[15:], L1, L2]))
+    cut = next(it for it in d["items"] if it["tesseract"] and it["tesseract"]["text"] == base[15:])
+    assert cut["kind"] == "agree" and cut["cut_mid"] is True
+    assert cut["auto_accept"] is False and cut["audit"] is True and cut["audit_reason"] == "cut_mid"
+    others = [it for it in d["items"] if it["kind"] == "agree" and it is not cut]
+    assert sum(it["audit"] for it in others) == 1 and all(it["audit_reason"] == "sample" for it in others if it["audit"])  # สุ่มจากที่เหลือเท่านั้น
+    assert d["counts"]["agree_audit"] == 2 and cut["id"] in {it["id"] for it in prep.attach_images(d, [png()])["items"]}  # ไปอยู่ในหน้าตรวจ

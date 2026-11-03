@@ -23,6 +23,15 @@
        ตัวก่อนหน้า) ไม่มีข้างเคียง = typhoon_only (``gap_merged`` = จำนวนตัวที่รวม; ``snap`` = จำนวนตัวที่ขยายตอน snap)
    3.4 kind คำนวณหลังขยายช่วง (agree เฉพาะเมื่อ canonical ของช่วง Typhoon เท่ากับ Tesseract ทุกตัว); invariant: ทุกตัวของข้อความ Typhoon อยู่ใน
        agree/diff/typhoon_only พอดี 1 รายการ (assert ตอน build; ``invariant.dropped`` ต่อหน้า); ``pos``/``pos_end`` = ช่วงในข้อความ Typhoon
+   3.4b anchor + ลำดับ: anchor = บรรทัดที่วางในรอบแรกด้วยความคล้าย >= ``ANCHOR_MIN_SCORE`` และ canonical >= ``ANCHOR_MIN_CANON`` ตัว (วางทั้ง hay
+       ก่อน); บรรทัดอื่นหาตำแหน่งได้เฉพาะในช่วง hay ระหว่าง ``pos_end`` ของ anchor ที่อยู่เหนือที่สุดที่ใกล้สุด กับ ``pos`` ของ anchor ที่อยู่ใต้ที่ใกล้สุด
+       (นับเฉพาะ anchor ใน image + column เดียวกันที่ bbox x ทับกัน เรียงตามกึ่งกลาง y; ผ่อนออกข้างละ ``WINDOW_PAD`` ตัว) ไม่เจอ = tesseract_only
+       บรรทัดบนสุด/ล่างสุดของภาพ (ไม่มี anchor ด้านใดด้านหนึ่ง เช่น header/footer) หาได้ทั้ง hay; ข้อความที่ซ้ำกันเป๊ะหลายที่เลือกตัวที่ใกล้
+       ตำแหน่งที่คาดจากลำดับการอ่านของภาพ ((ลำดับภาพ + y/สูง)/จำนวนภาพ) metric ``inversions`` = คู่ที่ x ทับกันแต่ลำดับ pos กลับกับ y เกิน
+       ``INVERSION_MIN_DY`` px
+   3.4c เศษล้ำขอบบรรทัด (sliver): ช่วงที่คร่อมขอบบรรทัด Typhoon ไปอีกบรรทัด <= ``SLIVER_MAX`` ตัวและ Tesseract ไม่ได้ขึ้นต้น/ลงท้ายด้วยตัวนั้น
+       -> หดกลับมาที่ขอบบรรทัด ยกตัวที่ตัดให้รายการที่ครอบบรรทัดนั้น (ไม่มี = กฎรวมช่องว่าง) ใส่ ``sliver_moved`` (ดู ``_move_slivers``)
+   3.4d agree ที่ ``cut_mid`` = ขอบช่วงยังตัดกลางคำ: ``auto_accept`` = False ส่งให้คนตรวจทุกอัน (``audit_reason`` = "cut_mid") ไม่นับในกลุ่มที่สุ่ม
    3.5 Tesseract แยก region (แถบข้างสีพื้น / เนื้อหา) ได้ในตัว backend (ดู ``app/extraction/ocr_tesseract.py``): แต่ละรายการมี
        ``tesseract.column`` (0 แถบ / 1 เนื้อหา / None) และหน้ามี ``column_split`` (x ต่อภาพ) + ภาพ debug ที่ ``DEBUG_DIR``
 4. แบ่งเป็น 4 แบบ
@@ -90,6 +99,11 @@ TEMPLATE = Path(__file__).resolve().parent / "ocr_review_template.html"
 MATCH_SCORE = 70.0  # ความคล้าย (0–100; partial_ratio ตอนหาตำแหน่ง, Levenshtein หลังขยับขอบ) ขั้นต่ำที่ถือว่า "คล้าย"
 MIN_FUZZY_LEN = 4  # บรรทัด Typhoon ที่ canonical สั้นกว่านี้ ไม่ใช้ fuzzy (ต้องตรงทั้งบรรทัด Tesseract เท่านั้น)
 REFINE_SHIFT = 4  # ขยับขอบช่วงข้อความ Typhoon ได้กี่ตัวอักษรเพื่อให้ตรงกับบรรทัด Tesseract
+SLIVER_MAX = 3  # ตัว canonical: ส่วนของช่วงที่ล้ำขอบบรรทัด Typhoon ไปอีกบรรทัดไม่เกินเท่านี้ ถือเป็น "เศษ" ที่ควรกลับไปอยู่บรรทัดเดิม
+ANCHOR_MIN_SCORE = 90.0  # anchor = บรรทัดที่วางในรอบแรกด้วยความคล้ายไม่ต่ำกว่านี้ และ canonical ยาวไม่ต่ำกว่า ``ANCHOR_MIN_CANON``
+ANCHOR_MIN_CANON = 15
+WINDOW_PAD = 6  # ตัว: ขยายช่วงที่ anchor ล้อมไว้ออกข้างละเท่านี้ตอนค้นหา (ช่วงแคบกว่าบรรทัดที่อ่านเกินมาไม่กี่ตัว เช่น "." นำหน้า จะหาไม่เจอ; ตัวที่ anchor ครอบอยู่ยังถูกกันออก)
+INVERSION_MIN_DY = 40  # px: คู่รายการที่ x ทับกัน ลำดับ pos กลับกับ y เกินเท่านี้ = inversion
 SNAP_MAX = 10  # ตัว canonical สูงสุดที่ขยายขอบช่วง Typhoon ต่อข้างเพื่อให้ลงที่ขอบคำ/บรรทัด
 TRIM_MIN_KEEP = 0.5  # ช่วงที่ซ้อนกับรายการที่ครอบไปแล้ว ถ้าเหลือน้อยกว่าสัดส่วนนี้ของช่วงเดิม = ไม่จับคู่
 LEADING_VOWELS = "เแโใไ"
@@ -164,6 +178,7 @@ class TLine:
     start: int = 0
     end: int = 0
     covered: int = 0
+    frac: float = 0.0  # ตำแหน่งโดยประมาณในลำดับการอ่านของทั้งหน้า 0–1 ((ลำดับภาพ + y/สูง) / จำนวนภาพ) ไว้เลือกระหว่างข้อความที่ซ้ำกันเป๊ะ
     col: Optional[int] = None  # 0 = แถบข้าง / 1 = เนื้อหา เมื่อ Tesseract แยก region (ไม่แยก = None)
 
 
@@ -349,6 +364,15 @@ def _best_span(c: str, hay: str) -> Optional[tuple[float, int, int]]:
     return (r, s, e) if r >= MATCH_SCORE else None
 
 
+def _occurrences(c: str, text: str, lo: int, hi: int) -> list[int]:
+    """ตำแหน่งเริ่มของ c ทุกที่ใน text[lo:hi] (ซ้อนกันได้)"""
+    out, p = [], text.find(c, lo, hi)
+    while p >= 0:
+        out.append(p)
+        p = text.find(c, p + 1, hi)
+    return out
+
+
 def _longest_free_run(owner: list[int], s: int, e: int) -> tuple[int, int]:
     best, i = (s, s), s
     while i < e:
@@ -362,6 +386,74 @@ def _longest_free_run(owner: list[int], s: int, e: int) -> tuple[int, int]:
             best = (i, j)
         i = j
     return best
+
+
+def find_inversions(items: list[dict]) -> list[dict]:
+    """คู่รายการ agree/diff ในภาพเดียวกันที่ bbox x ทับกัน แต่ลำดับ ``pos`` (ข้อความ Typhoon) กลับกับลำดับ y (กึ่งกลางบรรทัด) เกิน
+    ``INVERSION_MIN_DY`` px — บอกว่าจับคู่ข้ามลำดับการอ่าน (ปกติหน้าหนึ่งๆ ควรเหลือน้อยหรือ 0 นอกจาก Typhoon อ่านผิดลำดับจริง)"""
+    placed = [it for it in items if it["kind"] in ("agree", "diff") and it["tesseract"] and it["pos"] is not None]
+    out = []
+    for i, a in enumerate(placed):
+        ta = a["tesseract"]
+        for b in placed[i + 1:]:
+            tb = b["tesseract"]
+            if ta["image"] != tb["image"] or min(ta["bbox"][2], tb["bbox"][2]) - max(ta["bbox"][0], tb["bbox"][0]) <= 0:
+                continue
+            dy = (ta["bbox"][1] + ta["bbox"][3]) / 2 - (tb["bbox"][1] + tb["bbox"][3]) / 2  # >0: a อยู่ใต้ b
+            lower, upper = (a, b) if dy > 0 else (b, a)
+            if abs(dy) > INVERSION_MIN_DY and lower["pos"] < upper["pos"]:
+                out.append({"lower": lower["id"], "upper": upper["id"], "dy": round(abs(dy))})
+    return out
+
+
+def _move_slivers(matches: list[dict], owner: list[int], hay: str, segs: list[dict], canons: dict[int, str]) -> list[dict]:
+    """เศษที่ล้ำขอบบรรทัด Typhoon: ช่วง hay[s:e] ที่คร่อมขอบบรรทัดและมีส่วนอีกฝั่งสั้นไม่เกิน ``SLIVER_MAX`` ตัว และ canonical ของ Tesseract
+    ไม่ได้ขึ้นต้น/ลงท้ายด้วยตัวนั้นเอง (กันกรณีที่ Tesseract อ่านตัวนั้นนำหน้าเหมือนกัน เช่น "า") — หดช่วงกลับมาที่ขอบบรรทัด แล้วยกตัวที่ตัดออก
+    ให้รายการที่ครอบบรรทัดนั้นอยู่ (ติดกันพอดี); ไม่มี = ปล่อยว่าง (owner = -1) ให้กฎรวมช่องว่างจัดการ
+    แก้ ``matches`` / ``owner`` ในที่เดิม ใส่ ``sliver`` ทั้งสองรายการ ล้าง ``cut`` ของด้านที่ย้าย (ขอบใหม่คือขอบบรรทัด) คืนรายการที่ย้าย"""
+    seg_of = [0] * len(hay)
+    for gi, sg in enumerate(segs):
+        for i in range(sg["start"], sg["end"]):
+            seg_of[i] = gi
+    moves: list[dict] = []
+
+    def take(m: dict, side: str, recv: Optional[dict], edge: int) -> None:
+        lo, hi = (m["s"], edge) if side == "start" else (edge, m["e"])
+        rec = {"src": m["k"], "dst": recv["k"] if recv else None, "side": side, "chars": hay[lo:hi],
+               "src_before": _span_display(segs, m["s"], m["e"]),
+               "dst_before": _span_display(segs, recv["s"], recv["e"]) if recv else None}
+        for i in range(lo, hi):
+            owner[i] = recv["i"] if recv else -1
+        if side == "start":
+            m["s"] = edge
+            if recv:
+                recv["e"] = edge
+        else:
+            m["e"] = edge
+            if recv:
+                recv["s"] = edge
+        m["cut"] = [x for x in m["cut"] if x != side]
+        m["sliver"] = True
+        if recv:
+            recv["cut"] = [x for x in recv["cut"] if x != ("end" if side == "start" else "start")]
+            recv["sliver"] = True
+        rec["src_after"] = _span_display(segs, m["s"], m["e"])
+        rec["dst_after"] = _span_display(segs, recv["s"], recv["e"]) if recv else None
+        moves.append(rec)
+
+    for m in sorted(matches, key=lambda m: m["s"]):
+        c = canons[m["k"]]
+        sa = seg_of[m["s"]]
+        a_end = segs[sa]["end"]
+        if seg_of[m["e"] - 1] != sa and a_end - m["s"] <= SLIVER_MAX and not c.startswith(hay[m["s"]:a_end]):
+            o = owner[m["s"] - 1] if m["s"] > segs[sa]["start"] else -1
+            take(m, "start", matches[o] if o >= 0 else None, a_end)
+        sb = seg_of[m["e"] - 1]
+        b_start = segs[sb]["start"]
+        if seg_of[m["s"]] != sb and m["e"] - b_start <= SLIVER_MAX and not c.endswith(hay[b_start:m["e"]]):
+            o = owner[m["e"]] if m["e"] < segs[sb]["end"] else -1
+            take(m, "end", matches[o] if o >= 0 else None, b_start)
+    return moves
 
 
 def build_items(file: str, page: int, typhoon: OcrResult, tesseract: OcrResult) -> dict:
@@ -407,38 +499,103 @@ def build_items(file: str, page: int, typhoon: OcrResult, tesseract: OcrResult) 
             if reason:
                 skipped.append({"text": ln["text"], "reason": reason, "image": img, "bbox": ln["bbox"]})
                 continue
-            kept.append(TLine(ln["text"], c, img, ln["bbox"], ln.get("conf"), col=ln.get("col")))
+            height = (part.get("size") or [0, 0])[1] or max((x["bbox"][3] for x in part.get("lines", [])), default=1)
+            frac = (img + (ln["bbox"][1] + ln["bbox"][3]) / 2 / max(height, 1)) / max(len(parts), 1)
+            kept.append(TLine(ln["text"], c, img, ln["bbox"], ln.get("conf"), frac=frac, col=ln.get("col")))
 
     stats = {"relocated": 0, "trimmed": 0, "demoted_by_overlap": 0, "snapped_items": 0, "snapped_chars": 0,
-             "gap_merged_runs": 0, "gap_merged_chars": 0, "short_gap_typhoon_only": 0}
+             "gap_merged_runs": 0, "gap_merged_chars": 0, "short_gap_typhoon_only": 0,
+             "anchors": 0, "window_rejected": 0, "window_inverted": 0, "slivers_moved": 0, "window_rejects": []}
 
-    # 1) จับคู่เบื้องต้น  2) แก้ช่วงที่ซ้อนกัน
-    spans = [_best_span(t.canon, hay) for t in kept]
+    # 1) จับคู่เบื้องต้นทั้งหน้า (ไว้เลือก anchor)
+    first = [_best_span(t.canon, hay) for t in kept]
     owner = [-1] * n_hay  # index ใน matches; -2 = typhoon_only
     matches: list[dict] = []
-    order = sorted((k for k, sp in enumerate(spans) if sp), key=lambda k: (-spans[k][0] * len(kept[k].canon), k))  # ตัวอักษรที่จับคู่ได้มากสุดก่อน (เส้นยาวที่มีบริบทครอบก่อนบรรทัดสั้นที่คลุมเครือ)
-    for k in order:
-        r, s, e = spans[k]
-        rs, re_ = _longest_free_run(owner, s, e)
-        if (rs, re_) != (s, e):
-            # ซ้อนกับรายการที่ครอบไปแล้ว (เช่น วลีเดียวกันปรากฏสองที่ในข้อความ Typhoon): หาตำแหน่งใหม่ในข้อความที่กันตัวที่ถูกครอบออก
-            masked = "".join("\x00" if o != -1 else ch for ch, o in zip(hay, owner))
-            alt = _best_span(kept[k].canon, masked)
-            if alt:
-                ars, are = _longest_free_run(owner, alt[1], alt[2])
-                if are - ars > re_ - rs:
-                    (r, s, e), (rs, re_) = alt, (ars, are)
-                    stats["relocated"] += 1
-        if re_ - rs < TRIM_MIN_KEEP * (e - s) or re_ <= rs:
-            spans[k] = None
-            stats["demoted_by_overlap"] += 1
-            continue
-        stats["trimmed"] += (rs, re_) != (s, e)
-        for i in range(rs, re_):
-            owner[i] = len(matches)
-        matches.append({"i": len(matches), "k": k, "s": rs, "e": re_, "s0": rs, "e0": re_, "snap": 0, "gap": 0, "cut": []})
+    anchor_matches: list[dict] = []
 
-    # 3) snap ขอบ
+    def place(k: int, lo: int, hi: int) -> Optional[tuple[int, int]]:
+        """ช่วงใน hay[lo:hi] ของบรรทัด k ที่ยังไม่มีใครครอบ: หาตำแหน่งที่คล้ายที่สุด; ซ้อนกับรายการที่ครอบไปแล้ว (เช่น วลีเดียวกันปรากฏสองที่)
+        -> หาตำแหน่งใหม่ในข้อความที่กันตัวที่ถูกครอบออก ไม่ได้ก็ตัดเหลือส่วนว่างที่ยาวสุด; เหลือไม่ถึง ``TRIM_MIN_KEEP`` = None"""
+        c = kept[k].canon
+        if (lo, hi) != (0, n_hay):
+            lo, hi = max(lo - WINDOW_PAD, 0), min(hi + WINDOW_PAD, n_hay)
+        sp = _best_span(c, hay[lo:hi])
+        r = s = e = None
+        rs = re_ = 0
+        if sp:
+            r, s, e = sp[0], sp[1] + lo, sp[2] + lo
+            if r >= 100.0:  # ข้อความเดียวกันเป๊ะซ้ำหลายที่ (เช่น หัวกระดาษของสองครึ่งหน้า): เลือกที่ใกล้ตำแหน่งที่คาดจากลำดับการอ่านของภาพที่สุด
+                free = [q for q in _occurrences(c, hay, lo, hi) if all(owner[i] == -1 for i in range(q, q + len(c)))]
+                if free:
+                    s = min(free, key=lambda q: abs(q / max(n_hay, 1) - kept[k].frac))
+                    e = s + len(c)
+            rs, re_ = _longest_free_run(owner, s, e)
+        if sp is None or (rs, re_) != (s, e):
+            masked = "".join("\x00" if owner[i] != -1 else hay[i] for i in range(lo, hi))
+            alt = _best_span(c, masked)
+            if alt:
+                a_s, a_e = alt[1] + lo, alt[2] + lo
+                ars, are = _longest_free_run(owner, a_s, a_e)
+                if are - ars > re_ - rs:
+                    r, s, e, rs, re_ = alt[0], a_s, a_e, ars, are
+                    stats["relocated"] += 1
+        if r is None or re_ <= rs or re_ - rs < TRIM_MIN_KEEP * (e - s):
+            return None
+        stats["trimmed"] += (rs, re_) != (s, e)
+        return rs, re_
+
+    def claim(k: int, rs: int, re_: int) -> dict:
+        m = {"i": len(matches), "k": k, "s": rs, "e": re_, "s0": rs, "e0": re_, "snap": 0, "gap": 0, "cut": [], "sliver": False}
+        for i in range(rs, re_):
+            owner[i] = m["i"]
+        matches.append(m)
+        return m
+
+    def weight(k: int) -> tuple[float, int]:  # ตัวอักษรที่จับคู่ได้มากสุดก่อน (เส้นยาวที่มีบริบทครอบก่อนบรรทัดสั้นที่คลุมเครือ)
+        return (-first[k][0] * len(kept[k].canon), k)
+
+    # 2) anchor: บรรทัดที่วางในรอบแรกด้วยคะแนนสูงและยาวพอ — ไม่จำกัดช่วง (ทั้ง hay)
+    placed: set[int] = set()
+    for k in sorted((k for k, sp in enumerate(first) if sp and sp[0] >= ANCHOR_MIN_SCORE and len(kept[k].canon) >= ANCHOR_MIN_CANON), key=weight):
+        got = place(k, 0, n_hay)
+        if got:
+            anchor_matches.append(claim(k, *got))
+            placed.add(k)
+    stats["anchors"] = len(anchor_matches)
+
+    def window(k: int) -> tuple[int, int]:
+        """ช่วง hay ที่บรรทัด k หาตำแหน่งได้ = [pos_end ของ anchor ที่อยู่เหนือที่สุดที่ใกล้สุด, pos ของ anchor ที่อยู่ใต้ที่ใกล้สุด) โดยนับเฉพาะ anchor
+        ใน image + column เดียวกันที่ bbox x ทับกัน (เรียงตามกึ่งกลาง y); ไม่มี anchor ด้านใดด้านหนึ่ง = บนสุด/ล่างสุดของภาพ ให้หาได้ทั้ง hay"""
+        t = kept[k]
+        cy = (t.bbox[1] + t.bbox[3]) / 2
+        up = down = None
+        for m in anchor_matches:
+            a = kept[m["k"]]
+            if a.image != t.image or a.col != t.col or min(a.bbox[2], t.bbox[2]) - max(a.bbox[0], t.bbox[0]) <= 0:
+                continue
+            acy = (a.bbox[1] + a.bbox[3]) / 2
+            if acy < cy and (up is None or acy > up[0]):
+                up = (acy, m)
+            elif acy > cy and (down is None or acy < down[0]):
+                down = (acy, m)
+        if up is None or down is None:
+            return 0, n_hay
+        return up[1]["e0"], down[1]["s0"]
+
+    # 3) บรรทัดอื่น: หาตำแหน่งได้เฉพาะในช่วงที่ anchor ล้อมไว้ ไม่เจอ = tesseract_only (ไม่กระโดดไปที่อื่น)
+    for k in sorted((k for k, sp in enumerate(first) if sp and k not in placed), key=weight):
+        lo, hi = window(k)
+        stats["window_inverted"] += hi < lo
+        got = place(k, lo, hi) if hi > lo else None
+        if got:
+            claim(k, *got)
+        elif first[k][1] < lo - WINDOW_PAD or first[k][2] > hi + WINDOW_PAD:  # ตำแหน่งในรอบแรกอยู่นอกช่วงที่ anchor ล้อมไว้ = ถูกกันไม่ให้กระโดดไปที่อื่น
+            stats["window_rejected"] += 1
+            stats["window_rejects"].append({"text": kept[k].text, "bbox": kept[k].bbox, "window": [lo, hi], "first": list(first[k][1:])})
+        else:
+            stats["demoted_by_overlap"] += 1
+
+    # 4) snap ขอบ
     for m in sorted(matches, key=lambda m: m["s"]):
         mi = m["i"]
         s2, cut_s = _snap_left(m["s"], owner, hay, bounds)
@@ -454,7 +611,11 @@ def build_items(file: str, page: int, typhoon: OcrResult, tesseract: OcrResult) 
             stats["snapped_items"] += 1
             stats["snapped_chars"] += m["snap"]
 
-    # 4) ตัวที่ไม่มีใครครอบ
+    # 5) เศษที่ล้ำขอบบรรทัด Typhoon (docstring ของ ``_move_slivers``)
+    sliver_moves = _move_slivers(matches, owner, hay, segs, {m["k"]: kept[m["k"]].canon for m in matches})
+    stats["slivers_moved"] = len(sliver_moves)
+
+    # 6) ตัวที่ไม่มีใครครอบ
     ty_spans: list[tuple[int, int]] = []
     for sg in segs:
         i = sg["start"]
@@ -498,14 +659,14 @@ def build_items(file: str, page: int, typhoon: OcrResult, tesseract: OcrResult) 
                       "tesseract": {"text": t.text, "image": t.image, "bbox": t.bbox, "conf": t.conf, "column": t.col},
                       "region": None, "auto_accept": kind == "agree", "audit": False, "kind": kind,
                       "score": 100.0 if kind == "agree" else round(_ratio(c, hay[s:e]), 1), "pos": s, "end": e, "k": m["k"],
-                      "snap": m["snap"], "gap_merged": m["gap"], "cut_mid": bool(m["cut"]), "cut_mid_sides": m["cut"],
+                      "snap": m["snap"], "gap_merged": m["gap"], "cut_mid": bool(m["cut"]), "cut_mid_sides": m["cut"], "sliver_moved": m["sliver"],
                       "_before": {"agree": initial_agree, "typhoon": _span_display(segs, m["s0"], m["e0"])}})
     matched_ks = {m["k"] for m in matches}
     for k, t in enumerate(kept):
         if k not in matched_ks:
             items.append({"typhoon": None, "tesseract": {"text": t.text, "image": t.image, "bbox": t.bbox, "conf": t.conf, "column": t.col},
                           "region": None, "auto_accept": False, "audit": False, "kind": "tesseract_only", "score": 0.0, "pos": None, "k": k,
-                          "snap": 0, "gap_merged": 0, "cut_mid": False, "cut_mid_sides": []})
+                          "snap": 0, "gap_merged": 0, "cut_mid": False, "cut_mid_sides": [], "sliver_moved": False})
 
     # typhoon_only: ข้อความ Typhoon ที่ไม่มีบรรทัด Tesseract ใดคลุม (ต่อบรรทัดของ Typhoon)
     matched = sorted((it for it in items if it["pos"] is not None), key=lambda it: it["pos"])
@@ -519,7 +680,7 @@ def build_items(file: str, page: int, typhoon: OcrResult, tesseract: OcrResult) 
                 region = {"image": prev["tesseract"]["image"], "bbox": [0, max(lo - 2 * CROP_PAD, 0), 10 ** 6, hi + 2 * CROP_PAD]}
         items.append({"typhoon": {"text": _span_display(segs, i, j)}, "tesseract": None, "region": region,
                       "auto_accept": False, "audit": False, "kind": "typhoon_only", "score": 0.0, "pos": i, "end": j,
-                      "snap": 0, "gap_merged": 0, "cut_mid": False, "cut_mid_sides": []})
+                      "snap": 0, "gap_merged": 0, "cut_mid": False, "cut_mid_sides": [], "sliver_moved": False})
 
     # invariant: ทุกตัวของ hay อยู่ในรายการ agree/diff/typhoon_only พอดี 1 ครั้ง
     cover = [0] * n_hay
@@ -544,14 +705,20 @@ def build_items(file: str, page: int, typhoon: OcrResult, tesseract: OcrResult) 
         elif it["kind"] in ("agree", "diff"):
             last_end = it["end"]
     for it in items:
-        it.pop("k", None)
+        it["_k"] = it.pop("k", None)
     items.sort(key=lambda it: (it["pos"], 1 if it["kind"] in TESS_ONLY_KINDS else 0))
 
     agree = [it for it in items if it["kind"] == "agree"]
-    if agree:
+    for it in agree:  # ขอบช่วงถูกตัดกลางคำ: รับอัตโนมัติไม่ได้ ส่งให้คนตรวจทุกอัน (ไม่นับในกลุ่มที่สุ่ม)
+        if it["cut_mid"]:
+            it["auto_accept"], it["audit"], it["audit_reason"] = False, True, "cut_mid"
+    pool = [it for it in agree if not it["cut_mid"]]
+    if pool:
         rng = random.Random(f"{AUDIT_SEED}:{file}:{page}")
-        for it in rng.sample(agree, max(1, round(AUDIT_FRACTION * len(agree)))):
-            it["audit"] = True
+        for it in rng.sample(pool, max(1, round(AUDIT_FRACTION * len(pool)))):
+            it["audit"], it["audit_reason"] = True, "sample"
+    for it in items:
+        it.setdefault("audit_reason", None)
 
     stem = Path(file).stem
     for n, it in enumerate(items, 1):
@@ -566,6 +733,12 @@ def build_items(file: str, page: int, typhoon: OcrResult, tesseract: OcrResult) 
             agree_to_diff.append({"id": it["id"], "tesseract": it["tesseract"]["text"], "typhoon_before": before["typhoon"],
                                   "typhoon_after": it["typhoon"]["text"]})
     stats["agree_to_diff"] = agree_to_diff
+    id_of_k = {it["_k"]: it["id"] for it in items if it["_k"] is not None}
+    stats["sliver_moves"] = [{**mv, "src": id_of_k.get(mv["src"]), "dst": id_of_k.get(mv["dst"])} for mv in sliver_moves]
+    for it in items:
+        it.pop("_k", None)
+    inversions = find_inversions(items)
+    stats["inversions"] = len(inversions)
     stats["cut_mid"] = [it["id"] for it in items if it["cut_mid"]]
     for it in items:
         it["covered_by"] = [o["id"] for o in it["covered_by"]]
@@ -587,6 +760,7 @@ def build_items(file: str, page: int, typhoon: OcrResult, tesseract: OcrResult) 
         "typhoon_page_numbers": page_numbers,
         "column_split": [(p.get("column_split") or {}).get("x") for p in parts],
         "invariant": {"hay_chars": n_hay, "dropped": dropped, "doubled": doubled},
+        "inversions": inversions,
         "span_stats": stats,
         "figures": figures, "skipped_tesseract": skipped, "counts": counts, "items": items,
     }
