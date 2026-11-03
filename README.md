@@ -36,9 +36,40 @@ exit code เป็น 1 เมื่อทั้งไฟล์ล้มเห�
 ## Test
 
 ```bash
-pytest            # test ปกติ (เร็ว)
+pytest            # test ปกติ (เร็ว) — ไม่ต้องมี docker
 pytest -m slow    # test ช้า: ใช้ PDF จริงใน eval/datasets/ และ mock_corpus.pdf
+pytest -m qdrant  # test ที่ต้องมี Qdrant จริง (ดูหัวข้อถัดไป); ไม่มี server = ข้าม ไม่ใช่ fail
 ```
+
+บน Windows ต้องตั้ง `PYTHONUTF8=1` ไม่งั้น `tests/test_convert.py` ล้ม 6 ข้อ
+(subprocess เขียนข้อความไทยออก stdout ที่เป็น cp1252) — PowerShell: `$env:PYTHONUTF8=1`
+
+## Vector store + สิทธิ์ (ACL)
+
+```bash
+docker compose up -d qdrant        # http://localhost:6333/dashboard
+cp .env.example .env               # แก้ค่าได้ถ้าไม่ได้ใช้ค่าเริ่มต้น
+```
+
+- `app/config.py` — ค่าตั้งทั้งหมดอ่านที่เดียวจาก env + `.env`
+- `app/access.py` — ACL 4 ชั้น (box · แผนก · ระดับ · สิทธิ์ระดับไฟล์) ตามกฎเหล็กข้อ 9
+- `app/vectorstore.py` — Qdrant: Public/Private แยก collection, index เฉพาะ unit `ok`, สิทธิ์ 2 ด่าน
+  (pre-filter ใน Qdrant + re-check กับ ACL store ก่อนคืนผล)
+
+เมทริกซ์สิทธิ์ที่คนเขียนอยู่ที่ `eval/datasets/access_control.jsonl` (box / file / principal / case อย่างละบรรทัด)
+เพิ่มกรณีทดสอบได้โดยเพิ่มบรรทัด `case` — `pytest tests/test_access.py` จะเทียบให้เอง
+
+### ดูของจริงทำงาน
+
+```bash
+python scripts/acl_demo.py                    # mock_corpus.pdf + Qdrant ในกระบวนการ
+python scripts/acl_demo.py --server           # ใช้ Qdrant จาก docker compose
+python scripts/acl_demo.py --file eval/datasets/ONEREPORTPTTT.PDF --pages 1-20
+```
+
+ingest ไฟล์จริงแล้วถามคำถามเดียวกันด้วยสอง persona ที่ต่างกันแค่แผนก — ฝั่งที่ไม่มีสิทธิ์ต้องตอบ
+เหมือนหาไม่เจอทุกประการ **อันดับผลค้นยังไม่มีความหมาย** เพราะ `app/embedding.py` ยังไม่มีโมเดลจริง
+(สคริปต์พิมพ์เตือนไว้)
 
 ## วัดผล Thai normalizer
 

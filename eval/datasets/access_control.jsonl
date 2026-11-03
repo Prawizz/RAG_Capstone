@@ -1,0 +1,36 @@
+{"kind": "note", "text": "ACL testbed สังเคราะห์ (PLAN.md ข้อ 5: ใช้ได้จนกว่าจะได้ข้อมูล ACL จริงจากบริษัท) · ช่อง expected เขียนด้วยมือจากกฎเหล็กข้อ 9 ไม่ได้สร้างจาก app/access.py (กฎเหล็กข้อ 6: ห้ามวัดวน) · layer = ชั้นแรกที่ไม่ผ่าน ใช้ใน test/log เท่านั้น ห้ามส่งออกทาง API"}
+{"kind": "box", "box_id": "hr_public", "visibility": "public", "departments": null, "min_security_level": 0, "note": "คู่มือพนักงานที่เปิดให้ทุกคนในองค์กร"}
+{"kind": "box", "box_id": "hr_private", "visibility": "private", "departments": ["hr"], "min_security_level": 1, "note": "เอกสาร HR ภายใน เฉพาะแผนก hr"}
+{"kind": "box", "box_id": "shared_private", "visibility": "private", "departments": ["hr"], "min_security_level": 0, "note": "กล่องที่คนนอกแผนกเป็นสมาชิกได้แต่ยังไม่ควรเห็นเนื้อหา — ใช้ทดสอบชั้นแผนกแยกจากชั้น box"}
+{"kind": "box", "box_id": "finance_private", "visibility": "private", "departments": ["finance"], "min_security_level": 2, "note": "งบการเงิน"}
+{"kind": "box", "box_id": "exec_private", "visibility": "private", "departments": ["exec"], "min_security_level": 3, "note": "เอกสารผู้บริหาร"}
+{"kind": "file", "file_id": "f_public_handbook", "box_id": "hr_public", "departments": null, "min_security_level": null, "note": "สืบทอดจาก box ทั้งหมด"}
+{"kind": "file", "file_id": "f_hr_salary", "box_id": "hr_private", "departments": null, "min_security_level": null, "note": "สืบทอดจาก box"}
+{"kind": "file", "file_id": "f_hr_confidential", "box_id": "hr_private", "departments": null, "min_security_level": 3, "note": "แคบลงระดับไฟล์: ยกระดับความปลอดภัยจาก 1 เป็น 3"}
+{"kind": "file", "file_id": "f_shared_policy", "box_id": "shared_private", "departments": null, "min_security_level": null}
+{"kind": "file", "file_id": "f_fin_report", "box_id": "finance_private", "departments": null, "min_security_level": null}
+{"kind": "file", "file_id": "f_exec_board", "box_id": "exec_private", "departments": null, "min_security_level": null}
+{"kind": "principal", "user_id": "alice", "departments": ["hr"], "security_level": 2, "box_ids": ["hr_public", "hr_private", "shared_private"], "note": "HR ระดับกลาง"}
+{"kind": "principal", "user_id": "bob", "departments": ["finance"], "security_level": 2, "box_ids": ["hr_public", "shared_private", "finance_private"], "note": "Finance ระดับเดียวกับ alice แต่คนละแผนก — เป็นสมาชิก shared_private ด้วย"}
+{"kind": "principal", "user_id": "carol", "departments": ["hr"], "security_level": 3, "box_ids": ["hr_public", "hr_private"], "note": "HR ระดับสูง"}
+{"kind": "principal", "user_id": "erin", "departments": ["hr"], "security_level": 0, "box_ids": ["hr_public", "hr_private"], "note": "HR ระดับต่ำสุด"}
+{"kind": "principal", "user_id": "dave", "departments": ["exec"], "security_level": 3, "box_ids": [], "note": "ระดับสูงแต่ไม่ได้เป็นสมาชิก box ไหนเลย"}
+{"kind": "case", "user_id": "alice", "file_id": "f_public_handbook", "expected": "allow", "layer": null, "note": "box สาธารณะ เป็นสมาชิก ไม่จำกัดแผนก ระดับ 0"}
+{"kind": "case", "user_id": "alice", "file_id": "f_hr_salary", "expected": "allow", "layer": null, "note": "แผนก hr ตรง ระดับ 2 >= 1"}
+{"kind": "case", "user_id": "alice", "file_id": "f_hr_confidential", "expected": "deny", "layer": "security_level", "note": "ไฟล์ยกระดับเป็น 3 แต่ alice ระดับ 2"}
+{"kind": "case", "user_id": "alice", "file_id": "f_shared_policy", "expected": "allow", "layer": null, "note": "เป็นสมาชิกและแผนก hr ตรง"}
+{"kind": "case", "user_id": "alice", "file_id": "f_fin_report", "expected": "deny", "layer": "box", "note": "ไม่ได้เป็นสมาชิก finance_private"}
+{"kind": "case", "user_id": "alice", "file_id": "f_exec_board", "expected": "deny", "layer": "box", "note": "ไม่ได้เป็นสมาชิก exec_private"}
+{"kind": "case", "user_id": "bob", "file_id": "f_public_handbook", "expected": "allow", "layer": null, "note": "box สาธารณะไม่จำกัดแผนก"}
+{"kind": "case", "user_id": "bob", "file_id": "f_shared_policy", "expected": "deny", "layer": "department", "note": "ระดับเท่า alice และเป็นสมาชิก box เหมือนกัน แต่คนละแผนก — ชั้นแผนกต้องกันได้"}
+{"kind": "case", "user_id": "bob", "file_id": "f_hr_salary", "expected": "deny", "layer": "box", "note": "ไม่ได้เป็นสมาชิก hr_private"}
+{"kind": "case", "user_id": "bob", "file_id": "f_fin_report", "expected": "allow", "layer": null, "note": "แผนก finance ระดับ 2 >= 2"}
+{"kind": "case", "user_id": "carol", "file_id": "f_hr_confidential", "expected": "allow", "layer": null, "note": "ระดับ 3 ผ่านเกณฑ์ที่ไฟล์ยกขึ้น"}
+{"kind": "case", "user_id": "carol", "file_id": "f_hr_salary", "expected": "allow", "layer": null}
+{"kind": "case", "user_id": "carol", "file_id": "f_fin_report", "expected": "deny", "layer": "box", "note": "ระดับสูงไม่ได้แปลว่าข้าม box ได้"}
+{"kind": "case", "user_id": "erin", "file_id": "f_public_handbook", "expected": "allow", "layer": null, "note": "box สาธารณะต้องการระดับ 0"}
+{"kind": "case", "user_id": "erin", "file_id": "f_hr_salary", "expected": "deny", "layer": "security_level", "note": "แผนกตรงแต่ระดับ 0 < 1 ของ box"}
+{"kind": "case", "user_id": "erin", "file_id": "f_hr_confidential", "expected": "deny", "layer": "security_level"}
+{"kind": "case", "user_id": "dave", "file_id": "f_public_handbook", "expected": "deny", "layer": "box", "note": "ระดับ 3 แต่ไม่ได้เป็นสมาชิก box ไหนเลย แม้แต่ box สาธารณะ"}
+{"kind": "case", "user_id": "dave", "file_id": "f_exec_board", "expected": "deny", "layer": "box", "note": "แผนกและระดับตรง แต่ยังไม่ได้เป็นสมาชิก"}
+{"kind": "case", "user_id": "alice", "file_id": "f_does_not_exist", "expected": "deny", "layer": "unknown", "note": "ไฟล์ที่ไม่รู้จักต้องถูกปฏิเสธ (fail closed) และตอบเหมือนไม่มีสิทธิ์"}
