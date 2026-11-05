@@ -29,7 +29,7 @@
  "span_stats": {
   "relocated": 0,
   "trimmed": 0,
-  "demoted_by_overlap": 3,
+  "demoted_by_overlap": 4,
   "snapped_items": 3,
   "snapped_chars": 3,
   "gap_merged_runs": 1,

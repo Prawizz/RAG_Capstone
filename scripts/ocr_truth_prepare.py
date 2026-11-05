@@ -88,6 +88,7 @@ from app.extraction.ocr import OcrResult  # noqa: E402
 from app.extraction.ocr_markdown import parse_ocr_markdown  # noqa: E402
 from app.models import BlockType  # noqa: E402
 from app.thai.normalizer import normalize  # noqa: E402
+from eval.ocr_canon import canon  # noqa: E402,F401  (canon ตัวเดียวร่วมกับ ocr_truth_eval.py)
 
 ROOT = Path(__file__).resolve().parent.parent
 DATASETS = ROOT / "eval" / "datasets"
@@ -125,16 +126,7 @@ CROP_PAD = 14  # px รอบ bbox
 PAGE_THUMB_LONG_SIDE = 1500
 
 _MD_CHARS = re.compile(r"[#*|]")
-_LEADING_DASH = re.compile(r"(?m)^\s*-\s+")
 _WS = re.compile(r"\s+")
-_QUOTES = str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"'})
-
-
-def canon(text: str) -> str:
-    """รูปที่ใช้เทียบ: normalize -> ตัดเครื่องหมาย markdown -> ตัดช่องว่าง"""
-    t = normalize(text).translate(_QUOTES)
-    t = _LEADING_DASH.sub("", t)
-    return _WS.sub("", _MD_CHARS.sub("", t))
 
 
 # ---------- แตกบรรทัด ----------

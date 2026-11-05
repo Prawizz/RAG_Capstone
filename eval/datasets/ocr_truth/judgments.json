@@ -1,0 +1,1396 @@
+{
+ "version": 1,
+ "dataset_id": "bacada28668f7e12",
+ "total": 347,
+ "done": 347,
+ "judgments": {
+  "E_ONE_REPORT_CPALLT_p442_002": {
+   "verdict": "edited",
+   "text": "บริษัท ซีพี ออลล์ จำกัด (มหาชน) และบริษัทย่อย"
+  },
+  "E_ONE_REPORT_CPALLT_p442_003": {
+   "verdict": "typhoon",
+   "text": "บริษัท ซีพี ออลล์ จำกัด (มหาชน) และบริษัทย่อย"
+  },
+  "E_ONE_REPORT_CPALLT_p442_005": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_006": {
+   "verdict": "typhoon",
+   "text": "สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2568"
+  },
+  "E_ONE_REPORT_CPALLT_p442_007": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_008": {
+   "verdict": "typhoon",
+   "text": "(ง) บริษัทมีสัญญาบริการฉบับหนึ่งกับบริษัท เคาน์เตอร์เซอร์วิส จำกัด ซึ่งเป็นบริษัทย่อยในประเทศแห่งหนึ่ง"
+  },
+  "E_ONE_REPORT_CPALLT_p442_013": {
+   "verdict": "typhoon",
+   "text": "ในสัญญา ในการนี้ บริษัทย่อยตกลงจะจ่ายค่าบริการให้กับบริษัทตามจำนวนเงินที่ระบุไว้ในสัญญา ทั้งนี้หาก"
+  },
+  "E_ONE_REPORT_CPALLT_p442_015": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_017": {
+   "verdict": "typhoon",
+   "text": "คู่สัญญาฝ่ายใดฝ่ายหนึ่งมีความประสงค์ที่จะขอเลิกสัญญาฉบับนี้ คู่สัญญาฝ่ายนั้นจะต้องทำหนังสือแจ้งให้"
+  },
+  "E_ONE_REPORT_CPALLT_p442_018": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_019": {
+   "verdict": "typhoon",
+   "text": "คู่สัญญาอีกฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า 60 วัน ก่อนวันสิ้นสุดสัญญา"
+  },
+  "E_ONE_REPORT_CPALLT_p442_020": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_021": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_022": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_023": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_027": {
+   "verdict": "typhoon",
+   "text": "ในการนี้ บริษัทตกลงจ่ายค่าบริการรายเดือนให้กับบริษัทย่อยดังกล่าวเป็นจำนวนเงิน 0.3 ล้านบาท สัญญานี้"
+  },
+  "E_ONE_REPORT_CPALLT_p442_029": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_031": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_033": {
+   "verdict": "typhoon",
+   "text": "า คู่สัญญาฝ่ายนั้นจะต้องทำหนังสือแจ้งให้คู่สัญญาอีกฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า"
+  },
+  "E_ONE_REPORT_CPALLT_p442_034": {
+   "verdict": "typhoon",
+   "text": "60 วัน ก่อนวันสิ้นสุดสัญญา"
+  },
+  "E_ONE_REPORT_CPALLT_p442_038": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_039": {
+   "verdict": "typhoon",
+   "text": "การเช่าอสังหาริมทรัพย์ ซี.พี.ทาวเวอร์ ซึ่งเป็นบริษัทที่เกี่ยวข้องกันแห่งหนึ่ง สำหรับการใช้พื้นที่อาคารเป็น"
+  },
+  "E_ONE_REPORT_CPALLT_p442_041": {
+   "verdict": "typhoon",
+   "text": "สำนักงานของบริษัทและบริษัทย่อย ในการนี้ บริษัทและบริษัทย่อยตกลงจ่ายค่าเช่าและค่าบริการรายเดือน"
+  },
+  "E_ONE_REPORT_CPALLT_p442_043": {
+   "verdict": "typhoon",
+   "text": "เป็นจำนวนเงิน 9.3 ล้านบาท และได้วางเงินประกันไว้กับบริษัทที่เกี่ยวข้องกันดังกล่าว เป็นจำนวนเงินรวม"
+  },
+  "E_ONE_REPORT_CPALLT_p442_044": {
+   "verdict": "typhoon",
+   "text": "29.6 ล้านบาท โดยบริษัทและบริษัทย่อยจะได้รับเงินประกันคืนเมื่อมีการยกเลิกการเช่า สัญญาเหล่านี้มีอายุ 3 ปี"
+  },
+  "E_ONE_REPORT_CPALLT_p442_045": {
+   "verdict": "typhoon",
+   "text": "โดยมีระยะเวลาสิ้นสุดแตกต่างกันจนถึงเดือนสิงหาคม 2570"
+  },
+  "E_ONE_REPORT_CPALLT_p442_046": {
+   "verdict": "typhoon",
+   "text": "(ช) บริษัทและบริษัทย่อยในประเทศบางแห่งมีสัญญาบริการระบบงานสารสนเทศกับบริษัท โกซอฟท์"
+  },
+  "E_ONE_REPORT_CPALLT_p442_047": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_048": {
+   "verdict": "typhoon",
+   "text": "(ประเทศไทย) จำกัด (\"ผู้ให้บริการ\") ซึ่งเป็นบริษัทย่อยในประเทศแห่งหนึ่ง ภายใต้เงื่อนไขของสัญญา"
+  },
+  "E_ONE_REPORT_CPALLT_p442_051": {
+   "verdict": "typhoon",
+   "text": "ผู้ให้บริการตกลงที่จะให้บริการปรึกษา แนะนำ พัฒนา ออกแบบ ติดตั้ง บำรุงรักษา และสนับสนุนระบบงาน"
+  },
+  "E_ONE_REPORT_CPALLT_p442_054": {
+   "verdict": "typhoon",
+   "text": "สารสนเทศให้กับบริษัทและบริษัทย่อย เป็นเวลา 1 ปี ซึ่งจะสิ้นสุดสัญญาในเดือนธันวาคม 2569 ในการนี้"
+  },
+  "E_ONE_REPORT_CPALLT_p442_055": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_059": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p442_060": {
+   "verdict": "typhoon",
+   "text": "คู่ส"
+  },
+  "E_ONE_REPORT_CPALLT_p442_063": {
+   "verdict": "typhoon",
+   "text": "อีกฝ่ายทราบล่วงหน้าเป็นเวลาไม่น้อยกว่า 90 วัน ก่อนวันสิ้นสุดสัญญา"
+  },
+  "E_ONE_REPORT_CPALLT_p442_064": {
+   "verdict": "typhoon",
+   "text": "รายงานทางการเงิน"
+  },
+  "E_ONE_REPORT_CPALLT_p462_001": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p462_002": {
+   "verdict": "typhoon",
+   "text": "บริษัท ซีพี ออลล์ จำกัด (มหาชน) และบริษัทย่อย"
+  },
+  "E_ONE_REPORT_CPALLT_p462_003": {
+   "verdict": "typhoon",
+   "text": "หมายเหตุประกอบงบการเงิน"
+  },
+  "E_ONE_REPORT_CPALLT_p462_005": {
+   "verdict": "typhoon",
+   "text": "สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2568"
+  },
+  "E_ONE_REPORT_CPALLT_p462_007": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p462_008": {
+   "verdict": "typhoon",
+   "text": "ก) ในระหว่างปี 2568 กลุ่มบริษัทได้ทำการชำระค่าทุนเพิ่มเติมในบริษัท สุขุมวิท ลีฟวิ่ง จำกัด ซึ่งเป็นบริษัทร่วม"
+  },
+  "E_ONE_REPORT_CPALLT_p462_011": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p462_012": {
+   "verdict": "typhoon",
+   "text": "บริษัทร่วม เป็นจำนวนเงิน 112 ล้านบาท (เพิ่มจาก 248 ล้านบาท เป็น 360 ล้านบาท)"
+  },
+  "E_ONE_REPORT_CPALLT_p462_015": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p462_016": {
+   "verdict": "typhoon",
+   "text": "ทรัสต์เพื่อการลงทุนในอสังหาริมทรัพย์และสิทธิการเช่า แอ็กซ์ตร้า ฟิวเจอร์ ซิตี้ เป็นบริษัทจดทะเบียนในตลาด"
+  },
+  "E_ONE_REPORT_CPALLT_p462_020": {
+   "verdict": "typhoon",
+   "text": "ต่อกลุ่มบริษัท"
+  },
+  "E_ONE_REPORT_CPALLT_p462_021": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p462_024": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "E_ONE_REPORT_CPALLT_p462_025": {
+   "verdict": "typhoon",
+   "text": "ตารางต่อไปนี้สรุปข้อมูลทางการเงินของส่วนได้เสียของกลุ่มบริษัทในบริษัทร่วมและการร่วมค้าที่ไม่มี"
+  },
+  "E_ONE_REPORT_CPALLT_p462_027": {
+   "verdict": "tesseract",
+   "text": "บริษัทร่วมการร่วมค้า"
+  },
+  "E_ONE_REPORT_CPALLT_p462_028": {
+   "verdict": "typhoon",
+   "text": "ที่ไม่มีสาระสำคัญ ที่ไม่มีสาระสำคัญ"
+  },
+  "E_ONE_REPORT_CPALLT_p462_032": {
+   "verdict": "typhoon",
+   "text": "และการร่วมค้าที่ไม่มีสาระสำคัญ 9,084 9,039 6,204 5,981"
+  },
+  "E_ONE_REPORT_CPALLT_p462_035": {
+   "verdict": "typhoon",
+   "text": "- กำไรขาดทุนเบ็ดเสร็จอื่น - - (3) (3)"
+  },
+  "E_ONE_REPORT_CPALLT_p462_037": {
+   "verdict": "typhoon",
+   "text": "รายงานทางการเงิน"
+  },
+  "ONEREPORTKBANKT_p2_001": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p2_003": {
+   "verdict": "typhoon",
+   "text": "รายงานแบบ 56-1 One Report"
+  },
+  "ONEREPORTKBANKT_p2_010": {
+   "verdict": "typhoon",
+   "text": "ของกลุ่มธุรกิจทางการเงินธนาคารกสิกรไทย"
+  },
+  "ONEREPORTKBANKT_p2_011": {
+   "verdict": "typhoon",
+   "text": "2. การบริหารจัดการความเสี่ยง"
+  },
+  "ONEREPORTKBANKT_p2_012": {
+   "verdict": "typhoon",
+   "text": "3. การขับเคลื่อนธุรกิจเพื่อความยั่งยืน"
+  },
+  "ONEREPORTKBANKT_p2_013": {
+   "verdict": "typhoon",
+   "text": "4. การวิเคราะห์และคำอธิบายของฝ่ายจัดการ"
+  },
+  "ONEREPORTKBANKT_p2_014": {
+   "verdict": "typhoon",
+   "text": "5. ข้อมูลทั่วไปและข้อมูลสำคัญอื่น"
+  },
+  "ONEREPORTKBANKT_p2_020": {
+   "verdict": "typhoon",
+   "text": "8. รายงานผลการดำเนินงานสำคัญ"
+  },
+  "ONEREPORTKBANKT_p2_024": {
+   "verdict": "typhoon",
+   "text": "รายงานความรับผิดชอบของคณะกรรมการธนาคาร"
+  },
+  "ONEREPORTKBANKT_p2_027": {
+   "verdict": "typhoon",
+   "text": "งบการเงินและหมายเหตุประกอบงบการเงิน"
+  },
+  "ONEREPORTKBANKT_p2_028": {
+   "verdict": "tesseract",
+   "text": "KASIKORNTHAI"
+  },
+  "ONEREPORTKBANKT_p2_029": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ"
+  },
+  "ONEREPORTKBANKT_p2_030": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ 1"
+  },
+  "ONEREPORTKBANKT_p2_031": {
+   "verdict": "typhoon",
+   "text": "รายละเอียดเกี่ยวกับกรรมการ ผู้บริหาร"
+  },
+  "ONEREPORTKBANKT_p2_032": {
+   "verdict": "typhoon",
+   "text": "ผู้มีอำนาจควบคุม เลขานุการบริษัท และสมุห์บัญชีใหญ่"
+  },
+  "ONEREPORTKBANKT_p2_033": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ 2"
+  },
+  "ONEREPORTKBANKT_p2_034": {
+   "verdict": "typhoon",
+   "text": "รายละเอียดเกี่ยวกับการดำรงตำแหน่ง"
+  },
+  "ONEREPORTKBANKT_p2_035": {
+   "verdict": "typhoon",
+   "text": "ของกรรมการและผู้บริหารธนาคารในบริษัทย่อย"
+  },
+  "ONEREPORTKBANKT_p2_036": {
+   "verdict": "typhoon",
+   "text": "บริษัทร่วม การร่วมค้า และบริษัทที่เกี่ยวข้อง"
+  },
+  "ONEREPORTKBANKT_p2_037": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ 3"
+  },
+  "ONEREPORTKBANKT_p2_038": {
+   "verdict": "typhoon",
+   "text": "รายละเอียดเกี่ยวกับหัวหน้าหน่วยงานตรวจสอบภายใน"
+  },
+  "ONEREPORTKBANKT_p2_039": {
+   "verdict": "typhoon",
+   "text": "และหัวหน้างานกำกับดูแลการปฏิบัติงาน"
+  },
+  "ONEREPORTKBANKT_p2_040": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ 4"
+  },
+  "ONEREPORTKBANKT_p2_041": {
+   "verdict": "typhoon",
+   "text": "ทรัพย์สินที่ใช้ในการประกอบธุรกิจ"
+  },
+  "ONEREPORTKBANKT_p2_042": {
+   "verdict": "typhoon",
+   "text": "และรายละเอียดเกี่ยวกับรา"
+  },
+  "ONEREPORTKBANKT_p2_043": {
+   "verdict": "typhoon",
+   "text": "ยการประเมินราคาทรัพย์สิน"
+  },
+  "ONEREPORTKBANKT_p2_044": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ 5"
+  },
+  "ONEREPORTKBANKT_p2_045": {
+   "verdict": "typhoon",
+   "text": "นโยบายและแนวปฏิบัติการกำกับดูแลกิจการ"
+  },
+  "ONEREPORTKBANKT_p2_046": {
+   "verdict": "typhoon",
+   "text": "และจรรยาบรรณธุรกิจ (ฉบับเต็ม)"
+  },
+  "ONEREPORTKBANKT_p2_050": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p2_051": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p2_052": {
+   "verdict": "typhoon",
+   "text": "สถิตอยู่ในใจตราบนิรันดร์"
+  },
+  "ONEREPORTKBANKT_p2_053": {
+   "verdict": "edited",
+   "text": "น้อมสำนึกในพระมหากรุณาธิคุณเป็นล้นพ้นอันหาที่สุดมิได้"
+  },
+  "ONEREPORTKBANKT_p2_054": {
+   "verdict": "typhoon",
+   "text": "ข้าพระพุทธเจ้า คณะกรรมการ ผู้บริหาร และพนักงาน บมจ. ธนาคารกสิกรไทย"
+  },
+  "ONEREPORTKBANKT_p81_003": {
+   "verdict": "tesseract",
+   "text": "ประจําปี 2568"
+  },
+  "ONEREPORTKBANKT_p81_004": {
+   "verdict": "edited",
+   "text": "ธนาคารกสิกรไทย"
+  },
+  "ONEREPORTKBANKT_p81_013": {
+   "verdict": "typhoon",
+   "text": "2. การบริหารจัดการความเสี่ยง"
+  },
+  "ONEREPORTKBANKT_p81_014": {
+   "verdict": "typhoon",
+   "text": "3. การขับเคลื่อนธุรกิจเพื่อความยั่งยืน"
+  },
+  "ONEREPORTKBANKT_p81_015": {
+   "verdict": "typhoon",
+   "text": "4. การวิเคราะห์และคำอธิบายของฝ่ายจัดการ"
+  },
+  "ONEREPORTKBANKT_p81_017": {
+   "verdict": "typhoon",
+   "text": "5. ข้อมูลทั่วไปและข้อมูลสำคัญอื่น"
+  },
+  "ONEREPORTKBANKT_p81_018": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_019": {
+   "verdict": "typhoon",
+   "text": "ส่วนที่ 2 การกำกับดูแลกิจการ"
+  },
+  "ONEREPORTKBANKT_p81_021": {
+   "verdict": "typhoon",
+   "text": "7. โครงสร้างการกำกับดูแลกิจการ"
+  },
+  "ONEREPORTKBANKT_p81_024": {
+   "verdict": "typhoon",
+   "text": "8. รายงานผลการดำเนินงานสำคัญ"
+  },
+  "ONEREPORTKBANKT_p81_028": {
+   "verdict": "typhoon",
+   "text": "รายงานความรับผิดชอบของคณะกรรมการธนาคาร"
+  },
+  "ONEREPORTKBANKT_p81_030": {
+   "verdict": "typhoon",
+   "text": "รายงานของผู้สอบบัญชีรับอนุญาต"
+  },
+  "ONEREPORTKBANKT_p81_032": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ"
+  },
+  "ONEREPORTKBANKT_p81_033": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ 1 รายละเอียดเกี่ยวกับกรรมการ ผู้บริหาร"
+  },
+  "ONEREPORTKBANKT_p81_034": {
+   "verdict": "typhoon",
+   "text": "ผู้มีอำนาจควบคุม เลขานุการบริษัท และสมุห์บัญชีใหญ่"
+  },
+  "ONEREPORTKBANKT_p81_035": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ 2"
+  },
+  "ONEREPORTKBANKT_p81_037": {
+   "verdict": "edited",
+   "text": "ของกรรมการและผู้บริหารธนาคารในบริษัทย่อย"
+  },
+  "ONEREPORTKBANKT_p81_038": {
+   "verdict": "edited",
+   "text": "บริษัทร่วม การร่วมค้า และบริษัทที่เกี่ยวข้อง"
+  },
+  "ONEREPORTKBANKT_p81_039": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ 3"
+  },
+  "ONEREPORTKBANKT_p81_040": {
+   "verdict": "typhoon",
+   "text": "รายละเอียดเกี่ยวกับหัวหน้าหน่วยงานตรวจสอบภายใน"
+  },
+  "ONEREPORTKBANKT_p81_041": {
+   "verdict": "typhoon",
+   "text": "และหัวหน้างานกำกับดูแลการปฏิบัติงาน"
+  },
+  "ONEREPORTKBANKT_p81_042": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ 4"
+  },
+  "ONEREPORTKBANKT_p81_043": {
+   "verdict": "edited",
+   "text": "ทรัพย์สินที่ใช้ในการประกอบธุรกิจ"
+  },
+  "ONEREPORTKBANKT_p81_044": {
+   "verdict": "typhoon",
+   "text": "ทรัพย์สินที่ใช้ในการประกอบธุรกิจ"
+  },
+  "ONEREPORTKBANKT_p81_046": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ 5"
+  },
+  "ONEREPORTKBANKT_p81_047": {
+   "verdict": "typhoon",
+   "text": "นโยบายและแนวปฏิบัติการกำกับดูแลกิจการ"
+  },
+  "ONEREPORTKBANKT_p81_048": {
+   "verdict": "typhoon",
+   "text": "และจรรยาบรรณธุรกิจ (ฉบับเต็ม)"
+  },
+  "ONEREPORTKBANKT_p81_051": {
+   "verdict": "typhoon",
+   "text": "รางวัลเกียรติคุณ"
+  },
+  "ONEREPORTKBANKT_p81_054": {
+   "verdict": "typhoon",
+   "text": "เรื่องสำคัญในการตรวจสอบคือเรื่องต่างๆ ที่มีนัยสำคัญที่สุดตามดุลยพินิจเยี่ยงผู้ประกอบวิชาชีพของข้าพเจ้าในการตรวจสอบงบการเงิน"
+  },
+  "ONEREPORTKBANKT_p81_056": {
+   "verdict": "typhoon",
+   "text": "รวมและงบการเงินเฉพาะธนาคารสำหรับงวดปัจจุบัน ข้าพเจ้าได้นำเรื่องเหล่านี้มาพิจารณาในบริบทของการตรวจสอบงบการเงินรวมและงบ"
+  },
+  "ONEREPORTKBANKT_p81_058": {
+   "verdict": "typhoon",
+   "text": "การเงินเฉพาะธนาคารโดยรวม และในการแสดงความเห็นของข้าพเจ้า ทั้งนี้ข้าพเจ้าไม่ได้แสดงความเห็นแยกต่างหากสำหรับเรื่องเหล่านี้"
+  },
+  "ONEREPORTKBANKT_p81_060": {
+   "verdict": "typhoon",
+   "text": "ค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นสำหรับเงินให้สินเชื่อแก่ลูกหนี้"
+  },
+  "ONEREPORTKBANKT_p81_062": {
+   "verdict": "typhoon",
+   "text": "สำหรับการเปิดเผยข้อมูลเกี่ยวกับความเสี่ยงด้านเครดิตของเงินให้สินเชื่อแก่ลูกหนี้ และค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น"
+  },
+  "ONEREPORTKBANKT_p81_063": {
+   "verdict": "typhoon",
+   "text": "อ้างอิงหมายเหตุประกอบงบการเงินรวมและงบการเงินเฉพาะธนาคารข้อ 4.2.2), 5, 14 และ 16"
+  },
+  "ONEREPORTKBANKT_p81_064": {
+   "verdict": "typhoon",
+   "text": "เรื่องสำคัญในการตรวจสอบ"
+  },
+  "ONEREPORTKBANKT_p81_067": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_068": {
+   "verdict": "typhoon",
+   "text": "เฉพาะธนาคาร ตามลำดับ โดยมีค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นเป็นจำนวนเงิน 142,997 ล้านบาท และ 132,977 ล้านบาท"
+  },
+  "ONEREPORTKBANKT_p81_070": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_071": {
+   "verdict": "typhoon",
+   "text": "มาตรฐานการรายงานทางการเงินฉบับที่ 9 กำหนดให้ธนาคารและบริษัทย่อยประมาณการและบันทึกการด้อยค่าของเงินให้สินเชื่อแก่ลูกหนี้"
+  },
+  "ONEREPORTKBANKT_p81_073": {
+   "verdict": "typhoon",
+   "text": "ด้วยวิธีผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น การประมาณการของผู้บริหารเกี่ยวกับผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นสำหรับเงินให้"
+  },
+  "ONEREPORTKBANKT_p81_074": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_075": {
+   "verdict": "typhoon",
+   "text": "สินเชื่อแก่ลูกหนี้ที่วัดมูลค่าด้วยวิธีราคาทุนตัดจำหน่ายขึ้นอยู่กับโมเดลด้านเครดิตที่มีความซับซ้อน ผู้บริหารต้องใช้วิจารณญาณและการ"
+  },
+  "ONEREPORTKBANKT_p81_077": {
+   "verdict": "edited",
+   "text": "ประมาณการที่สำคัญในการจัดทำโมเดลด้านเครดิตดังกล่าว ซึ่งรวมถึงวิธีการระบุระดับการเพิ่มขึ้นอย่างมีนัยสำคัญของความเสี่ยงด้านเครดิต"
+  },
+  "ONEREPORTKBANKT_p81_079": {
+   "verdict": "typhoon",
+   "text": "ค่าความน่าจะเป็นที่ลูกหนี้จะผิดนัดชำระหนี้ ร้อยละของความเสียหายที่อาจจะเกิดขึ้นเมื่อลูกหนี้ผิดนัดชำระหนี้ต่อจำนวนเงินของยอดหนี้ และ"
+  },
+  "ONEREPORTKBANKT_p81_080": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_081": {
+   "verdict": "typhoon",
+   "text": "ประมาณการยอดหนี้เมื่อลูกหนี้ผิดนัดชำระ การใช้ปัจจัยทางเศรษฐกิจมหภาคและการปรับปรุงเชิงคุณภาพรวมถึงการประมาณการเพิ่มเติม"
+  },
+  "ONEREPORTKBANKT_p81_083": {
+   "verdict": "typhoon",
+   "text": "โดยผู้บริหาร โดยเฉพาะอย่างยิ่ง เมื่อสภาวะเศรษฐกิจในปัจจุบันได้เพิ่มความซับซ้อนให้กับกระบวนการในการประมาณการของผู้บริหาร ดังนั้น"
+  },
+  "ONEREPORTKBANKT_p81_085": {
+   "verdict": "typhoon",
+   "text": "จึงพิจารณาค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้นเป็นเรื่องสำคัญในการตรวจสอบ"
+  },
+  "ONEREPORTKBANKT_p81_086": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_087": {
+   "verdict": "typhoon",
+   "text": "การจัดการเรื่องดังกล่าวอย่างไรในการตรวจสอบ"
+  },
+  "ONEREPORTKBANKT_p81_088": {
+   "verdict": "typhoon",
+   "text": "ในการวางแผนวิธีการตรวจสอบ ข้าพเจ้าได้ประเมินความเสี่ยงโดยพิจารณาปัจจัยภายใน และปัจจัยภายนอกซึ่งอาจมีผลกระทบต่อผลการ"
+  },
+  "ONEREPORTKBANKT_p81_089": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_090": {
+   "verdict": "typhoon",
+   "text": "ดำเนินงานของลูกหนี้รายตัว กลุ่มอุตสาหกรรมหรือกลุ่มลูกค้าหรือปัจจัยอื่นซึ่งอาจมีผลต่อการใช้ประมาณการ และการใช้วิจารณญาณ"
+  },
+  "ONEREPORTKBANKT_p81_091": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_093": {
+   "verdict": "typhoon",
+   "text": "วิธีการตรวจสอบของข้าพเจ้ารวมถึงการทดสอบการออกแบบ และประสิทธิผลของการควบคุมภายในเพื่อตอบสนองต่อความเสี่ยงที่สำคัญ"
+  },
+  "ONEREPORTKBANKT_p81_094": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_095": {
+   "verdict": "typhoon",
+   "text": "ของกระบวนการให้สินเชื่อ และการประมาณการค่าเผื่อผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น โดยเฉพาะอย่างยิ่ง ข้าพเจ้าได้ประเมินการ"
+  },
+  "ONEREPORTKBANKT_p81_097": {
+   "verdict": "typhoon",
+   "text": "ควบคุมภายในที่สำคัญในการประเมินค่าความน่าจะเป็นที่ลูกหนี้จะผิดนัดชำระหนี้ ร้อยละของความเสียหายที่อาจจะเกิดขึ้นเมื่อลูกหนี้ผิดนัด"
+  },
+  "ONEREPORTKBANKT_p81_099": {
+   "verdict": "edited",
+   "text": "ชำระหนี้ต่อยอดหนี้ และประมาณการยอดหนี้เมื่อลูกหนี้ผิดนัดชำระ และการพัฒนาวิธีการระบุระดับการเพิ่มขึ้นอย่างมีนัยสำคัญของความ"
+  },
+  "ONEREPORTKBANKT_p81_100": {
+   "verdict": "typhoon",
+   "text": "เสี่ยงด้านเครดิต ปัจจัยทางเศรษฐกิจมหภาค และการปรับปรุงเชิงคุณภาพ"
+  },
+  "ONEREPORTKBANKT_p81_102": {
+   "verdict": "typhoon",
+   "text": "ข้าพเจ้าสุ่มตัวอย่างเพื่อปฏิบัติงานสอบทานเงินให้สินเชื่อ โดยสอบทานในรายละเอียดของประวัติสินเชื่อรายตัวและข้อมูลอื่นที่เกี่ยวข้อง ซึ่ง"
+  },
+  "ONEREPORTKBANKT_p81_104": {
+   "verdict": "typhoon",
+   "text": "ข้าพเจ้าปฏิบัติอย่างเป็นอิสระ ตัวอย่างที่เลือกรวมถึงลูกหนี้รายใหญ่ เงินให้สินเชื่อที่มีการปรับโครงสร้างหนี้และการเปลี่ยนแปลงเงื่อนไขการ"
+  },
+  "ONEREPORTKBANKT_p81_106": {
+   "verdict": "typhoon",
+   "text": "จ่ายชำระหนี้ รวมถึงเงินให้สินเชื่อที่ได้เลือกจากการประเมินความเสี่ยงของข้าพเจ้า"
+  },
+  "ONEREPORTKBANKT_p81_107": {
+   "verdict": "typhoon",
+   "text": "ธนาคารกสิกรไทย"
+  },
+  "ONEREPORTKBANKT_p81_111": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_115": {
+   "verdict": "typhoon",
+   "text": "สำหรับการคำนวณผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น ข้าพเจ้าประเมินและทดสอบความสมเหตุสมผลของโมเดลด้านเครดิตของธนาคาร"
+  },
+  "ONEREPORTKBANKT_p81_116": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_117": {
+   "verdict": "typhoon",
+   "text": "และบริษัทย่อย ซึ่งรวมถึง ข้อมูลที่ใช้ การออกแบบ และประสิทธิภาพของโมเดลสำหรับกลุ่มลูกหนี้ที่สำคัญ ข้าพเจ้าประเมินความสมเหตุสมผล"
+  },
+  "ONEREPORTKBANKT_p81_118": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_119": {
+   "verdict": "typhoon",
+   "text": "ของปัจจัยทางเศรษฐศาสตร์มหภาค และความน่าจะเป็นที่ถ่วงน้ำหนักของสถานการณ์ที่แตกต่างกัน"
+  },
+  "ONEREPORTKBANKT_p81_120": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_122": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_128": {
+   "verdict": "typhoon",
+   "text": "ข้าพเจ้าได้ประเมินว่าการเปิดเผยในงบการเงินมีความเพียงพอและเหมาะสมที่จะสะท้อนความเสี่ยงของธนาคารและบริษัทย่อยต่อความ"
+  },
+  "ONEREPORTKBANKT_p81_131": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_133": {
+   "verdict": "typhoon",
+   "text": "การเปิดเผยข้อมูลเกี่ยวกับเครื่องมือทางการเงิน และมูลค่ายุติธรรม อ้างอิงหมายเหตุประกอบงบการเงินรวมและงบการเงินเฉพาะธนาคาร"
+  },
+  "ONEREPORTKBANKT_p81_138": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_139": {
+   "verdict": "typhoon",
+   "text": "ล้านบาท และหนี้สินจำนวน 92,270 ล้านบาท ตามลำดับ ในงบการเงินเฉพาะธนาคารเป็นสินทรัพย์จำนวน 576,745 ล้านบาท และเป็น"
+  },
+  "ONEREPORTKBANKT_p81_142": {
+   "verdict": "edited",
+   "text": "ในจำนวนดังกล่าว ณ วันที่ 31 ธันวาคม 2568 สินทรัพย์ทางการเงินและหนี้สินทางการเงินที่จัดลำดับชั้นมูลค่ายุติธรรมเป็นข้อมูลระดับ 2"
+  },
+  "ONEREPORTKBANKT_p81_143": {
+   "verdict": "typhoon",
+   "text": "และระดับ 3 ในงบการเงินรวมเป็นจำนวน 1,154,868 ล้านบาท และจำนวน 92,043 ล้านบาท ตามลำดับ และในงบการเงินเฉพาะธนาคาร"
+  },
+  "ONEREPORTKBANKT_p81_144": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_145": {
+   "verdict": "typhoon",
+   "text": "เป็นจำนวน 548,360 ล้านบาท และ 92,527 ล้านบาท ตามลำดับ ซึ่งมูลค่ายุติธรรมอ้างอิงจากข้อมูลอื่นประกอบนอกเหนือจากราคาเสนอ"
+  },
+  "ONEREPORTKBANKT_p81_146": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_149": {
+   "verdict": "typhoon",
+   "text": "ในการประมาณมูลค่ายุติธรรม ซึ่งอาจมีผลต่อความเสี่ยงที่สูงขึ้นต่อจำนวนเงินของเครื่องมือทางการเงินที่แสดงในงบฐานะการเงินที่อาจ"
+  },
+  "ONEREPORTKBANKT_p81_150": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p81_151": {
+   "verdict": "typhoon",
+   "text": "แสดงราคาคลาดเคลื่อนไป ดังนั้นจึงพิจารณาการวัดมูลค่าของเครื่องมือทางการเงินเป็นเรื่องสำคัญในการตรวจสอบ"
+  },
+  "ONEREPORTKBANKT_p87_001": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p87_002": {
+   "verdict": "typhoon",
+   "text": "ธนาคารกสิกรไทย"
+  },
+  "ONEREPORTKBANKT_p87_010": {
+   "verdict": "typhoon",
+   "text": "สารจากประธานเจ้าหน้าที่บริหาร"
+  },
+  "ONEREPORTKBANKT_p87_023": {
+   "verdict": "typhoon",
+   "text": "8. รายงานผลการดำเนินงานสำคัญ"
+  },
+  "ONEREPORTKBANKT_p87_025": {
+   "verdict": "typhoon",
+   "text": "9. การควบคุมภายในและรายการระหว่างกัน"
+  },
+  "ONEREPORTKBANKT_p87_027": {
+   "verdict": "typhoon",
+   "text": "รายงานความรับผิดชอบของคณะกรรมการธนาคาร"
+  },
+  "ONEREPORTKBANKT_p87_029": {
+   "verdict": "typhoon",
+   "text": "รายงานของผู้สอบบัญชีรับอนุญาต"
+  },
+  "ONEREPORTKBANKT_p87_030": {
+   "verdict": "typhoon",
+   "text": "งบการเงินและหมายเหตุประกอบงบการเงิน"
+  },
+  "ONEREPORTKBANKT_p87_033": {
+   "verdict": "typhoon",
+   "text": "รายละเอียดเกี่ยวกับกรรมการ ผู้บริหาร"
+  },
+  "ONEREPORTKBANKT_p87_035": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ 2"
+  },
+  "ONEREPORTKBANKT_p87_041": {
+   "verdict": "typhoon",
+   "text": "และหัวหน้างานกำกับดูแลการปฏิบัติงาน"
+  },
+  "ONEREPORTKBANKT_p87_042": {
+   "verdict": "typhoon",
+   "text": "เอกสารแนบ 4"
+  },
+  "ONEREPORTKBANKT_p87_046": {
+   "verdict": "typhoon",
+   "text": "นโยบายและแนวปฏิบัติการกำกับดูแลกิจการ"
+  },
+  "ONEREPORTKBANKT_p87_047": {
+   "verdict": "typhoon",
+   "text": "และจรรยาบรรณธุรกิจ (ฉบับเต็ม)"
+  },
+  "ONEREPORTKBANKT_p87_052": {
+   "verdict": "typhoon",
+   "text": "ธนาคารกสิกรไทย จำกัด (มหาชน) และบริษัทย่อย"
+  },
+  "ONEREPORTKBANKT_p87_053": {
+   "verdict": "tesseract",
+   "text": "หมายเหตุ"
+  },
+  "ONEREPORTKBANKT_p87_055": {
+   "verdict": "tesseract",
+   "text": "งบการเงินรวมงบการเงินเฉพาะธนาคาร"
+  },
+  "ONEREPORTKBANKT_p87_056": {
+   "verdict": "typhoon",
+   "text": "งบการเงินเฉพาะธนาคาร"
+  },
+  "ONEREPORTKBANKT_p87_058": {
+   "verdict": "typhoon",
+   "text": "2568 2567 2568 2567"
+  },
+  "ONEREPORTKBANKT_p87_067": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p87_068": {
+   "verdict": "typhoon",
+   "text": "9,648,867 8,992,194 7,918,784 7,507,917"
+  },
+  "ONEREPORTKBANKT_p87_069": {
+   "verdict": "typhoon",
+   "text": "ผลขาดทุนด้านเครดิตที่คาดว่าจะเกิดขึ้น"
+  },
+  "ONEREPORTKBANKT_p87_071": {
+   "verdict": "typhoon",
+   "text": "43,108,719 49,421,662 41,197,131 46,119,562"
+  },
+  "ONEREPORTKBANKT_p87_077": {
+   "verdict": "typhoon",
+   "text": "ขาดทุนจากการด้อยค่าทรัพย์สินรอการขาย"
+  },
+  "ONEREPORTKBANKT_p87_078": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p87_081": {
+   "verdict": "typhoon",
+   "text": "11,203 (28,833) 7,106 (29,659)"
+  },
+  "ONEREPORTKBANKT_p87_082": {
+   "verdict": "typhoon",
+   "text": "ขาดทุน (กลับรายการขาดทุน) จากการด้อยค่าสินทรัพย์ไม่มีตัวตน"
+  },
+  "ONEREPORTKBANKT_p87_086": {
+   "verdict": "typhoon",
+   "text": "227 34,708 227 -"
+  },
+  "ONEREPORTKBANKT_p87_087": {
+   "verdict": "typhoon",
+   "text": "กลับรายการสำรองสำหรับสินทรัพย์อื่น"
+  },
+  "ONEREPORTKBANKT_p87_090": {
+   "verdict": "typhoon",
+   "text": "(กลับรายการ) ประมาณการหนี้สิน"
+  },
+  "ONEREPORTKBANKT_p87_098": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p87_101": {
+   "verdict": "typhoon",
+   "text": "66,985 13,428 5,219 -"
+  },
+  "ONEREPORTKBANKT_p87_107": {
+   "verdict": "typhoon",
+   "text": "รายได้เงินปันผล"
+  },
+  "ONEREPORTKBANKT_p87_108": {
+   "verdict": "typhoon",
+   "text": "(3,385,865) (3,525,591) (5,195,763) (5,908,811)"
+  },
+  "ONEREPORTKBANKT_p87_113": {
+   "verdict": "typhoon",
+   "text": "เงินสดรับเงินปันผล"
+  },
+  "ONEREPORTKBANKT_p87_123": {
+   "verdict": "typhoon",
+   "text": "11,518,410 (1,658,609) 16,051,792 1,584,920"
+  },
+  "ONEREPORTKBANKT_p87_129": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p87_132": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p87_133": {
+   "verdict": "typhoon",
+   "text": "5,058,307 2,753,235 7,445,610 1,576,976"
+  },
+  "ONEREPORTKBANKT_p87_135": {
+   "verdict": "typhoon",
+   "text": "ธนาคารกสิกรไทย"
+  },
+  "ONEREPORTKBANKT_p87_140": {
+   "verdict": "edited",
+   "text": "งบการเงินรวมงบการเงินเฉพาะธนาคาร"
+  },
+  "ONEREPORTKBANKT_p87_141": {
+   "verdict": "typhoon",
+   "text": "งบการเงินเฉพาะธนาคาร"
+  },
+  "ONEREPORTKBANKT_p87_142": {
+   "verdict": "tesseract",
+   "text": "สําหรับปีสิ้นสุดวันที่ 31 ธันวาคมสําหรับปีสิ้นสุดวันที่ 31 ธันวาคม"
+  },
+  "ONEREPORTKBANKT_p87_143": {
+   "verdict": "tesseract",
+   "text": "2568 2567 2568 2567"
+  },
+  "ONEREPORTKBANKT_p87_144": {
+   "verdict": "tesseract",
+   "text": "หมายเหตุ (ปรับปรุงใหม่ )"
+  },
+  "ONEREPORTKBANKT_p87_145": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p87_154": {
+   "verdict": "typhoon",
+   "text": "เงินสดสุทธิได้มาจากกิจกรรมดำเนินงาน 217,661,152 77,836,052 233,712,821 68,371,323"
+  },
+  "ONEREPORTKBANKT_p87_158": {
+   "verdict": "typhoon",
+   "text": "เงินสดรับจากการไถ่ถอนเงินลงทุนที่วัดมูลค่าด้วยราคาทุนตัดจำหน่าย 144,311,345 141,687,779 69,988,417 95,719,876"
+  },
+  "ONEREPORTKBANKT_p87_159": {
+   "verdict": "typhoon",
+   "text": "เงินสดรับจากการลดทุนและจำหน่ายเงินลงทุนในบริษัทย่อยและบริษัทร่วม 3,908 4,544 62,925 -"
+  },
+  "ONEREPORTKBANKT_p87_165": {
+   "verdict": "typhoon",
+   "text": "เงินสดรับจากการจำหน่ายสินทรัพย์ไม่มีตัวตน 49,510 65,424 10,976 65,013"
+  },
+  "ONEREPORTKBANKT_p87_170": {
+   "verdict": "typhoon",
+   "text": "เงินสดรับจากตราสารหนี้ที่ออกและเงินกู้ยืมระยะยาว - 6,556 - -"
+  },
+  "ONEREPORTKBANKT_p87_171": {
+   "verdict": "typhoon",
+   "text": "เงินสดจ่ายชำระคืนตราสารหนี้ที่ออกและเงินกู้ยืมระยะยาว (2,532,220) (117,640) (2,530,220) (117,640)"
+  },
+  "ONEREPORTKBANKT_p87_173": {
+   "verdict": "typhoon",
+   "text": "เงินสด (จ่ายสำหรับ) รับจากการได้มาซึ่งส่วนได้เสียที่ไม่มีอำนาจควบคุม (951,899) 199,998 - -"
+  },
+  "ONEREPORTKBANKT_p87_176": {
+   "verdict": "typhoon",
+   "text": "เงินสดจ่ายชำระคืนตราสารอื่นที่มีลักษณะคล้ายทุน 31 (16,366,250) - (16,366,250) -"
+  },
+  "ONEREPORTKBANKT_p87_177": {
+   "verdict": "typhoon",
+   "text": "เงินสดจ่ายผลตอบแทนของตราสารอื่นที่มีลักษณะคล้ายทุน 31 (872,836) (907,334) (872,836) (907,334)"
+  },
+  "ONEREPORTKBANKT_p87_181": {
+   "verdict": "typhoon",
+   "text": "เงินสดเพิ่มขึ้น (ลดลง) สุทธิ 8,027,308 (2,668,307) 8,052,388 (2,789,357)"
+  },
+  "ONEREPORTKBANKT_p87_182": {
+   "verdict": "typhoon",
+   "text": "เงินสด ณ วันต้นปี 46,021,380 48,689,687 45,675,851 48,465,208"
+  },
+  "ONEREPORTKBANKT_p87_184": {
+   "verdict": "typhoon",
+   "text": "ขัตติยา อินทรวิชัย"
+  },
+  "ONEREPORTKBANKT_p87_185": {
+   "verdict": "typhoon",
+   "text": "(นางสาวขัตติยา อินทรวิชัย)"
+  },
+  "ONEREPORTKBANKT_p87_186": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTKBANKT_p87_188": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTPTTT_p43_005": {
+   "verdict": "typhoon",
+   "text": "2. แสวงหาโอกาสทางธุรกิจพร้อมมุ่งสู่ Net Zero (Necessity"
+  },
+  "ONEREPORTPTTT_p43_009": {
+   "verdict": "typhoon",
+   "text": "ธุรกิจสู่ Net Zero Emissions ภายในปี ค.ศ. 2050 ทั้งนี้"
+  },
+  "ONEREPORTPTTT_p43_013": {
+   "verdict": "tesseract",
+   "text": "ของแต่ละบริษัทให้เกิดประโยชน์สูงสุดพร้อมทั้งวางแนวทาง"
+  },
+  "ONEREPORTPTTT_p43_018": {
+   "verdict": "typhoon",
+   "text": "มีประสิทธิภาพ"
+  },
+  "ONEREPORTPTTT_p43_019": {
+   "verdict": "typhoon",
+   "text": "3. บูรณาการเรื่องความยั่งยืนเข้ากับการดำเนินธุรกิจ"
+  },
+  "ONEREPORTPTTT_p43_021": {
+   "verdict": "typhoon",
+   "text": "ธุรกิจ Hydrocarbon และ Non-Hydrocarbon อย่างมั่นคง"
+  },
+  "ONEREPORTPTTT_p43_028": {
+   "verdict": "typhoon",
+   "text": "4. สร้างปัจจัยทำให้เกิดการขับเคลื่อนอย่างเป็นรูปธรรม"
+  },
+  "ONEREPORTPTTT_p43_030": {
+   "verdict": "typhoon",
+   "text": "องค์กรผ่านแนวคิด \"Triple Transformation\" ซึ่งประกอบด้วย"
+  },
+  "ONEREPORTPTTT_p43_035": {
+   "verdict": "typhoon",
+   "text": "(Digital & AI Transformation) โดยมุ่งเน้นการนำเทคโนโลยี"
+  },
+  "ONEREPORTPTTT_p43_037": {
+   "verdict": "typhoon",
+   "text": "และการสร้างคุณค่าใหม่ให้กับองค์กร และ (3) การพัฒนา"
+  },
+  "ONEREPORTPTTT_p43_043": {
+   "verdict": "typhoon",
+   "text": "และยั่งยืน ในขณะเดียวกัน กลุ่ม ปตท."
+  },
+  "ONEREPORTPTTT_p43_045": {
+   "verdict": "typhoon",
+   "text": "สินทรัพย์ที่มีอยู่ (Asset Optimization"
+  },
+  "ONEREPORTPTTT_p43_046": {
+   "verdict": "edited",
+   "text": "LT ADJ. EBITDA & NET PROFIT BALANCE SUSTAINABILITY: NET ZERO BY 2050"
+  },
+  "ONEREPORTPTTT_p43_047": {
+   "verdict": "tesseract",
+   "text": "1 COMPETITIVENESS ENHANCEMENT & GROWTH:"
+  },
+  "ONEREPORTPTTT_p43_048": {
+   "verdict": "tesseract",
+   "text": "EXISTING BUSINESS"
+  },
+  "ONEREPORTPTTT_p43_049": {
+   "verdict": "edited",
+   "text": "1.1 Hydrocarbon & Power Business 1.2 Non-Hydrocarbon Business"
+  },
+  "ONEREPORTPTTT_p43_050": {
+   "verdict": "tesseract",
+   "text": "Cost Competitiveness Enhancement Right to Play & Attractiveness"
+  },
+  "ONEREPORTPTTT_p43_051": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTPTTT_p43_052": {
+   "verdict": "edited",
+   "text": "มุ่งเน้นธุรกิจ EV Charging"
+  },
+  "ONEREPORTPTTT_p43_053": {
+   "verdict": "tesseract",
+   "text": "สร้างความมั่นคง Decarbonize"
+  },
+  "ONEREPORTPTTT_p43_054": {
+   "verdict": "edited",
+   "text": "ทางพลังงานและมี"
+  },
+  "ONEREPORTPTTT_p43_055": {
+   "verdict": "tesseract",
+   "text": "Competitive Supply"
+  },
+  "ONEREPORTPTTT_p43_056": {
+   "verdict": "tesseract",
+   "text": "และเสริม Reliability"
+  },
+  "ONEREPORTPTTT_p43_057": {
+   "verdict": "edited",
+   "text": "ให้กับกลุ่ม ปตท."
+  },
+  "ONEREPORTPTTT_p43_058": {
+   "verdict": "edited",
+   "text": "มุ่งเติบโตแบบ Self-funded"
+  },
+  "ONEREPORTPTTT_p43_059": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTPTTT_p43_060": {
+   "verdict": "edited",
+   "text": "PETROCHEMICAL & REFINERY TRADING RETAIL"
+  },
+  "ONEREPORTPTTT_p43_061": {
+   "verdict": "edited",
+   "text": "ปรับ Portfolio ยกระดับ NEW VENTURES"
+  },
+  "ONEREPORTPTTT_p43_062": {
+   "verdict": "edited",
+   "text": "ความสามารถในการแข่งขันร่วมกับ Partner Streamline การลงทุน"
+  },
+  "ONEREPORTPTTT_p43_063": {
+   "verdict": "edited",
+   "text": "มุ่งเน้นการลงทุนในธุรกิจ Sustainability"
+  },
+  "ONEREPORTPTTT_p43_066": {
+   "verdict": "edited",
+   "text": "ขยายธุรกิจตลอด LNG Value Chain"
+  },
+  "ONEREPORTPTTT_p43_067": {
+   "verdict": "edited",
+   "text": "เพื่อสร้าง LNG Portfolio ที่แข็งแกร่ง ด้วย Scale,"
+  },
+  "ONEREPORTPTTT_p43_068": {
+   "verdict": "tesseract",
+   "text": "Diversification และ Flexibility"
+  },
+  "ONEREPORTPTTT_p43_069": {
+   "verdict": "tesseract",
+   "text": "3 SUSTAINABILITY: UNLEASH BUSINESS VALUES THROUGH SUSTAINABILITY"
+  },
+  "ONEREPORTPTTT_p43_070": {
+   "verdict": "edited",
+   "text": "บูรณาการเรื่องความยั่งยืนเข้ากับการดําเนินธุรกิจ"
+  },
+  "ONEREPORTPTTT_p43_071": {
+   "verdict": "tesseract",
+   "text": "2 NECESSITY"
+  },
+  "ONEREPORTPTTT_p43_072": {
+   "verdict": "tesseract",
+   "text": "& OPPORTUNITY"
+  },
+  "ONEREPORTPTTT_p43_073": {
+   "verdict": "tesseract",
+   "text": "Hydrogen & Carbon Business"
+  },
+  "ONEREPORTPTTT_p43_074": {
+   "verdict": "tesseract",
+   "text": "Integration"
+  },
+  "ONEREPORTPTTT_p43_075": {
+   "verdict": "edited",
+   "text": "H2 & CCS เป็นตัวช่วย Decarbonize"
+  },
+  "ONEREPORTPTTT_p43_076": {
+   "verdict": "tesseract",
+   "text": "สําหรับกลุ่มปตท . และประเทศ"
+  },
+  "ONEREPORTPTTT_p43_077": {
+   "verdict": "edited",
+   "text": "เพื่อมุ่งสู่เป้าหมาย Net Zero"
+  },
+  "ONEREPORTPTTT_p43_078": {
+   "verdict": "edited",
+   "text": "เป็นโอกาส Transform ธุรกิจเดิม"
+  },
+  "ONEREPORTPTTT_p43_079": {
+   "verdict": "tesseract",
+   "text": "ของกลุ่มปตท . ให้แข่งขันได้ระยะยาว"
+  },
+  "ONEREPORTPTTT_p43_080": {
+   "verdict": "edited",
+   "text": "และพัฒนาเป็นธุรกิจใหม่"
+  },
+  "ONEREPORTPTTT_p43_081": {
+   "verdict": "edited",
+   "text": "การลงทุนต้องมีความคุ้มค่า"
+  },
+  "ONEREPORTPTTT_p43_082": {
+   "verdict": "edited",
+   "text": "ยืดหยุ่นและขับเคลื่อนด้วย"
+  },
+  "ONEREPORTPTTT_p43_083": {
+   "verdict": "tesseract",
+   "text": "Signpost ที่สําคัญ"
+  },
+  "ONEREPORTPTTT_p43_084": {
+   "verdict": "edited",
+   "text": "มุ่งสู่ Net Zero, Balancing ESG Outcomes toward Resilience & Sustainable Businesses"
+  },
+  "ONEREPORTPTTT_p43_085": {
+   "verdict": "edited",
+   "text": "4 ENABLERS FOR TRANSFORMATION"
+  },
+  "ONEREPORTPTTT_p43_086": {
+   "verdict": "edited",
+   "text": "Operational Excellence, AI & Digital Assets เพื่อเพิ่มประสิทธิภาพ"
+  },
+  "ONEREPORTPTTT_p43_087": {
+   "verdict": "edited",
+   "text": "Triple Transformation"
+  },
+  "ONEREPORTPTTT_p43_088": {
+   "verdict": "edited",
+   "text": "ยกระดับการขับเคลื่อนองค์กรผ่านการบูรณาการ"
+  },
+  "ONEREPORTPTTT_p43_089": {
+   "verdict": "edited",
+   "text": "Transformation และ People & Organization และยกระดับผลการดำเนินงาน"
+  },
+  "ONEREPORTPTTT_p43_090": {
+   "verdict": "tesseract",
+   "text": "5 FOUNDATION"
+  },
+  "ONEREPORTPTTT_p43_091": {
+   "verdict": "edited",
+   "text": "Convergence of Value-Driven"
+  },
+  "ONEREPORTPTTT_p43_092": {
+   "verdict": "edited",
+   "text": "GRC & Sustainability Financial Excellence"
+  },
+  "ONEREPORTPTTT_p43_093": {
+   "verdict": "edited",
+   "text": "Asset Monetization"
+  },
+  "ONEREPORTPTTT_p43_094": {
+   "verdict": "edited",
+   "text": "Synergize, Optimize & Monetize"
+  },
+  "ONEREPORTPTTT_p43_095": {
+   "verdict": "edited",
+   "text": "Stakeholder"
+  },
+  "ONEREPORTPTTT_p43_096": {
+   "verdict": "tesseract",
+   "text": "Management"
+  },
+  "ONEREPORTPTTT_p43_100": {
+   "verdict": "typhoon",
+   "text": "การใช้สินทรัพย์ และยกระดับผล"
+  },
+  "ONEREPORTPTTT_p43_101": {
+   "verdict": "edited",
+   "text": "การดําเนินงานโดยรวม (Performance"
+  },
+  "ONEREPORTPTTT_p43_102": {
+   "verdict": "typhoon",
+   "text": "การดำเนินงานโดยรวม (Performance"
+  },
+  "ONEREPORTPTTT_p43_103": {
+   "verdict": "typhoon",
+   "text": "Uplift) อย่างเป็นระบบและยั่งยืน"
+  },
+  "ONEREPORTPTTT_p43_104": {
+   "verdict": "typhoon",
+   "text": "5. รักษาพื้นฐานที่สำคัญ (Foundation)"
+  },
+  "ONEREPORTPTTT_p43_105": {
+   "verdict": "typhoon",
+   "text": "มุ่งเน้นธรรมาภิบาลและการกำกับ"
+  },
+  "ONEREPORTPTTT_p43_107": {
+   "verdict": "typhoon",
+   "text": "ด้าน GRC เพื่อสร้างความเข้มแข็งจาก"
+  },
+  "ONEREPORTPTTT_p43_112": {
+   "verdict": "typhoon",
+   "text": "ดูแลและบริหารจัดการเชิงรุก"
+  },
+  "ONEREPORTPTTT_p43_119": {
+   "verdict": "typhoon",
+   "text": "กลยุทธ์การดำเนินธุรกิจ"
+  },
+  "ONEREPORTPTTT_p293_001": {
+   "verdict": "typhoon",
+   "text": "ส่วนที่ 2 การกำกับดูแลกิจการ"
+  },
+  "ONEREPORTPTTT_p293_003": {
+   "verdict": "tesseract",
+   "text": "ส่วนที่ 2 การกํากับดูแลกิจการคณะกรรมการชุดย่อยผู้บริหารพนักงานและอื่นๆ"
+  },
+  "ONEREPORTPTTT_p293_004": {
+   "verdict": "tesseract",
+   "text": "Synergy Performance Innovation"
+  },
+  "ONEREPORTPTTT_p293_005": {
+   "verdict": "tesseract",
+   "text": "Excellence"
+  },
+  "ONEREPORTPTTT_p293_006": {
+   "verdict": "tesseract",
+   "text": "Synchronize Agile for Invent future"
+  },
+  "ONEREPORTPTTT_p293_007": {
+   "verdict": "tesseract",
+   "text": "through excellence growth through"
+  },
+  "ONEREPORTPTTT_p293_008": {
+   "verdict": "tesseract",
+   "text": "partnership innovation"
+  },
+  "ONEREPORTPTTT_p293_009": {
+   "verdict": "tesseract",
+   "text": "ผสานพลังสร้างสร้างการเติบโต"
+  },
+  "ONEREPORTPTTT_p293_010": {
+   "verdict": "edited",
+   "text": "สร้างพันธมิตร ความเป็นเลิศ ด้วยนวัตกรรม"
+  },
+  "ONEREPORTPTTT_p293_012": {
+   "verdict": "typhoon",
+   "text": "คณะกรรมการชุดย่อย ผู้บริหาร พนักงาน และอื่น ๆ"
+  },
+  "ONEREPORTPTTT_p293_013": {
+   "verdict": "typhoon",
+   "text": "แบบแสดงรายการข้อมูลประจำปี/ รายงานประจำปี 2568"
+  },
+  "ONEREPORTPTTT_p293_015": {
+   "verdict": "tesseract",
+   "text": "Responsibility Integrity Trust"
+  },
+  "ONEREPORTPTTT_p293_016": {
+   "verdict": "tesseract",
+   "text": "for Society & Ethics & Respect"
+  },
+  "ONEREPORTPTTT_p293_017": {
+   "verdict": "tesseract",
+   "text": "Reach Embed integrity Tune-up"
+  },
+  "ONEREPORTPTTT_p293_018": {
+   "verdict": "tesseract",
+   "text": "sustainability & ethics trust through"
+  },
+  "ONEREPORTPTTT_p293_019": {
+   "verdict": "tesseract",
+   "text": "with green to enhance ‘empowerment"
+  },
+  "ONEREPORTPTTT_p293_020": {
+   "verdict": "tesseract",
+   "text": "economy and good corporate and respect"
+  },
+  "ONEREPORTPTTT_p293_021": {
+   "verdict": "tesseract",
+   "text": "social care citizenship"
+  },
+  "ONEREPORTPTTT_p293_022": {
+   "verdict": "tesseract",
+   "text": "สร้างความเชื่อมั่น"
+  },
+  "ONEREPORTPTTT_p293_023": {
+   "verdict": "tesseract",
+   "text": "และไว้ใจ"
+  },
+  "ONEREPORTPTTT_p293_024": {
+   "verdict": "tesseract",
+   "text": "สร้างสรรค์สังคม"
+  },
+  "ONEREPORTPTTT_p293_025": {
+   "verdict": "tesseract",
+   "text": "และสิ่งแวดล้อม"
+  },
+  "ONEREPORTPTTT_p293_026": {
+   "verdict": "tesseract",
+   "text": "สร้างพลัง"
+  },
+  "ONEREPORTPTTT_p293_027": {
+   "verdict": "edited",
+   "text": "ความดี"
+  },
+  "ONEREPORTPTTT_p293_028": {
+   "verdict": "typhoon",
+   "text": "R: Responsibility for Society, I: Integrity & Ethics, T: Trust &"
+  },
+  "ONEREPORTPTTT_p293_029": {
+   "verdict": "typhoon",
+   "text": "Respect ซึ่งค่านิยม SPIRIT ทั้ง 6 ตัว คือ รากฐานสำคัญ"
+  },
+  "ONEREPORTPTTT_p293_030": {
+   "verdict": "typhoon",
+   "text": "ที่หล่อหลอมให้ผู้บริหารและพนักงานกลุ่ม ปตท. เป็นคนเก่ง"
+  },
+  "ONEREPORTPTTT_p293_032": {
+   "verdict": "typhoon",
+   "text": "คนดี มุ่งสร้างคุณค่าและประโยชน์ให้กับผู้มีส่วนได้ส่วนเสีย"
+  },
+  "ONEREPORTPTTT_p293_033": {
+   "verdict": "absent",
+   "text": ""
+  },
+  "ONEREPORTPTTT_p293_034": {
+   "verdict": "typhoon",
+   "text": "เพื่อร่วมขับเคลื่อนองค์กรและประเทศไทยให้ยั่งยืนไปด้วยกัน"
+  },
+  "ONEREPORTPTTT_p293_035": {
+   "verdict": "typhoon",
+   "text": "โดยดำเนินการส่งเสริมค่านิยม SPIRIT ให้มีความสอดคล้อง"
+  },
+  "ONEREPORTPTTT_p293_039": {
+   "verdict": "typhoon",
+   "text": "Synergy: ผสานพลังสร้างพันธมิตร มุ่งเน้นให้พนักงานแบ่งปัน"
+  },
+  "ONEREPORTPTTT_p293_042": {
+   "verdict": "typhoon",
+   "text": "Performance Excellence: สร้างความเป็นเลิศ มุ่งเน้นให้"
+  },
+  "ONEREPORTPTTT_p293_043": {
+   "verdict": "typhoon",
+   "text": "พนักงานพร้อมปรับตัวต่อการเปลี่ยนแปลงอย่างรวดเร็ว ตั้งใจ"
+  },
+  "ONEREPORTPTTT_p293_046": {
+   "verdict": "typhoon",
+   "text": "Innovation: สร้างการเติบโตด้วยนวัตกรรม มุ่งเน้นให้"
+  },
+  "ONEREPORTPTTT_p293_053": {
+   "verdict": "typhoon",
+   "text": "Responsibility for Society: สร้างสรรค์สังคมและสิ่งแวดล้อม"
+  },
+  "ONEREPORTPTTT_p293_058": {
+   "verdict": "typhoon",
+   "text": "Integrity & Ethics: สร้างพลังความดี มุ่งเน้นให้พนักงาน"
+  },
+  "ONEREPORTPTTT_p293_062": {
+   "verdict": "typhoon",
+   "text": "Trust & Respect: สร้างความเชื่อมั่นและไว้ใจ มุ่งเน้นให้"
+  },
+  "ONEREPORTPTTT_p293_063": {
+   "verdict": "typhoon",
+   "text": "พนักงานสร้างความเชื่อมั่นและความไว้วางใจในการทำงาน"
+  },
+  "ONEREPORTPTTT_p293_073": {
+   "verdict": "typhoon",
+   "text": "บริษัทขึ้น โดยมีภาระหน้าที่ในการให้คำแนะนำด้านกฎหมาย"
+  },
+  "ONEREPORTPTTT_p293_083": {
+   "verdict": "typhoon",
+   "text": "ผู้บริหาร"
+  },
+  "ONEREPORTPTTT_p293_093": {
+   "verdict": "typhoon",
+   "text": "บริษัท แทนนางพิลาสพรรณ อุดมจารุมณี ซึ่งเกษียณอายุ"
+  }
+ }
+}

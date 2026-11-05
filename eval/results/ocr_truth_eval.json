@@ -1,0 +1,889 @@
+{
+ "kpi_accuracy": 0.9,
+ "aggregate": {
+  "typhoon": {
+   "ref_len": 24368,
+   "hyp_len": 24310,
+   "distance": 116,
+   "cer": 0.0047603414313854234,
+   "accuracy": 0.9952396585686146,
+   "pass": true
+  },
+  "tesseract": {
+   "ref_len": 24368,
+   "hyp_len": 24573,
+   "distance": 1473,
+   "cer": 0.06044812869336835,
+   "accuracy": 0.9395518713066316,
+   "pass": true
+  },
+  "typhoon_keep_excluded": {
+   "ref_len": 24368,
+   "hyp_len": 24477,
+   "distance": 268,
+   "cer": 0.010998030203545634,
+   "accuracy": 0.9890019697964544,
+   "pass": true
+  },
+  "agree": {
+   "sampled": 34,
+   "changed": 0,
+   "error_rate": 0.0,
+   "error_rate_upper95": 0.08433964335062545,
+   "unchecked_auto_accepted": 305,
+   "expected_errors_unchecked": 0.0,
+   "upper95_errors_unchecked": 25.72359122194076
+  }
+ },
+ "pages": [
+  {
+   "key": "CPALL 442",
+   "file": "E_ONE_REPORT_CPALLT.PDF",
+   "page": 442,
+   "truth_items": 44,
+   "truth_chars": 2192,
+   "excluded": {},
+   "diagram_ids": [],
+   "table_header": null,
+   "dedup_pairs": [
+    {
+     "typhoon_only": "E_ONE_REPORT_CPALLT_p442_003",
+     "tesseract_only": "E_ONE_REPORT_CPALLT_p442_002",
+     "relation": "equal",
+     "kept": "E_ONE_REPORT_CPALLT_p442_003",
+     "dropped": "E_ONE_REPORT_CPALLT_p442_002",
+     "typhoon_text": "บริษัท ซีพี ออลล์ จำกัด (มหาชน) และบริษัทย่อย",
+     "tesseract_text": "บริษัท ซีพี ออลล์ จำกัด (มหาชน) และบริษัทย่อย"
+    }
+   ],
+   "cer": {
+    "typhoon": {
+     "ref_len": 2192,
+     "hyp_len": 2192,
+     "distance": 0,
+     "cer": 0.0,
+     "accuracy": 1.0,
+     "pass": true
+    },
+    "tesseract": {
+     "ref_len": 2192,
+     "hyp_len": 2289,
+     "distance": 194,
+     "cer": 0.0885036496350365,
+     "accuracy": 0.9114963503649635,
+     "pass": true
+    },
+    "typhoon_keep_excluded": {
+     "ref_len": 2192,
+     "hyp_len": 2192,
+     "distance": 0,
+     "cer": 0.0,
+     "accuracy": 1.0,
+     "pass": true
+    }
+   },
+   "fabricated": [],
+   "missed": [],
+   "diagram": null,
+   "agree": {
+    "auto_accepted": 10,
+    "sampled": 1,
+    "sample_changed": [],
+    "cut_mid": 0,
+    "cut_mid_changed": []
+   },
+   "page_numbers": {
+    "typhoon": [
+     436
+    ],
+    "expected": [
+     436
+    ],
+    "ok": true
+   },
+   "errors": [],
+   "counts": {
+    "agree": 10,
+    "diff": 19,
+    "typhoon_only": 1,
+    "tesseract_only": 15,
+    "fragment": 19,
+    "duplicate": 0
+   }
+  },
+  {
+   "key": "CPALL 462",
+   "file": "E_ONE_REPORT_CPALLT.PDF",
+   "page": 462,
+   "truth_items": 34,
+   "truth_chars": 1374,
+   "excluded": {},
+   "diagram_ids": [],
+   "table_header": null,
+   "dedup_pairs": [],
+   "cer": {
+    "typhoon": {
+     "ref_len": 1374,
+     "hyp_len": 1364,
+     "distance": 10,
+     "cer": 0.00727802037845706,
+     "accuracy": 0.992721979621543,
+     "pass": true
+    },
+    "tesseract": {
+     "ref_len": 1374,
+     "hyp_len": 1451,
+     "distance": 125,
+     "cer": 0.09097525473071325,
+     "accuracy": 0.9090247452692868,
+     "pass": true
+    },
+    "typhoon_keep_excluded": {
+     "ref_len": 1374,
+     "hyp_len": 1364,
+     "distance": 10,
+     "cer": 0.00727802037845706,
+     "accuracy": 0.992721979621543,
+     "pass": true
+    }
+   },
+   "fabricated": [],
+   "missed": [],
+   "diagram": null,
+   "agree": {
+    "auto_accepted": 17,
+    "sampled": 2,
+    "sample_changed": [],
+    "cut_mid": 0,
+    "cut_mid_changed": []
+   },
+   "page_numbers": {
+    "typhoon": [
+     456
+    ],
+    "expected": [
+     456
+    ],
+    "ok": true
+   },
+   "errors": [
+    {
+     "id": "E_ONE_REPORT_CPALLT_p462_027",
+     "ids": [
+      "E_ONE_REPORT_CPALLT_p462_027"
+     ],
+     "op": "delete",
+     "truth": "บริษัทร่วม",
+     "typhoon": "",
+     "truth_context": "บริษัทร่วมการ",
+     "typhoon_context": "การ"
+    }
+   ],
+   "counts": {
+    "agree": 17,
+    "diff": 11,
+    "typhoon_only": 0,
+    "tesseract_only": 6,
+    "fragment": 3,
+    "duplicate": 0
+   }
+  },
+  {
+   "key": "KBANK 2",
+   "file": "ONEREPORTKBANKT.PDF",
+   "page": 2,
+   "truth_items": 54,
+   "truth_chars": 1401,
+   "excluded": {},
+   "diagram_ids": [],
+   "table_header": null,
+   "dedup_pairs": [],
+   "cer": {
+    "typhoon": {
+     "ref_len": 1401,
+     "hyp_len": 1389,
+     "distance": 15,
+     "cer": 0.010706638115631691,
+     "accuracy": 0.9892933618843683,
+     "pass": true
+    },
+    "tesseract": {
+     "ref_len": 1401,
+     "hyp_len": 1082,
+     "distance": 368,
+     "cer": 0.26266952177016417,
+     "accuracy": 0.7373304782298358,
+     "pass": false
+    },
+    "typhoon_keep_excluded": {
+     "ref_len": 1401,
+     "hyp_len": 1389,
+     "distance": 15,
+     "cer": 0.010706638115631691,
+     "accuracy": 0.9892933618843683,
+     "pass": true
+    }
+   },
+   "fabricated": [],
+   "missed": [
+    {
+     "id": "ONEREPORTKBANKT_p2_028",
+     "text": "KASIKORNTHAI",
+     "tesseract": "KASIKORNTHAI"
+    }
+   ],
+   "diagram": null,
+   "agree": {
+    "auto_accepted": 22,
+    "sampled": 2,
+    "sample_changed": [],
+    "cut_mid": 1,
+    "cut_mid_changed": []
+   },
+   "page_numbers": {
+    "typhoon": [],
+    "expected": [],
+    "ok": true
+   },
+   "errors": [
+    {
+     "id": "ONEREPORTKBANKT_p2_053",
+     "ids": [
+      "ONEREPORTKBANKT_p2_053"
+     ],
+     "op": "replace",
+     "truth": "ล้นพ้น",
+     "typhoon": "สันพัน",
+     "truth_context": "เป็นล้นพ้นอัน",
+     "typhoon_context": "เป็นสันพันอัน"
+    }
+   ],
+   "counts": {
+    "agree": 23,
+    "diff": 14,
+    "typhoon_only": 13,
+    "tesseract_only": 4,
+    "fragment": 0,
+    "duplicate": 0
+   }
+  },
+  {
+   "key": "KBANK 81",
+   "file": "ONEREPORTKBANKT.PDF",
+   "page": 81,
+   "truth_items": 123,
+   "truth_chars": 6671,
+   "excluded": {},
+   "diagram_ids": [],
+   "table_header": null,
+   "dedup_pairs": [
+    {
+     "typhoon_only": "ONEREPORTKBANKT_p81_044",
+     "tesseract_only": "ONEREPORTKBANKT_p81_043",
+     "relation": "equal",
+     "kept": "ONEREPORTKBANKT_p81_044",
+     "dropped": "ONEREPORTKBANKT_p81_043",
+     "typhoon_text": "ทรัพย์สินที่ใช้ในการประกอบธุรกิจ",
+     "tesseract_text": "ทรัพย์สินที่ใช้ในการประกอบธุรกิจ"
+    }
+   ],
+   "cer": {
+    "typhoon": {
+     "ref_len": 6671,
+     "hyp_len": 6667,
+     "distance": 5,
+     "cer": 0.000749512816669165,
+     "accuracy": 0.9992504871833309,
+     "pass": true
+    },
+    "tesseract": {
+     "ref_len": 6671,
+     "hyp_len": 6910,
+     "distance": 576,
+     "cer": 0.08634387648028781,
+     "accuracy": 0.9136561235197121,
+     "pass": true
+    },
+    "typhoon_keep_excluded": {
+     "ref_len": 6671,
+     "hyp_len": 6667,
+     "distance": 5,
+     "cer": 0.000749512816669165,
+     "accuracy": 0.9992504871833309,
+     "pass": true
+    }
+   },
+   "fabricated": [],
+   "missed": [],
+   "diagram": null,
+   "agree": {
+    "auto_accepted": 43,
+    "sampled": 4,
+    "sample_changed": [],
+    "cut_mid": 0,
+    "cut_mid_changed": []
+   },
+   "page_numbers": {
+    "typhoon": [
+     158,
+     159
+    ],
+    "expected": [
+     158,
+     159
+    ],
+    "ok": true
+   },
+   "errors": [
+    {
+     "id": "ONEREPORTKBANKT_p81_077",
+     "ids": [
+      "ONEREPORTKBANKT_p81_077"
+     ],
+     "op": "replace",
+     "truth": "ระดับ",
+     "typhoon": "ดับ",
+     "truth_context": "ระบุระดับการ",
+     "typhoon_context": "ระบุดับการ"
+    },
+    {
+     "id": "ONEREPORTKBANKT_p81_099",
+     "ids": [
+      "ONEREPORTKBANKT_p81_099"
+     ],
+     "op": "replace",
+     "truth": "ระดับ",
+     "typhoon": "ดับ",
+     "truth_context": "ระบุระดับการ",
+     "typhoon_context": "ระบุดับการ"
+    },
+    {
+     "id": "ONEREPORTKBANKT_p81_142",
+     "ids": [
+      "ONEREPORTKBANKT_p81_142"
+     ],
+     "op": "replace",
+     "truth": "ลำดับชั้น",
+     "typhoon": "ลำดับขั้น",
+     "truth_context": "จัดลำดับชั้นมูลค่า",
+     "typhoon_context": "จัดลำดับขั้นมูลค่า"
+    }
+   ],
+   "counts": {
+    "agree": 43,
+    "diff": 58,
+    "typhoon_only": 3,
+    "tesseract_only": 20,
+    "fragment": 8,
+    "duplicate": 19
+   }
+  },
+  {
+   "key": "KBANK 87",
+   "file": "ONEREPORTKBANKT.PDF",
+   "page": 87,
+   "truth_items": 176,
+   "truth_chars": 6734,
+   "excluded": {
+    "ONEREPORTKBANKT_p87_184": {
+     "category": "handwriting",
+     "text": "ขัตติยา อินทรวิชัย"
+    }
+   },
+   "diagram_ids": [],
+   "table_header": {
+    "category": "table_header_restructured",
+    "ids": [
+     "ONEREPORTKBANKT_p87_142",
+     "ONEREPORTKBANKT_p87_143",
+     "ONEREPORTKBANKT_p87_144",
+     "ONEREPORTKBANKT_p87_145"
+    ],
+    "truth_lines": 3,
+    "items": [
+     {
+      "id": "ONEREPORTKBANKT_p87_142",
+      "kind": "diff",
+      "typhoon": "สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2568 สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม",
+      "tesseract": "สําหรับปีสิ้นสุดวันที่ 31 ธันวาคมสําหรับปีสิ้นสุดวันที่ 31 ธันวาคม",
+      "judged": "สําหรับปีสิ้นสุดวันที่ 31 ธันวาคมสําหรับปีสิ้นสุดวันที่ 31 ธันวาคม"
+     },
+     {
+      "id": "ONEREPORTKBANKT_p87_143",
+      "kind": "tesseract_only",
+      "typhoon": null,
+      "tesseract": "2568 2567 2568 2567",
+      "judged": "2568 2567 2568 2567"
+     },
+     {
+      "id": "ONEREPORTKBANKT_p87_144",
+      "kind": "tesseract_only",
+      "typhoon": null,
+      "tesseract": "หมายเหตุ (ปรับปรุงใหม่ )",
+      "judged": "หมายเหตุ (ปรับปรุงใหม่ )"
+     },
+     {
+      "id": "ONEREPORTKBANKT_p87_145",
+      "kind": "typhoon_only",
+      "typhoon": "2567 (ปรับปรุงใหม่) สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2568 สำหรับปีสิ้นสุดวันที่ 31 ธันวาคม 2567",
+      "tesseract": null,
+      "judged": ""
+     }
+    ],
+    "typhoon": {
+     "ref_ngrams": 92,
+     "hyp_ngrams": 146,
+     "overlap": 76,
+     "recall": 0.8260869565217391,
+     "precision": 0.5205479452054794,
+     "f1": 0.6386554621848739
+    },
+    "tesseract": {
+     "ref_ngrams": 92,
+     "hyp_ngrams": 92,
+     "overlap": 92,
+     "recall": 1.0,
+     "precision": 1.0,
+     "f1": 1.0
+    }
+   },
+   "dedup_pairs": [
+    {
+     "typhoon_only": "ONEREPORTKBANKT_p87_056",
+     "tesseract_only": "ONEREPORTKBANKT_p87_055",
+     "relation": "tesseract_only_contains",
+     "kept": "ONEREPORTKBANKT_p87_055",
+     "dropped": "ONEREPORTKBANKT_p87_056",
+     "typhoon_text": "งบการเงินเฉพาะธนาคาร",
+     "tesseract_text": "งบการเงินรวมงบการเงินเฉพาะธนาคาร"
+    },
+    {
+     "typhoon_only": "ONEREPORTKBANKT_p87_141",
+     "tesseract_only": "ONEREPORTKBANKT_p87_140",
+     "relation": "tesseract_only_contains",
+     "kept": "ONEREPORTKBANKT_p87_140",
+     "dropped": "ONEREPORTKBANKT_p87_141",
+     "typhoon_text": "งบการเงินเฉพาะธนาคาร",
+     "tesseract_text": "งบการเงินรวมงบการเงินเฉพาะธนาคาร"
+    }
+   ],
+   "cer": {
+    "typhoon": {
+     "ref_len": 6734,
+     "hyp_len": 6702,
+     "distance": 32,
+     "cer": 0.004752004752004752,
+     "accuracy": 0.9952479952479952,
+     "pass": true
+    },
+    "tesseract": {
+     "ref_len": 6734,
+     "hyp_len": 6835,
+     "distance": 141,
+     "cer": 0.02093852093852094,
+     "accuracy": 0.9790614790614791,
+     "pass": true
+    },
+    "typhoon_keep_excluded": {
+     "ref_len": 6734,
+     "hyp_len": 6869,
+     "distance": 184,
+     "cer": 0.027324027324027323,
+     "accuracy": 0.9726759726759727,
+     "pass": true
+    }
+   },
+   "fabricated": [],
+   "missed": [
+    {
+     "id": "ONEREPORTKBANKT_p87_053",
+     "text": "หมายเหตุ",
+     "tesseract": "หมายเหตุ"
+    }
+   ],
+   "diagram": null,
+   "agree": {
+    "auto_accepted": 136,
+    "sampled": 14,
+    "sample_changed": [],
+    "cut_mid": 0,
+    "cut_mid_changed": []
+   },
+   "page_numbers": {
+    "typhoon": [
+     170,
+     171
+    ],
+    "expected": [
+     170,
+     171
+    ],
+    "ok": true
+   },
+   "errors": [],
+   "counts": {
+    "agree": 136,
+    "diff": 30,
+    "typhoon_only": 4,
+    "tesseract_only": 13,
+    "fragment": 4,
+    "duplicate": 2
+   }
+  },
+  {
+   "key": "PTT 43",
+   "file": "ONEREPORTPTTT.PDF",
+   "page": 43,
+   "truth_items": 68,
+   "truth_chars": 2669,
+   "excluded": {},
+   "diagram_ids": [
+    "ONEREPORTPTTT_p43_046",
+    "ONEREPORTPTTT_p43_047",
+    "ONEREPORTPTTT_p43_048",
+    "ONEREPORTPTTT_p43_049",
+    "ONEREPORTPTTT_p43_050",
+    "ONEREPORTPTTT_p43_051",
+    "ONEREPORTPTTT_p43_052",
+    "ONEREPORTPTTT_p43_053",
+    "ONEREPORTPTTT_p43_054",
+    "ONEREPORTPTTT_p43_055",
+    "ONEREPORTPTTT_p43_056",
+    "ONEREPORTPTTT_p43_057",
+    "ONEREPORTPTTT_p43_058",
+    "ONEREPORTPTTT_p43_059",
+    "ONEREPORTPTTT_p43_060",
+    "ONEREPORTPTTT_p43_061",
+    "ONEREPORTPTTT_p43_062",
+    "ONEREPORTPTTT_p43_063",
+    "ONEREPORTPTTT_p43_066",
+    "ONEREPORTPTTT_p43_067",
+    "ONEREPORTPTTT_p43_068",
+    "ONEREPORTPTTT_p43_069",
+    "ONEREPORTPTTT_p43_070",
+    "ONEREPORTPTTT_p43_071",
+    "ONEREPORTPTTT_p43_072",
+    "ONEREPORTPTTT_p43_073",
+    "ONEREPORTPTTT_p43_074",
+    "ONEREPORTPTTT_p43_075",
+    "ONEREPORTPTTT_p43_076",
+    "ONEREPORTPTTT_p43_077",
+    "ONEREPORTPTTT_p43_078",
+    "ONEREPORTPTTT_p43_079",
+    "ONEREPORTPTTT_p43_080",
+    "ONEREPORTPTTT_p43_081",
+    "ONEREPORTPTTT_p43_082",
+    "ONEREPORTPTTT_p43_083",
+    "ONEREPORTPTTT_p43_084",
+    "ONEREPORTPTTT_p43_085",
+    "ONEREPORTPTTT_p43_086",
+    "ONEREPORTPTTT_p43_087",
+    "ONEREPORTPTTT_p43_088",
+    "ONEREPORTPTTT_p43_089",
+    "ONEREPORTPTTT_p43_090",
+    "ONEREPORTPTTT_p43_091",
+    "ONEREPORTPTTT_p43_092",
+    "ONEREPORTPTTT_p43_093",
+    "ONEREPORTPTTT_p43_094",
+    "ONEREPORTPTTT_p43_095",
+    "ONEREPORTPTTT_p43_096"
+   ],
+   "table_header": null,
+   "dedup_pairs": [
+    {
+     "typhoon_only": "ONEREPORTPTTT_p43_102",
+     "tesseract_only": "ONEREPORTPTTT_p43_101",
+     "relation": "equal",
+     "kept": "ONEREPORTPTTT_p43_102",
+     "dropped": "ONEREPORTPTTT_p43_101",
+     "typhoon_text": "การดำเนินงานโดยรวม (Performance",
+     "tesseract_text": "การดําเนินงานโดยรวม (Performance"
+    }
+   ],
+   "cer": {
+    "typhoon": {
+     "ref_len": 2669,
+     "hyp_len": 2669,
+     "distance": 2,
+     "cer": 0.0007493443237167478,
+     "accuracy": 0.9992506556762832,
+     "pass": true
+    },
+    "tesseract": {
+     "ref_len": 2669,
+     "hyp_len": 2667,
+     "distance": 39,
+     "cer": 0.014612214312476583,
+     "accuracy": 0.9853877856875234,
+     "pass": true
+    },
+    "typhoon_keep_excluded": {
+     "ref_len": 2669,
+     "hyp_len": 2669,
+     "distance": 2,
+     "cer": 0.0007493443237167478,
+     "accuracy": 0.9992506556762832,
+     "pass": true
+    }
+   },
+   "fabricated": [],
+   "missed": [],
+   "diagram": {
+    "ids": [
+     "ONEREPORTPTTT_p43_046",
+     "ONEREPORTPTTT_p43_047",
+     "ONEREPORTPTTT_p43_048",
+     "ONEREPORTPTTT_p43_049",
+     "ONEREPORTPTTT_p43_050",
+     "ONEREPORTPTTT_p43_051",
+     "ONEREPORTPTTT_p43_052",
+     "ONEREPORTPTTT_p43_053",
+     "ONEREPORTPTTT_p43_054",
+     "ONEREPORTPTTT_p43_055",
+     "ONEREPORTPTTT_p43_056",
+     "ONEREPORTPTTT_p43_057",
+     "ONEREPORTPTTT_p43_058",
+     "ONEREPORTPTTT_p43_059",
+     "ONEREPORTPTTT_p43_060",
+     "ONEREPORTPTTT_p43_061",
+     "ONEREPORTPTTT_p43_062",
+     "ONEREPORTPTTT_p43_063",
+     "ONEREPORTPTTT_p43_066",
+     "ONEREPORTPTTT_p43_067",
+     "ONEREPORTPTTT_p43_068",
+     "ONEREPORTPTTT_p43_069",
+     "ONEREPORTPTTT_p43_070",
+     "ONEREPORTPTTT_p43_071",
+     "ONEREPORTPTTT_p43_072",
+     "ONEREPORTPTTT_p43_073",
+     "ONEREPORTPTTT_p43_074",
+     "ONEREPORTPTTT_p43_075",
+     "ONEREPORTPTTT_p43_076",
+     "ONEREPORTPTTT_p43_077",
+     "ONEREPORTPTTT_p43_078",
+     "ONEREPORTPTTT_p43_079",
+     "ONEREPORTPTTT_p43_080",
+     "ONEREPORTPTTT_p43_081",
+     "ONEREPORTPTTT_p43_082",
+     "ONEREPORTPTTT_p43_083",
+     "ONEREPORTPTTT_p43_084",
+     "ONEREPORTPTTT_p43_085",
+     "ONEREPORTPTTT_p43_086",
+     "ONEREPORTPTTT_p43_087",
+     "ONEREPORTPTTT_p43_088",
+     "ONEREPORTPTTT_p43_089",
+     "ONEREPORTPTTT_p43_090",
+     "ONEREPORTPTTT_p43_091",
+     "ONEREPORTPTTT_p43_092",
+     "ONEREPORTPTTT_p43_093",
+     "ONEREPORTPTTT_p43_094",
+     "ONEREPORTPTTT_p43_095",
+     "ONEREPORTPTTT_p43_096"
+    ],
+    "truth_lines": 47,
+    "figures": 1,
+    "typhoon": {
+     "ref_ngrams": 1327,
+     "hyp_ngrams": 1868,
+     "overlap": 1130,
+     "recall": 0.8515448379804069,
+     "precision": 0.6049250535331906,
+     "f1": 0.7073552425665102
+    },
+    "tesseract": {
+     "ref_ngrams": 1327,
+     "hyp_ngrams": 1203,
+     "overlap": 1066,
+     "recall": 0.8033157498116051,
+     "precision": 0.8861180382377389,
+     "f1": 0.842687747035573
+    }
+   },
+   "agree": {
+    "auto_accepted": 53,
+    "sampled": 5,
+    "sample_changed": [],
+    "cut_mid": 1,
+    "cut_mid_changed": []
+   },
+   "page_numbers": {
+    "typhoon": [
+     41
+    ],
+    "expected": [
+     41
+    ],
+    "ok": true
+   },
+   "errors": [
+    {
+     "id": "ONEREPORTPTTT_p43_013",
+     "ids": [
+      "ONEREPORTPTTT_p43_013"
+     ],
+     "op": "replace",
+     "truth": "วางแนวทาง",
+     "typhoon": "วางแผนทาง",
+     "truth_context": "พร้อมทั้งวางแนวทาง",
+     "typhoon_context": "พร้อมทั้งวางแผนทาง"
+    }
+   ],
+   "counts": {
+    "agree": 54,
+    "diff": 13,
+    "typhoon_only": 1,
+    "tesseract_only": 50,
+    "fragment": 2,
+    "duplicate": 0
+   }
+  },
+  {
+   "key": "PTT 293",
+   "file": "ONEREPORTPTTT.PDF",
+   "page": 293,
+   "truth_items": 72,
+   "truth_chars": 3327,
+   "excluded": {},
+   "diagram_ids": [
+    "ONEREPORTPTTT_p293_004",
+    "ONEREPORTPTTT_p293_005",
+    "ONEREPORTPTTT_p293_006",
+    "ONEREPORTPTTT_p293_007",
+    "ONEREPORTPTTT_p293_008",
+    "ONEREPORTPTTT_p293_009",
+    "ONEREPORTPTTT_p293_010",
+    "ONEREPORTPTTT_p293_015",
+    "ONEREPORTPTTT_p293_016",
+    "ONEREPORTPTTT_p293_017",
+    "ONEREPORTPTTT_p293_018",
+    "ONEREPORTPTTT_p293_019",
+    "ONEREPORTPTTT_p293_020",
+    "ONEREPORTPTTT_p293_021",
+    "ONEREPORTPTTT_p293_022",
+    "ONEREPORTPTTT_p293_023",
+    "ONEREPORTPTTT_p293_024",
+    "ONEREPORTPTTT_p293_025",
+    "ONEREPORTPTTT_p293_026",
+    "ONEREPORTPTTT_p293_027"
+   ],
+   "table_header": null,
+   "dedup_pairs": [
+    {
+     "typhoon_only": "ONEREPORTPTTT_p293_001",
+     "tesseract_only": "ONEREPORTPTTT_p293_003",
+     "relation": "tesseract_only_contains",
+     "kept": "ONEREPORTPTTT_p293_003",
+     "dropped": "ONEREPORTPTTT_p293_001",
+     "typhoon_text": "ส่วนที่ 2 การกำกับดูแลกิจการ",
+     "tesseract_text": "ส่วนที่ 2 การกํากับดูแลกิจการคณะกรรมการชุดย่อยผู้บริหารพนักงานและอื่นๆ"
+    },
+    {
+     "typhoon_only": "ONEREPORTPTTT_p293_012",
+     "tesseract_only": "ONEREPORTPTTT_p293_003",
+     "relation": "tesseract_only_contains",
+     "kept": "ONEREPORTPTTT_p293_003",
+     "dropped": "ONEREPORTPTTT_p293_012",
+     "typhoon_text": "คณะกรรมการชุดย่อย ผู้บริหาร พนักงาน และอื่น ๆ",
+     "tesseract_text": "ส่วนที่ 2 การกํากับดูแลกิจการคณะกรรมการชุดย่อยผู้บริหารพนักงานและอื่นๆ"
+    }
+   ],
+   "cer": {
+    "typhoon": {
+     "ref_len": 3327,
+     "hyp_len": 3327,
+     "distance": 52,
+     "cer": 0.01562969642320409,
+     "accuracy": 0.9843703035767959,
+     "pass": true
+    },
+    "tesseract": {
+     "ref_len": 3327,
+     "hyp_len": 3339,
+     "distance": 30,
+     "cer": 0.009017132551848512,
+     "accuracy": 0.9909828674481514,
+     "pass": true
+    },
+    "typhoon_keep_excluded": {
+     "ref_len": 3327,
+     "hyp_len": 3327,
+     "distance": 52,
+     "cer": 0.01562969642320409,
+     "accuracy": 0.9843703035767959,
+     "pass": true
+    }
+   },
+   "fabricated": [],
+   "missed": [],
+   "diagram": {
+    "ids": [
+     "ONEREPORTPTTT_p293_004",
+     "ONEREPORTPTTT_p293_005",
+     "ONEREPORTPTTT_p293_006",
+     "ONEREPORTPTTT_p293_007",
+     "ONEREPORTPTTT_p293_008",
+     "ONEREPORTPTTT_p293_009",
+     "ONEREPORTPTTT_p293_010",
+     "ONEREPORTPTTT_p293_015",
+     "ONEREPORTPTTT_p293_016",
+     "ONEREPORTPTTT_p293_017",
+     "ONEREPORTPTTT_p293_018",
+     "ONEREPORTPTTT_p293_019",
+     "ONEREPORTPTTT_p293_020",
+     "ONEREPORTPTTT_p293_021",
+     "ONEREPORTPTTT_p293_022",
+     "ONEREPORTPTTT_p293_023",
+     "ONEREPORTPTTT_p293_024",
+     "ONEREPORTPTTT_p293_025",
+     "ONEREPORTPTTT_p293_026",
+     "ONEREPORTPTTT_p293_027"
+    ],
+    "truth_lines": 20,
+    "figures": 1,
+    "typhoon": {
+     "ref_ngrams": 410,
+     "hyp_ngrams": 815,
+     "overlap": 224,
+     "recall": 0.5463414634146342,
+     "precision": 0.2748466257668712,
+     "f1": 0.36571428571428577
+    },
+    "tesseract": {
+     "ref_ngrams": 410,
+     "hyp_ngrams": 412,
+     "overlap": 402,
+     "recall": 0.9804878048780488,
+     "precision": 0.9757281553398058,
+     "f1": 0.9781021897810219
+    }
+   },
+   "agree": {
+    "auto_accepted": 58,
+    "sampled": 6,
+    "sample_changed": [],
+    "cut_mid": 0,
+    "cut_mid_changed": []
+   },
+   "page_numbers": {
+    "typhoon": [
+     291
+    ],
+    "expected": [
+     291
+    ],
+    "ok": true
+   },
+   "errors": [],
+   "counts": {
+    "agree": 58,
+    "diff": 12,
+    "typhoon_only": 2,
+    "tesseract_only": 22,
+    "fragment": 3,
+    "duplicate": 0
+   }
+  }
+ ],
+ "dedup_expected_missing": [],
+ "dedup_unexpected": []
+}
