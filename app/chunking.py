@@ -30,7 +30,7 @@ from __future__ import annotations
 import re
 import uuid
 from dataclasses import dataclass, field
-from typing import Optional
+from typing import Optional, Sequence
 
 from app.models import Unit, UnitStatus
 from app.thai.normalizer import normalize
@@ -515,3 +515,167 @@ def build_system_prompt() -> str:
         "4. หากข้อมูลในบริบทไม่เพียงพอสำหรับการตอบคำถาม ให้ตอบว่า "
         "\"ไม่มีข้อมูลเพียงพอในเอกสารสำหรับการตอบคำถามนี้\" และห้ามใส่แท็กอ้างอิงใดๆ"
     )
+
+
+# =============================================================================
+# chunk ตามขนาด สำหรับ index ลง Qdrant (hybrid)
+#
+# ต่างจาก Child/Parent ด้านบน (prototype in-memory): chunk เดียวมีขนาดเป้าหมาย ``target_chars`` (CHUNK_TARGET_CHARS)
+# ตัดตามขอบประโยคเท่านั้น ไม่ข้าม unit ซ้อนกัน 1 ประโยค และ offset ทุกตัวเป็น offset ใน ``Unit.text`` **ดั้งเดิม** (ใช้ cite ได้ตรง)
+# ไม่ normalize ซ้ำก่อนตัด — ``Unit.text`` ผ่าน normalizer กลางมาจาก extractor แล้ว (contract) เลยตัดบนข้อความเดิมได้ offset ตรงเสมอ
+#
+# context line ของ unit ("[แถวแรกของตาราง: …]" / "[ป้ายก่อนหน้า: …]") ที่อยู่ก่อน chunk ถูกแปะหน้า chunk ตอน embed
+# (``Chunk.embed_text``) แต่ไม่อยู่ใน ``Chunk.text`` และไม่นับใน offset
+# =============================================================================
+
+CONTEXT_LINE_PREFIXES = ("แถวแรกของตาราง", "ป้ายก่อนหน้า")
+_CONTEXT_LINE_RE = re.compile(r"^\[(?:" + "|".join(CONTEXT_LINE_PREFIXES) + r"):.*\]$")
+_LINE_RE = re.compile(r"[^\n]+")
+
+
+@dataclass(frozen=True)
+class SentenceSpan:
+    """ประโยคหนึ่งใน chunk — offset ใน ``Unit.text`` ดั้งเดิม (``unit.text[char_start:char_end]``)"""
+
+    char_start: int
+    char_end: int
+
+
+@dataclass(frozen=True)
+class Chunk:
+    unit_index: int
+    chunk_index: int  # ลำดับ chunk ใน unit เริ่มที่ 0
+    text: str  # = unit.text[char_start:char_end] (ไม่รวม context line)
+    char_start: int
+    char_end: int
+    sentences: tuple[SentenceSpan, ...]
+    context: str  # context line ที่อยู่ก่อน chunk ("" ถ้าไม่มี)
+    position: dict
+    label: str
+
+    @property
+    def embed_text(self) -> str:
+        """ข้อความที่ส่งเข้า embedding: context line (ถ้ามี) ตามด้วยเนื้อ chunk"""
+        return f"{self.context}\n{self.text}" if self.context else self.text
+
+
+def _line_sentence_spans(text: str, start: int, end: int) -> list[tuple[int, int]]:
+    """แบ่งบรรทัด ``text[start:end]`` เป็นประโยคด้วย crfcut; ถ้า crfcut ใช้ไม่ได้/หา substring ไม่เจอ = ทั้งบรรทัดเป็นประโยคเดียว"""
+    line = text[start:end]
+    sents = _try_pythainlp_sent_tokenize(line) if len(line) >= 2 * MIN_SENT_CHARS else None
+    if not sents or len(sents) == 1:
+        return [(start, end)]
+    spans, cursor = [], 0
+    for sent in sents:
+        sent = sent.strip()
+        idx = line.find(sent, cursor)
+        if not sent or idx < 0:
+            return [(start, end)]
+        spans.append((start + idx, start + idx + len(sent)))
+        cursor = idx + len(sent)
+    return spans
+
+
+def split_sentence_spans(text: str) -> list[tuple[int, int]]:
+    """ประโยคของ ``text`` เป็นช่วง (start, end) ใน text เดิม: ตัดที่ newline ก่อน แล้ว crfcut ภายในบรรทัด
+
+    ช่วงที่สั้นกว่า ``MIN_SENT_CHARS`` รวมเข้ากับช่วงถัดไป (ช่วงสุดท้ายรวมเข้ากับช่วงก่อนหน้า) โดยช่วงที่รวมแล้วคือ
+    ``text[start_แรก:end_สุดท้าย]`` ต่อเนื่อง ไม่มีอักขระถูกทิ้งหรือแต่งเพิ่ม
+    """
+    raw: list[tuple[int, int]] = []
+    for m in _LINE_RE.finditer(text):
+        seg = m.group()
+        lead = len(seg) - len(seg.lstrip())
+        stripped = seg.strip()
+        if stripped:
+            raw.extend(_line_sentence_spans(text, m.start() + lead, m.start() + lead + len(stripped)))
+    merged: list[tuple[int, int]] = []
+    buffer_start: Optional[int] = None
+    for start, end in raw:
+        begin = start if buffer_start is None else buffer_start
+        if end - begin >= MIN_SENT_CHARS:
+            merged.append((begin, end))
+            buffer_start = None
+        else:
+            buffer_start = begin
+    if buffer_start is not None and raw:
+        tail_end = raw[-1][1]
+        if merged:
+            merged[-1] = (merged[-1][0], tail_end)
+        else:
+            merged.append((buffer_start, tail_end))
+    return merged
+
+
+def _split_long_span(text: str, start: int, end: int, limit: int) -> list[tuple[int, int]]:
+    """ประโยคยาวเกิน ``limit`` ตัวอักษร -> ตัดที่ขอบ grapheme cluster เป็นชิ้น ≤ limit (offset ตรงกับ text เดิม)"""
+    if end - start <= limit:
+        return [(start, end)]
+    import regex
+
+    pieces, piece_start, pos = [], start, start
+    for m in regex.finditer(r"\X", text[start:end]):
+        cluster_end = start + m.end()
+        if cluster_end - piece_start > limit and pos > piece_start:
+            pieces.append((piece_start, pos))
+            piece_start = pos
+        pos = cluster_end
+    pieces.append((piece_start, end))
+    return pieces
+
+
+def sentence_spans_for_chunking(text: str, target_chars: int) -> list[tuple[int, int]]:
+    """``split_sentence_spans`` แล้วตัดประโยคที่ยาวเกิน ``target_chars`` — ไม่ขึ้นกับขนาดอื่น ใช้ซ้ำข้ามหลายขนาด chunk ไม่ได้
+    (ขีดตัดขึ้นกับ target) ให้เรียก ``split_sentence_spans`` ครั้งเดียวแล้วส่งเข้า ``pack_chunks`` เมื่อต้องการ cache"""
+    out: list[tuple[int, int]] = []
+    for start, end in split_sentence_spans(text):
+        out.extend(_split_long_span(text, start, end, target_chars))
+    return out
+
+
+def unit_context_lines(text: str) -> list[tuple[int, int, str]]:
+    """context line ทั้งหมดใน ``Unit.text``: (start, end, ข้อความบรรทัด) เรียงตามตำแหน่ง"""
+    out = []
+    for m in _LINE_RE.finditer(text):
+        line = m.group().strip()
+        if _CONTEXT_LINE_RE.match(line):
+            lead = len(m.group()) - len(m.group().lstrip())
+            out.append((m.start() + lead, m.start() + lead + len(line), line))
+    return out
+
+
+def pack_chunks(unit: Unit, spans: list[tuple[int, int]], target_chars: int) -> list[Chunk]:
+    """รวมประโยค (``spans`` ใน ``unit.text``) เป็น chunk ขนาด ≤ ``target_chars`` (ยกเว้นประโยคเดียวที่ยาวกว่า — ซึ่ง
+    ``sentence_spans_for_chunking`` ตัดให้แล้ว) chunk ถัดไปเริ่มจากประโยคสุดท้ายของ chunk ก่อนหน้า (ซ้อน 1 ประโยค)
+    และต้องเดินหน้าอย่างน้อย 1 ประโยคเสมอ; unit ที่สั้นกว่าเป้าหมายได้ chunk เดียว"""
+    if target_chars <= 0:
+        raise ValueError("target_chars ต้องมากกว่า 0")
+    text, contexts = unit.text, unit_context_lines(unit.text)
+    chunks: list[Chunk] = []
+    i, n = 0, len(spans)
+    while i < n:
+        j = i + 1
+        while j < n and spans[j][1] - spans[i][0] <= target_chars:
+            j += 1
+        start, end = spans[i][0], spans[j - 1][1]
+        before = [line for s, e, line in contexts if e <= start]
+        chunks.append(Chunk(
+            unit_index=unit.index, chunk_index=len(chunks), text=text[start:end], char_start=start, char_end=end,
+            sentences=tuple(SentenceSpan(s, e) for s, e in spans[i:j]),
+            context=before[-1] if before else "", position=dict(unit.position), label=unit.label,
+        ))
+        if j >= n:
+            break
+        i = max(j - 1, i + 1)
+    return chunks
+
+
+def make_chunks(unit: Unit, target_chars: int) -> list[Chunk]:
+    """chunk ของ unit หนึ่งตามขนาดเป้าหมาย — unit ที่ status != ok หรือไม่มีข้อความ = ไม่มี chunk"""
+    if unit.status != UnitStatus.OK or not unit.text.strip():
+        return []
+    return pack_chunks(unit, sentence_spans_for_chunking(unit.text, target_chars), target_chars)
+
+
+def make_document_chunks(units: Sequence[Unit], target_chars: int) -> list[Chunk]:
+    return [c for unit in units for c in make_chunks(unit, target_chars)]

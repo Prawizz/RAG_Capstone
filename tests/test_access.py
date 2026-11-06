@@ -195,3 +195,62 @@ def test_changing_box_recomputes_files_in_it():
     assert store.can_access(principal, "f")
     store.register_box(Box(box_id="b", visibility=Visibility.PRIVATE, min_security_level=5))
     assert not store.can_access(principal, "f")
+
+
+# ---------- register_box ต้อง atomic ----------
+
+
+def _box_b(departments):
+    return Box(box_id="b", visibility=Visibility.PRIVATE, departments=frozenset(departments))
+
+
+def test_register_box_that_would_widen_a_file_is_rejected_without_touching_state():
+    """probe: box {hr,it}, ไฟล์ {it} -> register_box({hr}) ต้อง error และ state ต้องเหมือนเดิมทุกจุด"""
+    store = AclStore()
+    store.register_box(_box_b({"hr", "it"}))
+    store.register_file(FileAcl(file_id="g", box_id="b", departments=frozenset({"it"})))
+    it_user = Principal(user_id="i", departments=frozenset({"it"}), box_ids=frozenset({"b"}))
+    before = store.get_effective("g")
+
+    with pytest.raises(AclWideningError):
+        store.register_box(_box_b({"hr"}))
+
+    assert store.get_box("b").departments == frozenset({"hr", "it"})
+    assert store.get_effective("g") == before
+    assert store.can_access(it_user, "g")
+
+
+def test_register_box_rejects_all_if_any_file_fails_even_when_others_are_fine():
+    store = AclStore()
+    store.register_box(_box_b({"hr", "it"}))
+    store.register_file(FileAcl(file_id="a_ok", box_id="b", departments=frozenset({"hr"})))
+    store.register_file(FileAcl(file_id="z_bad", box_id="b", departments=frozenset({"it"})))
+    before = {fid: store.get_effective(fid) for fid in ("a_ok", "z_bad")}
+    with pytest.raises(AclWideningError):
+        store.register_box(_box_b({"hr"}))
+    assert {fid: store.get_effective(fid) for fid in ("a_ok", "z_bad")} == before
+    assert store.get_box("b").departments == frozenset({"hr", "it"})
+
+
+def test_register_box_visibility_change_is_rejected_without_touching_state():
+    store = AclStore()
+    store.register_box(Box(box_id="b", visibility=Visibility.PRIVATE, min_security_level=1))
+    store.register_file(FileAcl(file_id="f", box_id="b"))
+    before = store.get_effective("f")
+    with pytest.raises(AclError, match="visibility"):
+        store.register_box(Box(box_id="b", visibility=Visibility.PUBLIC, min_security_level=9))
+    assert store.get_box("b").min_security_level == 1 and store.get_effective("f") == before
+
+
+def test_register_box_returns_the_files_whose_effective_acl_changed():
+    store = AclStore()
+    store.register_box(Box(box_id="b", visibility=Visibility.PRIVATE, min_security_level=0))
+    store.register_box(Box(box_id="other", visibility=Visibility.PRIVATE))
+    store.register_file(FileAcl(file_id="inherits", box_id="b"))
+    store.register_file(FileAcl(file_id="already_high", box_id="b", min_security_level=7))
+    store.register_file(FileAcl(file_id="elsewhere", box_id="other"))
+
+    changed = store.register_box(Box(box_id="b", visibility=Visibility.PRIVATE, min_security_level=5))
+    assert changed == ["inherits"]  # already_high ยังเป็น 7, elsewhere อยู่คนละ box
+    assert store.register_box(Box(box_id="b", visibility=Visibility.PRIVATE, min_security_level=5)) == []
+    assert store.register_box(Box(box_id="brand_new", visibility=Visibility.PUBLIC)) == []

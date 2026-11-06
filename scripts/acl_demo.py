@@ -7,9 +7,8 @@
 สิ่งที่ควรเห็น: persona ที่มีสิทธิ์ได้ผลค้นพร้อม label อ้างอิง ("หน้า 12") ส่วน persona ที่ไม่มีสิทธิ์
 ได้ผลลัพธ์ที่**หน้าตาเหมือนกันทุกประการ**กับการค้นที่ไม่เจออะไร (กฎเหล็กข้อ 9)
 
-หมายเหตุ: ``app/embedding.py`` ยังไม่มีโมเดลจริง (ไม่มี sentence-transformers ใน requirements.txt)
-สคริปต์นี้จะพิมพ์บอกว่ากำลังใช้เวกเตอร์จาก fallback — อันดับผลค้นจึงยัง**ไม่มีความหมายเชิงความหมาย**
-เดโมนี้แสดงเรื่องสิทธิ์และการอ้างอิง ไม่ได้แสดงคุณภาพการค้น
+ใช้ BGE-M3 จริง (ต้องโหลดได้ ไม่งั้นสคริปต์ล้ม) เพิ่ม ``--hash-embedding`` ถ้าต้องการเดโมสิทธิ์โดยไม่โหลดโมเดล
+(hash vector ไม่มีความหมายเชิงความหมาย — อันดับผลค้นไม่มีความหมาย) ``--mode`` เลือกโหมดค้นของ ``VectorStore.search``
 """
 
 import argparse
@@ -20,9 +19,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app.access import AclStore, Box, FileAcl, Principal, Visibility  # noqa: E402
 from app.config import Settings  # noqa: E402
-from app.embedding import EmbeddingModel  # noqa: E402
+from app.embedding import get_embedder  # noqa: E402
 from app.extraction.pipeline import extract_file  # noqa: E402
-from app.vectorstore import VectorStore  # noqa: E402
+from app.vectorstore import SEARCH_MODES, VectorStore, embed_query  # noqa: E402
 from scripts.extract_cli import parse_pages  # noqa: E402
 
 BOX_ID = "hr_private"
@@ -47,8 +46,8 @@ def build_acl(file_id: str) -> tuple[AclStore, Principal, Principal]:
     return acl, allowed, denied
 
 
-def show(store: VectorStore, principal: Principal, query_vector, limit: int) -> None:
-    result = store.search(query_vector, principal, BOX_ID, limit=limit)
+def show(store: VectorStore, principal: Principal, query, limit: int, mode: str) -> None:
+    result = store.search(query, principal, BOX_ID, limit=limit, mode=mode)
     print(f"\n--- persona: {principal.user_id}  (แผนก {', '.join(sorted(principal.departments))})")
     if not result.hits:
         print("  ไม่พบข้อมูลที่เกี่ยวข้อง")  # ข้อความเดียวกันทั้งกรณีไม่มีสิทธิ์และกรณีไม่เจอ
@@ -65,6 +64,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--query", default=QUERY)
     ap.add_argument("--limit", type=int, default=5)
     ap.add_argument("--server", action="store_true", help="ใช้ Qdrant จาก docker compose")
+    ap.add_argument("--mode", choices=sorted(SEARCH_MODES), default="all")
+    ap.add_argument("--hash-embedding", action="store_true", help="ใช้ hash vector แทน BGE-M3 (เฉพาะเดโมสิทธิ์)")
     args = ap.parse_args(argv)
 
     if hasattr(sys.stdout, "reconfigure"):
@@ -77,11 +78,10 @@ def main(argv: list[str] | None = None) -> int:
     print(f"ไฟล์: {doc.filename} · unit {doc.unit_count} · สถานะ {doc.status.value}")
     print("unit ต่อสถานะ: " + "  ".join(f"{k}={v}" for k, v in doc.unit_summary.items()))
 
-    embedder = EmbeddingModel()
-    # เข้าถึง attribute ภายในเพราะ EmbeddingModel ยังไม่บอกว่าใช้เส้นทางไหน (ดูรายงานท้ายงาน)
-    if getattr(embedder, "_st_model", None) is None:
-        print("⚠ embedding: ใช้เวกเตอร์ fallback (ไม่ใช่ BGE-M3) — อันดับผลค้นยังไม่มีความหมาย")
-    settings = Settings(vector_size=embedder.dimension)
+    embedder = get_embedder(test_mode=args.hash_embedding)  # โหลด BGE-M3 ไม่ได้ = raise
+    if args.hash_embedding:
+        print("⚠ embedding: hash vector (ไม่ใช่ BGE-M3) — อันดับผลค้นไม่มีความหมาย")
+    settings = Settings(vector_size=embedder.dense_size)
 
     acl, allowed, denied = build_acl(doc.file_id)
     store = (
@@ -91,20 +91,16 @@ def main(argv: list[str] | None = None) -> int:
         store.ensure_collections()
         store.delete_file(doc.file_id)  # ให้รันซ้ำได้ผลเดิม
 
-    ok_units = [u for u in doc.units if u.status.value == "ok" and u.text.strip()]
-    vectors = {
-        u.index: v for u, v in zip(ok_units, embedder.embed_texts([u.text for u in ok_units]))
-    }
-    report = store.upsert_units(doc, vectors)
+    report = store.upsert_document(doc, embedder)
     print(
-        f"index: {report.indexed} unit เข้า collection '{report.collection}' "
+        f"index: {report.indexed} chunk เข้า collection '{report.collection}' "
         f"(ข้าม {report.skipped_not_ok} ที่ไม่ใช่ ok, {report.skipped_empty} ที่ว่าง)"
     )
 
     print(f"\nคำถาม: {args.query!r}  ใน box {BOX_ID} (private, เฉพาะแผนก hr)")
-    query_vector = embedder.embed_query(args.query)
-    show(store, allowed, query_vector, args.limit)
-    show(store, denied, query_vector, args.limit)
+    query = embed_query(args.query, embedder)
+    show(store, allowed, query, args.limit, args.mode)
+    show(store, denied, query, args.limit, args.mode)
     print("\nสองบล็อกข้างบนต่างกันเพราะสิทธิ์เท่านั้น — ฝั่งที่ไม่มีสิทธิ์ตอบเหมือนหาไม่เจอ")
     return 0
 

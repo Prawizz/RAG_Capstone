@@ -1,20 +1,22 @@
-# Qdrant สำหรับ dev — เก็บข้อมูลลง ./data/qdrant (อยู่ใน .gitignore)
+# Qdrant สำหรับ dev — เก็บข้อมูลใน named volume `qdrant_storage` (ไม่ใช้ bind mount: repo อยู่ใต้ OneDrive บน Windows
+# ทำให้ I/O ช้าจน create_payload_index timeout)
 #   docker compose up -d qdrant     เริ่ม
-#   docker compose down             หยุด (ข้อมูลยังอยู่)
-#   docker compose down -v          หยุดและลบข้อมูล
+#   docker compose down             หยุด (ข้อมูลใน volume ยังอยู่)
+#   docker compose down -v          หยุดและลบข้อมูล (ลบ volume)
+# เวอร์ชัน image ต้องตรง minor กับ qdrant-client ใน requirements.txt (ตอนนี้ 1.20.x) ไม่งั้น client เตือนว่าเข้ากันไม่ได้
 # ตรวจว่าขึ้นแล้ว: curl http://localhost:6333/readyz   ·   แผงควบคุม: http://localhost:6333/dashboard
 # test ที่ต้องใช้ตัวนี้: pytest -m qdrant  (test ปกติใช้ Qdrant ในกระบวนการ ไม่ต้องมี docker)
 
 services:
   qdrant:
-    image: qdrant/qdrant:v1.16.1
+    image: qdrant/qdrant:v1.20.0
     container_name: rag_qdrant
     restart: unless-stopped
     ports:
       - "6333:6333"   # HTTP + dashboard
       - "6334:6334"   # gRPC
     volumes:
-      - ./data/qdrant:/qdrant/storage
+      - qdrant_storage:/qdrant/storage
     environment:
       QDRANT__SERVICE__ENABLE_CORS: "true"
     healthcheck:
@@ -24,3 +26,6 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
+
+volumes:
+  qdrant_storage:

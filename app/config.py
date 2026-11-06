@@ -4,9 +4,10 @@
 (ไม่งั้นค่าตั้งจะกระจายและ test override ไม่ได้)
 
 - ชื่อ env ตรงกับ ``.env.example``
-- ``vector_size`` ต้องตรงกับโมเดล embedding ที่ใช้จริง (BGE-M3 = 1024)
-  **ยังไม่มีโมเดลจริงในระบบ** (ดู ``app/embedding.py``) ตอนนี้ขนาดเวกเตอร์เป็นแค่ขนาด schema
-  ของ collection ถ้าเปลี่ยนโมเดลที่มีมิติต่างไป ต้องสร้าง collection ใหม่แล้ว index ซ้ำ
+- ``vector_size`` ต้องตรงกับโมเดล embedding ที่ใช้จริง (BGE-M3 = 1024) เปลี่ยนโมเดลที่มีมิติต่างไป
+  ต้องสร้าง collection ใหม่แล้ว index ซ้ำ
+- ``embedding_test_mode`` = เปิดใช้ hash vector แทน BGE-M3 **ต้องระบุชัดเจน** (EMBEDDING_TEST_MODE=1) — ค่าเริ่มต้นปิด
+  ถ้าโหลด BGE-M3 ไม่ได้ ``app/embedding.py`` จะ raise ไม่ fallback เงียบๆ
 - collection แยก public / private ตาม PLAN.md ข้อ 8 (Public/Private อยู่คนละ collection)
 
 ``.env`` ไม่เข้า git (ดู .gitignore) ใช้ ``.env.example`` เป็นแม่แบบ
@@ -26,6 +27,11 @@ DEFAULT_QDRANT_URL = "http://localhost:6333"
 DEFAULT_EMBEDDING_MODEL = "BAAI/bge-m3"
 DEFAULT_VECTOR_SIZE = 1024  # BGE-M3
 DEFAULT_CHUNK_MAX_CHARS = 1200
+DEFAULT_CHUNK_TARGET_CHARS = 1000  # ขนาด chunk (parent) เป้าหมายตอน index ลง Qdrant
+DEFAULT_EMBEDDING_DEVICE = "auto"  # auto = cuda ถ้ามี ไม่งั้น cpu
+DEFAULT_EMBEDDING_MAX_LENGTH = 2048  # token ต่อ chunk (chunk ~1,500 ตัวอักษรไทยยังไม่ถึงเพดาน)
+DEFAULT_EMBEDDING_BATCH_SIZE = 16
+DEFAULT_SEARCH_MODE = "dense"  # dense | dense+sparse_bge | dense+sparse_bm25 | all
 DEFAULT_COLLECTION_PUBLIC = "rag_public"
 DEFAULT_COLLECTION_PRIVATE = "rag_private"
 DEFAULT_QDRANT_TIMEOUT = 30.0
@@ -65,6 +71,13 @@ class Settings(BaseModel):
     vector_size: int = Field(default=DEFAULT_VECTOR_SIZE, gt=0)
     embedding_model: str = DEFAULT_EMBEDDING_MODEL
     chunk_max_chars: int = Field(default=DEFAULT_CHUNK_MAX_CHARS, gt=0)
+    chunk_target_chars: int = Field(default=DEFAULT_CHUNK_TARGET_CHARS, gt=0)
+    embedding_device: str = DEFAULT_EMBEDDING_DEVICE
+    embedding_fp16: bool = True  # fp16 เมื่อใช้ GPU (CPU ใช้ fp32 เสมอ)
+    embedding_max_length: int = Field(default=DEFAULT_EMBEDDING_MAX_LENGTH, gt=0)
+    embedding_batch_size: int = Field(default=DEFAULT_EMBEDDING_BATCH_SIZE, gt=0)
+    embedding_test_mode: bool = False
+    search_mode: str = DEFAULT_SEARCH_MODE
 
 
 def _env(source: dict[str, str], key: str) -> Optional[str]:
@@ -86,6 +99,13 @@ def build_settings(env_file: str | Path = ENV_FILE) -> Settings:
         ("vector_size", "VECTOR_SIZE"),
         ("embedding_model", "EMBEDDING_MODEL"),
         ("chunk_max_chars", "CHUNK_MAX_CHARS"),
+        ("chunk_target_chars", "CHUNK_TARGET_CHARS"),
+        ("embedding_device", "EMBEDDING_DEVICE"),
+        ("embedding_fp16", "EMBEDDING_FP16"),
+        ("embedding_max_length", "EMBEDDING_MAX_LENGTH"),
+        ("embedding_batch_size", "EMBEDDING_BATCH_SIZE"),
+        ("embedding_test_mode", "EMBEDDING_TEST_MODE"),
+        ("search_mode", "SEARCH_MODE"),
     ):
         value = _env(source, key)
         if value is not None:

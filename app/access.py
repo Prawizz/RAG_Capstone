@@ -188,17 +188,31 @@ class AclStore:
 
     # ---------- ลงทะเบียน ----------
 
-    def register_box(self, box: Box) -> None:
+    def register_box(self, box: Box) -> list[str]:
+        """ลงทะเบียน/แก้ box — **atomic**: คำนวณ effective ของทุกไฟล์ใน box ให้เสร็จก่อนแล้วค่อยเขียน state
+
+        ถ้า box ใหม่ทำให้ไฟล์ใดไฟล์หนึ่งผิดกฎ (``AclWideningError``) หรือพยายามเปลี่ยน visibility จะปฏิเสธทั้งหมด
+        โดยไม่แตะ ``_boxes`` / ``_effective`` เลย (ไม่งั้น box แคบลงไปแล้วแต่ไฟล์ยังถือสิทธิ์เก่า)
+
+        Returns:
+            file_id (เรียงแล้ว) ของไฟล์ที่ effective ACL เปลี่ยนไปจากเดิม — ผู้เรียกใช้ไปสั่ง
+            ``VectorStore.refresh_acl_payload`` ให้ payload ใน index ตาม
+        """
         existing = self._boxes.get(box.box_id)
         if existing is not None and existing.visibility != box.visibility:
             raise AclError(
                 f"box {box.box_id} เปลี่ยน visibility จาก {existing.visibility.value} "
                 f"เป็น {box.visibility.value} ไม่ได้ (กฎเหล็กข้อ 9)"
             )
+        recomputed = {  # ไฟล์ใน box นั้นต้องคำนวณใหม่ทั้งหมดก่อน; error ใดๆ หยุดที่นี่ ก่อนเขียน state
+            file.file_id: effective_acl(box, file)
+            for file in self._files.values()
+            if file.box_id == box.box_id
+        }
+        changed = sorted(fid for fid, acl in recomputed.items() if self._effective.get(fid) != acl)
         self._boxes[box.box_id] = box
-        for file in self._files.values():  # box เปลี่ยน -> คำนวณ effective ของไฟล์ใน box นั้นใหม่
-            if file.box_id == box.box_id:
-                self._effective[file.file_id] = effective_acl(box, file)
+        self._effective.update(recomputed)
+        return changed
 
     def register_file(self, file: FileAcl) -> EffectiveAcl:
         box = self._boxes.get(file.box_id)

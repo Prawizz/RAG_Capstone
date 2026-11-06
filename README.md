@@ -51,10 +51,23 @@ docker compose up -d qdrant        # http://localhost:6333/dashboard
 cp .env.example .env               # แก้ค่าได้ถ้าไม่ได้ใช้ค่าเริ่มต้น
 ```
 
+Qdrant เก็บข้อมูลใน named volume `qdrant_storage` (ไม่ใช้ bind mount เพราะ repo ที่อยู่ใต้ OneDrive บน Windows ทำให้ I/O ช้า)
+`docker compose down` ข้อมูลยังอยู่ · `docker compose down -v` ลบข้อมูล · image ต้องตรง minor กับ `qdrant-client` ใน `requirements.txt`
+
 - `app/config.py` — ค่าตั้งทั้งหมดอ่านที่เดียวจาก env + `.env`
 - `app/access.py` — ACL 4 ชั้น (box · แผนก · ระดับ · สิทธิ์ระดับไฟล์) ตามกฎเหล็กข้อ 9
 - `app/vectorstore.py` — Qdrant: Public/Private แยก collection, index เฉพาะ unit `ok`, สิทธิ์ 2 ด่าน
-  (pre-filter ใน Qdrant + re-check กับ ACL store ก่อนคืนผล)
+  (pre-filter ใน Qdrant + re-check กับ ACL store ก่อนคืนผล) · 1 point = 1 chunk · named vectors 3 ตัว
+  (`dense`, `sparse_bge`, `sparse_bm25`) ค้นได้ 4 โหมด (`SEARCH_MODE`): `dense` · `dense+sparse_bge` · `dense+sparse_bm25` · `all`
+  (โหมดที่มี sparse รวมผลด้วย RRF ของ Qdrant) · `upsert_chunks` ลบ point เก่าของไฟล์ก่อนเขียนเสมอ
+- `app/chunking.py` — `make_chunks`: chunk ตามขอบประโยคขนาด `CHUNK_TARGET_CHARS` (ค่าเริ่มต้น 1000) ซ้อน 1 ประโยค ไม่ข้าม unit
+  เก็บ offset ประโยคใน `Unit.text` ไว้ cite · context line ของ unit ถูกแปะหน้า chunk ตอน embed เท่านั้น
+- `app/embedding.py` — BGE-M3 dense + sparse (lexical weights) ผ่าน `transformers` (fp16 บน GPU; `release()` คืน VRAM)
+  **ไม่ fallback เงียบ**: โหลดโมเดลไม่ได้ = raise `EmbeddingUnavailable` hash vector ใช้ได้เฉพาะเมื่อตั้ง `EMBEDDING_TEST_MODE=1`
+  (test ตั้งให้เอง) — ต้องมี `torch` + `transformers` (อยู่ใน `requirements-ocr.txt`) ทำ OCR ให้เสร็จก่อนแล้วค่อย embed
+  อย่าให้ Typhoon กับ BGE-M3 อยู่บน GPU พร้อมกัน
+
+ทดลองขนาด chunk x โหมดค้นบนชุด dev: `python scripts/retrieval_dev_eval.py` (ต้องมี Qdrant + BGE-M3; ผลที่ `eval/results/retrieval_dev_eval.md`)
 
 เมทริกซ์สิทธิ์ที่คนเขียนอยู่ที่ `eval/datasets/access_control.jsonl` (box / file / principal / case อย่างละบรรทัด)
 เพิ่มกรณีทดสอบได้โดยเพิ่มบรรทัด `case` — `pytest tests/test_access.py` จะเทียบให้เอง
