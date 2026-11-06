@@ -1,4 +1,8 @@
-"""[M4-M6] Enterprise Domain-Agnostic Hybrid Retrieval with Contextual BM25+, BGE-M3 Dense, RRF & ColBERT-style Late Interaction Reranking
+"""**DEPRECATED — ห้ามใช้กับข้อมูลจริง**: prototype in-memory ที่ **ไม่ผ่าน ACL** (ไม่มี box / แผนก / ระดับความปลอดภัย / ด่านตรวจสิทธิ์ใดๆ)
+เก็บไว้อ้างอิงเท่านั้น ยังไม่ลบ ทางที่ถูกคือ ``app/chunking.py::make_chunks`` + ``app/vectorstore.py`` (Qdrant, สิทธิ์ 2 ด่าน)
+import โมดูลนี้ออก ``DeprecationWarning``
+
+[M4-M6] Enterprise Domain-Agnostic Hybrid Retrieval with Contextual BM25+, BGE-M3 Dense, RRF & ColBERT-style Late Interaction Reranking
 
 สถาปัตยกรรมระดับองค์กรที่เป็นอิสระจากโดเมน (Domain-Agnostic Production RAG):
 1. Contextual Retrieval (Anthropic 2024 Framework):
@@ -22,12 +26,19 @@ from __future__ import annotations
 
 import math
 import re
+import warnings
 from dataclasses import dataclass
 from typing import Optional, Sequence
 
 from app.chunking import ChildChunk, ParentChunk, format_citation_context
 from app.embedding import EmbeddingModel, cosine_similarity
 from app.thai.normalizer import normalize
+
+warnings.warn(
+    "app.retrieval เป็น prototype in-memory ที่ไม่ผ่าน ACL ห้ามใช้กับข้อมูลจริง — ใช้ app/vectorstore.py (Qdrant + สิทธิ์ 2 ด่าน) แทน",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 # Fallback response มาตรฐานเมื่อ Abstention Gate ตีตก (ป้องกัน Hallucination)
 FALLBACK_ABSTAIN_RESPONSE = (

@@ -16,6 +16,20 @@ pip install -r requirements.txt
 pytest
 ```
 
+**torch (GPU) ติดตั้งแยก** — `requirements.txt` มี `transformers` แต่ไม่มี `torch` เพราะต้องเลือกชุด CUDA ให้ตรงเครื่อง
+ที่ต้องใช้ torch: embedding จริง (BGE-M3 ใน `app/embedding.py`) และ OCR ในเครื่อง (Typhoon) — ถ้าไม่ลง `get_embedder()` จะ raise `EmbeddingUnavailable`
+(test ปกติไม่ต้องใช้ เพราะใช้ hash vector ในโหมด test)
+
+```bash
+# Windows/Linux + GPU NVIDIA (CUDA 12.8) — เลือก index ตามเวอร์ชัน CUDA ของไดรเวอร์
+pip install -r requirements-ocr.txt --extra-index-url https://download.pytorch.org/whl/cu128
+# หรือแค่ torch อย่างเดียว (ถ้าไม่ใช้ OCR ในเครื่อง)
+pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cu128
+python -c "import torch; print(torch.cuda.is_available())"   # ต้องเป็น True
+```
+
+โมเดล BAAI/bge-m3 (~2.3 GB) ถูกดาวน์โหลดจาก Hugging Face ครั้งแรกที่ใช้ และเก็บใน cache ของเครื่อง
+
 ถ้า `pytest` ผ่านทั้งหมด แปลว่า dev env พร้อมใช้งาน
 
 หมายเหตุสำหรับ Windows + OneDrive: repo มี `.gitattributes` บังคับ line ending เป็น LF
@@ -58,13 +72,13 @@ Qdrant เก็บข้อมูลใน named volume `qdrant_storage` (ไ�
 - `app/access.py` — ACL 4 ชั้น (box · แผนก · ระดับ · สิทธิ์ระดับไฟล์) ตามกฎเหล็กข้อ 9
 - `app/vectorstore.py` — Qdrant: Public/Private แยก collection, index เฉพาะ unit `ok`, สิทธิ์ 2 ด่าน
   (pre-filter ใน Qdrant + re-check กับ ACL store ก่อนคืนผล) · 1 point = 1 chunk · named vectors 3 ตัว
-  (`dense`, `sparse_bge`, `sparse_bm25`) ค้นได้ 4 โหมด (`SEARCH_MODE`): `dense` · `dense+sparse_bge` · `dense+sparse_bm25` · `all`
-  (โหมดที่มี sparse รวมผลด้วย RRF ของ Qdrant) · `upsert_chunks` ลบ point เก่าของไฟล์ก่อนเขียนเสมอ
+  (`dense`, `sparse_bge`, `sparse_bm25`) ค้นได้ 4 โหมด (`SEARCH_MODE`): `dense` · `dense+sparse_bge` (**ค่าเริ่มต้น**) · `dense+sparse_bm25` · `all`
+  (โหมดที่มี sparse รวมผลด้วย RRF ของ Qdrant; `sparse_bm25` index ไว้แต่ไม่ใช่ค่าเริ่มต้น) · `upsert_chunks` ลบ point เก่าของไฟล์ก่อนเขียนเสมอ
 - `app/chunking.py` — `make_chunks`: chunk ตามขอบประโยคขนาด `CHUNK_TARGET_CHARS` (ค่าเริ่มต้น 1000) ซ้อน 1 ประโยค ไม่ข้าม unit
   เก็บ offset ประโยคใน `Unit.text` ไว้ cite · context line ของ unit ถูกแปะหน้า chunk ตอน embed เท่านั้น
-- `app/embedding.py` — BGE-M3 dense + sparse (lexical weights) ผ่าน `transformers` (fp16 บน GPU; `release()` คืน VRAM)
+- `app/embedding.py` — BGE-M3 dense + sparse (lexical weights) ผ่าน `transformers` (bf16 บน GPU ปรับด้วย `EMBEDDING_DTYPE`; `release()` คืน VRAM)
   **ไม่ fallback เงียบ**: โหลดโมเดลไม่ได้ = raise `EmbeddingUnavailable` hash vector ใช้ได้เฉพาะเมื่อตั้ง `EMBEDDING_TEST_MODE=1`
-  (test ตั้งให้เอง) — ต้องมี `torch` + `transformers` (อยู่ใน `requirements-ocr.txt`) ทำ OCR ให้เสร็จก่อนแล้วค่อย embed
+  (test ตั้งให้เอง) — ต้องมี `torch` (ดูหัวข้อติดตั้งด้านบน) ทำ OCR ให้เสร็จก่อนแล้วค่อย embed
   อย่าให้ Typhoon กับ BGE-M3 อยู่บน GPU พร้อมกัน
 
 ทดลองขนาด chunk x โหมดค้นบนชุด dev: `python scripts/retrieval_dev_eval.py` (ต้องมี Qdrant + BGE-M3; ผลที่ `eval/results/retrieval_dev_eval.md`)

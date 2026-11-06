@@ -130,7 +130,7 @@ def test_bge_m3_returns_dense_and_sparse_and_releases_vram():
     e = BGEM3Embedder()
     try:
         if torch.cuda.is_available():
-            assert e.dtype == torch.float16  # fp16 บน GPU
+            assert e.dtype == torch.bfloat16  # ค่าเริ่มต้น bf16 บน GPU
         q = e.embed_query("รายได้รวมของ ซีพี ออลล์ ปี 2568")
         docs = e.embed_documents(["บริษัทฯ มีรายได้รวม 1,022,143 ล้านบาท", "นโยบายวันลาพักร้อนของพนักงานประจำ"])
         assert len(q.dense) == BGE_M3_DIMENSION and math.isclose(sum(x * x for x in q.dense), 1.0, rel_tol=1e-2)
@@ -157,7 +157,7 @@ class _ScriptedBGE(BGEM3Embedder):
     """BGEM3Embedder ที่ไม่โหลดโมเดล: ``_encode`` ตอบตามสคริปต์ว่าแถวไหนล้มใน fp16 / fp32"""
 
     def __init__(self, bad_in_batch=(), bad_single_fp16=(), bad_fp32=()):
-        self.fp16_retries = self.fp32_fallbacks = 0
+        self.retries = self.fp32_fallbacks = 0
         self.batch_size = 16
         self.bad_in_batch, self.bad_single_fp16, self.bad_fp32 = set(bad_in_batch), set(bad_single_fp16), set(bad_fp32)
         self.in_fp32 = False
@@ -191,14 +191,14 @@ def test_non_finite_row_is_recomputed_alone_in_fp16():
     e = _ScriptedBGE(bad_in_batch={"bb"})
     out = e.embed_documents(["a", "bb", "ccc"])
     assert [o.dense[0] for o in out] == [1.0, 2.0, 3.0]  # ผลคืนตามลำดับอินพุต
-    assert (e.fp16_retries, e.fp32_fallbacks) == (1, 0)
+    assert (e.retries, e.fp32_fallbacks) == (1, 0)
     assert ["bb"] in e.batches
 
 
 def test_row_that_fails_alone_falls_back_to_fp32():
     e = _ScriptedBGE(bad_in_batch={"bb"}, bad_single_fp16={"bb"})
     out = e.embed_documents(["a", "bb"])
-    assert out[1].dense[0] == 2.0 and (e.fp16_retries, e.fp32_fallbacks) == (1, 1)
+    assert out[1].dense[0] == 2.0 and (e.retries, e.fp32_fallbacks) == (1, 1)
     assert not e.in_fp32  # คืนสถานะ fp16 แล้ว
 
 
@@ -213,4 +213,23 @@ def test_row_that_fails_everywhere_raises_instead_of_returning_nan():
 def test_clean_batches_do_not_retry():
     e = _ScriptedBGE()
     e.embed_documents(["a", "bb", "ccc"])
-    assert (e.fp16_retries, e.fp32_fallbacks) == (0, 0) and len(e.batches) == 1
+    assert (e.retries, e.fp32_fallbacks) == (0, 0) and len(e.batches) == 1
+
+
+# ---------- ค่าตั้ง ----------
+
+
+def test_defaults_chosen_after_the_dev_experiments(tmp_path, monkeypatch):
+    for key in ("CHUNK_TARGET_CHARS", "SEARCH_MODE", "EMBEDDING_DTYPE", "EMBEDDING_TEST_MODE"):
+        monkeypatch.delenv(key, raising=False)
+    s = build_settings(tmp_path / "ไม่มี.env")
+    assert (s.chunk_target_chars, s.search_mode, s.embedding_dtype, s.embedding_test_mode) == (1000, "dense+sparse_bge", "bf16", False)
+    assert not hasattr(s, "chunk_max_chars") and not hasattr(s, "embedding_fp16")
+
+
+def test_dtype_comes_from_env_and_is_validated(tmp_path, monkeypatch):
+    monkeypatch.setenv("EMBEDDING_DTYPE", "fp16")
+    assert build_settings(tmp_path / "ไม่มี.env").embedding_dtype == "fp16"
+    monkeypatch.setenv("EMBEDDING_DTYPE", "int8")
+    with pytest.raises(Exception):
+        build_settings(tmp_path / "ไม่มี.env")

@@ -10,11 +10,11 @@
   ตัด token พิเศษ (cls/eos/pad/unk) แล้วเก็บน้ำหนักสูงสุดต่อ token id ที่ weight > 0 (index = token id ของ tokenizer)
 ไม่ใช้ colbert (multi-vector) — นอก scope ของงานนี้
 
-**fp16 บางครั้งได้ NaN** — BGE-M3 ใน fp16 บน GPU ให้ผลไม่ finite เป็นบางครั้งโดยสุ่ม (วัดได้ ~1–3 chunk ต่อ 1,500 chunk ยาว ~1,000 ตัวอักษร
-ไม่ซ้ำกันทุกรอบ แม้ตัดเป็น batch เดียวกัน; พบทั้ง sdpa และ eager) ทุกแถวที่ได้ NaN/inf จึงถูกคำนวณใหม่ทีละแถวใน fp16 แล้วถ้ายังไม่ได้ใน fp32
-(ตัวเดียวกัน แค่ละเอียดกว่า) ถ้ายังไม่ finite = ``EmbeddingError`` — ไม่มีทางที่เวกเตอร์ NaN หลุดเข้า index (``fp16_retries`` / ``fp32_fallbacks`` นับไว้ให้ดู)
+**ชนิดตัวเลขบน GPU** — ค่าเริ่มต้น bf16 (``Settings.embedding_dtype``; CPU ใช้ fp32 เสมอ) เหตุผลที่ไม่ใช้ fp16: BGE-M3 ใน fp16 บน GPU ให้ผลไม่ finite เป็นบางครั้งโดยสุ่ม (วัดได้ ~1–3 chunk ต่อ 1,500 chunk ยาว ~1,000 ตัวอักษร
+ไม่ซ้ำกันทุกรอบ แม้ตัดเป็น batch เดียวกัน; พบทั้ง sdpa และ eager) ทุกแถวที่ได้ NaN/inf (ไม่ว่า dtype ไหน) จึงถูกคำนวณใหม่ทีละแถวใน dtype เดิม แล้วถ้ายังไม่ได้ใน fp32
+(ตัวเดียวกัน แค่ละเอียดกว่า) ถ้ายังไม่ finite = ``EmbeddingError`` — ไม่มีทางที่เวกเตอร์ NaN หลุดเข้า index (``retries`` / ``fp32_fallbacks`` นับไว้ให้ดู)
 
-**VRAM** — ใช้ fp16 เมื่อรันบน GPU; ``Embedder.release()`` คืน VRAM (ingest ต้องทำ OCR ให้เสร็จก่อนแล้วค่อย embed
+**VRAM** — bf16/fp16 ครึ่งหนึ่งของ fp32 บน GPU; ``Embedder.release()`` คืน VRAM (ingest ต้องทำ OCR ให้เสร็จก่อนแล้วค่อย embed
 ห้ามให้ Typhoon กับ BGE-M3 อยู่บน GPU พร้อมกัน — เรียก ``release_gpu_memory()`` หลังปล่อยโมเดลตัวก่อนหน้า)
 """
 
@@ -135,6 +135,9 @@ def reset_gpu_peak() -> None:
 # ---------- BGE-M3 ----------
 
 
+_TORCH_DTYPES = {"bf16": lambda t: t.bfloat16, "fp16": lambda t: t.float16, "fp32": lambda t: t.float32}
+
+
 class BGEM3Embedder:
     """BGE-M3 dense + sparse ผ่าน transformers (ดูสูตรใน docstring ของโมดูล)
 
@@ -149,12 +152,12 @@ class BGEM3Embedder:
         model_name: str = DEFAULT_EMBEDDING_MODEL,
         *,
         device: str = "auto",
-        fp16: bool = True,
+        dtype: str = "bf16",
         max_length: int = 2048,
         batch_size: int = 16,
     ) -> None:
         self.model_name = model_name
-        self.fp16_retries = 0  # แถวที่ fp16 ได้ NaN แล้วคำนวณใหม่ทีละแถว
+        self.retries = 0  # แถวที่ได้ NaN/inf แล้วคำนวณใหม่ทีละแถว
         self.fp32_fallbacks = 0  # แถวที่ต้องใช้ fp32
         self.max_length = max_length
         self.batch_size = batch_size
@@ -167,7 +170,7 @@ class BGEM3Embedder:
             if device.startswith("cuda") and not torch.cuda.is_available():
                 raise RuntimeError("ขอใช้ cuda แต่ไม่มี GPU")
             self.device = device
-            self.dtype = torch.float16 if (fp16 and device.startswith("cuda")) else torch.float32
+            self.dtype = _TORCH_DTYPES[dtype](torch) if device.startswith("cuda") else torch.float32
             self._torch = torch
             self._tokenizer = AutoTokenizer.from_pretrained(model_name)
             self._model = AutoModel.from_pretrained(model_name, dtype=self.dtype).to(device).eval()
@@ -220,7 +223,7 @@ class BGEM3Embedder:
 
     @contextmanager
     def _fp32(self):
-        """ยกโมเดลเป็น fp32 ชั่วคราว (น้ำหนัก fp16 -> fp32 -> fp16 ไม่สูญเสียค่า) ใช้เฉพาะแถวที่ fp16 ล้มเหลว"""
+        """ยกโมเดลเป็น fp32 ชั่วคราว (น้ำหนัก bf16/fp16 -> fp32 -> กลับ ไม่สูญเสียค่า) ใช้เฉพาะแถวที่ fp16 ล้มเหลว"""
         if self.dtype == self._torch.float32:
             yield
             return
@@ -233,12 +236,12 @@ class BGEM3Embedder:
             self._sparse_linear.to(self.dtype)
 
     def _encode_checked(self, texts: Sequence[str]) -> list[Embedded]:
-        """``_encode`` + แก้แถวที่ไม่ finite: ทีละแถวใน fp16 -> fp32 -> ``EmbeddingError``"""
+        """``_encode`` + แก้แถวที่ไม่ finite: ทีละแถวใน dtype เดิม -> fp32 -> ``EmbeddingError``"""
         result = self._encode(texts)
         for i, emb in enumerate(result):
             if emb is not None:
                 continue
-            self.fp16_retries += 1
+            self.retries += 1
             emb = self._encode([texts[i]])[0]
             if emb is None:
                 self.fp32_fallbacks += 1
@@ -365,7 +368,7 @@ def get_embedder(settings: Optional[Settings] = None, *, test_mode: Optional[boo
     return BGEM3Embedder(
         settings.embedding_model,
         device=settings.embedding_device,
-        fp16=settings.embedding_fp16,
+        dtype=settings.embedding_dtype,
         max_length=settings.embedding_max_length,
         batch_size=settings.embedding_batch_size,
     )

@@ -1,4 +1,8 @@
-"""[M4] Ingestion Pipeline: File -> Units -> Normalization -> Chunking -> Indexing
+"""**DEPRECATED — ห้ามใช้กับข้อมูลจริง**: prototype in-memory ที่ **ไม่ผ่าน ACL** (ไม่มี box / แผนก / ระดับความปลอดภัย / ด่านตรวจสิทธิ์ใดๆ)
+เก็บไว้อ้างอิงเท่านั้น ยังไม่ลบ ทางที่ถูกคือ ``app/chunking.py::make_chunks`` + ``app/vectorstore.py`` (Qdrant, สิทธิ์ 2 ด่าน)
+import โมดูลนี้ออก ``DeprecationWarning``
+
+[M4] Ingestion Pipeline: File -> Units -> Normalization -> Chunking -> Indexing
 
 หน้าที่:
 - จัดการกระบวนการนำเข้าเอกสาร (Ingestion) แบบครบวงจร
@@ -11,6 +15,7 @@
 from __future__ import annotations
 
 import time
+import warnings
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional, Sequence
@@ -19,6 +24,12 @@ from app.chunking import ChildChunk, ParentChunk, chunk_document
 from app.extraction.pipeline import extract_file
 from app.models import Document, DocumentStatus, Unit, UnitStatus
 from app.retrieval import HybridRetriever
+
+warnings.warn(
+    "app.ingest เป็น prototype in-memory ที่ไม่ผ่าน ACL ห้ามใช้กับข้อมูลจริง — ใช้ app/vectorstore.py (Qdrant + สิทธิ์ 2 ด่าน) แทน",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 
 @dataclass

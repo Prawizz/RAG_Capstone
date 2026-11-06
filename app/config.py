@@ -18,7 +18,7 @@ from __future__ import annotations
 import os
 from functools import lru_cache
 from pathlib import Path
-from typing import Optional
+from typing import Literal, Optional
 
 from pydantic import BaseModel, Field
 
@@ -26,12 +26,11 @@ from pydantic import BaseModel, Field
 DEFAULT_QDRANT_URL = "http://localhost:6333"
 DEFAULT_EMBEDDING_MODEL = "BAAI/bge-m3"
 DEFAULT_VECTOR_SIZE = 1024  # BGE-M3
-DEFAULT_CHUNK_MAX_CHARS = 1200
 DEFAULT_CHUNK_TARGET_CHARS = 1000  # ขนาด chunk (parent) เป้าหมายตอน index ลง Qdrant
 DEFAULT_EMBEDDING_DEVICE = "auto"  # auto = cuda ถ้ามี ไม่งั้น cpu
 DEFAULT_EMBEDDING_MAX_LENGTH = 2048  # token ต่อ chunk (chunk ~1,500 ตัวอักษรไทยยังไม่ถึงเพดาน)
 DEFAULT_EMBEDDING_BATCH_SIZE = 16
-DEFAULT_SEARCH_MODE = "dense"  # dense | dense+sparse_bge | dense+sparse_bm25 | all
+DEFAULT_SEARCH_MODE = "dense+sparse_bge"  # dense | dense+sparse_bge | dense+sparse_bm25 | all (sparse_bm25 index ไว้แต่ไม่ใช่ค่าเริ่มต้น)
 DEFAULT_COLLECTION_PUBLIC = "rag_public"
 DEFAULT_COLLECTION_PRIVATE = "rag_private"
 DEFAULT_QDRANT_TIMEOUT = 30.0
@@ -70,10 +69,9 @@ class Settings(BaseModel):
     collection_private: str = DEFAULT_COLLECTION_PRIVATE
     vector_size: int = Field(default=DEFAULT_VECTOR_SIZE, gt=0)
     embedding_model: str = DEFAULT_EMBEDDING_MODEL
-    chunk_max_chars: int = Field(default=DEFAULT_CHUNK_MAX_CHARS, gt=0)
     chunk_target_chars: int = Field(default=DEFAULT_CHUNK_TARGET_CHARS, gt=0)
     embedding_device: str = DEFAULT_EMBEDDING_DEVICE
-    embedding_fp16: bool = True  # fp16 เมื่อใช้ GPU (CPU ใช้ fp32 เสมอ)
+    embedding_dtype: Literal["bf16", "fp16", "fp32"] = "bf16"  # ชนิดตัวเลขบน GPU (CPU ใช้ fp32 เสมอ)
     embedding_max_length: int = Field(default=DEFAULT_EMBEDDING_MAX_LENGTH, gt=0)
     embedding_batch_size: int = Field(default=DEFAULT_EMBEDDING_BATCH_SIZE, gt=0)
     embedding_test_mode: bool = False
@@ -98,10 +96,9 @@ def build_settings(env_file: str | Path = ENV_FILE) -> Settings:
         ("collection_private", "COLLECTION_PRIVATE"),
         ("vector_size", "VECTOR_SIZE"),
         ("embedding_model", "EMBEDDING_MODEL"),
-        ("chunk_max_chars", "CHUNK_MAX_CHARS"),
         ("chunk_target_chars", "CHUNK_TARGET_CHARS"),
         ("embedding_device", "EMBEDDING_DEVICE"),
-        ("embedding_fp16", "EMBEDDING_FP16"),
+        ("embedding_dtype", "EMBEDDING_DTYPE"),
         ("embedding_max_length", "EMBEDDING_MAX_LENGTH"),
         ("embedding_batch_size", "EMBEDDING_BATCH_SIZE"),
         ("embedding_test_mode", "EMBEDDING_TEST_MODE"),

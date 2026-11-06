@@ -133,7 +133,7 @@ def pct(x: float | None) -> str:
 def render_md(out: dict) -> str:
     L = ["# ทดลอง retrieval บนชุด dev (chunk x โหมดค้น)", "",
          f"- ชุด dev: `rag_evaluation_100.jsonl` เฉพาะ type=question {out['questions']} ข้อ · hit = partial_ratio ≥ {FUZZY_THRESHOLD} บน canon · top-{LIMIT} สำหรับ MRR",
-         "- index เฉพาะ unit status=ok ของ 3 ไฟล์ใน box เดียว (ค้นรวม ไม่บอกว่าคำถามมาจากไฟล์ไหน) ไม่ OCR · embedding = BGE-M3 fp16 (ค่าเริ่มต้นของ config ทั้งหมด)",
+         f"- index เฉพาะ unit status=ok ของ 3 ไฟล์ใน box เดียว (ค้นรวม ไม่บอกว่าคำถามมาจากไฟล์ไหน) ไม่ OCR · embedding = BGE-M3 {out['dtype']} (ค่าเริ่มต้นของ config ทั้งหมด)",
          f"- Qdrant {out['qdrant']} · GPU {out['gpu']}", "",
          "## 1. หน้าที่ถูก index / หลักฐานของคำถาม", "",
          "| ไฟล์ | unit ทั้งหมด | ok | needs_ocr | คำถาม | citation อยู่ในข้อความ unit ok | ไม่อยู่ใน unit ok |", "|---|---:|---:|---:|---:|---:|---:|"]
@@ -146,7 +146,7 @@ def render_md(out: dict) -> str:
           "| CHUNK_TARGET_CHARS | จำนวน chunk | ขนาดเฉลี่ย (ตัวอักษร) | เวลา index รวม | chunk | embed | upsert | VRAM สูงสุด (MB) | แถว fp16 ได้ NaN (คำนวณใหม่ / ต้องใช้ fp32) |", "|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
     for size, c in out["index"].items():
         L.append(f"| {size} | {c['chunks']} | {c['avg_chars']:.0f} | {c['seconds_total']:.1f}s | {c['seconds_chunk']:.1f}s | {c['seconds_embed']:.1f}s "
-                 f"| {c['seconds_upsert']:.1f}s | {c['vram_peak_mb']:.0f} | {c['fp16_retries']} / {c['fp32_fallbacks']} |")
+                 f"| {c['seconds_upsert']:.1f}s | {c['vram_peak_mb']:.0f} | {c['retries']} / {c['fp32_fallbacks']} |")
     L += ["", "VRAM สูงสุด = `torch.cuda.max_memory_allocated` ช่วง index (รวมน้ำหนักโมเดล ~1.1 GB) · ไม่มี Typhoon บน GPU ในขั้นตอนนี้", "",
           f"## 3. ผลรวมทุกข้อ ({out['questions']} ข้อ)", "",
           "| CHUNK_TARGET_CHARS | โหมด | Recall@1 | Recall@5 | MRR | query เฉลี่ย (ms) |", "|---:|---|---:|---:|---:|---:|"]
@@ -186,6 +186,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.render_only:
         out = json.loads((RESULTS / "retrieval_dev_eval.json").read_text(encoding="utf-8"))
         out["index"] = {int(k): v for k, v in out["index"].items()}
+        out.setdefault("dtype", get_settings().embedding_dtype)
         chunk_counts = {s: v["chunks"] for s, v in out["index"].items()}
         out["selections"] = [select_best(out["rows"], chunk_counts, m) for m in SELECTION_METRICS]
         out.pop("selection", None)
@@ -230,7 +231,7 @@ def main(argv: list[str] | None = None) -> int:
         store.ensure_collections()
         try:
             reset_gpu_peak()
-            retries0, fallbacks0 = embedder.fp16_retries, embedder.fp32_fallbacks
+            retries0, fallbacks0 = embedder.retries, embedder.fp32_fallbacks
             t0 = time.perf_counter()
             chunk_s = embed_s = upsert_s = 0.0
             n_chunks = total_chars = 0
@@ -251,7 +252,7 @@ def main(argv: list[str] | None = None) -> int:
                 "chunks": n_chunks, "avg_chars": total_chars / max(n_chunks, 1),
                 "seconds_total": time.perf_counter() - t0, "seconds_chunk": chunk_s, "seconds_embed": embed_s,
                 "seconds_upsert": upsert_s, "vram_peak_mb": gpu_peak_memory_mb(),
-                "fp16_retries": embedder.fp16_retries - retries0, "fp32_fallbacks": embedder.fp32_fallbacks - fallbacks0,
+                "retries": embedder.retries - retries0, "fp32_fallbacks": embedder.fp32_fallbacks - fallbacks0,
             }
             print(f"[{size}] {n_chunks} chunk · index {index_info[size]['seconds_total']:.1f}s "
                   f"(embed {embed_s:.1f}s) · VRAM {index_info[size]['vram_peak_mb']:.0f} MB", flush=True)
@@ -287,7 +288,7 @@ def main(argv: list[str] | None = None) -> int:
         "rows": rows,
         "selections": [select_best(rows, {s: index_info[s]["chunks"] for s in index_info}, m) for m in SELECTION_METRICS],
         "qdrant": qdrant_version(base.qdrant_url), "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu",
-        "fuzzy_threshold": FUZZY_THRESHOLD, "limit": LIMIT,
+        "fuzzy_threshold": FUZZY_THRESHOLD, "limit": LIMIT, "dtype": base.embedding_dtype,
     }
     print("\n" + render_md(out))
     if not args.no_write:
