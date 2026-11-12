@@ -1,12 +1,53 @@
-"""[M7] Health check routes"""
+"""GET /v1/health/live (ไม่ต้อง auth — สำหรับ orchestrator probe) · GET /v1/health/ready
+
+ready ต้องผ่าน service auth (เผยเวอร์ชัน สถานะส่วนประกอบ และอุปกรณ์ที่ใช้) แต่ไม่ต้องมี header ผู้ใช้
+ตรวจจริงตาม ``app/api/readiness.py`` (ไม่โหลดโมเดล) · 200 เมื่อ ready ไม่งั้น 503 (body ReadyResponse ทั้งสองกรณี)
+"""
 
 from __future__ import annotations
 
-from fastapi import APIRouter
+from typing import Annotated, Callable
 
-router = APIRouter(prefix="/v1", tags=["Health"])
+from fastapi import APIRouter, Depends, Request
+from fastapi.responses import JSONResponse
+
+from app.api import readiness
+from app.api.deps import ServiceAuth, get_settings
+from app.api.errors import TRACE_HEADER, error_docs, trace_id_of
+from app.api.schemas import API_VERSION, ApiErrorCode, LiveResponse, ReadyResponse, ReadyStatus
+from app.config import Settings
+
+router = APIRouter(prefix="/v1/health", tags=["health"])
 
 
-@router.get("/health")
-def health_check() -> dict[str, str]:
-    return {"status": "ok", "service": "rag-api"}
+def get_probe() -> Callable[[Settings], readiness.Readiness]:
+    """override ใน test (ไม่ต้องมี Qdrant / GPU จริง)"""
+    return readiness.probe
+
+
+@router.get("/live", response_model=LiveResponse, summary="process ยังทำงานอยู่",
+            responses=error_docs(ApiErrorCode.INTERNAL, common=False))
+def live(request: Request) -> LiveResponse:
+    return LiveResponse(status="ok", trace_id=trace_id_of(request))
+
+
+@router.get(
+    "/ready", response_model=ReadyResponse,
+    summary="พร้อมรับงานไหม + อุปกรณ์/OCR backend ที่ใช้ (200 = ready, 503 = degraded/not_ready)",
+    dependencies=[ServiceAuth],
+    responses={
+        503: {"model": ReadyResponse, "description": "degraded / not_ready (body เป็น ReadyResponse)"},
+        **error_docs(ApiErrorCode.UNAUTHORIZED, ApiErrorCode.INTERNAL, common=False),
+    },
+)
+def ready(
+    request: Request,
+    settings: Annotated[Settings, Depends(get_settings)],
+    probe: Annotated[Callable[[Settings], readiness.Readiness], Depends(get_probe)],
+):
+    result = probe(settings)
+    tid = trace_id_of(request)
+    body = ReadyResponse(status=result.status, version=API_VERSION, components=result.components,
+                         runtime=result.runtime, trace_id=tid)
+    code = 200 if result.status == ReadyStatus.READY else 503
+    return JSONResponse(body.model_dump(mode="json"), status_code=code, headers={TRACE_HEADER: tid})

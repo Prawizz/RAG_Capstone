@@ -17,7 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from app.access import AclStore, Box, FileAcl, Principal, Visibility  # noqa: E402
+from app.access import AclStore, Box, BoxRole, FileAcl, Principal, Visibility  # noqa: E402
 from app.config import Settings  # noqa: E402
 from app.embedding import get_embedder  # noqa: E402
 from app.extraction.pipeline import extract_file  # noqa: E402
@@ -31,18 +31,14 @@ QUERY = "การลาป่วย"
 def build_acl(file_id: str) -> tuple[AclStore, Principal, Principal]:
     """box เดียวแบบ private จำกัดแผนก hr + persona สองคนที่ต่างกันแค่แผนก"""
     acl = AclStore()
-    acl.register_box(
-        Box(box_id=BOX_ID, visibility=Visibility.PRIVATE, departments=frozenset({"hr"}))
+    acl.create_box(
+        Box(box_id=BOX_ID, visibility=Visibility.PRIVATE, departments=frozenset({"hr"})), owner_user_id="box-owner"
     )
     acl.register_file(FileAcl(file_id=file_id, box_id=BOX_ID))
-    allowed = Principal(
-        user_id="somchai (hr)", departments=frozenset({"hr"}), security_level=2,
-        box_ids=frozenset({BOX_ID}),
-    )
-    denied = Principal(  # เป็นสมาชิก box เดียวกัน ระดับเท่ากัน ต่างแค่แผนก
-        user_id="wanida (finance)", departments=frozenset({"finance"}), security_level=2,
-        box_ids=frozenset({BOX_ID}),
-    )
+    for user in ("somchai (hr)", "wanida (finance)"):
+        acl.set_member(BOX_ID, user, BoxRole.VIEWER)
+    allowed = acl.principal_for("somchai (hr)", {"hr"}, 2)
+    denied = acl.principal_for("wanida (finance)", {"finance"}, 2)  # เป็นสมาชิก box เดียวกัน ระดับเท่ากัน ต่างแค่แผนก
     return acl, allowed, denied
 
 

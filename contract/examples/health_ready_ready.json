@@ -1,0 +1,19 @@
+{
+  "status": "ready",
+  "version": "1.0.0",
+  "components": {
+    "qdrant": "ok",
+    "embedding": "ok",
+    "ocr": "ok"
+  },
+  "runtime": {
+    "gpu_available": true,
+    "embedding_requested": "auto",
+    "embedding_device": "cuda",
+    "embedding_dtype": "bf16",
+    "ocr_requested": "auto",
+    "ocr_backend": "typhoon-local",
+    "notes": []
+  },
+  "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+}

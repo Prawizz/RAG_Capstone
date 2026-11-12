@@ -11,3 +11,7 @@ pytest==9.2.0
 olefile==0.47
 pillow==12.3.0
 numpy==2.2.6
+fastapi==0.162.5  # API contract v1 (app/api/)
+uvicorn==0.54.0
+python-multipart==0.0.32  # POST /v1/ingest (multipart)
+httpx2==2.14.0  # starlette.testclient ใช้ httpx2 (test ของ API)

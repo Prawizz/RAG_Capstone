@@ -10,7 +10,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
-from app.access import AclStore, Box, FileAcl, Principal
+from app.access import AclStore, Box, BoxRole, FileAcl, Principal
 
 TESTBED = Path(__file__).resolve().parents[1] / "eval" / "datasets" / "access_control.jsonl"
 
@@ -85,4 +85,8 @@ def load_testbed(path: Path = TESTBED) -> Testbed:
                     note=row.get("note", ""),
                 )
             )
+    for principal in principals.values():  # สมาชิกภาพของ testbed = box_ids ที่เขียนไว้ในไฟล์ (ด่าน 2 ถามสดจาก store)
+        for box_id in principal.box_ids:
+            if box_id in boxes:
+                store.set_member(box_id, principal.user_id, BoxRole.VIEWER)
     return Testbed(store=store, principals=principals, cases=cases, boxes=boxes, files=files)

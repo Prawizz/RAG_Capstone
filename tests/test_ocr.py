@@ -134,10 +134,12 @@ def test_offsite_rejected_even_with_nothing_to_ocr(tmp_path):
 
 def test_default_config_is_local(monkeypatch):
     monkeypatch.delenv("OCR_BACKEND", raising=False)
-    assert ocr_mod.DEFAULT_BACKEND == "typhoon-local"
+    from app.config import Settings
+    from app.extraction.ocr_tesseract import TesseractLocalBackend
     from app.extraction.ocr_typhoon import TyphoonLocalBackend
 
-    assert TyphoonLocalBackend.sends_data_offsite is False
+    assert Settings().ocr_backend == "auto"  # typhoon-local (GPU) / tesseract-local (CPU) — ทั้งคู่รันบนเครื่อง
+    assert TyphoonLocalBackend.sends_data_offsite is False and TesseractLocalBackend.sends_data_offsite is False
 
 
 def test_unknown_backend_name():

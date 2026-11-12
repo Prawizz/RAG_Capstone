@@ -1,0 +1,3906 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "RAG API Service",
+    "description": "บริการค้นหลักฐานจากเอกสารองค์กรให้ Enterprise AI Gateway (เราไม่ generate คำตอบ) · service auth ด้วย X-Service-Key · ตัวตนผู้ใช้ปลายทางทาง header X-User-* · ทุก response มี trace_id (body) และ X-Trace-Id (header) · ไม่มีสิทธิ์ = ไม่เจอ (ไม่มี HTTP Forbidden)",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/v1/health/live": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "process ยังทำงานอยู่",
+        "operationId": "live_v1_health_live_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LiveResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal": {
+                    "value": {
+                      "error_code": "internal",
+                      "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Trace-Id",
+            "in": "header",
+            "required": false,
+            "description": "ไม่ส่ง (หรือรูปแบบไม่ใช่ [A-Za-z0-9._:-]{1,128}) = สร้างให้; ส่งกลับทั้ง header และ body",
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/v1/health/ready": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "พร้อมรับงานไหม + อุปกรณ์/OCR backend ที่ใช้ (200 = ready, 503 = degraded/not_ready)",
+        "operationId": "ready_v1_health_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadyResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "degraded / not_ready (body เป็น ReadyResponse)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReadyResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "unauthorized": {
+                    "value": {
+                      "error_code": "unauthorized",
+                      "message": "service credential ไม่ถูกต้อง",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "examples": {
+                  "internal": {
+                    "value": {
+                      "error_code": "internal",
+                      "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ServiceKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "X-Trace-Id",
+            "in": "header",
+            "required": false,
+            "description": "ไม่ส่ง (หรือรูปแบบไม่ใช่ [A-Za-z0-9._:-]{1,128}) = สร้างให้; ส่งกลับทั้ง header และ body",
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        ]
+      }
+    },
+    "/v1/ingest": {
+      "post": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "ส่งไฟล์เข้ากล่อง (ประมวลผลแบบ async)",
+        "operationId": "ingest_v1_ingest_post",
+        "security": [
+          {
+            "ServiceKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)",
+              "title": "X-User-Id"
+            },
+            "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)"
+          },
+          {
+            "name": "X-User-Departments",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)",
+              "title": "X-User-Departments"
+            },
+            "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)"
+          },
+          {
+            "name": "X-User-Security-Level",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ระดับความลับ จำนวนเต็ม >= 0",
+              "title": "X-User-Security-Level"
+            },
+            "description": "ระดับความลับ จำนวนเต็ม >= 0"
+          },
+          {
+            "name": "X-Trace-Id",
+            "in": "header",
+            "required": false,
+            "description": "ไม่ส่ง (หรือรูปแบบไม่ใช่ [A-Za-z0-9._:-]{1,128}) = สร้างให้; ส่งกลับทั้ง header และ body",
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/IngestForm"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "ไฟล์ซ้ำในกล่องเดียวกัน (duplicate true, สถานะเดิม)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngestResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unauthorized": {
+                    "value": {
+                      "error_code": "unauthorized",
+                      "message": "service credential ไม่ถูกต้อง",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid_request / acl_widening",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalid_request": {
+                    "value": {
+                      "error_code": "invalid_request",
+                      "message": "header X-User-Security-Level: ต้องเป็นจำนวนเต็ม >= 0",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  },
+                  "acl_widening": {
+                    "value": {
+                      "error_code": "acl_widening",
+                      "message": "file_acl ขยายสิทธิ์แผนกออกนอกกล่อง: ['sales'] (สิทธิ์ระดับไฟล์ทำให้แคบลงได้อย่างเดียว)",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "internal": {
+                    "value": {
+                      "error_code": "internal",
+                      "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "not_implemented",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_implemented": {
+                    "value": {
+                      "error_code": "not_implemented",
+                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not_found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_found": {
+                    "value": {
+                      "error_code": "not_found",
+                      "message": "ไม่พบ",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "too_large",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "too_large": {
+                    "value": {
+                      "error_code": "too_large",
+                      "message": "ไฟล์ใหญ่เกิน 50 MB",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "unsupported_type",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unsupported_type": {
+                    "value": {
+                      "error_code": "unsupported_type",
+                      "message": "ชนิดไฟล์ (ตรวจจาก magic bytes) ไม่รองรับ: zip",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "unavailable",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unavailable": {
+                    "value": {
+                      "error_code": "unavailable",
+                      "message": "vector store ไม่พร้อม ลองใหม่ภายหลัง",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/jobs/{job_id}": {
+      "get": {
+        "tags": [
+          "jobs"
+        ],
+        "summary": "สถานะงาน ingest รายไฟล์และราย unit",
+        "operationId": "get_job_v1_jobs__job_id__get",
+        "security": [
+          {
+            "ServiceKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "title": "Job Id"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)",
+              "title": "X-User-Id"
+            },
+            "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)"
+          },
+          {
+            "name": "X-User-Departments",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)",
+              "title": "X-User-Departments"
+            },
+            "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)"
+          },
+          {
+            "name": "X-User-Security-Level",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ระดับความลับ จำนวนเต็ม >= 0",
+              "title": "X-User-Security-Level"
+            },
+            "description": "ระดับความลับ จำนวนเต็ม >= 0"
+          },
+          {
+            "name": "X-Trace-Id",
+            "in": "header",
+            "required": false,
+            "description": "ไม่ส่ง (หรือรูปแบบไม่ใช่ [A-Za-z0-9._:-]{1,128}) = สร้างให้; ส่งกลับทั้ง header และ body",
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unauthorized": {
+                    "value": {
+                      "error_code": "unauthorized",
+                      "message": "service credential ไม่ถูกต้อง",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid_request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalid_request": {
+                    "value": {
+                      "error_code": "invalid_request",
+                      "message": "header X-User-Security-Level: ต้องเป็นจำนวนเต็ม >= 0",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "internal": {
+                    "value": {
+                      "error_code": "internal",
+                      "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "not_implemented",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_implemented": {
+                    "value": {
+                      "error_code": "not_implemented",
+                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not_found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_found": {
+                    "value": {
+                      "error_code": "not_found",
+                      "message": "ไม่พบ",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sources": {
+      "get": {
+        "tags": [
+          "sources"
+        ],
+        "summary": "กล่องที่ผู้ใช้เป็นสมาชิก",
+        "operationId": "list_sources_v1_sources_get",
+        "security": [
+          {
+            "ServiceKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)",
+              "title": "X-User-Id"
+            },
+            "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)"
+          },
+          {
+            "name": "X-User-Departments",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)",
+              "title": "X-User-Departments"
+            },
+            "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)"
+          },
+          {
+            "name": "X-User-Security-Level",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ระดับความลับ จำนวนเต็ม >= 0",
+              "title": "X-User-Security-Level"
+            },
+            "description": "ระดับความลับ จำนวนเต็ม >= 0"
+          },
+          {
+            "name": "X-Trace-Id",
+            "in": "header",
+            "required": false,
+            "description": "ไม่ส่ง (หรือรูปแบบไม่ใช่ [A-Za-z0-9._:-]{1,128}) = สร้างให้; ส่งกลับทั้ง header และ body",
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SourcesResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unauthorized": {
+                    "value": {
+                      "error_code": "unauthorized",
+                      "message": "service credential ไม่ถูกต้อง",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid_request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalid_request": {
+                    "value": {
+                      "error_code": "invalid_request",
+                      "message": "header X-User-Security-Level: ต้องเป็นจำนวนเต็ม >= 0",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "internal": {
+                    "value": {
+                      "error_code": "internal",
+                      "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "not_implemented",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_implemented": {
+                    "value": {
+                      "error_code": "not_implemented",
+                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/sources/{box_id}/files": {
+      "get": {
+        "tags": [
+          "sources"
+        ],
+        "summary": "ไฟล์ในกล่อง (กรองตาม ACL)",
+        "operationId": "list_files_v1_sources__box_id__files_get",
+        "security": [
+          {
+            "ServiceKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "box_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.\\-]{0,63}$",
+              "title": "Box Id"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 512
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "next_cursor จากหน้าก่อน (opaque)",
+              "title": "Cursor"
+            },
+            "description": "next_cursor จากหน้าก่อน (opaque)"
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)",
+              "title": "X-User-Id"
+            },
+            "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)"
+          },
+          {
+            "name": "X-User-Departments",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)",
+              "title": "X-User-Departments"
+            },
+            "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)"
+          },
+          {
+            "name": "X-User-Security-Level",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ระดับความลับ จำนวนเต็ม >= 0",
+              "title": "X-User-Security-Level"
+            },
+            "description": "ระดับความลับ จำนวนเต็ม >= 0"
+          },
+          {
+            "name": "X-Trace-Id",
+            "in": "header",
+            "required": false,
+            "description": "ไม่ส่ง (หรือรูปแบบไม่ใช่ [A-Za-z0-9._:-]{1,128}) = สร้างให้; ส่งกลับทั้ง header และ body",
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FilesResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unauthorized": {
+                    "value": {
+                      "error_code": "unauthorized",
+                      "message": "service credential ไม่ถูกต้อง",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid_request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalid_request": {
+                    "value": {
+                      "error_code": "invalid_request",
+                      "message": "header X-User-Security-Level: ต้องเป็นจำนวนเต็ม >= 0",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "internal": {
+                    "value": {
+                      "error_code": "internal",
+                      "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "not_implemented",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_implemented": {
+                    "value": {
+                      "error_code": "not_implemented",
+                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not_found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_found": {
+                    "value": {
+                      "error_code": "not_found",
+                      "message": "ไม่พบ",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/retrieve": {
+      "post": {
+        "tags": [
+          "retrieve"
+        ],
+        "summary": "ค้นหลักฐานในกล่อง (ไม่ generate คำตอบ)",
+        "operationId": "retrieve_v1_retrieve_post",
+        "security": [
+          {
+            "ServiceKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)",
+              "title": "X-User-Id"
+            },
+            "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)"
+          },
+          {
+            "name": "X-User-Departments",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)",
+              "title": "X-User-Departments"
+            },
+            "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)"
+          },
+          {
+            "name": "X-User-Security-Level",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ระดับความลับ จำนวนเต็ม >= 0",
+              "title": "X-User-Security-Level"
+            },
+            "description": "ระดับความลับ จำนวนเต็ม >= 0"
+          },
+          {
+            "name": "X-Trace-Id",
+            "in": "header",
+            "required": false,
+            "description": "ไม่ส่ง (หรือรูปแบบไม่ใช่ [A-Za-z0-9._:-]{1,128}) = สร้างให้; ส่งกลับทั้ง header และ body",
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetrieveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetrieveResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unauthorized": {
+                    "value": {
+                      "error_code": "unauthorized",
+                      "message": "service credential ไม่ถูกต้อง",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid_request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalid_request": {
+                    "value": {
+                      "error_code": "invalid_request",
+                      "message": "header X-User-Security-Level: ต้องเป็นจำนวนเต็ม >= 0",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "internal": {
+                    "value": {
+                      "error_code": "internal",
+                      "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "not_implemented",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_implemented": {
+                    "value": {
+                      "error_code": "not_implemented",
+                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "unavailable",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unavailable": {
+                    "value": {
+                      "error_code": "unavailable",
+                      "message": "vector store ไม่พร้อม ลองใหม่ภายหลัง",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/boxes": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "สร้างกล่อง (admin ระดับระบบ)",
+        "operationId": "create_box_v1_boxes_post",
+        "security": [
+          {
+            "ServiceKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)",
+              "title": "X-User-Id"
+            },
+            "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)"
+          },
+          {
+            "name": "X-User-Departments",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)",
+              "title": "X-User-Departments"
+            },
+            "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)"
+          },
+          {
+            "name": "X-User-Security-Level",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ระดับความลับ จำนวนเต็ม >= 0",
+              "title": "X-User-Security-Level"
+            },
+            "description": "ระดับความลับ จำนวนเต็ม >= 0"
+          },
+          {
+            "name": "X-Trace-Id",
+            "in": "header",
+            "required": false,
+            "description": "ไม่ส่ง (หรือรูปแบบไม่ใช่ [A-Za-z0-9._:-]{1,128}) = สร้างให้; ส่งกลับทั้ง header และ body",
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBoxRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BoxResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unauthorized": {
+                    "value": {
+                      "error_code": "unauthorized",
+                      "message": "service credential ไม่ถูกต้อง",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid_request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalid_request": {
+                    "value": {
+                      "error_code": "invalid_request",
+                      "message": "header X-User-Security-Level: ต้องเป็นจำนวนเต็ม >= 0",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "internal": {
+                    "value": {
+                      "error_code": "internal",
+                      "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "not_implemented",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_implemented": {
+                    "value": {
+                      "error_code": "not_implemented",
+                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not_found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_found": {
+                    "value": {
+                      "error_code": "not_found",
+                      "message": "ไม่พบ",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/boxes/{box_id}/members": {
+      "put": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "เพิ่มสมาชิก / เปลี่ยน role",
+        "operationId": "put_member_v1_boxes__box_id__members_put",
+        "security": [
+          {
+            "ServiceKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "box_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.\\-]{0,63}$",
+              "title": "Box Id"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)",
+              "title": "X-User-Id"
+            },
+            "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)"
+          },
+          {
+            "name": "X-User-Departments",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)",
+              "title": "X-User-Departments"
+            },
+            "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)"
+          },
+          {
+            "name": "X-User-Security-Level",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ระดับความลับ จำนวนเต็ม >= 0",
+              "title": "X-User-Security-Level"
+            },
+            "description": "ระดับความลับ จำนวนเต็ม >= 0"
+          },
+          {
+            "name": "X-Trace-Id",
+            "in": "header",
+            "required": false,
+            "description": "ไม่ส่ง (หรือรูปแบบไม่ใช่ [A-Za-z0-9._:-]{1,128}) = สร้างให้; ส่งกลับทั้ง header และ body",
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutMemberRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MemberResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unauthorized": {
+                    "value": {
+                      "error_code": "unauthorized",
+                      "message": "service credential ไม่ถูกต้อง",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid_request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalid_request": {
+                    "value": {
+                      "error_code": "invalid_request",
+                      "message": "header X-User-Security-Level: ต้องเป็นจำนวนเต็ม >= 0",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "internal": {
+                    "value": {
+                      "error_code": "internal",
+                      "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "not_implemented",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_implemented": {
+                    "value": {
+                      "error_code": "not_implemented",
+                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not_found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_found": {
+                    "value": {
+                      "error_code": "not_found",
+                      "message": "ไม่พบ",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/boxes/{box_id}/members/{user_id}": {
+      "delete": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "ถอดสมาชิก",
+        "operationId": "delete_member_v1_boxes__box_id__members__user_id__delete",
+        "security": [
+          {
+            "ServiceKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "box_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.\\-]{0,63}$",
+              "title": "Box Id"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "title": "User Id"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)",
+              "title": "X-User-Id"
+            },
+            "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)"
+          },
+          {
+            "name": "X-User-Departments",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)",
+              "title": "X-User-Departments"
+            },
+            "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)"
+          },
+          {
+            "name": "X-User-Security-Level",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ระดับความลับ จำนวนเต็ม >= 0",
+              "title": "X-User-Security-Level"
+            },
+            "description": "ระดับความลับ จำนวนเต็ม >= 0"
+          },
+          {
+            "name": "X-Trace-Id",
+            "in": "header",
+            "required": false,
+            "description": "ไม่ส่ง (หรือรูปแบบไม่ใช่ [A-Za-z0-9._:-]{1,128}) = สร้างให้; ส่งกลับทั้ง header และ body",
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MemberRemovedResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unauthorized": {
+                    "value": {
+                      "error_code": "unauthorized",
+                      "message": "service credential ไม่ถูกต้อง",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid_request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalid_request": {
+                    "value": {
+                      "error_code": "invalid_request",
+                      "message": "header X-User-Security-Level: ต้องเป็นจำนวนเต็ม >= 0",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "internal": {
+                    "value": {
+                      "error_code": "internal",
+                      "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "not_implemented",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_implemented": {
+                    "value": {
+                      "error_code": "not_implemented",
+                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "not_found",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_found": {
+                    "value": {
+                      "error_code": "not_found",
+                      "message": "ไม่พบ",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiErrorCode": {
+        "type": "string",
+        "enum": [
+          "unauthorized",
+          "invalid_request",
+          "not_found",
+          "too_large",
+          "unsupported_type",
+          "acl_widening",
+          "unavailable",
+          "internal",
+          "not_implemented"
+        ],
+        "title": "ApiErrorCode",
+        "description": "รหัส error ของ API — คู่กับ HTTP status ตาม ``ERROR_STATUS``"
+      },
+      "IngestForm": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "contentMediaType": "application/octet-stream",
+            "title": "File",
+            "description": "เอกสาร (ชนิดตรวจจาก magic bytes ไม่เชื่อนามสกุล) ไม่เกิน 50 MB"
+          },
+          "box_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.\\-]{0,63}$",
+            "title": "Box Id"
+          },
+          "file_acl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Acl",
+            "description": "JSON ของ FileAclInput (ไม่บังคับ)"
+          },
+          "display_name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 255
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Display Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file",
+          "box_id"
+        ],
+        "title": "IngestForm",
+        "examples": [
+          {
+            "file": "<binary: งบการเงิน_ตัวอย่าง.pdf>",
+            "box_id": "example-finance",
+            "file_acl": "{\"departments\": [\"finance\"], \"min_security_level\": 3}",
+            "display_name": "งบการเงิน_ตัวอย่าง"
+          }
+        ]
+      },
+      "BoxResponse": {
+        "properties": {
+          "box_id": {
+            "type": "string",
+            "title": "Box Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "visibility": {
+            "$ref": "#/components/schemas/Visibility"
+          },
+          "departments": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Departments"
+          },
+          "min_security_level": {
+            "type": "integer",
+            "title": "Min Security Level"
+          },
+          "owner": {
+            "type": "string",
+            "title": "Owner",
+            "description": "user_id ของ owner คนแรก (ผู้สร้าง)"
+          },
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "box_id",
+          "name",
+          "visibility",
+          "departments",
+          "min_security_level",
+          "owner",
+          "trace_id"
+        ],
+        "title": "BoxResponse",
+        "examples": [
+          {
+            "box_id": "example-finance",
+            "name": "กล่องตัวอย่าง ฝ่ายการเงิน",
+            "visibility": "private",
+            "departments": [
+              "finance",
+              "audit"
+            ],
+            "min_security_level": 2,
+            "owner": "u1024",
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          }
+        ]
+      },
+      "BoxRole": {
+        "type": "string",
+        "enum": [
+          "owner",
+          "admin",
+          "viewer"
+        ],
+        "title": "BoxRole",
+        "description": "บทบาทในกล่อง — owner/admin ดูแลกล่องได้ (ส่งไฟล์, จัดการสมาชิก); viewer ค้นได้อย่างเดียว"
+      },
+      "Citation": {
+        "properties": {
+          "unit_type": {
+            "$ref": "#/components/schemas/UnitType"
+          },
+          "page": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Page",
+            "description": "หน้าจริงในไฟล์ เริ่มที่ 1"
+          },
+          "slide": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Slide"
+          },
+          "sheet": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sheet"
+          },
+          "cell_range": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cell Range",
+            "description": "เช่น 'A1:F40'"
+          },
+          "heading_path": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Heading Path"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label",
+            "description": "สำหรับคนอ่าน เช่น 'หน้า 47'"
+          },
+          "char_start": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Char Start"
+          },
+          "char_end": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Char End"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "unit_type",
+          "label",
+          "char_start",
+          "char_end"
+        ],
+        "title": "Citation",
+        "description": "ตำแหน่งที่อ้างอิงได้ — ฟิลด์ตำแหน่งที่ต้องมีขึ้นกับ unit_type (page: page · slide: slide ·\nsection: heading_path · sheet_region: sheet + cell_range) · char_start/char_end = ช่วงของ ``text`` ใน Unit.text เดิม",
+        "examples": [
+          {
+            "unit_type": "page",
+            "page": 46,
+            "label": "หน้า 3",
+            "char_start": 1204,
+            "char_end": 1303
+          },
+          {
+            "unit_type": "sheet_region",
+            "sheet": "ชีตตัวอย่าง",
+            "cell_range": "A1:F40",
+            "label": "ชีตตัวอย่าง A1:F40",
+            "char_start": 0,
+            "char_end": 512
+          }
+        ]
+      },
+      "ComponentState": {
+        "type": "string",
+        "enum": [
+          "ok",
+          "degraded",
+          "down"
+        ],
+        "title": "ComponentState"
+      },
+      "Components": {
+        "properties": {
+          "qdrant": {
+            "$ref": "#/components/schemas/ComponentState"
+          },
+          "embedding": {
+            "$ref": "#/components/schemas/ComponentState"
+          },
+          "ocr": {
+            "$ref": "#/components/schemas/ComponentState"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "qdrant",
+          "embedding",
+          "ocr"
+        ],
+        "title": "Components",
+        "examples": [
+          {
+            "qdrant": "ok",
+            "embedding": "ok",
+            "ocr": "down"
+          }
+        ]
+      },
+      "CreateBoxRequest": {
+        "properties": {
+          "box_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.\\-]{0,63}$",
+            "title": "Box Id"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Name"
+          },
+          "visibility": {
+            "$ref": "#/components/schemas/Visibility"
+          },
+          "departments": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Departments"
+          },
+          "min_security_level": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Min Security Level",
+            "default": 0
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "box_id",
+          "name",
+          "visibility"
+        ],
+        "title": "CreateBoxRequest",
+        "description": "สร้างกล่อง — ผู้เรียกต้องอยู่ใน SYSTEM_ADMIN_USERS และกลายเป็น owner คนแรก\nvisibility ตั้งได้ครั้งเดียวตอนสร้าง (ไม่มี endpoint แก้ — กฎเหล็กข้อ 9) · box_id ซ้ำ -> 422 invalid_request\n``departments``: ไม่ส่ง/null = ไม่จำกัดแผนก · [] = ไม่มีแผนกไหนเห็น",
+        "examples": [
+          {
+            "box_id": "example-finance",
+            "name": "กล่องตัวอย่าง ฝ่ายการเงิน",
+            "visibility": "private",
+            "departments": [
+              "finance",
+              "audit"
+            ],
+            "min_security_level": 2
+          }
+        ]
+      },
+      "DetectedType": {
+        "type": "string",
+        "enum": [
+          "pdf",
+          "docx",
+          "pptx",
+          "xlsx",
+          "doc",
+          "ppt",
+          "xls",
+          "jpg",
+          "png"
+        ],
+        "title": "DetectedType"
+      },
+      "DocumentStatus": {
+        "type": "string",
+        "enum": [
+          "done",
+          "done_with_gaps",
+          "needs_ocr",
+          "failed"
+        ],
+        "title": "DocumentStatus"
+      },
+      "ErrorCode": {
+        "type": "string",
+        "enum": [
+          "encrypted",
+          "corrupt",
+          "unsupported_type",
+          "too_large",
+          "empty",
+          "conversion_timeout",
+          "internal"
+        ],
+        "title": "ErrorCode"
+      },
+      "ErrorResponse": {
+        "properties": {
+          "error_code": {
+            "$ref": "#/components/schemas/ApiErrorCode"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "description": "ข้อความสำหรับคน (ห้ามเผยว่ามีทรัพยากรที่ไม่มีสิทธิ์อยู่)"
+          },
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "error_code",
+          "message",
+          "trace_id"
+        ],
+        "title": "ErrorResponse",
+        "description": "รูปแบบ error เดียวของทุก endpoint (ไม่มี HTTP Forbidden: ไม่มีสิทธิ์ = not_found หรือผลว่าง)",
+        "examples": [
+          {
+            "error_code": "not_found",
+            "message": "ไม่พบ",
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "error_code": "unauthorized",
+            "message": "service credential ไม่ถูกต้อง",
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "error_code": "acl_widening",
+            "message": "file_acl ขยายสิทธิ์แผนกออกนอกกล่อง: ['sales'] (สิทธิ์ระดับไฟล์ทำให้แคบลงได้อย่างเดียว)",
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          }
+        ]
+      },
+      "Extraction": {
+        "properties": {
+          "method": {
+            "$ref": "#/components/schemas/ExtractionMethod"
+          },
+          "flags": {
+            "items": {
+              "$ref": "#/components/schemas/QualityFlag"
+            },
+            "type": "array",
+            "title": "Flags"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "method"
+        ],
+        "title": "Extraction",
+        "description": "ที่มาของข้อความ — method ตาม ``app.models.ExtractionMethod`` (office_xml/converted = DOCX/PPTX/XLSX และไฟล์เก่าที่แปลง)\nflags = ``app.models.QualityFlag`` ของ unit (เช่น ocr_incomplete)",
+        "examples": [
+          {
+            "method": "ocr",
+            "flags": [
+              "ocr_incomplete"
+            ]
+          }
+        ]
+      },
+      "ExtractionMethod": {
+        "type": "string",
+        "enum": [
+          "text_layer",
+          "ocr",
+          "office_xml",
+          "converted"
+        ],
+        "title": "ExtractionMethod"
+      },
+      "FileItem": {
+        "properties": {
+          "file_id": {
+            "type": "string",
+            "title": "File Id"
+          },
+          "filename": {
+            "type": "string",
+            "title": "Filename"
+          },
+          "detected_type": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DetectedType"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "null = ยังไม่ตรวจชนิด (งานยังไม่เริ่ม)"
+          },
+          "status": {
+            "$ref": "#/components/schemas/JobStatus"
+          },
+          "units_total": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Units Total"
+          },
+          "gaps": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Gaps",
+            "description": "จำนวน unit ที่ไม่ ok"
+          },
+          "ingested_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ingested At",
+            "description": "null = ยัง ingest ไม่เสร็จ"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "file_id",
+          "filename",
+          "status",
+          "units_total",
+          "gaps"
+        ],
+        "title": "FileItem",
+        "examples": [
+          {
+            "file_id": "file_01JD7X2A9R",
+            "filename": "รายงานประจำปี_ตัวอย่าง.pdf",
+            "detected_type": "pdf",
+            "status": "done_with_gaps",
+            "units_total": 40,
+            "gaps": 1,
+            "ingested_at": "2026-11-12T02:21:40Z"
+          }
+        ]
+      },
+      "FilesResponse": {
+        "properties": {
+          "files": {
+            "items": {
+              "$ref": "#/components/schemas/FileItem"
+            },
+            "type": "array",
+            "title": "Files"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor",
+            "description": "cursor ทึบ (opaque) ส่งกลับมาใน ?cursor="
+          },
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "files",
+          "trace_id"
+        ],
+        "title": "FilesResponse",
+        "description": "ไฟล์ในกล่อง กรองตาม ACL (ไฟล์ที่ไม่มีสิทธิ์ไม่ถูกนับและไม่ปรากฏ) · ``next_cursor`` null = หน้าสุดท้าย",
+        "examples": [
+          {
+            "files": [
+              {
+                "file_id": "file_01JD7X2A9R",
+                "filename": "รายงานประจำปี_ตัวอย่าง.pdf",
+                "detected_type": "pdf",
+                "status": "done_with_gaps",
+                "units_total": 40,
+                "gaps": 1,
+                "ingested_at": "2026-11-12T02:21:40Z"
+              },
+              {
+                "file_id": "file_01JD8Z5V7M",
+                "filename": "งบการเงิน_ตัวอย่าง.pdf",
+                "detected_type": null,
+                "status": "queued",
+                "units_total": 0,
+                "gaps": 0,
+                "ingested_at": null
+              }
+            ],
+            "next_cursor": "eyJhZnRlciI6ImZpbGVfMDFKRDhaNVY3TSJ9",
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "files": [],
+            "next_cursor": null,
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          }
+        ]
+      },
+      "Gap": {
+        "properties": {
+          "unit_index": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Unit Index"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label",
+            "description": "ตำแหน่งที่คนอ่าน เช่น 'หน้า 12'"
+          },
+          "status": {
+            "$ref": "#/components/schemas/UnitStatus"
+          },
+          "error_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error Code"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "unit_index",
+          "label",
+          "status"
+        ],
+        "title": "Gap",
+        "description": "unit ที่ไม่ ok — ต้องมี error_code หรือ reason อย่างน้อยหนึ่งอย่าง",
+        "examples": [
+          {
+            "unit_index": 11,
+            "label": "หน้า 12",
+            "status": "failed",
+            "error_code": null,
+            "reason": "OCR แล้วไม่ผ่านด่านตรวจ: latin_in_thai"
+          }
+        ]
+      },
+      "IngestResponse": {
+        "properties": {
+          "job_id": {
+            "type": "string",
+            "title": "Job Id"
+          },
+          "file_id": {
+            "type": "string",
+            "title": "File Id"
+          },
+          "status": {
+            "$ref": "#/components/schemas/JobStatus"
+          },
+          "duplicate": {
+            "type": "boolean",
+            "title": "Duplicate"
+          },
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "job_id",
+          "file_id",
+          "status",
+          "duplicate",
+          "trace_id"
+        ],
+        "title": "IngestResponse",
+        "description": "202 = รับงานใหม่ (status queued, duplicate false) · 200 = ไฟล์ซ้ำ (content_hash เดียวกันในกล่องเดียวกัน):\nคืน job/file เดิมพร้อมสถานะปัจจุบัน และ duplicate true",
+        "examples": [
+          {
+            "job_id": "job_01JD8Z5V7K",
+            "file_id": "file_01JD8Z5V7M",
+            "status": "queued",
+            "duplicate": false,
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "job_id": "job_01JD7X2A9Q",
+            "file_id": "file_01JD7X2A9R",
+            "status": "done_with_gaps",
+            "duplicate": true,
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          }
+        ]
+      },
+      "JobError": {
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/ErrorCode"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "JobError",
+        "description": "error ระดับไฟล์ (ทั้งไฟล์ล้ม) — code มาจาก ``app.models.ErrorCode``",
+        "examples": [
+          {
+            "code": "encrypted",
+            "message": "ไฟล์ PDF ถูกเข้ารหัส เปิดไม่ได้"
+          }
+        ]
+      },
+      "JobResponse": {
+        "properties": {
+          "job_id": {
+            "type": "string",
+            "title": "Job Id"
+          },
+          "file_id": {
+            "type": "string",
+            "title": "File Id"
+          },
+          "box_id": {
+            "type": "string",
+            "title": "Box Id"
+          },
+          "filename": {
+            "type": "string",
+            "title": "Filename"
+          },
+          "status": {
+            "$ref": "#/components/schemas/JobStatus"
+          },
+          "progress": {
+            "$ref": "#/components/schemas/Progress"
+          },
+          "document_status": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DocumentStatus"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "null จนกว่าจะ extract เสร็จ"
+          },
+          "units": {
+            "$ref": "#/components/schemas/UnitCounts"
+          },
+          "gaps": {
+            "items": {
+              "$ref": "#/components/schemas/Gap"
+            },
+            "type": "array",
+            "title": "Gaps"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/JobError"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          },
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "job_id",
+          "file_id",
+          "box_id",
+          "filename",
+          "status",
+          "progress",
+          "units",
+          "created_at",
+          "updated_at",
+          "trace_id"
+        ],
+        "title": "JobResponse",
+        "description": "สถานะงาน ingest — เห็นได้เฉพาะผู้ส่งหรือ owner/admin ของกล่อง (ไม่ใช่ -> 404)",
+        "examples": [
+          {
+            "job_id": "job_01JD7X2A9Q",
+            "file_id": "file_01JD7X2A9R",
+            "box_id": "example-finance",
+            "filename": "รายงานประจำปี_ตัวอย่าง.pdf",
+            "status": "done_with_gaps",
+            "progress": {
+              "pages_total": 40,
+              "pages_done": 40
+            },
+            "document_status": "done_with_gaps",
+            "units": {
+              "ok": 39,
+              "needs_ocr": 0,
+              "failed": 1,
+              "rejected": 0
+            },
+            "gaps": [
+              {
+                "unit_index": 11,
+                "label": "หน้า 12",
+                "status": "failed",
+                "error_code": null,
+                "reason": "OCR แล้วไม่ผ่านด่านตรวจ: latin_in_thai — พบจุดพัง 4 จุด (ละตินกลางคำไทย: 4)"
+              }
+            ],
+            "error": null,
+            "created_at": "2026-11-12T02:15:04Z",
+            "updated_at": "2026-11-12T02:21:40Z",
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "job_id": "job_01JD8Z5V7K",
+            "file_id": "file_01JD8Z5V7M",
+            "box_id": "example-finance",
+            "filename": "งบการเงิน_ตัวอย่าง.pdf",
+            "status": "queued",
+            "progress": {
+              "pages_total": null,
+              "pages_done": 0
+            },
+            "document_status": null,
+            "units": {
+              "ok": 0,
+              "needs_ocr": 0,
+              "failed": 0,
+              "rejected": 0
+            },
+            "gaps": [],
+            "error": null,
+            "created_at": "2026-11-12T02:15:04Z",
+            "updated_at": "2026-11-12T02:15:04Z",
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "job_id": "job_01JD9A1B2C",
+            "file_id": "file_01JD9A1B2D",
+            "box_id": "example-finance",
+            "filename": "เอกสารเข้ารหัส_ตัวอย่าง.pdf",
+            "status": "failed",
+            "progress": {
+              "pages_total": null,
+              "pages_done": 0
+            },
+            "document_status": "failed",
+            "units": {
+              "ok": 0,
+              "needs_ocr": 0,
+              "failed": 0,
+              "rejected": 0
+            },
+            "gaps": [],
+            "error": {
+              "code": "encrypted",
+              "message": "ไฟล์ PDF ถูกเข้ารหัส เปิดไม่ได้"
+            },
+            "created_at": "2026-11-12T02:15:04Z",
+            "updated_at": "2026-11-12T02:15:04Z",
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          }
+        ]
+      },
+      "JobStatus": {
+        "type": "string",
+        "enum": [
+          "queued",
+          "extracting",
+          "ocr",
+          "indexing",
+          "done",
+          "done_with_gaps",
+          "failed"
+        ],
+        "title": "JobStatus"
+      },
+      "LiveResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ok",
+            "title": "Status",
+            "default": "ok"
+          },
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "trace_id"
+        ],
+        "title": "LiveResponse",
+        "description": "process ยังทำงาน (ไม่ตรวจของที่พึ่งพา)",
+        "examples": [
+          {
+            "status": "ok",
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          }
+        ]
+      },
+      "MemberRemovedResponse": {
+        "properties": {
+          "box_id": {
+            "type": "string",
+            "title": "Box Id"
+          },
+          "user_id": {
+            "type": "string",
+            "title": "User Id"
+          },
+          "removed": {
+            "type": "boolean",
+            "const": true,
+            "title": "Removed",
+            "default": true
+          },
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "box_id",
+          "user_id",
+          "trace_id"
+        ],
+        "title": "MemberRemovedResponse",
+        "description": "ถอดสมาชิกแล้ว (มีผลทันทีกับการค้น: ด่าน 2 ถามสมาชิกภาพสด) — ไม่ได้เป็นสมาชิกอยู่ -> 404 · owner คนสุดท้าย -> 422",
+        "examples": [
+          {
+            "box_id": "example-finance",
+            "user_id": "u2048",
+            "removed": true,
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          }
+        ]
+      },
+      "MemberResponse": {
+        "properties": {
+          "box_id": {
+            "type": "string",
+            "title": "Box Id"
+          },
+          "user_id": {
+            "type": "string",
+            "title": "User Id"
+          },
+          "role": {
+            "$ref": "#/components/schemas/BoxRole"
+          },
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "box_id",
+          "user_id",
+          "role",
+          "trace_id"
+        ],
+        "title": "MemberResponse",
+        "examples": [
+          {
+            "box_id": "example-finance",
+            "user_id": "u2048",
+            "role": "viewer",
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          }
+        ]
+      },
+      "Progress": {
+        "properties": {
+          "pages_total": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Pages Total",
+            "description": "null = ยังไม่รู้ (ยังไม่เปิดไฟล์)"
+          },
+          "pages_done": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Pages Done",
+            "default": 0
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "Progress",
+        "examples": [
+          {
+            "pages_total": 40,
+            "pages_done": 12
+          }
+        ]
+      },
+      "PutMemberRequest": {
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "User Id"
+          },
+          "role": {
+            "$ref": "#/components/schemas/BoxRole"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "user_id",
+          "role"
+        ],
+        "title": "PutMemberRequest",
+        "description": "เพิ่มสมาชิก หรือเปลี่ยน role — ลด role ของ owner คนสุดท้าย -> 422 invalid_request\nให้/ถอด role owner ได้เฉพาะ owner (admin จัดการได้แค่ admin/viewer)",
+        "examples": [
+          {
+            "user_id": "u2048",
+            "role": "viewer"
+          }
+        ]
+      },
+      "QualityFlag": {
+        "type": "string",
+        "enum": [
+          "latin_in_thai",
+          "control_chars",
+          "replacement_char",
+          "invalid_mark_sequence",
+          "low_dictionary_ratio",
+          "scan_like",
+          "empty",
+          "low_text",
+          "image_content",
+          "document_font_broken",
+          "ocr_incomplete"
+        ],
+        "title": "QualityFlag"
+      },
+      "ReadyResponse": {
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ReadyStatus"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version"
+          },
+          "components": {
+            "$ref": "#/components/schemas/Components"
+          },
+          "runtime": {
+            "$ref": "#/components/schemas/Runtime"
+          },
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "version",
+          "components",
+          "runtime",
+          "trace_id"
+        ],
+        "title": "ReadyResponse",
+        "description": "พร้อมรับงานไหม — HTTP 200 เมื่อ ``ready`` เท่านั้น นอกนั้น 503 (body เป็น model นี้ ไม่ใช่ ErrorResponse)\n\n- ready = ทุก component ok · not_ready = qdrant หรือ embedding down (ค้นไม่ได้) · degraded = นอกนั้น (เช่น OCR ใช้ไม่ได้:\n  ค้นได้ แต่ ingest หน้าที่ต้อง OCR ไม่ได้)\n- embedding ok = อุปกรณ์ที่ตั้งไว้มีจริงและไม่ได้อยู่ในโหมด test (hash vector = degraded) — **ยังไม่ได้โหลดโมเดล**\n- ocr ok = backend ที่เลือกใช้ได้บนเครื่องนี้ (typhoon: มี GPU · tesseract: มีโปรแกรมและไฟล์ภาษา) — ยังไม่ได้โหลดโมเดล",
+        "examples": [
+          {
+            "status": "ready",
+            "version": "1.0.0",
+            "components": {
+              "qdrant": "ok",
+              "embedding": "ok",
+              "ocr": "ok"
+            },
+            "runtime": {
+              "gpu_available": true,
+              "embedding_requested": "auto",
+              "embedding_device": "cuda",
+              "embedding_dtype": "bf16",
+              "ocr_requested": "auto",
+              "ocr_backend": "typhoon-local",
+              "notes": []
+            },
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "status": "ready",
+            "version": "1.0.0",
+            "components": {
+              "qdrant": "ok",
+              "embedding": "ok",
+              "ocr": "ok"
+            },
+            "runtime": {
+              "gpu_available": false,
+              "embedding_requested": "auto",
+              "embedding_device": "cpu",
+              "embedding_dtype": "fp32",
+              "ocr_requested": "auto",
+              "ocr_backend": "tesseract-local",
+              "notes": [
+                "embedding: auto: ไม่พบ GPU CUDA -> cpu",
+                "ocr: auto: ไม่พบ GPU CUDA -> tesseract-local (CPU)"
+              ]
+            },
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "status": "degraded",
+            "version": "1.0.0",
+            "components": {
+              "qdrant": "ok",
+              "embedding": "ok",
+              "ocr": "down"
+            },
+            "runtime": {
+              "gpu_available": false,
+              "embedding_requested": "auto",
+              "embedding_device": "cpu",
+              "embedding_dtype": "fp32",
+              "ocr_requested": "typhoon-local",
+              "ocr_backend": "typhoon-local",
+              "notes": [
+                "embedding: auto: ไม่พบ GPU CUDA -> cpu",
+                "ocr: ตั้ง typhoon-local แต่ไม่พบ GPU CUDA — ใช้ไม่ได้ (ไม่สลับเป็น tesseract เอง)"
+              ]
+            },
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          }
+        ]
+      },
+      "ReadyStatus": {
+        "type": "string",
+        "enum": [
+          "ready",
+          "degraded",
+          "not_ready"
+        ],
+        "title": "ReadyStatus"
+      },
+      "RetrieveRequest": {
+        "properties": {
+          "query": {
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Query",
+            "description": "1–2000 อักขระ (code point) และต้องมีอักขระที่ไม่ใช่ช่องว่าง"
+          },
+          "box_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.\\-]{0,63}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Box Id",
+            "description": "ไม่ส่ง = status source_required (ยังไม่มี auto routing)"
+          },
+          "top_k": {
+            "type": "integer",
+            "maximum": 20.0,
+            "minimum": 1.0,
+            "title": "Top K",
+            "default": 5
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "query"
+        ],
+        "title": "RetrieveRequest",
+        "description": "ตัวตนผู้ใช้มาทาง header (ไม่อยู่ใน body) · ห้ามส่ง box_ids — สมาชิกกล่องหาเองจาก AclStore",
+        "examples": [
+          {
+            "query": "บริษัทตัวอย่างจ่ายเงินปันผลหุ้นละเท่าไร",
+            "box_id": "example-finance",
+            "top_k": 5
+          },
+          {
+            "query": "บริษัทตัวอย่างจ่ายเงินปันผลหุ้นละเท่าไร"
+          }
+        ]
+      },
+      "RetrieveResponse": {
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/RetrieveStatus"
+          },
+          "box_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Box Id"
+          },
+          "visibility": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Visibility"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "top_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Top Score"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/RetrieveResult"
+            },
+            "type": "array",
+            "title": "Results"
+          },
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "box_id",
+          "visibility",
+          "top_score",
+          "results",
+          "trace_id"
+        ],
+        "title": "RetrieveResponse",
+        "description": "ผลค้น (ไม่ generate) — กติกา (validator):\n- ``source_required``: ไม่ได้ส่ง box_id -> box_id null, results ว่าง\n- ``ok``: มีผล และ top_score >= RETRIEVE_MIN_SCORE\n- ``no_relevant_context``: top_score ต่ำกว่าเกณฑ์ (ยังคืน results) **หรือ** ไม่มีผลเลย\n- ไม่มีผล -> visibility และ top_score เป็น null เสมอ: กล่องที่ไม่รู้จัก / ไม่ได้เป็นสมาชิก จึงตอบเหมือน\n  กล่องที่เป็นสมาชิกแต่ไม่มีผลทุกฟิลด์ยกเว้น trace_id\n- visibility มาจาก Box ใน AclStore เท่านั้น",
+        "examples": [
+          {
+            "status": "ok",
+            "box_id": "example-finance",
+            "visibility": "private",
+            "top_score": 0.82,
+            "results": [
+              {
+                "rank": 1,
+                "chunk_id": "file_01JD7X2A9R:u0045:c002",
+                "score": 0.82,
+                "text": "(ข้อความตัวอย่าง) บริษัท ตัวอย่าง จำกัด จ่ายเงินปันผลหุ้นละ 1.00 บาท สำหรับผลการดำเนินงานปีตัวอย่าง",
+                "file_id": "file_01JD7X2A9R",
+                "filename": "รายงานประจำปี_ตัวอย่าง.pdf",
+                "citation": {
+                  "unit_type": "page",
+                  "page": 3,
+                  "slide": null,
+                  "sheet": null,
+                  "cell_range": null,
+                  "heading_path": null,
+                  "label": "หน้า 3",
+                  "char_start": 1204,
+                  "char_end": 1303
+                },
+                "extraction": {
+                  "method": "ocr",
+                  "flags": []
+                }
+              },
+              {
+                "rank": 2,
+                "chunk_id": "file_01JD9C3D4E:u0007:c000",
+                "score": 0.61,
+                "text": "(ข้อความตัวอย่าง) นโยบายการจ่ายเงินปันผลของบริษัท ตัวอย่าง จำกัด",
+                "file_id": "file_01JD9C3D4E",
+                "filename": "นโยบาย_ตัวอย่าง.docx",
+                "citation": {
+                  "unit_type": "section",
+                  "page": null,
+                  "slide": null,
+                  "sheet": null,
+                  "cell_range": null,
+                  "heading_path": [
+                    "หมวดตัวอย่าง 1",
+                    "หัวข้อตัวอย่าง 1.1"
+                  ],
+                  "label": "หมวดตัวอย่าง 1 › หัวข้อตัวอย่าง 1.1",
+                  "char_start": 0,
+                  "char_end": 64
+                },
+                "extraction": {
+                  "method": "office_xml",
+                  "flags": []
+                }
+              }
+            ],
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "status": "no_relevant_context",
+            "box_id": "example-finance",
+            "visibility": "private",
+            "top_score": 0.18,
+            "results": [
+              {
+                "rank": 1,
+                "chunk_id": "file_01JD9C3D4E:u0007:c000",
+                "score": 0.18,
+                "text": "(ข้อความตัวอย่าง) นโยบายการจ่ายเงินปันผลของบริษัท ตัวอย่าง จำกัด",
+                "file_id": "file_01JD9C3D4E",
+                "filename": "นโยบาย_ตัวอย่าง.docx",
+                "citation": {
+                  "unit_type": "section",
+                  "page": null,
+                  "slide": null,
+                  "sheet": null,
+                  "cell_range": null,
+                  "heading_path": [
+                    "หมวดตัวอย่าง 1",
+                    "หัวข้อตัวอย่าง 1.1"
+                  ],
+                  "label": "หมวดตัวอย่าง 1 › หัวข้อตัวอย่าง 1.1",
+                  "char_start": 0,
+                  "char_end": 64
+                },
+                "extraction": {
+                  "method": "office_xml",
+                  "flags": []
+                }
+              }
+            ],
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "status": "source_required",
+            "box_id": null,
+            "visibility": null,
+            "top_score": null,
+            "results": [],
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "status": "no_relevant_context",
+            "box_id": "example-hr",
+            "visibility": null,
+            "top_score": null,
+            "results": [],
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          }
+        ]
+      },
+      "RetrieveResult": {
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Rank"
+          },
+          "chunk_id": {
+            "type": "string",
+            "title": "Chunk Id"
+          },
+          "score": {
+            "type": "number",
+            "title": "Score"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "file_id": {
+            "type": "string",
+            "title": "File Id"
+          },
+          "filename": {
+            "type": "string",
+            "title": "Filename"
+          },
+          "citation": {
+            "$ref": "#/components/schemas/Citation"
+          },
+          "extraction": {
+            "$ref": "#/components/schemas/Extraction"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "rank",
+          "chunk_id",
+          "score",
+          "text",
+          "file_id",
+          "filename",
+          "citation",
+          "extraction"
+        ],
+        "title": "RetrieveResult",
+        "examples": [
+          {
+            "rank": 1,
+            "chunk_id": "file_01JD7X2A9R:u0045:c002",
+            "score": 0.82,
+            "text": "(ข้อความตัวอย่าง) บริษัท ตัวอย่าง จำกัด จ่ายเงินปันผลหุ้นละ 1.00 บาท สำหรับผลการดำเนินงานปีตัวอย่าง",
+            "file_id": "file_01JD7X2A9R",
+            "filename": "รายงานประจำปี_ตัวอย่าง.pdf",
+            "citation": {
+              "unit_type": "page",
+              "page": 3,
+              "slide": null,
+              "sheet": null,
+              "cell_range": null,
+              "heading_path": null,
+              "label": "หน้า 3",
+              "char_start": 1204,
+              "char_end": 1303
+            },
+            "extraction": {
+              "method": "ocr",
+              "flags": []
+            }
+          }
+        ]
+      },
+      "RetrieveStatus": {
+        "type": "string",
+        "enum": [
+          "ok",
+          "no_relevant_context",
+          "source_required"
+        ],
+        "title": "RetrieveStatus",
+        "description": "**enum ที่ขยายได้** — จะเพิ่มค่าใหม่ (เช่น ``source_suggested`` สำหรับ auto routing) โดยไม่นับเป็น breaking change\nGateway ต้องรับค่าที่ไม่รู้จักได้ และปฏิบัติเหมือน ``no_relevant_context``"
+      },
+      "Runtime": {
+        "properties": {
+          "gpu_available": {
+            "type": "boolean",
+            "title": "Gpu Available"
+          },
+          "embedding_requested": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "cpu",
+              "cuda"
+            ],
+            "title": "Embedding Requested"
+          },
+          "embedding_device": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "cpu",
+                  "cuda"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Embedding Device",
+            "description": "null = ตั้ง cuda แต่ไม่มี GPU (ใช้ไม่ได้)"
+          },
+          "embedding_dtype": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "fp32",
+                  "bf16",
+                  "fp16"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Embedding Dtype",
+            "description": "CPU = fp32 เสมอ"
+          },
+          "ocr_requested": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "typhoon-local",
+              "tesseract-local"
+            ],
+            "title": "Ocr Requested"
+          },
+          "ocr_backend": {
+            "type": "string",
+            "enum": [
+              "typhoon-local",
+              "tesseract-local"
+            ],
+            "title": "Ocr Backend"
+          },
+          "notes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Notes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "gpu_available",
+          "embedding_requested",
+          "embedding_device",
+          "embedding_dtype",
+          "ocr_requested",
+          "ocr_backend"
+        ],
+        "title": "Runtime",
+        "description": "อุปกรณ์/backend ที่ใช้จริง (ตัดสินที่ app/runtime.py — ตัวเดียวกับที่ embedding/OCR ใช้) · ``notes`` = เหตุผล\nที่ได้ของด้อยกว่าที่ขอ หรือค่าที่ตั้งไว้ใช้ไม่ได้ (ว่าง = ได้ตามที่ขอบนเครื่องที่มี GPU)",
+        "examples": [
+          {
+            "gpu_available": true,
+            "embedding_requested": "auto",
+            "embedding_device": "cuda",
+            "embedding_dtype": "bf16",
+            "ocr_requested": "auto",
+            "ocr_backend": "typhoon-local",
+            "notes": []
+          },
+          {
+            "gpu_available": false,
+            "embedding_requested": "auto",
+            "embedding_device": "cpu",
+            "embedding_dtype": "fp32",
+            "ocr_requested": "auto",
+            "ocr_backend": "tesseract-local",
+            "notes": [
+              "embedding: auto: ไม่พบ GPU CUDA -> cpu",
+              "ocr: auto: ไม่พบ GPU CUDA -> tesseract-local (CPU)"
+            ]
+          }
+        ]
+      },
+      "SourceBox": {
+        "properties": {
+          "box_id": {
+            "type": "string",
+            "title": "Box Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "ชื่อกล่อง (กล่องที่ไม่ได้ตั้งชื่อ = box_id)"
+          },
+          "visibility": {
+            "$ref": "#/components/schemas/Visibility"
+          },
+          "role": {
+            "$ref": "#/components/schemas/BoxRole"
+          },
+          "file_count": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "File Count",
+            "description": "จำนวนไฟล์ที่ผู้เรียกเห็น (กรองตาม ACL แล้ว)"
+          },
+          "updated_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updated At",
+            "description": "เวลาที่ไฟล์ล่าสุดเปลี่ยน (null = ยังไม่มีไฟล์)"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "box_id",
+          "name",
+          "visibility",
+          "role",
+          "file_count"
+        ],
+        "title": "SourceBox",
+        "examples": [
+          {
+            "box_id": "example-finance",
+            "name": "กล่องตัวอย่าง ฝ่ายการเงิน",
+            "visibility": "private",
+            "role": "admin",
+            "file_count": 12,
+            "updated_at": "2026-11-12T02:21:40Z"
+          }
+        ]
+      },
+      "SourcesResponse": {
+        "properties": {
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/SourceBox"
+            },
+            "type": "array",
+            "title": "Sources"
+          },
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "sources",
+          "trace_id"
+        ],
+        "title": "SourcesResponse",
+        "description": "กล่องที่ผู้เรียกเป็นสมาชิกเท่านั้น (เรียงตาม box_id)",
+        "examples": [
+          {
+            "sources": [
+              {
+                "box_id": "example-finance",
+                "name": "กล่องตัวอย่าง ฝ่ายการเงิน",
+                "visibility": "private",
+                "role": "admin",
+                "file_count": 12,
+                "updated_at": "2026-11-12T02:21:40Z"
+              },
+              {
+                "box_id": "example-hr",
+                "name": "กล่องตัวอย่าง ฝ่ายบุคคล",
+                "visibility": "public",
+                "role": "viewer",
+                "file_count": 3,
+                "updated_at": null
+              }
+            ],
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "sources": [],
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          }
+        ]
+      },
+      "UnitCounts": {
+        "properties": {
+          "ok": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Ok",
+            "default": 0
+          },
+          "needs_ocr": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Needs Ocr",
+            "default": 0
+          },
+          "failed": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Failed",
+            "default": 0
+          },
+          "rejected": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Rejected",
+            "default": 0
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "UnitCounts",
+        "examples": [
+          {
+            "ok": 39,
+            "needs_ocr": 0,
+            "failed": 1,
+            "rejected": 0
+          }
+        ]
+      },
+      "UnitStatus": {
+        "type": "string",
+        "enum": [
+          "ok",
+          "needs_ocr",
+          "failed",
+          "rejected"
+        ],
+        "title": "UnitStatus"
+      },
+      "UnitType": {
+        "type": "string",
+        "enum": [
+          "page",
+          "slide",
+          "section",
+          "sheet_region"
+        ],
+        "title": "UnitType"
+      },
+      "Visibility": {
+        "type": "string",
+        "enum": [
+          "public",
+          "private"
+        ],
+        "title": "Visibility"
+      }
+    },
+    "securitySchemes": {
+      "ServiceKey": {
+        "type": "apiKey",
+        "description": "service credential ของ Gateway (placeholder — ของจริงจะเป็น mTLS หรือ signed token) ผิด/ไม่ส่ง -> 401",
+        "in": "header",
+        "name": "X-Service-Key"
+      }
+    }
+  }
+}

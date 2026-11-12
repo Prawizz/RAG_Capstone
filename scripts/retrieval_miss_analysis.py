@@ -22,7 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from rapidfuzz import fuzz  # noqa: E402
 
-from app.access import AclStore, Box, FileAcl, Principal, Visibility  # noqa: E402
+from app.access import AclStore, Box, FileAcl, Visibility  # noqa: E402
 from app.chunking import make_document_chunks  # noqa: E402
 from app.config import get_settings  # noqa: E402
 from app.embedding import get_embedder  # noqa: E402
@@ -116,10 +116,10 @@ def main(argv: list[str] | None = None) -> int:
     chunk_canon = {s: [canon(t) for t in ts] for s, ts in chunk_texts.items()}
 
     acl = AclStore()
-    acl.register_box(Box(box_id=BOX_ID, visibility=Visibility.PUBLIC))
+    acl.create_box(Box(box_id=BOX_ID, visibility=Visibility.PUBLIC), owner_user_id="dev")
     for s in DOCS:
         acl.register_file(FileAcl(file_id=s, box_id=BOX_ID))
-    principal = Principal(user_id="dev", box_ids=frozenset({BOX_ID}))
+    principal = acl.principal_for("dev")
 
     settings = base.model_copy(update={"collection_public": "rag_miss_analysis_public", "collection_private": "rag_miss_analysis_private",
                                        "chunk_target_chars": SIZE})

@@ -11,6 +11,7 @@ from app.access import (
     AclUnknownBoxError,
     AclWideningError,
     Box,
+    BoxRole,
     FileAcl,
     Principal,
     Visibility,
@@ -169,6 +170,7 @@ def test_none_department_allows_any_member():
     store = AclStore()
     store.register_box(Box(box_id="b", visibility=Visibility.PRIVATE, departments=None))
     store.register_file(FileAcl(file_id="f", box_id="b"))
+    store.set_member("b", "u", BoxRole.VIEWER)
     principal = Principal(user_id="u", departments=frozenset({"อะไรก็ได้"}), box_ids=frozenset({"b"}))
     assert store.can_access(principal, "f")
 
@@ -191,6 +193,7 @@ def test_changing_box_recomputes_files_in_it():
     store = AclStore()
     store.register_box(Box(box_id="b", visibility=Visibility.PRIVATE, min_security_level=0))
     store.register_file(FileAcl(file_id="f", box_id="b"))
+    store.set_member("b", "u", BoxRole.VIEWER)
     principal = Principal(user_id="u", security_level=1, box_ids=frozenset({"b"}))
     assert store.can_access(principal, "f")
     store.register_box(Box(box_id="b", visibility=Visibility.PRIVATE, min_security_level=5))
@@ -209,6 +212,7 @@ def test_register_box_that_would_widen_a_file_is_rejected_without_touching_state
     store = AclStore()
     store.register_box(_box_b({"hr", "it"}))
     store.register_file(FileAcl(file_id="g", box_id="b", departments=frozenset({"it"})))
+    store.set_member("b", "i", BoxRole.VIEWER)
     it_user = Principal(user_id="i", departments=frozenset({"it"}), box_ids=frozenset({"b"}))
     before = store.get_effective("g")
 
@@ -254,3 +258,128 @@ def test_register_box_returns_the_files_whose_effective_acl_changed():
     assert changed == ["inherits"]  # already_high ยังเป็น 7, elsewhere อยู่คนละ box
     assert store.register_box(Box(box_id="b", visibility=Visibility.PRIVATE, min_security_level=5)) == []
     assert store.register_box(Box(box_id="brand_new", visibility=Visibility.PUBLIC)) == []
+
+
+# ---------- สมาชิกกล่อง (owner/admin/viewer) ----------
+
+
+def _box_with_owner(store=None, owner="own"):
+    store = store or AclStore()
+    store.create_box(Box(box_id="b", visibility=Visibility.PRIVATE, departments=frozenset({"hr"}),
+                         min_security_level=2, name="กล่อง HR"), owner)
+    store.register_file(FileAcl(file_id="f", box_id="b"))
+    return store
+
+
+def test_principal_box_ids_come_only_from_membership():
+    store = _box_with_owner()
+    store.register_box(Box(box_id="other", visibility=Visibility.PUBLIC))
+    store.set_member("b", "u", BoxRole.VIEWER)
+    assert store.principal_for("u", {"hr"}, 3).box_ids == frozenset({"b"})
+    assert store.principal_for("stranger", {"hr"}, 9).box_ids == frozenset()
+    assert store.principal_for("own").box_ids == frozenset({"b"})
+
+
+def test_membership_does_not_skip_department_or_security_level():
+    """เป็นสมาชิก (แม้เป็น owner) ยังต้องผ่านแผนกและระดับความลับ"""
+    store = _box_with_owner()
+    store.set_member("b", "fin", BoxRole.ADMIN)
+    assert store.decide(store.principal_for("own", {"hr"}, 1), "f").denied_layer == "security_level"
+    assert store.decide(store.principal_for("fin", {"finance"}, 5), "f").denied_layer == "department"
+    assert store.can_access(store.principal_for("own", {"hr"}, 2), "f")
+
+
+def test_removed_member_is_denied_even_with_an_old_principal():
+    """ด่าน 2 ถามสมาชิกภาพสด — Principal ที่สร้างก่อนถอด (box_ids ยังมี b) ต้องโดนตัด"""
+    store = _box_with_owner()
+    store.set_member("b", "u", BoxRole.VIEWER)
+    old = store.principal_for("u", {"hr"}, 5)
+    assert store.can_access(old, "f")
+    assert store.remove_member("b", "u") is True
+    assert "b" in old.box_ids
+    assert store.decide(old, "f").denied_layer == "box"
+    assert store.principal_for("u", {"hr"}, 5).box_ids == frozenset()
+
+
+def test_principal_claiming_a_box_without_membership_is_denied():
+    store = _box_with_owner()
+    forged = Principal(user_id="x", departments=frozenset({"hr"}), security_level=9, box_ids=frozenset({"b"}))
+    assert not store.can_access(forged, "f")
+
+
+def test_last_owner_cannot_be_removed_or_demoted():
+    from app.access import AclLastOwnerError
+
+    store = _box_with_owner()
+    with pytest.raises(AclLastOwnerError):
+        store.remove_member("b", "own")
+    with pytest.raises(AclLastOwnerError):
+        store.set_member("b", "own", BoxRole.ADMIN)
+    assert store.role_of("own", "b") == BoxRole.OWNER
+
+    store.set_member("b", "own2", BoxRole.OWNER)  # มี owner สองคน -> ลด/ถอดคนหนึ่งได้
+    store.set_member("b", "own", BoxRole.ADMIN)
+    with pytest.raises(AclLastOwnerError):
+        store.remove_member("b", "own2")
+    assert store.members("b") == {"own": BoxRole.ADMIN, "own2": BoxRole.OWNER}
+
+
+def test_create_box_rejects_existing_id_and_keeps_visibility():
+    from app.access import AclBoxExistsError
+
+    store = _box_with_owner()
+    with pytest.raises(AclBoxExistsError):
+        store.create_box(Box(box_id="b", visibility=Visibility.PUBLIC), "attacker")
+    assert store.get_box("b").visibility == Visibility.PRIVATE
+    assert store.role_of("attacker", "b") is None
+    with pytest.raises(AclError):
+        store.create_box(Box(box_id="c", visibility=Visibility.PUBLIC), "")
+
+
+def test_member_operations_on_unknown_box_and_non_member():
+    store = _box_with_owner()
+    with pytest.raises(AclUnknownBoxError):
+        store.set_member("nope", "u", BoxRole.VIEWER)
+    with pytest.raises(AclUnknownBoxError):
+        store.remove_member("nope", "u")
+    assert store.remove_member("b", "never-joined") is False
+    assert store.role_of("own", "nope") is None and store.members("nope") == {}
+
+
+def test_box_registered_without_owner_is_visible_to_nobody():
+    store = AclStore()
+    store.register_box(Box(box_id="b", visibility=Visibility.PUBLIC))
+    store.register_file(FileAcl(file_id="f", box_id="b"))
+    anyone = Principal(user_id="u", security_level=9, box_ids=frozenset({"b"}))
+    assert not store.can_access(anyone, "f") and store.principal_for("u").box_ids == frozenset()
+
+
+def test_membership_backend_is_swappable():
+    """AclStore ใช้แค่ interface MembershipBackend — backend อื่น (เช่นฐานข้อมูล) ได้กติกาเดียวกัน"""
+
+    class Recording:
+        def __init__(self):
+            self.rows, self.calls = {}, []
+
+        def get_role(self, box_id, user_id):
+            self.calls.append("get")
+            return self.rows.get((box_id, user_id))
+
+        def set_role(self, box_id, user_id, role):
+            self.rows[(box_id, user_id)] = role
+
+        def remove(self, box_id, user_id):
+            self.rows.pop((box_id, user_id), None)
+
+        def members(self, box_id):
+            return {u: r for (b, u), r in self.rows.items() if b == box_id}
+
+        def boxes_of(self, user_id):
+            return {b: r for (b, u), r in self.rows.items() if u == user_id}
+
+    backend = Recording()
+    store = _box_with_owner(AclStore(memberships=backend))
+    assert backend.rows == {("b", "own"): BoxRole.OWNER}
+    with pytest.raises(Exception):
+        store.remove_member("b", "own")
+    assert store.can_access(store.principal_for("own", {"hr"}, 2), "f") and "get" in backend.calls

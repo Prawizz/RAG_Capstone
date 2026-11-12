@@ -28,7 +28,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 
-from app.access import AclStore, Box, FileAcl, Principal, Visibility
+from app.access import AclStore, Box, FileAcl, Visibility
 from app.citations import build_citations_from_hits, format_citation_pack
 from app.chunking import make_chunks
 from app.config import Settings
@@ -100,14 +100,9 @@ def run_pipeline(
 
     # 2. ตั้งค่า ACL Store & User Principal
     acl = AclStore()
-    acl.register_box(Box(box_id=BOX_ID, visibility=Visibility.PUBLIC))
+    acl.create_box(Box(box_id=BOX_ID, visibility=Visibility.PUBLIC), owner_user_id="demo_user")
 
-    user_principal = Principal(
-        user_id="demo_user",
-        departments=frozenset({"management", "sales"}),
-        security_level=2,
-        box_ids=frozenset({BOX_ID}),
-    )
+    user_principal = acl.principal_for("demo_user", {"management", "sales"}, 2)  # box_ids จากสมาชิกภาพใน AclStore
 
     # 3. เตรียม Vector Store
     if use_server:

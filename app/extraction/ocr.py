@@ -40,8 +40,9 @@ signals ของ unit ที่ OCR: ``ocr:seconds`` (เวลา backend ต�
 ใน ``Unit.text`` (หลัง normalize ไม่นับบรรทัดว่าง; ผลรวมของ (จำนวนครั้ง - 1) ต่อบรรทัดที่ซ้ำ) จับโมเดลพิมพ์วน — วัดอย่างเดียว
 ยังไม่ใช้ตัดสิน ข้อจำกัด: เอกสารจริงมีบรรทัดซ้ำได้ (ส่วนหัว/ท้ายหน้า ช่องตาราง "-" "0") ค่าสูงจึงแปลว่า "ควรดู" ไม่ใช่ "ผิด"
 
-backend: interface ``OcrBackend`` รับภาพ PNG ของหนึ่งภาพ คืน ``OcrResult``; เลือกจาก config (env ``OCR_BACKEND``,
-ค่าเริ่มต้น ``typhoon-local`` = รันบนเครื่อง; ``tesseract-local`` = Tesseract บน CPU ไว้เทียบความแม่น); backend ที่ส่งข้อมูลออกนอกเครื่อง (``sends_data_offsite = True``)
+backend: interface ``OcrBackend`` รับภาพ PNG ของหนึ่งภาพ คืน ``OcrResult``; เลือกจาก config (``Settings.ocr_backend`` /
+env ``OCR_BACKEND`` = auto | typhoon-local | tesseract-local; auto = ``typhoon-local`` (GPU) เมื่อมี GPU, ``tesseract-local``
+(CPU) เมื่อไม่มี — ตัดสินและ log ที่ ``app/runtime.py``; ทั้งสองรันบนเครื่อง); backend ที่ส่งข้อมูลออกนอกเครื่อง (``sends_data_offsite = True``)
 ``run_ocr`` ปฏิเสธเว้นแต่เปิดอนุญาตชัดเจน (พารามิเตอร์ ``allow_offsite`` หรือ env ``OCR_ALLOW_OFFSITE=1``)
 
 ชนเพดานโทเคน / พิมพ์วน (ใช้กับทุก backend):
@@ -124,7 +125,6 @@ RESPLIT_MAX_DEPTH = 2  # 1 = บน/ล่างของครึ่งหน�
 # ก่อนแบ่งบน/ล่าง (ถ้าตัดแนวนอนบนภาพตะแคง จะแยกช่องของแถวเดียวกันออกจากกัน) — 0.2 ไม่ใช่ 0.5 เพราะครึ่งหน้า
 # ซ้ายของ KBANK หน้า 132 มีแถบสารบัญแนวนอนเจือ ได้ 0.39 ทั้งที่ตารางเป็นข้อความหมุน; หน้าที่ไม่หมุนได้ 0.0
 ROTATED_TEXT_SHARE = 0.2
-DEFAULT_BACKEND = "typhoon-local"
 SUPPORTED_TYPES = (DetectedType.PDF, DetectedType.JPG, DetectedType.PNG)
 PART_SEPARATOR = "\n\n"
 
@@ -196,9 +196,20 @@ class FakeBackend:
         return OcrResult(text=t, backend=self.name, model=self.model, revision=self.revision, seconds=0.01, tokens=tokens)
 
 
-def get_backend(name: Optional[str] = None) -> OcrBackend:
-    """เลือก backend จาก config (``OCR_BACKEND``); ค่าเริ่มต้น = รันบนเครื่อง"""
-    name = name or os.environ.get("OCR_BACKEND", DEFAULT_BACKEND)
+def get_backend(name: Optional[str] = None, settings=None) -> OcrBackend:
+    """สร้าง OCR backend — ``name`` ไม่ระบุ = ตาม config (``Settings.ocr_backend`` / env ``OCR_BACKEND``, ค่าเริ่มต้น auto:
+    typhoon-local เมื่อมี GPU, tesseract-local เมื่อไม่มี) ตัดสินและ log ที่ ``app.runtime.resolve_ocr_backend``
+    ระบุ ``name`` เอง (สคริปต์เปรียบเทียบ) = ใช้ชื่อนั้นและ log ด้วยเช่นกัน — ไม่มีการสลับ backend ให้เงียบๆ"""
+    from app.runtime import resolve_ocr_backend
+
+    if name is None:
+        if settings is None:
+            from app.config import get_settings
+
+            settings = get_settings()
+        name = resolve_ocr_backend(settings.ocr_backend).name
+    elif name in ("typhoon-local", "tesseract-local"):
+        resolve_ocr_backend(name)  # log + เตือนถ้าเครื่องนี้ใช้ไม่ได้
     if name == "typhoon-local":
         from app.extraction.ocr_typhoon import TyphoonLocalBackend  # import หนัก (torch) เมื่อใช้จริงเท่านั้น
 

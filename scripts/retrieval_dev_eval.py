@@ -28,7 +28,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from rapidfuzz import fuzz  # noqa: E402
 
-from app.access import AclStore, Box, FileAcl, Principal, Visibility  # noqa: E402
+from app.access import AclStore, Box, FileAcl, Visibility  # noqa: E402
 from app.chunking import make_document_chunks  # noqa: E402
 from app.config import get_settings  # noqa: E402
 from app.embedding import get_embedder, gpu_peak_memory_mb, release_gpu_memory, reset_gpu_peak  # noqa: E402
@@ -208,10 +208,10 @@ def main(argv: list[str] | None = None) -> int:
     reachable_ids = {qid for c in cov.values() for qid in c["in_ok_units_ids"]}
 
     acl = AclStore()
-    acl.register_box(Box(box_id=BOX_ID, visibility=Visibility.PUBLIC))
+    acl.create_box(Box(box_id=BOX_ID, visibility=Visibility.PUBLIC), owner_user_id="dev")
     for short in DOCS:
         acl.register_file(FileAcl(file_id=short, box_id=BOX_ID))
-    principal = Principal(user_id="dev", box_ids=frozenset({BOX_ID}))
+    principal = acl.principal_for("dev")
 
     embedder = get_embedder(base)  # โหลด BGE-M3 ไม่ได้ = ล้ม (ไม่ fallback)
     q_canon = {q["question_id"]: canon(q["expected_citation"]) for q in questions}

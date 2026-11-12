@@ -1,0 +1,58 @@
+{
+  "status": "ok",
+  "box_id": "example-finance",
+  "visibility": "private",
+  "top_score": 0.82,
+  "results": [
+    {
+      "rank": 1,
+      "chunk_id": "file_01JD7X2A9R:u0045:c002",
+      "score": 0.82,
+      "text": "(ข้อความตัวอย่าง) บริษัท ตัวอย่าง จำกัด จ่ายเงินปันผลหุ้นละ 1.00 บาท สำหรับผลการดำเนินงานปีตัวอย่าง",
+      "file_id": "file_01JD7X2A9R",
+      "filename": "รายงานประจำปี_ตัวอย่าง.pdf",
+      "citation": {
+        "unit_type": "page",
+        "page": 3,
+        "slide": null,
+        "sheet": null,
+        "cell_range": null,
+        "heading_path": null,
+        "label": "หน้า 3",
+        "char_start": 1204,
+        "char_end": 1303
+      },
+      "extraction": {
+        "method": "ocr",
+        "flags": []
+      }
+    },
+    {
+      "rank": 2,
+      "chunk_id": "file_01JD9C3D4E:u0007:c000",
+      "score": 0.61,
+      "text": "(ข้อความตัวอย่าง) นโยบายการจ่ายเงินปันผลของบริษัท ตัวอย่าง จำกัด",
+      "file_id": "file_01JD9C3D4E",
+      "filename": "นโยบาย_ตัวอย่าง.docx",
+      "citation": {
+        "unit_type": "section",
+        "page": null,
+        "slide": null,
+        "sheet": null,
+        "cell_range": null,
+        "heading_path": [
+          "หมวดตัวอย่าง 1",
+          "หัวข้อตัวอย่าง 1.1"
+        ],
+        "label": "หมวดตัวอย่าง 1 › หัวข้อตัวอย่าง 1.1",
+        "char_start": 0,
+        "char_end": 64
+      },
+      "extraction": {
+        "method": "office_xml",
+        "flags": []
+      }
+    }
+  ],
+  "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+}

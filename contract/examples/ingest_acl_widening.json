@@ -1,0 +1,5 @@
+{
+  "error_code": "acl_widening",
+  "message": "file_acl ขยายสิทธิ์แผนกออกนอกกล่อง: ['sales'] (สิทธิ์ระดับไฟล์ทำให้แคบลงได้อย่างเดียว)",
+  "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+}

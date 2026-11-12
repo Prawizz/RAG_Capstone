@@ -1,0 +1,21 @@
+{
+  "device": "cpu",
+  "dtype": "torch.float32",
+  "torch_threads": 14,
+  "cpu": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+  "model_load_s": 7.6,
+  "queries": 20,
+  "query_chars_median": 45.0,
+  "query_ms_p50": 48.2,
+  "query_ms_p95": 58.4,
+  "query_ms_max": 58.4,
+  "chunks": 50,
+  "chunk_chars_median": 776.0,
+  "chunk_chars_max": 994,
+  "batch_size": 16,
+  "chunks_total_s": 12.8,
+  "chunks_per_s": 3.92,
+  "retries": 0,
+  "fp32_fallbacks": 0,
+  "extract_s_not_counted": 1.6
+}

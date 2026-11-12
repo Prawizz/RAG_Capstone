@@ -165,12 +165,14 @@ class BGEM3Embedder:
             import torch
             from transformers import AutoModel, AutoTokenizer
 
-            if device == "auto":
-                device = "cuda" if torch.cuda.is_available() else "cpu"
-            if device.startswith("cuda") and not torch.cuda.is_available():
-                raise RuntimeError("ขอใช้ cuda แต่ไม่มี GPU")
+            from app.runtime import resolve_embedding_device
+
+            # auto|cpu|cuda -> อุปกรณ์จริง (log ทุกครั้ง; cuda แต่ไม่มี GPU = error ไม่ถอยไป CPU เอง) · CPU = fp32
+            choice = resolve_embedding_device(device, dtype)
+            device = choice.device
             self.device = device
-            self.dtype = _TORCH_DTYPES[dtype](torch) if device.startswith("cuda") else torch.float32
+            self.device_choice = choice
+            self.dtype = _TORCH_DTYPES[choice.dtype](torch)
             self._torch = torch
             self._tokenizer = AutoTokenizer.from_pretrained(model_name)
             self._model = AutoModel.from_pretrained(model_name, dtype=self.dtype).to(device).eval()

@@ -1,0 +1,21 @@
+{
+  "sources": [
+    {
+      "box_id": "example-finance",
+      "name": "กล่องตัวอย่าง ฝ่ายการเงิน",
+      "visibility": "private",
+      "role": "admin",
+      "file_count": 12,
+      "updated_at": "2026-11-12T02:21:40Z"
+    },
+    {
+      "box_id": "example-hr",
+      "name": "กล่องตัวอย่าง ฝ่ายบุคคล",
+      "visibility": "public",
+      "role": "viewer",
+      "file_count": 3,
+      "updated_at": null
+    }
+  ],
+  "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+}

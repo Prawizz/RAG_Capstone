@@ -1,0 +1,22 @@
+{
+  "status": "ready",
+  "version": "1.0.0",
+  "components": {
+    "qdrant": "ok",
+    "embedding": "ok",
+    "ocr": "ok"
+  },
+  "runtime": {
+    "gpu_available": false,
+    "embedding_requested": "auto",
+    "embedding_device": "cpu",
+    "embedding_dtype": "fp32",
+    "ocr_requested": "auto",
+    "ocr_backend": "tesseract-local",
+    "notes": [
+      "embedding: auto: ไม่พบ GPU CUDA -> cpu",
+      "ocr: auto: ไม่พบ GPU CUDA -> tesseract-local (CPU)"
+    ]
+  },
+  "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+}

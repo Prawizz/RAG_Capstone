@@ -1,0 +1,5 @@
+{
+  "error_code": "invalid_request",
+  "message": "header X-User-Security-Level: ต้องเป็นจำนวนเต็ม >= 0",
+  "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+}

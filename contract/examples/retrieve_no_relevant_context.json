@@ -1,0 +1,35 @@
+{
+  "status": "no_relevant_context",
+  "box_id": "example-finance",
+  "visibility": "private",
+  "top_score": 0.18,
+  "results": [
+    {
+      "rank": 1,
+      "chunk_id": "file_01JD9C3D4E:u0007:c000",
+      "score": 0.18,
+      "text": "(ข้อความตัวอย่าง) นโยบายการจ่ายเงินปันผลของบริษัท ตัวอย่าง จำกัด",
+      "file_id": "file_01JD9C3D4E",
+      "filename": "นโยบาย_ตัวอย่าง.docx",
+      "citation": {
+        "unit_type": "section",
+        "page": null,
+        "slide": null,
+        "sheet": null,
+        "cell_range": null,
+        "heading_path": [
+          "หมวดตัวอย่าง 1",
+          "หัวข้อตัวอย่าง 1.1"
+        ],
+        "label": "หมวดตัวอย่าง 1 › หัวข้อตัวอย่าง 1.1",
+        "char_start": 0,
+        "char_end": 64
+      },
+      "extraction": {
+        "method": "office_xml",
+        "flags": []
+      }
+    }
+  ],
+  "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+}

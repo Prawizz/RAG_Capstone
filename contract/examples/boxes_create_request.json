@@ -1,0 +1,10 @@
+{
+  "box_id": "example-finance",
+  "name": "กล่องตัวอย่าง ฝ่ายการเงิน",
+  "visibility": "private",
+  "departments": [
+    "finance",
+    "audit"
+  ],
+  "min_security_level": 2
+}

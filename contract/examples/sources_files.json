@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "file_id": "file_01JD7X2A9R",
+      "filename": "รายงานประจำปี_ตัวอย่าง.pdf",
+      "detected_type": "pdf",
+      "status": "done_with_gaps",
+      "units_total": 40,
+      "gaps": 1,
+      "ingested_at": "2026-11-12T02:21:40Z"
+    },
+    {
+      "file_id": "file_01JD8Z5V7M",
+      "filename": "งบการเงิน_ตัวอย่าง.pdf",
+      "detected_type": null,
+      "status": "queued",
+      "units_total": 0,
+      "gaps": 0,
+      "ingested_at": null
+    }
+  ],
+  "next_cursor": "eyJhZnRlciI6ImZpbGVfMDFKRDhaNVY3TSJ9",
+  "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+}

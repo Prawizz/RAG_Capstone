@@ -11,7 +11,7 @@ import hashlib
 
 import pytest
 
-from app.access import AclStore, Box, FileAcl, Principal, Visibility
+from app.access import AclStore, Box, BoxRole, FileAcl, Principal, Visibility
 from app.chunking import make_chunks
 from app.config import Settings
 from app.embedding import HashEmbedder, SparseVector
@@ -90,6 +90,14 @@ def make_doc(file_id: str, units: list[Unit], filename: str = "เอกสา�
     )
 
 
+def join(acl: AclStore, principal: Principal) -> Principal:
+    """ลงทะเบียนสมาชิกภาพใน AclStore ตาม ``principal.box_ids`` (ด่าน 2 ถามสมาชิกภาพสดจาก AclStore)"""
+    for box_id in principal.box_ids:
+        if acl.get_box(box_id) is not None:
+            acl.set_member(box_id, principal.user_id, BoxRole.VIEWER)
+    return principal
+
+
 @pytest.fixture
 def acl() -> AclStore:
     store = AclStore()
@@ -117,13 +125,13 @@ def store(acl, search_mode) -> VectorStore:
 
 
 @pytest.fixture
-def alice() -> Principal:
-    return Principal(
+def alice(acl) -> Principal:
+    return join(acl, Principal(
         user_id="alice",
         departments=frozenset({"hr"}),
         security_level=5,
         box_ids=frozenset({"pub", "hr"}),
-    )
+    ))
 
 
 def indexed(unit: Unit, dense=None, target: int = 1000) -> list[IndexedChunk]:
@@ -229,12 +237,12 @@ def test_payload_carries_the_contract_fields(store, acl, alice):
 def test_member_of_another_department_gets_nothing(store, acl):
     """เป็นสมาชิก box แต่คนละแผนก — pre-filter ต้องกรองออก"""
     index_one(store, "f_hr", "ข้อมูล HR")
-    bob = Principal(
+    bob = join(acl, Principal(
         user_id="bob",
         departments=frozenset({"finance"}),
         security_level=5,
         box_ids=frozenset({"pub", "hr"}),
-    )
+    ))
     assert store.search(QUERY, bob, "hr") == EMPTY_RESULT
 
 
@@ -244,8 +252,8 @@ def test_security_level_below_the_box_gets_nothing(store, acl):
     )
     acl.register_file(FileAcl(file_id="f_secret", box_id="secret"))
     index_one(store, "f_secret", "เอกสารชั้นความลับ")
-    junior = Principal(user_id="j", security_level=1, box_ids=frozenset({"secret"}))
-    senior = Principal(user_id="s", security_level=4, box_ids=frozenset({"secret"}))
+    junior = join(acl, Principal(user_id="j", security_level=1, box_ids=frozenset({"secret"})))
+    senior = join(acl, Principal(user_id="s", security_level=4, box_ids=frozenset({"secret"})))
     assert store.search(QUERY, junior, "secret") == EMPTY_RESULT
     assert len(store.search(QUERY, senior, "secret").hits) == 1
 
@@ -257,7 +265,7 @@ def test_principal_without_any_department(store, acl):
     """
     index_one(store, "f_pub", "ประกาศทั่วไป")
     index_one(store, "f_hr", "ข้อมูล HR")
-    nobody = Principal(user_id="n", security_level=5, box_ids=frozenset({"pub", "hr"}))
+    nobody = join(acl, Principal(user_id="n", security_level=5, box_ids=frozenset({"pub", "hr"})))
     assert [h.file_id for h in store.search(QUERY, nobody, "pub").hits] == ["f_pub"]
     assert store.search(QUERY, nobody, "hr") == EMPTY_RESULT
 
@@ -265,9 +273,9 @@ def test_principal_without_any_department(store, acl):
 def test_file_level_narrowing_applies_at_search_time(store, acl):
     acl.register_file(FileAcl(file_id="f_hr2", box_id="hr", min_security_level=9))
     index_one(store, "f_hr2", "ไฟล์ที่ยกระดับเฉพาะตัว")
-    mid = Principal(
+    mid = join(acl, Principal(
         user_id="m", departments=frozenset({"hr"}), security_level=5, box_ids=frozenset({"hr"})
-    )
+    ))
     assert store.search(QUERY, mid, "hr") == EMPTY_RESULT
 
 
@@ -300,8 +308,8 @@ def test_revoked_file_is_caught_by_the_second_gate(store, acl, alice):
 
 def test_non_member_box_is_indistinguishable_from_empty(store, acl):
     index_one(store, "f_hr", "ข้อมูลลับ")
-    outsider = Principal(user_id="o", departments=frozenset({"hr"}), security_level=5,
-                         box_ids=frozenset({"pub"}))
+    outsider = join(acl, Principal(user_id="o", departments=frozenset({"hr"}), security_level=5,
+                         box_ids=frozenset({"pub"})))
     denied = store.search(QUERY, outsider, "hr")       # ไม่ได้เป็นสมาชิก
     nothing = store.search(QUERY, outsider, "pub")     # เป็นสมาชิกแต่ไม่มีข้อมูล
     assert denied == nothing == EMPTY_RESULT
@@ -317,13 +325,13 @@ def test_no_leak_across_the_whole_matrix(store, acl):
     index_one(store, "f_pub", "สาธารณะ")
     index_one(store, "f_hr", "ลับ")
     principals = [
-        Principal(user_id="hr_user", departments=frozenset({"hr"}), security_level=5,
-                  box_ids=frozenset({"pub", "hr"})),
-        Principal(user_id="fin_user", departments=frozenset({"finance"}), security_level=5,
-                  box_ids=frozenset({"pub", "hr"})),
-        Principal(user_id="outsider", departments=frozenset({"hr"}), security_level=5,
-                  box_ids=frozenset()),
-        Principal(user_id="no_dept", security_level=5, box_ids=frozenset({"pub", "hr"})),
+        join(acl, Principal(user_id="hr_user", departments=frozenset({"hr"}), security_level=5,
+                  box_ids=frozenset({"pub", "hr"}))),
+        join(acl, Principal(user_id="fin_user", departments=frozenset({"finance"}), security_level=5,
+                  box_ids=frozenset({"pub", "hr"}))),
+        join(acl, Principal(user_id="outsider", departments=frozenset({"hr"}), security_level=5,
+                  box_ids=frozenset())),
+        join(acl, Principal(user_id="no_dept", security_level=5, box_ids=frozenset({"pub", "hr"}))),
     ]
     leaks = []
     for principal in principals:
@@ -368,8 +376,8 @@ def test_against_real_qdrant_server(acl, alice):
 
         assert [h.file_id for h in store.search(QUERY, alice, "pub").hits] == ["f_pub"]
         assert [h.file_id for h in store.search(QUERY, alice, "hr").hits] == ["f_hr"]
-        outsider = Principal(user_id="o", departments=frozenset({"hr"}), security_level=5,
-                             box_ids=frozenset({"pub"}))
+        outsider = join(acl, Principal(user_id="o", departments=frozenset({"hr"}), security_level=5,
+                             box_ids=frozenset({"pub"})))
         assert store.search(QUERY, outsider, "hr") == EMPTY_RESULT
         store.delete_file("f_pub")
         assert store.search(QUERY, alice, "pub") == EMPTY_RESULT
@@ -382,8 +390,8 @@ def test_against_real_qdrant_server(acl, alice):
 # ---------- ด่าน 2 ต้องเช็ค box และ visibility ด้วย ----------
 
 
-def _both_boxes_member() -> Principal:
-    return Principal(user_id="m", security_level=5, box_ids=frozenset({"pub", "priv"}))
+def _both_boxes_member(acl: AclStore) -> Principal:
+    return join(acl, Principal(user_id="m", security_level=5, box_ids=frozenset({"pub", "priv"})))
 
 
 @pytest.fixture
@@ -399,7 +407,7 @@ def test_file_moved_public_to_private_does_not_leak_from_the_public_search(movin
     moving_acl.register_file(FileAcl(file_id="f1", box_id="pub"))
     store = new_store(moving_acl, search_mode)
     index_one(store, "f1", "เนื้อหาที่กลายเป็นความลับ")
-    user = _both_boxes_member()
+    user = _both_boxes_member(moving_acl)
     assert len(store.search(QUERY, user, "pub").hits) == 1
 
     moving_acl.register_file(FileAcl(file_id="f1", box_id="priv"))
@@ -412,7 +420,7 @@ def test_file_moved_private_to_public_does_not_appear_in_the_private_search(movi
     moving_acl.register_file(FileAcl(file_id="f1", box_id="priv"))
     store = new_store(moving_acl, search_mode)
     index_one(store, "f1", "เนื้อหาเดิมของกล่องส่วนตัว")
-    user = _both_boxes_member()
+    user = _both_boxes_member(moving_acl)
     assert len(store.search(QUERY, user, "priv").hits) == 1
 
     moving_acl.register_file(FileAcl(file_id="f1", box_id="pub"))
@@ -425,7 +433,7 @@ def test_file_moved_between_boxes_of_the_same_visibility_is_dropped_by_box_check
     moving_acl.register_file(FileAcl(file_id="f1", box_id="pub"))
     store = new_store(moving_acl, search_mode)
     index_one(store, "f1")
-    user = Principal(user_id="m", box_ids=frozenset({"pub", "pub2"}))
+    user = join(moving_acl, Principal(user_id="m", box_ids=frozenset({"pub", "pub2"})))
     moving_acl.register_file(FileAcl(file_id="f1", box_id="pub2"))
     result = store.search(QUERY, user, "pub")
     assert result.hits == () and result.dropped_by_recheck == 1
@@ -438,7 +446,7 @@ def test_refresh_updates_payload_in_place_when_visibility_is_unchanged(moving_ac
     moving_acl.register_file(FileAcl(file_id="f1", box_id="pub"))
     store = new_store(moving_acl, search_mode)
     index_one(store, "f1", "ย้ายไปอีกกล่องสาธารณะ")
-    user = Principal(user_id="m", box_ids=frozenset({"pub", "pub2"}))
+    user = join(moving_acl, Principal(user_id="m", box_ids=frozenset({"pub", "pub2"})))
     moving_acl.register_file(FileAcl(file_id="f1", box_id="pub2"))
 
     report = store.refresh_acl_payload("f1")
@@ -467,7 +475,7 @@ def test_refresh_with_changed_visibility_deletes_old_points_and_asks_for_reindex
     moving_acl.register_file(FileAcl(file_id="f1", box_id="pub"))
     store = new_store(moving_acl, search_mode)
     index_one(store, "f1", "ย้ายข้าม visibility")
-    user = _both_boxes_member()
+    user = _both_boxes_member(moving_acl)
     moving_acl.register_file(FileAcl(file_id="f1", box_id="priv"))
 
     report = store.refresh_acl_payload("f1")
@@ -562,7 +570,7 @@ def test_moved_file_recheck_and_refresh_against_real_qdrant_server(moving_acl):
         store.ensure_collections()
         moving_acl.register_file(FileAcl(file_id="f1", box_id="pub"))
         index_one(store, "f1", "เนื้อหาที่ย้ายกล่อง")
-        user = Principal(user_id="m", box_ids=frozenset({"pub", "pub2", "priv"}))
+        user = join(moving_acl, Principal(user_id="m", box_ids=frozenset({"pub", "pub2", "priv"})))
 
         moving_acl.register_file(FileAcl(file_id="f1", box_id="priv"))
         leaked = store.search(QUERY, user, "pub")
@@ -724,7 +732,7 @@ def test_bm25_branch_finds_the_exact_word_even_when_dense_vectors_are_uninformat
         doc = make_doc(fid, [make_unit(0, text)])
         items = [IndexedChunk(c, vec(), SparseVector(), e.sparse) for c, e in zip(make_chunks(doc.units[0], 1000), embedder.embed_documents([text]))]
         store.upsert_chunks(doc, items)
-    user = Principal(user_id="u", box_ids=frozenset({"pub"}))
+    user = join(acl, Principal(user_id="u", box_ids=frozenset({"pub"})))
     query = Query(dense=vec(), sparse_bge=SPARSE_ONE, sparse_bm25=embedder.embed_query("เงินปันผล").sparse)
     assert store.search(query, user, "pub", limit=3, mode=mode).hits[0].file_id == "f_a"
 
@@ -735,7 +743,7 @@ def test_sparse_bge_branch_uses_its_own_vector(acl):
         acl.register_file(FileAcl(file_id=fid, box_id="pub"))
         doc = make_doc(fid, [make_unit(0, f"ข้อความของ {fid}")])
         store.upsert_chunks(doc, [IndexedChunk(c, vec(), SparseVector((idx,), (1.0,)), SparseVector()) for c in make_chunks(doc.units[0], 1000)])
-    user = Principal(user_id="u", box_ids=frozenset({"pub"}))
+    user = join(acl, Principal(user_id="u", box_ids=frozenset({"pub"})))
     query = Query(dense=vec(), sparse_bge=SparseVector((8,), (1.0,)))
     assert store.search(query, user, "pub", mode="dense+sparse_bge").hits[0].file_id == "f_b"
 
@@ -767,7 +775,7 @@ def test_acl_filter_applies_to_every_branch_in_fusion_mode(acl):
     embedder = HashEmbedder(VECTOR_SIZE)
     store.upsert_document(make_doc("f_hr", [make_unit(0, "เงินเดือนผู้บริหาร")]), embedder)
     store.upsert_document(make_doc("f_pub", [make_unit(0, "ประกาศทั่วไป")]), embedder)
-    bob = Principal(user_id="b", departments=frozenset({"finance"}), security_level=5, box_ids=frozenset({"pub", "hr"}))
+    bob = join(acl, Principal(user_id="b", departments=frozenset({"finance"}), security_level=5, box_ids=frozenset({"pub", "hr"})))
     assert store.search(embed_query("เงินเดือนผู้บริหาร", embedder), bob, "hr") == EMPTY_RESULT
 
 
@@ -776,3 +784,26 @@ def test_modes_return_no_more_than_limit_and_overfetch_still_applies(store, acl,
         acl.register_file(FileAcl(file_id=f"y{i}", box_id="hr"))
         index_one(store, f"y{i}", f"ข้อความ {i}")
     assert len(store.search(QUERY, alice, "hr", limit=2).hits) == 2
+
+
+# ---------- สมาชิกกล่อง: ถอดแล้วมีผลทันทีที่ด่าน 2 ----------
+
+
+def test_removed_member_is_dropped_by_the_second_gate_immediately(store, acl):
+    """Principal ที่สร้างไว้ก่อน (box_ids ยังมี hr -> pre-filter ปล่อยผ่าน) ต้องโดนด่าน 2 ตัดทันทีหลังถอดสมาชิก"""
+    acl.set_member("hr", "carol", BoxRole.VIEWER)
+    carol = acl.principal_for("carol", {"hr"}, 5)
+    index_one(store, "f_hr", "ข้อมูล HR ที่สมาชิกเห็น")
+    assert [h.file_id for h in store.search(QUERY, carol, "hr").hits] == ["f_hr"]
+
+    acl.remove_member("hr", "carol")
+    stale = store.search(QUERY, carol, "hr")
+    assert stale.hits == () and stale.dropped_by_recheck == 1
+    assert store.search(QUERY, acl.principal_for("carol", {"hr"}, 5), "hr") == EMPTY_RESULT  # request ถัดไป
+
+
+def test_membership_alone_does_not_pass_the_search_acl(store, acl):
+    """สมาชิก (แม้ owner) คนละแผนก ยังค้นไม่เจอ — สมาชิกภาพเป็นแค่ชั้นแรก"""
+    acl.set_member("hr", "dan", BoxRole.OWNER)
+    index_one(store, "f_hr", "ข้อมูล HR")
+    assert store.search(QUERY, acl.principal_for("dan", {"finance"}, 9), "hr") == EMPTY_RESULT
