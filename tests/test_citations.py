@@ -64,3 +64,49 @@ class TestCitations:
         evidence = "ในปีนี้ บริษัทฯ มีรายได้รวม 1,022,143 ล้านบาท"
         score = compute_nli_entailment_score(claim, evidence)
         assert score <= 0.20
+
+    def test_build_citations_from_hits_with_synthetic_context_filtered(self):
+        from app.vectorstore import Hit
+        from app.citations import build_citations_from_hits, format_citation_pack
+
+        hit = Hit(
+            score=0.92,
+            file_id="report.docx",
+            filename="report.docx",
+            unit_index=0,
+            unit_type="section",
+            label="หัวข้อ 1",
+            position={"page": 1},
+            status="ok",
+            method="direct",
+            text="ประโยคแรกของเนื้อหา ประโยคที่สองของเนื้อหา",
+            char_start=0,
+            char_end=42,
+            sentences=((0, 19), (20, 42)),
+            context="[แถวแรกของตาราง: รายได้ กำไร]",
+        )
+
+        citation_map = build_citations_from_hits([hit])
+        assert len(citation_map) == 2
+        assert "S1" in citation_map
+        assert "S2" in citation_map
+        assert citation_map["S1"].snippet == "ประโยคแรกของเนื้อหา"
+        assert citation_map["S2"].snippet == "ประโยคที่สองของเนื้อหา"
+        assert citation_map["S1"].char_start == 0
+        assert citation_map["S1"].char_end == 19
+
+        # format_citation_pack should include context line in prompt, but NOT cite it as [S...]
+        pack = format_citation_pack([hit], citation_map)
+        assert "[แถวแรกของตาราง: รายได้ กำไร]" in pack.formatted_context
+        assert "[S1] ประโยคแรกของเนื้อหา" in pack.formatted_context
+
+    def test_evaluate_citation_precision_and_hallucination(self):
+        chunks = [_make_dummy_child("c1", "ข้อมูล ก")]
+        citation_map = build_citations_from_chunks(chunks)
+
+        # โมเดลหลอนแท็ก S99 ที่ไม่มีอยู่จริง
+        answer = "ตามข้อมูล ก [S1] และข้อมูล ข [S99]"
+        result = evaluate_citation_quality(answer, citation_map)
+        assert "S1" in result.citations_used
+        assert "S99" in result.hallucinated_tags
+        assert result.citation_precision == 0.5
