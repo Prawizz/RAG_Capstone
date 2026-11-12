@@ -69,13 +69,33 @@ def test_ocr_unit_goes_through_normalizer_and_gate(scan_pdf):
     assert "image_coverage" not in u.signals
 
 
-def test_ocr_result_failing_gate_stays_needs_ocr(scan_pdf):
+def test_ocr_result_failing_gate_is_failed_not_needs_ocr(scan_pdf):
+    """OCR แล้วไม่ผ่านด่านตรวจ = OCR ล้มเหลว -> failed (contract) ไม่กลับไปเป็น needs_ocr"""
     doc = extract_file(scan_pdf)
     broken = "สวัสดี���� ทดสอบ"
     out = run_ocr(doc, scan_pdf, FakeBackend(broken))
     u = out.units[1]
-    assert u.status == UnitStatus.NEEDS_OCR and u.method == ExtractionMethod.OCR
-    assert "OCR: fake" in u.reason and "พบจุดพัง" in u.reason
+    assert u.status == UnitStatus.FAILED and u.method == ExtractionMethod.OCR
+    assert u.reason.startswith("OCR แล้วไม่ผ่านด่านตรวจ: replacement_char")
+    assert "พบจุดพัง" in u.reason and "OCR: fake" in u.reason
+    assert u.text == "สวัสดี���� ทดสอบ"  # เก็บผล OCR ไว้ตรวจย้อนหลัง (unit ที่ไม่ ok ไม่ถูก index)
+    assert u.text_hash == hashlib.sha256(u.text.encode()).hexdigest()
+
+
+def test_gate_failed_unit_is_not_sent_to_ocr_again_and_document_has_gaps(scan_pdf):
+    doc = extract_file(scan_pdf)
+    out = run_ocr(doc, scan_pdf, FakeBackend(["สวัสดี���� ทดสอบ", THAI_LONG]))
+    assert [u.status for u in out.units] == [UnitStatus.OK, UnitStatus.FAILED, UnitStatus.OK]
+    assert out.status == DocumentStatus.DONE_WITH_GAPS
+    again = FakeBackend(THAI_LONG)
+    assert run_ocr(out, scan_pdf, again) is out and again.calls == 0  # ไม่มี needs_ocr เหลือ = ไม่ส่งซ้ำ
+
+
+def test_all_pages_failing_gate_after_ocr_makes_document_failed(tmp_path):
+    f = make_pdf(tmp_path / "s.pdf", ["", ""])
+    out = run_ocr(extract_file(f), f, FakeBackend("สวัสดี���� ทดสอบ"))
+    assert all(u.status == UnitStatus.FAILED for u in out.units)
+    assert out.status == DocumentStatus.FAILED
 
 
 def test_ocr_little_text_is_low_text_not_scan_like(scan_pdf):

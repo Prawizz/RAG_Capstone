@@ -1,0 +1,40 @@
+{
+  "started_at": "2026-11-12T19:48:40",
+  "finished_at": "2026-11-12T20:04:21",
+  "interrupted": false,
+  "aborted": null,
+  "fatal_cuda": false,
+  "args": {
+    "files": [
+      "ONEREPORTKBANKT.PDF"
+    ],
+    "pages": "86,132",
+    "limit": null,
+    "cooldown": 5.0
+  },
+  "backend": "typhoon-local",
+  "cache_dir": "C:\\Users\\Admin\\OneDrive\\Desktop\\Capstone\\RAG_Capstone\\data\\ocr_cache",
+  "total_seconds": 941.4,
+  "totals": {
+    "planned": 2,
+    "ok": 2,
+    "cached": 0,
+    "error": 0,
+    "not_reached": 0
+  },
+  "files": {
+    "ONEREPORTKBANKT.PDF": {
+      "content_hash": "e10c025a7e24671b7ffbfb668d477f6122912baff45ba4606c0582f8f2969b44",
+      "total_pages": 180,
+      "needs_ocr_pages": 180,
+      "selected": 2,
+      "ok": 2,
+      "cached": 0,
+      "error": 0,
+      "not_reached": 0,
+      "seconds": 912.2,
+      "error_pages": [],
+      "file_error": null
+    }
+  }
+}

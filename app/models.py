@@ -33,9 +33,15 @@ chunking / citation / eval อ่านต่อจาก contract นี้
   ``signals``: ``ocr:seconds``, ``ocr:figure_count``, ``ocr:page_number`` (+ ``ocr:page_number_2`` หน้าคู่),
   ``ocr:tokens``, ``ocr:split_x`` / ``ocr:split_fallback`` (หน้ากว้างที่ถูกตัด), ``ocr:repeated_lines``, ``ocr:cache_hit``,
   ``ocr:text_layer_recall`` / ``ocr:text_layer_precision`` (0–1, เฉพาะหน้าที่มีชั้นข้อความเดิม; วัดอย่างเดียว ห้ามใช้ตัดสิน
-  ข้อจำกัดอยู่ใน docstring ของ ocr.py); ``<figure>`` ของโมเดลเป็น block image ที่ **ไม่รวมใน Unit.text**;
+  ข้อจำกัดอยู่ใน docstring ของ ocr.py), ``ocr:hit_max_tokens`` (จำนวนชิ้นภาพที่ชนเพดานโทเคน),
+  ``ocr:loop_trimmed_chars`` (อักขระที่ตัดทิ้งเพราะโมเดลพิมพ์วน), ``ocr:resplit`` / ``ocr:first_pass_tokens`` / ``ocr:pieces`` /
+  ``ocr:resplit_no_gap`` / ``ocr:resplit_rotated`` (หน้าที่ OCR ซ้ำแบบแบ่งบน/ล่าง; ตัวหลัง = จำนวนครึ่งหน้าที่หมุนภาพ
+  ให้ตั้งตรงก่อน OCR); ค่าใดค่าหนึ่งของ ``ocr:hit_max_tokens`` / ``ocr:loop_trimmed_chars`` > 0 -> flag ``ocr_incomplete``
+  (status ยังเป็น ok ได้); ``<figure>`` ของโมเดลเป็น block image ที่ **ไม่รวมใน Unit.text**;
   ชื่อ backend และ revision ของโมเดลเป็นข้อความ จึงเก็บใน ``reason``
   ("OCR: <backend> · <model>@<revision>") ซึ่งอนุญาตให้มีได้แม้ status = ok; unit ที่ OCR ล้มเหลว = failed
+  ทั้งกรณี backend error และกรณี OCR ได้ผลแต่ไม่ผ่านด่านตรวจ (reason ขึ้นต้น "OCR แล้วไม่ผ่านด่านตรวจ: <flag>";
+  ไม่กลับไปเป็น needs_ocr) — unit ที่ OCR แล้วจึงเป็นได้แค่ ok หรือ failed
 - ``Document.detected_type`` เป็น None ได้ก็ต่อเมื่อมี ``error`` (validator บังคับ)
 - ``Document.error`` ถ้าไม่ใช่ None ``status`` จะเป็น failed เสมอ
 - extractor ชนิดใดได้ 0 unit -> pipeline ใส่ error ``empty`` ("ไฟล์ไม่มีเนื้อหาที่อ่านได้") ไม่ปล่อยให้เป็น failed เงียบ ๆ
@@ -95,6 +101,9 @@ class QualityFlag(str, Enum):
     LOW_TEXT = "low_text"  # อักษรไทยน้อยกว่าเกณฑ์แต่ไม่มีภาพใหญ่ (หน้าคั่นบท ตารางตัวเลข) ยังใช้ได้
     IMAGE_CONTENT = "image_content"  # สไลด์ที่เนื้อหาหลักอยู่ในรูป (มีข้อความบางส่วน ค้นได้ แต่ไม่ครบ)
     DOCUMENT_FONT_BROKEN = "document_font_broken"  # ฟอนต์พังทั้งไฟล์ หน้าที่ดูสะอาดก็ไม่ไว้ใจ
+    # ผล OCR อาจไม่ครบ: ชิ้นภาพไหนชนเพดานโทเคน (ข้อความถูกตัดท้าย) หรือมีลูปที่ถูกตัดทิ้ง
+    # unit ยัง ok ได้ (ข้อความที่มีใช้ได้) แต่ต้องรู้ว่าอาจขาดเนื้อหา ดู signals ocr:hit_max_tokens / ocr:loop_trimmed_chars
+    OCR_INCOMPLETE = "ocr_incomplete"
 
 
 class DetectedType(str, Enum):

@@ -7,6 +7,9 @@ key = SHA-256 ของ JSON (เรียง key) ที่ประกอบ�
   content_hash ของไฟล์, เลขหน้า, ชื่อ backend, revision ของโมเดล, dpi (PDF; ภาพ = None),
   วิธีตัดหน้า (none / gutter / center) + ตำแหน่งตัด (ปัด 4 ตำแหน่ง), และพารามิเตอร์ของ backend
   (``backend.cache_params()`` เช่น do_sample / max_new_tokens / ด้านยาวของภาพ — ค่าใดเปลี่ยน key เปลี่ยน)
+  ชิ้นภาพของการ OCR ซ้ำแบบแบ่งบน/ล่าง (``ocr.py`` resplit) ใส่ ``region`` = (x0, y0, x1, y1) สัดส่วนของหน้า ปัด 4 ตำแหน่ง
+  และ split_method ใหม่ ("<วิธีตัดเดิม>+rows") — ไม่มี region = ไม่มี key นี้ใน fields (key ของผลเดิมไม่เปลี่ยน)
+  ชิ้นที่หมุนภาพให้ตั้งตรงก่อน OCR ใส่ ``rotation`` = องศาที่หมุนตามเข็มนาฬิกา (90 / 180 / 270); ไม่หมุน = ไม่มี key นี้
 ค่าที่เก็บ: ผลดิบของ backend ทั้งหน้า (markdown / ข้อความ, ข้อมูลเพิ่มเติม เช่นบรรทัด+bbox ของ Tesseract),
   โทเคน, เวลา (วินาทีที่ใช้จริงตอนรันครั้งแรก) พร้อม key fields ไว้ตรวจย้อนหลัง
 
@@ -33,8 +36,10 @@ def cache_dir() -> Path:
 
 
 def make_key_fields(*, content_hash: str, page: int, backend: str, revision: str, dpi: Optional[int],
-                    split_method: str, split_x: Optional[float], params: dict[str, Any]) -> dict[str, Any]:
-    return {
+                    split_method: str, split_x: Optional[float], params: dict[str, Any],
+                    region: Optional[tuple[float, float, float, float]] = None,
+                    rotation: int = 0) -> dict[str, Any]:
+    fields = {
         "v": CACHE_VERSION,
         "content_hash": content_hash,
         "page": page,
@@ -45,6 +50,11 @@ def make_key_fields(*, content_hash: str, page: int, backend: str, revision: str
         "split_x": None if split_x is None else round(split_x, 4),
         "params": dict(sorted(params.items())),
     }
+    if region is not None:
+        fields["region"] = [round(float(v), 4) for v in region]
+    if rotation:
+        fields["rotation"] = int(rotation)
+    return fields
 
 
 def make_key(fields: dict[str, Any]) -> str:
