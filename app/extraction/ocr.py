@@ -91,6 +91,7 @@ from app.extraction.ocr_loop import trim_tail_loop
 from app.extraction.ocr_markdown import parse_ocr_markdown
 from app.extraction.pdf import _norm_signals
 from app.extraction.quality import evaluate_unit
+from app.runtime import is_fatal_cuda
 from app.models import (
     Block,
     BlockType,
@@ -501,6 +502,14 @@ def _ocr_info(res: OcrResult) -> str:
     return f"OCR: {res.backend} · {res.model}@{res.revision}"
 
 
+OCR_UNAVAILABLE_PREFIX = "OCR ใช้ไม่ได้: "
+
+
+def ocr_unavailable_unit(unit: Unit, error: Exception | str) -> Unit:
+    """unit ที่ยังไม่ได้ OCR เพราะ OCR ใช้ไม่ได้ — สถานะคง needs_ocr, reason บอกเหตุผล (ส่งไฟล์ซ้ำเมื่อ OCR พร้อมจะ OCR ต่อ)"""
+    return unit.model_copy(update={"status": UnitStatus.NEEDS_OCR, "reason": f"{OCR_UNAVAILABLE_PREFIX}{error}"})
+
+
 def _failed(unit: Unit, error: Exception, elapsed_ms: float) -> Unit:
     return Unit(
         index=unit.index,
@@ -806,9 +815,16 @@ def run_ocr(
     use_cache: bool = True,
     refresh_cache: bool = False,
     resplit: bool = True,
+    on_unit: Optional[Callable[[Unit], None]] = None,
 ) -> Document:
     """OCR เฉพาะ unit ที่ needs_ocr; คืน Document ใหม่ (ของเดิมไม่ถูกแก้)
-    ``resplit`` = OCR ซ้ำแบบแบ่งบน/ล่างอัตโนมัติเมื่อรอบแรกชนเพดานโทเคน (ค่าเริ่มต้น เปิด)"""
+    ``resplit`` = OCR ซ้ำแบบแบ่งบน/ล่างอัตโนมัติเมื่อรอบแรกชนเพดานโทเคน (ค่าเริ่มต้น เปิด)
+    ``on_unit(unit_ใหม่)`` ถูกเรียกหลัง OCR แต่ละ unit (ไว้รายงานความคืบหน้า)
+    หน้าที่ error -> unit นั้น failed หน้าอื่นทำต่อ **ยกเว้น** CUDA error ที่ context ใช้ต่อไม่ได้ (``is_fatal_cuda``):
+    โยนต่อทันที (หน้าที่เหลือจะพังด้วยเหตุเดียวกัน และผู้เรียกต้องรู้ว่า GPU ใช้ต่อไม่ได้ — ไม่กลืนเป็น failed เงียบๆ)
+    ``OcrUnavailable`` (backend ใช้ไม่ได้ เช่น ไม่มี GPU / โหลดโมเดลไม่ได้ / ไม่มีโปรแกรม) -> unit **คง needs_ocr** พร้อม reason
+    ``OCR ใช้ไม่ได้: <เหตุผล>`` (ไม่ใช่ failed: หน้ายังไม่ได้ OCR ไม่ใช่ OCR แล้วพัง) หน้าอื่นทำต่อ (หน้าที่อยู่ในแคชยังได้ผลเดิม)
+    ผลของ unit ที่ OCR แล้วจึงมีแค่ ok / failed (ไม่ผ่านด่านตรวจ) — needs_ocr หลัง run_ocr = OCR ใช้ไม่ได้เท่านั้น"""
     allowed = offsite_allowed() if allow_offsite is None else allow_offsite
     if backend.sends_data_offsite and not allowed:
         raise OcrNotAllowed(
@@ -836,6 +852,14 @@ def run_ocr(
             )
             out.append(_ocr_unit(unit, res, (time.perf_counter() - t0) * 1000, page, hit,
                                  max_tokens=max_tokens_of(backend), resplit=info))
+        except OcrUnavailable as e:  # ยังไม่ได้ OCR (ไม่ใช่ OCR แล้วพัง) -> คง needs_ocr
+            if is_fatal_cuda(e) or (e.__cause__ is not None and is_fatal_cuda(e.__cause__)):
+                raise
+            out.append(ocr_unavailable_unit(unit, e))
         except Exception as e:  # รายหน้า: ไม่ให้หน้าเดียวล้มทั้งไฟล์
+            if is_fatal_cuda(e):
+                raise
             out.append(_failed(unit, e, (time.perf_counter() - t0) * 1000))
+        if on_unit is not None:
+            on_unit(out[-1])
     return document.model_copy(update={"units": out})

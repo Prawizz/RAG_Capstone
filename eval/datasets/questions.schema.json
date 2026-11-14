@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "eval/datasets/questions.schema.json",
+  "title": "questions.jsonl — ชุดคำถามวัด retrieval ที่ไม่ได้ใช้ออกแบบระบบ (บรรทัดละหนึ่ง object)",
+  "description": "ตรวจด้วย python -m eval.questions eval/datasets/questions.jsonl · hit = ผลที่ filename ตรง file และ citation.page อยู่ใน pages (หน้าเริ่มที่ 1 ตามเลขหน้าของไฟล์ PDF ไม่ใช่เลขที่พิมพ์บนหน้า) · ห้ามสร้างคำตอบ/หน้าจากผลของระบบเราเอง (กฎเหล็กข้อ 6)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["question", "type"],
+  "properties": {
+    "id": {"type": ["string", "integer"], "description": "ไม่บังคับ — ไม่ใส่ = ใช้เลขบรรทัด · ต้องไม่ซ้ำกัน"},
+    "question": {"type": "string", "minLength": 1},
+    "type": {"enum": ["question", "unanswerable", "chitchat"]},
+    "file": {"type": ["string", "null"], "minLength": 1, "description": "ชื่อไฟล์ตามที่ API แสดง (filename) — บังคับเมื่อ type = question"},
+    "pages": {"type": ["array", "null"], "items": {"type": "integer", "minimum": 1}, "uniqueItems": true,
+              "description": "หน้าที่มีหลักฐาน (หลายหน้าได้; หน้าใดหน้าหนึ่ง = hit) — บังคับและห้ามว่างเมื่อ type = question"},
+    "note": {"type": "string", "description": "ไม่บังคับ — หมายเหตุของผู้ทำชุดคำถาม"}
+  },
+  "allOf": [
+    {"if": {"properties": {"type": {"const": "question"}}},
+     "then": {"required": ["file", "pages"], "properties": {"file": {"type": "string"}, "pages": {"type": "array", "minItems": 1}}},
+     "else": {"properties": {"file": {"type": "null"}, "pages": {"type": ["null", "array"], "maxItems": 0}}}}
+  ],
+  "examples": [
+    {"id": "t1", "question": "กำไรสุทธิปี 2568 ของธนาคารเท่าไร", "type": "question", "file": "ONEREPORTKBANKT.PDF", "pages": [152, 153]},
+    {"id": "t2", "question": "ราคาหุ้นพรุ่งนี้จะขึ้นไหม", "type": "unanswerable"},
+    {"id": "t3", "question": "สวัสดีครับ", "type": "chitchat"}
+  ]
+}

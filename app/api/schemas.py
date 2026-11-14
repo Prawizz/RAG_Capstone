@@ -24,7 +24,7 @@ from typing import Any, Literal, Optional
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from app.access import BoxRole, Visibility
-from app.models import DetectedType, DocumentStatus, ErrorCode as DocumentErrorCode
+from app.models import DetectedType, DocumentStatus
 from app.models import ExtractionMethod, QualityFlag, UnitStatus, UnitType
 
 API_VERSION = "1.0.0"
@@ -57,7 +57,7 @@ class ApiErrorCode(str, Enum):
     ACL_WIDENING = "acl_widening"
     UNAVAILABLE = "unavailable"
     INTERNAL = "internal"
-    NOT_IMPLEMENTED = "not_implemented"  # เฉพาะช่วง contract freeze (route ยังเป็น stub) — จะถูกถอดออก
+    CONFLICT = "conflict"  # สถานะปัจจุบันไม่ให้ทำ (ลบไฟล์ที่งาน ingest กำลังทำอยู่) — ลองใหม่ภายหลังได้
 
 
 ERROR_STATUS: dict[ApiErrorCode, int] = {
@@ -69,7 +69,7 @@ ERROR_STATUS: dict[ApiErrorCode, int] = {
     ApiErrorCode.ACL_WIDENING: 422,
     ApiErrorCode.UNAVAILABLE: 503,
     ApiErrorCode.INTERNAL: 500,
-    ApiErrorCode.NOT_IMPLEMENTED: 501,
+    ApiErrorCode.CONFLICT: 409,
 }
 
 EX_ERR_UNAUTHORIZED = {"error_code": "unauthorized", "message": "service credential ไม่ถูกต้อง", "trace_id": _TRACE}
@@ -84,8 +84,9 @@ EX_ERR_ACL_WIDENING = {"error_code": "acl_widening",
                        "trace_id": _TRACE}
 EX_ERR_UNAVAILABLE = {"error_code": "unavailable", "message": "vector store ไม่พร้อม ลองใหม่ภายหลัง", "trace_id": _TRACE}
 EX_ERR_INTERNAL = {"error_code": "internal", "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)", "trace_id": _TRACE}
-EX_ERR_NOT_IMPLEMENTED = {"error_code": "not_implemented",
-                          "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน", "trace_id": _TRACE}
+EX_ERR_CONFLICT = {"error_code": "conflict",
+                   "message": "งาน ingest ของไฟล์นี้กำลังทำอยู่ (ocr) ลบได้หลังงานจบ — ดูสถานะที่ /v1/jobs",
+                   "trace_id": _TRACE}
 
 
 class ErrorResponse(BaseModel):
@@ -219,13 +220,17 @@ EX_INGEST_QUEUED = {"job_id": "job_01JD8Z5V7K", "file_id": "file_01JD8Z5V7M", "s
                     "trace_id": _TRACE}
 EX_INGEST_DUPLICATE = {"job_id": "job_01JD7X2A9Q", "file_id": "file_01JD7X2A9R", "status": "done_with_gaps",
                        "duplicate": True, "trace_id": _TRACE}
+EX_INGEST_DUPLICATE_REQUEUED = {"job_id": "job_01JDA7Q2W8", "file_id": "file_01JD9B3C4E", "status": "queued",
+                                "duplicate": True, "trace_id": _TRACE_2}
 
 
 class IngestResponse(BaseModel):
-    """202 = รับงานใหม่ (status queued, duplicate false) · 200 = ไฟล์ซ้ำ (content_hash เดียวกันในกล่องเดียวกัน):
-    คืน job/file เดิมพร้อมสถานะปัจจุบัน และ duplicate true"""
+    """202 = รับงานใหม่ (status queued, duplicate false) · 200 = ไฟล์ซ้ำ (content_hash เดียวกันในกล่องเดียวกัน, duplicate true):
+    คืน job/file เดิมพร้อมสถานะปัจจุบัน — ยกเว้นงานเดิม failed ด้วยเหตุชั่วคราว (unavailable / internal / conversion_timeout)
+    หรือ done_with_gaps ที่ยังมีหน้า needs_ocr (OCR ใช้ไม่ได้ตอนนั้น): เข้าคิวใหม่ = job_id ใหม่ status queued, file_id เดิม
+    (ACL / ชื่อไฟล์เดิม — ของใน request ซ้ำไม่ถูกใช้)"""
 
-    model_config = _examples(EX_INGEST_QUEUED, EX_INGEST_DUPLICATE)
+    model_config = _examples(EX_INGEST_QUEUED, EX_INGEST_DUPLICATE, EX_INGEST_DUPLICATE_REQUEUED)
 
     job_id: str
     file_id: str
@@ -276,12 +281,31 @@ class Gap(BaseModel):
         return self
 
 
+class JobErrorCode(str, Enum):
+    """รหัส error ของงาน = ``app.models.ErrorCode`` (error ของตัวไฟล์) + ``unavailable`` (ส่วนประกอบของระบบใช้ไม่ได้ชั่วคราว
+    เช่น GPU/CUDA, vector DB, OCR — ส่งไฟล์เดิมซ้ำหลังระบบกลับมาจะเข้าคิวใหม่) · เพิ่มค่าใน enum = ไม่เปลี่ยนเวอร์ชัน"""
+
+    ENCRYPTED = "encrypted"
+    CORRUPT = "corrupt"
+    UNSUPPORTED_TYPE = "unsupported_type"
+    TOO_LARGE = "too_large"
+    EMPTY = "empty"
+    CONVERSION_TIMEOUT = "conversion_timeout"
+    INTERNAL = "internal"
+    UNAVAILABLE = "unavailable"
+
+
+# error ชั่วคราว: ไฟล์ซ้ำของงานที่ล้มด้วยรหัสเหล่านี้ -> เข้าคิวใหม่ (ล้มเพราะตัวไฟล์ -> ตอบงานเดิม)
+RETRYABLE_JOB_ERRORS = frozenset({JobErrorCode.UNAVAILABLE, JobErrorCode.INTERNAL, JobErrorCode.CONVERSION_TIMEOUT})
+
+
 class JobError(BaseModel):
-    """error ระดับไฟล์ (ทั้งไฟล์ล้ม) — code มาจาก ``app.models.ErrorCode``"""
+    """error ระดับไฟล์ (ทั้งไฟล์ล้ม) — code ดู ``JobErrorCode``"""
 
-    model_config = _examples({"code": "encrypted", "message": "ไฟล์ PDF ถูกเข้ารหัส เปิดไม่ได้"})
+    model_config = _examples({"code": "encrypted", "message": "ไฟล์ PDF ถูกเข้ารหัส เปิดไม่ได้"},
+                             {"code": "unavailable", "message": "GPU ใช้ต่อไม่ได้ (CUDA error) — ส่งไฟล์เดิมซ้ำหลังระบบพร้อม"})
 
-    code: DocumentErrorCode
+    code: JobErrorCode
     message: str
 
 
@@ -292,6 +316,17 @@ EX_JOB_DONE_WITH_GAPS = {
     "units": {"ok": 39, "needs_ocr": 0, "failed": 1, "rejected": 0},
     "gaps": [{"unit_index": 11, "label": "หน้า 12", "status": "failed", "error_code": None,
               "reason": "OCR แล้วไม่ผ่านด่านตรวจ: latin_in_thai — พบจุดพัง 4 จุด (ละตินกลางคำไทย: 4)"}],
+    "error": None, "created_at": _T0, "updated_at": _T1, "trace_id": _TRACE,
+}
+EX_JOB_WAITING_FOR_OCR = {
+    "job_id": "job_01JD9B3C4D", "file_id": "file_01JD9B3C4E", "box_id": "example-finance",
+    "filename": "รายงานประจำปี_ตัวอย่าง.pdf", "status": "done_with_gaps",
+    "progress": {"pages_total": 40, "pages_done": 40}, "document_status": "done_with_gaps",
+    "units": {"ok": 38, "needs_ocr": 2, "failed": 0, "rejected": 0},
+    "gaps": [{"unit_index": 4, "label": "หน้า 5", "status": "needs_ocr", "error_code": None,
+              "reason": "OCR ใช้ไม่ได้: ไม่พบ GPU CUDA — Typhoon OCR รันบน CPU ไม่ได้ในระบบนี้ (ไม่ถอยไปใช้ CPU)"},
+             {"unit_index": 5, "label": "หน้า 6", "status": "needs_ocr", "error_code": None,
+              "reason": "OCR ใช้ไม่ได้: ไม่พบ GPU CUDA — Typhoon OCR รันบน CPU ไม่ได้ในระบบนี้ (ไม่ถอยไปใช้ CPU)"}],
     "error": None, "created_at": _T0, "updated_at": _T1, "trace_id": _TRACE,
 }
 EX_JOB_QUEUED = {
@@ -307,12 +342,20 @@ EX_JOB_FAILED = {
     "error": {"code": "encrypted", "message": "ไฟล์ PDF ถูกเข้ารหัส เปิดไม่ได้"},
     "created_at": _T0, "updated_at": _T0, "trace_id": _TRACE,
 }
+EX_JOB_FAILED_UNAVAILABLE = {
+    "job_id": "job_01JD9B3C4D", "file_id": "file_01JD9B3C4E", "box_id": "example-finance",
+    "filename": "รายงานประจำปี_ตัวอย่าง.pdf", "status": "failed", "progress": {"pages_total": 40, "pages_done": 17},
+    "document_status": None, "units": {"ok": 0, "needs_ocr": 0, "failed": 0, "rejected": 0}, "gaps": [],
+    "error": {"code": "unavailable", "message": "GPU ใช้ต่อไม่ได้ (CUDA error) — ส่งไฟล์เดิมซ้ำหลังระบบพร้อม"},
+    "created_at": _T0, "updated_at": _T1, "trace_id": _TRACE,
+}
 
 
 class JobResponse(BaseModel):
     """สถานะงาน ingest — เห็นได้เฉพาะผู้ส่งหรือ owner/admin ของกล่อง (ไม่ใช่ -> 404)"""
 
-    model_config = _examples(EX_JOB_DONE_WITH_GAPS, EX_JOB_QUEUED, EX_JOB_FAILED)
+    model_config = _examples(EX_JOB_DONE_WITH_GAPS, EX_JOB_WAITING_FOR_OCR, EX_JOB_QUEUED, EX_JOB_FAILED,
+                             EX_JOB_FAILED_UNAVAILABLE)
 
     job_id: str
     file_id: str
@@ -511,10 +554,11 @@ EX_RETRIEVE_NOT_MEMBER = {**EX_RETRIEVE_EMPTY_MEMBER, "trace_id": _TRACE_2}
 class RetrieveResult(BaseModel):
     model_config = _examples(EX_RESULT_1)
 
-    rank: int = Field(ge=1)
-    chunk_id: str
-    score: float
-    text: str
+    rank: int = Field(ge=1, description="ลำดับจากการค้น (RRF ของ dense + sparse ตาม SEARCH_MODE) 1 = อันดับแรก")
+    chunk_id: str = Field(description="{file_id}:u{ลำดับ unit 4 หลัก}:c{ลำดับ chunk ใน unit 3 หลัก}")
+    score: float = Field(description="dense cosine ระหว่างคำถามกับ chunk (เทียบข้ามคำถามได้ ใช้ตัดสิน no_relevant_context) — "
+                                     "ไม่ใช่ค่าที่ใช้เรียง จึงไม่จำเป็นต้องลดลงตาม rank · top_score = ค่าสูงสุด")
+    text: str = Field(description="เนื้อ chunk ตามช่วง citation.char_start–char_end ของข้อความ unit")
     file_id: str
     filename: str
     citation: Citation
@@ -630,6 +674,38 @@ class MemberRemovedResponse(BaseModel):
 
 
 # ---------------------------------------------------------------------------------------------
+# ลบไฟล์
+# ---------------------------------------------------------------------------------------------
+
+EX_DELETE_FILE = {"file_id": "file_01JD7X2A9R", "box_id": "example-finance", "status": "deleted", "points_deleted": 1415,
+                  "original_deleted": True, "document_deleted": True, "cancelled_jobs": 0, "trace_id": _TRACE}
+EX_DELETE_FILE_QUEUED = {"file_id": "file_01JD8Z5V7M", "box_id": "example-finance", "status": "deleted",
+                         "points_deleted": 0, "original_deleted": True, "document_deleted": False, "cancelled_jobs": 1,
+                         "trace_id": _TRACE_2}
+
+
+class DeleteFileResponse(BaseModel):
+    """ลบไฟล์แล้ว: ไฟล์หายจาก /v1/sources และ /v1/retrieve ทันที · /v1/jobs ของไฟล์นี้ตอบ 404 · ลบซ้ำ = 404
+
+    ``points_deleted`` = point ใน vector store ที่ลบ (ทั้งสอง collection) · ``original_deleted`` / ``document_deleted`` =
+    ต้นฉบับ / ผล extract บนดิสก์ถูกลบ (false = ไม่มีอยู่แล้ว เช่น งานยังไม่เริ่ม) · ``cancelled_jobs`` = งานที่ยัง queued แล้วถูกยกเลิก
+    แคช OCR ของเนื้อไฟล์ (ลบ หรือเก็บไว้เพราะมีไฟล์เนื้อหาเดียวกันในกล่องอื่น) **ไม่อยู่ใน response** — บอกผู้ลบว่ามีไฟล์เนื้อหา
+    เดียวกันในกล่องที่เขาอาจไม่เห็น = ขัดกฎเหล็กข้อ 9 · ดูได้ใน log ของ service เท่านั้น
+    """
+
+    model_config = _examples(EX_DELETE_FILE, EX_DELETE_FILE_QUEUED)
+
+    file_id: str
+    box_id: str
+    status: Literal["deleted"] = "deleted"
+    points_deleted: int = Field(ge=0)
+    original_deleted: bool
+    document_deleted: bool
+    cancelled_jobs: int = Field(ge=0)
+    trace_id: str
+
+
+# ---------------------------------------------------------------------------------------------
 # ตัวอย่างทั้งหมด: ชื่อไฟล์ (<endpoint>_<case>) -> (model, payload)
 # ---------------------------------------------------------------------------------------------
 
@@ -641,13 +717,16 @@ EXAMPLES: dict[str, tuple[type[BaseModel], dict[str, Any]]] = {
     "ingest_file_acl": (FileAclInput, EX_FILE_ACL),
     "ingest_queued": (IngestResponse, EX_INGEST_QUEUED),
     "ingest_duplicate": (IngestResponse, EX_INGEST_DUPLICATE),
+    "ingest_duplicate_requeued": (IngestResponse, EX_INGEST_DUPLICATE_REQUEUED),
     "ingest_not_found": (ErrorResponse, EX_ERR_NOT_FOUND),
     "ingest_acl_widening": (ErrorResponse, EX_ERR_ACL_WIDENING),
     "ingest_too_large": (ErrorResponse, EX_ERR_TOO_LARGE),
     "ingest_unsupported_type": (ErrorResponse, EX_ERR_UNSUPPORTED),
     "jobs_done_with_gaps": (JobResponse, EX_JOB_DONE_WITH_GAPS),
+    "jobs_done_with_gaps_needs_ocr": (JobResponse, EX_JOB_WAITING_FOR_OCR),
     "jobs_queued": (JobResponse, EX_JOB_QUEUED),
     "jobs_failed": (JobResponse, EX_JOB_FAILED),
+    "jobs_failed_unavailable": (JobResponse, EX_JOB_FAILED_UNAVAILABLE),
     "jobs_not_found": (ErrorResponse, EX_ERR_NOT_FOUND),
     "sources_list": (SourcesResponse, EX_SOURCES),
     "sources_list_empty": (SourcesResponse, EX_SOURCES_EMPTY),
@@ -668,9 +747,12 @@ EXAMPLES: dict[str, tuple[type[BaseModel], dict[str, Any]]] = {
     "members_put_ok": (MemberResponse, EX_MEMBER),
     "members_put_not_found": (ErrorResponse, EX_ERR_NOT_FOUND),
     "members_delete_ok": (MemberRemovedResponse, EX_MEMBER_REMOVED),
+    "files_delete_ok": (DeleteFileResponse, EX_DELETE_FILE),
+    "files_delete_queued": (DeleteFileResponse, EX_DELETE_FILE_QUEUED),
+    "files_delete_conflict": (ErrorResponse, EX_ERR_CONFLICT),
+    "files_delete_not_found": (ErrorResponse, EX_ERR_NOT_FOUND),
     "error_unauthorized": (ErrorResponse, EX_ERR_UNAUTHORIZED),
     "error_invalid_request": (ErrorResponse, EX_ERR_INVALID),
     "error_unavailable": (ErrorResponse, EX_ERR_UNAVAILABLE),
     "error_internal": (ErrorResponse, EX_ERR_INTERNAL),
-    "error_not_implemented": (ErrorResponse, EX_ERR_NOT_IMPLEMENTED),
 }

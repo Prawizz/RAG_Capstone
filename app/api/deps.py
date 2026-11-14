@@ -24,6 +24,7 @@ from fastapi.security import APIKeyHeader
 from app.access import AclStore, Principal
 from app.api.errors import ApiError
 from app.api.schemas import ApiErrorCode
+from app.api.services import Services, services_of
 from app.config import Settings, get_settings as _load_settings
 
 SERVICE_KEY_HEADER = "X-Service-Key"
@@ -37,17 +38,19 @@ _service_key_scheme = APIKeyHeader(
     description="service credential ของ Gateway (placeholder — ของจริงจะเป็น mTLS หรือ signed token) ผิด/ไม่ส่ง -> 401",
 )
 
-_acl_store = AclStore()
-
-
 def get_settings() -> Settings:
     """override ใน test ด้วย ``app.dependency_overrides[get_settings]``"""
     return _load_settings()
 
 
-def get_acl_store() -> AclStore:
-    """AclStore ของ process (ยังอยู่ในหน่วยความจำ) — override ใน test ได้"""
-    return _acl_store
+def get_services(request: Request, settings: Annotated[Settings, Depends(get_settings)]) -> Services:
+    """ที่เก็บถาวร + AclStore + การรับไฟล์ + worker ของ app นี้ (``app/api/services.py``)"""
+    return services_of(request.app, settings)
+
+
+def get_acl_store(services: Annotated[Services, Depends(get_services)]) -> AclStore:
+    """AclStore ของ process (เขียนผ่านไป SQLite) — override ใน test ได้"""
+    return services.acl
 
 
 def require_service(

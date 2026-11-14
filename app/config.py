@@ -11,10 +11,17 @@
 - collection แยก public / private ตาม PLAN.md ข้อ 8 (Public/Private อยู่คนละ collection)
 - ``embedding_device`` (EMBEDDING_DEVICE = auto|cpu|cuda) และ ``ocr_backend`` (OCR_BACKEND = auto|typhoon-local|tesseract-local)
   ตัดสินค่าจริงที่ ``app/runtime.py`` (log ทุกครั้ง ไม่ fallback เงียบ) — ค่าอื่นนอกจากนี้ = error ตอนอ่านค่าตั้ง
+- ``data_dir`` (DATA_DIR, ค่าเริ่มต้น ``<repo>/data``) = ที่เก็บถาวร: ``rag.db`` (SQLite), ``files/<file_id>`` (ต้นฉบับ),
+  ``documents/<file_id>.json`` (ผล extract ทั้งไฟล์ ไว้ re-index) — ดู ``app/storage.py``
 - ``service_key`` (SERVICE_KEY) = ค่าที่ Gateway ส่งใน header ``X-Service-Key`` — placeholder ของ service auth
   (ของจริงจะเป็น mTLS หรือ signed token) ไม่ตั้ง = ทุก request ที่ต้อง auth ได้ 401 (fail closed)
 - ``system_admin_users`` (SYSTEM_ADMIN_USERS คั่นด้วยจุลภาค) = user_id ที่สร้างกล่องได้ (role admin ระดับระบบ)
 - ``retrieve_min_score`` (RETRIEVE_MIN_SCORE) = เกณฑ์ no_relevant_context — ค่า placeholder จนกว่าจะ calibrate
+- ส่วนเสริมของ ``/v1/retrieve`` (ปิดทั้งหมดเป็นค่าเริ่มต้น — ทดลอง ยังไม่ผ่านการวัดบนชุดที่ไม่ได้ใช้ออกแบบ):
+  ``reranker`` (RERANKER = off|bge-v2-m3) cross-encoder จัดอันดับ 20 อันดับแรกจาก RRF ใหม่ (``app/reranker.py``) บน
+  ``reranker_device`` (RERANKER_DEVICE = cpu|cuda) · ``query_expansion`` (QUERY_EXPANSION) ขยายคำถามด้วย ``app/query_expansion.py``
+  ก่อน embed · ``salience_rerank`` (SALIENCE_RERANK) จัดอันดับใหม่ด้วย ``app/rerank.py::rerank_hits`` — เปิด reranker
+  สองตัวพร้อมกันไม่ได้ (ยังไม่มีการออกแบบว่าซ้อนกันอย่างไร) = error ตอนอ่านค่าตั้ง
 
 ``.env`` ไม่เข้า git (ดู .gitignore) ใช้ ``.env.example`` เป็นแม่แบบ
 """
@@ -26,7 +33,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Literal, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 # ค่าเริ่มต้น: แก้ที่นี่ที่เดียว
 DEFAULT_QDRANT_URL = "http://localhost:6333"
@@ -46,6 +53,13 @@ DEFAULT_RETRIEVE_MIN_SCORE = 0.3  # placeholder จนกว่าจะ calibra
 DEFAULT_MAX_UPLOAD_BYTES = 50 * 1024 * 1024  # 50 MB
 
 ENV_FILE = ".env"
+DEFAULT_DATA_DIR = Path(__file__).resolve().parent.parent / "data"  # <repo>/data (อยู่ใน .gitignore)
+
+
+def _default_data_dir() -> Path:
+    """DATA_DIR จาก environment ถ้ามี (test ตั้งเป็น tmp ทุก test ใน conftest — ห้ามเขียนลง data/ จริง)"""
+    env = os.environ.get("DATA_DIR")
+    return Path(env) if env else DEFAULT_DATA_DIR
 
 
 def load_env_file(path: str | Path = ENV_FILE) -> dict[str, str]:
@@ -91,6 +105,17 @@ class Settings(BaseModel):
     system_admin_users: frozenset[str] = frozenset()
     retrieve_min_score: float = DEFAULT_RETRIEVE_MIN_SCORE
     max_upload_bytes: int = Field(default=DEFAULT_MAX_UPLOAD_BYTES, gt=0)
+    data_dir: Path = Field(default_factory=_default_data_dir)  # rag.db + files/ + documents/
+    reranker: Literal["off", "bge-v2-m3"] = "off"
+    reranker_device: Literal["cpu", "cuda"] = "cpu"
+    query_expansion: bool = False
+    salience_rerank: bool = False
+
+    @model_validator(mode="after")
+    def _one_reranker(self) -> "Settings":
+        if self.reranker != "off" and self.salience_rerank:
+            raise ValueError("เปิด RERANKER กับ SALIENCE_RERANK พร้อมกันไม่ได้ (เลือกอย่างใดอย่างหนึ่ง)")
+        return self
 
 
 def _env(source: dict[str, str], key: str) -> Optional[str]:
@@ -122,6 +147,11 @@ def build_settings(env_file: str | Path = ENV_FILE) -> Settings:
         ("service_key", "SERVICE_KEY"),
         ("retrieve_min_score", "RETRIEVE_MIN_SCORE"),
         ("max_upload_bytes", "MAX_UPLOAD_BYTES"),
+        ("data_dir", "DATA_DIR"),
+        ("reranker", "RERANKER"),
+        ("reranker_device", "RERANKER_DEVICE"),
+        ("query_expansion", "QUERY_EXPANSION"),
+        ("salience_rerank", "SALIENCE_RERANK"),
     ):
         value = _env(source, key)
         if value is not None:

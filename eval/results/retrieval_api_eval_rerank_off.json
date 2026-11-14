@@ -1,0 +1,7139 @@
+{
+ "base_url": "http://127.0.0.1:8000",
+ "measured_at": "2026-11-14 04:01",
+ "n_requests": 100,
+ "search_mode": "dense+sparse_bge",
+ "chunk_target_chars": 1000,
+ "retrieve_min_score": 0.3,
+ "fuzzy_threshold": 80,
+ "limit": 10,
+ "reachable": {
+  "old": {
+   "n": 50,
+   "recall_at_1": 0.42,
+   "recall_at_5": 0.66,
+   "mrr": 0.5359126984126984
+  },
+  "new": {
+   "n": 50,
+   "recall_at_1": 0.42,
+   "recall_at_5": 0.66,
+   "mrr": 0.5334126984126983
+  }
+ },
+ "all": {
+  "n": 70,
+  "recall_at_1": 0.34285714285714286,
+  "recall_at_5": 0.5285714285714286,
+  "mrr": 0.4322562358276643
+ },
+ "all_old": {
+  "n": 70,
+  "recall_at_1": 0.3,
+  "recall_at_5": 0.4714285714285714,
+  "mrr": 0.38279478458049887
+ },
+ "by_doc": {
+  "CPALL": {
+   "n": 22,
+   "recall_at_1": 0.5909090909090909,
+   "recall_at_5": 0.6818181818181818,
+   "mrr": 0.6363636363636364
+  },
+  "PTT": {
+   "n": 29,
+   "recall_at_1": 0.27586206896551724,
+   "recall_at_5": 0.6206896551724138,
+   "mrr": 0.4369184455391353
+  },
+  "KBANK": {
+   "n": 19,
+   "recall_at_1": 0.15789473684210525,
+   "recall_at_5": 0.21052631578947367,
+   "mrr": 0.18880534670008356
+  }
+ },
+ "by_doc_old": {
+  "CPALL": {
+   "n": 22,
+   "recall_at_1": 0.6363636363636364,
+   "recall_at_5": 0.6818181818181818,
+   "mrr": 0.6655844155844156
+  },
+  "PTT": {
+   "n": 29,
+   "recall_at_1": 0.2413793103448276,
+   "recall_at_5": 0.6206896551724138,
+   "mrr": 0.4190613026819924
+  },
+  "KBANK": {
+   "n": 19,
+   "recall_at_1": 0.0,
+   "recall_at_5": 0.0,
+   "mrr": 0.0
+  }
+ },
+ "per_question": {
+  "better": 2,
+  "worse": 2,
+  "same": 46,
+  "changed": [
+   {
+    "question_id": "5",
+    "doc": "CPALL",
+    "old": 7,
+    "new": null
+   },
+   {
+    "question_id": "36",
+    "doc": "PTT",
+    "old": 8,
+    "new": 7
+   },
+   {
+    "question_id": "39",
+    "doc": "PTT",
+    "old": 2,
+    "new": 1
+   },
+   {
+    "question_id": "46",
+    "doc": "CPALL",
+    "old": 1,
+    "new": 2
+   }
+  ]
+ },
+ "latency": {
+  "client": {
+   "n": 100,
+   "p50": 135.01899999391753,
+   "p95": 161.1266700012493,
+   "max": 169.15689999586903,
+   "mean": 135.6711680002627
+  },
+  "embed": {
+   "n": 100,
+   "p50": 105.0,
+   "p95": 129.11499999999998,
+   "max": 136.3,
+   "mean": 105.76799999999999
+  },
+  "search": {
+   "n": 100,
+   "p50": 19.95,
+   "p95": 36.33,
+   "max": 48.5,
+   "mean": 23.01
+  },
+  "map": {
+   "n": 100,
+   "p50": 1.8,
+   "p95": 1.9,
+   "max": 2.0,
+   "mean": 1.78
+  },
+  "server_total": {
+   "n": 100,
+   "p50": 129.9,
+   "p95": 155.71,
+   "max": 163.70000000000002,
+   "mean": 130.55800000000002
+  }
+ },
+ "label": "RERANKER=off",
+ "top_score": {
+  "question: hit@1": {
+   "n": 24,
+   "min": 0.5728,
+   "p10": 0.58983,
+   "p25": 0.6144,
+   "median": 0.66875,
+   "p75": 0.7406,
+   "p90": 0.75845,
+   "max": 0.7824,
+   "mean": 0.6739999999999999,
+   "share_at_or_above": {
+    "0.3": 1.0,
+    "0.4": 1.0,
+    "0.45": 1.0,
+    "0.5": 1.0,
+    "0.55": 1.0,
+    "0.6": 0.7916666666666666,
+    "0.65": 0.5833333333333334,
+    "0.7": 0.4166666666666667
+   }
+  },
+  "question: hit อันดับ 2–10": {
+   "n": 18,
+   "min": 0.6138,
+   "p10": 0.6463099999999999,
+   "p25": 0.672975,
+   "median": 0.7125,
+   "p75": 0.7406,
+   "p90": 0.7544299999999999,
+   "max": 0.7881,
+   "mean": 0.7070888888888889,
+   "share_at_or_above": {
+    "0.3": 1.0,
+    "0.4": 1.0,
+    "0.45": 1.0,
+    "0.5": 1.0,
+    "0.55": 1.0,
+    "0.6": 1.0,
+    "0.65": 0.8888888888888888,
+    "0.7": 0.6111111111111112
+   }
+  },
+  "question: ไม่ hit ใน 10": {
+   "n": 28,
+   "min": 0.5811,
+   "p10": 0.62658,
+   "p25": 0.6726,
+   "median": 0.69475,
+   "p75": 0.7385250000000001,
+   "p90": 0.7656000000000001,
+   "max": 0.7896,
+   "mean": 0.6991428571428572,
+   "share_at_or_above": {
+    "0.3": 1.0,
+    "0.4": 1.0,
+    "0.45": 1.0,
+    "0.5": 1.0,
+    "0.55": 1.0,
+    "0.6": 0.9642857142857143,
+    "0.65": 0.8571428571428571,
+    "0.7": 0.42857142857142855
+   }
+  },
+  "chitchat": {
+   "n": 10,
+   "min": 0.3869,
+   "p10": 0.42677000000000004,
+   "p25": 0.45,
+   "median": 0.48595,
+   "p75": 0.5156000000000001,
+   "p90": 0.52076,
+   "max": 0.5249,
+   "mean": 0.47706,
+   "share_at_or_above": {
+    "0.3": 1.0,
+    "0.4": 0.9,
+    "0.45": 0.7,
+    "0.5": 0.4,
+    "0.55": 0.0,
+    "0.6": 0.0,
+    "0.65": 0.0,
+    "0.7": 0.0
+   }
+  },
+  "unanswerable": {
+   "n": 20,
+   "min": 0.5299,
+   "p10": 0.55884,
+   "p25": 0.571375,
+   "median": 0.5971500000000001,
+   "p75": 0.635825,
+   "p90": 0.6516500000000001,
+   "max": 0.685,
+   "mean": 0.60201,
+   "share_at_or_above": {
+    "0.3": 1.0,
+    "0.4": 1.0,
+    "0.45": 1.0,
+    "0.5": 1.0,
+    "0.55": 0.9,
+    "0.6": 0.45,
+    "0.65": 0.1,
+    "0.7": 0.0
+   }
+  }
+ },
+ "rerank_score": null,
+ "rerank_top": null,
+ "status_by_type": {
+  "question": {
+   "ok": 70
+  },
+  "unanswerable": {
+   "ok": 20
+  },
+  "chitchat": {
+   "ok": 10
+  }
+ },
+ "ranks": {
+  "1": 1,
+  "2": 1,
+  "3": null,
+  "4": null,
+  "5": null,
+  "6": null,
+  "7": 1,
+  "8": 1,
+  "9": 1,
+  "10": 1,
+  "11": 1,
+  "12": 2,
+  "13": 1,
+  "14": null,
+  "15": null,
+  "16": null,
+  "17": null,
+  "18": null,
+  "19": null,
+  "20": null,
+  "21": 1,
+  "22": 1,
+  "23": null,
+  "24": 1,
+  "25": 2,
+  "26": 2,
+  "27": 2,
+  "28": null,
+  "29": null,
+  "30": 3,
+  "31": 9,
+  "32": 1,
+  "33": 1,
+  "34": 4,
+  "35": 2,
+  "36": 7,
+  "37": 2,
+  "38": 2,
+  "39": 1,
+  "40": null,
+  "41": 1,
+  "42": 1,
+  "43": 1,
+  "44": 1,
+  "45": 1,
+  "46": 2,
+  "47": 1,
+  "48": null,
+  "49": null,
+  "50": null,
+  "51": null,
+  "52": 7,
+  "53": null,
+  "54": null,
+  "55": 3,
+  "56": 9,
+  "57": null,
+  "58": 1,
+  "59": null,
+  "60": 1,
+  "61": null,
+  "62": null,
+  "63": 6,
+  "64": 3,
+  "65": 1,
+  "66": null,
+  "67": 1,
+  "68": 3,
+  "69": null,
+  "70": null
+ },
+ "responses": {
+  "1": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-1",
+   "status": "ok",
+   "top_score": 0.7244,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0000:c000",
+     "score": 0.7244,
+     "label": "หน้า 1",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0385:c000",
+     "score": 0.719,
+     "label": "หน้า 386",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0410:c000",
+     "score": 0.7238,
+     "label": "หน้า 411",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0385:c001",
+     "score": 0.694,
+     "label": "หน้า 386",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0385:c002",
+     "score": 0.6833,
+     "label": "หน้า 386",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0491:c000",
+     "score": 0.706,
+     "label": "หน้า 492",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0492:c000",
+     "score": 0.7129,
+     "label": "หน้า 493",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0471:c000",
+     "score": 0.6889,
+     "label": "หน้า 472",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0477:c000",
+     "score": 0.6926,
+     "label": "หน้า 478",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0505:c000",
+     "score": 0.7059,
+     "label": "หน้า 506",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "2": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-2",
+   "status": "ok",
+   "top_score": 0.7106,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0005:c000",
+     "score": 0.6634,
+     "label": "หน้า 6",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0005:c001",
+     "score": 0.7106,
+     "label": "หน้า 6",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0004:c000",
+     "score": 0.6357,
+     "label": "หน้า 5",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0172:c001",
+     "score": 0.6742,
+     "label": "หน้า 173",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0020:c004",
+     "score": 0.6247,
+     "label": "หน้า 21",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0172:c000",
+     "score": 0.6732,
+     "label": "หน้า 173",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0014:c001",
+     "score": 0.6016,
+     "label": "หน้า 15",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0137:c004",
+     "score": 0.6651,
+     "label": "หน้า 138",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0025:c002",
+     "score": 0.615,
+     "label": "หน้า 26",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0410:c000",
+     "score": 0.6274,
+     "label": "หน้า 411",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "3": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-3",
+   "status": "ok",
+   "top_score": 0.7896,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0505:c000",
+     "score": 0.7896,
+     "label": "หน้า 506",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0508:c000",
+     "score": 0.694,
+     "label": "หน้า 509",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0504:c000",
+     "score": 0.7697,
+     "label": "หน้า 505",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0397:c000",
+     "score": 0.7734,
+     "label": "หน้า 398",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0436:c000",
+     "score": 0.7538,
+     "label": "หน้า 437",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0510:c000",
+     "score": 0.7648,
+     "label": "หน้า 511",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0435:c000",
+     "score": 0.7533,
+     "label": "หน้า 436",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0403:c000",
+     "score": 0.7408,
+     "label": "หน้า 404",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0519:c000",
+     "score": 0.7527,
+     "label": "หน้า 520",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0506:c000",
+     "score": 0.745,
+     "label": "หน้า 507",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "4": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-4",
+   "status": "ok",
+   "top_score": 0.7786,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0397:c000",
+     "score": 0.7786,
+     "label": "หน้า 398",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0519:c000",
+     "score": 0.7752,
+     "label": "หน้า 520",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0403:c000",
+     "score": 0.7525,
+     "label": "หน้า 404",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0505:c000",
+     "score": 0.7735,
+     "label": "หน้า 506",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0514:c000",
+     "score": 0.7481,
+     "label": "หน้า 515",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0465:c000",
+     "score": 0.7124,
+     "label": "หน้า 466",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0515:c000",
+     "score": 0.7385,
+     "label": "หน้า 516",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0435:c000",
+     "score": 0.7536,
+     "label": "หน้า 436",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0506:c000",
+     "score": 0.7431,
+     "label": "หน้า 507",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0398:c000",
+     "score": 0.7461,
+     "label": "หน้า 399",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "5": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-5",
+   "status": "ok",
+   "top_score": 0.6736,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0449:c000",
+     "score": 0.6736,
+     "label": "หน้า 450",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0005:c001",
+     "score": 0.6116,
+     "label": "หน้า 6",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0139:c001",
+     "score": 0.6463,
+     "label": "หน้า 140",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0450:c000",
+     "score": 0.6399,
+     "label": "หน้า 451",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0452:c000",
+     "score": 0.6187,
+     "label": "หน้า 453",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0139:c002",
+     "score": 0.6247,
+     "label": "หน้า 140",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0508:c000",
+     "score": 0.6308,
+     "label": "หน้า 509",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0410:c000",
+     "score": 0.6247,
+     "label": "หน้า 411",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0004:c001",
+     "score": 0.6267,
+     "label": "หน้า 5",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0448:c000",
+     "score": 0.6194,
+     "label": "หน้า 449",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "6": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-6",
+   "status": "ok",
+   "top_score": 0.6938,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0410:c000",
+     "score": 0.66,
+     "label": "หน้า 411",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0508:c000",
+     "score": 0.6721,
+     "label": "หน้า 509",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0449:c000",
+     "score": 0.6938,
+     "label": "หน้า 450",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0505:c000",
+     "score": 0.6732,
+     "label": "หน้า 506",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0005:c001",
+     "score": 0.6245,
+     "label": "หน้า 6",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0451:c000",
+     "score": 0.6711,
+     "label": "หน้า 452",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0507:c000",
+     "score": 0.6362,
+     "label": "หน้า 508",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0450:c000",
+     "score": 0.666,
+     "label": "หน้า 451",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0025:c002",
+     "score": 0.6341,
+     "label": "หน้า 26",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0452:c000",
+     "score": 0.6643,
+     "label": "หน้า 453",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "7": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-7",
+   "status": "ok",
+   "top_score": 0.5856,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c000",
+     "score": 0.57,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0450:c000",
+     "score": 0.5856,
+     "label": "หน้า 451",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0435:c000",
+     "score": 0.5855,
+     "label": "หน้า 436",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0452:c000",
+     "score": 0.5363,
+     "label": "หน้า 453",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0449:c000",
+     "score": 0.5678,
+     "label": "หน้า 450",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0410:c000",
+     "score": 0.5124,
+     "label": "หน้า 411",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0451:c000",
+     "score": 0.5589,
+     "label": "หน้า 452",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0446:c000",
+     "score": 0.568,
+     "label": "หน้า 447",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0004:c001",
+     "score": 0.5361,
+     "label": "หน้า 5",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0005:c001",
+     "score": 0.4971,
+     "label": "หน้า 6",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "8": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-8",
+   "status": "ok",
+   "top_score": 0.5728,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c000",
+     "score": 0.5728,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0018:c001",
+     "score": 0.5227,
+     "label": "หน้า 19",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0019:c001",
+     "score": 0.5712,
+     "label": "หน้า 20",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0143:c001",
+     "score": 0.5476,
+     "label": "หน้า 144",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0136:c003",
+     "score": 0.5566,
+     "label": "หน้า 137",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0135:c004",
+     "score": 0.566,
+     "label": "หน้า 136",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0022:c005",
+     "score": 0.5593,
+     "label": "หน้า 23",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0136:c002",
+     "score": 0.5563,
+     "label": "หน้า 137",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0019:c002",
+     "score": 0.5453,
+     "label": "หน้า 20",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0019:c000",
+     "score": 0.555,
+     "label": "หน้า 20",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "9": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-9",
+   "status": "ok",
+   "top_score": 0.6153,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c005",
+     "score": 0.6153,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c007",
+     "score": 0.5606,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0020:c002",
+     "score": 0.4239,
+     "label": "หน้า 21",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0016:c002",
+     "score": 0.4437,
+     "label": "หน้า 17",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c004",
+     "score": 0.5115,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c006",
+     "score": 0.5467,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0120:c004",
+     "score": 0.3374,
+     "label": "หน้า 121",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0144:c004",
+     "score": 0.4351,
+     "label": "หน้า 145",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0059:c000",
+     "score": 0.3798,
+     "label": "หน้า 60",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0041:c001",
+     "score": 0.4985,
+     "label": "หน้า 42",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "10": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-10",
+   "status": "ok",
+   "top_score": 0.6117,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c006",
+     "score": 0.6117,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0149:c002",
+     "score": 0.5028,
+     "label": "หน้า 150",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0186:c006",
+     "score": 0.4724,
+     "label": "หน้า 187",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c005",
+     "score": 0.4908,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0033:c000",
+     "score": 0.3888,
+     "label": "หน้า 34",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0009:c003",
+     "score": 0.4876,
+     "label": "หน้า 10",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0059:c000",
+     "score": 0.3,
+     "label": "หน้า 60",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0016:c002",
+     "score": 0.464,
+     "label": "หน้า 17",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c007",
+     "score": 0.4777,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0015:c003",
+     "score": 0.4303,
+     "label": "หน้า 16",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "11": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-11",
+   "status": "ok",
+   "top_score": 0.638,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0005:c000",
+     "score": 0.6331,
+     "label": "หน้า 6",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0137:c004",
+     "score": 0.638,
+     "label": "หน้า 138",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0504:c000",
+     "score": 0.5192,
+     "label": "หน้า 505",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0139:c001",
+     "score": 0.6233,
+     "label": "หน้า 140",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0435:c000",
+     "score": 0.5417,
+     "label": "หน้า 436",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0005:c001",
+     "score": 0.6223,
+     "label": "หน้า 6",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0004:c000",
+     "score": 0.6005,
+     "label": "หน้า 5",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0436:c000",
+     "score": 0.5381,
+     "label": "หน้า 437",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0009:c001",
+     "score": 0.6149,
+     "label": "หน้า 10",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0189:c002",
+     "score": 0.6076,
+     "label": "หน้า 190",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "12": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-12",
+   "status": "ok",
+   "top_score": 0.7497,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0009:c001",
+     "score": 0.7497,
+     "label": "หน้า 10",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0005:c001",
+     "score": 0.6886,
+     "label": "หน้า 6",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0095:c002",
+     "score": 0.7313,
+     "label": "หน้า 96",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0009:c000",
+     "score": 0.6674,
+     "label": "หน้า 10",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0137:c004",
+     "score": 0.6754,
+     "label": "หน้า 138",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0123:c002",
+     "score": 0.6949,
+     "label": "หน้า 124",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0095:c004",
+     "score": 0.669,
+     "label": "หน้า 96",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0172:c001",
+     "score": 0.6655,
+     "label": "หน้า 173",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0115:c001",
+     "score": 0.6699,
+     "label": "หน้า 116",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0172:c000",
+     "score": 0.64,
+     "label": "หน้า 173",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "13": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-13",
+   "status": "ok",
+   "top_score": 0.7784,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0133:c000",
+     "score": 0.7784,
+     "label": "หน้า 134",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0020:c004",
+     "score": 0.6813,
+     "label": "หน้า 21",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0139:c000",
+     "score": 0.7688,
+     "label": "หน้า 140",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0134:c003",
+     "score": 0.6819,
+     "label": "หน้า 135",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0119:c000",
+     "score": 0.7641,
+     "label": "หน้า 120",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0104:c000",
+     "score": 0.7193,
+     "label": "หน้า 105",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0127:c000",
+     "score": 0.7577,
+     "label": "หน้า 128",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0121:c000",
+     "score": 0.7459,
+     "label": "หน้า 122",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0066:c007",
+     "score": 0.7595,
+     "label": "หน้า 67",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0077:c000",
+     "score": 0.7575,
+     "label": "หน้า 78",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "14": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-14",
+   "status": "ok",
+   "top_score": 0.7205,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0085:c007",
+     "score": 0.6978,
+     "label": "หน้า 86",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0087:c004",
+     "score": 0.6803,
+     "label": "หน้า 88",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0104:c000",
+     "score": 0.7205,
+     "label": "หน้า 105",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0121:c000",
+     "score": 0.7177,
+     "label": "หน้า 122",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0020:c004",
+     "score": 0.6803,
+     "label": "หน้า 21",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0085:c010",
+     "score": 0.6961,
+     "label": "หน้า 86",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0118:c002",
+     "score": 0.6968,
+     "label": "หน้า 119",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0084:c004",
+     "score": 0.6818,
+     "label": "หน้า 85",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0019:c004",
+     "score": 0.6716,
+     "label": "หน้า 20",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0104:c003",
+     "score": 0.694,
+     "label": "หน้า 105",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "15": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-15",
+   "status": "ok",
+   "top_score": 0.718,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0085:c007",
+     "score": 0.711,
+     "label": "หน้า 86",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0104:c000",
+     "score": 0.718,
+     "label": "หน้า 105",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0018:c003",
+     "score": 0.6544,
+     "label": "หน้า 19",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0121:c000",
+     "score": 0.6935,
+     "label": "หน้า 122",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0084:c004",
+     "score": 0.6838,
+     "label": "หน้า 85",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0085:c010",
+     "score": 0.6938,
+     "label": "หน้า 86",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0022:c006",
+     "score": 0.6361,
+     "label": "หน้า 23",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c002",
+     "score": 0.6722,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0144:c002",
+     "score": 0.6929,
+     "label": "หน้า 145",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0149:c002",
+     "score": 0.667,
+     "label": "หน้า 150",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "16": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-16",
+   "status": "ok",
+   "top_score": 0.7617,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c002",
+     "score": 0.7617,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c003",
+     "score": 0.7103,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0084:c003",
+     "score": 0.7231,
+     "label": "หน้า 85",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0084:c004",
+     "score": 0.713,
+     "label": "หน้า 85",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0003:c006",
+     "score": 0.6329,
+     "label": "หน้า 4",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0120:c000",
+     "score": 0.7145,
+     "label": "หน้า 121",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0149:c002",
+     "score": 0.7074,
+     "label": "หน้า 150",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0147:c003",
+     "score": 0.7136,
+     "label": "หน้า 148",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0121:c000",
+     "score": 0.709,
+     "label": "หน้า 122",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0104:c000",
+     "score": 0.6844,
+     "label": "หน้า 105",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "17": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-17",
+   "status": "ok",
+   "top_score": 0.6839,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0121:c000",
+     "score": 0.6839,
+     "label": "หน้า 122",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0020:c004",
+     "score": 0.6375,
+     "label": "หน้า 21",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0104:c000",
+     "score": 0.6619,
+     "label": "หน้า 105",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c002",
+     "score": 0.6507,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0011:c006",
+     "score": 0.5352,
+     "label": "หน้า 12",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0019:c004",
+     "score": 0.6186,
+     "label": "หน้า 20",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0018:c003",
+     "score": 0.5656,
+     "label": "หน้า 19",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0134:c002",
+     "score": 0.6378,
+     "label": "หน้า 135",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0116:c003",
+     "score": 0.6494,
+     "label": "หน้า 117",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0127:c000",
+     "score": 0.6447,
+     "label": "หน้า 128",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "18": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-18",
+   "status": "ok",
+   "top_score": 0.7605,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0120:c000",
+     "score": 0.7486,
+     "label": "หน้า 121",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0018:c003",
+     "score": 0.7001,
+     "label": "หน้า 19",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0021:c005",
+     "score": 0.7605,
+     "label": "หน้า 22",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c002",
+     "score": 0.7382,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0121:c000",
+     "score": 0.7317,
+     "label": "หน้า 122",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0134:c002",
+     "score": 0.6636,
+     "label": "หน้า 135",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0119:c002",
+     "score": 0.6802,
+     "label": "หน้า 120",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0119:c000",
+     "score": 0.7062,
+     "label": "หน้า 120",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0104:c000",
+     "score": 0.6931,
+     "label": "หน้า 105",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0120:c004",
+     "score": 0.6767,
+     "label": "หน้า 121",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "19": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-19",
+   "status": "ok",
+   "top_score": 0.6769,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0020:c004",
+     "score": 0.6769,
+     "label": "หน้า 21",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0011:c006",
+     "score": 0.5946,
+     "label": "หน้า 12",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0121:c000",
+     "score": 0.6681,
+     "label": "หน้า 122",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0104:c000",
+     "score": 0.6536,
+     "label": "หน้า 105",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0105:c000",
+     "score": 0.66,
+     "label": "หน้า 106",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0133:c000",
+     "score": 0.6633,
+     "label": "หน้า 134",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0011:c005",
+     "score": 0.5888,
+     "label": "หน้า 12",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0056:c003",
+     "score": 0.6482,
+     "label": "หน้า 57",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0134:c003",
+     "score": 0.631,
+     "label": "หน้า 135",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0019:c004",
+     "score": 0.6486,
+     "label": "หน้า 20",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "20": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-20",
+   "status": "ok",
+   "top_score": 0.6583,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0087:c004",
+     "score": 0.6583,
+     "label": "หน้า 88",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0134:c003",
+     "score": 0.65,
+     "label": "หน้า 135",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0011:c006",
+     "score": 0.5563,
+     "label": "หน้า 12",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0134:c002",
+     "score": 0.603,
+     "label": "หน้า 135",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0121:c000",
+     "score": 0.6463,
+     "label": "หน้า 122",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c002",
+     "score": 0.6249,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0104:c000",
+     "score": 0.6117,
+     "label": "หน้า 105",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0020:c004",
+     "score": 0.6024,
+     "label": "หน้า 21",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0105:c000",
+     "score": 0.6193,
+     "label": "หน้า 106",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0133:c000",
+     "score": 0.62,
+     "label": "หน้า 134",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "21": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-21",
+   "status": "ok",
+   "top_score": 0.7824,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c002",
+     "score": 0.7824,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0147:c003",
+     "score": 0.7754,
+     "label": "หน้า 148",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0148:c002",
+     "score": 0.7562,
+     "label": "หน้า 149",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0084:c001",
+     "score": 0.7498,
+     "label": "หน้า 85",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0116:c003",
+     "score": 0.7575,
+     "label": "หน้า 117",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0037:c004",
+     "score": 0.7542,
+     "label": "หน้า 38",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0149:c002",
+     "score": 0.7451,
+     "label": "หน้า 150",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c004",
+     "score": 0.7385,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0084:c003",
+     "score": 0.7494,
+     "label": "หน้า 85",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0145:c004",
+     "score": 0.7023,
+     "label": "หน้า 146",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "22": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-22",
+   "status": "ok",
+   "top_score": 0.7505,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0002:c001",
+     "score": 0.6787,
+     "label": "หน้า 3",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0002:c002",
+     "score": 0.7505,
+     "label": "หน้า 3",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0006:c005",
+     "score": 0.7259,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0006:c008",
+     "score": 0.7295,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0006:c010",
+     "score": 0.6702,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c003",
+     "score": 0.7058,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c004",
+     "score": 0.7112,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0033:c005",
+     "score": 0.7272,
+     "label": "หน้า 34",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0011:c006",
+     "score": 0.7203,
+     "label": "หน้า 12",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0005:c003",
+     "score": 0.6967,
+     "label": "หน้า 6",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "23": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-23",
+   "status": "ok",
+   "top_score": 0.7374,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0002:c002",
+     "score": 0.7374,
+     "label": "หน้า 3",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0034:c001",
+     "score": 0.7021,
+     "label": "หน้า 35",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0006:c005",
+     "score": 0.7191,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c004",
+     "score": 0.719,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c003",
+     "score": 0.7,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0006:c010",
+     "score": 0.6902,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0005:c003",
+     "score": 0.6911,
+     "label": "หน้า 6",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0011:c006",
+     "score": 0.6875,
+     "label": "หน้า 12",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0017:c003",
+     "score": 0.6671,
+     "label": "หน้า 18",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0005:c002",
+     "score": 0.6773,
+     "label": "หน้า 6",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "24": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-24",
+   "status": "ok",
+   "top_score": 0.7377,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0004:c000",
+     "score": 0.7377,
+     "label": "หน้า 5",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0005:c000",
+     "score": 0.695,
+     "label": "หน้า 6",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0028:c001",
+     "score": 0.6733,
+     "label": "หน้า 29",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0040:c000",
+     "score": 0.658,
+     "label": "หน้า 41",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0127:c001",
+     "score": 0.6492,
+     "label": "หน้า 128",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0192:c003",
+     "score": 0.6591,
+     "label": "หน้า 193",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0159:c003",
+     "score": 0.6209,
+     "label": "หน้า 160",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0265:c001",
+     "score": 0.6387,
+     "label": "หน้า 266",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0006:c001",
+     "score": 0.6307,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0343:c001",
+     "score": 0.6392,
+     "label": "หน้า 344",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "25": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-25",
+   "status": "ok",
+   "top_score": 0.6957,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0242:c002",
+     "score": 0.6957,
+     "label": "หน้า 243",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0005:c000",
+     "score": 0.6789,
+     "label": "หน้า 6",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0028:c001",
+     "score": 0.6905,
+     "label": "หน้า 29",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0101:c000",
+     "score": 0.6759,
+     "label": "หน้า 102",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0062:c000",
+     "score": 0.6484,
+     "label": "หน้า 63",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0083:c000",
+     "score": 0.6641,
+     "label": "หน้า 84",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0028:c006",
+     "score": 0.6311,
+     "label": "หน้า 29",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0004:c000",
+     "score": 0.6416,
+     "label": "หน้า 5",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0042:c000",
+     "score": 0.6491,
+     "label": "หน้า 43",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0243:c000",
+     "score": 0.6532,
+     "label": "หน้า 244",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "26": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-26",
+   "status": "ok",
+   "top_score": 0.7297,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0040:c001",
+     "score": 0.7297,
+     "label": "หน้า 41",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0004:c000",
+     "score": 0.6396,
+     "label": "หน้า 5",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0243:c002",
+     "score": 0.6956,
+     "label": "หน้า 244",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0159:c002",
+     "score": 0.6593,
+     "label": "หน้า 160",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0176:c001",
+     "score": 0.6517,
+     "label": "หน้า 177",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0042:c000",
+     "score": 0.657,
+     "label": "หน้า 43",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0028:c003",
+     "score": 0.6157,
+     "label": "หน้า 29",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0195:c004",
+     "score": 0.663,
+     "label": "หน้า 196",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0042:c001",
+     "score": 0.6528,
+     "label": "หน้า 43",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0158:c002",
+     "score": 0.6439,
+     "label": "หน้า 159",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "27": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-27",
+   "status": "ok",
+   "top_score": 0.7881,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0038:c000",
+     "score": 0.7881,
+     "label": "หน้า 39",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0107:c000",
+     "score": 0.776,
+     "label": "หน้า 108",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0105:c000",
+     "score": 0.7054,
+     "label": "หน้า 106",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0007:c001",
+     "score": 0.667,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0051:c001",
+     "score": 0.6738,
+     "label": "หน้า 52",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0147:c000",
+     "score": 0.7042,
+     "label": "หน้า 148",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0106:c000",
+     "score": 0.7242,
+     "label": "หน้า 107",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0009:c001",
+     "score": 0.6792,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0053:c001",
+     "score": 0.5965,
+     "label": "หน้า 54",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0208:c001",
+     "score": 0.6726,
+     "label": "หน้า 209",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "28": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-28",
+   "status": "ok",
+   "top_score": 0.7617,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0038:c000",
+     "score": 0.756,
+     "label": "หน้า 39",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0107:c000",
+     "score": 0.7617,
+     "label": "หน้า 108",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0147:c000",
+     "score": 0.6921,
+     "label": "หน้า 148",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0240:c004",
+     "score": 0.7273,
+     "label": "หน้า 241",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c002",
+     "score": 0.6928,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0105:c000",
+     "score": 0.6767,
+     "label": "หน้า 106",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0240:c003",
+     "score": 0.6814,
+     "label": "หน้า 241",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0239:c003",
+     "score": 0.5919,
+     "label": "หน้า 240",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0321:c001",
+     "score": 0.6433,
+     "label": "หน้า 322",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0106:c000",
+     "score": 0.6864,
+     "label": "หน้า 107",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "29": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-29",
+   "status": "ok",
+   "top_score": 0.7351,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0038:c000",
+     "score": 0.7351,
+     "label": "หน้า 39",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0107:c000",
+     "score": 0.721,
+     "label": "หน้า 108",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0012:c002",
+     "score": 0.6981,
+     "label": "หน้า 13",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c002",
+     "score": 0.716,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0240:c004",
+     "score": 0.6711,
+     "label": "หน้า 241",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0147:c000",
+     "score": 0.675,
+     "label": "หน้า 148",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0106:c000",
+     "score": 0.6885,
+     "label": "หน้า 107",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0101:c000",
+     "score": 0.595,
+     "label": "หน้า 102",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0105:c000",
+     "score": 0.6538,
+     "label": "หน้า 106",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0220:c001",
+     "score": 0.674,
+     "label": "หน้า 221",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "30": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-30",
+   "status": "ok",
+   "top_score": 0.7435,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0059:c000",
+     "score": 0.7012,
+     "label": "หน้า 60",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0200:c001",
+     "score": 0.7435,
+     "label": "หน้า 201",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0009:c000",
+     "score": 0.6977,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0204:c001",
+     "score": 0.7157,
+     "label": "หน้า 205",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0197:c000",
+     "score": 0.6961,
+     "label": "หน้า 198",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0059:c002",
+     "score": 0.7105,
+     "label": "หน้า 60",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0202:c000",
+     "score": 0.7252,
+     "label": "หน้า 203",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0028:c000",
+     "score": 0.6868,
+     "label": "หน้า 29",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0225:c001",
+     "score": 0.7012,
+     "label": "หน้า 226",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0058:c003",
+     "score": 0.6857,
+     "label": "หน้า 59",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "31": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-31",
+   "status": "ok",
+   "top_score": 0.6994,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0197:c000",
+     "score": 0.6803,
+     "label": "หน้า 198",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0009:c001",
+     "score": 0.6994,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0207:c001",
+     "score": 0.6782,
+     "label": "หน้า 208",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0202:c000",
+     "score": 0.6909,
+     "label": "หน้า 203",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0200:c001",
+     "score": 0.6948,
+     "label": "หน้า 201",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0202:c001",
+     "score": 0.6671,
+     "label": "หน้า 203",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0203:c002",
+     "score": 0.6373,
+     "label": "หน้า 204",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0201:c001",
+     "score": 0.6618,
+     "label": "หน้า 202",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0009:c000",
+     "score": 0.6566,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0028:c000",
+     "score": 0.6657,
+     "label": "หน้า 29",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "32": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-32",
+   "status": "ok",
+   "top_score": 0.7493,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0220:c001",
+     "score": 0.7493,
+     "label": "หน้า 221",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0009:c001",
+     "score": 0.7422,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0208:c001",
+     "score": 0.727,
+     "label": "หน้า 209",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0059:c002",
+     "score": 0.7286,
+     "label": "หน้า 60",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0009:c000",
+     "score": 0.705,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c002",
+     "score": 0.7133,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0221:c001",
+     "score": 0.7235,
+     "label": "หน้า 222",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c001",
+     "score": 0.6864,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0028:c000",
+     "score": 0.6606,
+     "label": "หน้า 29",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0360:c000",
+     "score": 0.7086,
+     "label": "หน้า 361",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "33": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-33",
+   "status": "ok",
+   "top_score": 0.7039,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0009:c001",
+     "score": 0.7039,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0217:c001",
+     "score": 0.7027,
+     "label": "หน้า 218",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0216:c001",
+     "score": 0.6881,
+     "label": "หน้า 217",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0207:c001",
+     "score": 0.67,
+     "label": "หน้า 208",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0095:c003",
+     "score": 0.6484,
+     "label": "หน้า 96",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0107:c000",
+     "score": 0.6594,
+     "label": "หน้า 108",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0208:c001",
+     "score": 0.6596,
+     "label": "หน้า 209",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0012:c001",
+     "score": 0.63,
+     "label": "หน้า 13",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0219:c001",
+     "score": 0.6515,
+     "label": "หน้า 220",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0096:c000",
+     "score": 0.6275,
+     "label": "หน้า 97",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "34": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-34",
+   "status": "ok",
+   "top_score": 0.6321,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0038:c000",
+     "score": 0.6257,
+     "label": "หน้า 39",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0453:c001",
+     "score": 0.6321,
+     "label": "หน้า 454",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0037:c000",
+     "score": 0.6121,
+     "label": "หน้า 38",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0007:c001",
+     "score": 0.5697,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0403:c002",
+     "score": 0.5914,
+     "label": "หน้า 404",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0056:c000",
+     "score": 0.6067,
+     "label": "หน้า 57",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0101:c000",
+     "score": 0.5944,
+     "label": "หน้า 102",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0037:c001",
+     "score": 0.6024,
+     "label": "หน้า 38",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0457:c001",
+     "score": 0.6094,
+     "label": "หน้า 458",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0062:c000",
+     "score": 0.5614,
+     "label": "หน้า 63",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "35": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-35",
+   "status": "ok",
+   "top_score": 0.6524,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0007:c001",
+     "score": 0.6237,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0007:c000",
+     "score": 0.6524,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0038:c000",
+     "score": 0.5352,
+     "label": "หน้า 39",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0106:c000",
+     "score": 0.5496,
+     "label": "หน้า 107",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0463:c000",
+     "score": 0.6204,
+     "label": "หน้า 464",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0251:c003",
+     "score": 0.5971,
+     "label": "หน้า 252",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0240:c004",
+     "score": 0.5326,
+     "label": "หน้า 241",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0327:c000",
+     "score": 0.4845,
+     "label": "หน้า 328",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0232:c000",
+     "score": 0.5806,
+     "label": "หน้า 233",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0087:c003",
+     "score": 0.5534,
+     "label": "หน้า 88",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "36": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-36",
+   "status": "ok",
+   "top_score": 0.7135,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0315:c004",
+     "score": 0.6447,
+     "label": "หน้า 316",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0314:c004",
+     "score": 0.7135,
+     "label": "หน้า 315",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0251:c003",
+     "score": 0.666,
+     "label": "หน้า 252",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0315:c002",
+     "score": 0.5784,
+     "label": "หน้า 316",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0241:c004",
+     "score": 0.6267,
+     "label": "หน้า 242",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0140:c000",
+     "score": 0.6154,
+     "label": "หน้า 141",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0007:c000",
+     "score": 0.6574,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0038:c000",
+     "score": 0.5285,
+     "label": "หน้า 39",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0250:c004",
+     "score": 0.5891,
+     "label": "หน้า 251",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0251:c000",
+     "score": 0.6306,
+     "label": "หน้า 252",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "37": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-37",
+   "status": "ok",
+   "top_score": 0.7115,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0294:c001",
+     "score": 0.7115,
+     "label": "หน้า 295",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0326:c003",
+     "score": 0.6772,
+     "label": "หน้า 327",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0240:c004",
+     "score": 0.5807,
+     "label": "หน้า 241",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0269:c003",
+     "score": 0.6235,
+     "label": "หน้า 270",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0268:c002",
+     "score": 0.6457,
+     "label": "หน้า 269",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0106:c001",
+     "score": 0.6441,
+     "label": "หน้า 107",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0268:c001",
+     "score": 0.6202,
+     "label": "หน้า 269",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0323:c000",
+     "score": 0.6391,
+     "label": "หน้า 324",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0236:c001",
+     "score": 0.5618,
+     "label": "หน้า 237",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0447:c001",
+     "score": 0.588,
+     "label": "หน้า 448",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "38": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-38",
+   "status": "ok",
+   "top_score": 0.6654,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0242:c002",
+     "score": 0.6654,
+     "label": "หน้า 243",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0005:c000",
+     "score": 0.6424,
+     "label": "หน้า 6",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0101:c000",
+     "score": 0.6638,
+     "label": "หน้า 102",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0233:c000",
+     "score": 0.6475,
+     "label": "หน้า 234",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0038:c000",
+     "score": 0.5953,
+     "label": "หน้า 39",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0028:c001",
+     "score": 0.6149,
+     "label": "หน้า 29",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0037:c000",
+     "score": 0.6207,
+     "label": "หน้า 38",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0243:c000",
+     "score": 0.6379,
+     "label": "หน้า 244",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0057:c001",
+     "score": 0.6351,
+     "label": "หน้า 58",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0368:c000",
+     "score": 0.6272,
+     "label": "หน้า 369",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "39": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-39",
+   "status": "ok",
+   "top_score": 0.6742,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0005:c000",
+     "score": 0.6228,
+     "label": "หน้า 6",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0259:c003",
+     "score": 0.6742,
+     "label": "หน้า 260",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0292:c000",
+     "score": 0.6699,
+     "label": "หน้า 293",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0195:c001",
+     "score": 0.5947,
+     "label": "หน้า 196",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0343:c000",
+     "score": 0.6567,
+     "label": "หน้า 344",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0259:c002",
+     "score": 0.6669,
+     "label": "หน้า 260",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0291:c002",
+     "score": 0.6559,
+     "label": "หน้า 292",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0095:c003",
+     "score": 0.4931,
+     "label": "หน้า 96",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0235:c002",
+     "score": 0.6335,
+     "label": "หน้า 236",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0330:c000",
+     "score": 0.495,
+     "label": "หน้า 331",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "40": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-40",
+   "status": "ok",
+   "top_score": 0.5811,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0149:c005",
+     "score": 0.5668,
+     "label": "หน้า 150",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0190:c004",
+     "score": 0.5811,
+     "label": "หน้า 191",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0019:c003",
+     "score": 0.5716,
+     "label": "หน้า 20",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0541:c002",
+     "score": 0.5248,
+     "label": "หน้า 542",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0037:c001",
+     "score": 0.4894,
+     "label": "หน้า 38",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0080:c003",
+     "score": 0.5222,
+     "label": "หน้า 81",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0019:c001",
+     "score": 0.5599,
+     "label": "หน้า 20",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0137:c007",
+     "score": 0.5646,
+     "label": "หน้า 138",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0011:c002",
+     "score": 0.5093,
+     "label": "หน้า 12",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0163:c007",
+     "score": 0.5354,
+     "label": "หน้า 164",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "41": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-41",
+   "status": "ok",
+   "top_score": 0.5889,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c000",
+     "score": 0.5752,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0022:c005",
+     "score": 0.5889,
+     "label": "หน้า 23",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0144:c003",
+     "score": 0.5052,
+     "label": "หน้า 145",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0149:c001",
+     "score": 0.5527,
+     "label": "หน้า 150",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0149:c003",
+     "score": 0.5013,
+     "label": "หน้า 150",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0135:c003",
+     "score": 0.5643,
+     "label": "หน้า 136",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0149:c004",
+     "score": 0.4626,
+     "label": "หน้า 150",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0019:c001",
+     "score": 0.5511,
+     "label": "หน้า 20",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0022:c006",
+     "score": 0.5081,
+     "label": "หน้า 23",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0144:c004",
+     "score": 0.4806,
+     "label": "หน้า 145",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "42": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-42",
+   "status": "ok",
+   "top_score": 0.592,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c001",
+     "score": 0.592,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c000",
+     "score": 0.5658,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0007:c000",
+     "score": 0.582,
+     "label": "หน้า 8",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0144:c004",
+     "score": 0.4519,
+     "label": "หน้า 145",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0186:c000",
+     "score": 0.5477,
+     "label": "หน้า 187",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0136:c003",
+     "score": 0.4772,
+     "label": "หน้า 137",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0019:c003",
+     "score": 0.4982,
+     "label": "หน้า 20",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0135:c005",
+     "score": 0.5149,
+     "label": "หน้า 136",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0186:c001",
+     "score": 0.5396,
+     "label": "หน้า 187",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0135:c002",
+     "score": 0.5081,
+     "label": "หน้า 136",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "43": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-43",
+   "status": "ok",
+   "top_score": 0.6981,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c002",
+     "score": 0.6381,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0135:c001",
+     "score": 0.6981,
+     "label": "หน้า 136",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c001",
+     "score": 0.5491,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0023:c001",
+     "score": 0.5151,
+     "label": "หน้า 24",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0020:c009",
+     "score": 0.5404,
+     "label": "หน้า 21",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0120:c002",
+     "score": 0.5095,
+     "label": "หน้า 121",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0120:c001",
+     "score": 0.4919,
+     "label": "หน้า 121",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0041:c001",
+     "score": 0.4546,
+     "label": "หน้า 42",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0023:c000",
+     "score": 0.4005,
+     "label": "หน้า 24",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0135:c000",
+     "score": 0.4754,
+     "label": "หน้า 136",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "44": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-44",
+   "status": "ok",
+   "top_score": 0.6171,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c003",
+     "score": 0.6098,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c002",
+     "score": 0.6171,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0135:c002",
+     "score": 0.6011,
+     "label": "หน้า 136",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0186:c001",
+     "score": 0.5271,
+     "label": "หน้า 187",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0144:c004",
+     "score": 0.4812,
+     "label": "หน้า 145",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c005",
+     "score": 0.4898,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c008",
+     "score": 0.4957,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0186:c000",
+     "score": 0.5129,
+     "label": "หน้า 187",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c004",
+     "score": 0.4999,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0135:c005",
+     "score": 0.4834,
+     "label": "หน้า 136",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "45": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-45",
+   "status": "ok",
+   "top_score": 0.6195,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c006",
+     "score": 0.6195,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c007",
+     "score": 0.5559,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0245:c004",
+     "score": 0.5038,
+     "label": "หน้า 246",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0023:c003",
+     "score": 0.4565,
+     "label": "หน้า 24",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0132:c005",
+     "score": 0.5358,
+     "label": "หน้า 133",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0004:c003",
+     "score": 0.4926,
+     "label": "หน้า 5",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0188:c006",
+     "score": 0.5015,
+     "label": "หน้า 189",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c005",
+     "score": 0.5083,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0149:c002",
+     "score": 0.5264,
+     "label": "หน้า 150",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0019:c002",
+     "score": 0.4925,
+     "label": "หน้า 20",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "46": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-46",
+   "status": "ok",
+   "top_score": 0.7189,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c006",
+     "score": 0.7189,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c005",
+     "score": 0.6812,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c004",
+     "score": 0.5907,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0136:c003",
+     "score": 0.5617,
+     "label": "หน้า 137",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0144:c004",
+     "score": 0.472,
+     "label": "หน้า 145",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0019:c001",
+     "score": 0.5599,
+     "label": "หน้า 20",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0132:c005",
+     "score": 0.5221,
+     "label": "หน้า 133",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0019:c003",
+     "score": 0.5534,
+     "label": "หน้า 20",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0009:c003",
+     "score": 0.5306,
+     "label": "หน้า 10",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0102:c002",
+     "score": 0.4713,
+     "label": "หน้า 103",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "47": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-47",
+   "status": "ok",
+   "top_score": 0.6508,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c007",
+     "score": 0.6508,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0194:c002",
+     "score": 0.5055,
+     "label": "หน้า 195",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0194:c001",
+     "score": 0.528,
+     "label": "หน้า 195",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0009:c003",
+     "score": 0.5047,
+     "label": "หน้า 10",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0168:c003",
+     "score": 0.3909,
+     "label": "หน้า 169",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0009:c004",
+     "score": 0.4764,
+     "label": "หน้า 10",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0176:c003",
+     "score": 0.3869,
+     "label": "หน้า 177",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0111:c002",
+     "score": 0.4777,
+     "label": "หน้า 112",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c006",
+     "score": 0.4724,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0008:c004",
+     "score": 0.3722,
+     "label": "หน้า 9",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "48": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-48",
+   "status": "ok",
+   "top_score": 0.6228,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0149:c005",
+     "score": 0.5364,
+     "label": "หน้า 150",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0137:c007",
+     "score": 0.6228,
+     "label": "หน้า 138",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0163:c007",
+     "score": 0.5151,
+     "label": "หน้า 164",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0139:c002",
+     "score": 0.5982,
+     "label": "หน้า 140",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0139:c001",
+     "score": 0.593,
+     "label": "หน้า 140",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0167:c000",
+     "score": 0.5023,
+     "label": "หน้า 168",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0080:c003",
+     "score": 0.5185,
+     "label": "หน้า 81",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0137:c004",
+     "score": 0.5905,
+     "label": "หน้า 138",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0190:c004",
+     "score": 0.5694,
+     "label": "หน้า 191",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0541:c002",
+     "score": 0.5102,
+     "label": "หน้า 542",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "49": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-49",
+   "status": "ok",
+   "top_score": 0.6094,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0007:c002",
+     "score": 0.6094,
+     "label": "หน้า 8",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0163:c007",
+     "score": 0.4752,
+     "label": "หน้า 164",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0007:c007",
+     "score": 0.5954,
+     "label": "หน้า 8",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0188:c002",
+     "score": 0.5108,
+     "label": "หน้า 189",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0007:c001",
+     "score": 0.5887,
+     "label": "หน้า 8",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0149:c005",
+     "score": 0.488,
+     "label": "หน้า 150",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0080:c003",
+     "score": 0.491,
+     "label": "หน้า 81",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0007:c003",
+     "score": 0.5782,
+     "label": "หน้า 8",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0189:c002",
+     "score": 0.5598,
+     "label": "หน้า 190",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0541:c002",
+     "score": 0.4524,
+     "label": "หน้า 542",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "50": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-50",
+   "status": "ok",
+   "top_score": 0.6847,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0056:c002",
+     "score": 0.6847,
+     "label": "หน้า 57",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0113:c002",
+     "score": 0.611,
+     "label": "หน้า 114",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0125:c001",
+     "score": 0.6796,
+     "label": "หน้า 126",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0134:c003",
+     "score": 0.6444,
+     "label": "หน้า 135",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0087:c004",
+     "score": 0.5849,
+     "label": "หน้า 88",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0134:c002",
+     "score": 0.6181,
+     "label": "หน้า 135",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0037:c006",
+     "score": 0.5743,
+     "label": "หน้า 38",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0145:c001",
+     "score": 0.6307,
+     "label": "หน้า 146",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0067:c010",
+     "score": 0.5806,
+     "label": "หน้า 68",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0027:c010",
+     "score": 0.6113,
+     "label": "หน้า 28",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "51": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-51",
+   "status": "ok",
+   "top_score": 0.6696,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c003",
+     "score": 0.6696,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0519:c000",
+     "score": 0.5888,
+     "label": "หน้า 520",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c001",
+     "score": 0.6344,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0003:c001",
+     "score": 0.5824,
+     "label": "หน้า 4",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c002",
+     "score": 0.605,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0012:c004",
+     "score": 0.6143,
+     "label": "หน้า 13",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0003:c006",
+     "score": 0.5781,
+     "label": "หน้า 4",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0206:c002",
+     "score": 0.6131,
+     "label": "หน้า 207",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0143:c004",
+     "score": 0.6113,
+     "label": "หน้า 144",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0003:c005",
+     "score": 0.5956,
+     "label": "หน้า 4",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "52": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-52",
+   "status": "ok",
+   "top_score": 0.6138,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c002",
+     "score": 0.6138,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c000",
+     "score": 0.5538,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0012:c004",
+     "score": 0.6056,
+     "label": "หน้า 13",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c001",
+     "score": 0.5767,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0512:c000",
+     "score": 0.4959,
+     "label": "หน้า 513",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0204:c001",
+     "score": 0.5839,
+     "label": "หน้า 205",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0003:c002",
+     "score": 0.5441,
+     "label": "หน้า 4",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0204:c002",
+     "score": 0.5814,
+     "label": "หน้า 205",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0206:c002",
+     "score": 0.5793,
+     "label": "หน้า 207",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0201:c000",
+     "score": 0.5711,
+     "label": "หน้า 202",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "53": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-53",
+   "status": "ok",
+   "top_score": 0.6957,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0519:c001",
+     "score": 0.6927,
+     "label": "หน้า 520",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0143:c006",
+     "score": 0.6957,
+     "label": "หน้า 144",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0450:c000",
+     "score": 0.5626,
+     "label": "หน้า 451",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0003:c005",
+     "score": 0.6847,
+     "label": "หน้า 4",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0143:c005",
+     "score": 0.6664,
+     "label": "หน้า 144",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0078:c002",
+     "score": 0.6598,
+     "label": "หน้า 79",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0224:c000",
+     "score": 0.5762,
+     "label": "หน้า 225",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0451:c000",
+     "score": 0.6053,
+     "label": "หน้า 452",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0541:c003",
+     "score": 0.6618,
+     "label": "หน้า 542",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0085:c009",
+     "score": 0.6176,
+     "label": "หน้า 86",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "54": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-54",
+   "status": "ok",
+   "top_score": 0.7747,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0037:c004",
+     "score": 0.7747,
+     "label": "หน้า 38",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0037:c002",
+     "score": 0.7295,
+     "label": "หน้า 38",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0148:c002",
+     "score": 0.7317,
+     "label": "หน้า 149",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0147:c001",
+     "score": 0.6829,
+     "label": "หน้า 148",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0147:c003",
+     "score": 0.7093,
+     "label": "หน้า 148",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c003",
+     "score": 0.6847,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c004",
+     "score": 0.6963,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0143:c002",
+     "score": 0.6977,
+     "label": "หน้า 144",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c002",
+     "score": 0.671,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0147:c002",
+     "score": 0.6869,
+     "label": "หน้า 148",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "55": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-55",
+   "status": "ok",
+   "top_score": 0.7097,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0002:c002",
+     "score": 0.7097,
+     "label": "หน้า 3",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0034:c001",
+     "score": 0.7006,
+     "label": "หน้า 35",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0002:c001",
+     "score": 0.673,
+     "label": "หน้า 3",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c003",
+     "score": 0.6932,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c004",
+     "score": 0.6957,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0006:c005",
+     "score": 0.6987,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0006:c010",
+     "score": 0.6784,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0006:c008",
+     "score": 0.6821,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0005:c006",
+     "score": 0.6605,
+     "label": "หน้า 6",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c005",
+     "score": 0.6731,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "56": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-56",
+   "status": "ok",
+   "top_score": 0.7319,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0006:c005",
+     "score": 0.7319,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0002:c002",
+     "score": 0.7166,
+     "label": "หน้า 3",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0005:c003",
+     "score": 0.7257,
+     "label": "หน้า 6",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c003",
+     "score": 0.6912,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0011:c006",
+     "score": 0.7302,
+     "label": "หน้า 12",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0005:c002",
+     "score": 0.7183,
+     "label": "หน้า 6",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c004",
+     "score": 0.7103,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0011:c005",
+     "score": 0.7173,
+     "label": "หน้า 12",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0002:c001",
+     "score": 0.6631,
+     "label": "หน้า 3",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0034:c001",
+     "score": 0.6721,
+     "label": "หน้า 35",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "57": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-57",
+   "status": "ok",
+   "top_score": 0.6517,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0003:c002",
+     "score": 0.6066,
+     "label": "หน้า 4",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c002",
+     "score": 0.6517,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0012:c002",
+     "score": 0.5803,
+     "label": "หน้า 13",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0111:c002",
+     "score": 0.5865,
+     "label": "หน้า 112",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0085:c009",
+     "score": 0.609,
+     "label": "หน้า 86",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0051:c005",
+     "score": 0.5898,
+     "label": "หน้า 52",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c000",
+     "score": 0.592,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0401:c001",
+     "score": 0.6014,
+     "label": "หน้า 402",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0526:c000",
+     "score": 0.4796,
+     "label": "หน้า 527",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0520:c000",
+     "score": 0.5483,
+     "label": "หน้า 521",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "58": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-58",
+   "status": "ok",
+   "top_score": 0.7567,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0005:c000",
+     "score": 0.7567,
+     "label": "หน้า 6",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0004:c000",
+     "score": 0.7561,
+     "label": "หน้า 5",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0028:c001",
+     "score": 0.6993,
+     "label": "หน้า 29",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0127:c001",
+     "score": 0.7319,
+     "label": "หน้า 128",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0128:c002",
+     "score": 0.7048,
+     "label": "หน้า 129",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0143:c000",
+     "score": 0.6904,
+     "label": "หน้า 144",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0020:c004",
+     "score": 0.5905,
+     "label": "หน้า 21",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0242:c002",
+     "score": 0.6783,
+     "label": "หน้า 243",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0343:c001",
+     "score": 0.6102,
+     "label": "หน้า 344",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0336:c005",
+     "score": 0.69,
+     "label": "หน้า 337",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "59": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-59",
+   "status": "ok",
+   "top_score": 0.6282,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0174:c001",
+     "score": 0.6282,
+     "label": "หน้า 175",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0042:c000",
+     "score": 0.6006,
+     "label": "หน้า 43",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0040:c001",
+     "score": 0.6062,
+     "label": "หน้า 41",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0195:c004",
+     "score": 0.6155,
+     "label": "หน้า 196",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0118:c000",
+     "score": 0.6078,
+     "label": "หน้า 119",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0004:c000",
+     "score": 0.5665,
+     "label": "หน้า 5",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0006:c000",
+     "score": 0.602,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0042:c001",
+     "score": 0.5872,
+     "label": "หน้า 43",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0028:c003",
+     "score": 0.5257,
+     "label": "หน้า 29",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0159:c002",
+     "score": 0.5865,
+     "label": "หน้า 160",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "60": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-60",
+   "status": "ok",
+   "top_score": 0.6633,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0008:c000",
+     "score": 0.6633,
+     "label": "หน้า 9",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0060:c001",
+     "score": 0.6566,
+     "label": "หน้า 61",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0202:c001",
+     "score": 0.5849,
+     "label": "หน้า 203",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0093:c000",
+     "score": 0.618,
+     "label": "หน้า 94",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0202:c000",
+     "score": 0.6266,
+     "label": "หน้า 203",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0062:c000",
+     "score": 0.6424,
+     "label": "หน้า 63",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0080:c002",
+     "score": 0.643,
+     "label": "หน้า 81",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0063:c000",
+     "score": 0.6347,
+     "label": "หน้า 64",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0088:c003",
+     "score": 0.6318,
+     "label": "หน้า 89",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0086:c000",
+     "score": 0.6371,
+     "label": "หน้า 87",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "61": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-61",
+   "status": "ok",
+   "top_score": 0.7419,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0088:c003",
+     "score": 0.7012,
+     "label": "หน้า 89",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0080:c002",
+     "score": 0.7419,
+     "label": "หน้า 81",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0046:c001",
+     "score": 0.6455,
+     "label": "หน้า 47",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0453:c001",
+     "score": 0.6624,
+     "label": "หน้า 454",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0097:c002",
+     "score": 0.6933,
+     "label": "หน้า 98",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0093:c000",
+     "score": 0.6388,
+     "label": "หน้า 94",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0252:c002",
+     "score": 0.6092,
+     "label": "หน้า 253",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0243:c000",
+     "score": 0.6791,
+     "label": "หน้า 244",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0055:c001",
+     "score": 0.66,
+     "label": "หน้า 56",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0062:c000",
+     "score": 0.6278,
+     "label": "หน้า 63",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "62": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-62",
+   "status": "ok",
+   "top_score": 0.7085,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0143:c002",
+     "score": 0.7085,
+     "label": "หน้า 144",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0435:c000",
+     "score": 0.5976,
+     "label": "หน้า 436",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0197:c000",
+     "score": 0.6348,
+     "label": "หน้า 198",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0143:c004",
+     "score": 0.6593,
+     "label": "หน้า 144",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0143:c000",
+     "score": 0.6609,
+     "label": "หน้า 144",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0143:c003",
+     "score": 0.6373,
+     "label": "หน้า 144",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0436:c000",
+     "score": 0.6001,
+     "label": "หน้า 437",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0504:c000",
+     "score": 0.6038,
+     "label": "หน้า 505",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0012:c004",
+     "score": 0.6478,
+     "label": "หน้า 13",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0505:c000",
+     "score": 0.6092,
+     "label": "หน้า 506",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "63": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-63",
+   "status": "ok",
+   "top_score": 0.6606,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0197:c000",
+     "score": 0.6606,
+     "label": "หน้า 198",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0207:c001",
+     "score": 0.6589,
+     "label": "หน้า 208",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0202:c000",
+     "score": 0.6079,
+     "label": "หน้า 203",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0204:c001",
+     "score": 0.654,
+     "label": "หน้า 205",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0204:c002",
+     "score": 0.6493,
+     "label": "หน้า 205",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0009:c000",
+     "score": 0.5935,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0009:c001",
+     "score": 0.6263,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0203:c002",
+     "score": 0.6144,
+     "label": "หน้า 204",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0200:c001",
+     "score": 0.6285,
+     "label": "หน้า 201",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0348:c002",
+     "score": 0.6284,
+     "label": "หน้า 349",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "64": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-64",
+   "status": "ok",
+   "top_score": 0.7594,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c001",
+     "score": 0.7594,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0147:c001",
+     "score": 0.6623,
+     "label": "หน้า 148",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0220:c000",
+     "score": 0.6854,
+     "label": "หน้า 221",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0009:c000",
+     "score": 0.659,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0148:c001",
+     "score": 0.617,
+     "label": "หน้า 149",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c000",
+     "score": 0.6523,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0219:c000",
+     "score": 0.6181,
+     "label": "หน้า 220",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0009:c001",
+     "score": 0.6141,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0010:c002",
+     "score": 0.6309,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0085:c009",
+     "score": 0.6492,
+     "label": "หน้า 86",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "65": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-65",
+   "status": "ok",
+   "top_score": 0.7592,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0242:c002",
+     "score": 0.7592,
+     "label": "หน้า 243",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0136:c001",
+     "score": 0.7011,
+     "label": "หน้า 137",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0250:c003",
+     "score": 0.6601,
+     "label": "หน้า 251",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0136:c005",
+     "score": 0.684,
+     "label": "หน้า 137",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0136:c002",
+     "score": 0.6551,
+     "label": "หน้า 137",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0119:c002",
+     "score": 0.6425,
+     "label": "หน้า 120",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0136:c003",
+     "score": 0.656,
+     "label": "หน้า 137",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0041:c000",
+     "score": 0.5995,
+     "label": "หน้า 42",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0136:c004",
+     "score": 0.6497,
+     "label": "หน้า 137",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0242:c001",
+     "score": 0.6373,
+     "label": "หน้า 243",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "66": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-66",
+   "status": "ok",
+   "top_score": 0.6826,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0195:c001",
+     "score": 0.6826,
+     "label": "หน้า 196",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0005:c000",
+     "score": 0.6272,
+     "label": "หน้า 6",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0191:c000",
+     "score": 0.6408,
+     "label": "หน้า 192",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0291:c002",
+     "score": 0.6328,
+     "label": "หน้า 292",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0041:c000",
+     "score": 0.6157,
+     "label": "หน้า 42",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0292:c000",
+     "score": 0.6274,
+     "label": "หน้า 293",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0192:c000",
+     "score": 0.6199,
+     "label": "หน้า 193",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0191:c007",
+     "score": 0.6295,
+     "label": "หน้า 192",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0191:c001",
+     "score": 0.6281,
+     "label": "หน้า 192",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0192:c002",
+     "score": 0.6149,
+     "label": "หน้า 193",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "67": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-67",
+   "status": "ok",
+   "top_score": 0.5956,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0007:c000",
+     "score": 0.5956,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0282:c002",
+     "score": 0.5013,
+     "label": "หน้า 283",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0348:c002",
+     "score": 0.5427,
+     "label": "หน้า 349",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0463:c000",
+     "score": 0.5891,
+     "label": "หน้า 464",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0038:c000",
+     "score": 0.4812,
+     "label": "หน้า 39",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0007:c001",
+     "score": 0.5667,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0087:c003",
+     "score": 0.5533,
+     "label": "หน้า 88",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0279:c001",
+     "score": 0.5351,
+     "label": "หน้า 280",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0251:c003",
+     "score": 0.5569,
+     "label": "หน้า 252",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0083:c000",
+     "score": 0.4794,
+     "label": "หน้า 84",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "68": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-68",
+   "status": "ok",
+   "top_score": 0.7523,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0107:c000",
+     "score": 0.7523,
+     "label": "หน้า 108",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0038:c000",
+     "score": 0.7308,
+     "label": "หน้า 39",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0007:c001",
+     "score": 0.6375,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0105:c000",
+     "score": 0.7121,
+     "label": "หน้า 106",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0037:c001",
+     "score": 0.7214,
+     "label": "หน้า 38",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0208:c001",
+     "score": 0.6768,
+     "label": "หน้า 209",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0355:c000",
+     "score": 0.7041,
+     "label": "หน้า 356",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0286:c000",
+     "score": 0.6707,
+     "label": "หน้า 287",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0051:c001",
+     "score": 0.7094,
+     "label": "หน้า 52",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0352:c000",
+     "score": 0.699,
+     "label": "หน้า 353",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "69": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-69",
+   "status": "ok",
+   "top_score": 0.6979,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0337:c001",
+     "score": 0.6979,
+     "label": "หน้า 338",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0176:c003",
+     "score": 0.697,
+     "label": "หน้า 177",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0136:c002",
+     "score": 0.5757,
+     "label": "หน้า 137",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0247:c001",
+     "score": 0.6466,
+     "label": "หน้า 248",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0176:c001",
+     "score": 0.6762,
+     "label": "หน้า 177",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0004:c000",
+     "score": 0.69,
+     "label": "หน้า 5",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0005:c000",
+     "score": 0.6758,
+     "label": "หน้า 6",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0139:c003",
+     "score": 0.625,
+     "label": "หน้า 140",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0017:c000",
+     "score": 0.643,
+     "label": "หน้า 18",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0176:c002",
+     "score": 0.671,
+     "label": "หน้า 177",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "70": {
+   "type": "question",
+   "trace_id": "eval-20261114040133-70",
+   "status": "ok",
+   "top_score": 0.6776,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0094:c000",
+     "score": 0.6776,
+     "label": "หน้า 95",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0127:c002",
+     "score": 0.5884,
+     "label": "หน้า 128",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0280:c001",
+     "score": 0.5716,
+     "label": "หน้า 281",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0243:c001",
+     "score": 0.6543,
+     "label": "หน้า 244",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0093:c002",
+     "score": 0.6541,
+     "label": "หน้า 94",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0040:c000",
+     "score": 0.5747,
+     "label": "หน้า 41",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0093:c000",
+     "score": 0.6387,
+     "label": "หน้า 94",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0153:c000",
+     "score": 0.6516,
+     "label": "หน้า 154",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0041:c004",
+     "score": 0.647,
+     "label": "หน้า 42",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0097:c002",
+     "score": 0.6105,
+     "label": "หน้า 98",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "71": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-71",
+   "status": "ok",
+   "top_score": 0.5299,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0080:c003",
+     "score": 0.4959,
+     "label": "หน้า 81",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0007:c007",
+     "score": 0.5299,
+     "label": "หน้า 8",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0163:c007",
+     "score": 0.4706,
+     "label": "หน้า 164",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0496:c000",
+     "score": 0.5058,
+     "label": "หน้า 497",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0149:c005",
+     "score": 0.4784,
+     "label": "หน้า 150",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0541:c002",
+     "score": 0.4851,
+     "label": "หน้า 542",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0014:c001",
+     "score": 0.5036,
+     "label": "หน้า 15",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0188:c002",
+     "score": 0.476,
+     "label": "หน้า 189",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0198:c002",
+     "score": 0.5005,
+     "label": "หน้า 199",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0037:c001",
+     "score": 0.4248,
+     "label": "หน้า 38",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "72": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-72",
+   "status": "ok",
+   "top_score": 0.5376,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0149:c005",
+     "score": 0.4656,
+     "label": "หน้า 150",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0489:c000",
+     "score": 0.5376,
+     "label": "หน้า 490",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0265:c000",
+     "score": 0.5347,
+     "label": "หน้า 266",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0080:c003",
+     "score": 0.4775,
+     "label": "หน้า 81",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0492:c000",
+     "score": 0.5303,
+     "label": "หน้า 493",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0541:c002",
+     "score": 0.4858,
+     "label": "หน้า 542",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0188:c002",
+     "score": 0.5056,
+     "label": "หน้า 189",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0163:c007",
+     "score": 0.4548,
+     "label": "หน้า 164",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0450:c000",
+     "score": 0.5238,
+     "label": "หน้า 451",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0454:c000",
+     "score": 0.4578,
+     "label": "หน้า 455",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "73": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-73",
+   "status": "ok",
+   "top_score": 0.5612,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0541:c002",
+     "score": 0.5336,
+     "label": "หน้า 542",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0496:c000",
+     "score": 0.5612,
+     "label": "หน้า 497",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0265:c000",
+     "score": 0.554,
+     "label": "หน้า 266",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0308:c000",
+     "score": 0.493,
+     "label": "หน้า 309",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0442:c000",
+     "score": 0.5485,
+     "label": "หน้า 443",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0080:c003",
+     "score": 0.4958,
+     "label": "หน้า 81",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0489:c000",
+     "score": 0.5481,
+     "label": "หน้า 490",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0309:c000",
+     "score": 0.4647,
+     "label": "หน้า 310",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0163:c007",
+     "score": 0.4776,
+     "label": "หน้า 164",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0498:c000",
+     "score": 0.5428,
+     "label": "หน้า 499",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "74": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-74",
+   "status": "ok",
+   "top_score": 0.5717,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c006",
+     "score": 0.5717,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c005",
+     "score": 0.5242,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c004",
+     "score": 0.4741,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0073:c005",
+     "score": 0.4822,
+     "label": "หน้า 74",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0009:c003",
+     "score": 0.4681,
+     "label": "หน้า 10",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0019:c001",
+     "score": 0.4252,
+     "label": "หน้า 20",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0144:c004",
+     "score": 0.4048,
+     "label": "หน้า 145",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0136:c003",
+     "score": 0.4256,
+     "label": "หน้า 137",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0022:c008",
+     "score": 0.4673,
+     "label": "หน้า 23",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c008",
+     "score": 0.4094,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "75": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-75",
+   "status": "ok",
+   "top_score": 0.5909,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0135:c004",
+     "score": 0.5909,
+     "label": "หน้า 136",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0143:c001",
+     "score": 0.5815,
+     "label": "หน้า 144",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0140:c000",
+     "score": 0.5782,
+     "label": "หน้า 141",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c008",
+     "score": 0.5336,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0144:c004",
+     "score": 0.5191,
+     "label": "หน้า 145",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0015:c003",
+     "score": 0.5074,
+     "label": "หน้า 16",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0144:c003",
+     "score": 0.5294,
+     "label": "หน้า 145",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c000",
+     "score": 0.5053,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0018:c001",
+     "score": 0.5289,
+     "label": "หน้า 19",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0471:c000",
+     "score": 0.3711,
+     "label": "หน้า 472",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "76": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-76",
+   "status": "ok",
+   "top_score": 0.5899,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0505:c000",
+     "score": 0.5899,
+     "label": "หน้า 506",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0541:c002",
+     "score": 0.4604,
+     "label": "หน้า 542",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0504:c000",
+     "score": 0.5843,
+     "label": "หน้า 505",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0080:c003",
+     "score": 0.5009,
+     "label": "หน้า 81",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0397:c000",
+     "score": 0.5694,
+     "label": "หน้า 398",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0510:c000",
+     "score": 0.5661,
+     "label": "หน้า 511",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0163:c007",
+     "score": 0.4815,
+     "label": "หน้า 164",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0506:c000",
+     "score": 0.567,
+     "label": "หน้า 507",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0149:c005",
+     "score": 0.5205,
+     "label": "หน้า 150",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0454:c000",
+     "score": 0.5241,
+     "label": "หน้า 455",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "77": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-77",
+   "status": "ok",
+   "top_score": 0.5654,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c000",
+     "score": 0.5654,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0007:c000",
+     "score": 0.4997,
+     "label": "หน้า 8",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0135:c005",
+     "score": 0.5203,
+     "label": "หน้า 136",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c001",
+     "score": 0.5188,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0144:c004",
+     "score": 0.468,
+     "label": "หน้า 145",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0022:c006",
+     "score": 0.4843,
+     "label": "หน้า 23",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0019:c001",
+     "score": 0.4799,
+     "label": "หน้า 20",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0136:c003",
+     "score": 0.467,
+     "label": "หน้า 137",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0144:c006",
+     "score": 0.4784,
+     "label": "หน้า 145",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c004",
+     "score": 0.4852,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "78": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-78",
+   "status": "ok",
+   "top_score": 0.5978,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0087:c004",
+     "score": 0.5692,
+     "label": "หน้า 88",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0108:c000",
+     "score": 0.5978,
+     "label": "หน้า 109",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0006:c010",
+     "score": 0.5198,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0107:c000",
+     "score": 0.5873,
+     "label": "หน้า 108",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0051:c001",
+     "score": 0.5249,
+     "label": "หน้า 52",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0103:c000",
+     "score": 0.5775,
+     "label": "หน้า 104",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c004",
+     "score": 0.5285,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0106:c003",
+     "score": 0.5718,
+     "label": "หน้า 107",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0104:c000",
+     "score": 0.4975,
+     "label": "หน้า 105",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0172:c009",
+     "score": 0.5372,
+     "label": "หน้า 173",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "79": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-79",
+   "status": "ok",
+   "top_score": 0.685,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0116:c003",
+     "score": 0.685,
+     "label": "หน้า 117",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0101:c003",
+     "score": 0.5695,
+     "label": "หน้า 102",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0041:c002",
+     "score": 0.667,
+     "label": "หน้า 42",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0008:c002",
+     "score": 0.6262,
+     "label": "หน้า 9",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0042:c012",
+     "score": 0.6487,
+     "label": "หน้า 43",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0102:c002",
+     "score": 0.561,
+     "label": "หน้า 103",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0115:c003",
+     "score": 0.6299,
+     "label": "หน้า 116",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0041:c005",
+     "score": 0.6128,
+     "label": "หน้า 42",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c002",
+     "score": 0.6275,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0021:c005",
+     "score": 0.6456,
+     "label": "หน้า 22",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "80": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-80",
+   "status": "ok",
+   "top_score": 0.5965,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0108:c000",
+     "score": 0.5965,
+     "label": "หน้า 109",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c003",
+     "score": 0.5201,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c004",
+     "score": 0.533,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0103:c000",
+     "score": 0.5925,
+     "label": "หน้า 104",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0107:c000",
+     "score": 0.5897,
+     "label": "หน้า 108",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0006:c005",
+     "score": 0.5274,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0071:c006",
+     "score": 0.5537,
+     "label": "หน้า 72",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0087:c004",
+     "score": 0.5396,
+     "label": "หน้า 88",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0056:c003",
+     "score": 0.5703,
+     "label": "หน้า 57",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0062:c007",
+     "score": 0.5532,
+     "label": "หน้า 63",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "81": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-81",
+   "status": "ok",
+   "top_score": 0.6059,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c002",
+     "score": 0.6059,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0147:c003",
+     "score": 0.5817,
+     "label": "หน้า 148",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0084:c001",
+     "score": 0.6018,
+     "label": "หน้า 85",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0145:c004",
+     "score": 0.5994,
+     "label": "หน้า 146",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0006:c010",
+     "score": 0.5205,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0036:c004",
+     "score": 0.5578,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0056:c003",
+     "score": 0.5972,
+     "label": "หน้า 57",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0035:c005",
+     "score": 0.5949,
+     "label": "หน้า 36",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0011:c006",
+     "score": 0.555,
+     "label": "หน้า 12",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0011:c004",
+     "score": 0.5921,
+     "label": "หน้า 12",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "82": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-82",
+   "status": "ok",
+   "top_score": 0.6483,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0013:c009",
+     "score": 0.6483,
+     "label": "หน้า 14",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0004:c001",
+     "score": 0.611,
+     "label": "หน้า 5",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0013:c004",
+     "score": 0.6403,
+     "label": "หน้า 14",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0042:c006",
+     "score": 0.5683,
+     "label": "หน้า 43",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0013:c003",
+     "score": 0.6378,
+     "label": "หน้า 14",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0176:c007",
+     "score": 0.5527,
+     "label": "หน้า 177",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0013:c008",
+     "score": 0.5618,
+     "label": "หน้า 14",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0004:c002",
+     "score": 0.5567,
+     "label": "หน้า 5",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0032:c007",
+     "score": 0.623,
+     "label": "หน้า 33",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0013:c005",
+     "score": 0.5951,
+     "label": "หน้า 14",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "83": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-83",
+   "status": "ok",
+   "top_score": 0.6818,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0018:c003",
+     "score": 0.6818,
+     "label": "หน้า 19",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0021:c005",
+     "score": 0.6576,
+     "label": "หน้า 22",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0120:c000",
+     "score": 0.6359,
+     "label": "หน้า 121",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0143:c006",
+     "score": 0.6733,
+     "label": "หน้า 144",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0004:c002",
+     "score": 0.5961,
+     "label": "หน้า 5",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0143:c005",
+     "score": 0.6599,
+     "label": "หน้า 144",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0174:c002",
+     "score": 0.5436,
+     "label": "หน้า 175",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0120:c004",
+     "score": 0.5956,
+     "label": "หน้า 121",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0087:c004",
+     "score": 0.6046,
+     "label": "หน้า 88",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0143:c007",
+     "score": 0.6546,
+     "label": "หน้า 144",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "84": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-84",
+   "status": "ok",
+   "top_score": 0.6047,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0038:c000",
+     "score": 0.509,
+     "label": "หน้า 39",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0108:c001",
+     "score": 0.6047,
+     "label": "หน้า 109",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0286:c000",
+     "score": 0.5815,
+     "label": "หน้า 287",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0287:c003",
+     "score": 0.5598,
+     "label": "หน้า 288",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0214:c002",
+     "score": 0.6,
+     "label": "หน้า 215",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0303:c004",
+     "score": 0.5956,
+     "label": "หน้า 304",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0287:c002",
+     "score": 0.5873,
+     "label": "หน้า 288",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0287:c001",
+     "score": 0.5924,
+     "label": "หน้า 288",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0343:c003",
+     "score": 0.4981,
+     "label": "หน้า 344",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0291:c003",
+     "score": 0.5061,
+     "label": "หน้า 292",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "85": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-85",
+   "status": "ok",
+   "top_score": 0.6064,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0093:c000",
+     "score": 0.5256,
+     "label": "หน้า 94",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0072:c002",
+     "score": 0.6064,
+     "label": "หน้า 73",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0016:c003",
+     "score": 0.5276,
+     "label": "หน้า 17",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0041:c004",
+     "score": 0.4983,
+     "label": "หน้า 42",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0028:c002",
+     "score": 0.5331,
+     "label": "หน้า 29",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0012:c001",
+     "score": 0.4829,
+     "label": "หน้า 13",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0092:c000",
+     "score": 0.5297,
+     "label": "หน้า 93",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0011:c001",
+     "score": 0.4985,
+     "label": "หน้า 12",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0184:c002",
+     "score": 0.4196,
+     "label": "หน้า 185",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0117:c001",
+     "score": 0.5188,
+     "label": "หน้า 118",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "86": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-86",
+   "status": "ok",
+   "top_score": 0.5704,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0036:c003",
+     "score": 0.5704,
+     "label": "หน้า 37",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0031:c000",
+     "score": 0.545,
+     "label": "หน้า 32",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0085:c002",
+     "score": 0.4544,
+     "label": "หน้า 86",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0090:c002",
+     "score": 0.5361,
+     "label": "หน้า 91",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0034:c000",
+     "score": 0.5002,
+     "label": "หน้า 35",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0368:c002",
+     "score": 0.524,
+     "label": "หน้า 369",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0071:c002",
+     "score": 0.5316,
+     "label": "หน้า 72",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0047:c000",
+     "score": 0.5084,
+     "label": "หน้า 48",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0084:c003",
+     "score": 0.4728,
+     "label": "หน้า 85",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0121:c004",
+     "score": 0.5256,
+     "label": "หน้า 122",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "87": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-87",
+   "status": "ok",
+   "top_score": 0.6398,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0286:c000",
+     "score": 0.6398,
+     "label": "หน้า 287",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0038:c000",
+     "score": 0.4755,
+     "label": "หน้า 39",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0147:c000",
+     "score": 0.5469,
+     "label": "หน้า 148",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0303:c004",
+     "score": 0.6019,
+     "label": "หน้า 304",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0287:c002",
+     "score": 0.5864,
+     "label": "หน้า 288",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0214:c002",
+     "score": 0.595,
+     "label": "หน้า 215",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0290:c001",
+     "score": 0.5868,
+     "label": "หน้า 291",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0172:c000",
+     "score": 0.5527,
+     "label": "หน้า 173",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0285:c002",
+     "score": 0.505,
+     "label": "หน้า 286",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0291:c000",
+     "score": 0.5529,
+     "label": "หน้า 292",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "88": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-88",
+   "status": "ok",
+   "top_score": 0.6345,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0112:c000",
+     "score": 0.6345,
+     "label": "หน้า 113",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0126:c000",
+     "score": 0.5525,
+     "label": "หน้า 127",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0316:c001",
+     "score": 0.6083,
+     "label": "หน้า 317",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0012:c002",
+     "score": 0.5467,
+     "label": "หน้า 13",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0143:c005",
+     "score": 0.5912,
+     "label": "หน้า 144",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0143:c006",
+     "score": 0.5883,
+     "label": "หน้า 144",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0112:c001",
+     "score": 0.5277,
+     "label": "หน้า 113",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0105:c000",
+     "score": 0.5683,
+     "label": "หน้า 106",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0251:c003",
+     "score": 0.58,
+     "label": "หน้า 252",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0038:c000",
+     "score": 0.5628,
+     "label": "หน้า 39",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "89": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-89",
+   "status": "ok",
+   "top_score": 0.6417,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0419:c000",
+     "score": 0.4078,
+     "label": "หน้า 420",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0202:c000",
+     "score": 0.6417,
+     "label": "หน้า 203",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0065:c000",
+     "score": 0.5775,
+     "label": "หน้า 66",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0198:c000",
+     "score": 0.6295,
+     "label": "หน้า 199",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0068:c003",
+     "score": 0.6049,
+     "label": "หน้า 69",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0078:c000",
+     "score": 0.6164,
+     "label": "หน้า 79",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0067:c002",
+     "score": 0.6288,
+     "label": "หน้า 68",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0063:c000",
+     "score": 0.5282,
+     "label": "หน้า 64",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0121:c004",
+     "score": 0.5991,
+     "label": "หน้า 122",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0048:c000",
+     "score": 0.6202,
+     "label": "หน้า 49",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "90": {
+   "type": "unanswerable",
+   "trace_id": "eval-20261114040133-90",
+   "status": "ok",
+   "top_score": 0.5808,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0156:c001",
+     "score": 0.5808,
+     "label": "หน้า 157",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0155:c000",
+     "score": 0.5012,
+     "label": "หน้า 156",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0157:c000",
+     "score": 0.541,
+     "label": "หน้า 158",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0156:c002",
+     "score": 0.5453,
+     "label": "หน้า 157",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0215:c001",
+     "score": 0.5687,
+     "label": "หน้า 216",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0070:c000",
+     "score": 0.5441,
+     "label": "หน้า 71",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0214:c001",
+     "score": 0.5566,
+     "label": "หน้า 215",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0006:c001",
+     "score": 0.4972,
+     "label": "หน้า 7",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0071:c000",
+     "score": 0.5283,
+     "label": "หน้า 72",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0011:c002",
+     "score": 0.4794,
+     "label": "หน้า 12",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "91": {
+   "type": "chitchat",
+   "trace_id": "eval-20261114040133-91",
+   "status": "ok",
+   "top_score": 0.5021,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0167:c007",
+     "score": 0.3733,
+     "label": "หน้า 168",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0178:c002",
+     "score": 0.5021,
+     "label": "หน้า 179",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0203:c001",
+     "score": 0.499,
+     "label": "หน้า 204",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0446:c002",
+     "score": 0.3603,
+     "label": "หน้า 447",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0071:c013",
+     "score": 0.4939,
+     "label": "หน้า 72",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0423:c000",
+     "score": 0.3599,
+     "label": "หน้า 424",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0165:c007",
+     "score": 0.3958,
+     "label": "หน้า 166",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0428:c001",
+     "score": 0.4724,
+     "label": "หน้า 429",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0023:c001",
+     "score": 0.3992,
+     "label": "หน้า 24",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0111:c001",
+     "score": 0.4703,
+     "label": "หน้า 112",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "92": {
+   "type": "chitchat",
+   "trace_id": "eval-20261114040133-92",
+   "status": "ok",
+   "top_score": 0.5201,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0056:c007",
+     "score": 0.5201,
+     "label": "หน้า 57",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0137:c006",
+     "score": 0.3496,
+     "label": "หน้า 138",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0204:c001",
+     "score": 0.4998,
+     "label": "หน้า 205",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0188:c006",
+     "score": 0.3291,
+     "label": "หน้า 189",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0067:c007",
+     "score": 0.4988,
+     "label": "หน้า 68",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0112:c003",
+     "score": 0.3312,
+     "label": "หน้า 113",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0315:c000",
+     "score": 0.4287,
+     "label": "หน้า 316",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0164:c001",
+     "score": 0.4938,
+     "label": "หน้า 165",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0009:c007",
+     "score": 0.4905,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0043:c007",
+     "score": 0.3424,
+     "label": "หน้า 44",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "93": {
+   "type": "chitchat",
+   "trace_id": "eval-20261114040133-93",
+   "status": "ok",
+   "top_score": 0.5203,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0135:c002",
+     "score": 0.5203,
+     "label": "หน้า 136",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0010:c006",
+     "score": 0.4272,
+     "label": "หน้า 11",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c002",
+     "score": 0.5146,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0052:c000",
+     "score": 0.3689,
+     "label": "หน้า 53",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c001",
+     "score": 0.4986,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0108:c002",
+     "score": 0.4168,
+     "label": "หน้า 109",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0020:c009",
+     "score": 0.471,
+     "label": "หน้า 21",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0106:c002",
+     "score": 0.3843,
+     "label": "หน้า 107",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0144:c005",
+     "score": 0.4778,
+     "label": "หน้า 145",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0120:c002",
+     "score": 0.4195,
+     "label": "หน้า 121",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "94": {
+   "type": "chitchat",
+   "trace_id": "eval-20261114040133-94",
+   "status": "ok",
+   "top_score": 0.4905,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0029:c011",
+     "score": 0.4258,
+     "label": "หน้า 30",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0178:c002",
+     "score": 0.4905,
+     "label": "หน้า 179",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0159:c000",
+     "score": 0.4691,
+     "label": "หน้า 160",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0118:c000",
+     "score": 0.4504,
+     "label": "หน้า 119",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0159:c001",
+     "score": 0.4665,
+     "label": "หน้า 160",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0029:c002",
+     "score": 0.4226,
+     "label": "หน้า 30",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0158:c000",
+     "score": 0.4598,
+     "label": "หน้า 159",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0146:c000",
+     "score": 0.4405,
+     "label": "หน้า 147",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0029:c003",
+     "score": 0.417,
+     "label": "หน้า 30",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0463:c000",
+     "score": 0.4575,
+     "label": "หน้า 464",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "95": {
+   "type": "chitchat",
+   "trace_id": "eval-20261114040133-95",
+   "status": "ok",
+   "top_score": 0.4698,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0320:c002",
+     "score": 0.3842,
+     "label": "หน้า 321",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0203:c001",
+     "score": 0.4698,
+     "label": "หน้า 204",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0449:c002",
+     "score": 0.3875,
+     "label": "หน้า 450",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0204:c001",
+     "score": 0.4398,
+     "label": "หน้า 205",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0056:c007",
+     "score": 0.4357,
+     "label": "หน้า 57",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0453:c001",
+     "score": 0.3618,
+     "label": "หน้า 454",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0454:c001",
+     "score": 0.3846,
+     "label": "หน้า 455",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0172:c002",
+     "score": 0.4317,
+     "label": "หน้า 173",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0320:c001",
+     "score": 0.3838,
+     "label": "หน้า 321",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0009:c007",
+     "score": 0.431,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "96": {
+   "type": "chitchat",
+   "trace_id": "eval-20261114040133-96",
+   "status": "ok",
+   "top_score": 0.4312,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c002",
+     "score": 0.4312,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0135:c002",
+     "score": 0.3687,
+     "label": "หน้า 136",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c007",
+     "score": 0.3382,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c003",
+     "score": 0.3588,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0006:c001",
+     "score": 0.3511,
+     "label": "หน้า 7",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0076:c000",
+     "score": 0.3682,
+     "label": "หน้า 77",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0007:c006",
+     "score": 0.3317,
+     "label": "หน้า 8",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0182:c001",
+     "score": 0.3662,
+     "label": "หน้า 183",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0153:c005",
+     "score": 0.35,
+     "label": "หน้า 154",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0022:c005",
+     "score": 0.3487,
+     "label": "หน้า 23",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "97": {
+   "type": "chitchat",
+   "trace_id": "eval-20261114040133-97",
+   "status": "ok",
+   "top_score": 0.4434,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0071:c013",
+     "score": 0.4434,
+     "label": "หน้า 72",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0317:c000",
+     "score": 0.347,
+     "label": "หน้า 318",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0310:c000",
+     "score": 0.3619,
+     "label": "หน้า 311",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0010:c006",
+     "score": 0.4309,
+     "label": "หน้า 11",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0434:c001",
+     "score": 0.3458,
+     "label": "หน้า 435",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0449:c001",
+     "score": 0.427,
+     "label": "หน้า 450",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0215:c000",
+     "score": 0.3289,
+     "label": "หน้า 216",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0050:c000",
+     "score": 0.4154,
+     "label": "หน้า 51",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0239:c001",
+     "score": 0.4081,
+     "label": "หน้า 240",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0165:c003",
+     "score": 0.3224,
+     "label": "หน้า 166",
+     "filename": "ONEREPORTKBANKT.PDF"
+    }
+   ]
+  },
+  "98": {
+   "type": "chitchat",
+   "trace_id": "eval-20261114040133-98",
+   "status": "ok",
+   "top_score": 0.4814,
+   "results": [
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0435:c000",
+     "score": 0.3897,
+     "label": "หน้า 436",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0454:c000",
+     "score": 0.4814,
+     "label": "หน้า 455",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0453:c000",
+     "score": 0.4814,
+     "label": "หน้า 454",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0419:c000",
+     "score": 0.3995,
+     "label": "หน้า 420",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0437:c000",
+     "score": 0.3828,
+     "label": "หน้า 438",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0010:c002",
+     "score": 0.477,
+     "label": "หน้า 11",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0158:c004",
+     "score": 0.35,
+     "label": "หน้า 159",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0008:c003",
+     "score": 0.477,
+     "label": "หน้า 9",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0009:c007",
+     "score": 0.477,
+     "label": "หน้า 10",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0413:c000",
+     "score": 0.3666,
+     "label": "หน้า 414",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  },
+  "99": {
+   "type": "chitchat",
+   "trace_id": "eval-20261114040133-99",
+   "status": "ok",
+   "top_score": 0.5249,
+   "results": [
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0157:c002",
+     "score": 0.3546,
+     "label": "หน้า 158",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0131:c007",
+     "score": 0.5249,
+     "label": "หน้า 132",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0014:c002",
+     "score": 0.3803,
+     "label": "หน้า 15",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0239:c001",
+     "score": 0.4591,
+     "label": "หน้า 240",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0172:c001",
+     "score": 0.4307,
+     "label": "หน้า 173",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0186:c007",
+     "score": 0.4563,
+     "label": "หน้า 187",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0024:c014",
+     "score": 0.4539,
+     "label": "หน้า 25",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0436:c004",
+     "score": 0.3363,
+     "label": "หน้า 437",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0152:c002",
+     "score": 0.3839,
+     "label": "หน้า 153",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0204:c001",
+     "score": 0.4536,
+     "label": "หน้า 205",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    }
+   ]
+  },
+  "100": {
+   "type": "chitchat",
+   "trace_id": "eval-20261114040133-100",
+   "status": "ok",
+   "top_score": 0.3869,
+   "results": [
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0111:c001",
+     "score": 0.3869,
+     "label": "หน้า 112",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0067:c009",
+     "score": 0.2739,
+     "label": "หน้า 68",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0009:c003",
+     "score": 0.3752,
+     "label": "หน้า 10",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0140:c000",
+     "score": 0.297,
+     "label": "หน้า 141",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0022:c004",
+     "score": 0.3718,
+     "label": "หน้า 23",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_187f35bf6d164482887a2b1efef13d5b:u0174:c006",
+     "score": 0.282,
+     "label": "หน้า 175",
+     "filename": "ONEREPORTKBANKT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0081:c005",
+     "score": 0.3715,
+     "label": "หน้า 82",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0254:c001",
+     "score": 0.3245,
+     "label": "หน้า 255",
+     "filename": "ONEREPORTPTTT.PDF"
+    },
+    {
+     "chunk_id": "file_8bfe15e184394a4bb7b3405c6a57e822:u0009:c004",
+     "score": 0.3656,
+     "label": "หน้า 10",
+     "filename": "E_ONE_REPORT_CPALLT.PDF"
+    },
+    {
+     "chunk_id": "file_9faab5b063dd45d2b932848bb4610bd5:u0121:c002",
+     "score": 0.2758,
+     "label": "หน้า 122",
+     "filename": "ONEREPORTPTTT.PDF"
+    }
+   ]
+  }
+ }
+}

@@ -36,6 +36,7 @@ from typing import Callable, Optional
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
+from app.runtime import is_fatal_cuda, is_oom  # noqa: E402,F401
 from app.extraction.ocr import (  # noqa: E402
     OcrBackend, OcrUnavailable, get_backend, hits_ceiling, max_tokens_of, recognize_page_auto,
 )
@@ -197,24 +198,7 @@ class CheckedCache(OcrCache):
 
 # ---------- OCR ทีละหน้า ----------
 
-def is_oom(e: BaseException) -> bool:
-    return type(e).__name__ == "OutOfMemoryError" or "out of memory" in str(e).lower()
-
-
-# ข้อความ/ชนิดของ CUDA error ที่ context เสียแล้ว (ไม่ใช่ OOM ที่ล้างแล้วลองใหม่ได้)
-_FATAL_CUDA_TYPES = {"AcceleratorError"}
-_FATAL_CUDA_MARKERS = (
-    "cuda error", "illegal memory access", "device-side assert", "unspecified launch failure",
-    "cublas_status", "cudnn_status", "cuda driver error", "cuda kernel errors might be asynchronously reported",
-)
-
-
-def is_fatal_cuda(e: BaseException) -> bool:
-    """CUDA error ที่ใช้ context ต่อไม่ได้: AcceleratorError หรือข้อความ CUDA error อื่นที่ไม่ใช่ OOM (OOM ตรวจแยกด้วย ``is_oom``)"""
-    if is_oom(e):
-        return False
-    msg = str(e).lower()
-    return type(e).__name__ in _FATAL_CUDA_TYPES or any(m in msg for m in _FATAL_CUDA_MARKERS)
+# is_oom / is_fatal_cuda ย้ายไป app/runtime.py (ใช้ร่วมกับ ingest worker) — import ไว้ที่หัวไฟล์ ชื่อเดิมยังใช้ได้
 
 
 def free_gpu_memory() -> None:

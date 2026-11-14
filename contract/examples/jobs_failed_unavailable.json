@@ -1,0 +1,26 @@
+{
+  "job_id": "job_01JD9B3C4D",
+  "file_id": "file_01JD9B3C4E",
+  "box_id": "example-finance",
+  "filename": "รายงานประจำปี_ตัวอย่าง.pdf",
+  "status": "failed",
+  "progress": {
+    "pages_total": 40,
+    "pages_done": 17
+  },
+  "document_status": null,
+  "units": {
+    "ok": 0,
+    "needs_ocr": 0,
+    "failed": 0,
+    "rejected": 0
+  },
+  "gaps": [],
+  "error": {
+    "code": "unavailable",
+    "message": "GPU ใช้ต่อไม่ได้ (CUDA error) — ส่งไฟล์เดิมซ้ำหลังระบบพร้อม"
+  },
+  "created_at": "2026-11-12T02:15:04Z",
+  "updated_at": "2026-11-12T02:21:40Z",
+  "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+}

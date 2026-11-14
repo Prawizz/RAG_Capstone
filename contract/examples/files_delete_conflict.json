@@ -1,0 +1,5 @@
+{
+  "error_code": "conflict",
+  "message": "งาน ingest ของไฟล์นี้กำลังทำอยู่ (ocr) ลบได้หลังงานจบ — ดูสถานะที่ /v1/jobs",
+  "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+}

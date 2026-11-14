@@ -1,0 +1,15 @@
+# เสริม docker-compose.yml สำหรับ GPU (NVIDIA + NVIDIA Container Toolkit / Docker Desktop WSL2 GPU)
+#   TORCH_VARIANT=cu128 docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d --build
+# ภาพ cu128 มี torchvision + accelerate สำหรับ Typhoon OCR · OCR กับ embedding ไม่อยู่บน GPU พร้อมกัน (app/ingest_worker.py)
+services:
+  api:
+    environment:
+      EMBEDDING_DEVICE: ${EMBEDDING_DEVICE:-cuda}
+      OCR_BACKEND: ${OCR_BACKEND:-typhoon-local}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

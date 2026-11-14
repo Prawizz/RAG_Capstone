@@ -1,0 +1,16 @@
+# เข้าภาพเฉพาะ app/ scripts/ contract/ requirements.txt (ดู Dockerfile) — ที่เหลือไม่ต้องส่งเข้า build context
+.git
+.venv
+.pytest_cache
+**/__pycache__
+.env
+data
+backups
+docs
+tests
+eval
+*.pdf
+*.docx
+corpus.txt
+eval_dataset.json
+RAG_IMPLEMENTATION_SUMMARY.txt

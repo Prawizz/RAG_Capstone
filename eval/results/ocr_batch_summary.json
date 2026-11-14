@@ -1,38 +1,52 @@
 {
-  "started_at": "2026-11-12T19:48:40",
-  "finished_at": "2026-11-12T20:04:21",
+  "started_at": "2026-11-13T05:36:13",
+  "finished_at": "2026-11-13T06:09:34",
   "interrupted": false,
   "aborted": null,
   "fatal_cuda": false,
   "args": {
     "files": [
-      "ONEREPORTKBANKT.PDF"
+      "E_ONE_REPORT_CPALLT.PDF",
+      "ONEREPORTPTTT.PDF"
     ],
-    "pages": "86,132",
-    "limit": null,
+    "pages": null,
+    "limit": 40,
     "cooldown": 5.0
   },
   "backend": "typhoon-local",
   "cache_dir": "C:\\Users\\Admin\\OneDrive\\Desktop\\Capstone\\RAG_Capstone\\data\\ocr_cache",
-  "total_seconds": 941.4,
+  "total_seconds": 2001.1,
   "totals": {
-    "planned": 2,
-    "ok": 2,
-    "cached": 0,
+    "planned": 160,
+    "ok": 36,
+    "cached": 124,
     "error": 0,
     "not_reached": 0
   },
   "files": {
-    "ONEREPORTKBANKT.PDF": {
-      "content_hash": "e10c025a7e24671b7ffbfb668d477f6122912baff45ba4606c0582f8f2969b44",
-      "total_pages": 180,
-      "needs_ocr_pages": 180,
-      "selected": 2,
-      "ok": 2,
-      "cached": 0,
+    "E_ONE_REPORT_CPALLT.PDF": {
+      "content_hash": "864df2cbe9b8a93e0351fa20c3d18e537c30cc6ec026d74159c48bd10b1d71b4",
+      "total_pages": 546,
+      "needs_ocr_pages": 156,
+      "selected": 156,
+      "ok": 34,
+      "cached": 122,
       "error": 0,
       "not_reached": 0,
-      "seconds": 912.2,
+      "seconds": 1773.0,
+      "error_pages": [],
+      "file_error": null
+    },
+    "ONEREPORTPTTT.PDF": {
+      "content_hash": "49845abdf0730999af309d67589932303d600b32b1c859b26f9d3fcb4ba7330a",
+      "total_pages": 464,
+      "needs_ocr_pages": 4,
+      "selected": 4,
+      "ok": 2,
+      "cached": 2,
+      "error": 0,
+      "not_reached": 0,
+      "seconds": 36.6,
       "error_pages": [],
       "file_error": null
     }

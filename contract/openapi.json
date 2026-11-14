@@ -279,7 +279,7 @@
             }
           },
           "200": {
-            "description": "ไฟล์ซ้ำในกล่องเดียวกัน (duplicate true, สถานะเดิม)",
+            "description": "ไฟล์ซ้ำในกล่องเดียวกัน (duplicate true): สถานะเดิม หรือ queued (job_id ใหม่) เมื่องานเดิมล้มชั่วคราว / ยังมีหน้ารอ OCR",
             "content": {
               "application/json": {
                 "schema": {
@@ -366,33 +366,6 @@
                     "value": {
                       "error_code": "internal",
                       "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
-                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            },
-            "headers": {
-              "X-Trace-Id": {
-                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "501": {
-            "description": "not_implemented",
-            "content": {
-              "application/json": {
-                "examples": {
-                  "not_implemented": {
-                    "value": {
-                      "error_code": "not_implemented",
-                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
                       "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
                     }
                   }
@@ -690,33 +663,6 @@
               }
             }
           },
-          "501": {
-            "description": "not_implemented",
-            "content": {
-              "application/json": {
-                "examples": {
-                  "not_implemented": {
-                    "value": {
-                      "error_code": "not_implemented",
-                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
-                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            },
-            "headers": {
-              "X-Trace-Id": {
-                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "404": {
             "description": "not_found",
             "content": {
@@ -886,33 +832,6 @@
                     "value": {
                       "error_code": "internal",
                       "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
-                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            },
-            "headers": {
-              "X-Trace-Id": {
-                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "501": {
-            "description": "not_implemented",
-            "content": {
-              "application/json": {
-                "examples": {
-                  "not_implemented": {
-                    "value": {
-                      "error_code": "not_implemented",
-                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
                       "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
                     }
                   }
@@ -1102,33 +1021,6 @@
                     "value": {
                       "error_code": "internal",
                       "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
-                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            },
-            "headers": {
-              "X-Trace-Id": {
-                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "501": {
-            "description": "not_implemented",
-            "content": {
-              "application/json": {
-                "examples": {
-                  "not_implemented": {
-                    "value": {
-                      "error_code": "not_implemented",
-                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
                       "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
                     }
                   }
@@ -1344,33 +1236,6 @@
               }
             }
           },
-          "501": {
-            "description": "not_implemented",
-            "content": {
-              "application/json": {
-                "examples": {
-                  "not_implemented": {
-                    "value": {
-                      "error_code": "not_implemented",
-                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
-                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            },
-            "headers": {
-              "X-Trace-Id": {
-                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "503": {
             "description": "unavailable",
             "content": {
@@ -1550,33 +1415,6 @@
                     "value": {
                       "error_code": "internal",
                       "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
-                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            },
-            "headers": {
-              "X-Trace-Id": {
-                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "501": {
-            "description": "not_implemented",
-            "content": {
-              "application/json": {
-                "examples": {
-                  "not_implemented": {
-                    "value": {
-                      "error_code": "not_implemented",
-                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
                       "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
                     }
                   }
@@ -1784,33 +1622,6 @@
                     "value": {
                       "error_code": "internal",
                       "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
-                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
-                    }
-                  }
-                },
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            },
-            "headers": {
-              "X-Trace-Id": {
-                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "501": {
-            "description": "not_implemented",
-            "content": {
-              "application/json": {
-                "examples": {
-                  "not_implemented": {
-                    "value": {
-                      "error_code": "not_implemented",
-                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
                       "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
                     }
                   }
@@ -2037,15 +1848,186 @@
               }
             }
           },
-          "501": {
-            "description": "not_implemented",
+          "404": {
+            "description": "not_found",
             "content": {
               "application/json": {
                 "examples": {
-                  "not_implemented": {
+                  "not_found": {
                     "value": {
-                      "error_code": "not_implemented",
-                      "message": "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน",
+                      "error_code": "not_found",
+                      "message": "ไม่พบ",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/files/{file_id}": {
+      "delete": {
+        "tags": [
+          "files"
+        ],
+        "summary": "ลบไฟล์ (owner/admin ของกล่อง)",
+        "operationId": "delete_file_v1_files__file_id__delete",
+        "security": [
+          {
+            "ServiceKey": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "file_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "title": "File Id"
+            }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)",
+              "title": "X-User-Id"
+            },
+            "description": "ผู้ใช้ปลายทาง (Gateway ยืนยันตัวตนแล้ว)"
+          },
+          {
+            "name": "X-User-Departments",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)",
+              "title": "X-User-Departments"
+            },
+            "description": "แผนก คั่นด้วยจุลภาค; ค่าว่าง = ไม่สังกัดแผนกใด (ต้องส่ง header)"
+          },
+          {
+            "name": "X-User-Security-Level",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "ระดับความลับ จำนวนเต็ม >= 0",
+              "title": "X-User-Security-Level"
+            },
+            "description": "ระดับความลับ จำนวนเต็ม >= 0"
+          },
+          {
+            "name": "X-Trace-Id",
+            "in": "header",
+            "required": false,
+            "description": "ไม่ส่ง (หรือรูปแบบไม่ใช่ [A-Za-z0-9._:-]{1,128}) = สร้างให้; ส่งกลับทั้ง header และ body",
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteFileResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unauthorized",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unauthorized": {
+                    "value": {
+                      "error_code": "unauthorized",
+                      "message": "service credential ไม่ถูกต้อง",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "invalid_request",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "invalid_request": {
+                    "value": {
+                      "error_code": "invalid_request",
+                      "message": "header X-User-Security-Level: ต้องเป็นจำนวนเต็ม >= 0",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "internal": {
+                    "value": {
+                      "error_code": "internal",
+                      "message": "เกิดข้อผิดพลาดภายใน (อ้างอิง trace_id)",
                       "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
                     }
                   }
@@ -2090,6 +2072,60 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": "conflict",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "conflict": {
+                    "value": {
+                      "error_code": "conflict",
+                      "message": "งาน ingest ของไฟล์นี้กำลังทำอยู่ (ocr) ลบได้หลังงานจบ — ดูสถานะที่ /v1/jobs",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "unavailable",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unavailable": {
+                    "value": {
+                      "error_code": "unavailable",
+                      "message": "vector store ไม่พร้อม ลองใหม่ภายหลัง",
+                      "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+                    }
+                  }
+                },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {
+              "X-Trace-Id": {
+                "description": "trace id ของ request นี้ (ค่าเดียวกับ trace_id ใน body)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -2108,7 +2144,7 @@
           "acl_widening",
           "unavailable",
           "internal",
-          "not_implemented"
+          "conflict"
         ],
         "title": "ApiErrorCode",
         "description": "รหัส error ของ API — คู่กับ HTTP status ตาม ``ERROR_STATUS``"
@@ -2451,6 +2487,81 @@
           }
         ]
       },
+      "DeleteFileResponse": {
+        "properties": {
+          "file_id": {
+            "type": "string",
+            "title": "File Id"
+          },
+          "box_id": {
+            "type": "string",
+            "title": "Box Id"
+          },
+          "status": {
+            "type": "string",
+            "const": "deleted",
+            "title": "Status",
+            "default": "deleted"
+          },
+          "points_deleted": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Points Deleted"
+          },
+          "original_deleted": {
+            "type": "boolean",
+            "title": "Original Deleted"
+          },
+          "document_deleted": {
+            "type": "boolean",
+            "title": "Document Deleted"
+          },
+          "cancelled_jobs": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Cancelled Jobs"
+          },
+          "trace_id": {
+            "type": "string",
+            "title": "Trace Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "file_id",
+          "box_id",
+          "points_deleted",
+          "original_deleted",
+          "document_deleted",
+          "cancelled_jobs",
+          "trace_id"
+        ],
+        "title": "DeleteFileResponse",
+        "description": "ลบไฟล์แล้ว: ไฟล์หายจาก /v1/sources และ /v1/retrieve ทันที · /v1/jobs ของไฟล์นี้ตอบ 404 · ลบซ้ำ = 404\n\n``points_deleted`` = point ใน vector store ที่ลบ (ทั้งสอง collection) · ``original_deleted`` / ``document_deleted`` =\nต้นฉบับ / ผล extract บนดิสก์ถูกลบ (false = ไม่มีอยู่แล้ว เช่น งานยังไม่เริ่ม) · ``cancelled_jobs`` = งานที่ยัง queued แล้วถูกยกเลิก\nแคช OCR ของเนื้อไฟล์ (ลบ หรือเก็บไว้เพราะมีไฟล์เนื้อหาเดียวกันในกล่องอื่น) **ไม่อยู่ใน response** — บอกผู้ลบว่ามีไฟล์เนื้อหา\nเดียวกันในกล่องที่เขาอาจไม่เห็น = ขัดกฎเหล็กข้อ 9 · ดูได้ใน log ของ service เท่านั้น",
+        "examples": [
+          {
+            "file_id": "file_01JD7X2A9R",
+            "box_id": "example-finance",
+            "status": "deleted",
+            "points_deleted": 1415,
+            "original_deleted": true,
+            "document_deleted": true,
+            "cancelled_jobs": 0,
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "file_id": "file_01JD8Z5V7M",
+            "box_id": "example-finance",
+            "status": "deleted",
+            "points_deleted": 0,
+            "original_deleted": true,
+            "document_deleted": false,
+            "cancelled_jobs": 1,
+            "trace_id": "8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f"
+          }
+        ]
+      },
       "DetectedType": {
         "type": "string",
         "enum": [
@@ -2475,19 +2586,6 @@
           "failed"
         ],
         "title": "DocumentStatus"
-      },
-      "ErrorCode": {
-        "type": "string",
-        "enum": [
-          "encrypted",
-          "corrupt",
-          "unsupported_type",
-          "too_large",
-          "empty",
-          "conversion_timeout",
-          "internal"
-        ],
-        "title": "ErrorCode"
       },
       "ErrorResponse": {
         "properties": {
@@ -2796,7 +2894,7 @@
           "trace_id"
         ],
         "title": "IngestResponse",
-        "description": "202 = รับงานใหม่ (status queued, duplicate false) · 200 = ไฟล์ซ้ำ (content_hash เดียวกันในกล่องเดียวกัน):\nคืน job/file เดิมพร้อมสถานะปัจจุบัน และ duplicate true",
+        "description": "202 = รับงานใหม่ (status queued, duplicate false) · 200 = ไฟล์ซ้ำ (content_hash เดียวกันในกล่องเดียวกัน, duplicate true):\nคืน job/file เดิมพร้อมสถานะปัจจุบัน — ยกเว้นงานเดิม failed ด้วยเหตุชั่วคราว (unavailable / internal / conversion_timeout)\nหรือ done_with_gaps ที่ยังมีหน้า needs_ocr (OCR ใช้ไม่ได้ตอนนั้น): เข้าคิวใหม่ = job_id ใหม่ status queued, file_id เดิม\n(ACL / ชื่อไฟล์เดิม — ของใน request ซ้ำไม่ถูกใช้)",
         "examples": [
           {
             "job_id": "job_01JD8Z5V7K",
@@ -2811,13 +2909,20 @@
             "status": "done_with_gaps",
             "duplicate": true,
             "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "job_id": "job_01JDA7Q2W8",
+            "file_id": "file_01JD9B3C4E",
+            "status": "queued",
+            "duplicate": true,
+            "trace_id": "8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f"
           }
         ]
       },
       "JobError": {
         "properties": {
           "code": {
-            "$ref": "#/components/schemas/ErrorCode"
+            "$ref": "#/components/schemas/JobErrorCode"
           },
           "message": {
             "type": "string",
@@ -2831,13 +2936,32 @@
           "message"
         ],
         "title": "JobError",
-        "description": "error ระดับไฟล์ (ทั้งไฟล์ล้ม) — code มาจาก ``app.models.ErrorCode``",
+        "description": "error ระดับไฟล์ (ทั้งไฟล์ล้ม) — code ดู ``JobErrorCode``",
         "examples": [
           {
             "code": "encrypted",
             "message": "ไฟล์ PDF ถูกเข้ารหัส เปิดไม่ได้"
+          },
+          {
+            "code": "unavailable",
+            "message": "GPU ใช้ต่อไม่ได้ (CUDA error) — ส่งไฟล์เดิมซ้ำหลังระบบพร้อม"
           }
         ]
+      },
+      "JobErrorCode": {
+        "type": "string",
+        "enum": [
+          "encrypted",
+          "corrupt",
+          "unsupported_type",
+          "too_large",
+          "empty",
+          "conversion_timeout",
+          "internal",
+          "unavailable"
+        ],
+        "title": "JobErrorCode",
+        "description": "รหัส error ของงาน = ``app.models.ErrorCode`` (error ของตัวไฟล์) + ``unavailable`` (ส่วนประกอบของระบบใช้ไม่ได้ชั่วคราว\nเช่น GPU/CUDA, vector DB, OCR — ส่งไฟล์เดิมซ้ำหลังระบบกลับมาจะเข้าคิวใหม่) · เพิ่มค่าใน enum = ไม่เปลี่ยนเวอร์ชัน"
       },
       "JobResponse": {
         "properties": {
@@ -2958,6 +3082,44 @@
             "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
           },
           {
+            "job_id": "job_01JD9B3C4D",
+            "file_id": "file_01JD9B3C4E",
+            "box_id": "example-finance",
+            "filename": "รายงานประจำปี_ตัวอย่าง.pdf",
+            "status": "done_with_gaps",
+            "progress": {
+              "pages_total": 40,
+              "pages_done": 40
+            },
+            "document_status": "done_with_gaps",
+            "units": {
+              "ok": 38,
+              "needs_ocr": 2,
+              "failed": 0,
+              "rejected": 0
+            },
+            "gaps": [
+              {
+                "unit_index": 4,
+                "label": "หน้า 5",
+                "status": "needs_ocr",
+                "error_code": null,
+                "reason": "OCR ใช้ไม่ได้: ไม่พบ GPU CUDA — Typhoon OCR รันบน CPU ไม่ได้ในระบบนี้ (ไม่ถอยไปใช้ CPU)"
+              },
+              {
+                "unit_index": 5,
+                "label": "หน้า 6",
+                "status": "needs_ocr",
+                "error_code": null,
+                "reason": "OCR ใช้ไม่ได้: ไม่พบ GPU CUDA — Typhoon OCR รันบน CPU ไม่ได้ในระบบนี้ (ไม่ถอยไปใช้ CPU)"
+              }
+            ],
+            "error": null,
+            "created_at": "2026-11-12T02:15:04Z",
+            "updated_at": "2026-11-12T02:21:40Z",
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
             "job_id": "job_01JD8Z5V7K",
             "file_id": "file_01JD8Z5V7M",
             "box_id": "example-finance",
@@ -3004,6 +3166,32 @@
             },
             "created_at": "2026-11-12T02:15:04Z",
             "updated_at": "2026-11-12T02:15:04Z",
+            "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
+          },
+          {
+            "job_id": "job_01JD9B3C4D",
+            "file_id": "file_01JD9B3C4E",
+            "box_id": "example-finance",
+            "filename": "รายงานประจำปี_ตัวอย่าง.pdf",
+            "status": "failed",
+            "progress": {
+              "pages_total": 40,
+              "pages_done": 17
+            },
+            "document_status": null,
+            "units": {
+              "ok": 0,
+              "needs_ocr": 0,
+              "failed": 0,
+              "rejected": 0
+            },
+            "gaps": [],
+            "error": {
+              "code": "unavailable",
+              "message": "GPU ใช้ต่อไม่ได้ (CUDA error) — ส่งไฟล์เดิมซ้ำหลังระบบพร้อม"
+            },
+            "created_at": "2026-11-12T02:15:04Z",
+            "updated_at": "2026-11-12T02:21:40Z",
             "trace_id": "3f2a9c1e7b4d4e8f9a0b1c2d3e4f5a6b"
           }
         ]
@@ -3531,19 +3719,23 @@
           "rank": {
             "type": "integer",
             "minimum": 1.0,
-            "title": "Rank"
+            "title": "Rank",
+            "description": "ลำดับจากการค้น (RRF ของ dense + sparse ตาม SEARCH_MODE) 1 = อันดับแรก"
           },
           "chunk_id": {
             "type": "string",
-            "title": "Chunk Id"
+            "title": "Chunk Id",
+            "description": "{file_id}:u{ลำดับ unit 4 หลัก}:c{ลำดับ chunk ใน unit 3 หลัก}"
           },
           "score": {
             "type": "number",
-            "title": "Score"
+            "title": "Score",
+            "description": "dense cosine ระหว่างคำถามกับ chunk (เทียบข้ามคำถามได้ ใช้ตัดสิน no_relevant_context) — ไม่ใช่ค่าที่ใช้เรียง จึงไม่จำเป็นต้องลดลงตาม rank · top_score = ค่าสูงสุด"
           },
           "text": {
             "type": "string",
-            "title": "Text"
+            "title": "Text",
+            "description": "เนื้อ chunk ตามช่วง citation.char_start–char_end ของข้อความ unit"
           },
           "file_id": {
             "type": "string",

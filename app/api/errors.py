@@ -47,10 +47,6 @@ def not_found() -> ApiError:
     return ApiError(ApiErrorCode.NOT_FOUND, "ไม่พบ")
 
 
-def not_implemented() -> ApiError:
-    return ApiError(ApiErrorCode.NOT_IMPLEMENTED, "endpoint นี้อยู่ในช่วง contract freeze ยังไม่เปิดใช้งาน")
-
-
 def new_trace_id() -> str:
     return uuid.uuid4().hex
 
@@ -128,10 +124,9 @@ _CODE_EXAMPLE = {
     ApiErrorCode.ACL_WIDENING: s.EX_ERR_ACL_WIDENING,
     ApiErrorCode.UNAVAILABLE: s.EX_ERR_UNAVAILABLE,
     ApiErrorCode.INTERNAL: s.EX_ERR_INTERNAL,
-    ApiErrorCode.NOT_IMPLEMENTED: s.EX_ERR_NOT_IMPLEMENTED,
+    ApiErrorCode.CONFLICT: s.EX_ERR_CONFLICT,
 }
-COMMON_ERRORS = (ApiErrorCode.UNAUTHORIZED, ApiErrorCode.INVALID_REQUEST, ApiErrorCode.INTERNAL,
-                 ApiErrorCode.NOT_IMPLEMENTED)
+COMMON_ERRORS = (ApiErrorCode.UNAUTHORIZED, ApiErrorCode.INVALID_REQUEST, ApiErrorCode.INTERNAL)
 
 
 def error_docs(*codes: ApiErrorCode, common: bool = True) -> dict[int, dict]:
@@ -157,7 +152,8 @@ def _validation_message(exc: RequestValidationError) -> str:
     return "; ".join(parts) or "request ไม่ถูกต้อง"
 
 
-_HTTP_TO_CODE = {401: ApiErrorCode.UNAUTHORIZED, 404: ApiErrorCode.NOT_FOUND, 413: ApiErrorCode.TOO_LARGE,
+_HTTP_TO_CODE = {401: ApiErrorCode.UNAUTHORIZED, 404: ApiErrorCode.NOT_FOUND, 409: ApiErrorCode.CONFLICT,
+                 413: ApiErrorCode.TOO_LARGE,
                  415: ApiErrorCode.UNSUPPORTED_TYPE, 503: ApiErrorCode.UNAVAILABLE}
 
 

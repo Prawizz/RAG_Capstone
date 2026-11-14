@@ -6,15 +6,18 @@ server-to-server: ไม่เปิด CORS (browser ไม่ได้เร�
 from __future__ import annotations
 
 import json
+import logging
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 
-from app.api import routes_boxes, routes_health, routes_ingest, routes_jobs, routes_retrieve, routes_sources, schemas
+from app.api import (routes_boxes, routes_files, routes_health, routes_ingest, routes_jobs, routes_retrieve,
+                     routes_sources, schemas)
 from app.api.deps import get_settings
 from app.api.errors import TRACE_HEADER, TraceIdMiddleware, UploadLimitMiddleware, install_error_handlers
 from app.api.readiness import log_runtime
+from app.api.services import services_of
 from app.api.schemas import API_VERSION, EX_FILE_ACL
 from app.runtime import configure_logging
 
@@ -39,11 +42,24 @@ def create_app() -> FastAPI:
     async def lifespan(application: FastAPI):
         # ตอนเริ่ม process: log ว่าใช้อุปกรณ์/OCR backend อะไร (ไม่ fallback เงียบ) — ready รายงานค่าเดียวกัน
         configure_logging()
-        log_runtime(application.dependency_overrides.get(get_settings, get_settings)())
-        yield
+        settings = application.dependency_overrides.get(get_settings, get_settings)()
+        log_runtime(settings)
+        services = services_of(application, settings)  # ที่เก็บถาวร (DATA_DIR/rag.db) + worker
+        services.query_embedder.load()  # BGE-M3 บน CPU สำหรับคำถาม (ครั้งเดียว; ไม่ได้ = ready รายงาน down, retrieve 503)
+        services.reranker.load()  # RERANKER=off = ไม่ทำอะไร
+        try:  # ไฟล์ที่ค้าง deleting จาก process ก่อน: ลบต่อจนครบ (Qdrant ล่ม = worker ลองใหม่ตอนว่าง)
+            services.deleter.finish_pending()
+        except Exception:
+            logging.getLogger("app.api").exception("ลบไฟล์ที่ค้าง deleting ไม่สำเร็จ — worker จะลองใหม่")
+        services.worker.start()  # งานที่ค้างกลางทางจาก process ก่อนกลับเข้าคิวที่นี่
+        try:
+            yield
+        finally:
+            services.close()
 
     app = FastAPI(title=TITLE, description=DESCRIPTION, version=API_VERSION, lifespan=lifespan)
-    for module in (routes_health, routes_ingest, routes_jobs, routes_sources, routes_retrieve, routes_boxes):
+    for module in (routes_health, routes_ingest, routes_jobs, routes_sources, routes_retrieve, routes_boxes,
+                   routes_files):
         app.include_router(module.router)
     install_error_handlers(app)
 

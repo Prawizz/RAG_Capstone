@@ -38,6 +38,11 @@ payload เก็บตำแหน่งประโยคแต่ละปร
 
 point id = UUID5 ของ ``"<file_id>:<unit_index>:<chunk_index>"`` และ ``upsert_chunks`` **ลบ point เก่าของไฟล์ทั้งสอง collection ก่อนเสมอ**
 — ingest ซ้ำไม่ทิ้ง chunk ค้างเมื่อจำนวน chunk ลดลง (เขียนทับด้วย id เดิมอย่างเดียวไม่พอ)
+
+payload ``flags`` = ``Unit.quality.flags`` ของ unit (เช่น ocr_incomplete) ให้ ``/v1/retrieve`` ส่งต่อโดยไม่ต้องอ่าน
+``documents/*.json`` ทุก request — point ที่ index ก่อนมีฟิลด์นี้ได้ flags ว่าง ต้อง index ใหม่
+``search(..., with_dense=True)`` ดึงเวกเตอร์ dense ของแต่ละ hit มาด้วย (``Hit.dense``) ให้ผู้เรียกคำนวณ cosine กับคำถามเอง
+(คะแนนของ RRF เทียบข้ามคำถามไม่ได้) โดยไม่ต้องยิง Qdrant รอบสอง
 """
 
 from __future__ import annotations
@@ -73,6 +78,7 @@ P_POSITION = "position"
 P_LABEL = "label"
 P_STATUS = "status"
 P_METHOD = "method"
+P_FLAGS = "flags"  # Unit.quality.flags (ค่า QualityFlag) ของ unit ที่ chunk นี้อยู่
 P_TEXT = "text"
 P_ACL_DEPARTMENTS = "acl_departments"
 P_ACL_ANY_DEPARTMENT = "acl_any_department"  # true = box/ไฟล์ไม่จำกัดแผนก (เลี่ยงความหมายของ null ใน filter)
@@ -169,6 +175,8 @@ class Hit:
     char_end: int = 0
     sentences: tuple[tuple[int, int], ...] = ()  # (char_start, char_end) ของแต่ละประโยคใน chunk
     context: str = ""
+    flags: tuple[str, ...] = ()  # Unit.quality.flags ของ unit (payload ``flags``; point เก่าที่ไม่มี = ว่าง)
+    dense: Optional[tuple[float, ...]] = None  # เวกเตอร์ dense ของ chunk — มีเฉพาะเมื่อ ``search(with_dense=True)``
 
 
 @dataclass(frozen=True)
@@ -229,6 +237,13 @@ def _file_filter(file_id: str) -> models.Filter:
 def point_id(file_id: str, unit_index: int, chunk_index: int) -> str:
     """id คงที่ของ chunk หนึ่ง"""
     return str(uuid.uuid5(POINT_NAMESPACE, f"{file_id}:{unit_index}:{chunk_index}"))
+
+
+def _dense_of(point: Any) -> Optional[tuple[float, ...]]:
+    vector = getattr(point, "vector", None)
+    if isinstance(vector, dict):
+        vector = vector.get(V_DENSE)
+    return tuple(vector) if isinstance(vector, (list, tuple)) else None
 
 
 class VectorStore:
@@ -365,6 +380,7 @@ class VectorStore:
                         P_LABEL: unit.label,
                         P_STATUS: unit.status.value,
                         P_METHOD: unit.method.value,
+                        P_FLAGS: [f.value for f in unit.quality.flags],
                         P_TEXT: c.text,
                         P_CHAR_START: c.char_start,
                         P_CHAR_END: c.char_end,
@@ -398,13 +414,19 @@ class VectorStore:
             skipped_not_ok=skipped_not_ok, skipped_empty=len(todo) - len(ok) - skipped_not_ok,
         )
 
-    def delete_file(self, file_id: str) -> None:
-        """ลบทุก point ของไฟล์ — ลบจากทั้งสอง collection เพราะสิทธิ์อาจถูกถอนไปแล้ว (เรียกซ้ำได้)"""
+    def delete_file(self, file_id: str) -> int:
+        """ลบทุก point ของไฟล์ — ลบจากทั้งสอง collection เพราะสิทธิ์อาจถูกถอนไปแล้ว (เรียกซ้ำได้)
+        คืนจำนวน point ที่มีอยู่ก่อนลบ (นับแบบ exact; ไม่มี = 0)"""
         condition = _file_filter(file_id)
+        removed = 0
         for name in self.collections:
-            self.client.delete(
-                name, points_selector=models.FilterSelector(filter=condition), wait=True
-            )
+            n = self.client.count(name, count_filter=condition, exact=True).count
+            if n:
+                self.client.delete(
+                    name, points_selector=models.FilterSelector(filter=condition), wait=True
+                )
+                removed += n
+        return removed
 
     def refresh_acl_payload(self, file_id: str) -> RefreshReport:
         """ทำให้ payload ของ ACL ใน index ตรงกับ ``AclStore`` ตอนนี้ (box_id, visibility, acl_*) โดยไม่ embed ใหม่
@@ -485,12 +507,14 @@ class VectorStore:
         box_id: str,
         limit: int = 10,
         mode: Optional[str] = None,
+        *,
+        with_dense: bool = False,
     ) -> SearchResult:
         """ค้นใน box เดียว (PLAN.md: retrieve รอบจริงทำในกล่องเดียวเสมอ) แล้ว re-check ทุก hit
 
         ``mode`` (ไม่ระบุ = ``Settings.search_mode``) ดู ``SEARCH_MODES`` — ``query`` เป็น ``Query`` (dense + sparse ของคำถาม)
         หรือรายการตัวเลข (= dense อย่างเดียว ใช้ได้เฉพาะโหมด dense) box ที่ไม่รู้จัก / ไม่ได้เป็นสมาชิก คืน ``EMPTY_RESULT``
-        เหมือนค้นแล้วไม่เจอ
+        เหมือนค้นแล้วไม่เจอ · ``with_dense`` = ดึงเวกเตอร์ dense ของ hit มาใน ``Hit.dense`` (ลำดับผลไม่เปลี่ยน)
 
         Raises:
             SearchModeError: โหมดไม่รู้จัก หรือโหมดต้องใช้ sparse แต่ ``query`` ไม่มี
@@ -516,10 +540,11 @@ class VectorStore:
         collection = self.collection_for(box.visibility)
         # คำถามที่ตัดคำแล้วไม่เหลือ token (sparse ว่าง) = ข้าม vector นั้น (Qdrant ไม่รับ sparse ว่างเป็นคำค้น)
         branches = [v for v in SEARCH_MODES[mode] if v == V_DENSE or sparse_of[v]]
+        with_vectors: "bool | list[str]" = [V_DENSE] if with_dense else False
         if branches == [V_DENSE]:
             found = self.client.query_points(
                 collection, query=list(q.dense), using=V_DENSE, query_filter=acl_filter,
-                limit=fetch, with_payload=True,
+                limit=fetch, with_payload=True, with_vectors=with_vectors,
             ).points
         else:
             prefetch = [
@@ -532,7 +557,7 @@ class VectorStore:
             ]
             found = self.client.query_points(
                 collection, prefetch=prefetch, query=models.FusionQuery(fusion=models.Fusion.RRF),
-                query_filter=acl_filter, limit=fetch, with_payload=True,
+                query_filter=acl_filter, limit=fetch, with_payload=True, with_vectors=with_vectors,
             ).points
 
         hits: list[Hit] = []
@@ -562,6 +587,8 @@ class VectorStore:
                     char_end=payload.get(P_CHAR_END, 0),
                     sentences=tuple((x[P_CHAR_START], x[P_CHAR_END]) for x in payload.get(P_SENTENCES, [])),
                     context=payload.get(P_CONTEXT, ""),
+                    flags=tuple(payload.get(P_FLAGS, ())),
+                    dense=_dense_of(point) if with_dense else None,
                 )
             )
         return SearchResult(hits=tuple(hits), dropped_by_recheck=dropped)

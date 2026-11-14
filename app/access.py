@@ -31,8 +31,10 @@
 
 from __future__ import annotations
 
+import threading
+from contextlib import contextmanager, nullcontext
 from enum import Enum
-from typing import Iterable, Optional, Protocol
+from typing import ContextManager, Iterable, Iterator, Optional, Protocol
 
 from pydantic import BaseModel, Field
 
@@ -198,7 +200,10 @@ class MembershipBackend(Protocol):
     """ที่เก็บสมาชิกกล่อง (user_id, box_id) -> role — สลับเป็นฐานข้อมูลจริงได้โดย implement interface นี้
 
     backend เก็บข้อมูลอย่างเดียว กติกา (owner คนสุดท้าย ฯลฯ) อยู่ที่ ``AclStore`` ให้ทุก backend ได้กติกาเดียวกัน
-    ของจริงต้องทำ ``set_role``/``remove`` ของกล่องเดียวกันแบบ serializable (กันถอด owner สองคนพร้อมกันจนไม่เหลือ)
+    ``transaction(box_id)`` (ไม่บังคับ แต่ backend จริงต้องมี) = context manager ที่ทำให้ "ตรวจ owner แล้วเขียน" ของกล่องเดียวกัน
+    เป็น serializable (กันถอด owner สองคนพร้อมกันจนกล่องไม่มี owner) — ``AclStore`` ครอบ set_member/remove_member ด้วยตัวนี้
+    (backend ที่ไม่มี -> AclStore ใช้ lock ของตัวเอง ซึ่งกันได้เฉพาะภายใน process เดียว)
+    ตัวจริง: ``app/storage.py::SqliteMemberships`` (BEGIN IMMEDIATE)
     """
 
     def get_role(self, box_id: str, user_id: str) -> Optional[BoxRole]: ...
@@ -212,11 +217,34 @@ class MembershipBackend(Protocol):
     def boxes_of(self, user_id: str) -> dict[str, BoxRole]: ...
 
 
+class AclPersistence(Protocol):
+    """ที่เก็บถาวรของกล่องและ FileAcl — ``AclStore`` โหลดทั้งหมดตอนสร้าง แล้วเขียนผ่าน (write-through) ทุกครั้งที่เปลี่ยน
+    ตัวจริง: ``app/storage.py::SqliteStorage`` · ``transaction()`` ครอบหลายการเขียนให้เป็นก้อนเดียว (เช่นสร้างกล่อง + owner)"""
+
+    def load_boxes(self) -> list[Box]: ...
+
+    def load_file_acls(self) -> list[FileAcl]: ...
+
+    def save_box(self, box: Box) -> None: ...
+
+    def save_file_acl(self, file: FileAcl) -> None: ...
+
+    def delete_file_acl(self, file_id: str) -> None: ...
+
+    def transaction(self) -> ContextManager: ...
+
+
 class InMemoryMemberships:
-    """``MembershipBackend`` ในหน่วยความจำ (ค่าเริ่มต้น — หายเมื่อ process จบ)"""
+    """``MembershipBackend`` ในหน่วยความจำ (ค่าเริ่มต้น / test — หายเมื่อ process จบ)"""
 
     def __init__(self) -> None:
         self._roles: dict[str, dict[str, BoxRole]] = {}  # box_id -> {user_id: role}
+        self._lock = threading.RLock()
+
+    @contextmanager
+    def transaction(self, box_id: str) -> Iterator[None]:
+        with self._lock:
+            yield
 
     def get_role(self, box_id: str, user_id: str) -> Optional[BoxRole]:
         return self._roles.get(box_id, {}).get(user_id)
@@ -240,7 +268,8 @@ class AclStore:
     vector store ใช้ payload เป็นด่านที่ 1 (pre-filter) แต่ payload อาจค้างเก่าได้หลังสิทธิ์เปลี่ยน
     ด่านที่ 2 จึงถามที่นี่ทุกครั้งก่อนคืนผล — ``app/vectorstore.py::VectorStore.search``
 
-    ยังเก็บในหน่วยความจำ: ของจริงจะเป็นฐานข้อมูลหรือ API ขององค์กร (คำถามค้างใน PLAN.md ข้อ 9)
+    เก็บในหน่วยความจำ + เขียนผ่านไปที่เก็บถาวร (``persistence`` / ``memberships`` จาก ``app/storage.py``) เมื่อส่งมา
+    (ไม่ส่ง = หน่วยความจำล้วน ใช้ใน test) · process เดียวเป็นผู้เขียน (API + worker ใน process เดียวกัน)
     ``register_file`` ตรวจการขยายสิทธิ์ทันทีเพื่อให้ config ที่ผิดดังตอนตั้ง ไม่ใช่ตอนค้น
 
     สมาชิกกล่อง (``MembershipBackend``) เป็นความจริงของชั้น box:
@@ -250,13 +279,37 @@ class AclStore:
     - การเป็นสมาชิกคือชั้นแรกเท่านั้น ยังต้องผ่านแผนกและระดับความลับตามเดิม (role ไม่ได้ข้ามชั้นอื่น)
     - กล่องที่สร้างผ่าน ``create_box`` มี owner >= 1 คนเสมอ: ถอด/ลด role ของ owner คนสุดท้าย -> ``AclLastOwnerError``
       (กล่องที่ลงทะเบียนด้วย ``register_box`` ตรงๆ ไม่มีสมาชิก = ไม่มีใครเห็น — fail closed)
+
+    ไฟล์ที่กำลังถูกลบ (``withdraw_file``): ด่าน 2 ตัดทิ้งทันทีเหมือนไฟล์ที่ไม่รู้จัก ทั้งที่ FileAcl ยังอยู่จนลบเสร็จ
+    (``remove_file``) — สถานะจริงอยู่ที่ ``files.status = deleting`` ใน SQLite ผู้สร้าง store ต้อง withdraw ไฟล์เหล่านั้น
+    ตอนเริ่ม process (``app/api/services.py``)
     """
 
-    def __init__(self, memberships: Optional[MembershipBackend] = None) -> None:
+    def __init__(self, memberships: Optional[MembershipBackend] = None,
+                 persistence: Optional[AclPersistence] = None) -> None:
         self._boxes: dict[str, Box] = {}
         self._files: dict[str, FileAcl] = {}
         self._effective: dict[str, EffectiveAcl] = {}
+        self._withdrawn: set[str] = set()  # ไฟล์ที่กำลังลบ: ไม่มีใครเห็น (ด่าน 2 ตัด) จนกว่าจะ remove_file
         self._members: MembershipBackend = memberships if memberships is not None else InMemoryMemberships()
+        self._persist = persistence
+        self._lock = threading.RLock()  # API หลาย thread + ingest worker ใช้ store เดียวกัน
+        if persistence is not None:  # โหลดของเดิม (effective คำนวณใหม่ ไม่ได้เก็บ)
+            for box in persistence.load_boxes():
+                self._boxes[box.box_id] = box
+            for file in persistence.load_file_acls():
+                box = self._boxes.get(file.box_id)
+                if box is None:
+                    raise AclUnknownBoxError(f"ที่เก็บถาวรมี FileAcl {file.file_id} ของ box {file.box_id} ที่ไม่มีอยู่")
+                self._files[file.file_id] = file
+                self._effective[file.file_id] = effective_acl(box, file)
+
+    def _persist_tx(self) -> ContextManager:
+        return self._persist.transaction() if self._persist is not None else nullcontext()
+
+    def _member_tx(self, box_id: str) -> ContextManager:
+        tx = getattr(self._members, "transaction", None)
+        return tx(box_id) if callable(tx) else self._lock
 
     # ---------- ลงทะเบียน ----------
 
@@ -270,43 +323,71 @@ class AclStore:
             file_id (เรียงแล้ว) ของไฟล์ที่ effective ACL เปลี่ยนไปจากเดิม — ผู้เรียกใช้ไปสั่ง
             ``VectorStore.refresh_acl_payload`` ให้ payload ใน index ตาม
         """
-        existing = self._boxes.get(box.box_id)
-        if existing is not None and existing.visibility != box.visibility:
-            raise AclError(
-                f"box {box.box_id} เปลี่ยน visibility จาก {existing.visibility.value} "
-                f"เป็น {box.visibility.value} ไม่ได้ (กฎเหล็กข้อ 9)"
-            )
-        recomputed = {  # ไฟล์ใน box นั้นต้องคำนวณใหม่ทั้งหมดก่อน; error ใดๆ หยุดที่นี่ ก่อนเขียน state
-            file.file_id: effective_acl(box, file)
-            for file in self._files.values()
-            if file.box_id == box.box_id
-        }
-        changed = sorted(fid for fid, acl in recomputed.items() if self._effective.get(fid) != acl)
-        self._boxes[box.box_id] = box
-        self._effective.update(recomputed)
-        return changed
+        with self._lock:
+            existing = self._boxes.get(box.box_id)
+            if existing is not None and existing.visibility != box.visibility:
+                raise AclError(
+                    f"box {box.box_id} เปลี่ยน visibility จาก {existing.visibility.value} "
+                    f"เป็น {box.visibility.value} ไม่ได้ (กฎเหล็กข้อ 9)"
+                )
+            recomputed = {  # ไฟล์ใน box นั้นต้องคำนวณใหม่ทั้งหมดก่อน; error ใดๆ หยุดที่นี่ ก่อนเขียน state
+                file.file_id: effective_acl(box, file)
+                for file in self._files.values()
+                if file.box_id == box.box_id
+            }
+            changed = sorted(fid for fid, acl in recomputed.items() if self._effective.get(fid) != acl)
+            if self._persist is not None:  # เขียนถาวรก่อน: ล้ม = หน่วยความจำไม่เปลี่ยน
+                self._persist.save_box(box)
+            self._boxes[box.box_id] = box
+            self._effective.update(recomputed)
+            return changed
 
     def register_file(self, file: FileAcl) -> EffectiveAcl:
-        box = self._boxes.get(file.box_id)
-        if box is None:
-            raise AclUnknownBoxError(f"ยังไม่รู้จัก box {file.box_id} (ลงทะเบียน box ก่อน)")
-        acl = effective_acl(box, file)  # ขยายสิทธิ์ -> AclWideningError ที่นี่
-        self._files[file.file_id] = file
-        self._effective[file.file_id] = acl
-        return acl
+        with self._lock:
+            box = self._boxes.get(file.box_id)
+            if box is None:
+                raise AclUnknownBoxError(f"ยังไม่รู้จัก box {file.box_id} (ลงทะเบียน box ก่อน)")
+            acl = effective_acl(box, file)  # ขยายสิทธิ์ -> AclWideningError ที่นี่
+            if self._persist is not None:
+                self._persist.save_file_acl(file)
+            self._files[file.file_id] = file
+            self._effective[file.file_id] = acl
+            return acl
 
     def remove_file(self, file_id: str) -> None:
-        self._files.pop(file_id, None)
-        self._effective.pop(file_id, None)
+        with self._lock:
+            if self._persist is not None:
+                self._persist.delete_file_acl(file_id)
+            self._files.pop(file_id, None)
+            self._effective.pop(file_id, None)
+            self._withdrawn.discard(file_id)
+
+    def withdraw_file(self, file_id: str) -> None:
+        """ซ่อนไฟล์จากทุกคนทันที (กำลังลบ) — FileAcl ยังอยู่จนกว่า ``remove_file``"""
+        with self._lock:
+            self._withdrawn.add(file_id)
+
+    def restore_file(self, file_id: str) -> None:
+        """ยกเลิก ``withdraw_file`` (ใช้เมื่อบันทึกสถานะ deleting ไม่สำเร็จ)"""
+        with self._lock:
+            self._withdrawn.discard(file_id)
+
+    def is_withdrawn(self, file_id: str) -> bool:
+        return file_id in self._withdrawn
 
     def create_box(self, box: Box, owner_user_id: str) -> None:
-        """สร้างกล่องใหม่พร้อม owner คนแรก — box_id ซ้ำ -> ``AclBoxExistsError`` (ไม่สร้างทับ)"""
+        """สร้างกล่องใหม่พร้อม owner คนแรก (ก้อนเดียวกันในที่เก็บถาวร) — box_id ซ้ำ -> ``AclBoxExistsError`` (ไม่สร้างทับ)"""
         if not owner_user_id:
             raise AclError("กล่องต้องมี owner")
-        if box.box_id in self._boxes:
-            raise AclBoxExistsError(f"มี box {box.box_id} อยู่แล้ว")
-        self.register_box(box)
-        self._members.set_role(box.box_id, owner_user_id, BoxRole.OWNER)
+        with self._lock, self._persist_tx():
+            if box.box_id in self._boxes:
+                raise AclBoxExistsError(f"มี box {box.box_id} อยู่แล้ว")
+            self.register_box(box)
+            try:
+                self._members.set_role(box.box_id, owner_user_id, BoxRole.OWNER)
+            except Exception:
+                self._boxes.pop(box.box_id, None)  # transaction ถาวร rollback แล้ว — หน่วยความจำต้องตามด้วย
+                raise
 
     # ---------- สมาชิก ----------
 
@@ -324,19 +405,21 @@ class AclStore:
         self._require_box(box_id)
         if not user_id:
             raise AclError("user_id ว่าง")
-        if role != BoxRole.OWNER and self._would_orphan(box_id, user_id):
-            raise AclLastOwnerError(f"{user_id} เป็น owner คนสุดท้ายของ box {box_id} ลด role ไม่ได้")
-        self._members.set_role(box_id, user_id, role)
+        with self._member_tx(box_id):  # ตรวจ owner + เขียน เป็นก้อนเดียว (กันสอง request พร้อมกันจนไม่เหลือ owner)
+            if role != BoxRole.OWNER and self._would_orphan(box_id, user_id):
+                raise AclLastOwnerError(f"{user_id} เป็น owner คนสุดท้ายของ box {box_id} ลด role ไม่ได้")
+            self._members.set_role(box_id, user_id, role)
 
     def remove_member(self, box_id: str, user_id: str) -> bool:
         """ถอดสมาชิก (คืน False ถ้าไม่ได้เป็นสมาชิกอยู่แล้ว) — owner คนสุดท้าย -> ``AclLastOwnerError``"""
         self._require_box(box_id)
-        if self._members.get_role(box_id, user_id) is None:
-            return False
-        if self._would_orphan(box_id, user_id):
-            raise AclLastOwnerError(f"{user_id} เป็น owner คนสุดท้ายของ box {box_id} ถอดไม่ได้")
-        self._members.remove(box_id, user_id)
-        return True
+        with self._member_tx(box_id):
+            if self._members.get_role(box_id, user_id) is None:
+                return False
+            if self._would_orphan(box_id, user_id):
+                raise AclLastOwnerError(f"{user_id} เป็น owner คนสุดท้ายของ box {box_id} ถอดไม่ได้")
+            self._members.remove(box_id, user_id)
+            return True
 
     def role_of(self, user_id: str, box_id: str) -> Optional[BoxRole]:
         """role ของ user ในกล่องที่มีอยู่จริง (กล่องที่ไม่รู้จัก -> None)"""
@@ -358,6 +441,9 @@ class AclStore:
     def get_box(self, box_id: str) -> Optional[Box]:
         return self._boxes.get(box_id)
 
+    def get_file_acl(self, file_id: str) -> Optional[FileAcl]:
+        return self._files.get(file_id)
+
     def get_effective(self, file_id: str) -> Optional[EffectiveAcl]:
         return self._effective.get(file_id)
 
@@ -371,9 +457,9 @@ class AclStore:
     # ---------- ตัดสิน ----------
 
     def decide(self, principal: Principal, file_id: str) -> AccessDecision:
-        """ตัดสินสิทธิ์ของไฟล์หนึ่ง — ไฟล์ที่ไม่รู้จักถือว่าไม่มีสิทธิ์ (fail closed)"""
+        """ตัดสินสิทธิ์ของไฟล์หนึ่ง — ไฟล์ที่ไม่รู้จัก / กำลังลบ ถือว่าไม่มีสิทธิ์ (fail closed)"""
         acl = self._effective.get(file_id)
-        if acl is None:
+        if acl is None or file_id in self._withdrawn:
             return AccessDecision(allowed=False, denied_layer=LAYER_UNKNOWN)
         if self._members.get_role(acl.box_id, principal.user_id) is None:  # สมาชิกภาพสด (ถอดแล้วมีผลทันที)
             return AccessDecision(allowed=False, denied_layer=LAYER_BOX)

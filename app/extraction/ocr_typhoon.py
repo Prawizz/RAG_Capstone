@@ -133,6 +133,26 @@ class TyphoonLocalBackend:
                          seconds=time.perf_counter() - t0, tokens=n_tokens)
 
 
+def unload() -> None:
+    """ปล่อยโมเดล OCR ออกจาก VRAM (เรียกซ้ำได้; ยังไม่เคยโหลด = ไม่ทำอะไร) — ingest worker เรียกก่อนโหลด embedding
+    (GPU อ้างอิง 8 GB: ห้ามมี OCR กับ BGE-M3 อยู่บน GPU พร้อมกัน) โหลดใหม่เองอัตโนมัติเมื่อ recognize ครั้งถัดไป"""
+    global _loaded
+    with _lock:
+        if _loaded is None:
+            return
+        _loaded = None
+    import gc
+
+    gc.collect()
+    try:
+        import torch
+
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+    except Exception:
+        pass
+
+
 def peak_vram_bytes() -> int:
     import torch
 

@@ -17,6 +17,7 @@
 from __future__ import annotations
 
 import logging
+import threading
 from dataclasses import dataclass
 from typing import Optional
 
@@ -109,6 +110,52 @@ def resolve_ocr_backend(requested: str = "auto", *, cuda: Optional[bool] = None,
         level = logging.WARNING if (choice.fallback or not choice.usable) else logging.INFO
         log.log(level, "OCR backend: %s — %s", choice.name, choice.reason)
     return choice
+
+
+# ---------- CUDA error / สถานะ GPU ของ process ----------
+
+# ชนิด/ข้อความของ CUDA error ที่ context เสียแล้ว (ไม่ใช่ OOM ที่ล้างแล้วลองใหม่ได้)
+_FATAL_CUDA_TYPES = {"AcceleratorError"}
+_FATAL_CUDA_MARKERS = (
+    "cuda error", "illegal memory access", "device-side assert", "unspecified launch failure",
+    "cublas_status", "cudnn_status", "cuda driver error", "cuda kernel errors might be asynchronously reported",
+)
+
+_gpu_lock = threading.Lock()
+_gpu_broken: Optional[str] = None
+
+
+def is_oom(e: BaseException) -> bool:
+    return type(e).__name__ == "OutOfMemoryError" or "out of memory" in str(e).lower()
+
+
+def is_fatal_cuda(e: BaseException) -> bool:
+    """CUDA error ที่ใช้ context ต่อไม่ได้: AcceleratorError หรือข้อความ CUDA error อื่นที่ไม่ใช่ OOM"""
+    if is_oom(e):
+        return False
+    msg = str(e).lower()
+    return type(e).__name__ in _FATAL_CUDA_TYPES or any(m in msg for m in _FATAL_CUDA_MARKERS)
+
+
+def mark_gpu_broken(reason: str) -> None:
+    """CUDA context ของ process นี้ใช้ต่อไม่ได้ — จำไว้จนกว่า process จะเริ่มใหม่ (ไม่มีทางกู้ใน process เดิม)
+    ingest worker หยุดหยิบงาน และ ``/v1/health/ready`` รายงานส่วนที่ใช้ GPU เป็น down"""
+    global _gpu_broken
+    with _gpu_lock:
+        if _gpu_broken is None:
+            _gpu_broken = reason
+            log.error("GPU ใช้ต่อไม่ได้จนกว่าจะเริ่ม process ใหม่: %s", reason)
+
+
+def gpu_broken_reason() -> Optional[str]:
+    return _gpu_broken
+
+
+def reset_gpu_state() -> None:
+    """ใช้ใน test เท่านั้น (process จริงล้างสถานะนี้ได้ด้วยการเริ่มใหม่เท่านั้น)"""
+    global _gpu_broken
+    with _gpu_lock:
+        _gpu_broken = None
 
 
 def configure_logging(level: int = logging.INFO) -> None:

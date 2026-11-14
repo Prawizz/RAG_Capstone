@@ -1,4 +1,4 @@
-"""API contract v1: schema/ตัวอย่าง/OpenAPI + auth + แปลง header เป็น Principal (route ยังเป็น stub -> 501)"""
+"""API contract v1: schema/ตัวอย่าง/OpenAPI + auth + แปลง header เป็น Principal (ลอจิกของ endpoint อยู่ใน test_ingest_api.py)"""
 
 from __future__ import annotations
 
@@ -151,6 +151,7 @@ def test_endpoints_and_success_codes(spec):
         ("POST", "/v1/boxes"): ["201"],
         ("PUT", "/v1/boxes/{box_id}/members"): ["200"],
         ("DELETE", "/v1/boxes/{box_id}/members/{user_id}"): ["200"],
+        ("DELETE", "/v1/files/{file_id}"): ["200"],
     }
 
 
@@ -240,23 +241,6 @@ def test_auth_is_checked_before_user_headers_and_body(client):
 def test_unset_service_key_fails_closed(app, client):
     app.dependency_overrides[get_settings] = lambda: Settings(service_key=None)
     assert_error(client.get("/v1/sources", headers=AUTH), 401, "unauthorized")
-
-
-def test_stub_endpoints_return_not_implemented(client):
-    calls = [
-        ("get", "/v1/sources", {}),
-        ("get", "/v1/sources/finance-reports/files", {"params": {"cursor": "abc"}}),
-        ("get", "/v1/jobs/job_1", {}),
-        ("post", "/v1/retrieve", {"json": {"query": "เงินปันผล", "box_id": "finance-reports"}}),
-        ("post", "/v1/boxes", {"json": s.EX_CREATE_BOX}),
-        ("put", "/v1/boxes/finance-reports/members", {"json": s.EX_PUT_MEMBER}),
-        ("delete", "/v1/boxes/finance-reports/members/u2048", {}),
-        ("post", "/v1/ingest", {"data": {"box_id": "finance-reports"}, "files": {"file": ("a.pdf", b"%PDF-1.7")}}),
-    ]
-    for method, path, kw in calls:
-        r = getattr(client, method)(path, headers={**AUTH, "X-Trace-Id": "t-1"}, **kw)
-        body = assert_error(r, 501, "not_implemented")
-        assert body["trace_id"] == "t-1", path
 
 
 def test_unknown_path_is_not_found_in_error_format(client):

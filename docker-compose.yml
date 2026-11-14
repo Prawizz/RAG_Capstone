@@ -1,20 +1,29 @@
-# Qdrant สำหรับ dev — เก็บข้อมูลใน named volume `qdrant_storage` (ไม่ใช้ bind mount: repo อยู่ใต้ OneDrive บน Windows
-# ทำให้ I/O ช้าจน create_payload_index timeout)
-#   docker compose up -d qdrant     เริ่ม
+# Qdrant + RAG API — ข้อมูลอยู่ใน named volume (ไม่ใช้ bind mount: repo อยู่ใต้ OneDrive บน Windows ทำให้ I/O ช้าจน
+# create_payload_index timeout และ SQLite WAL ไม่ควรอยู่ในโฟลเดอร์ที่ sync)
+#   docker compose up -d qdrant     เริ่ม Qdrant อย่างเดียว (dev: รัน API จาก .venv)
+#   docker compose up -d            เริ่ม Qdrant + API (build ภาพ api ครั้งแรก — TORCH_VARIANT=cpu เป็นค่าเริ่มต้น)
 #   docker compose down             หยุด (ข้อมูลใน volume ยังอยู่)
-#   docker compose down -v          หยุดและลบข้อมูล (ลบ volume)
-# เวอร์ชัน image ต้องตรง minor กับ qdrant-client ใน requirements.txt (ตอนนี้ 1.20.x) ไม่งั้น client เตือนว่าเข้ากันไม่ได้
-# ตรวจว่าขึ้นแล้ว: curl http://localhost:6333/readyz   ·   แผงควบคุม: http://localhost:6333/dashboard
-# test ที่ต้องใช้ตัวนี้: pytest -m qdrant  (test ปกติใช้ Qdrant ในกระบวนการ ไม่ต้องมี docker)
+#   docker compose down -v          หยุดและลบข้อมูล (ลบ volume ทั้ง Qdrant และ data ของ API)
+# เวอร์ชัน image ของ Qdrant ต้องตรง minor กับ qdrant-client ใน requirements.txt (ตอนนี้ 1.20.x)
+# ตรวจว่าขึ้นแล้ว: curl http://localhost:6333/readyz · http://localhost:8000/v1/health/ready (ต้องส่ง X-Service-Key)
+# test ที่ต้องใช้ Qdrant ตัวนี้: pytest -m qdrant
+#
+# ค่าลับ/ค่าตั้งของ API ผ่าน env ตอนรัน (ไฟล์ .env ข้าง compose นี้ถูกอ่านเพื่อแทนค่า ${...} — ไม่ถูกฝังในภาพ):
+#   SERVICE_KEY (ไม่ตั้ง = ทุก request 401) · SYSTEM_ADMIN_USERS · RETRIEVE_MIN_SCORE · OCR_BACKEND · EMBEDDING_DEVICE · RERANKER
+#   HF_CACHE_DIR = โฟลเดอร์ HF cache บนเครื่อง (มีโมเดลอยู่แล้ว ไม่ต้องดาวน์โหลดใหม่) ไม่ตั้ง = named volume hf_cache
+#     (ดาวน์โหลดโมเดลครั้งแรกที่ใช้) — ตัวอย่าง Windows: HF_CACHE_DIR=C:/Users/<ชื่อ>/.cache/huggingface
+#   OCR_BACKEND=typhoon-local บนภาพ cpu = ใช้ได้เฉพาะหน้าที่อยู่ในแคช OCR (หน้าใหม่ -> needs_ocr) · auto = tesseract-local
+# รัน stack ที่สองแยกจากของจริง (ทดสอบ): QDRANT_CONTAINER=... QDRANT_PORT=... API_PORT=... docker compose -p <ชื่อ> up -d
+# GPU: docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d   (TORCH_VARIANT=cu128)
 
 services:
   qdrant:
     image: qdrant/qdrant:v1.20.0
-    container_name: rag_qdrant
+    container_name: ${QDRANT_CONTAINER:-rag_qdrant}
     restart: unless-stopped
     ports:
-      - "6333:6333"   # HTTP + dashboard
-      - "6334:6334"   # gRPC
+      - "${QDRANT_PORT:-6333}:6333"   # HTTP + dashboard
+      - "${QDRANT_GRPC_PORT:-6334}:6334"   # gRPC
     volumes:
       - qdrant_storage:/qdrant/storage
     environment:
@@ -27,5 +36,32 @@ services:
       retries: 5
       start_period: 10s
 
+  api:
+    build:
+      context: .
+      args:
+        TORCH_VARIANT: ${TORCH_VARIANT:-cpu}
+    image: rag-api:${TORCH_VARIANT:-cpu}
+    restart: unless-stopped
+    depends_on:
+      qdrant:
+        condition: service_healthy
+    ports:
+      - "${API_PORT:-8000}:8000"
+    environment:
+      QDRANT_URL: http://qdrant:6333
+      SERVICE_KEY: ${SERVICE_KEY:-}
+      SYSTEM_ADMIN_USERS: ${SYSTEM_ADMIN_USERS:-}
+      RETRIEVE_MIN_SCORE: ${RETRIEVE_MIN_SCORE:-0.3}
+      EMBEDDING_DEVICE: ${EMBEDDING_DEVICE:-auto}
+      OCR_BACKEND: ${OCR_BACKEND:-auto}
+      RERANKER: ${RERANKER:-off}
+      HF_HUB_OFFLINE: ${HF_HUB_OFFLINE:-0}
+    volumes:
+      - rag_data:/data                    # rag.db + files/ + documents/ + ocr_cache/
+      - ${HF_CACHE_DIR:-hf_cache}:/hf     # โมเดล (ไม่อยู่ในภาพ)
+
 volumes:
   qdrant_storage:
+  rag_data:
+  hf_cache:

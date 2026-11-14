@@ -2,6 +2,7 @@
 
 ready ต้องผ่าน service auth (เผยเวอร์ชัน สถานะส่วนประกอบ และอุปกรณ์ที่ใช้) แต่ไม่ต้องมี header ผู้ใช้
 ตรวจจริงตาม ``app/api/readiness.py`` (ไม่โหลดโมเดล) · 200 เมื่อ ready ไม่งั้น 503 (body ReadyResponse ทั้งสองกรณี)
+รวมสถานะ query embedder ของ ``/v1/retrieve`` ด้วย (``readiness.with_query_embedder``)
 """
 
 from __future__ import annotations
@@ -12,9 +13,10 @@ from fastapi import APIRouter, Depends, Request
 from fastapi.responses import JSONResponse
 
 from app.api import readiness
-from app.api.deps import ServiceAuth, get_settings
+from app.api.deps import ServiceAuth, get_services, get_settings
 from app.api.errors import TRACE_HEADER, error_docs, trace_id_of
 from app.api.schemas import API_VERSION, ApiErrorCode, LiveResponse, ReadyResponse, ReadyStatus
+from app.api.services import Services
 from app.config import Settings
 
 router = APIRouter(prefix="/v1/health", tags=["health"])
@@ -44,8 +46,10 @@ def ready(
     request: Request,
     settings: Annotated[Settings, Depends(get_settings)],
     probe: Annotated[Callable[[Settings], readiness.Readiness], Depends(get_probe)],
+    services: Annotated[Services, Depends(get_services)],
 ):
-    result = probe(settings)
+    result = readiness.with_reranker(readiness.with_query_embedder(probe(settings), services.query_embedder),
+                                   services.reranker)
     tid = trace_id_of(request)
     body = ReadyResponse(status=result.status, version=API_VERSION, components=result.components,
                          runtime=result.runtime, trace_id=tid)

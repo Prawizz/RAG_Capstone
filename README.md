@@ -98,6 +98,102 @@ ingest ไฟล์จริงแล้วถามคำถามเดีย�
 เหมือนหาไม่เจอทุกประการ **อันดับผลค้นยังไม่มีความหมาย** เพราะ `app/embedding.py` ยังไม่มีโมเดลจริง
 (สคริปต์พิมพ์เตือนไว้)
 
+## รัน API + ตั้ง demo + วัดผลผ่าน API
+
+> **DATA_DIR ห้ามอยู่ในโฟลเดอร์ที่มีโปรแกรม sync ทำงานอยู่** (OneDrive, Dropbox, Google Drive ฯลฯ) — SQLite (`rag.db`, โหมด WAL)
+> กับไฟล์ต้นฉบับจะเสียหายหรือถูกล็อกเมื่อโปรแกรม sync แตะไฟล์ระหว่างเขียน · ค่าเริ่มต้น `data/` ในโฟลเดอร์ repo ใช้ได้ต่อเมื่อปิด sync ของโฟลเดอร์นั้นแล้ว
+
+```powershell
+docker compose up -d qdrant
+$env:SERVICE_KEY = "<ค่าลับที่ Gateway ใช้>"           # หรือใส่ใน .env
+$env:SYSTEM_ADMIN_USERS = "demo-sysadmin"              # ผู้สร้างกล่องใน demo
+$env:PYTHONUTF8 = 1
+python -m uvicorn app.api.main:app --host 127.0.0.1 --port 8000 *> api.log   # log ไว้ให้ eval แยกเวลา embed/search
+```
+
+ตอนเริ่ม API: log อุปกรณ์ที่ใช้ · โหลด query embedder (BGE-M3 อีกตัวบน **CPU fp32** แยกจาก embedder ของ worker บน GPU) ·
+worker thread เริ่ม (งานที่ค้างจาก process ก่อนกลับเข้าคิว) — ดูสถานะที่ `GET /v1/health/ready` (ต้องส่ง `X-Service-Key`)
+
+```bash
+python scripts/bootstrap_demo.py --base-url http://127.0.0.1:8000   # key จาก env SERVICE_KEY / .env
+python scripts/bootstrap_demo.py --reset                            # ลบ DATA_DIR (ยกเว้น ocr_cache) + collection (ถามยืนยัน, หยุด API ก่อน)
+python scripts/retrieval_api_eval.py --api-log api.log               # ชุด dev ผ่าน /v1/retrieve -> eval/results/retrieval_api_eval.*
+```
+
+- `bootstrap_demo.py` สร้างกล่อง `annual-reports` (public: KBANK, CPALL, PTT) และ `finance-private` (private, แผนก finance ระดับ ≥ 2:
+  สำเนา PTT) + สมาชิกชื่อสมมติ (`*.demo`) ผ่าน admin API แล้ว ingest ผ่าน `POST /v1/ingest` และรอ `/v1/jobs` จนจบ พิมพ์สรุปต่อไฟล์
+  และรายชื่อ persona พร้อมค่า header `X-User-*` สำหรับเดโม ACL
+- **ไม่ OCR ใหม่**: ก่อนส่งไฟล์ ตรวจว่าทุกหน้าที่ต้อง OCR มีในแคช OCR แล้ว (ขาด = หยุด เว้นแต่ใส่ `--allow-ocr`) และหลังจบรายงานจำนวน OCR ใหม่
+  (ต้องเป็น 0) — ต้องรันบนเครื่องเดียวกับ API
+- รันซ้ำได้: กล่องที่มีอยู่แล้วตรวจผ่าน `/v1/sources` · ไฟล์ซ้ำได้ `200 duplicate` ไม่ index ใหม่
+- `--reset` ใช้เมื่อเปลี่ยน payload / schema ของ index (เช่น point เก่าที่ยังไม่มี `flags` ของ unit) — หยุด API ก่อน แล้วเริ่มใหม่และรัน bootstrap อีกครั้ง
+
+### ลบไฟล์
+
+`DELETE /v1/files/{file_id}` (owner/admin ของกล่องที่เห็นไฟล์นั้น — นอกนั้น 404 เหมือนไม่มีไฟล์): ไฟล์หายจาก `/v1/sources` และ
+`/v1/retrieve` ทันที แล้วลบ point ใน Qdrant, ต้นฉบับ, ผล extract และแคช OCR ของเนื้อไฟล์นั้น (เฉพาะเมื่อไม่มีไฟล์อื่นในกล่องใดใช้
+เนื้อไฟล์เดียวกัน) · งาน ingest ที่ยัง queued ถูกยกเลิก · งานที่กำลังทำ = `409 conflict` (ลบใหม่หลังงานจบ) · พังกลางทาง /
+Qdrant ล่ม = ไฟล์ค้างสถานะ `deleting` (ซ่อนอยู่) แล้วถูกลบต่อจนครบตอนเริ่ม API / ตอน worker ว่าง
+ฐาน SQLite schema v1 ถูก migrate เป็น v2 อัตโนมัติตอนเริ่ม API ครั้งแรกหลังอัปเดต (สำรองเป็น `rag.db.bak-v1` ก่อน)
+
+## สำรองและกู้ข้อมูล
+
+```bash
+python scripts/backup.py                                   # -> backups/rag-backup-<UTC>.zip (อ่านอย่างเดียว)
+python scripts/restore.py backups/rag-backup-....zip --data-dir D:/rag-restore \
+    --collections restore_public restore_private           # กู้ลงที่ใหม่ แล้วตรวจจำนวนแถว/point/ไฟล์กับ manifest
+python scripts/restore.py <zip> --data-dir data --force     # ทับของเดิม (หยุด API ก่อน)
+```
+
+- **ต้องสำรอง `data/` กับ Qdrant พร้อมกันเสมอ** — point ใน Qdrant อ้าง `file_id` ใน `rag.db` สำรองแยกเวลากันได้ index ที่ไม่ตรงกับทะเบียนไฟล์
+  `backup.py` จึงทำทั้งสองอย่างในครั้งเดียว และไม่ยอมสำรองขณะมีงาน ingest กำลังทำหรือไฟล์ค้าง `deleting` (`--allow-busy` = ข้าม)
+- SQLite ใช้ online backup API (ไม่ copy `rag.db` ตรงๆ — ฐานเป็น WAL ข้อมูลล่าสุดอยู่ใน `rag.db-wal`) · Qdrant ใช้ snapshot API
+  (สร้างบน server -> ดาวน์โหลด -> ลบ snapshot บน server) · zip มี `manifest.json` (เวลา, จำนวนแถว/ไฟล์/point, sha256 ทุกไฟล์)
+  — `restore.py` ตรวจ sha256 ก่อนเขียนอะไร และไม่ทับปลายทางที่มีข้อมูลเว้นแต่ `--force`
+- **Docker บน Windows: named volume (ข้อมูล Qdrant และ `rag_data` ของ API) อยู่ในดิสก์ของ WSL2 ไม่ใช่โฟลเดอร์บน Windows** —
+  copy ไฟล์ของ volume ตรงๆ ไม่ได้ (และ copy ไฟล์ของ Qdrant ขณะรันได้ข้อมูลเสีย) ให้ใช้สคริปต์นี้ (API ผ่าน HTTP) เท่านั้น
+  · รัน API ใน container: `docker compose exec api python scripts/backup.py --out /data/backup.zip` แล้ว `docker compose cp api:/data/backup.zip .`
+
+## Docker (API + Qdrant)
+
+```powershell
+$env:SERVICE_KEY = "<ค่าลับ>"; $env:SYSTEM_ADMIN_USERS = "demo-sysadmin"
+$env:HF_CACHE_DIR = "C:/Users/<ชื่อ>/.cache/huggingface"    # ใช้โมเดลที่โหลดไว้แล้ว (ไม่ตั้ง = volume hf_cache โหลดใหม่ครั้งแรก)
+docker compose up -d --build                                 # ภาพ rag-api:cpu (TORCH_VARIANT=cpu)
+docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d --build   # GPU: ตั้ง $env:TORCH_VARIANT = "cu128" ก่อน
+```
+
+- ภาพมี Tesseract (ไทย) + LibreOffice + ฟอนต์ไทย · **ไม่มีโมเดลในภาพ** (mount HF cache ที่ `/hf`) · ค่าลับผ่าน env ตอนรันเท่านั้น
+  · ขนาดภาพ (วัด 14 พ.ย. 2026): `rag-api:cpu` 2.52 GB บนดิสก์ (≈0.59 GB บีบอัด) · `rag-api:cu128` 12.5 GB (≈4.4 GB บีบอัด)
+- ข้อมูลของ API อยู่ใน named volume `rag_data` (`/data`: `rag.db`, `files/`, `documents/`, `ocr_cache/`)
+- **ภาพ cpu + แคช OCR เดิม (Typhoon): ต้องตั้ง `OCR_BACKEND=typhoon-local`** — key ของแคชมีชื่อ backend อยู่ด้วย
+  ค่าเริ่มต้น `auto` บนภาพ cpu = `tesseract-local` -> ไม่ตรงแคช Typhoon เลยสักหน้า -> OCR ใหม่ทั้งหมดด้วย Tesseract (ผลคนละชุด)
+  - หน้าที่อยู่ในแคช: ใช้ผลเดิม (ไม่โหลดโมเดล) · `/v1/health/ready` = degraded (`ocr: down` — ไม่มี GPU) เป็นเรื่องปกติของโหมดนี้
+  - หน้าที่ **ไม่อยู่ในแคช**: ไม่รัน Typhoon บน CPU (ตรวจ CUDA ก่อนโหลดโมเดลเสมอ) — หน้านั้น**คงสถานะ `needs_ocr`** (ยังไม่ได้ OCR
+    ไม่ใช่ OCR แล้วพัง) เป็น gap พร้อมเหตุผล `OCR ใช้ไม่ได้: ไม่พบ GPU CUDA — Typhoon OCR รันบน CPU ไม่ได้ในระบบนี้ (ไม่ถอยไปใช้ CPU)`
+    หน้าอื่นทำต่อตามปกติ -> งาน `done_with_gaps` · ไม่มีหน้าที่ใช้ได้เลย -> งาน `failed` รหัส `unavailable` (ชั่วคราว)
+  - **ส่งไฟล์เดิมซ้ำเมื่อ OCR พร้อมแล้ว** (เช่น ย้ายไปภาพ cu128 / เครื่องที่มี GPU) -> เข้าคิวใหม่ (`200`, `duplicate: true`,
+    `status: queued`, job_id ใหม่, file_id/ACL/ชื่อเดิม) — OCR เฉพาะหน้าที่ขาด (หน้าที่ OCR แล้วได้จากแคช) และเขียน index ทับของเดิม
+    (point ไม่ซ้ำ) · ใช้กับงาน `failed`/`unavailable` และ `done_with_gaps` ที่มี gap `needs_ocr` เท่านั้น — gap `failed`
+    (OCR แล้วไม่ผ่านด่านตรวจ เช่น `latin_in_thai`) ส่งซ้ำได้งานเดิม (ผลเดิม)
+  - ตรวจล่วงหน้าว่าแคชครบไหม: `scripts/bootstrap_demo.py` ตรวจทุกหน้าก่อนส่ง (ขาด = หยุด) สำหรับไฟล์ demo
+- ใส่แคช OCR เดิมเข้า volume: `docker compose create api` -> `docker compose cp data/ocr_cache/. api:/data/ocr_cache/` -> `docker compose up -d`
+- ทดสอบ stack ที่สองโดยไม่แตะของจริง: `QDRANT_CONTAINER=ragtest_qdrant QDRANT_PORT=16333 QDRANT_GRPC_PORT=16334 API_PORT=18000 docker compose -p ragtest up -d`
+
+## ส่วนเสริมของ /v1/retrieve (ทดลอง ปิดเป็นค่าเริ่มต้น)
+
+| env | ค่า | ทำอะไร |
+|---|---|---|
+| `RERANKER` | `off` \| `bge-v2-m3` | cross-encoder BAAI/bge-reranker-v2-m3 จัด 20 อันดับแรกจาก RRF ใหม่ แล้วคืน top_k (`RERANKER_DEVICE=cpu\|cuda`) |
+| `QUERY_EXPANSION` | `0` \| `1` | ขยายคำถาม (คำย่อ, พ.ศ.↔ค.ศ.) ด้วย `app/query_expansion.py` ก่อน embed |
+| `SALIENCE_RERANK` | `0` \| `1` | จัด 20 อันดับแรกใหม่ด้วย `app/rerank.py::rerank_hits` (เปิดพร้อม `RERANKER` ไม่ได้) |
+
+- `score` ใน response ยังเป็น dense cosine ทุกโหมด (ไม่เปลี่ยนความหมาย) · rank = ลำดับหลัง rerank · คะแนน reranker อยู่ใน log (`rerank_top`)
+- `QUERY_EXPANSION` / `SALIENCE_RERANK` **ห้ามวัดบนชุด dev** (คำย่อ/น้ำหนักตั้งจากข้อที่พลาดในชุดนั้น) — `retrieval_api_eval.py` ไม่ยอมเขียนผล
+  ใช้ `eval/datasets/questions.jsonl` แทน (schema: `eval/datasets/questions.schema.json`, ตรวจ: `python -m eval.questions`):
+  `python scripts/retrieval_api_eval.py --questions eval/datasets/questions.jsonl --name questions_eval --api-log api.log`
+- ผลวัด reranker บนชุด dev: `eval/results/reranker_eval.md`
+
 ## วัดผล Thai normalizer
 
 ```bash

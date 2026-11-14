@@ -5,3 +5,4 @@ data/
 docs/tasks/
 eval/datasets/files/*
 !eval/datasets/files/.gitkeep
+backups/
