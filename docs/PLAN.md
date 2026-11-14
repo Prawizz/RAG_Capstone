@@ -1,9 +1,9 @@
 # แผนการทำงาน — RAG API Service
 
-> Draft สำหรับคุยกันในทีม · v6 · 30 ต.ค. 2569
-> ยังไม่ผูกวันที่ — รอ 3 อย่าง: วันเริ่ม, deadline ส่งมอบ, จำนวนคนในทีม
+> Draft สำหรับคุยกันในทีม · v7 · 14 พ.ย. 2569 · deadline ส่งมอบ 3 ธ.ค. 2569
 
 **บันทึกการแก้ไข**
+- v7 (14 พ.ย.) — อัปเดตข้อ 1 สถานะตอนนี้: ingestion + retrieval + API + ACL เสร็จ เหลือ Evaluation → Demo → รายงาน
 - v6 (30 ต.ค.) — เรียงลำดับใหม่: PDF extractor ก่อน แล้วค่อย normalizer และด่านตรวจ จากนั้นจึงไป format อื่น (เดิมวาง normalizer ไว้ก่อน extractor เพราะสับสนลำดับตอนระบบทำงานกับลำดับตอนสร้าง)
 - v5 (30 ต.ค.) — เพิ่มข้อ 0.1 สถานะงานและรายการค้างจาก review; T01 (dev env + contract) เสร็จ
 - v4 (30 ต.ค.) — ingest v1 เปลี่ยนเป็นครบทุกประเภทในระดับพื้นฐาน แล้วค่อยลงลึกใน v2–v4 (ดู `FORMATS.md`); เพิ่มคำถามเรื่อง "หน้า" ของ DOCX
@@ -113,14 +113,18 @@
 
 ## 1. สถานะตอนนี้
 
-**Repo (อัปเดต 2 พ.ย.)** — ingestion v1 ครบทุกประเภท (PDF, DOCX, PPTX, XLSX, ไฟล์รุ่นเก่าผ่าน LibreOffice) + normalizer 1.3 + ด่านตรวจคุณภาพ + OCR (T06a) · pytest ~823 ข้อผ่าน · ยังไม่มี API/Qdrant/ACL
+**Repo (อัปเดต 14 พ.ย. 2569, commit `49847f0`)** — ระบบฝั่ง R ใช้งานได้จริงครบวงจร · deadline ส่งมอบ **3 ธ.ค. 2569**
+- **Ingestion:** PDF / DOCX / PPTX / XLSX / ไฟล์รุ่นเก่า + normalizer + ด่านตรวจรายหน้า · OCR Typhoon 1.5 2B ในเครื่อง (1−CER 99.5% บน truth 7 หน้า) · OCR ครบ 3 เล่ม (KBANK 177/180, 3 หน้า failed)
+- **Retrieval:** chunk ~1000 ตัว + BGE-M3 dense+sparse + RRF ใน Qdrant · ชุด dev 50 ข้อ R@5 66% (reranker 74%, ปิดเป็นค่าเริ่มต้น ต้องใช้ GPU)
+- **API (contract v1, 11 endpoint):** ingest / jobs / sources / retrieve / DELETE file / boxes / health · SQLite + worker ใน process · ACL 4 ชั้น 2 ด่าน · retrieve p50 85 ms · backup/restore · Docker (cpu / cu128)
+- **Demo data:** กล่อง `annual-reports` (public, 3 เล่ม 4,593 chunk) + `finance-private` (สำเนา PTT) สร้างด้วย `scripts/bootstrap_demo.py`
+- **Contract:** ส่งร่างให้บริษัทแล้ว รอทักท้วงถึง 20 พ.ย. (`docs/API_CONTRACT.md`)
+- pytest ~1,435 ข้อผ่าน
 
 **ต่อจากนี้ (ลำดับ)**
-1. ตัดสิน OCR truth ให้ครบ 347 รายการ แล้วเซฟ `judgments.json` (ดาวน์โหลดจากหน้าตรวจเป็นระยะ ความคืบหน้าอยู่ใน localStorage ของเบราว์เซอร์)
-2. T06b phase 2: ประกอบ truth ระดับหน้า + dedup (ดูแถว "T06b phase 2 ต้องจัดการ" ในรายการค้าง) → CER Typhoon/Tesseract, บรรทัดแต่ง/อ่านตก, อัตราผิดของ agree ที่สุ่มตรวจ, เลขหน้าแยก
-3. ทดลองแก้ "ระบุดับ" (ตัดร่องซ้ำ vs ขยาย long edge 2400 px ดู VRAM)
-4. รอ eval questions ของเพื่อน (`docs/EVAL_QUESTIONS.md`, ไฟล์ `eval/datasets/questions.jsonl` ยังว่าง) → ตรวจ 10 ข้อแรก
-5. แล้วค่อยไป embedding/Qdrant → API → ACL · คำถามค้างถามบริษัท: GPU, กล่องไหนส่ง off-site ได้, ปริมาณไฟล์รุ่นเก่า
+1. **Evaluation (21–27 พ.ย.)** — รอ `eval/datasets/questions.jsonl` (ยังว่าง, validator พร้อม: `eval/questions.py`) → รัน `scripts/retrieval_api_eval.py --questions` · ตัดสิน: reranker, โมดูลของเพื่อน (เก็บ/ตัด), เกณฑ์ `RETRIEVE_MIN_SCORE` / ฟิลด์ `relevance`
+2. **Gateway Integration & Demo (24–30 พ.ย.)** — mock Gateway + LLM (public → LLM ภายนอก, private → ห้ามส่งออก) + demo console เรียกผ่าน API สาธารณะเท่านั้น
+3. **Final Report & Delivery (28 พ.ย. – 3 ธ.ค.)** — KPI + ข้อจำกัด (ดูแถว "ที่เก็บข้อมูล", "OCR รอบ 2", "Ingest ขั้น 2/3" ในรายการค้าง)
 
 **กติกาตัดสิน OCR truth (หน้าตรวจ)** — หลักเดียว: ข้อความแต่ละชิ้นในภาพพิมพ์ครั้งเดียว ในรายการที่กรอบเห็นชิ้นนั้น
 - รายการที่มีข้อความ Typhoon: ยึดขอบเขตต้น/ท้ายตาม Typhoon แก้แค่ตัวที่ผิด · Typhoon ขึ้นต้น/จบกลางคำ (เช่น "…เกี่ยวกับรา" + "ยการ…", "คู่ส" + "ัญญา…") = อีกครึ่งอยู่รายการข้างๆ ห้ามเติมเต็มบรรทัด
