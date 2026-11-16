@@ -180,6 +180,17 @@ docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d --build   #
 - ใส่แคช OCR เดิมเข้า volume: `docker compose create api` -> `docker compose cp data/ocr_cache/. api:/data/ocr_cache/` -> `docker compose up -d`
 - ทดสอบ stack ที่สองโดยไม่แตะของจริง: `QDRANT_CONTAINER=ragtest_qdrant QDRANT_PORT=16333 QDRANT_GRPC_PORT=16334 API_PORT=18000 docker compose -p ragtest up -d`
 
+## mock Gateway (สำหรับ demo)
+
+```bash
+export SERVICE_KEY=<ค่าเดียวกับที่ API ใช้>
+uvicorn gateway_mock.main:create_app --factory --port 9000
+curl -s localhost:9000/chat -H 'X-Demo-User: wanida.demo' -H 'Content-Type: application/json' \
+     -d '{"question":"เงินปันผลต่อหุ้นเท่าไร","box_id":"annual-reports"}'
+```
+
+ทำหน้าที่ฝั่ง Gateway ตาม contract (ยืนยันตัวตน, งบ, เลือก LLM ภายใน/ภายนอกจาก `visibility`, เขียนคำตอบ/ข้อความปฏิเสธ) · persona เดียวกับ `bootstrap_demo.py` · รายละเอียดดู `docs/MOCK_GATEWAY.md`
+
 ## ส่วนเสริมของ /v1/retrieve (ทดลอง ปิดเป็นค่าเริ่มต้น)
 
 | env | ค่า | ทำอะไร |
