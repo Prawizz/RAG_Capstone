@@ -127,7 +127,7 @@ def test_without_box_id_is_source_required(env):
     r = env.retrieve(box_id=None, trace="t-sr")
     assert r.status_code == 200
     assert r.json() == {"status": "source_required", "box_id": None, "visibility": None, "top_score": None,
-                        "results": [], "trace_id": "t-sr"}
+                        "top_relevance": None, "results": [], "trace_id": "t-sr"}
 
 
 def test_not_member_and_unknown_box_look_exactly_like_an_empty_member_box(env):
@@ -143,7 +143,8 @@ def test_not_member_and_unknown_box_look_exactly_like_an_empty_member_box(env):
     assert without_trace(member_empty.json()) == without_trace(outsider_on_empty.json())
     assert member_empty.json()["trace_id"] == "t1" and outsider_on_empty.json()["trace_id"] == "t2"
     assert without_trace(member_empty.json()) == {"status": "no_relevant_context", "box_id": "empty",
-                                                  "visibility": None, "top_score": None, "results": []}
+                                                  "visibility": None, "top_score": None, "top_relevance": None,
+                                                  "results": []}
 
     assert env.retrieve("member", box_id="hr").json()["results"]  # สมาชิกเห็นเนื้อหา
     outsider_on_hr = env.retrieve("outsider", box_id="hr")

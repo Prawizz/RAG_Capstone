@@ -166,7 +166,7 @@ def test_not_member_example_equals_empty_member_example_except_trace_id():
     assert {k: v for k, v in a.items() if k != "trace_id"} == {k: v for k, v in b.items() if k != "trace_id"}
 
 
-@pytest.mark.parametrize("leak", [{"visibility": "private"}, {"top_score": 0.0}])
+@pytest.mark.parametrize("leak", [{"visibility": "private"}, {"top_score": 0.0}, {"top_relevance": 0.0}])
 def test_empty_result_cannot_reveal_box_properties(leak):
     """ไม่มีผล -> visibility/top_score ต้อง null: กล่องที่ไม่เห็นจึงตอบเหมือนกล่องว่างได้ทางเดียว"""
     with pytest.raises(ValidationError):
@@ -181,6 +181,17 @@ def test_retrieve_response_rules():
         s.RetrieveResponse.model_validate({**s.EX_RETRIEVE_SOURCE_REQUIRED, "box_id": "finance-reports"})
     with pytest.raises(ValidationError):  # top_score ต้องเท่าคะแนนสูงสุด
         s.RetrieveResponse.model_validate({**s.EX_RETRIEVE_OK, "top_score": 0.99})
+    s.RetrieveResponse.model_validate(s.EX_RETRIEVE_OK_RERANKED)
+    s.RetrieveResponse.model_validate(s.EX_RETRIEVE_NO_RELEVANT_RERANKED)  # dense สูงแต่ relevance ต่ำ
+    with pytest.raises(ValidationError):  # top_relevance ต้องเท่า relevance สูงสุด
+        s.RetrieveResponse.model_validate({**s.EX_RETRIEVE_OK_RERANKED, "top_relevance": 0.4127})
+    with pytest.raises(ValidationError):  # reranker ปิด (relevance null) -> top_relevance ต้อง null
+        s.RetrieveResponse.model_validate({**s.EX_RETRIEVE_OK, "top_relevance": 0.9})
+    with pytest.raises(ValidationError):  # relevance ต้องมีทุกผลหรือ null ทุกผล
+        s.RetrieveResponse.model_validate({**s.EX_RETRIEVE_OK, "top_relevance": 0.9731,
+                                           "results": [{**s.EX_RESULT_1, "relevance": 0.9731}, s.EX_RESULT_2]})
+    with pytest.raises(ValidationError):  # มี relevance แต่ไม่ส่ง top_relevance
+        s.RetrieveResponse.model_validate({k: v for k, v in s.EX_RETRIEVE_OK_RERANKED.items() if k != "top_relevance"})
     with pytest.raises(ValidationError):  # citation ของ page ต้องมี page
         s.Citation.model_validate({"unit_type": "page", "label": "หน้า 1", "char_start": 0, "char_end": 1})
 

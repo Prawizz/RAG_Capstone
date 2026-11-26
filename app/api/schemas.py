@@ -7,7 +7,7 @@
 - error ทุกตัวเป็น ``ErrorResponse`` {error_code, message, trace_id}; ไม่มี HTTP Forbidden จากเรื่องสิทธิ์ (กฎเหล็กข้อ 9):
   ไม่มีสิทธิ์ = ไม่เจอ (404 หรือผลว่าง) ทุกกรณี
 - ``trace_id`` อยู่ในทุก body และ header ``X-Trace-Id``
-- ``RetrieveResponse`` ที่ไม่มีผล: ``visibility`` และ ``top_score`` เป็น null เสมอ (validator) — response ของกล่องที่ไม่รู้จัก /
+- ``RetrieveResponse`` ที่ไม่มีผล: ``visibility``, ``top_score`` และ ``top_relevance`` เป็น null เสมอ (validator) — response ของกล่องที่ไม่รู้จัก /
   ไม่ได้เป็นสมาชิก จึงเหมือนกล่องที่เป็นสมาชิกแต่ไม่มีผลทุกฟิลด์ยกเว้น trace_id (visibility ของกล่องที่ไม่เห็นไม่รั่ว)
 - ห้ามมี ``denied_layer`` / ``dropped_by_recheck`` / ``box_ids`` ในสัญญานี้ (ตัวตนผู้ใช้มาทาง header, สมาชิกกล่องหาเองจาก AclStore)
 - enum ที่ "ขยายได้" (``RetrieveStatus``) — Gateway ต้องรับค่าที่ไม่รู้จักได้ (ถือเป็นไม่มีบริบท) ดู docstring ของ enum
@@ -524,6 +524,7 @@ class Extraction(BaseModel):
 EX_RESULT_1 = {
     "rank": 1, "chunk_id": "file_01JD7X2A9R:u0045:c002", "score": 0.82,
     "text": "(ข้อความตัวอย่าง) บริษัท ตัวอย่าง จำกัด จ่ายเงินปันผลหุ้นละ 1.00 บาท สำหรับผลการดำเนินงานปีตัวอย่าง",
+    "relevance": None,
     "file_id": "file_01JD7X2A9R", "filename": "รายงานประจำปี_ตัวอย่าง.pdf",
     "citation": {"unit_type": "page", "page": 3, "slide": None, "sheet": None, "cell_range": None,
                  "heading_path": None, "label": "หน้า 3", "char_start": 1204, "char_end": 1303},
@@ -531,7 +532,7 @@ EX_RESULT_1 = {
 }
 EX_RESULT_2 = {
     "rank": 2, "chunk_id": "file_01JD9C3D4E:u0007:c000", "score": 0.61,
-    "text": "(ข้อความตัวอย่าง) นโยบายการจ่ายเงินปันผลของบริษัท ตัวอย่าง จำกัด",
+    "text": "(ข้อความตัวอย่าง) นโยบายการจ่ายเงินปันผลของบริษัท ตัวอย่าง จำกัด", "relevance": None,
     "file_id": "file_01JD9C3D4E", "filename": "นโยบาย_ตัวอย่าง.docx",
     "citation": {"unit_type": "section", "page": None, "slide": None, "sheet": None, "cell_range": None,
                  "heading_path": ["หมวดตัวอย่าง 1", "หัวข้อตัวอย่าง 1.1"], "label": "หมวดตัวอย่าง 1 › หัวข้อตัวอย่าง 1.1",
@@ -539,15 +540,24 @@ EX_RESULT_2 = {
     "extraction": {"method": "office_xml", "flags": []},
 }
 EX_RESULT_LOW = {**EX_RESULT_2, "rank": 1, "score": 0.18}
+# reranker ปิด (ค่าเริ่มต้น): relevance / top_relevance = null · status จาก top_score
 EX_RETRIEVE_OK = {"status": "ok", "box_id": "example-finance", "visibility": "private", "top_score": 0.82,
-                  "results": [EX_RESULT_1, EX_RESULT_2], "trace_id": _TRACE}
+                  "top_relevance": None, "results": [EX_RESULT_1, EX_RESULT_2], "trace_id": _TRACE}
 EX_RETRIEVE_NO_RELEVANT = {"status": "no_relevant_context", "box_id": "example-finance", "visibility": "private",
-                           "top_score": 0.18, "results": [EX_RESULT_LOW], "trace_id": _TRACE}
+                           "top_score": 0.18, "top_relevance": None, "results": [EX_RESULT_LOW], "trace_id": _TRACE}
+# RERANKER เปิด: relevance = คะแนน cross-encoder · status จาก top_relevance (score / top_score ยังเป็น dense cosine)
+EX_RETRIEVE_OK_RERANKED = {"status": "ok", "box_id": "example-finance", "visibility": "private", "top_score": 0.82,
+                           "top_relevance": 0.9731,
+                           "results": [{**EX_RESULT_1, "relevance": 0.9731}, {**EX_RESULT_2, "relevance": 0.4127}],
+                           "trace_id": _TRACE}
+EX_RETRIEVE_NO_RELEVANT_RERANKED = {  # dense cosine สูงแต่ reranker บอกว่าไม่เกี่ยว -> no_relevant_context
+    "status": "no_relevant_context", "box_id": "example-finance", "visibility": "private", "top_score": 0.61,
+    "top_relevance": 0.0412, "results": [{**EX_RESULT_2, "rank": 1, "relevance": 0.0412}], "trace_id": _TRACE}
 EX_RETRIEVE_SOURCE_REQUIRED = {"status": "source_required", "box_id": None, "visibility": None, "top_score": None,
-                               "results": [], "trace_id": _TRACE}
+                               "top_relevance": None, "results": [], "trace_id": _TRACE}
 # กล่องที่เป็นสมาชิกแต่ไม่มีผล กับกล่องที่ไม่รู้จัก/ไม่เป็นสมาชิก: ต่างกันแค่ trace_id (กฎเหล็กข้อ 9)
 EX_RETRIEVE_EMPTY_MEMBER = {"status": "no_relevant_context", "box_id": "example-hr", "visibility": None,
-                            "top_score": None, "results": [], "trace_id": _TRACE}
+                            "top_score": None, "top_relevance": None, "results": [], "trace_id": _TRACE}
 EX_RETRIEVE_NOT_MEMBER = {**EX_RETRIEVE_EMPTY_MEMBER, "trace_id": _TRACE_2}
 
 
@@ -556,8 +566,12 @@ class RetrieveResult(BaseModel):
 
     rank: int = Field(ge=1, description="ลำดับจากการค้น (RRF ของ dense + sparse ตาม SEARCH_MODE) 1 = อันดับแรก")
     chunk_id: str = Field(description="{file_id}:u{ลำดับ unit 4 หลัก}:c{ลำดับ chunk ใน unit 3 หลัก}")
-    score: float = Field(description="dense cosine ระหว่างคำถามกับ chunk (เทียบข้ามคำถามได้ ใช้ตัดสิน no_relevant_context) — "
-                                     "ไม่ใช่ค่าที่ใช้เรียง จึงไม่จำเป็นต้องลดลงตาม rank · top_score = ค่าสูงสุด")
+    score: float = Field(description="dense cosine ระหว่างคำถามกับ chunk (เทียบข้ามคำถามได้ · ใช้ตัดสิน no_relevant_context "
+                                     "เมื่อ reranker ปิด) — ไม่ใช่ค่าที่ใช้เรียง จึงไม่จำเป็นต้องลดลงตาม rank · "
+                                     "top_score = ค่าสูงสุด · ความหมายเดิมทุกโหมด")
+    relevance: Optional[float] = Field(
+        default=None, description="คะแนน reranker (cross-encoder, 0–1) ของคู่คำถาม–chunk เมื่อ RERANKER เปิด "
+                                  "(rank เรียงตามค่านี้) · null เมื่อ reranker ปิด · top_relevance = ค่าสูงสุด")
     text: str = Field(description="เนื้อ chunk ตามช่วง citation.char_start–char_end ของข้อความ unit")
     file_id: str
     filename: str
@@ -568,27 +582,36 @@ class RetrieveResult(BaseModel):
 class RetrieveResponse(BaseModel):
     """ผลค้น (ไม่ generate) — กติกา (validator):
     - ``source_required``: ไม่ได้ส่ง box_id -> box_id null, results ว่าง
-    - ``ok``: มีผล และ top_score >= RETRIEVE_MIN_SCORE
-    - ``no_relevant_context``: top_score ต่ำกว่าเกณฑ์ (ยังคืน results) **หรือ** ไม่มีผลเลย
-    - ไม่มีผล -> visibility และ top_score เป็น null เสมอ: กล่องที่ไม่รู้จัก / ไม่ได้เป็นสมาชิก จึงตอบเหมือน
+    - ``ok``: มีผล และผ่านเกณฑ์ — RERANKER เปิด: top_relevance >= RERANK_MIN_SCORE · ปิด: top_score >= RETRIEVE_MIN_SCORE
+    - ``no_relevant_context``: ต่ำกว่าเกณฑ์ (ยังคืน results) **หรือ** ไม่มีผลเลย
+    - ไม่มีผล -> visibility, top_score และ top_relevance เป็น null เสมอ: กล่องที่ไม่รู้จัก / ไม่ได้เป็นสมาชิก จึงตอบเหมือน
       กล่องที่เป็นสมาชิกแต่ไม่มีผลทุกฟิลด์ยกเว้น trace_id
+    - relevance มีทุกผลหรือ null ทุกผล (ห้ามปน) · top_relevance = max(relevance) หรือ null
     - visibility มาจาก Box ใน AclStore เท่านั้น
     """
 
-    model_config = _examples(EX_RETRIEVE_OK, EX_RETRIEVE_NO_RELEVANT, EX_RETRIEVE_SOURCE_REQUIRED,
-                             EX_RETRIEVE_EMPTY_MEMBER)
+    model_config = _examples(EX_RETRIEVE_OK, EX_RETRIEVE_NO_RELEVANT, EX_RETRIEVE_OK_RERANKED,
+                             EX_RETRIEVE_NO_RELEVANT_RERANKED, EX_RETRIEVE_SOURCE_REQUIRED, EX_RETRIEVE_EMPTY_MEMBER)
 
     status: RetrieveStatus
     box_id: Optional[str]
     visibility: Optional[Visibility]
     top_score: Optional[float]
+    top_relevance: Optional[float] = Field(default=None, description="max(relevance) — null เมื่อ reranker ปิดหรือไม่มีผล")
     results: list[RetrieveResult]
     trace_id: str
 
     @model_validator(mode="after")
     def _consistent(self) -> "RetrieveResponse":
-        if not self.results and (self.visibility is not None or self.top_score is not None):
-            raise ValueError("ไม่มีผล -> visibility และ top_score ต้องเป็น null (ห้ามเผยว่ากล่องมีอยู่)")
+        if not self.results and (self.visibility is not None or self.top_score is not None
+                                 or self.top_relevance is not None):
+            raise ValueError("ไม่มีผล -> visibility, top_score และ top_relevance ต้องเป็น null (ห้ามเผยว่ากล่องมีอยู่)")
+        relevances = [r.relevance for r in self.results]
+        if any(v is None for v in relevances) and any(v is not None for v in relevances):
+            raise ValueError("relevance ต้องมีทุกผลหรือ null ทุกผล")
+        top_relevance = max(relevances) if relevances and relevances[0] is not None else None
+        if self.top_relevance != top_relevance:
+            raise ValueError("top_relevance ต้องเท่ากับ relevance สูงสุดของ results (null เมื่อ reranker ปิด)")
         if self.results:
             if self.visibility is None or self.top_score is None:
                 raise ValueError("มีผล -> ต้องมี visibility และ top_score")
@@ -737,6 +760,8 @@ EXAMPLES: dict[str, tuple[type[BaseModel], dict[str, Any]]] = {
     "retrieve_request_no_box": (RetrieveRequest, EX_RETRIEVE_REQUEST_NO_BOX),
     "retrieve_ok": (RetrieveResponse, EX_RETRIEVE_OK),
     "retrieve_no_relevant_context": (RetrieveResponse, EX_RETRIEVE_NO_RELEVANT),
+    "retrieve_ok_reranked": (RetrieveResponse, EX_RETRIEVE_OK_RERANKED),
+    "retrieve_no_relevant_context_reranked": (RetrieveResponse, EX_RETRIEVE_NO_RELEVANT_RERANKED),
     "retrieve_source_required": (RetrieveResponse, EX_RETRIEVE_SOURCE_REQUIRED),
     "retrieve_member_empty_box": (RetrieveResponse, EX_RETRIEVE_EMPTY_MEMBER),
     "retrieve_not_member_box": (RetrieveResponse, EX_RETRIEVE_NOT_MEMBER),

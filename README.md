@@ -191,19 +191,25 @@ curl -s localhost:9000/chat -H 'X-Demo-User: wanida.demo' -H 'Content-Type: appl
 
 ทำหน้าที่ฝั่ง Gateway ตาม contract (ยืนยันตัวตน, งบ, เลือก LLM ภายใน/ภายนอกจาก `visibility`, เขียนคำตอบ/ข้อความปฏิเสธ) · persona เดียวกับ `bootstrap_demo.py` · รายละเอียดดู `docs/MOCK_GATEWAY.md`
 
-## ส่วนเสริมของ /v1/retrieve (ทดลอง ปิดเป็นค่าเริ่มต้น)
+## ส่วนเสริมของ /v1/retrieve (ปิดเป็นค่าเริ่มต้น) + เกณฑ์ no_relevant_context
 
 | env | ค่า | ทำอะไร |
 |---|---|---|
+| `RETRIEVE_MIN_SCORE` | `0.55` | reranker ปิด: `top_score` (dense cosine) ต่ำกว่านี้ → `no_relevant_context` |
+| `RERANK_MIN_SCORE` | `0.55` | `RERANKER` เปิด: `top_relevance` (คะแนน cross-encoder 0–1) ต่ำกว่านี้ → `no_relevant_context` |
 | `RERANKER` | `off` \| `bge-v2-m3` | cross-encoder BAAI/bge-reranker-v2-m3 จัด 20 อันดับแรกจาก RRF ใหม่ แล้วคืน top_k (`RERANKER_DEVICE=cpu\|cuda`) |
-| `QUERY_EXPANSION` | `0` \| `1` | ขยายคำถาม (คำย่อ, พ.ศ.↔ค.ศ.) ด้วย `app/query_expansion.py` ก่อน embed |
 | `SALIENCE_RERANK` | `0` \| `1` | จัด 20 อันดับแรกใหม่ด้วย `app/rerank.py::rerank_hits` (เปิดพร้อม `RERANKER` ไม่ได้) |
 
-- `score` ใน response ยังเป็น dense cosine ทุกโหมด (ไม่เปลี่ยนความหมาย) · rank = ลำดับหลัง rerank · คะแนน reranker อยู่ใน log (`rerank_top`)
-- `QUERY_EXPANSION` / `SALIENCE_RERANK` **ห้ามวัดบนชุด dev** (คำย่อ/น้ำหนักตั้งจากข้อที่พลาดในชุดนั้น) — `retrieval_api_eval.py` ไม่ยอมเขียนผล
+- เกณฑ์ทั้งสองเลือกจากครึ่ง calibrate ของ `eval/datasets/questions.jsonl` (23 พ.ย.: ให้คำถามจริงหลุดไม่เกิน 5%) — ผล `eval/results/questions_eval.md` ข้อ B และ `eval/results/questions_status.md`
+- `score` / `top_score` ใน response ยังเป็น dense cosine ทุกโหมด (ไม่เปลี่ยนความหมาย) · rank = ลำดับหลัง rerank ·
+  `RERANKER` เปิด → แต่ละผลมี `relevance` (คะแนน cross-encoder) และ `top_relevance` = ค่าสูงสุด · ปิด / `SALIENCE_RERANK` → null
+- `QUERY_EXPANSION` ถูกตัดออก (23 พ.ย. — ไม่ช่วยบน questions.jsonl) ตั้งเป็น `1` = error ตอนเริ่ม API · `app/query_expansion.py` ยังอยู่ (`app/rerank.py` ใช้)
+- `SALIENCE_RERANK` **ห้ามวัดบนชุด dev** (คำย่อ/น้ำหนักตั้งจากข้อที่พลาดในชุดนั้น) — `retrieval_api_eval.py` ไม่ยอมเขียนผล
   ใช้ `eval/datasets/questions.jsonl` แทน (schema: `eval/datasets/questions.schema.json`, ตรวจ: `python -m eval.questions`):
   `python scripts/retrieval_api_eval.py --questions eval/datasets/questions.jsonl --name questions_eval --api-log api.log`
 - ผลวัด reranker บนชุด dev: `eval/results/reranker_eval.md`
+- Evaluation รอบจริงทุก config (รีสตาร์ต API ตาม env ทีละ config): `python scripts/questions_eval.py run --config <baseline|reranker|salience_rerank> --api-log api.log`
+  → `report` (`eval/results/questions_eval.md`) → `review` (หน้าตรวจ `eval/datasets/files/questions_review/index.html`) → `lenient --judgments <ไฟล์>` · `status` = status ที่เกณฑ์ค่าเริ่มต้น — รายละเอียดใน docstring ของสคริปต์
 
 ## วัดผล Thai normalizer
 

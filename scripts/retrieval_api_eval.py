@@ -110,7 +110,7 @@ def parse_api_log(path: Path, trace_ids: set[str]) -> dict[str, dict]:
 
 
 def refuse_friend_modules_on_dev(settings, parsed: dict[str, dict] | None) -> None:
-    on = [x for x in FRIEND_EXTRAS if getattr(settings, x)]
+    on = [x for x in FRIEND_EXTRAS if getattr(settings, x, False)]  # query_expansion ถูกตัดจาก Settings แล้ว (ยังดูจาก log ได้)
     if parsed:
         on += sorted({x for p in parsed.values() for x in p["extras"] if x in FRIEND_EXTRAS})
     if on:
