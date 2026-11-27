@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ตรวจหน้าที่ค้นเจอ</title>
+<!-- สร้างด้วย scripts/questions_eval.py review — ข้อมูลอยู่ใน <script id="data"> ภาพหน้าอยู่ที่ pages/ ข้างไฟล์นี้ -->
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --ink:#1c2430; --mute:#5f6b7a; --line:#d9dee5; --accent:#1f6feb;
+          --ok:#1a7f37; --warn:#b35900; --bad:#c62828; --chunk:#eef3fb; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#12161c; --card:#1b212a; --ink:#e6eaf0; --mute:#9aa6b5;
+          --line:#2d3643; --accent:#6aa5ff; --ok:#4cc26a; --warn:#f0a050; --bad:#ff7b7b; --chunk:#1c2a44; } }
+  :root[data-theme="dark"] { --bg:#12161c; --card:#1b212a; --ink:#e6eaf0; --mute:#9aa6b5; --line:#2d3643; --accent:#6aa5ff;
+          --ok:#4cc26a; --warn:#f0a050; --bad:#ff7b7b; --chunk:#1c2a44; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.55 "Segoe UI", "Noto Sans Thai", system-ui, sans-serif; }
+  header { position:sticky; top:0; z-index:5; background:var(--card); border-bottom:1px solid var(--line); padding:10px 16px; }
+  .bar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .bar .grow { flex:1; }
+  .progress { height:8px; background:var(--line); border-radius:4px; overflow:hidden; margin-top:8px; }
+  .progress > div { height:100%; background:var(--ok); width:0; transition:width .2s; }
+  main { max-width:1200px; margin:16px auto; padding:0 16px 80px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:16px; }
+  .q { font-size:19px; font-weight:600; margin:4px 0 8px; }
+  .meta { display:flex; flex-wrap:wrap; gap:8px; align-items:center; color:var(--mute); font-size:13px; margin-bottom:10px; }
+  .tag { padding:1px 8px; border-radius:10px; border:1px solid var(--line); font-size:12px; }
+  .tag.cand { color:var(--accent); border-color:var(--accent); font-weight:600; }
+  .tag.miss { color:var(--bad); } .tag.hit { color:var(--ok); }
+  .grid { display:grid; grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:14px; align-items:start; }
+  @media (max-width:900px) { .grid { grid-template-columns:1fr; } }
+  .chunk { background:var(--chunk); border-radius:6px; padding:8px 10px; margin-bottom:10px; white-space:pre-wrap; word-break:break-word;
+           max-height:420px; overflow:auto; font-size:14px; }
+  .chunk h4 { margin:0 0 4px; font-size:12px; color:var(--mute); font-weight:600; }
+  .pagewrap { border:1px solid var(--line); background:#fff; max-height:80vh; overflow:auto; }
+  .pagewrap img { display:block; width:100%; }
+  .btns { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 6px; }
+  button, select, input[type=text] { font:inherit; padding:6px 12px; border-radius:6px; border:1px solid var(--line); background:var(--card); color:var(--ink); }
+  button { cursor:pointer; } button:hover { border-color:var(--accent); }
+  button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+  button.v-yes.on { background:var(--ok); color:#fff; border-color:var(--ok); }
+  button.v-no.on { background:var(--bad); color:#fff; border-color:var(--bad); }
+  button.v-unsure.on { background:var(--warn); color:#fff; border-color:var(--warn); }
+  input[type=text] { width:100%; }
+  details { margin-top:12px; } details summary { cursor:pointer; color:var(--mute); }
+  details img { width:100%; border:1px solid var(--line); margin-top:6px; background:#fff; }
+  .help { color:var(--mute); font-size:13px; margin-top:12px; }
+  .done-mark { font-weight:600; }
+  kbd { border:1px solid var(--line); border-bottom-width:2px; border-radius:4px; padding:0 5px; font-size:12px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <strong>ตรวจหน้าที่ค้นเจอ</strong>
+    <span id="count"></span>
+    <span class="grow"></span>
+    <label>ไฟล์ของคำถาม <select id="fFile"><option value="">ทั้งหมด</option></select></label>
+    <label><input type="checkbox" id="fUndone"> เฉพาะที่ยังไม่ทำ</label>
+    <button id="btnDownload" class="primary">ดาวน์โหลดผล (JSON)</button>
+    <button id="btnImport">นำเข้าผลเดิม</button>
+    <input type="file" id="fileImport" accept="application/json" hidden>
+  </div>
+  <div class="progress"><div id="bar"></div></div>
+</header>
+<main>
+  <div class="card" id="card"></div>
+  <div class="bar" style="margin-top:12px">
+    <button id="btnPrev">← ก่อนหน้า</button>
+    <button id="btnNext">ถัดไป →</button>
+    <button id="btnNextUndone">ไปรายการที่ยังไม่ทำ</button>
+    <span class="grow"></span>
+    <span id="pos"></span>
+  </div>
+  <p class="help">
+    แต่ละรายการ = คำถาม 1 ข้อ + หน้า 1 หน้าที่ระบบค้นเจอใน top 5 แต่<b>ไม่ใช่</b>หน้าที่ชุดคำถามระบุไว้.
+    ถามแค่ว่า <b>หน้านี้มีหลักฐานที่ตอบคำถามได้ เทียบเท่าหน้าที่ชุดคำถามระบุไว้หรือไม่</b> (ตัดสินจากภาพหน้า — ข้อความ chunk อาจพัง/ขาด;
+    เปิด "หน้าที่ชุดคำถามระบุ" ไว้เทียบได้) · คำถามหลายจุด (multi_hop): มีหลักฐานส่วนหนึ่งที่หน้าใน truth มี = มีคำตอบ ·
+    แค่เรื่องเดียวกันแต่ไม่มีคำตอบ = ไม่มี.
+    ปุ่มลัด: <kbd>1</kbd> มีคำตอบ · <kbd>2</kbd> ไม่มี · <kbd>3</kbd> ไม่แน่ใจ · <kbd>←</kbd> <kbd>→</kbd> เลื่อนรายการ ·
+    ความคืบหน้าเก็บในเบราว์เซอร์นี้อัตโนมัติ — เสร็จแล้วกด "ดาวน์โหลดผล" แล้วรัน
+    <code>python scripts/questions_eval.py lenient --judgments &lt;ไฟล์&gt;</code>
+  </p>
+</main>
+<script id="data" type="application/json">__DATA__</script>
+<script>
+(function () {
+  const DATA = JSON.parse(document.getElementById('data').textContent);
+  const KEY = 'questions_review:' + DATA.dataset_id;
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const pool = Object.fromEntries(DATA.pool.map(p => [p.qid, p]));
+  const LABEL = { yes: 'มีคำตอบ', no: 'ไม่มี', unsure: 'ไม่แน่ใจ' };
+  let j = {};
+  try { j = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { j = {}; }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(j)); } catch (e) {} };
+
+  const files = [...new Set(DATA.pool.map(p => p.file))].sort();
+  files.forEach(f => { const o = document.createElement('option'); o.value = f; o.textContent = f; $('fFile').appendChild(o); });
+
+  let view = [], cur = 0;
+  function refreshView(keepId) {
+    const f = $('fFile').value, undone = $('fUndone').checked;
+    view = DATA.items.filter(it => (!f || pool[it.qid].file === f) && (!undone || !j[it.id] || it.id === keepId));
+    const k = keepId ? view.findIndex(it => it.id === keepId) : -1;
+    cur = k >= 0 ? k : Math.min(cur, Math.max(view.length - 1, 0));
+    render();
+  }
+  function rankText(r) { return r == null ? 'ไม่ติด 10' : 'อันดับ ' + r; }
+  function render() {
+    const done = DATA.items.filter(it => j[it.id]).length;
+    $('count').textContent = `ทำแล้ว ${done} / ${DATA.items.length} รายการ (${DATA.pool.length} ข้อ)`;
+    $('bar').style.width = (100 * done / Math.max(DATA.items.length, 1)) + '%';
+    $('pos').textContent = view.length ? `${cur + 1} / ${view.length}` : '';
+    if (!view.length) { $('card').innerHTML = '<p>ไม่มีรายการตามตัวกรอง</p>'; return; }
+    const it = view[cur], q = pool[it.qid], v = j[it.id];
+    const ranks = Object.entries(q.ranks).map(([n, r]) =>
+      `<span class="tag ${r != null && r <= 5 ? 'hit' : 'miss'}">${esc(n)}: หน้า truth ${esc(rankText(r))}</span>`).join('');
+    const seen = it.seen.map(s => `${esc(s.run)} #${s.rank}`).join(', ');
+    const chunks = it.chunks.map(c => `<div class="chunk"><h4>${esc(c.chunk_id)} · ${c.seen.map(s => esc(s.run) + ' #' + s.rank).join(', ')}</h4>${esc(c.text)}</div>`).join('');
+    const truth = q.truth_images.map((src, i) => `<div>หน้า ${q.pages[i]}</div><img loading="lazy" src="${esc(src)}" alt="หน้า ${q.pages[i]}">`).join('');
+    $('card').innerHTML = `
+      <div class="meta"><span class="tag">${esc(q.qid)}</span><span class="tag">${esc(q.tag)}</span>
+        <span>truth: ${esc(q.file)} หน้า ${q.pages.join(', ')}</span>${ranks}</div>
+      <div class="q">${esc(q.question)}</div>
+      <div class="meta"><span class="tag cand">หน้าที่ต้องตัดสิน: ${esc(it.file)} — ${esc(it.label)} (หน้า PDF ${esc(it.page)})</span>
+        <span>ขึ้นใน top 5 ของ: ${seen}</span>
+        ${v ? `<span class="done-mark">ตัดสินแล้ว: ${LABEL[v.verdict]}</span>` : ''}</div>
+      <div class="btns">
+        <button class="v-yes ${v && v.verdict === 'yes' ? 'on' : ''}" data-v="yes">1 · มีคำตอบ</button>
+        <button class="v-no ${v && v.verdict === 'no' ? 'on' : ''}" data-v="no">2 · ไม่มี</button>
+        <button class="v-unsure ${v && v.verdict === 'unsure' ? 'on' : ''}" data-v="unsure">3 · ไม่แน่ใจ</button>
+      </div>
+      <input type="text" id="note" placeholder="หมายเหตุ (ไม่บังคับ) — บันทึกพร้อมคำตัดสิน" value="${esc(v ? v.note : '')}">
+      <div class="grid" style="margin-top:12px">
+        <div>${chunks}</div>
+        <div class="pagewrap">${it.image ? `<img src="${esc(it.image)}" alt="ภาพหน้า">` : '<p style="padding:8px">ไม่มีภาพ (ไม่ใช่หน้า PDF)</p>'}</div>
+      </div>
+      <details><summary>หน้าที่ชุดคำถามระบุ (ไว้เทียบว่าคำตอบหน้าตาเป็นอย่างไร)</summary>${truth}</details>`;
+    document.querySelectorAll('.btns button').forEach(b => b.addEventListener('click', () => decide(it, b.dataset.v)));
+  }
+  function decide(it, verdict) {
+    j[it.id] = { verdict, note: ($('note') && $('note').value) || '', at: new Date().toISOString() };
+    save(); next(true);
+  }
+  function next(skipDone) {
+    if (!view.length) return;
+    const id = view[cur].id;
+    if ($('fUndone').checked) { refreshView(); const k = view.findIndex(it => it.id === id); cur = k >= 0 ? Math.min(k + 1, view.length - 1) : Math.min(cur, view.length - 1); render(); return; }
+    let k = cur + 1;
+    if (skipDone) while (k < view.length && j[view[k].id]) k++;
+    cur = Math.min(k, view.length - 1); render(); window.scrollTo(0, 0);
+  }
+  $('btnPrev').onclick = () => { cur = Math.max(cur - 1, 0); render(); window.scrollTo(0, 0); };
+  $('btnNext').onclick = () => next(false);
+  $('btnNextUndone').onclick = () => { const k = view.findIndex(it => !j[it.id]); if (k >= 0) { cur = k; render(); window.scrollTo(0, 0); } };
+  $('fFile').onchange = () => refreshView(); $('fUndone').onchange = () => refreshView(view[cur] && view[cur].id);
+  $('btnDownload').onclick = () => {
+    const done = DATA.items.filter(it => j[it.id]).length;
+    const blob = new Blob([JSON.stringify({ version: 1, dataset_id: DATA.dataset_id, total: DATA.items.length, done, judgments: j }, null, 1)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'questions_judgments.json'; a.click();
+  };
+  $('btnImport').onclick = () => $('fileImport').click();
+  $('fileImport').onchange = e => {
+    const f = e.target.files[0]; if (!f) return;
+    f.text().then(t => {
+      const d = JSON.parse(t);
+      if (d.dataset_id !== DATA.dataset_id && !confirm('ไฟล์นี้เป็นของชุดรายการอื่น — นำเข้าเฉพาะรายการที่ id ตรงกัน?')) return;
+      const ids = new Set(DATA.items.map(it => it.id)); let n = 0;
+      for (const [k, v] of Object.entries(d.judgments || {})) if (ids.has(k)) { j[k] = v; n++; }
+      save(); refreshView(); alert('นำเข้า ' + n + ' รายการ');
+    });
+  };
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+    if (!view.length) return;
+    if (e.key === 'ArrowRight') next(false);
+    else if (e.key === 'ArrowLeft') { cur = Math.max(cur - 1, 0); render(); }
+    else if (e.key === '1') decide(view[cur], 'yes');
+    else if (e.key === '2') decide(view[cur], 'no');
+    else if (e.key === '3') decide(view[cur], 'unsure');
+  });
+  refreshView();
+})();
+</script>
+</body>
+</html>

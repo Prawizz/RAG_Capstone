@@ -1,6 +1,6 @@
 # RAG API Service — API Contract v1 (ฉบับร่างเพื่อตกลงกับทีม Gateway)
 
-สถานะ: **ร่าง v1.0.0 (14 พ.ย. 2569)** · ไฟล์อ้างอิงที่เป็นทางการ: `contract/openapi.json` และตัวอย่างใน `contract/examples/`
+สถานะ: **ร่าง v1.0.1 (23 พ.ย. 2569)** · ไฟล์อ้างอิงที่เป็นทางการ: `contract/openapi.json` และตัวอย่างใน `contract/examples/`
 ถ้าเอกสารนี้กับ OpenAPI ไม่ตรงกัน ให้ยึด OpenAPI (สร้างจากโค้ดด้วย `scripts/export_openapi.py`, มี `--check` กันเอกสารเก่า)
 
 ## 1. ขอบเขตหน้าที่
@@ -96,24 +96,28 @@ request: `{query (1–2000 ตัวอักษร), box_id, top_k (1–20, ค
 
 | status | ความหมาย | Gateway ควรทำ |
 |---|---|---|
-| `ok` | มีผลที่เกี่ยวข้องกับคำถาม (ไม่ได้รับประกันว่าตอบคำถามได้) | generate คำตอบจาก `results` เท่านั้นพร้อม citation · ถ้าหลักฐานไม่ตอบคำถาม ต้องตอบว่าไม่พบ |
+| `ok` | มีผลที่เกี่ยวข้องกับคำถาม (ไม่ได้รับประกันว่าตอบคำถามได้) — reranker ปิด: `top_score` ≥ `RETRIEVE_MIN_SCORE` · เปิด: `top_relevance` ≥ `RERANK_MIN_SCORE` | generate คำตอบจาก `results` เท่านั้นพร้อม citation · ถ้าหลักฐานไม่ตอบคำถาม ต้องตอบว่าไม่พบ |
 | `no_relevant_context` | ไม่พบหลักฐานที่ดีพอ (ยังอาจมี `results` คะแนนต่ำ) | ตัดสินเองว่าจะปฏิเสธหรือตอบแบบระวัง |
 | `source_required` | ไม่ได้ระบุ `box_id` | ให้ผู้ใช้เลือกกล่อง |
 | ค่าอื่นที่ไม่รู้จัก | สงวนไว้สำหรับอนาคต (เช่น `source_suggested`) | ทำเหมือน `no_relevant_context` |
 
-- กล่องที่ไม่มีอยู่หรือไม่ได้เป็นสมาชิก → ได้ response **เหมือนกล่องว่างทุกฟิลด์** (`visibility` และ `top_score` เป็น null)
+- กล่องที่ไม่มีอยู่หรือไม่ได้เป็นสมาชิก → ได้ response **เหมือนกล่องว่างทุกฟิลด์** (`visibility`, `top_score` และ `top_relevance` เป็น null)
 - **`visibility = private` → Gateway ต้อง generate ด้วย LLM ภายในองค์กรเท่านั้น**
-- แต่ละผลมี `rank`, `chunk_id`, `text`, `score`, `file_id`, `filename`, `citation` และ `extraction`
-  - `rank` = ลำดับจากการค้นแบบผสม (ความหมาย + คำ) · `score` = ความใกล้เชิงความหมาย (cosine 0–1) เทียบข้ามคำถามได้ — **score ไม่จำเป็นต้องลดลงตาม rank** · `top_score` = score สูงสุดในผล
+- แต่ละผลมี `rank`, `chunk_id`, `text`, `score`, `relevance`, `file_id`, `filename`, `citation` และ `extraction`
+  - `rank` = ลำดับจากการค้นแบบผสม (ความหมาย + คำ) · `score` = ความใกล้เชิงความหมาย (cosine 0–1) เทียบข้ามคำถามได้ — **score ไม่จำเป็นต้องลดลงตาม rank** · `top_score` = score สูงสุดในผล · `score`/`top_score` เป็น dense cosine ทุกโหมด
+  - `relevance` = คะแนนจาก reranker (cross-encoder, 0–1) ว่า chunk ตอบคำถามได้แค่ไหน · `top_relevance` = ค่าสูงสุด · **null เมื่อ reranker ปิด**
   - `chunk_id` = `{file_id}:u{เลข unit 4 หลัก}:c{เลข chunk 3 หลัก}` · `text` = เนื้อ chunk ตรงกับช่วง `char_start`–`char_end` ในข้อความของ unit (ไม่รวมบรรทัดบริบทที่ระบบเติม)
   - `citation`: `unit_type` (page / slide / section / sheet_region) + ตำแหน่งตามชนิด (`page`, `slide`, `heading_path`, `sheet` + `cell_range`) + `label` สำหรับแสดงผล + `char_start`/`char_end` ในข้อความต้นฉบับของหน่วยนั้น
   - `extraction.method`: text_layer / ocr / office_xml / converted · `flags`: เช่น `ocr_incomplete` (เนื้อหาหน้านั้นอาจไม่ครบ)
 - คำถามผ่าน normalizer ภาษาไทยตัวเดียวกับตอน ingest ก่อนค้น
-- ตัวเลือก reranker (cross-encoder, ปิดเป็นค่าเริ่มต้น): เปิดแล้ว `rank` = ลำดับจาก reranker · ต้องมี GPU (บน CPU ~15 วินาทีต่อคำถาม) · โหลดไม่ได้ → ready เป็น `not_ready`
-- เกณฑ์ `no_relevant_context` (`RETRIEVE_MIN_SCORE`) ยังเป็นค่าชั่วคราว จะ calibrate จากชุดคำถามจริง · ผลวัดเบื้องต้น: score แยกคำถามนอกเรื่อง (คุยเล่น) ได้ แต่แยกคำถามในเรื่องเดียวกันที่เอกสารไม่มีคำตอบไม่ได้ → การปฏิเสธกรณีนี้ต้องให้ LLM ฝั่ง Gateway ตัดสินจาก `results`
+- ตัวเลือก reranker (cross-encoder, ปิดเป็นค่าเริ่มต้น): เปิดแล้ว `rank` = ลำดับจาก reranker, มี `relevance`/`top_relevance` และ status ตัดสินจาก `top_relevance` · ต้องมี GPU (บน CPU ~15 วินาทีต่อคำถาม) · โหลดไม่ได้ → ready เป็น `not_ready`
+- เกณฑ์ `no_relevant_context`: `RETRIEVE_MIN_SCORE` = 0.55 (dense) และ `RERANK_MIN_SCORE` = 0.55 (reranker) calibrate จากชุดคำถาม 288 ข้อ (23 พ.ย.) ให้ปฏิเสธคำถามจริงผิดไม่เกิน ~5% · ผลบนครึ่งที่ไม่ได้ใช้ตั้งเกณฑ์:
+  - reranker ปิด: ปฏิเสธคำถามจริงผิด 2.5% · ปฏิเสธคำถามที่เอกสารไม่มีคำตอบถูก 63% · คำถามคุยเล่น 67%
+  - reranker เปิด: ปฏิเสธคำถามจริงผิด 4.2% · คำถามที่ไม่มีคำตอบ 84% · คุยเล่น 100%
+  - คำถามในเรื่องเดียวกันที่เอกสารไม่มีคำตอบยังหลุดเป็น `ok` ได้บางส่วน (โดยเฉพาะเมื่อ reranker ปิด) → LLM ฝั่ง Gateway ยังต้องปฏิเสธเองเมื่อ `results` ไม่ตอบคำถาม
 
 ## 5. ตัวอย่าง
-ดู `contract/examples/*.json` (41 ไฟล์ ครอบคลุมกรณีสำเร็จและ error ของทุก endpoint) เช่น `retrieve_ok.json`, `retrieve_not_member_box.json`, `retrieve_source_required.json`, `ingest_duplicate.json`, `jobs_done_with_gaps.json`
+ดู `contract/examples/*.json` (47 ไฟล์ ครอบคลุมกรณีสำเร็จและ error ของทุก endpoint) เช่น `retrieve_ok.json`, `retrieve_ok_reranked.json`, `retrieve_no_relevant_context_reranked.json`, `retrieve_not_member_box.json`, `retrieve_source_required.json`, `ingest_duplicate.json`, `jobs_done_with_gaps.json`
 
 ## 6. ค่าเริ่มต้นที่เราใช้ (แก้ได้ผ่านการตั้งค่า ถ้าไม่ตรงกับของจริงแจ้งเฉพาะข้อนั้น)
 
@@ -127,6 +131,7 @@ request: `{query (1–2000 ตัวอักษร), box_id, top_k (1–20, ค
 | OCR | ทำในองค์กรทั้งหมด ไม่ส่งเอกสารออกภายนอก |
 | ฮาร์ดแวร์ | **อ้างอิง GPU 8 GB VRAM** (ระดับ RTX 3070 ที่ใช้พัฒนา) สำหรับ Typhoon OCR และ BGE-M3 · ถ้าไม่มี GPU ระบบยังทำงานได้: embedding บน CPU และ OCR ด้วย Tesseract (แม่นน้อยกว่า) · บน CPU วัดได้: embed คำถาม ~50 ms, embed ตอน ingest ~4 chunk/วินาที |
 | เวลารอ | ใช้ภายในองค์กร รอได้ระดับหนึ่ง · `/v1/retrieve` วัดได้ p50 85 ms / p95 104 ms (embed คำถามบน CPU ~51 ms, ค้น ~28 ms; 3 เล่ม ~4,600 chunk) · ingest เป็น async (หน้าที่ต้อง OCR ใช้ ~1–4 นาทีต่อหน้าบน GPU อ้างอิง) |
+| เกณฑ์ no_relevant_context | dense 0.55 / reranker 0.55 (ดู 4.3) · reranker ปิดเป็นค่าเริ่มต้น แนะนำเปิดเมื่อมี GPU สำหรับ retrieve แยกจาก OCR หรือ VRAM ≥ 12 GB (R@5 77% → 84%, latency ~85 → ~350 ms) |
 | Demo | ใช้ mock Gateway ที่ทำตาม contract นี้ |
 | การ deploy / ที่เก็บข้อมูล | รันแบบ instance เดียว ต้องมี persistent disk (`DATA_DIR`) + Qdrant ในเครือข่ายเดียวกัน · ข้อมูลทั้งหมด (ไฟล์ต้นฉบับ, ข้อความที่ extract, แคช OCR, vector) อยู่ในโครงสร้างพื้นฐานที่บริษัทเลือก (on-prem หรือ cloud ขององค์กร) ไม่ส่งออกภายนอก · หลาย instance / autoscale ยังไม่รองรับ |
 | ข้อความที่ส่งออกจากเรา | `/v1/retrieve` คืนข้อความของ chunk ให้ Gateway — การเก็บ log ข้อความนี้ฝั่ง Gateway / LLM เป็นความรับผิดชอบของ Gateway |
@@ -134,3 +139,4 @@ request: `{query (1–2000 ตัวอักษร), box_id, top_k (1–20, ค
 ## 7. การเปลี่ยนเวอร์ชัน
 - เพิ่มฟิลด์หรือค่า enum ใหม่ = ไม่ถือว่าเปลี่ยนเวอร์ชัน (Gateway ต้องข้ามฟิลด์ที่ไม่รู้จัก)
 - ลบหรือเปลี่ยนความหมายฟิลด์ = ขึ้น `/v2`
+- บันทึก: v1.0.1 (23 พ.ย.) เพิ่ม `relevance` / `top_relevance` ใน retrieve, ตั้งเกณฑ์ 0.55 / 0.55 · v1.0.0 (14 พ.ย.) ร่างแรก

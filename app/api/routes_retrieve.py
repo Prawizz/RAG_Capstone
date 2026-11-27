@@ -8,18 +8,22 @@
    กล่องที่ไม่รู้จัก / ไม่เป็นสมาชิก = ``EMPTY_RESULT`` -> response เหมือนกล่องที่เป็นสมาชิกแต่ไม่มีผลทุกฟิลด์ยกเว้น trace_id
 4. **ลำดับ (rank) มาจาก RRF แต่ score = dense cosine** ระหว่างคำถามกับ chunk (เวกเตอร์ dense ดึงมากับผลค้น — ไม่ยิง
    Qdrant รอบสอง) เพราะค่า RRF ขึ้นกับอันดับอย่างเดียว เทียบข้ามคำถามไม่ได้ จึงตั้งเกณฑ์ไม่ได้ · score จึงไม่จำเป็นต้อง
-   ลดลงตาม rank · top_score = max(score) · top_score < RETRIEVE_MIN_SCORE -> no_relevant_context (ยังคืน results)
+   ลดลงตาม rank · top_score = max(score)
+   **status:** RERANKER ปิด -> top_score < RETRIEVE_MIN_SCORE · RERANKER เปิด -> top_relevance < RERANK_MIN_SCORE
+   = no_relevant_context (ยังคืน results) — เกณฑ์ทั้งสองเลือกจากครึ่ง calibrate ของ questions.jsonl (23 พ.ย.)
 5. Hit -> RetrieveResult: chunk_id ``{file_id}:u{unit:04d}:c{chunk:03d}`` · text = เนื้อ chunk (ไม่รวม context line) ·
    citation ตาม unit_type · extraction.method + flags ของ unit (payload ``flags``)
 
 ส่วนเสริม (ปิดเป็นค่าเริ่มต้น — ``app/config.py``; ไม่เปลี่ยนความหมายของ score: ยังเป็น dense cosine เสมอ):
 - ``RERANKER=bge-v2-m3``: ค้น ``RERANK_CANDIDATES`` (20) อันดับแรกจาก RRF -> cross-encoder (``app/reranker.py``) ให้คะแนนคู่
   (คำถามหลัง normalize, context line + เนื้อ chunk) -> เรียงใหม่ -> คืน top_k (rank = ลำดับของ reranker)
+  คะแนน (sigmoid 0–1, ปัด ``SCORE_DECIMALS``) ส่งออกเป็น ``relevance`` ต่อผล + ``top_relevance`` = ค่าสูงสุด
 - ``SALIENCE_RERANK=1``: เหมือนกันแต่เรียงด้วย ``app/rerank.py::rerank_hits`` (โมดูลของเพื่อน ไม่แก้ตรรกะ — ส่ง Hit ตามที่
-  scripts/run_full_pipeline.py ส่ง: score ของ Hit = ค่า RRF)
-- ``QUERY_EXPANSION=1``: embed ``app/query_expansion.py::expand_query(...).expanded_text`` (ผ่าน normalizer กลางอีกรอบ)
-  แทนคำถามเดิม — score คิดกับเวกเตอร์ของคำถามที่ขยายแล้ว
-log เพิ่ม: rerank_ms, rerank_top (คะแนน reranker ของอันดับ 1 — ไว้วัดผล ไม่ส่งออก API), extras (ส่วนเสริมที่เปิด)
+  scripts/run_full_pipeline.py ส่ง: score ของ Hit = ค่า RRF) · **ไม่ส่งออก relevance** (สเกลคนละแบบ ไม่ได้ calibrate)
+  -> relevance null, status จาก top_score
+- relevance / top_relevance = null เมื่อ RERANKER ปิด หรือไม่มีผล
+- ``QUERY_EXPANSION`` ถูกตัดออก (23 พ.ย. — ไม่ช่วยบนชุด questions.jsonl) · ``app/config.py`` ไม่ยอมให้ตั้งเป็นเปิด
+log เพิ่ม: rerank_ms, rerank_top (คะแนน reranker ของอันดับ 1 — ก่อนปัด), extras (ส่วนเสริมที่เปิด)
 
 error: Qdrant ล่ม / query embedder / reranker ใช้ไม่ได้ -> 503 unavailable (ไม่ตอบ "ไม่พบ" แทน)
 log (``app.api.retrieve``): trace_id, box_id, จำนวนผล, top_score, dropped_by_recheck, เวลา embed/search/map —
@@ -50,7 +54,6 @@ from app.api.schemas import (
 from app.api.services import Services
 from app.models import ExtractionMethod, QualityFlag, UnitType
 from app.query_embedder import QueryEmbedderUnavailable
-from app.query_expansion import expand_query
 from app.rerank import rerank_hits
 from app.reranker import RERANK_CANDIDATES, RerankerUnavailable, rerank_order
 from app.thai.normalizer import normalize
@@ -97,10 +100,11 @@ def citation_of(hit: Hit) -> Citation:
     return Citation(unit_type=unit_type, label=hit.label, char_start=hit.char_start, char_end=hit.char_end, **fields)
 
 
-def result_of(rank: int, hit: Hit, score: float) -> RetrieveResult:
+def result_of(rank: int, hit: Hit, score: float, relevance: Optional[float] = None) -> RetrieveResult:
     flags = [QualityFlag(f) for f in hit.flags if f in _KNOWN_FLAGS]
     return RetrieveResult(
-        rank=rank, chunk_id=chunk_id(hit.file_id, hit.unit_index, hit.chunk_index), score=score, text=hit.text,
+        rank=rank, chunk_id=chunk_id(hit.file_id, hit.unit_index, hit.chunk_index), score=score, relevance=relevance,
+        text=hit.text,
         file_id=hit.file_id, filename=hit.filename, citation=citation_of(hit),
         extraction=Extraction(method=ExtractionMethod(hit.method), flags=flags),
     )
@@ -108,8 +112,6 @@ def result_of(rank: int, hit: Hit, score: float) -> RetrieveResult:
 
 def extras_of(settings) -> list[str]:
     out = []
-    if settings.query_expansion:
-        out.append("query_expansion")
     if settings.reranker != "off":
         out.append(f"reranker:{settings.reranker}")
     if settings.salience_rerank:
@@ -123,14 +125,17 @@ def passage_of(hit: Hit) -> str:
 
 
 def build_response(trace_id: str, box_id: str, box: Optional[Box], results: list[RetrieveResult],
-                   min_score: float) -> RetrieveResponse:
-    if not results:  # ไม่มีผล / ไม่มีสิทธิ์ / กล่องไม่รู้จัก: ทุกฟิลด์เหมือนกัน (visibility, top_score = null)
+                   min_score: float, rerank_min_score: float) -> RetrieveResponse:
+    """status: มี relevance (RERANKER เปิด) -> top_relevance เทียบ rerank_min_score · ไม่มี -> top_score เทียบ min_score"""
+    if not results:  # ไม่มีผล / ไม่มีสิทธิ์ / กล่องไม่รู้จัก: ทุกฟิลด์เหมือนกัน (visibility, top_score, top_relevance = null)
         return RetrieveResponse(status=RetrieveStatus.NO_RELEVANT_CONTEXT, box_id=box_id, visibility=None,
-                                top_score=None, results=[], trace_id=trace_id)
+                                top_score=None, top_relevance=None, results=[], trace_id=trace_id)
     top = max(r.score for r in results)
-    status = RetrieveStatus.OK if top >= min_score else RetrieveStatus.NO_RELEVANT_CONTEXT
-    return RetrieveResponse(status=status, box_id=box_id, visibility=box.visibility, top_score=top, results=results,
-                            trace_id=trace_id)
+    top_relevance = max(r.relevance for r in results) if results[0].relevance is not None else None
+    passed = top_relevance >= rerank_min_score if top_relevance is not None else top >= min_score
+    status = RetrieveStatus.OK if passed else RetrieveStatus.NO_RELEVANT_CONTEXT
+    return RetrieveResponse(status=status, box_id=box_id, visibility=box.visibility, top_score=top,
+                            top_relevance=top_relevance, results=results, trace_id=trace_id)
 
 
 @router.post("/retrieve", response_model=RetrieveResponse, summary="ค้นหลักฐานในกล่อง (ไม่ generate คำตอบ)",
@@ -148,11 +153,10 @@ def retrieve(request: Request, principal: CurrentPrincipal, body: RetrieveReques
     reranking = settings.reranker != "off" or settings.salience_rerank
     limit = max(RERANK_CANDIDATES, body.top_k) if reranking else body.top_k
     normalized = normalize(body.query)
-    embed_text = normalize(expand_query(body.query).expanded_text) if settings.query_expansion else normalized
 
     t0 = time.perf_counter()
     try:
-        query = services.query_embedder.embed(embed_text)
+        query = services.query_embedder.embed(normalized)
     except QueryEmbedderUnavailable as e:
         log.warning("retrieve trace_id=%s box_id=%s unavailable=query_embedder (%s)", tid, body.box_id, e)
         raise ApiError(ApiErrorCode.UNAVAILABLE, "query embedder ใช้ไม่ได้ชั่วคราว") from None
@@ -174,6 +178,7 @@ def retrieve(request: Request, principal: CurrentPrincipal, body: RetrieveReques
 
     hits = list(result.hits)
     rerank_top: Optional[float] = None
+    relevances: Optional[list[float]] = None  # คะแนน cross-encoder ตามลำดับ hits (เฉพาะ RERANKER)
     if hits and settings.reranker != "off":
         try:
             scores = services.reranker.score(normalized, [passage_of(h) for h in hits])
@@ -182,6 +187,7 @@ def retrieve(request: Request, principal: CurrentPrincipal, body: RetrieveReques
             raise ApiError(ApiErrorCode.UNAVAILABLE, "reranker ใช้ไม่ได้ชั่วคราว") from None
         order = rerank_order(scores)[:body.top_k]
         hits = [hits[i] for i in order]
+        relevances = [round(float(scores[i]), SCORE_DECIMALS) for i in order]
         rerank_top = scores[order[0]]
     elif hits and settings.salience_rerank:
         reranked = rerank_hits(body.query, hits)[:body.top_k]
@@ -191,9 +197,10 @@ def retrieve(request: Request, principal: CurrentPrincipal, body: RetrieveReques
         hits = hits[:body.top_k]
     t3 = time.perf_counter()
 
-    results = [result_of(rank, hit, round(dense_cosine(query.dense, hit.dense), SCORE_DECIMALS))
+    results = [result_of(rank, hit, round(dense_cosine(query.dense, hit.dense), SCORE_DECIMALS),
+                         None if relevances is None else relevances[rank - 1])
                for rank, hit in enumerate(hits, start=1)]
-    response = build_response(tid, body.box_id, box, results, settings.retrieve_min_score)
+    response = build_response(tid, body.box_id, box, results, settings.retrieve_min_score, settings.rerank_min_score)
     t4 = time.perf_counter()
     log.info(
         "retrieve trace_id=%s box_id=%s status=%s results=%d top_score=%s dropped_by_recheck=%d top_k=%d "

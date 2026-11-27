@@ -9,7 +9,7 @@
 # test ที่ต้องใช้ Qdrant ตัวนี้: pytest -m qdrant
 #
 # ค่าลับ/ค่าตั้งของ API ผ่าน env ตอนรัน (ไฟล์ .env ข้าง compose นี้ถูกอ่านเพื่อแทนค่า ${...} — ไม่ถูกฝังในภาพ):
-#   SERVICE_KEY (ไม่ตั้ง = ทุก request 401) · SYSTEM_ADMIN_USERS · RETRIEVE_MIN_SCORE · OCR_BACKEND · EMBEDDING_DEVICE · RERANKER
+#   SERVICE_KEY (ไม่ตั้ง = ทุก request 401) · SYSTEM_ADMIN_USERS · RETRIEVE_MIN_SCORE · RERANK_MIN_SCORE · OCR_BACKEND · EMBEDDING_DEVICE · RERANKER
 #   HF_CACHE_DIR = โฟลเดอร์ HF cache บนเครื่อง (มีโมเดลอยู่แล้ว ไม่ต้องดาวน์โหลดใหม่) ไม่ตั้ง = named volume hf_cache
 #     (ดาวน์โหลดโมเดลครั้งแรกที่ใช้) — ตัวอย่าง Windows: HF_CACHE_DIR=C:/Users/<ชื่อ>/.cache/huggingface
 #   OCR_BACKEND=typhoon-local บนภาพ cpu = ใช้ได้เฉพาะหน้าที่อยู่ในแคช OCR (หน้าใหม่ -> needs_ocr) · auto = tesseract-local
@@ -52,7 +52,8 @@ services:
       QDRANT_URL: http://qdrant:6333
       SERVICE_KEY: ${SERVICE_KEY:-}
       SYSTEM_ADMIN_USERS: ${SYSTEM_ADMIN_USERS:-}
-      RETRIEVE_MIN_SCORE: ${RETRIEVE_MIN_SCORE:-0.3}
+      RETRIEVE_MIN_SCORE: ${RETRIEVE_MIN_SCORE:-}   # ว่าง = ค่าเริ่มต้นใน app/config.py (ไม่ซ้ำค่าไว้ที่นี่)
+      RERANK_MIN_SCORE: ${RERANK_MIN_SCORE:-}
       EMBEDDING_DEVICE: ${EMBEDDING_DEVICE:-auto}
       OCR_BACKEND: ${OCR_BACKEND:-auto}
       RERANKER: ${RERANKER:-off}

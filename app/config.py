@@ -16,12 +16,16 @@
 - ``service_key`` (SERVICE_KEY) = ค่าที่ Gateway ส่งใน header ``X-Service-Key`` — placeholder ของ service auth
   (ของจริงจะเป็น mTLS หรือ signed token) ไม่ตั้ง = ทุก request ที่ต้อง auth ได้ 401 (fail closed)
 - ``system_admin_users`` (SYSTEM_ADMIN_USERS คั่นด้วยจุลภาค) = user_id ที่สร้างกล่องได้ (role admin ระดับระบบ)
-- ``retrieve_min_score`` (RETRIEVE_MIN_SCORE) = เกณฑ์ no_relevant_context — ค่า placeholder จนกว่าจะ calibrate
-- ส่วนเสริมของ ``/v1/retrieve`` (ปิดทั้งหมดเป็นค่าเริ่มต้น — ทดลอง ยังไม่ผ่านการวัดบนชุดที่ไม่ได้ใช้ออกแบบ):
+- เกณฑ์ no_relevant_context ของ ``/v1/retrieve`` (เลือกจากครึ่ง calibrate ของ eval/datasets/questions.jsonl, 23 พ.ย. 2569 —
+  ดู eval/results/questions_eval.md ข้อ B: ให้คำถามจริงหลุดไม่เกิน 5%):
+  ``retrieve_min_score`` (RETRIEVE_MIN_SCORE, 0.55) = เทียบ ``top_score`` (dense cosine) เมื่อ reranker ปิด ·
+  ``rerank_min_score`` (RERANK_MIN_SCORE, 0.55) = เทียบ ``top_relevance`` (คะแนน cross-encoder) เมื่อ RERANKER เปิด
+- ส่วนเสริมของ ``/v1/retrieve`` (ปิดทั้งหมดเป็นค่าเริ่มต้น):
   ``reranker`` (RERANKER = off|bge-v2-m3) cross-encoder จัดอันดับ 20 อันดับแรกจาก RRF ใหม่ (``app/reranker.py``) บน
-  ``reranker_device`` (RERANKER_DEVICE = cpu|cuda) · ``query_expansion`` (QUERY_EXPANSION) ขยายคำถามด้วย ``app/query_expansion.py``
-  ก่อน embed · ``salience_rerank`` (SALIENCE_RERANK) จัดอันดับใหม่ด้วย ``app/rerank.py::rerank_hits`` — เปิด reranker
-  สองตัวพร้อมกันไม่ได้ (ยังไม่มีการออกแบบว่าซ้อนกันอย่างไร) = error ตอนอ่านค่าตั้ง
+  ``reranker_device`` (RERANKER_DEVICE = cpu|cuda) · ``salience_rerank`` (SALIENCE_RERANK) จัดอันดับใหม่ด้วย
+  ``app/rerank.py::rerank_hits`` — เปิด reranker สองตัวพร้อมกันไม่ได้ (ยังไม่มีการออกแบบว่าซ้อนกันอย่างไร) = error ตอนอ่านค่าตั้ง
+- ``QUERY_EXPANSION`` ถูกตัดออกแล้ว (ไม่ช่วยบนชุด questions.jsonl, 23 พ.ย.) — ตั้งเป็นค่าที่เปิด (1/true/yes/on) = error ตอนอ่านค่าตั้ง
+  (ห้ามเงียบ: คนที่ตั้งไว้ต้องรู้ว่าไม่มีผลแล้ว) · ค่าปิด (0/false/ว่าง) ไม่มีผล · ``app/query_expansion.py`` ยังอยู่ (``app/rerank.py`` ใช้)
 
 ``.env`` ไม่เข้า git (ดู .gitignore) ใช้ ``.env.example`` เป็นแม่แบบ
 """
@@ -49,7 +53,8 @@ DEFAULT_COLLECTION_PUBLIC = "rag_public"
 DEFAULT_COLLECTION_PRIVATE = "rag_private"
 DEFAULT_QDRANT_TIMEOUT = 30.0
 # API (contract v1)
-DEFAULT_RETRIEVE_MIN_SCORE = 0.3  # placeholder จนกว่าจะ calibrate: top_score ต่ำกว่านี้ -> no_relevant_context
+DEFAULT_RETRIEVE_MIN_SCORE = 0.55  # reranker ปิด: top_score (dense cosine) ต่ำกว่านี้ -> no_relevant_context
+DEFAULT_RERANK_MIN_SCORE = 0.55  # RERANKER เปิด: top_relevance (cross-encoder 0–1) ต่ำกว่านี้ -> no_relevant_context
 DEFAULT_MAX_UPLOAD_BYTES = 50 * 1024 * 1024  # 50 MB
 
 ENV_FILE = ".env"
@@ -104,11 +109,11 @@ class Settings(BaseModel):
     service_key: Optional[str] = Field(default=None, repr=False)
     system_admin_users: frozenset[str] = frozenset()
     retrieve_min_score: float = DEFAULT_RETRIEVE_MIN_SCORE
+    rerank_min_score: float = DEFAULT_RERANK_MIN_SCORE
     max_upload_bytes: int = Field(default=DEFAULT_MAX_UPLOAD_BYTES, gt=0)
     data_dir: Path = Field(default_factory=_default_data_dir)  # rag.db + files/ + documents/
     reranker: Literal["off", "bge-v2-m3"] = "off"
     reranker_device: Literal["cpu", "cuda"] = "cpu"
-    query_expansion: bool = False
     salience_rerank: bool = False
 
     @model_validator(mode="after")
@@ -146,16 +151,19 @@ def build_settings(env_file: str | Path = ENV_FILE) -> Settings:
         ("search_mode", "SEARCH_MODE"),
         ("service_key", "SERVICE_KEY"),
         ("retrieve_min_score", "RETRIEVE_MIN_SCORE"),
+        ("rerank_min_score", "RERANK_MIN_SCORE"),
         ("max_upload_bytes", "MAX_UPLOAD_BYTES"),
         ("data_dir", "DATA_DIR"),
         ("reranker", "RERANKER"),
         ("reranker_device", "RERANKER_DEVICE"),
-        ("query_expansion", "QUERY_EXPANSION"),
         ("salience_rerank", "SALIENCE_RERANK"),
     ):
         value = _env(source, key)
         if value is not None:
             fields[name] = value
+    removed = _env(source, "QUERY_EXPANSION")
+    if removed is not None and removed.strip().lower() not in ("0", "false", "no", "off"):
+        raise ValueError("QUERY_EXPANSION ถูกตัดออกจาก /v1/retrieve แล้ว (23 พ.ย. 2569) — ลบออกจาก env / .env")
     admins = _env(source, "SYSTEM_ADMIN_USERS")
     if admins is not None:
         fields["system_admin_users"] = frozenset(a.strip() for a in admins.split(",") if a.strip())

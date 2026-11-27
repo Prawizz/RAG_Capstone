@@ -1,0 +1,101 @@
+{
+ "measured_at": {
+  "status_baseline": "2026-11-23 13:25:30",
+  "status_reranker": "2026-11-23 13:27:54"
+ },
+ "thresholds": {
+  "RETRIEVE_MIN_SCORE": 0.55,
+  "RERANK_MIN_SCORE": 0.55
+ },
+ "split_seed": 20261123,
+ "configs": {
+  "status_baseline": {
+   "label": "baseline (ค่าเริ่มต้น)",
+   "rule": "top_score < RETRIEVE_MIN_SCORE",
+   "full": {
+    "question": {
+     "no_relevant_context": 10,
+     "n": 238
+    },
+    "unanswerable": {
+     "no_relevant_context": 22,
+     "n": 38
+    },
+    "chitchat": {
+     "no_relevant_context": 8,
+     "n": 12
+    }
+   },
+   "test_half": {
+    "question": {
+     "no_relevant_context": 3,
+     "n": 119
+    },
+    "unanswerable": {
+     "no_relevant_context": 12,
+     "n": 19
+    },
+    "chitchat": {
+     "no_relevant_context": 4,
+     "n": 6
+    }
+   },
+   "rejected_questions": [
+    "q005",
+    "q016",
+    "q039",
+    "q040",
+    "q055",
+    "q066",
+    "q071",
+    "q199",
+    "q223",
+    "q237"
+   ]
+  },
+  "status_reranker": {
+   "label": "RERANKER=bge-v2-m3 (cuda)",
+   "rule": "top_relevance < RERANK_MIN_SCORE",
+   "full": {
+    "question": {
+     "no_relevant_context": 10,
+     "n": 238
+    },
+    "unanswerable": {
+     "no_relevant_context": 29,
+     "n": 38
+    },
+    "chitchat": {
+     "no_relevant_context": 12,
+     "n": 12
+    }
+   },
+   "test_half": {
+    "question": {
+     "no_relevant_context": 5,
+     "n": 119
+    },
+    "unanswerable": {
+     "no_relevant_context": 16,
+     "n": 19
+    },
+    "chitchat": {
+     "no_relevant_context": 6,
+     "n": 6
+    }
+   },
+   "rejected_questions": [
+    "q005",
+    "q006",
+    "q007",
+    "q008",
+    "q012",
+    "q040",
+    "q084",
+    "q104",
+    "q149",
+    "q207"
+   ]
+  }
+ }
+}

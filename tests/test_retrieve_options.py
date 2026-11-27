@@ -1,4 +1,5 @@
-"""ส่วนเสริมของ /v1/retrieve (ปิดเป็นค่าเริ่มต้น): RERANKER (cross-encoder) · SALIENCE_RERANK / QUERY_EXPANSION (โมดูลของเพื่อน)
+"""ส่วนเสริมของ /v1/retrieve (ปิดเป็นค่าเริ่มต้น): RERANKER (cross-encoder) · SALIENCE_RERANK (โมดูลของเพื่อน)
++ เกณฑ์ status ทั้ง 2 โหมด (RETRIEVE_MIN_SCORE / RERANK_MIN_SCORE) + relevance / top_relevance · QUERY_EXPANSION ถูกตัดออก
 
 cross-encoder จริงไม่โหลดใน test (2 GB) — ใช้ scorer ปลอมที่บันทึกสิ่งที่ได้รับ · โมดูลของเพื่อนเรียกของจริง (ไม่แก้ตรรกะ)
 """
@@ -17,7 +18,7 @@ from app.query_expansion import expand_query
 from app.rerank import rerank_hits
 from app.thai.normalizer import normalize
 from app.vectorstore import embed_query
-from tests.test_retrieve_api import ADMIN, Env, unit
+from tests.test_retrieve_api import ADMIN, Env, unit, without_trace
 
 TEXTS = [f"เอกสารหน้า {i} เรื่องเงินปันผลและผลประกอบการ ปี 256{i % 10} รายละเอียดหมายเลข {i}" for i in range(25)]
 
@@ -60,12 +61,15 @@ def unit_of(result: dict) -> int:
 
 def test_defaults_are_off_and_log_says_so(tmp_path, caplog):
     s = Settings()
-    assert (s.reranker, s.reranker_device, s.query_expansion, s.salience_rerank) == ("off", "cpu", False, False)
+    assert (s.reranker, s.reranker_device, s.salience_rerank) == ("off", "cpu", False)
+    assert (s.retrieve_min_score, s.rerank_min_score) == (0.55, 0.55)  # เลือกจากครึ่ง calibrate (23 พ.ย.)
+    assert not hasattr(s, "query_expansion")
     e = make(tmp_path)
     try:
         with caplog.at_level(logging.INFO, logger="app.api.retrieve"):
             body = e.retrieve(top_k=5).json()
         assert [unit_of(r) for r in body["results"]] == [h.unit_index for h in search_hits(e, "เงินปันผลหุ้นละเท่าไร", 5)]
+        assert body["top_relevance"] is None and all(r["relevance"] is None for r in body["results"])
         line = next(r.getMessage() for r in caplog.records if "retrieve trace_id" in r.getMessage())
         assert "rerank_top=- extras=-" in line
         assert e.services.reranker.state == "off"
@@ -93,6 +97,8 @@ def test_cross_encoder_reranks_the_top_20_and_keeps_dense_cosine_as_score(tmp_pa
         for r, h in zip(body["results"], expected):
             assert r["score"] == pytest.approx(round(dense_cosine(q, h.dense), 4))  # score ความหมายเดิม
         assert body["top_score"] == max(r["score"] for r in body["results"])
+        assert [r["relevance"] for r in body["results"]] == [h.unit_index / 100 for h in expected]  # คะแนน reranker
+        assert body["top_relevance"] == max(r["relevance"] for r in body["results"]) == body["results"][0]["relevance"]
         line = next(r.getMessage() for r in caplog.records if "retrieve trace_id" in r.getMessage())
         assert f"rerank_top={max(expected, key=lambda h: h.unit_index).unit_index / 100:.4f}" in line
         assert "extras=reranker:bge-v2-m3" in line and query.strip() not in line
@@ -145,10 +151,12 @@ def test_reranker_inference_error_is_503_without_leaking_the_query(tmp_path, cap
 def test_two_rerankers_at_once_is_a_config_error(monkeypatch):
     with pytest.raises(ValidationError, match="พร้อมกันไม่ได้"):
         Settings(reranker="bge-v2-m3", salience_rerank=True)
-    for k, v in {"RERANKER": "bge-v2-m3", "RERANKER_DEVICE": "cuda", "QUERY_EXPANSION": "1"}.items():
+    for k, v in {"RERANKER": "bge-v2-m3", "RERANKER_DEVICE": "cuda", "RERANK_MIN_SCORE": "0.7",
+                 "RETRIEVE_MIN_SCORE": "0.4"}.items():
         monkeypatch.setenv(k, v)
     s = build_settings(env_file="does-not-exist.env")
-    assert (s.reranker, s.reranker_device, s.query_expansion, s.salience_rerank) == ("bge-v2-m3", "cuda", True, False)
+    assert (s.reranker, s.reranker_device, s.salience_rerank) == ("bge-v2-m3", "cuda", False)
+    assert (s.retrieve_min_score, s.rerank_min_score) == (0.4, 0.7)
     with pytest.raises(ValidationError):
         Settings(reranker="colbert")
 
@@ -164,7 +172,20 @@ def test_salience_rerank_uses_the_friends_module_unchanged(tmp_path):
         e.services.close()
 
 
-def test_query_expansion_embeds_the_expanded_text(tmp_path):
+@pytest.mark.parametrize("value", ["1", "true", "on"])
+def test_query_expansion_was_removed_and_turning_it_on_is_an_error(monkeypatch, value):
+    monkeypatch.setenv("QUERY_EXPANSION", value)
+    with pytest.raises(ValueError, match="QUERY_EXPANSION ถูกตัดออก"):
+        build_settings(env_file="does-not-exist.env")
+
+
+@pytest.mark.parametrize("value", ["0", "false", "off"])
+def test_query_expansion_set_to_off_is_harmless(monkeypatch, value):
+    monkeypatch.setenv("QUERY_EXPANSION", value)
+    assert not hasattr(build_settings(env_file="does-not-exist.env"), "query_expansion")
+
+
+def test_retrieve_embeds_the_normalized_query_not_the_expansion(tmp_path):
     seen: list[str] = []
 
     class Recording(HashEmbedder):
@@ -172,12 +193,12 @@ def test_query_expansion_embeds_the_expanded_text(tmp_path):
             seen.append(text)
             return super().embed_query(text)
 
-    e = make(tmp_path, query_expansion=True, query_embedder_factory=lambda: Recording(1024))
+    e = make(tmp_path, query_embedder_factory=lambda: Recording(1024))
     try:
         query = "EBITDA ปี 2567"
+        assert normalize(expand_query(query).expanded_text) != normalize(query)  # ถ้าขยายจะต่างจริง
         assert e.retrieve(query=query).status_code == 200
-        assert seen == [normalize(expand_query(query).expanded_text)]
-        assert "2024" in seen[0]  # พ.ศ. -> ค.ศ. จากโมดูลของเพื่อน
+        assert seen == [normalize(query)]
     finally:
         e.services.close()
 
@@ -186,7 +207,6 @@ def test_friend_modules_are_not_touched_when_off(tmp_path, monkeypatch):
     def boom(*a, **k):
         raise AssertionError("ไม่ควรถูกเรียกเมื่อปิด")
 
-    monkeypatch.setattr("app.api.routes_retrieve.expand_query", boom)
     monkeypatch.setattr("app.api.routes_retrieve.rerank_hits", boom)
     e = make(tmp_path)
     try:
@@ -216,6 +236,83 @@ def test_eval_refuses_friend_modules_on_the_dev_set(tmp_path):
         refuse_friend_modules_on_dev(Settings(), parsed)
     with pytest.raises(SystemExit, match="salience_rerank"):
         refuse_friend_modules_on_dev(Settings(salience_rerank=True), None)
+
+
+# ---------- status: เกณฑ์ตามโหมด + relevance ----------
+
+
+def statuses(e: Env) -> tuple[str, float, float | None]:
+    body = e.retrieve(top_k=5).json()
+    return body["status"], body["top_score"], body["top_relevance"]
+
+
+@pytest.mark.parametrize("min_score,expected", [(-1.0, "ok"), (0.999, "no_relevant_context")])
+def test_reranker_off_status_comes_from_top_score(tmp_path, min_score, expected):
+    e = make(tmp_path, min_score=min_score, rerank_min_score=0.0)  # rerank_min_score ไม่มีผลเมื่อปิด
+    try:
+        status, top_score, top_relevance = statuses(e)
+        assert status == expected and top_relevance is None
+        assert (top_score >= min_score) == (expected == "ok")
+    finally:
+        e.services.close()
+
+
+@pytest.mark.parametrize("relevance,expected", [(0.9, "ok"), (0.3, "no_relevant_context"), (0.55, "ok")])
+@pytest.mark.parametrize("min_score", [-1.0, 0.999])  # เกณฑ์ dense ต้องไม่มีผลเมื่อ RERANKER เปิด
+def test_reranker_on_status_comes_from_top_relevance_only(tmp_path, relevance, expected, min_score):
+    e = make(tmp_path, min_score=min_score, rerank_min_score=0.55, reranker="bge-v2-m3",
+             reranker_factory=lambda: FakeScorer(scores=lambda ps: [relevance] + [0.01] * (len(ps) - 1)))
+    try:
+        body = e.retrieve(top_k=5).json()
+        assert body["status"] == expected
+        assert body["top_relevance"] == relevance == body["results"][0]["relevance"]
+        assert body["top_score"] == max(r["score"] for r in body["results"])  # dense cosine ยังอยู่ ความหมายเดิม
+        assert all(r["relevance"] is not None for r in body["results"])
+    finally:
+        e.services.close()
+
+
+def test_relevance_is_rounded_like_score_and_top_relevance_is_the_max(tmp_path):
+    e = make(tmp_path, reranker="bge-v2-m3",
+             reranker_factory=lambda: FakeScorer(scores=lambda ps: [0.123456 + i / 1000 for i in range(len(ps))]))
+    try:
+        body = e.retrieve(top_k=5).json()
+        rel = [r["relevance"] for r in body["results"]]
+        assert rel == sorted(rel, reverse=True) and all(round(x, 4) == x for x in rel)
+        assert body["top_relevance"] == max(rel)
+    finally:
+        e.services.close()
+
+
+def test_salience_rerank_has_no_relevance_and_uses_top_score(tmp_path):
+    for min_score, expected in ((-1.0, "ok"), (0.999, "no_relevant_context")):
+        e = make(tmp_path / str(min_score), min_score=min_score, salience_rerank=True)
+        try:
+            status, _, top_relevance = statuses(e)
+            assert (status, top_relevance) == (expected, None)
+        finally:
+            e.services.close()
+
+
+@pytest.mark.parametrize("reranker", ["off", "bge-v2-m3"])
+def test_not_member_box_still_looks_like_an_empty_member_box(tmp_path, reranker):
+    e = make(tmp_path, reranker=reranker, reranker_factory=lambda: FakeScorer())
+    try:
+        e.box("hr")
+        e.member("hr", "member")  # สมาชิกของกล่องว่าง
+        e.member("pub", "outsider")  # ไม่เป็นสมาชิก hr
+        member_empty = e.retrieve("member", box_id="hr")
+        outsider = e.retrieve("outsider", box_id="hr")
+        ghost = e.retrieve("member", box_id="ghost")  # กล่องที่ไม่มีอยู่
+        assert member_empty.status_code == outsider.status_code == ghost.status_code == 200
+        a = without_trace(member_empty.json())
+        assert a == without_trace(outsider.json())
+        assert {**a, "box_id": "ghost"} == without_trace(ghost.json())
+        assert (a["status"], a["visibility"], a["top_score"], a["top_relevance"], a["results"]) == \
+            ("no_relevant_context", None, None, None, [])
+        assert e.retrieve("outsider", box_id="pub").json()["results"]  # outsider ค้นกล่องที่เป็นสมาชิกได้ปกติ
+    finally:
+        e.services.close()
 
 
 def test_non_finite_reranker_scores_are_an_error_not_a_ranking(tmp_path):
